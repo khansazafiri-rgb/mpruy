@@ -1,0 +1,504 @@
+[
+ {
+  "start": 0.0,
+  "end": 5.3,
+  "text": "Baru mau fokus belajar? Eh, cegukan. Kenapa bunyinya bisa? Hik.",
+  "words": [
+   {
+    "w": "Baru",
+    "s": 0.0,
+    "e": 0.24
+   },
+   {
+    "w": "mau",
+    "s": 0.24,
+    "e": 0.34
+   },
+   {
+    "w": "fokus",
+    "s": 0.34,
+    "e": 0.6
+   },
+   {
+    "w": "belajar?",
+    "s": 0.6,
+    "e": 1.16
+   },
+   {
+    "w": "Eh,",
+    "s": 1.76,
+    "e": 1.98
+   },
+   {
+    "w": "cegukan.",
+    "s": 2.42,
+    "e": 2.68
+   },
+   {
+    "w": "Kenapa",
+    "s": 3.56,
+    "e": 4.0
+   },
+   {
+    "w": "bunyinya",
+    "s": 4.0,
+    "e": 4.36
+   },
+   {
+    "w": "bisa?",
+    "s": 4.36,
+    "e": 4.56
+   },
+   {
+    "w": "Hik.",
+    "s": 5.14,
+    "e": 5.3
+   }
+  ]
+ },
+ {
+  "start": 6.6,
+  "end": 9.4,
+  "text": "Di bawah paru-paru, ada otot bernama dia Fragma.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 6.6,
+    "e": 6.84
+   },
+   {
+    "w": "bawah",
+    "s": 6.84,
+    "e": 6.96
+   },
+   {
+    "w": "paru",
+    "s": 6.96,
+    "e": 7.16
+   },
+   {
+    "w": "-paru,",
+    "s": 7.16,
+    "e": 7.6
+   },
+   {
+    "w": "ada",
+    "s": 7.82,
+    "e": 8.12
+   },
+   {
+    "w": "otot",
+    "s": 8.12,
+    "e": 8.44
+   },
+   {
+    "w": "bernama",
+    "s": 8.44,
+    "e": 8.76
+   },
+   {
+    "w": "dia",
+    "s": 8.76,
+    "e": 8.96
+   },
+   {
+    "w": "Fragma.",
+    "s": 8.96,
+    "e": 9.4
+   }
+  ]
+ },
+ {
+  "start": 10.06,
+  "end": 13.6,
+  "text": "Saat cegukan, otot ini berkontraksi mendadak tanpa kita sengaja.",
+  "words": [
+   {
+    "w": "Saat",
+    "s": 10.06,
+    "e": 10.4
+   },
+   {
+    "w": "cegukan,",
+    "s": 10.4,
+    "e": 10.7
+   },
+   {
+    "w": "otot",
+    "s": 11.16,
+    "e": 11.36
+   },
+   {
+    "w": "ini",
+    "s": 11.36,
+    "e": 11.56
+   },
+   {
+    "w": "berkontraksi",
+    "s": 11.56,
+    "e": 12.4
+   },
+   {
+    "w": "mendadak",
+    "s": 12.4,
+    "e": 12.8
+   },
+   {
+    "w": "tanpa",
+    "s": 12.8,
+    "e": 13.02
+   },
+   {
+    "w": "kita",
+    "s": 13.02,
+    "e": 13.22
+   },
+   {
+    "w": "sengaja.",
+    "s": 13.22,
+    "e": 13.6
+   }
+  ]
+ },
+ {
+  "start": 14.36,
+  "end": 17.1,
+  "text": "Seseat kemudian, pitas suara menutup dengan cepat.",
+  "words": [
+   {
+    "w": "Seseat",
+    "s": 14.36,
+    "e": 14.84
+   },
+   {
+    "w": "kemudian,",
+    "s": 14.84,
+    "e": 15.36
+   },
+   {
+    "w": "pitas",
+    "s": 15.72,
+    "e": 15.9
+   },
+   {
+    "w": "suara",
+    "s": 15.9,
+    "e": 16.16
+   },
+   {
+    "w": "menutup",
+    "s": 16.16,
+    "e": 16.58
+   },
+   {
+    "w": "dengan",
+    "s": 16.58,
+    "e": 16.74
+   },
+   {
+    "w": "cepat.",
+    "s": 16.74,
+    "e": 17.1
+   }
+  ]
+ },
+ {
+  "start": 17.78,
+  "end": 19.9,
+  "text": "Penutupan itulah yang menghasilkan bunyi. Hik.",
+  "words": [
+   {
+    "w": "Penutupan",
+    "s": 17.78,
+    "e": 18.26
+   },
+   {
+    "w": "itulah",
+    "s": 18.26,
+    "e": 18.66
+   },
+   {
+    "w": "yang",
+    "s": 18.66,
+    "e": 18.78
+   },
+   {
+    "w": "menghasilkan",
+    "s": 18.78,
+    "e": 19.2
+   },
+   {
+    "w": "bunyi.",
+    "s": 19.2,
+    "e": 19.5
+   },
+   {
+    "w": "Hik.",
+    "s": 19.78,
+    "e": 19.9
+   }
+  ]
+ },
+ {
+  "start": 21.08,
+  "end": 24.52,
+  "text": "Makan terlalu cepat atau perut yang terlalu penuh bisa memicu-cegukan.",
+  "words": [
+   {
+    "w": "Makan",
+    "s": 21.08,
+    "e": 21.38
+   },
+   {
+    "w": "terlalu",
+    "s": 21.38,
+    "e": 21.64
+   },
+   {
+    "w": "cepat",
+    "s": 21.64,
+    "e": 21.98
+   },
+   {
+    "w": "atau",
+    "s": 21.98,
+    "e": 22.22
+   },
+   {
+    "w": "perut",
+    "s": 22.22,
+    "e": 22.58
+   },
+   {
+    "w": "yang",
+    "s": 22.58,
+    "e": 22.72
+   },
+   {
+    "w": "terlalu",
+    "s": 22.72,
+    "e": 23.0
+   },
+   {
+    "w": "penuh",
+    "s": 23.0,
+    "e": 23.28
+   },
+   {
+    "w": "bisa",
+    "s": 23.28,
+    "e": 23.82
+   },
+   {
+    "w": "memicu",
+    "s": 23.82,
+    "e": 24.14
+   },
+   {
+    "w": "-cegukan.",
+    "s": 24.14,
+    "e": 24.52
+   }
+  ]
+ },
+ {
+  "start": 25.02,
+  "end": 27.48,
+  "text": "Tapi kadang, cegukan muncul tanpa penjabat yang jelas.",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 25.02,
+    "e": 25.32
+   },
+   {
+    "w": "kadang,",
+    "s": 25.32,
+    "e": 25.72
+   },
+   {
+    "w": "cegukan",
+    "s": 26.0,
+    "e": 26.2
+   },
+   {
+    "w": "muncul",
+    "s": 26.2,
+    "e": 26.48
+   },
+   {
+    "w": "tanpa",
+    "s": 26.48,
+    "e": 26.76
+   },
+   {
+    "w": "penjabat",
+    "s": 26.76,
+    "e": 27.0
+   },
+   {
+    "w": "yang",
+    "s": 27.0,
+    "e": 27.16
+   },
+   {
+    "w": "jelas.",
+    "s": 27.16,
+    "e": 27.48
+   }
+  ]
+ },
+ {
+  "start": 28.52,
+  "end": 30.48,
+  "text": "Penasaran dengan cara kerja tubuh lainnya?",
+  "words": [
+   {
+    "w": "Penasaran",
+    "s": 28.52,
+    "e": 29.16
+   },
+   {
+    "w": "dengan",
+    "s": 29.16,
+    "e": 29.36
+   },
+   {
+    "w": "cara",
+    "s": 29.36,
+    "e": 29.6
+   },
+   {
+    "w": "kerja",
+    "s": 29.6,
+    "e": 29.88
+   },
+   {
+    "w": "tubuh",
+    "s": 29.88,
+    "e": 30.06
+   },
+   {
+    "w": "lainnya?",
+    "s": 30.06,
+    "e": 30.48
+   }
+  ]
+ },
+ {
+  "start": 30.76,
+  "end": 32.24,
+  "text": "Lanjut belajar di MedCall.",
+  "words": [
+   {
+    "w": "Lanjut",
+    "s": 30.76,
+    "e": 31.38
+   },
+   {
+    "w": "belajar",
+    "s": 31.38,
+    "e": 31.7
+   },
+   {
+    "w": "di",
+    "s": 31.7,
+    "e": 31.86
+   },
+   {
+    "w": "MedCall.",
+    "s": 31.86,
+    "e": 32.24
+   }
+  ]
+ },
+ {
+  "start": 32.6,
+  "end": 36.64,
+  "text": "Ada materi, latihan soal, Atlas 3D dan Live 4D Lab.",
+  "words": [
+   {
+    "w": "Ada",
+    "s": 32.6,
+    "e": 32.9
+   },
+   {
+    "w": "materi,",
+    "s": 32.9,
+    "e": 33.4
+   },
+   {
+    "w": "latihan",
+    "s": 33.66,
+    "e": 34.0
+   },
+   {
+    "w": "soal,",
+    "s": 34.0,
+    "e": 34.38
+   },
+   {
+    "w": "Atlas",
+    "s": 34.68,
+    "e": 34.9
+   },
+   {
+    "w": "3D",
+    "s": 34.9,
+    "e": 35.4
+   },
+   {
+    "w": "dan",
+    "s": 35.4,
+    "e": 35.76
+   },
+   {
+    "w": "Live",
+    "s": 35.76,
+    "e": 36.06
+   },
+   {
+    "w": "4D",
+    "s": 36.06,
+    "e": 36.42
+   },
+   {
+    "w": "Lab.",
+    "s": 36.42,
+    "e": 36.64
+   }
+  ]
+ },
+ {
+  "start": 37.06,
+  "end": 38.56,
+  "text": "Coba gratis di MedCall.com",
+  "words": [
+   {
+    "w": "Coba",
+    "s": 37.06,
+    "e": 37.38
+   },
+   {
+    "w": "gratis",
+    "s": 37.38,
+    "e": 37.78
+   },
+   {
+    "w": "di",
+    "s": 37.78,
+    "e": 37.92
+   },
+   {
+    "w": "MedCall",
+    "s": 37.92,
+    "e": 38.2
+   },
+   {
+    "w": ".com",
+    "s": 38.2,
+    "e": 38.56
+   }
+  ]
+ }
+]

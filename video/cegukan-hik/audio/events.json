@@ -1,0 +1,99 @@
+{
+ "durasi_edu": 30.0,
+ "potong_narasi": 28.2,
+ "skalar_normalisasi": 1.3259,
+ "sfx": [
+  {
+   "t": 1.44,
+   "sfx": "hik-cegukan-pertama"
+  },
+  {
+   "t": 5.55,
+   "sfx": "dorong-kamera-ke-dada"
+  },
+  {
+   "t": 5.85,
+   "sfx": "lensa-terbuka"
+  },
+  {
+   "t": 6.62,
+   "sfx": "label-paru"
+  },
+  {
+   "t": 8.98,
+   "sfx": "label-diafragma"
+  },
+  {
+   "t": 11.5,
+   "sfx": "judul-kontraksi"
+  },
+  {
+   "t": 12.38,
+   "sfx": "kontraksi-diafragma"
+  },
+  {
+   "t": 14.0,
+   "sfx": "ikuti-jalur-udara"
+  },
+  {
+   "t": 16.13,
+   "sfx": "pita-suara-menutup"
+  },
+  {
+   "t": 19.48,
+   "sfx": "kontraksi-ulang-peta"
+  },
+  {
+   "t": 20.35,
+   "sfx": "tarik-kembali"
+  },
+  {
+   "t": 21.07,
+   "sfx": "kartu-pemicu"
+  },
+  {
+   "t": 21.98,
+   "sfx": "kartu-pemicu"
+  },
+  {
+   "t": 23.28,
+   "sfx": "bisa-memicu"
+  },
+  {
+   "t": 26.58,
+   "sfx": "tanda-tanya"
+  },
+  {
+   "t": 27.57,
+   "sfx": "ikon-1"
+  },
+  {
+   "t": 27.96,
+   "sfx": "panah-urutan"
+  },
+  {
+   "t": 28.22,
+   "sfx": "ikon-2"
+  },
+  {
+   "t": 28.6,
+   "sfx": "panah-urutan"
+  },
+  {
+   "t": 28.87,
+   "sfx": "ikon-3"
+  },
+  {
+   "t": 29.36,
+   "sfx": "denyut-urutan-1"
+  },
+  {
+   "t": 29.59,
+   "sfx": "denyut-urutan-2"
+  },
+  {
+   "t": 29.82,
+   "sfx": "denyut-urutan-3"
+  }
+ ]
+}

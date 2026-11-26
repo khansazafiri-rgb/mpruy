@@ -1,0 +1,148 @@
+{
+ "dur": 46.2,
+ "edu_dur": 30.0,
+ "outro_dur": 16.2,
+ "cut": 28.2,
+ "w": {
+  "baru": 0.0,
+  "belajar": 0.6,
+  "eh": 1.76,
+  "cegukan1": 2.42,
+  "kenapa": 3.56,
+  "bunyinya": 4.0,
+  "bisa": 4.36,
+  "hik1": 5.13,
+  "dibawah": 6.6,
+  "paru": 6.96,
+  "ada": 7.82,
+  "otot": 8.12,
+  "bernama": 8.44,
+  "diafragma": 8.96,
+  "saat": 10.06,
+  "cegukan2": 10.4,
+  "otot2": 11.16,
+  "berkontraksi": 11.56,
+  "mendadak": 12.4,
+  "tanpa": 12.8,
+  "sengaja": 13.22,
+  "sesaat": 14.36,
+  "kemudian": 14.84,
+  "pita": 15.72,
+  "suara": 15.9,
+  "menutup": 16.16,
+  "cepat": 16.74,
+  "penutupan": 17.78,
+  "itulah": 18.26,
+  "menghasilkan": 18.78,
+  "bunyi": 19.2,
+  "hik2": 19.74,
+  "makan": 21.08,
+  "cepat2": 21.64,
+  "atau": 21.98,
+  "perut": 22.22,
+  "penuh": 23.0,
+  "bisa2": 23.28,
+  "memicu": 23.82,
+  "cegukan3": 24.14,
+  "tapi": 25.02,
+  "kadang": 25.32,
+  "cegukan4": 26.0,
+  "muncul": 26.2,
+  "tanpa2": 26.48,
+  "penyebab": 26.76,
+  "jelas": 27.16,
+  "jelas_end": 27.62
+ },
+ "cap": [
+  [
+   0.0,
+   1.25,
+   "Baru mau fokus belajar,"
+  ],
+  [
+   1.7,
+   2.85,
+   "eh, cegukan."
+  ],
+  [
+   3.5,
+   5.55,
+   "Kenapa bunyinya bisa ‘hik’?"
+  ],
+  [
+   6.55,
+   7.72,
+   "Di bawah paru-paru,"
+  ],
+  [
+   7.78,
+   9.5,
+   "ada otot bernama diafragma."
+  ],
+  [
+   10.02,
+   10.85,
+   "Saat cegukan,"
+  ],
+  [
+   11.12,
+   12.9,
+   "otot ini berkontraksi mendadak"
+  ],
+  [
+   12.9,
+   13.75,
+   "tanpa kita sengaja."
+  ],
+  [
+   14.32,
+   15.45,
+   "Sesaat kemudian,"
+  ],
+  [
+   15.68,
+   17.2,
+   "pita suara menutup dengan cepat."
+  ],
+  [
+   17.74,
+   18.74,
+   "Penutupan itulah"
+  ],
+  [
+   18.74,
+   20.25,
+   "yang menghasilkan bunyi ‘hik’."
+  ],
+  [
+   21.04,
+   22.12,
+   "Makan terlalu cepat"
+  ],
+  [
+   22.12,
+   23.3,
+   "atau perut yang terlalu penuh"
+  ],
+  [
+   23.3,
+   24.65,
+   "bisa memicu cegukan."
+  ],
+  [
+   24.98,
+   25.9,
+   "Tapi kadang,"
+  ],
+  [
+   25.96,
+   26.8,
+   "cegukan muncul"
+  ],
+  [
+   26.8,
+   27.75,
+   "tanpa penyebab yang jelas."
+  ]
+ ]
+}
