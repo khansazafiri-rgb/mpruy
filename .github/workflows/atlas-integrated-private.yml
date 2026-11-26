@@ -1,7 +1,7 @@
-name: Atlas integrated private 224-element regression
+name: Atlas integrated private 246-element regression
 on:
   push:
-    branches: [feat/atlas-cardiopulmonary-32-20261126]
+    branches: [feat/atlas-bronchial-thymus-22-20261126]
     paths:
       - 'apps/atlas-independent/**'
       - 'scripts/*bp3d43*'
@@ -10,7 +10,7 @@ on:
       - '.github/workflows/atlas-integrated-private.yml'
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [feat/atlas-bp3d43-intake-20261125, feat/atlas-integrated-private-20261125, feat/atlas-reference-regions-20261125, feat/atlas-spl-knee-intake-20261125, feat/atlas-sio-label-audit-20261125, feat/atlas-head-neck-cartilage-20261125, feat/atlas-abdominal-visceral-20261126, feat/atlas-cns-30-20261126, feat/atlas-pelvic-digestive-15-20261126]
+    branches: [feat/atlas-bp3d43-intake-20261125, feat/atlas-integrated-private-20261125, feat/atlas-reference-regions-20261125, feat/atlas-spl-knee-intake-20261125, feat/atlas-sio-label-audit-20261125, feat/atlas-head-neck-cartilage-20261125, feat/atlas-abdominal-visceral-20261126, feat/atlas-cns-30-20261126, feat/atlas-pelvic-digestive-15-20261126, feat/atlas-cardiopulmonary-32-20261126]
     paths:
       - 'apps/atlas-independent/**'
       - 'scripts/*bp3d43*'
@@ -58,14 +58,16 @@ jobs:
         run: node scripts/audit-bp3d43-gap-batch.mjs pelvic-digestive-15
       - name: Fresh cardiovascular and airway batch with dual-source audit
         run: node scripts/audit-bp3d43-gap-batch.mjs cardiopulmonary-32
+      - name: Fresh bronchial and thymic batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs bronchial-thymus-22
       - name: Install isolated browser
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Combined 224 actual source elements, 10 glossary-bound concepts and all 217 source-label concepts
+      - name: Combined 246 actual source elements, 10 glossary-bound concepts and all 239 source-label concepts
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
-          ATLAS_TEST_REAL43=cardio node scripts/test-private-atlas-browser.mjs
+          ATLAS_TEST_REAL43=bronchial node scripts/test-private-atlas-browser.mjs
       - name: Gap-only source-label regression using same audited files
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
