@@ -87,6 +87,11 @@ const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{bro
 const context=contextRecovery?planContextRecovery(sourcePack.inventory.bodyModels,priority.report.results,elementCatalog?.items.map(e=>e.fmaId)||[]):null;
 const contextIds=new Set(context?.accepted.map(x=>x.id)||[]);
 const recoveryItems=priority?.items.map(e=>({...e,contextCandidate:contextIds.has(e.id)}))||[];
+// Assemble the exact final HRA registry before any learning-coverage computation.
+let hra;try{hra=independent?sourcePack.hra:await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message||error)}]};}
+if(hraFemaleArgs.length)hra=mergeHraFemaleReferences(hra,loadHraFemaleFive(privateRoot,hraFemaleArgs[0].slice('--hra-female-folder='.length),hraGroups));
+if(hraCardioArgs.length)hra=mergeHraFemaleReferences(hra,loadHraBatch(privateRoot,hraCardioArgs[0].slice('--hra-cardio-folder='.length),'cardiopulmonary-four',hraGroups));
+if(suite)hra=exactSuiteHra(hra,suite);
 const coverage=independent&&broadRecovery?learningCoverage({sources:loadVerifiedPublisherSources(sourcePack.folder),body:manifest.entries,selection:elementCatalog?.items||[],recovery:recoveryItems,results:priority?.report.results||[],references43:source43?.inventory.items||[],hraReferences:[...hra.assets.values()].map(a=>a.public)}):null;
 const coverageFile=coverage?path.join(privateRoot,folder,'publication-learning-coverage-'+process.pid+'-'+Date.now()+'.json'):null;
 if(coverage)fs.writeFileSync(coverageFile,JSON.stringify(coverage,null,2)+'\n',{flag:'wx',mode:0o600});
@@ -101,10 +106,6 @@ await build({root:app,configFile:false,publicDir:false,base:'/anatomy/viewer/',p
 const originalShell=originalUI?attachOriginalShell(root,out):null;
 const softwareReport=path.join(privateRoot,folder,'publication-software-audit.json');const reportTmp=softwareReport+'.'+process.pid+'.tmp';fs.writeFileSync(reportTmp,JSON.stringify({...dependencyAudit,sourceNotices,bundle:bundleRecord,originalShell},null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(reportTmp,softwareReport);
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8'};
-let hra;try{hra=independent?sourcePack.hra:await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message||error)}]};}
-if(hraFemaleArgs.length)hra=mergeHraFemaleReferences(hra,loadHraFemaleFive(privateRoot,hraFemaleArgs[0].slice('--hra-female-folder='.length),hraGroups));
-if(hraCardioArgs.length)hra=mergeHraFemaleReferences(hra,loadHraBatch(privateRoot,hraCardioArgs[0].slice('--hra-cardio-folder='.length),'cardiopulmonary-four',hraGroups));
-if(suite)hra=exactSuiteHra(hra,suite);
 const port=Number(process.env.PORT||4186);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
 // Independent review builds the actual main-web App with a preview-only Anatomy
 // page alias. No public assets, stale host build, legacy Atlas or live backend.
