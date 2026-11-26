@@ -201,7 +201,7 @@ try{
   const {challengeLabel,hasChallengeGlossary}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
   const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
   assert.equal(await setup.locator('#referenceChallengeLanguage option[value="latin"]').textContent(),'Latin (provisional)');
-  assert((await setup.locator('.hint').textContent()).includes('bukan terminologi FIPAT terverifikasi'));
+  assert((await setup.locator('.hint').filter({hasText:'bukan terminologi FIPAT terverifikasi'}).textContent()).includes('bukan terminologi FIPAT terverifikasi'));
   if(real43.assets.size===246)assert.equal(glossaryCount,239);
   if(real43.assets.size===246||real43.assets.size===12){
    const scope=setup.locator('#referenceChallengeScope'),limit=setup.locator('#referenceChallengeLimit'),region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic');

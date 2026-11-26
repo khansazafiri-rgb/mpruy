@@ -16,14 +16,19 @@
     "workflowRun": 45685256580
   },
   "browserReplay": {
-    "commit": "caa7549e7163d9f0a83f57ba2230a24a1448a563",
-    "workflowRun": 45752696033,
-    "workflowJob": 139683982158,
+    "commit": "07fdf572d6f63f160d71ca0a95fd7ad4d268d7c5",
+    "workflowRun": 45765380450,
+    "workflowJob": 139724910820,
+    "secondRun": 45765378506,
+    "secondJob": 139724904898,
     "conclusion": "success",
     "renderedActualPublisherGLBs": 246,
     "sourceLabelConceptsCompleted": 239,
-    "multilingualTypedConcepts": 42,
-    "unitAndIdentityTestsPassed": 49,
+    "multilingualTypedConcepts": 239,
+    "unitAndIdentityTestsPassed": 53,
+    "combinedHraOriginalGLBs": 9,
+    "combinedHraExactGroups": 37,
+    "exactAcquisitions": 13,
     "registrationValidated": false
   }
 }

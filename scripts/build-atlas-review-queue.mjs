@@ -2,7 +2,7 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 import {REFERENCE43_TOPIC_ROWS as catalog} from '../apps/atlas-independent/src/reference43-topic-catalog.js';
 import {challengeLabel,hasChallengeGlossary} from '../apps/atlas-independent/src/reference-challenge-language.js';
-import {BP43_SUITE} from './atlas-audited-reference-suite.mjs';
+import {BP43_SUITE} from './atlas-reference-suite-spec.mjs';
 const root=new URL('../',import.meta.url),dir='licensing/atlas-publication/';
 const read=f=>JSON.parse(fs.readFileSync(new URL(dir+f,root),'utf8'));
 const sha=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
