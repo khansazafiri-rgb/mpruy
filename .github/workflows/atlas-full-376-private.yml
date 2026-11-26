@@ -1,0 +1,41 @@
+name: Atlas full 376-element and 9-HRA private regression
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/replay-audited-bp3d43-suite*'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'scripts/atlas-audited-reference-suite.mjs'
+      - '.github/workflows/atlas-full-376-private.yml'
+permissions:
+  contents: read
+jobs:
+  full:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - name: Retained receipt and private inventory contract tests
+        run: |
+          node --test scripts/replay-audited-bp3d43-suite.test.mjs scripts/atlas-expansion-evidence.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/atlas-audited-reference-suite.test.mjs
+          npm test --prefix apps/atlas-independent
+      - name: Reacquire only exact previously dual-source-audited publisher bytes
+        run: node scripts/replay-audited-bp3d43-suite.mjs --all-fresh
+      - name: Install isolated browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Render all 376 elements, 368 source labels, 240 provisional multilingual concepts, 9 HRA organs and 37 groups
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_REAL43=full-376 ATLAS_TEST_HRA_COMBINED=1 ATLAS_TEST_HRA_GROUPS=1 node scripts/test-private-atlas-browser.mjs
+      - name: Delete temporary private source bytes
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/hra-female-five-* local-data/licensing-quarantine/hra-cardiopulmonary-four-*

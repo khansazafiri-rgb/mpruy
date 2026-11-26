@@ -96,6 +96,7 @@ export function run(inputDoc=null,{allowHeld=false}={}){
  try{download(viewer,path.join(out,'session.html'),session);}catch{console.warn('Viewer bootstrap unavailable; trying direct version-stamped manifest');}
  const manifestZip=path.join(out,'manifest.zip');const manifestNames=downloadZipValidated(manifestURL,manifestZip,session);
  assert.deepEqual(manifestNames,['FMA2Obj.txt']);const bytes=member(manifestZip,'FMA2Obj.txt'),catalog=parseMembership(bytes.toString('utf8'));
+ if(doc.expectedManifestSHA256!==undefined)assert(/^[a-f0-9]{64}$/.test(doc.expectedManifestSHA256)&&digest(bytes)===doc.expectedManifestSHA256,'Pinned publisher manifest differs; replay held');
  const candidates=validateCandidates(doc,catalog),results=[];
  fs.writeFileSync(path.join(out,'FMA2Obj.txt'),bytes,{flag:'wx',mode:0o600});
  for(const r of candidates){
