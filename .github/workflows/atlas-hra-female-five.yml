@@ -21,8 +21,10 @@ jobs:
       - run: node scripts/audit-hra-female-five.mjs
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
-      - name: Private reference unit tests
-        run: npm test --prefix apps/atlas-independent
+      - name: Private reference unit and route tests
+        run: |
+          npm test --prefix apps/atlas-independent
+          node --test scripts/test-hra-female-private-route.test.mjs
       - name: Install isolated browser
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1

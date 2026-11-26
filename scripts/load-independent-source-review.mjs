@@ -72,7 +72,7 @@ export function loadIndependentReview(privateRoot,folder){
   assert(hash(b)===r.sha256&&hash(yaml)===r.metadataSHA256&&a?.sha256===r.sha256&&a.license==='CC-BY-4.0'&&a.attribution===r.attribution&&p.doi===r.doi&&p.version===r.version&&p.license===r.publisherLicense);
   assert.deepEqual(p.creators,r.creators);
   assert(inspectGlb(b).meshCount===r.meshCount);
-  hra.assets.set(r.id,{file:regular(dir,r.path),bytes:b.length,public:{id:r.id,name:r.name,version:r.version,source:r.sourceURL,meshCount:r.meshCount,frame:'Independent HRA source frame',registrationValidated:false,approvedForDistribution:false}});
+  hra.assets.set(r.id,{file:regular(dir,r.path),bytes:b.length,sha256:r.sha256,public:{id:r.id,name:r.name,version:r.version,source:r.sourceURL,meshCount:r.meshCount,frame:'Independent HRA source frame',registrationValidated:false,approvedForDistribution:false}});
  }
  for(const [sub,expected] of [['bp3d',inv.bodyModels.map(m=>path.basename(m.path))],['hra',inv.independentReferences.map(r=>path.basename(r.path))]]){
   const p=path.join(dir,sub);assert(fs.realpathSync(p)===p&&fs.statSync(p).isDirectory());assert.deepEqual(fs.readdirSync(p).sort(),expected.sort(),'Unexpected model files');
