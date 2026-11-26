@@ -1,0 +1,2155 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 4,
+  "held": 0,
+  "exactNamedMeshNodes": 141,
+  "rows": [
+    {
+      "id": "lung-female",
+      "version": "v1.4",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-female/v1.4/assets/3d-vh-f-lung.glb",
+      "bytes": 23255188,
+      "sha256": "101f48ec64f2ed762fde03fc1193eaae583a0d35c47b72a9ca007d72eefb5f71",
+      "metadataSHA256": "6f005d5d122eefa4b3b6079e25c1babf87cd8bdd706e9e3b1451f254698fecfa",
+      "crosswalkSHA256": "8598d9953dc373049c2939fc0bff2e2101451c0b6e9cd9426e33258bea8060e0",
+      "meshCount": 56,
+      "nodeCount": 75,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_respiratory_system",
+          "ontologyId": "UBERON:0001004",
+          "label": "respiratory system",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_lungs",
+          "ontologyId": "UBERON:0002048",
+          "label": "lung",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_bronchi",
+          "ontologyId": "UBERON:0002185",
+          "label": "bronchus",
+          "nodeIndices": [
+            37
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_cartilage_of_lobar_bronchus_L",
+          "ontologyId": "FMA:62659",
+          "label": "Cartilage of lobar bronchus",
+          "nodeIndices": [
+            40
+          ],
+          "meshNodeIndices": [
+            40
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cartilage_of_tertiary_bronchus_L",
+          "ontologyId": "FMA:62662",
+          "label": "Cartilage of segmental bronchus",
+          "nodeIndices": [
+            41
+          ],
+          "meshNodeIndices": [
+            41
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lobar_bronchi_L",
+          "ontologyId": "UBERON:0003405",
+          "label": "lobar bronchus of left lung",
+          "nodeIndices": [
+            42
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_left_superior_lobar_bronchus",
+          "ontologyId": "UBERON:0012065",
+          "label": "lobar bronchus of left lung upper lobe",
+          "nodeIndices": [
+            43
+          ],
+          "meshNodeIndices": [
+            43
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_inferior_lobar_bronchus",
+          "ontologyId": "UBERON:0012066",
+          "label": "lobar bronchus of left lung lower lobe",
+          "nodeIndices": [
+            44
+          ],
+          "meshNodeIndices": [
+            44
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_tertiary_bronchi_L",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "nodeIndices": [
+            45
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_left_anterior_basal_bronchus",
+          "ontologyId": "FMA:7506",
+          "label": "Left anterior basal segmental bronchus",
+          "nodeIndices": [
+            46
+          ],
+          "meshNodeIndices": [
+            46
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_lingula_superior_bronchus",
+          "ontologyId": "FMA:7430",
+          "label": "Superior lingular bronchus",
+          "nodeIndices": [
+            47
+          ],
+          "meshNodeIndices": [
+            47
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_apical_bronchus",
+          "ontologyId": "FMA:7426",
+          "label": "Left apical segmental bronchus",
+          "nodeIndices": [
+            48
+          ],
+          "meshNodeIndices": [
+            48
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_posterior_basal_bronchus",
+          "ontologyId": "FMA:7508",
+          "label": "Left posterior basal segmental bronchus",
+          "nodeIndices": [
+            49
+          ],
+          "meshNodeIndices": [
+            49
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_medial_basal_bronchus",
+          "ontologyId": "FMA:7505",
+          "label": "Left medial basal segmental bronchus",
+          "nodeIndices": [
+            50
+          ],
+          "meshNodeIndices": [
+            50
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_superior_bronchus",
+          "ontologyId": "FMA:7504",
+          "label": "Left superior segmental bronchus",
+          "nodeIndices": [
+            51
+          ],
+          "meshNodeIndices": [
+            51
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_anterior_bronchus",
+          "ontologyId": "FMA:7428",
+          "label": "Left anterior segmental bronchus",
+          "nodeIndices": [
+            52
+          ],
+          "meshNodeIndices": [
+            52
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_posterior_bronchus",
+          "ontologyId": "FMA:7427",
+          "label": "Left posterior segmental bronchus",
+          "nodeIndices": [
+            53
+          ],
+          "meshNodeIndices": [
+            53
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_lateral_basal_bronchus",
+          "ontologyId": "FMA:7507",
+          "label": "Left lateral basal segmental bronchus",
+          "nodeIndices": [
+            54
+          ],
+          "meshNodeIndices": [
+            54
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_lingula_inferior_bronchi",
+          "ontologyId": "FMA:7431",
+          "label": "Inferior lingular bronchus",
+          "nodeIndices": [
+            55
+          ],
+          "meshNodeIndices": [
+            55
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cartilage_of_lobar_bronchus_R",
+          "ontologyId": "FMA:62659",
+          "label": "Cartilage of lobar bronchus",
+          "nodeIndices": [
+            58
+          ],
+          "meshNodeIndices": [
+            58
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cartilage_of_tertiary_bronchus_R",
+          "ontologyId": "FMA:62662",
+          "label": "Cartilage of segmental bronchus",
+          "nodeIndices": [
+            59
+          ],
+          "meshNodeIndices": [
+            59
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lobar_bronchus_R",
+          "ontologyId": "UBERON:0003404",
+          "label": "lobar bronchus of right lung",
+          "nodeIndices": [
+            60
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_right_middle_lobar_bronchus",
+          "ontologyId": "FMA:7401",
+          "label": "Middle lobar bronchus",
+          "nodeIndices": [
+            61
+          ],
+          "meshNodeIndices": [
+            61
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_superior_lobar_bronchus",
+          "ontologyId": "FMA:7397",
+          "label": "Right superior lobar bronchus",
+          "nodeIndices": [
+            62
+          ],
+          "meshNodeIndices": [
+            62
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_inferior_lobar_bronchus",
+          "ontologyId": "FMA:7404",
+          "label": "Right inferior lobar bronchus",
+          "nodeIndices": [
+            63
+          ],
+          "meshNodeIndices": [
+            63
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_tertiary_bronchi_R",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "nodeIndices": [
+            64
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_right_anterior_bronchus",
+          "ontologyId": "FMA:7400",
+          "label": "Right anterior segmental bronchus",
+          "nodeIndices": [
+            65
+          ],
+          "meshNodeIndices": [
+            65
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_lateral_basal_bronchus",
+          "ontologyId": "FMA:7419",
+          "label": "Right lateral basal segmental bronchus",
+          "nodeIndices": [
+            66
+          ],
+          "meshNodeIndices": [
+            66
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_lateral_bronchus",
+          "ontologyId": "FMA:7402",
+          "label": "Lateral segmental bronchus",
+          "nodeIndices": [
+            67
+          ],
+          "meshNodeIndices": [
+            67
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_medial_bronchus",
+          "ontologyId": "FMA:7403",
+          "label": "Medial segmental bronchus",
+          "nodeIndices": [
+            68
+          ],
+          "meshNodeIndices": [
+            68
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_medial_basal_bronchus",
+          "ontologyId": "FMA:7417",
+          "label": "Right medial basal segmental bronchus",
+          "nodeIndices": [
+            69
+          ],
+          "meshNodeIndices": [
+            69
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_posterior_basal_bronchus",
+          "ontologyId": "FMA:7420",
+          "label": "Right posterior basal segmental bronchus",
+          "nodeIndices": [
+            70
+          ],
+          "meshNodeIndices": [
+            70
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_posterior_bronchus",
+          "ontologyId": "FMA:7399",
+          "label": "Right posterior segmental bronchus",
+          "nodeIndices": [
+            71
+          ],
+          "meshNodeIndices": [
+            71
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_superior_bronchus",
+          "ontologyId": "FMA:7416",
+          "label": "Right superior segmental bronchus",
+          "nodeIndices": [
+            72
+          ],
+          "meshNodeIndices": [
+            72
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_apical_bronchus",
+          "ontologyId": "FMA:7398",
+          "label": "Right apical segmental bronchus",
+          "nodeIndices": [
+            73
+          ],
+          "meshNodeIndices": [
+            73
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_anterior_basal_bronchus",
+          "ontologyId": "FMA:7418",
+          "label": "Right anterior basal segmental bronchus",
+          "nodeIndices": [
+            74
+          ],
+          "meshNodeIndices": [
+            74
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_lungs_L",
+          "ontologyId": "UBERON:0002168",
+          "label": "left lung",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_hilum_L",
+          "ontologyId": "UBERON:0004887",
+          "label": "left lung hilus",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_L_lung_upper_lobe",
+          "ontologyId": "UBERON:0008952",
+          "label": "Upper Lobe of Left Lung",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_hilum_upper_L",
+          "ontologyId": "UBERON:0004887",
+          "label": "left lung hilus",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lingula_superior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7374",
+          "label": "Superior lingular bronchopulmonary segment",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_anterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7373",
+          "label": "Left Anterior Bronchopulmonary Segment",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_apical_bronchopulmonary_segment",
+          "ontologyId": "FMA:7385",
+          "label": "Left apical bronchopulmonary segment",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_posterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7386",
+          "label": "Left posterior bronchopulmonary segment",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lingula_inferior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7375",
+          "label": "Inferior lingular bronchopulmonary segment",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_L_lung_lower_lobe",
+          "ontologyId": "UBERON:0008953",
+          "label": "Lower Lobe of Left Lung",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_left_superior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7376",
+          "label": "Left superior bronchopulmonary segment",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_posterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7380",
+          "label": "Left posterior basal bronchopulmonary segment",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_anterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7378",
+          "label": "left anterior basal bronchopulmonary segment",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_lateral_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7379",
+          "label": "left Lateral Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_medial_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7377",
+          "label": "Left Medial Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hilum_lower_L",
+          "ontologyId": "UBERON:0004887",
+          "label": "left lung hilus",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lungs_R",
+          "ontologyId": "UBERON:0002167",
+          "label": "right lung",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_hilum_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_R_lung_lower_lobe",
+          "ontologyId": "UBERON:0002171",
+          "label": "Lower Lobe of Right Lung",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_right_medial_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7365",
+          "label": "Right Medial Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_posterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7362",
+          "label": "Right Posterior Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_anterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7364",
+          "label": "Right anterior basal bronchopulmonary segment",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_lateral_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7363",
+          "label": "Right Lateral Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_superior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7366",
+          "label": "Right Superior Bronchopulmonary Segment",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hilum_lower_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_R_lung_middle_lobe",
+          "ontologyId": "UBERON:0002174",
+          "label": "Middle Lobe of Right Lung",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_right_medial_bronchopulmonary_segment",
+          "ontologyId": "FMA:7360",
+          "label": "Right Medial Bronchopulmonary Segment",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_lateral_bronchopulmonary_segmennt",
+          "ontologyId": "FMA:7361",
+          "label": "Right Lateral Bronchopulmonary Segment",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hilum_middle_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            30
+          ],
+          "meshNodeIndices": [
+            30
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_R_lung_upper_lobe",
+          "ontologyId": "UBERON:0002170",
+          "label": "Upper Lobe of Right Lung",
+          "nodeIndices": [
+            31
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_right_anterior_bronchopulmonary_segm",
+          "ontologyId": "FMA:7359",
+          "label": "Right Anterior Bronchopulmonary Segment",
+          "nodeIndices": [
+            32
+          ],
+          "meshNodeIndices": [
+            32
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_apical_bronchopulmonary_segment",
+          "ontologyId": "FMA:7338",
+          "label": "Right Apical Bronchopulmonary Segment",
+          "nodeIndices": [
+            33
+          ],
+          "meshNodeIndices": [
+            33
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_posterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7339",
+          "label": "Right Posterior Bronchopulmonary Segment",
+          "nodeIndices": [
+            34
+          ],
+          "meshNodeIndices": [
+            34
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hilum_upper_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            35
+          ],
+          "meshNodeIndices": [
+            35
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 56,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM994.HXJP.575",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "lung-male",
+      "version": "v1.4",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-male/v1.4/assets/3d-vh-m-lung.glb",
+      "bytes": 10942332,
+      "sha256": "bba95516fa993ac45c3b1c53f32b58d97232ffd78ae56397e5a2589c6ce4903d",
+      "metadataSHA256": "1ba505e21496b1fdfaa12b2289ff197e33b28e52697b4b59e35469fa00d97089",
+      "crosswalkSHA256": "072b3741e7e60c16f8d6f577ff302978211e826d7b9e345eb725afe5bdd9b910",
+      "meshCount": 58,
+      "nodeCount": 77,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_respiratory_system",
+          "ontologyId": "UBERON:0001004",
+          "label": "respiratory system",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_lungs",
+          "ontologyId": "UBERON:0002048",
+          "label": "lung",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_lungs_L",
+          "ontologyId": "UBERON:0002168",
+          "label": "left lung",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_hilum_L",
+          "ontologyId": "UBERON:0004887",
+          "label": "left lung hilus",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lungs_L_upper_lobe",
+          "ontologyId": "UBERON:0008952",
+          "label": "Upper Lobe of Left Lung",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_hilum_upper_L",
+          "ontologyId": "UBERON:0004887",
+          "label": "left lung hilus",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_lingula_superior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7374",
+          "label": "Superior lingular bronchopulmonary segment",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_posterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7386",
+          "label": "Left posterior bronchopulmonary segment",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_anterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7373",
+          "label": "Left Anterior Bronchopulmonary Segment",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_apical_bronchopulmonary_segment",
+          "ontologyId": "FMA:7385",
+          "label": "Left apical bronchopulmonary segment",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_lingula_inferior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7375",
+          "label": "Inferior lingular bronchopulmonary segment",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lungs_L_lower_lobe",
+          "ontologyId": "UBERON:0008953",
+          "label": "Lower Lobe of Left Lung",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_hilum_lower_L",
+          "ontologyId": "UBERON:0004887",
+          "label": "left lung hilus",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_anterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7378",
+          "label": "left anterior basal bronchopulmonary segment",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_lateral_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7379",
+          "label": "left Lateral Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_medial_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7377",
+          "label": "Left Medial Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_posetrior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7508",
+          "label": "Left posterior basal segmental bronchus",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_superior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7376",
+          "label": "Left superior bronchopulmonary segment",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lungs_R",
+          "ontologyId": "UBERON:0002167",
+          "label": "right lung",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_hilum_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lungs_R_middle_lobe",
+          "ontologyId": "UBERON:0002174",
+          "label": "Middle Lobe of Right Lung",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_right_lateral_bronchopulmonary_segment",
+          "ontologyId": "FMA:7361",
+          "label": "Right Lateral Bronchopulmonary Segment",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_medial_bronchopulmonary_segment",
+          "ontologyId": "FMA:7360",
+          "label": "Right Medial Bronchopulmonary Segment",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hilum_middle_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lungs_R_lower_lobe",
+          "ontologyId": "UBERON:0002171",
+          "label": "Lower Lobe of Right Lung",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_hilum_lower_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_anterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7364",
+          "label": "Right anterior basal bronchopulmonary segment",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_lateral_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7363",
+          "label": "Right Lateral Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_medial_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7365",
+          "label": "Right Medial Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_posterior_basal_bronchopulmonary_segment",
+          "ontologyId": "FMA:7362",
+          "label": "Right Posterior Basal Bronchopulmonary Segment",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_superior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7366",
+          "label": "Right Superior Bronchopulmonary Segment",
+          "nodeIndices": [
+            30
+          ],
+          "meshNodeIndices": [
+            30
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lungs_R_upper_lobe",
+          "ontologyId": "UBERON:0002170",
+          "label": "Upper Lobe of Right Lung",
+          "nodeIndices": [
+            31
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_right_apical_bronchopulmonary_segment",
+          "ontologyId": "FMA:7338",
+          "label": "Right Apical Bronchopulmonary Segment",
+          "nodeIndices": [
+            32
+          ],
+          "meshNodeIndices": [
+            32
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_posterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7339",
+          "label": "Right Posterior Bronchopulmonary Segment",
+          "nodeIndices": [
+            33
+          ],
+          "meshNodeIndices": [
+            33
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_anterior_bronchopulmonary_segment",
+          "ontologyId": "FMA:7359",
+          "label": "Right Anterior Bronchopulmonary Segment",
+          "nodeIndices": [
+            34
+          ],
+          "meshNodeIndices": [
+            34
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hilum_upper_R",
+          "ontologyId": "UBERON:0004888",
+          "label": "right lung hilus",
+          "nodeIndices": [
+            35
+          ],
+          "meshNodeIndices": [
+            35
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_bronchi",
+          "ontologyId": "UBERON:0002185",
+          "label": "bronchus",
+          "nodeIndices": [
+            37
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_cartilage_of_the_lobar_bronchus_L",
+          "ontologyId": "FMA:62659",
+          "label": "Cartilage of lobar bronchus",
+          "nodeIndices": [
+            40
+          ],
+          "meshNodeIndices": [
+            40
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_cartilage_of_the_tertiary_bronchus_L",
+          "ontologyId": "FMA:62662",
+          "label": "Cartilage of segmental bronchus",
+          "nodeIndices": [
+            41
+          ],
+          "meshNodeIndices": [
+            41
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lobar_bronchus_L",
+          "ontologyId": "UBERON:0003405",
+          "label": "lobar bronchus of left lung",
+          "nodeIndices": [
+            42
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_left_superior_lobar_bronchus",
+          "ontologyId": "UBERON:0012065",
+          "label": "lobar bronchus of left lung upper lobe",
+          "nodeIndices": [
+            43
+          ],
+          "meshNodeIndices": [
+            43
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_inferior_lobar_bronchus",
+          "ontologyId": "UBERON:0012066",
+          "label": "lobar bronchus of left lung lower lobe",
+          "nodeIndices": [
+            44
+          ],
+          "meshNodeIndices": [
+            44
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_tertiary_bronchi_L",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "nodeIndices": [
+            45
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_left_superior_bronchus",
+          "ontologyId": "FMA:7504",
+          "label": "Left superior segmental bronchus",
+          "nodeIndices": [
+            46
+          ],
+          "meshNodeIndices": [
+            46
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_posterior_basal_bronchus",
+          "ontologyId": "FMA:7508",
+          "label": "Left posterior basal segmental bronchus",
+          "nodeIndices": [
+            47
+          ],
+          "meshNodeIndices": [
+            47
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_medial_basal_bronchus",
+          "ontologyId": "FMA:7505",
+          "label": "Left medial basal segmental bronchus",
+          "nodeIndices": [
+            48
+          ],
+          "meshNodeIndices": [
+            48
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_apical_bronchus",
+          "ontologyId": "FMA:7426",
+          "label": "Left apical segmental bronchus",
+          "nodeIndices": [
+            49
+          ],
+          "meshNodeIndices": [
+            49
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_anterior_bronchus",
+          "ontologyId": "FMA:7428",
+          "label": "Left anterior segmental bronchus",
+          "nodeIndices": [
+            50
+          ],
+          "meshNodeIndices": [
+            50
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_lingula_superior_bronchus",
+          "ontologyId": "FMA:7430",
+          "label": "Superior lingular bronchus",
+          "nodeIndices": [
+            52
+          ],
+          "meshNodeIndices": [
+            52
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_lingula_inferior_bronchus",
+          "ontologyId": "FMA:7431",
+          "label": "Inferior lingular bronchus",
+          "nodeIndices": [
+            53
+          ],
+          "meshNodeIndices": [
+            53
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_lateral_basal_bronchus",
+          "ontologyId": "FMA:7507",
+          "label": "Left lateral basal segmental bronchus",
+          "nodeIndices": [
+            54
+          ],
+          "meshNodeIndices": [
+            54
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_anterior_basal_bronchus",
+          "ontologyId": "FMA:7506",
+          "label": "Left anterior basal segmental bronchus",
+          "nodeIndices": [
+            55
+          ],
+          "meshNodeIndices": [
+            55
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_cartilage_of_the_lobar_bronchus_R",
+          "ontologyId": "FMA:62659",
+          "label": "Cartilage of lobar bronchus",
+          "nodeIndices": [
+            58
+          ],
+          "meshNodeIndices": [
+            58
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_cartilage_of_the_tertiary_bronchus_R",
+          "ontologyId": "FMA:62662",
+          "label": "Cartilage of segmental bronchus",
+          "nodeIndices": [
+            59
+          ],
+          "meshNodeIndices": [
+            59
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lobar_bronchi_R",
+          "ontologyId": "UBERON:0003404",
+          "label": "lobar bronchus of right lung",
+          "nodeIndices": [
+            60
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_right_intermediate_bronchus",
+          "ontologyId": "FMA:7415",
+          "label": "Interlobar bronchus",
+          "nodeIndices": [
+            61
+          ],
+          "meshNodeIndices": [
+            61
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_middle_lobar_bronchus",
+          "ontologyId": "FMA:7401",
+          "label": "Middle lobar bronchus",
+          "nodeIndices": [
+            62
+          ],
+          "meshNodeIndices": [
+            62
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_superior_lobar_bronchus",
+          "ontologyId": "FMA:7397",
+          "label": "Right superior lobar bronchus",
+          "nodeIndices": [
+            63
+          ],
+          "meshNodeIndices": [
+            63
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_tertiary_bronchi_R",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "nodeIndices": [
+            64
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_right_anterior_bronchus",
+          "ontologyId": "FMA:7400",
+          "label": "Right anterior segmental bronchus",
+          "nodeIndices": [
+            65
+          ],
+          "meshNodeIndices": [
+            65
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_lateral_basal_bronchus",
+          "ontologyId": "FMA:7419",
+          "label": "Right lateral basal segmental bronchus",
+          "nodeIndices": [
+            66
+          ],
+          "meshNodeIndices": [
+            66
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_lateral_bronchus",
+          "ontologyId": "FMA:7402",
+          "label": "Lateral segmental bronchus",
+          "nodeIndices": [
+            67
+          ],
+          "meshNodeIndices": [
+            67
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_lower_lobar_bronchus",
+          "ontologyId": "FMA:7404",
+          "label": "Right inferior lobar bronchus",
+          "nodeIndices": [
+            68
+          ],
+          "meshNodeIndices": [
+            68
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_medial_basal_bronchus",
+          "ontologyId": "FMA:7417",
+          "label": "Right medial basal segmental bronchus",
+          "nodeIndices": [
+            69
+          ],
+          "meshNodeIndices": [
+            69
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_medial_bronchus",
+          "ontologyId": "FMA:7403",
+          "label": "Medial segmental bronchus",
+          "nodeIndices": [
+            70
+          ],
+          "meshNodeIndices": [
+            70
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_posterior_basal",
+          "ontologyId": "FMA:7420",
+          "label": "Right posterior basal segmental bronchus",
+          "nodeIndices": [
+            71
+          ],
+          "meshNodeIndices": [
+            71
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_posterior_bronchus",
+          "ontologyId": "FMA:7399",
+          "label": "Right posterior segmental bronchus",
+          "nodeIndices": [
+            72
+          ],
+          "meshNodeIndices": [
+            72
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_superior_bronchus",
+          "ontologyId": "FMA:7416",
+          "label": "Right superior segmental bronchus",
+          "nodeIndices": [
+            73
+          ],
+          "meshNodeIndices": [
+            73
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_apical_bronchus",
+          "ontologyId": "FMA:7416",
+          "label": "Right superior segmental bronchus",
+          "nodeIndices": [
+            74
+          ],
+          "meshNodeIndices": [
+            74
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_anterior_basal_bronchus",
+          "ontologyId": "FMA:7399",
+          "label": "Right posterior segmental bronchus",
+          "nodeIndices": [
+            75
+          ],
+          "meshNodeIndices": [
+            75
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_bronchus",
+          "ontologyId": "UBERON:0002185",
+          "label": "bronchus",
+          "nodeIndices": [
+            76
+          ],
+          "meshNodeIndices": [
+            76
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hyoid",
+          "ontologyId": "UBERON:0001685",
+          "label": "hyoid bone",
+          "nodeIndices": [],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        }
+      ],
+      "exactMeshNodeCount": 57,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM532.KLZD.394",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "heart-female",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-female/v1.3/assets/3d-vh-f-heart.glb",
+      "bytes": 1745560,
+      "sha256": "98f66e46b149bfc3836592d9404c50290e21d302ec55c98813435e2d9847b1d9",
+      "metadataSHA256": "f0af7fb376c854d0d90ac7309720fe44cf698605338e5570a63f9d2d01820b8a",
+      "crosswalkSHA256": "a529992b6e444d40fa9e361542fd694d773de429f611276b292133aa30be1cb2",
+      "meshCount": 14,
+      "nodeCount": 18,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_heart",
+          "ontologyId": "UBERON:0000948",
+          "label": "heart",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_interventricular_septum",
+          "ontologyId": "UBERON:0002094",
+          "label": "interventricular septum",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_cardiac_atrium",
+          "ontologyId": "UBERON:0002079",
+          "label": "left cardiac atrium",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_ventricle",
+          "ontologyId": "UBERON:0002084",
+          "label": "heart left ventricle",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_cardiac_atrium",
+          "ontologyId": "UBERON:0002078",
+          "label": "right cardiac atrium",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_ventricle",
+          "ontologyId": "UBERON:0002080",
+          "label": "heart right ventricle",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart",
+          "ontologyId": "UBERON:0002494",
+          "label": "papillary muscle of heart",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart_ant",
+          "ontologyId": "FMA:7264",
+          "label": "Anterior papillary muscle of left ventricle",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart_antlat",
+          "ontologyId": "FMA:7265",
+          "label": "Anterolateral head of lateral papillary muscle of left ventricle",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart_med",
+          "ontologyId": "FMA:7262",
+          "label": "Septal papillary muscle of right ventricle",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart_pos",
+          "ontologyId": "FMA:7261",
+          "label": "Posterior papillary muscle of right ventricle",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart_posmed",
+          "ontologyId": "FMA:7267",
+          "label": "Posteromedial head of posterior papillary muscle of left ventricle",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_valve",
+          "ontologyId": "UBERON:0003978",
+          "label": "valve",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_aortic_valve",
+          "ontologyId": "UBERON:0002137",
+          "label": "aortic valve",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_pulmonary_valve",
+          "ontologyId": "UBERON:0002146",
+          "label": "pulmonary valve",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_mitral_valve",
+          "ontologyId": "UBERON:0002135",
+          "label": "mitral valve",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_tricuspid_valve",
+          "ontologyId": "UBERON:0002134",
+          "label": "tricuspid valve",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM449.SHRV.225",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "heart-male",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-male/v1.3/assets/3d-vh-m-heart.glb",
+      "bytes": 4071772,
+      "sha256": "689df039c8bc264ea06a44cd926762976f0666c0ff2dc532d046409b185e6b0c",
+      "metadataSHA256": "1a12280db35c2eb5d615b1d707ecfa9e2aed72e658cd3aaa31ddf54460bcfcba",
+      "crosswalkSHA256": "9c8ce8f37228aaeab359ffb7c40b83904062b773bf464a7ca5d5f7f7636f9313",
+      "meshCount": 14,
+      "nodeCount": 18,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_heart",
+          "ontologyId": "UBERON:0000948",
+          "label": "heart",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_heart_valve",
+          "ontologyId": "UBERON:0003978",
+          "label": "valve",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_mitral_valve",
+          "ontologyId": "UBERON:0002135",
+          "label": "mitral valve",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_tricuspid_valve",
+          "ontologyId": "UBERON:0002134",
+          "label": "tricuspid valve",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_aortic_valve",
+          "ontologyId": "UBERON:0002137",
+          "label": "aortic valve",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_pulmonary_valve",
+          "ontologyId": "UBERON:0002146",
+          "label": "pulmonary valve",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart",
+          "ontologyId": "UBERON:0002494",
+          "label": "papillary muscle of heart",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart_anterior",
+          "ontologyId": "FMA:7264",
+          "label": "Anterior papillary muscle of left ventricle",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart_anterolateral",
+          "ontologyId": "FMA:7265",
+          "label": "Anterolateral head of lateral papillary muscle of left ventricle",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart_medial",
+          "ontologyId": "FMA:7262",
+          "label": "Septal papillary muscle of right ventricle",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart_posterior",
+          "ontologyId": "FMA:7261",
+          "label": "Posterior papillary muscle of right ventricle",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart_posteromedial",
+          "ontologyId": "FMA:7267",
+          "label": "Posteromedial head of posterior papillary muscle of left ventricle",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_left_cardiac_atrium",
+          "ontologyId": "UBERON:0002079",
+          "label": "left cardiac atrium",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_cardiac_atrium",
+          "ontologyId": "UBERON:0002078",
+          "label": "right cardiac atrium",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_heart_right_ventricle",
+          "ontologyId": "UBERON:0002080",
+          "label": "heart right ventricle",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_interventricular_septum",
+          "ontologyId": "UBERON:0002094",
+          "label": "interventricular septum",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_heart_left_ventricle",
+          "ontologyId": "UBERON:0002084",
+          "label": "heart left ventricle",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM564.WKNG.249",
+      "creators": [
+        "Kristen Browne"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "workflowRun": 45753200253,
+  "workflowJob": 139685601068,
+  "scope": "Exact published source bytes and source crosswalk mapping only; no clinical validation, registration, redistribution approval, or rendering claim."
+}
