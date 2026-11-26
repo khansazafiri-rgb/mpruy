@@ -15,12 +15,12 @@ let real43=null,serve43=null,realHra=null,serveHra=null,hraStages=[];
 const {hierarchyRoute,serveHierarchy}=await import('./atlas-lymphatic-hierarchy-page.mjs');
 let realLymph=null,lymphEnabled=false;
 if(process.env.HRA_LYMPHATIC_FOLDER){const {loadHierarchy}=await import('./audit-hra-lymphatic-hierarchy.mjs');realLymph=loadHierarchy(path.join(root,'local-data/licensing-quarantine'),process.env.HRA_LYMPHATIC_FOLDER);}
-if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended','expansion','full-376','muscle-24'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended','expansion','full-376','muscle-24','components-36'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
  const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json","bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json"];
  const size={bronchial:11,cardio:10,pelvic:9,cns:8,visceral:7,'head-neck':6,axial:5,expanded:3,combined:2,'1':1};
  const {BP43_EXPANSION}=await import('./atlas-reference-suite-spec.mjs');
- const selected=mode==='muscle-24'?['bp3d43-muscle-24-dual-source-audit-20261126.json']:mode==='full-376'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json',...BP43_EXPANSION.map(x=>x[1])]:mode==='expansion'?["bp3d43-cerebral-29-dual-source-audit-20261126.json","bp3d43-axial-bone-32-dual-source-audit-20261126.json","bp3d43-cranial-32-dual-source-audit-20261126.json","bp3d43-limb-facial-bone-25-dual-source-audit-20261126.json","bp3d43-cranial-10-dual-source-audit-20261126.json"]:mode==='hyoid-extended'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
+ const selected=mode==='components-36'?['bp3d43-checkpoint-components-36-dual-source-audit-20261126.json']:mode==='muscle-24'?['bp3d43-muscle-24-dual-source-audit-20261126.json']:mode==='full-376'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json',...BP43_EXPANSION.map(x=>x[1])]:mode==='expansion'?["bp3d43-cerebral-29-dual-source-audit-20261126.json","bp3d43-axial-bone-32-dual-source-audit-20261126.json","bp3d43-cranial-32-dual-source-audit-20261126.json","bp3d43-limb-facial-bone-25-dual-source-audit-20261126.json","bp3d43-cranial-10-dual-source-audit-20261126.json"]:mode==='hyoid-extended'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
  if(mode!=='gap')assert.equal(folders.length,selected.length,'Fresh exact source acquisitions required');
  else assert(folders.length>=1,'Fresh gap acquisition required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
@@ -31,6 +31,7 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
   return m.load43Elements(q,folder,evidence,evidence.matches.length);
  });
  real43=mode==='full-376'?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11],m.combine43Registries(registries.slice(12))]):mode==='hyoid'?registries[0]:mode==='hyoid-extended'?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11]]):m.combine43Registries(registries);
+ if(mode==='components-36'){real43.inventory.expansionProfile='BP43_COMPONENTS_36_20261126';assert.equal(real43.assets.size,36);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),337234);}
  if(mode==='muscle-24'){assert.equal(real43.assets.size,24);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),83064);}
  if(mode==='full-376'){real43.inventory.expansionProfile='BP43_128_20261126';assert.equal(real43.assets.size,376);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,368);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),1008417);}
  if(mode==='expansion'){real43.inventory.expansionProfile='BP43_128_20261126';assert.equal(real43.assets.size,128);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,128);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),338220);}
@@ -272,7 +273,7 @@ try{
   const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
   assert.equal(await setup.locator('#referenceChallengeLanguage option[value="latin"]').textContent(),'Latin (provisional)');
   assert((await setup.locator('.hint').filter({hasText:'bukan terminologi FIPAT terverifikasi'}).textContent()).includes('bukan terminologi FIPAT terverifikasi'));
-  if(real43.assets.size===24)assert.equal(glossaryCount,24);if(real43.assets.size===128)assert.equal(glossaryCount,128);if(real43.assets.size>=246)assert.equal(glossaryCount,real43.assets.size===376?368:real43.assets.size>=248?240:239);
+  if(real43.assets.size===36)assert.equal(glossaryCount,36);if(real43.assets.size===24)assert.equal(glossaryCount,24);if(real43.assets.size===128)assert.equal(glossaryCount,128);if(real43.assets.size>=246)assert.equal(glossaryCount,real43.assets.size===376?368:real43.assets.size>=248?240:239);
   if(real43.assets.size>=246||real43.assets.size===12){
    const scope=setup.locator('#referenceChallengeScope'),limit=setup.locator('#referenceChallengeLimit'),region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic');
    const focusRegion=real43.assets.size===12?'upper-limb':'neck-upper-limb',focusCount=real43.assets.size===12?5:6;
@@ -317,11 +318,11 @@ try{
   }
   await challenge.locator('#referenceChallengeProgress').filter({hasText:glossaryCount+'/'+glossaryCount+' benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
-  if([24,115,128,129,147,177,192,224,246,248,376].includes(real43.assets.size)){
+  if([24,36,115,128,129,147,177,192,224,246,248,376].includes(real43.assets.size)){
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
    await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
-   const expected=real43.assets.size===24?24:real43.assets.size===128?128:real43.assets.size===376?368:real43.assets.size===248?240:real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
+   const expected=real43.assets.size===36?36:real43.assets.size===24?24:real43.assets.size===128?128:real43.assets.size===376?368:real43.assets.size===248?240:real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
    for(let i=0;i<expected;i++){
     await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/'+expected}).waitFor();
     await choices.first().waitFor({timeout:20000});assert.equal(await choices.count(),4);

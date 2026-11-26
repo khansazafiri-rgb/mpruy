@@ -1,3 +1,4 @@
+import {COMPONENT43_TOPIC_ROWS} from './reference43-component-catalog.js';
 import {MUSCLE43_TOPIC_ROWS} from './reference43-muscle-catalog.js';
 import {REFERENCE43_TOPIC_ROWS} from './reference43-topic-catalog.js';
 import {EXPANSION43_TOPIC_ROWS,SUPPLEMENTAL43_TOPIC_ROWS} from './reference43-topics.js';
@@ -62,7 +63,8 @@ export function reference43Entries(doc){
   if(!/^bp43-[a-f0-9]{24}$/.test(e.id||'')||ids.has(e.id)||!/^FJ\d+[A-Za-z]?$/.test(e.fj||'')||elements.has(e.fj)||!/^FMA\d+$/.test(e.fmaId||'')||!/^BP\d+$/.test(e.bpId||'')||typeof e.name!=='string'||!e.name.trim()||e.source!=='BodyParts3D 4.3'||e.scope!=='SINGLE_SOURCE_ELEMENT'||e.coordinateFrame!=='native-4.3-not-registered'||e.approvedForDistribution!==false||e.registrationValidated!==false||e.clinicalValidation!==false||!Number.isInteger(e.triangles)||e.triangles<1||!['rawSHA256','glbSHA256'].every(k=>/^[a-f0-9]{64}$/.test(e[k]||'')))throw Error('Identitas elemen 4.3 tidak valid');
   if(hashes.has(e.rawSHA256))throw Error('Geometri sumber ganda');ids.add(e.id);elements.add(e.fj);hashes.add(e.rawSHA256);
  }
- if(doc.items.length===400){if(doc.expansionProfile!=='BP43_152_20261126')throw Error('Profil 400 tidak valid');for(const r of [...REFERENCE43_TOPIC_ROWS,...SUPPLEMENTAL43_TOPIC_ROWS,...EXPANSION43_TOPIC_ROWS,...MUSCLE43_TOPIC_ROWS]){const e=doc.items.find(x=>x.fj===r.fj);if(!e||e.bpId!==r.bpId||e.fmaId!==r.fmaId||e.name!==r.name||e.rawSHA256!==r.rawSHA256||(r.glbSHA256&&e.glbSHA256!==r.glbSHA256)||(r.triangles&&e.triangles!==r.triangles))throw Error('Identitas profil 400 tidak valid');}}
+ if(doc.items.length===36&&doc.expansionProfile==='BP43_COMPONENTS_36_20261126'){for(const r of COMPONENT43_TOPIC_ROWS){const e=doc.items.find(x=>x.fj===r.fj);if(!e||e.bpId!==r.bpId||e.fmaId!==r.fmaId||e.name!==r.name||e.rawSHA256!==r.rawSHA256||e.glbSHA256!==r.glbSHA256||e.triangles!==r.triangles)throw Error('Identitas profil komponen tidak valid');}}
+ else if(doc.items.length===400){if(doc.expansionProfile!=='BP43_152_20261126')throw Error('Profil 400 tidak valid');for(const r of [...REFERENCE43_TOPIC_ROWS,...SUPPLEMENTAL43_TOPIC_ROWS,...EXPANSION43_TOPIC_ROWS,...MUSCLE43_TOPIC_ROWS]){const e=doc.items.find(x=>x.fj===r.fj);if(!e||e.bpId!==r.bpId||e.fmaId!==r.fmaId||e.name!==r.name||e.rawSHA256!==r.rawSHA256||(r.glbSHA256&&e.glbSHA256!==r.glbSHA256)||(r.triangles&&e.triangles!==r.triangles))throw Error('Identitas profil 400 tidak valid');}}
  else if(doc.expansionProfile!==undefined||doc.items.length===376){
   if(doc.expansionProfile!=='BP43_128_20261126'||![128,376].includes(doc.items.length))throw Error('Profil ekspansi tidak valid');
   const exact=doc.items.length===376?[...REFERENCE43_TOPIC_ROWS,...SUPPLEMENTAL43_TOPIC_ROWS,...EXPANSION43_TOPIC_ROWS]:EXPANSION43_TOPIC_ROWS;
