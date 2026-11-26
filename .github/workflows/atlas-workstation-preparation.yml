@@ -1,0 +1,24 @@
+name: Atlas workstation preparation contracts
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/prepare-atlas-private-workstation*'
+      - 'scripts/replay-audited-bp3d43-suite*'
+      - '.github/workflows/atlas-workstation-preparation.yml'
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/prepare-atlas-private-workstation.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/audit-atlas-private-checkpoint.test.mjs
