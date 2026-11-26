@@ -52,5 +52,17 @@
   "conclusion": "success",
   "actualSourceTestsPassed": 4,
   "htmlHttpTestsPassed": true,
-  "browserLinkReplayVerified": false
+  "browserLinkReplayVerified": true,
+  "browserReplay": {
+    "sourceCommit": "bb0964def05a6b57d5943da3999de26d6e67faf8",
+    "workflowRun": 45783333798,
+    "workflowJob": 139783878376,
+    "conclusion": "success",
+    "paths": 121,
+    "availabilityCheck": true,
+    "sourceIdSearch": true,
+    "emptyResult": true,
+    "reset": true,
+    "originalShellFixtureRegression": true
+  }
 }
