@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {priorityPlan,broadRecoveryPlan} from './independent-atlas-priority-recovery.mjs';
+import {priorityPlan,broadRecoveryPlan,pinnedMusclePlan,combineIsolatedRecovery} from './independent-atlas-priority-recovery.mjs';
 const make=(tree,names,elementMap,files)=>({tree,names,elements:new Map(Object.entries(elementMap).map(([k,v])=>[k,new Set(v)])),archiveIndex:new Map(files.map(x=>[x,x+'.obj']))});
 test('uses exact named identity and pinned tree, never a substring or wrong FMA',()=>{
  const names=[{fmaId:'FMA26661',bpId:'BP1',name:'right bronchial tree'},{fmaId:'FMA2',bpId:'BP2',name:'bronchial branch of arch of aorta'}];
@@ -39,3 +39,6 @@ test('learning checkpoints explicitly cover all 13 systems and bilateral nerve, 
  for(const side of ['left','right'])for(const [g,n] of [['nervous','median nerve'],['urinary','renal cortex'],['joints','knee joint']])assert(keys.includes(g+':'+side+' '+n));
  assert(keys.includes('lymphatic:lymphatic vessel'));assert(keys.includes('respiratory:visceral pleura'));
 });
+
+test('pinned muscle supplement resolves complete source membership without changing baseline recovery plan',()=>{const s=make('isa',[{name:'Left gluteus maximus',fmaId:'FMA22329',bpId:'BP1'},{name:'Right gluteus maximus',fmaId:'FMA22328',bpId:'BP2'},{name:'Left soleus',fmaId:'FMA22559',bpId:'BP3'}],{FMA22329:['FJ1'],FMA22328:['FJ2'],FMA22559:['FJ3','FJ4']},['FJ1','FJ2','FJ3']);const rows=pinnedMusclePlan([s],['FMA22329']);assert.equal(rows.length,24);assert.equal(rows.find(r=>r.target==='left gluteus maximus muscle').status,'REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED');assert.equal(rows.find(r=>r.target==='right gluteus maximus muscle').status,'EXPORT_CANDIDATE');assert.equal(rows.find(r=>r.target==='left soleus muscle').status,'NOT_FOUND_BY_EXACT_CHECK');});
+test('merge isolated recovery inventories with immutable baseline and reject duplicate concepts or budget overflow',()=>{const pack=(id,fma)=>({items:[{id,group:'muscular',fmaId:fma,priorityOnly:true,approvedForDistribution:false}],models:new Map([[id,{}]]),folder:id,reused:true,report:{publicRelease:'NO_GO',inventorySHA256:'fixture',results:[],totalBytes:10}});const a=pack('a','FMA1'),b=pack('b','FMA2');const r=combineIsolatedRecovery(a,b);assert.equal(r.items.length,2);assert.equal(a.items.length,1);assert.equal(r.supplementCount,1);assert.throws(()=>combineIsolatedRecovery(a,pack('c','FMA1')));assert.throws(()=>combineIsolatedRecovery(a,{...b,report:{...b.report,totalBytes:2048*1024*1024}}));});

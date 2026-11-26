@@ -5,6 +5,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {muscleCheckpointAliases} from '../apps/atlas-independent/src/learning-links.js';
 import {discoverSystem} from './independent-anatomy-system-discovery.mjs';
 import {learningPriorityTargets} from './atlas-learning-priority-targets.mjs';
 import {checkpoints} from './audit-independent-system-coverage.mjs';
@@ -138,7 +139,23 @@ export function broadRecoveryPlan(sources,body,priority,coveredFma=[]){
  const order=['lymphatic','respiratory','nervous','heart','urinary','digestive','reproductive','endocrine','joints','muscular','skeletal','arterial','venous'];
  return rows.sort((a,b)=>order.indexOf(a.group)-order.indexOf(b.group)||a.elementIds.length-b.elementIds.length||a.fmaId.localeCompare(b.fmaId));
 }
-export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[],rebuild=false}={}){
+// Separate pinned batch: keep the exact prior broad cache key and never duplicate FMA.
+export function pinnedMusclePlan(sources,existingFma=[]){
+ const existing=new Set(existingFma);
+ return Object.entries(muscleCheckpointAliases).map(([target,[fma,label]])=>{
+  const row=priorityPlan(sources,[['muscular',[label],fma]])[0];
+  return {...row,target,...(row.status==='EXPORT_CANDIDATE'&&existing.has(fma)?{status:'REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED'}:{})};
+ });
+}
+export function combineIsolatedRecovery(base,supplement){
+ assert(base.report.publicRelease==='NO_GO'&&supplement.report.publicRelease==='NO_GO'&&base.report.inventorySHA256===supplement.report.inventorySHA256);
+ const ids=new Set(base.items.map(e=>e.id)),fmas=new Set(base.items.map(e=>e.fmaId));
+ for(const e of supplement.items){assert(e.group==='muscular'&&e.priorityOnly===true&&e.approvedForDistribution===false&&!ids.has(e.id)&&!fmas.has(e.fmaId));ids.add(e.id);fmas.add(e.fmaId);}
+ const items=[...base.items,...supplement.items],models=new Map([...base.models,...supplement.models]);assert.equal(models.size,items.length);
+ const totalBytes=base.report.totalBytes+supplement.report.totalBytes;assert(totalBytes<=2048*1024*1024,'Combined recovery storage budget');
+ return {items,models,folder:base.folder,supplementFolder:supplement.folder,reused:base.reused&&supplement.reused,baselineCount:base.items.length,supplementCount:supplement.items.length,report:{...base.report,items,results:[...base.report.results,...supplement.report.results],totalBytes}};
+}
+export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[],rebuild=false,pinnedMusclesOnly=false}={}){
  assert(fs.realpathSync(privateRoot)===privateRoot);
  const sources=loadVerifiedPublisherSources(pack.folder),priority=priorityPlan(sources);
  const already=new Set([...pack.inventory.bodyModels.map(m=>m.fmaId),...coveredFma,...priority.filter(r=>r.status==='EXPORT_CANDIDATE').map(r=>r.fmaId)]);
@@ -148,7 +165,8 @@ export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[
   if(already.has(r.fmaId))return {...r,status:'REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED'};
   already.add(r.fmaId);return r;
  }):[];
- const plan=broad?[...priority,...targeted,...broadRecoveryPlan(sources,pack.inventory.bodyModels,[...priority,...targeted],coveredFma)]:priority;
+ assert(!pinnedMusclesOnly||broad,'Pinned muscular supplement requires broad private review');
+ const plan=pinnedMusclesOnly?pinnedMusclePlan(sources,[...pack.inventory.bodyModels.map(e=>e.fmaId),...coveredFma]):broad?[...priority,...targeted,...broadRecoveryPlan(sources,pack.inventory.bodyModels,[...priority,...targeted],coveredFma)]:priority;
  const maxBytes=(broad?2048:512)*1024*1024, maxTriangles=1500000;
  const inventorySHA256=hash(fs.readFileSync(path.join(pack.folder,'inventory.json'))),cacheKey=recoveryKey(plan,sources,inventorySHA256,broad);
  if(!rebuild){

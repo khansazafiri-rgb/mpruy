@@ -21,7 +21,7 @@ import {classifyIndependentPath,rawRequestPath} from './independent-atlas-routes
 import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
 import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
 import {createIndependentHostHandler} from './independent-atlas-host.mjs';
-import {buildPriorityRecovery} from './independent-atlas-priority-recovery.mjs';
+import {buildPriorityRecovery,combineIsolatedRecovery} from './independent-atlas-priority-recovery.mjs';
 import {attachOriginalShell} from './private-atlas-original-shell.mjs';
 import {createElementCatalog} from './independent-atlas-element-catalog.mjs';
 import {planContextRecovery} from './independent-atlas-context-recovery.mjs';
@@ -83,7 +83,12 @@ const originalUI=process.argv.includes('--original-ui');
 assert(!originalUI||independent,'Original shell only in explicit independent private comparison');
 assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
 const elementCatalog=independent&&(originalUI||priorityEnabled)?createElementCatalog(sourcePack):null;
-const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[],rebuild:process.argv.includes('--rebuild-recovery')}):null;
+let priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[],rebuild:process.argv.includes('--rebuild-recovery')}):null;
+if(broadRecovery&&process.argv.includes('--include-muscle-24')&&!contextRecovery){
+ const supplement=buildPriorityRecovery(privateRoot,sourcePack,{broad:true,pinnedMusclesOnly:true,coveredFma:[...(elementCatalog?.items||[]).map(e=>e.fmaId),...priority.items.map(e=>e.fmaId)],rebuild:process.argv.includes('--rebuild-recovery')});
+ priority=combineIsolatedRecovery(priority,supplement);
+ console.log('PINNED MUSCLE RECOVERY '+JSON.stringify({baseline:priority.baselineCount,added:priority.supplementCount,baselineFolder:priority.folder,supplementFolder:priority.supplementFolder,total:priority.items.length,publicRelease:'NO_GO'}));
+}
 const context=contextRecovery?planContextRecovery(sourcePack.inventory.bodyModels,priority.report.results,elementCatalog?.items.map(e=>e.fmaId)||[]):null;
 const contextIds=new Set(context?.accepted.map(x=>x.id)||[]);
 const recoveryItems=priority?.items.map(e=>({...e,contextCandidate:contextIds.has(e.id)}))||[];
@@ -141,7 +146,7 @@ const server=createServer((request,response)=>{
  if(p.startsWith('/anatomy/viewer/bp3d43-reference/')&&serve43Reference(request,response,source43))return;
  if(coverage&&p==='/anatomy/viewer/learning-coverage.json')return send(200,JSON.stringify(coverage),mime['.json']);
  if(elementCatalog&&p==='/anatomy/viewer/element-selection.json')return send(200,JSON.stringify(elementCatalog),mime['.json']);
- if(priority&&p==='/anatomy/viewer/priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,items:recoveryItems,contextMode:context?.mode||null,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false}),mime['.json']);
+ if(priority&&p==='/anatomy/viewer/priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,items:recoveryItems,baselineCount:priority.baselineCount??priority.items.length,supplementCount:priority.supplementCount??0,contextMode:context?.mode||null,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false}),mime['.json']);
  if(priority&&p==='/anatomy/viewer/priority-recovery/attributions.json')return send(200,JSON.stringify({publicRelease:'NO_GO',items:priority.report.results.filter(r=>r.status==='EXPORTED_ISOLATED_CONCEPT')}),mime['.json']);
  const thumb=p.match(/^\/anatomy\/viewer\/private-thumbnails\/((?:bp|sel)-[a-f0-9]{24})\.png$/);
  if(thumb&&thumbnails?.has(thumb[1])){
@@ -195,7 +200,7 @@ try{
   const a=await fetch(baseURL+'/anatomy/viewer/priority-recovery/attributions.json');assert(a.ok&&(await a.json()).items.length===priority.items.length);
   assert.equal((await fetch(baseURL+'/anatomy/viewer/priority-recovery/not-approved.glb')).status,404);
  }
- const report={schema:1,crossVersionOverlap:crossVersionOverlap?{bodyModels:crossVersionOverlap.bodyModels,referenceElements:crossVersionOverlap.referenceElements,counts:crossVersionOverlap.counts,rawDigestOccurrences:crossVersionOverlap.rawDigestOccurrences,sourceElementOccurrences:crossVersionOverlap.sourceElementOccurrences}:null,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,learningCoverage:coverage?{targets:coverage.targets,hraReferenceTargets:coverage.hraReferenceTargets,referenceOnlyTargets:coverage.referenceOnlyTargets,exactLabelReferenceTargets:coverage.exactLabelReferenceTargets,relatedComponentOnlyTargets:coverage.relatedComponentOnlyTargets,pinnedMuscleReferenceTargets:coverage.pinnedMuscleReferenceTargets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,bp3d43ReferenceElements:source43?.assets.size||0,http43RoutesVerified:source43Routes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ const report={schema:1,crossVersionOverlap:crossVersionOverlap?{bodyModels:crossVersionOverlap.bodyModels,referenceElements:crossVersionOverlap.referenceElements,counts:crossVersionOverlap.counts,rawDigestOccurrences:crossVersionOverlap.rawDigestOccurrences,sourceElementOccurrences:crossVersionOverlap.sourceElementOccurrences}:null,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,recoverySupplementFolder:priority?.supplementFolder??null,recoverySupplementCount:priority?.supplementCount??0,learningCoverage:coverage?{targets:coverage.targets,hraReferenceTargets:coverage.hraReferenceTargets,referenceOnlyTargets:coverage.referenceOnlyTargets,exactLabelReferenceTargets:coverage.exactLabelReferenceTargets,relatedComponentOnlyTargets:coverage.relatedComponentOnlyTargets,pinnedMuscleReferenceTargets:coverage.pinnedMuscleReferenceTargets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,bp3d43ReferenceElements:source43?.assets.size||0,http43RoutesVerified:source43Routes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
