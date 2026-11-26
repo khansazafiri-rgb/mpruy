@@ -15,3 +15,6 @@ Cloud tests exercise synthetic input and failure cases only; the actual workstat
 The aggregate `identityEvidence` counters distinguish identical raw bytes with matching FMA (and, more strictly, FJ), identical bytes associated with a different FMA, reused FJ with a different FMA, and concepts absent from the local body index. Counts may overlap. A different FMA association is a review candidate, not proof that either source is incorrect. An incomplete digest index cannot establish missing geometry. No counter establishes new anatomy, spatial registration or clinical correctness.
 
 The independent BP3D 4.0 loader deliberately emits only `whole` region and no layer; `wholeOnly` and `withoutLayer` expose that limitation explicitly. These counters are not a region-classification success metric. Actual pack results remain required.
+
+## Extended evidence profile
+For an existing, explicitly named private body pack, append `--include-expansion` to the same QC command. This requires 17 exact BP3D acquisitions (376 elements / 368 distinct source concepts) and the 2 HRA acquisitions (9 files). `--include-hyoid` alone selects 248 elements. Baseline is unchanged. No automatic download or modification; a missing or ambiguous receipt blocks the audit. The actual workstation is not accessible from cloud CI, so the body-level result remains pending.

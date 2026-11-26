@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "scope": "Independent browser replay evidence; two separate private source registries, not a single 376-element session or registered body.",
+  "runs": [
+    {
+      "workflowRun": 45772844155,
+      "workflowJob": 139749341287,
+      "sourceCommit": "175086cefd25729446ca6044706dc228025ad947",
+      "conclusion": "success",
+      "bp3dElementsRendered": 248,
+      "triangles": 670197,
+      "sourceLabelConceptsCompleted": 240,
+      "multilingualTypedConceptsCompleted": 240,
+      "hraOrgansRendered": 9,
+      "hraGroupsIsolatedAndRestored": 37,
+      "bodyInventoryUnchanged": true
+    },
+    {
+      "workflowRun": 45774067928,
+      "workflowJob": 139753346044,
+      "sourceCommit": "bb6ea89298a117807ccb3af09885f3857d62cc91",
+      "conclusion": "success",
+      "bp3dElementsRendered": 128,
+      "triangles": 338220,
+      "sourceLabelConceptsCompleted": 128,
+      "multilingualTypedConceptsCompleted": 0,
+      "hraOrgansRendered": 0,
+      "hraGroupsIsolatedAndRestored": 0,
+      "bodyInventoryUnchanged": true
+    }
+  ],
+  "combined376BrowserReplayVerified": false
+}
