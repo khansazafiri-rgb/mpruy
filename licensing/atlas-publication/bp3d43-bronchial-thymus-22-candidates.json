@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "batchId": "bronchial-thymus-22",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "22 pinned source-element candidates, 20 bronchial labels and two thymic lobes. One element per exact source label; bronchial tree fragments are not complete trees, lung segments, lung lobes, airway continuity or laterality beyond explicit source label. Thymic lobes do not constitute lymphatic vessel coverage. No female reproductive or lower limb nerve target found by this manifest label search. Exact publisher membership and native geometry must be verified independently.",
+  "rows": [
+    {
+      "fj": "FJ2441",
+      "discoveryBP": "BP23127",
+      "discoveryFMA": "FMA12224",
+      "name": "Inferior lingular bronchial tree",
+      "faces": 1134,
+      "vertices": 631,
+      "bytes": 69849,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2442",
+      "discoveryBP": "BP23836",
+      "discoveryFMA": "FMA12224",
+      "name": "Left medial basal segmental bronchial tree",
+      "faces": 730,
+      "vertices": 409,
+      "bytes": 44859,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2443",
+      "discoveryBP": "BP23746",
+      "discoveryFMA": "FMA12224",
+      "name": "Left anterior segmental bronchial tree",
+      "faces": 440,
+      "vertices": 270,
+      "bytes": 28145,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2444",
+      "discoveryBP": "BP23781",
+      "discoveryFMA": "FMA12224",
+      "name": "Left apical segmental bronchial tree",
+      "faces": 572,
+      "vertices": 332,
+      "bytes": 35602,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2445",
+      "discoveryBP": "BP19566",
+      "discoveryFMA": "FMA12224",
+      "name": "Left lateral basal segmental bronchial tree",
+      "faces": 626,
+      "vertices": 354,
+      "bytes": 38556,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2446",
+      "discoveryBP": "BP20092",
+      "discoveryFMA": "FMA12224",
+      "name": "Left posterior basal segmental bronchial tree",
+      "faces": 722,
+      "vertices": 405,
+      "bytes": 44457,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2447",
+      "discoveryBP": "BP23441",
+      "discoveryFMA": "FMA12224",
+      "name": "Left posterior segmental bronchial tree",
+      "faces": 284,
+      "vertices": 175,
+      "bytes": 17918,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2448",
+      "discoveryBP": "BP23530",
+      "discoveryFMA": "FMA12224",
+      "name": "Left superior segmental bronchial tree",
+      "faces": 444,
+      "vertices": 270,
+      "bytes": 28243,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2449",
+      "discoveryBP": "BP23125",
+      "discoveryFMA": "FMA12224",
+      "name": "Lateral segmental bronchial tree",
+      "faces": 858,
+      "vertices": 477,
+      "bytes": 53124,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2451",
+      "discoveryBP": "BP23098",
+      "discoveryFMA": "FMA12224",
+      "name": "Medial segmental bronchial tree",
+      "faces": 514,
+      "vertices": 297,
+      "bytes": 31959,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2452",
+      "discoveryBP": "BP20219",
+      "discoveryFMA": "FMA12224",
+      "name": "Right anterior basal segmental bronchial tree",
+      "faces": 528,
+      "vertices": 303,
+      "bytes": 32892,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2453",
+      "discoveryBP": "BP24079",
+      "discoveryFMA": "FMA12224",
+      "name": "Right anterior segmental bronchial tree",
+      "faces": 390,
+      "vertices": 232,
+      "bytes": 24546,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2454",
+      "discoveryBP": "BP23435",
+      "discoveryFMA": "FMA12224",
+      "name": "Right apical segmental bronchial tree",
+      "faces": 388,
+      "vertices": 226,
+      "bytes": 24103,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2455",
+      "discoveryBP": "BP20266",
+      "discoveryFMA": "FMA12224",
+      "name": "Right lateral basal segmental bronchial tree",
+      "faces": 650,
+      "vertices": 379,
+      "bytes": 41083,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2456",
+      "discoveryBP": "BP23914",
+      "discoveryFMA": "FMA12224",
+      "name": "Right medial basal segmental bronchial tree",
+      "faces": 170,
+      "vertices": 115,
+      "bytes": 11223,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2457",
+      "discoveryBP": "BP23851",
+      "discoveryFMA": "FMA12224",
+      "name": "Right posterior basal segmental bronchial tree",
+      "faces": 654,
+      "vertices": 373,
+      "bytes": 40688,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2458",
+      "discoveryBP": "BP23453",
+      "discoveryFMA": "FMA12224",
+      "name": "Right posterior segmental bronchial tree",
+      "faces": 510,
+      "vertices": 291,
+      "bytes": 31614,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2459",
+      "discoveryBP": "BP23510",
+      "discoveryFMA": "FMA12224",
+      "name": "Right superior segmental bronchial tree",
+      "faces": 516,
+      "vertices": 318,
+      "bytes": 33437,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2535",
+      "discoveryBP": "BP20074",
+      "discoveryFMA": "FMA12224",
+      "name": "Left anterior basal segmental bronchial tree",
+      "faces": 296,
+      "vertices": 186,
+      "bytes": 18878,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2540",
+      "discoveryBP": "BP23363",
+      "discoveryFMA": "FMA12224",
+      "name": "Superior lingular bronchial tree",
+      "faces": 366,
+      "vertices": 230,
+      "bytes": 23492,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ3150",
+      "discoveryBP": "BP21581",
+      "discoveryFMA": "FMA14065",
+      "name": "Left lobe of thymus",
+      "faces": 1050,
+      "vertices": 606,
+      "bytes": 65990,
+      "group": "lymphoid-organ"
+    },
+    {
+      "fj": "FJ3151",
+      "discoveryBP": "BP23141",
+      "discoveryFMA": "FMA14065",
+      "name": "Right lobe of thymus",
+      "faces": 1030,
+      "vertices": 599,
+      "bytes": 65432,
+      "group": "lymphoid-organ"
+    }
+  ]
+}
