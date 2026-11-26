@@ -1,8 +1,10 @@
+import {MUSCLE_GLOSSARY} from './reference-challenge-muscle-language.js';
 import {EXPANSION_GLOSSARY} from './reference-challenge-expansion-language.js';
 // Explicitly scoped educational glossary (provisional, not clinically reviewed). Source identities and original
 // labels are unchanged. Translation and synonym candidates need medical review.
 const glossary={
  ...EXPANSION_GLOSSARY,
+ ...MUSCLE_GLOSSARY,
  FMA52749:{source:'Hyoid bone',id:['tulang hioid','tulang hyoid'],en:['hyoid bone'],latin:['os hyoideum'],side:null},
  FMA52590:{source:'Cauda equina',id:['cauda equina','kauda ekuina'],en:['cauda equina'],latin:['cauda equina'],side:null},
  FMA37068:{source:'Left median nerve',id:['saraf median kiri','nervus medianus kiri'],en:['left median nerve','median nerve left'],latin:['nervus medianus sinister'],side:'left'},

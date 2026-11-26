@@ -259,7 +259,7 @@ try{
    const {focusedReferenceQuestions}=await import('../apps/atlas-independent/src/reference-challenge-state.js');
    assert.equal(focusedReferenceQuestions(real43.inventory.items).length,0,'One concept must not produce a four-choice quiz');assert(await dialog.locator('#referenceChallengeStart').isDisabled());assert((await dialog.locator('#referenceChallengePoolCount').innerText()).includes('Minimal 4 konsep berbeda'));
    console.log('BP3D43 HYOID PASS: two source elements, one concept; insufficient challenge pool remains blocked.');
-  }else if(real43.assets.size!==28&&real43.assets.size!==24){
+  }else if(real43.assets.size!==28){
   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),feedback=dialog.locator('#referenceChallengeFeedback'),next=dialog.locator('#referenceChallengeNext');
   const currentEntry=async()=>{const id=await viewport.getAttribute('data-rendered-id');const e=real43.inventory.items.find(x=>x.id===id);assert(e,'Challenge must use an audited source element');return e;};
   const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
@@ -267,7 +267,7 @@ try{
   const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
   assert.equal(await setup.locator('#referenceChallengeLanguage option[value="latin"]').textContent(),'Latin (provisional)');
   assert((await setup.locator('.hint').filter({hasText:'bukan terminologi FIPAT terverifikasi'}).textContent()).includes('bukan terminologi FIPAT terverifikasi'));
-  if(real43.assets.size===128)assert.equal(glossaryCount,128);if(real43.assets.size>=246)assert.equal(glossaryCount,real43.assets.size===376?368:real43.assets.size>=248?240:239);
+  if(real43.assets.size===24)assert.equal(glossaryCount,24);if(real43.assets.size===128)assert.equal(glossaryCount,128);if(real43.assets.size>=246)assert.equal(glossaryCount,real43.assets.size===376?368:real43.assets.size>=248?240:239);
   if(real43.assets.size>=246||real43.assets.size===12){
    const scope=setup.locator('#referenceChallengeScope'),limit=setup.locator('#referenceChallengeLimit'),region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic');
    const focusRegion=real43.assets.size===12?'upper-limb':'neck-upper-limb',focusCount=real43.assets.size===12?5:6;
@@ -312,11 +312,11 @@ try{
   }
   await challenge.locator('#referenceChallengeProgress').filter({hasText:glossaryCount+'/'+glossaryCount+' benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
-  if([115,128,129,147,177,192,224,246,248,376].includes(real43.assets.size)){
+  if([24,115,128,129,147,177,192,224,246,248,376].includes(real43.assets.size)){
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
    await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
-   const expected=real43.assets.size===128?128:real43.assets.size===376?368:real43.assets.size===248?240:real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
+   const expected=real43.assets.size===24?24:real43.assets.size===128?128:real43.assets.size===376?368:real43.assets.size===248?240:real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
    for(let i=0;i<expected;i++){
     await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/'+expected}).waitFor();
     await choices.first().waitFor({timeout:20000});assert.equal(await choices.count(),4);

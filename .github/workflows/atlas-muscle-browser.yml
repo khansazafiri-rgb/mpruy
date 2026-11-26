@@ -3,7 +3,10 @@ on:
   push:
     branches: [feat/atlas-focused-challenge-20261126]
     paths:
-      - 'scripts/atlas-muscle-supplement.mjs'
+      - 'scripts/atlas-muscle-supplement*'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-challenge-muscle-language.js'
+      - 'apps/atlas-independent/src/reference-challenge-language.js'
       - 'licensing/atlas-publication/bp3d43-muscle-24-dual-source-audit-20261126.json'
       - '.github/workflows/atlas-muscle-browser.yml'
 permissions:
