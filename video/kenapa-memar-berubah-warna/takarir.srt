@@ -1,0 +1,88 @@
+1
+00:00:00,000 --> 00:00:01,050
+Baru kebentur meja,
+
+2
+00:00:01,100 --> 00:00:01,900
+muncul memar.
+
+3
+00:00:02,340 --> 00:00:03,780
+Kenapa beberapa hari kemudian
+
+4
+00:00:03,780 --> 00:00:05,050
+warnanya berubah?
+
+5
+00:00:05,860 --> 00:00:07,100
+Benturan bisa merusak
+
+6
+00:00:07,100 --> 00:00:08,600
+pembuluh darah kecil di bawah kulit.
+
+7
+00:00:08,920 --> 00:00:10,520
+Darah merembes ke jaringan,
+
+8
+00:00:10,540 --> 00:00:12,200
+sementara permukaan kulit tetap utuh.
+
+9
+00:00:12,860 --> 00:00:14,220
+Saat tubuh membersihkan
+
+10
+00:00:14,220 --> 00:00:15,120
+darah yang terperangkap,
+
+11
+00:00:15,120 --> 00:00:16,380
+hemoglobin di dalamnya
+
+12
+00:00:16,400 --> 00:00:17,200
+ikut diuraikan.
+
+13
+00:00:17,460 --> 00:00:18,660
+Karena proses itulah,
+
+14
+00:00:18,660 --> 00:00:19,860
+memar bisa berubah dari
+
+15
+00:00:19,860 --> 00:00:21,200
+kemerahan atau keunguan,
+
+16
+00:00:21,300 --> 00:00:22,560
+menjadi kehijauan,
+
+17
+00:00:22,580 --> 00:00:24,120
+lalu kekuningan sebelum memudar.
+
+18
+00:00:24,660 --> 00:00:26,400
+Urutan warna dan waktu pulihnya
+
+19
+00:00:26,400 --> 00:00:28,250
+tidak selalu sama pada setiap orang.
+
+20
+00:00:30,700 --> 00:00:34,600
+Di MEDCOEL, jelajahi Atlas 3D dan Live 4D Lab.
+
+21
+00:00:34,820 --> 00:00:38,620
+Lanjut belajar lewat materi, latihan soal, dan Simulasi Dokter.
+
+22
+00:00:38,920 --> 00:00:41,060
+Gratis di medcoel.com.
+

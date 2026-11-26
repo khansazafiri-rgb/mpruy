@@ -1,0 +1,79 @@
+{
+ "durasi_edu": 30.0,
+ "potong_narasi": 28.46,
+ "skalar_normalisasi": 1.1028,
+ "sfx": [
+  {
+   "t": 0.52,
+   "sfx": "benturan-meja"
+  },
+  {
+   "t": 2.3,
+   "sfx": "judul"
+  },
+  {
+   "t": 4.95,
+   "sfx": "kamera-masuk-bawah-kulit"
+  },
+  {
+   "t": 5.6,
+   "sfx": "lensa-jaringan"
+  },
+  {
+   "t": 7.15,
+   "sfx": "label-pembuluh"
+  },
+  {
+   "t": 8.02,
+   "sfx": "label-kulit"
+  },
+  {
+   "t": 8.9,
+   "sfx": "judul"
+  },
+  {
+   "t": 10.98,
+   "sfx": "kulit-utuh"
+  },
+  {
+   "t": 12.3,
+   "sfx": "kamera-mundur-tampak-luar"
+  },
+  {
+   "t": 12.9,
+   "sfx": "judul"
+  },
+  {
+   "t": 14.85,
+   "sfx": "kamera-dekati-sel-pembersih"
+  },
+  {
+   "t": 15.15,
+   "sfx": "judul"
+  },
+  {
+   "t": 15.3,
+   "sfx": "sel-pembersih-bekerja"
+  },
+  {
+   "t": 17.1,
+   "sfx": "kamera-kembali"
+  },
+  {
+   "t": 17.75,
+   "sfx": "judul"
+  },
+  {
+   "t": 18.9,
+   "sfx": "warna-berubah-kilau"
+  },
+  {
+   "t": 23.7,
+   "sfx": "kamera-keluar-ke-raka"
+  },
+  {
+   "t": 24.9,
+   "sfx": "judul"
+  }
+ ]
+}
