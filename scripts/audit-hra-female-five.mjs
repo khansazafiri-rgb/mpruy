@@ -26,7 +26,7 @@ export function crosswalkNodes(csv,doc){
  });
 }
 export async function audit(batch='female-five'){
- const configs={'female-five':{file:'licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',count:5,marker:'HRA FEMALE PINNED QUARANTINE REPORT '},'cardiopulmonary-four':{file:'licensing/atlas-publication/hra-cardiopulmonary-four-pinned-candidates-20261126.json',count:4,marker:'HRA CARDIOPULMONARY PINNED QUARANTINE REPORT '}};
+ const configs={'female-five':{file:'licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',count:5,marker:'HRA FEMALE PINNED QUARANTINE REPORT '},'cardiopulmonary-four':{file:'licensing/atlas-publication/hra-cardiopulmonary-four-pinned-candidates-20261126.json',count:4,marker:'HRA CARDIOPULMONARY PINNED QUARANTINE REPORT '},'urogenital-7':{file:'licensing/atlas-publication/hra-urogenital-7-pinned-candidates-20261126.json',count:7,marker:'HRA UROGENITAL PINNED QUARANTINE REPORT '}};
  assert(Object.hasOwn(configs,batch),'Unknown HRA batch');const config=configs[batch];
  const spec=JSON.parse(fs.readFileSync(new URL(config.file,root),'utf8'));
  assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===config.count);
