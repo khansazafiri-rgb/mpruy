@@ -1,0 +1,2731 @@
+{
+  "schema": 1,
+  "sourceObjects": 9,
+  "heldLabelRows": 38,
+  "exactSourceGroups": 37,
+  "remainingHeld": 1,
+  "scope": "Exact source hierarchy only; overlapping ancestor/descendant groups are not unique anatomy or medically validated completeness.",
+  "rows": [
+    {
+      "id": "uterus-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/uterus-female/v1.2/assets/3d-vh-f-uterus.glb",
+      "sha256": "41014d2b222c2dbbe8d1cc38206b0099ce76d79659a9fdea9f28b8c7d669b864",
+      "groups": [
+        {
+          "nodeName": "VH_F_uterus",
+          "ontologyId": "UBERON:0000995",
+          "label": "uterus",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "VH_F_abdominal_ostium_of_uterine_tube",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_body_of_uterus",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_fundus_of_uterus",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_cornua",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_lower_uterine_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_posterior_wall_of_uterus",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_anterior_wall_of_uterus",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_cervix",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_internal_cervical_os",
+              "meshIndex": 9
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_external_cervical_os",
+              "meshIndex": 10
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "ovary-female-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-left/v1.3/assets/3d-vh-f-ovary-l.glb",
+      "sha256": "defd5cdc4b053b4e92193c5864bab2abae1807864ffde8bde7a7cb57f4736609",
+      "groups": []
+    },
+    {
+      "id": "ovary-female-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-right/v1.3/assets/3d-vh-f-ovary-r.glb",
+      "sha256": "381df741bf3d2511716e68db3ff70d94c0eda770d28a503af2d9fcb7b65113f8",
+      "groups": []
+    },
+    {
+      "id": "fallopian-tube-female-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-left/v1.2/assets/3d-vh-f-fallopian-tube-l.glb",
+      "sha256": "34817c498e038b599b338f8a35e6c1b3cbda576255c4f2ecca6d9efdebac6c15",
+      "groups": [
+        {
+          "nodeName": "VH_F_fallopian_tube_L",
+          "ontologyId": "UBERON:0001303",
+          "label": "left uterine tube",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_uterine_tube_infundibulum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_fibria_of_uterine_tube_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_isthmus_of_fallopian_tube_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_ampulla_of_uterine_tube_L",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "fallopian-tube-female-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-right/v1.2/assets/3d-vh-f-fallopian-tube-r.glb",
+      "sha256": "eec911de07307d1a27cfe27c939e3f3562590e5c419e27decaf3b1d7b13ab038",
+      "groups": [
+        {
+          "nodeName": "VH_F_fallopian_tube_R",
+          "ontologyId": "UBERON:0001302",
+          "label": "right uterine tube",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_ampulla_of_uterine_tube_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_isthmus_of_fallopian_tube_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_fibria_of_uterine_tube_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_uterine_tube_infundibulum_R",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "lung-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-female/v1.4/assets/3d-vh-f-lung.glb",
+      "sha256": "101f48ec64f2ed762fde03fc1193eaae583a0d35c47b72a9ca007d72eefb5f71",
+      "groups": [
+        {
+          "nodeName": "VH_F_respiratory_system",
+          "ontologyId": "UBERON:0001004",
+          "label": "respiratory system",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_hilum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_left_apical_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_left_superior_bronchopulmonary_segment",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_left_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_hilum_lower_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_hilum_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_right_superior_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_hilum_lower_R",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_right_medial_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_right_lateral_bronchopulmonary_segmennt",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_hilum_middle_R",
+              "meshIndex": 22
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_F_right_anterior_bronchopulmonary_segm",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_F_right_apical_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_F_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_F_hilum_upper_R",
+              "meshIndex": 26
+            },
+            {
+              "index": 40,
+              "nodeName": "VH_F_cartilage_of_lobar_bronchus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 41,
+              "nodeName": "VH_F_cartilage_of_tertiary_bronchus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 43,
+              "nodeName": "VH_F_left_superior_lobar_bronchus",
+              "meshIndex": 29
+            },
+            {
+              "index": 44,
+              "nodeName": "VH_F_left_inferior_lobar_bronchus",
+              "meshIndex": 30
+            },
+            {
+              "index": 46,
+              "nodeName": "VH_F_left_anterior_basal_bronchus",
+              "meshIndex": 31
+            },
+            {
+              "index": 47,
+              "nodeName": "VH_F_left_lingula_superior_bronchus",
+              "meshIndex": 32
+            },
+            {
+              "index": 48,
+              "nodeName": "VH_F_left_apical_bronchus",
+              "meshIndex": 33
+            },
+            {
+              "index": 49,
+              "nodeName": "VH_F_left_posterior_basal_bronchus",
+              "meshIndex": 34
+            },
+            {
+              "index": 50,
+              "nodeName": "VH_F_left_medial_basal_bronchus",
+              "meshIndex": 35
+            },
+            {
+              "index": 51,
+              "nodeName": "VH_F_left_superior_bronchus",
+              "meshIndex": 36
+            },
+            {
+              "index": 52,
+              "nodeName": "VH_F_left_anterior_bronchus",
+              "meshIndex": 37
+            },
+            {
+              "index": 53,
+              "nodeName": "VH_F_left_posterior_bronchus",
+              "meshIndex": 38
+            },
+            {
+              "index": 54,
+              "nodeName": "VH_F_left_lateral_basal_bronchus",
+              "meshIndex": 39
+            },
+            {
+              "index": 55,
+              "nodeName": "VH_F_left_lingula_inferior_bronchi",
+              "meshIndex": 40
+            },
+            {
+              "index": 58,
+              "nodeName": "VH_F_cartilage_of_lobar_bronchus_R",
+              "meshIndex": 41
+            },
+            {
+              "index": 59,
+              "nodeName": "VH_F_cartilage_of_tertiary_bronchus_R",
+              "meshIndex": 42
+            },
+            {
+              "index": 61,
+              "nodeName": "VH_F_right_middle_lobar_bronchus",
+              "meshIndex": 43
+            },
+            {
+              "index": 62,
+              "nodeName": "VH_F_right_superior_lobar_bronchus",
+              "meshIndex": 44
+            },
+            {
+              "index": 63,
+              "nodeName": "VH_F_right_inferior_lobar_bronchus",
+              "meshIndex": 45
+            },
+            {
+              "index": 65,
+              "nodeName": "VH_F_right_anterior_bronchus",
+              "meshIndex": 46
+            },
+            {
+              "index": 66,
+              "nodeName": "VH_F_right_lateral_basal_bronchus",
+              "meshIndex": 47
+            },
+            {
+              "index": 67,
+              "nodeName": "VH_F_right_lateral_bronchus",
+              "meshIndex": 48
+            },
+            {
+              "index": 68,
+              "nodeName": "VH_F_right_medial_bronchus",
+              "meshIndex": 49
+            },
+            {
+              "index": 69,
+              "nodeName": "VH_F_right_medial_basal_bronchus",
+              "meshIndex": 50
+            },
+            {
+              "index": 70,
+              "nodeName": "VH_F_right_posterior_basal_bronchus",
+              "meshIndex": 51
+            },
+            {
+              "index": 71,
+              "nodeName": "VH_F_right_posterior_bronchus",
+              "meshIndex": 52
+            },
+            {
+              "index": 72,
+              "nodeName": "VH_F_right_superior_bronchus",
+              "meshIndex": 53
+            },
+            {
+              "index": 73,
+              "nodeName": "VH_F_right_apical_bronchus",
+              "meshIndex": 54
+            },
+            {
+              "index": 74,
+              "nodeName": "VH_F_right_anterior_basal_bronchus",
+              "meshIndex": 55
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_lungs",
+          "ontologyId": "UBERON:0002048",
+          "label": "lung",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_hilum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_left_apical_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_left_superior_bronchopulmonary_segment",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_left_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_hilum_lower_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_hilum_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_right_superior_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_hilum_lower_R",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_right_medial_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_right_lateral_bronchopulmonary_segmennt",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_hilum_middle_R",
+              "meshIndex": 22
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_F_right_anterior_bronchopulmonary_segm",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_F_right_apical_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_F_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_F_hilum_upper_R",
+              "meshIndex": 26
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_bronchi",
+          "ontologyId": "UBERON:0002185",
+          "label": "bronchus",
+          "index": 37,
+          "descendantMeshes": [
+            {
+              "index": 40,
+              "nodeName": "VH_F_cartilage_of_lobar_bronchus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 41,
+              "nodeName": "VH_F_cartilage_of_tertiary_bronchus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 43,
+              "nodeName": "VH_F_left_superior_lobar_bronchus",
+              "meshIndex": 29
+            },
+            {
+              "index": 44,
+              "nodeName": "VH_F_left_inferior_lobar_bronchus",
+              "meshIndex": 30
+            },
+            {
+              "index": 46,
+              "nodeName": "VH_F_left_anterior_basal_bronchus",
+              "meshIndex": 31
+            },
+            {
+              "index": 47,
+              "nodeName": "VH_F_left_lingula_superior_bronchus",
+              "meshIndex": 32
+            },
+            {
+              "index": 48,
+              "nodeName": "VH_F_left_apical_bronchus",
+              "meshIndex": 33
+            },
+            {
+              "index": 49,
+              "nodeName": "VH_F_left_posterior_basal_bronchus",
+              "meshIndex": 34
+            },
+            {
+              "index": 50,
+              "nodeName": "VH_F_left_medial_basal_bronchus",
+              "meshIndex": 35
+            },
+            {
+              "index": 51,
+              "nodeName": "VH_F_left_superior_bronchus",
+              "meshIndex": 36
+            },
+            {
+              "index": 52,
+              "nodeName": "VH_F_left_anterior_bronchus",
+              "meshIndex": 37
+            },
+            {
+              "index": 53,
+              "nodeName": "VH_F_left_posterior_bronchus",
+              "meshIndex": 38
+            },
+            {
+              "index": 54,
+              "nodeName": "VH_F_left_lateral_basal_bronchus",
+              "meshIndex": 39
+            },
+            {
+              "index": 55,
+              "nodeName": "VH_F_left_lingula_inferior_bronchi",
+              "meshIndex": 40
+            },
+            {
+              "index": 58,
+              "nodeName": "VH_F_cartilage_of_lobar_bronchus_R",
+              "meshIndex": 41
+            },
+            {
+              "index": 59,
+              "nodeName": "VH_F_cartilage_of_tertiary_bronchus_R",
+              "meshIndex": 42
+            },
+            {
+              "index": 61,
+              "nodeName": "VH_F_right_middle_lobar_bronchus",
+              "meshIndex": 43
+            },
+            {
+              "index": 62,
+              "nodeName": "VH_F_right_superior_lobar_bronchus",
+              "meshIndex": 44
+            },
+            {
+              "index": 63,
+              "nodeName": "VH_F_right_inferior_lobar_bronchus",
+              "meshIndex": 45
+            },
+            {
+              "index": 65,
+              "nodeName": "VH_F_right_anterior_bronchus",
+              "meshIndex": 46
+            },
+            {
+              "index": 66,
+              "nodeName": "VH_F_right_lateral_basal_bronchus",
+              "meshIndex": 47
+            },
+            {
+              "index": 67,
+              "nodeName": "VH_F_right_lateral_bronchus",
+              "meshIndex": 48
+            },
+            {
+              "index": 68,
+              "nodeName": "VH_F_right_medial_bronchus",
+              "meshIndex": 49
+            },
+            {
+              "index": 69,
+              "nodeName": "VH_F_right_medial_basal_bronchus",
+              "meshIndex": 50
+            },
+            {
+              "index": 70,
+              "nodeName": "VH_F_right_posterior_basal_bronchus",
+              "meshIndex": 51
+            },
+            {
+              "index": 71,
+              "nodeName": "VH_F_right_posterior_bronchus",
+              "meshIndex": 52
+            },
+            {
+              "index": 72,
+              "nodeName": "VH_F_right_superior_bronchus",
+              "meshIndex": 53
+            },
+            {
+              "index": 73,
+              "nodeName": "VH_F_right_apical_bronchus",
+              "meshIndex": 54
+            },
+            {
+              "index": 74,
+              "nodeName": "VH_F_right_anterior_basal_bronchus",
+              "meshIndex": 55
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_lobar_bronchi_L",
+          "ontologyId": "UBERON:0003405",
+          "label": "lobar bronchus of left lung",
+          "index": 42,
+          "descendantMeshes": [
+            {
+              "index": 43,
+              "nodeName": "VH_F_left_superior_lobar_bronchus",
+              "meshIndex": 29
+            },
+            {
+              "index": 44,
+              "nodeName": "VH_F_left_inferior_lobar_bronchus",
+              "meshIndex": 30
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_tertiary_bronchi_L",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "index": 45,
+          "descendantMeshes": [
+            {
+              "index": 46,
+              "nodeName": "VH_F_left_anterior_basal_bronchus",
+              "meshIndex": 31
+            },
+            {
+              "index": 47,
+              "nodeName": "VH_F_left_lingula_superior_bronchus",
+              "meshIndex": 32
+            },
+            {
+              "index": 48,
+              "nodeName": "VH_F_left_apical_bronchus",
+              "meshIndex": 33
+            },
+            {
+              "index": 49,
+              "nodeName": "VH_F_left_posterior_basal_bronchus",
+              "meshIndex": 34
+            },
+            {
+              "index": 50,
+              "nodeName": "VH_F_left_medial_basal_bronchus",
+              "meshIndex": 35
+            },
+            {
+              "index": 51,
+              "nodeName": "VH_F_left_superior_bronchus",
+              "meshIndex": 36
+            },
+            {
+              "index": 52,
+              "nodeName": "VH_F_left_anterior_bronchus",
+              "meshIndex": 37
+            },
+            {
+              "index": 53,
+              "nodeName": "VH_F_left_posterior_bronchus",
+              "meshIndex": 38
+            },
+            {
+              "index": 54,
+              "nodeName": "VH_F_left_lateral_basal_bronchus",
+              "meshIndex": 39
+            },
+            {
+              "index": 55,
+              "nodeName": "VH_F_left_lingula_inferior_bronchi",
+              "meshIndex": 40
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_lobar_bronchus_R",
+          "ontologyId": "UBERON:0003404",
+          "label": "lobar bronchus of right lung",
+          "index": 60,
+          "descendantMeshes": [
+            {
+              "index": 61,
+              "nodeName": "VH_F_right_middle_lobar_bronchus",
+              "meshIndex": 43
+            },
+            {
+              "index": 62,
+              "nodeName": "VH_F_right_superior_lobar_bronchus",
+              "meshIndex": 44
+            },
+            {
+              "index": 63,
+              "nodeName": "VH_F_right_inferior_lobar_bronchus",
+              "meshIndex": 45
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_tertiary_bronchi_R",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "index": 64,
+          "descendantMeshes": [
+            {
+              "index": 65,
+              "nodeName": "VH_F_right_anterior_bronchus",
+              "meshIndex": 46
+            },
+            {
+              "index": 66,
+              "nodeName": "VH_F_right_lateral_basal_bronchus",
+              "meshIndex": 47
+            },
+            {
+              "index": 67,
+              "nodeName": "VH_F_right_lateral_bronchus",
+              "meshIndex": 48
+            },
+            {
+              "index": 68,
+              "nodeName": "VH_F_right_medial_bronchus",
+              "meshIndex": 49
+            },
+            {
+              "index": 69,
+              "nodeName": "VH_F_right_medial_basal_bronchus",
+              "meshIndex": 50
+            },
+            {
+              "index": 70,
+              "nodeName": "VH_F_right_posterior_basal_bronchus",
+              "meshIndex": 51
+            },
+            {
+              "index": 71,
+              "nodeName": "VH_F_right_posterior_bronchus",
+              "meshIndex": 52
+            },
+            {
+              "index": 72,
+              "nodeName": "VH_F_right_superior_bronchus",
+              "meshIndex": 53
+            },
+            {
+              "index": 73,
+              "nodeName": "VH_F_right_apical_bronchus",
+              "meshIndex": 54
+            },
+            {
+              "index": 74,
+              "nodeName": "VH_F_right_anterior_basal_bronchus",
+              "meshIndex": 55
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_left_lungs_L",
+          "ontologyId": "UBERON:0002168",
+          "label": "left lung",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_hilum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_left_apical_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_left_superior_bronchopulmonary_segment",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_left_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_hilum_lower_L",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_L_lung_upper_lobe",
+          "ontologyId": "UBERON:0008952",
+          "label": "Upper Lobe of Left Lung",
+          "index": 4,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_F_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_left_apical_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_L_lung_lower_lobe",
+          "ontologyId": "UBERON:0008953",
+          "label": "Lower Lobe of Left Lung",
+          "index": 11,
+          "descendantMeshes": [
+            {
+              "index": 12,
+              "nodeName": "VH_F_left_superior_bronchopulmonary_segment",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_left_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_hilum_lower_L",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_lungs_R",
+          "ontologyId": "UBERON:0002167",
+          "label": "right lung",
+          "index": 18,
+          "descendantMeshes": [
+            {
+              "index": 19,
+              "nodeName": "VH_F_hilum_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_right_superior_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_hilum_lower_R",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_right_medial_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_right_lateral_bronchopulmonary_segmennt",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_hilum_middle_R",
+              "meshIndex": 22
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_F_right_anterior_bronchopulmonary_segm",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_F_right_apical_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_F_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_F_hilum_upper_R",
+              "meshIndex": 26
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_R_lung_lower_lobe",
+          "ontologyId": "UBERON:0002171",
+          "label": "Lower Lobe of Right Lung",
+          "index": 20,
+          "descendantMeshes": [
+            {
+              "index": 21,
+              "nodeName": "VH_F_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_right_superior_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_hilum_lower_R",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_R_lung_middle_lobe",
+          "ontologyId": "UBERON:0002174",
+          "label": "Middle Lobe of Right Lung",
+          "index": 27,
+          "descendantMeshes": [
+            {
+              "index": 28,
+              "nodeName": "VH_F_right_medial_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_right_lateral_bronchopulmonary_segmennt",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_hilum_middle_R",
+              "meshIndex": 22
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_R_lung_upper_lobe",
+          "ontologyId": "UBERON:0002170",
+          "label": "Upper Lobe of Right Lung",
+          "index": 31,
+          "descendantMeshes": [
+            {
+              "index": 32,
+              "nodeName": "VH_F_right_anterior_bronchopulmonary_segm",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_F_right_apical_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_F_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_F_hilum_upper_R",
+              "meshIndex": 26
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "lung-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-male/v1.4/assets/3d-vh-m-lung.glb",
+      "sha256": "bba95516fa993ac45c3b1c53f32b58d97232ffd78ae56397e5a2589c6ce4903d",
+      "groups": [
+        {
+          "nodeName": "VH_M_respiratory_system",
+          "ontologyId": "UBERON:0001004",
+          "label": "respiratory system",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_hilum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_left_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_left_apical_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_left_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_hilum_lower_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_left_posetrior_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_left_superior_bronchopulmonary_segment",
+              "meshIndex": 12
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_hilum_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_right_lateral_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_right_medial_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_hilum_middle_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_hilum_lower_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_M_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_M_right_superior_bronchopulmonary_segment",
+              "meshIndex": 22
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_M_right_apical_bronchopulmonary_segment",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_M_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_M_right_anterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_M_hilum_upper_R",
+              "meshIndex": 26
+            },
+            {
+              "index": 40,
+              "nodeName": "VH_M_cartilage_of_the_lobar_bronchus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 41,
+              "nodeName": "VH_M_cartilage_of_the_tertiary_bronchus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 43,
+              "nodeName": "VH_M_left_superior_lobar_bronchus",
+              "meshIndex": 29
+            },
+            {
+              "index": 44,
+              "nodeName": "VH_M_left_inferior_lobar_bronchus",
+              "meshIndex": 30
+            },
+            {
+              "index": 46,
+              "nodeName": "VH_M_left_superior_bronchus",
+              "meshIndex": 31
+            },
+            {
+              "index": 47,
+              "nodeName": "VH_M_left_posterior_basal_bronchus",
+              "meshIndex": 32
+            },
+            {
+              "index": 48,
+              "nodeName": "VH_M_left_medial_basal_bronchus",
+              "meshIndex": 33
+            },
+            {
+              "index": 49,
+              "nodeName": "VH_M_left_apical_bronchus",
+              "meshIndex": 34
+            },
+            {
+              "index": 50,
+              "nodeName": "VH_M_left_anterior_bronchus",
+              "meshIndex": 35
+            },
+            {
+              "index": 51,
+              "nodeName": "VH_M_left_lingular_bronchus",
+              "meshIndex": 36
+            },
+            {
+              "index": 52,
+              "nodeName": "VH_M_left_lingula_superior_bronchus",
+              "meshIndex": 37
+            },
+            {
+              "index": 53,
+              "nodeName": "VH_M_left_lingula_inferior_bronchus",
+              "meshIndex": 38
+            },
+            {
+              "index": 54,
+              "nodeName": "VH_M_left_lateral_basal_bronchus",
+              "meshIndex": 39
+            },
+            {
+              "index": 55,
+              "nodeName": "VH_M_left_anterior_basal_bronchus",
+              "meshIndex": 40
+            },
+            {
+              "index": 58,
+              "nodeName": "VH_M_cartilage_of_the_lobar_bronchus_R",
+              "meshIndex": 41
+            },
+            {
+              "index": 59,
+              "nodeName": "VH_M_cartilage_of_the_tertiary_bronchus_R",
+              "meshIndex": 42
+            },
+            {
+              "index": 61,
+              "nodeName": "VH_M_right_intermediate_bronchus",
+              "meshIndex": 43
+            },
+            {
+              "index": 62,
+              "nodeName": "VH_M_right_middle_lobar_bronchus",
+              "meshIndex": 44
+            },
+            {
+              "index": 63,
+              "nodeName": "VH_M_right_superior_lobar_bronchus",
+              "meshIndex": 45
+            },
+            {
+              "index": 65,
+              "nodeName": "VH_M_right_anterior_bronchus",
+              "meshIndex": 46
+            },
+            {
+              "index": 66,
+              "nodeName": "VH_M_right_lateral_basal_bronchus",
+              "meshIndex": 47
+            },
+            {
+              "index": 67,
+              "nodeName": "VH_M_right_lateral_bronchus",
+              "meshIndex": 48
+            },
+            {
+              "index": 68,
+              "nodeName": "VH_M_right_lower_lobar_bronchus",
+              "meshIndex": 49
+            },
+            {
+              "index": 69,
+              "nodeName": "VH_M_right_medial_basal_bronchus",
+              "meshIndex": 50
+            },
+            {
+              "index": 70,
+              "nodeName": "VH_M_right_medial_bronchus",
+              "meshIndex": 51
+            },
+            {
+              "index": 71,
+              "nodeName": "VH_M_right_posterior_basal",
+              "meshIndex": 52
+            },
+            {
+              "index": 72,
+              "nodeName": "VH_M_right_posterior_bronchus",
+              "meshIndex": 53
+            },
+            {
+              "index": 73,
+              "nodeName": "VH_M_right_superior_bronchus",
+              "meshIndex": 54
+            },
+            {
+              "index": 74,
+              "nodeName": "VH_M_right_apical_bronchus",
+              "meshIndex": 55
+            },
+            {
+              "index": 75,
+              "nodeName": "VH_M_right_anterior_basal_bronchus",
+              "meshIndex": 56
+            },
+            {
+              "index": 76,
+              "nodeName": "VH_M_bronchus",
+              "meshIndex": 57
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs",
+          "ontologyId": "UBERON:0002048",
+          "label": "lung",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_hilum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_left_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_left_apical_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_left_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_hilum_lower_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_left_posetrior_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_left_superior_bronchopulmonary_segment",
+              "meshIndex": 12
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_hilum_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_right_lateral_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_right_medial_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_hilum_middle_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_hilum_lower_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_M_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_M_right_superior_bronchopulmonary_segment",
+              "meshIndex": 22
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_M_right_apical_bronchopulmonary_segment",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_M_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_M_right_anterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_M_hilum_upper_R",
+              "meshIndex": 26
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_L",
+          "ontologyId": "UBERON:0002168",
+          "label": "left lung",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_hilum_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_left_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_left_apical_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_left_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_hilum_lower_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_left_posetrior_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_left_superior_bronchopulmonary_segment",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_L_upper_lobe",
+          "ontologyId": "UBERON:0008952",
+          "label": "Upper Lobe of Left Lung",
+          "index": 4,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_M_hilum_upper_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_left_lingula_superior_bronchopulmonary_segment",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_left_posterior_bronchopulmonary_segment",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_left_anterior_bronchopulmonary_segment",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_left_apical_bronchopulmonary_segment",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_left_lingula_inferior_bronchopulmonary_segment",
+              "meshIndex": 6
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_L_lower_lobe",
+          "ontologyId": "UBERON:0008953",
+          "label": "Lower Lobe of Left Lung",
+          "index": 11,
+          "descendantMeshes": [
+            {
+              "index": 12,
+              "nodeName": "VH_M_hilum_lower_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_left_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_left_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_left_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_left_posetrior_basal_bronchopulmonary_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_left_superior_bronchopulmonary_segment",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_R",
+          "ontologyId": "UBERON:0002167",
+          "label": "right lung",
+          "index": 18,
+          "descendantMeshes": [
+            {
+              "index": 19,
+              "nodeName": "VH_M_hilum_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_right_lateral_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_right_medial_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_hilum_middle_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_hilum_lower_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_M_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_M_right_superior_bronchopulmonary_segment",
+              "meshIndex": 22
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_M_right_apical_bronchopulmonary_segment",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_M_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_M_right_anterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_M_hilum_upper_R",
+              "meshIndex": 26
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_R_middle_lobe",
+          "ontologyId": "UBERON:0002174",
+          "label": "Middle Lobe of Right Lung",
+          "index": 20,
+          "descendantMeshes": [
+            {
+              "index": 21,
+              "nodeName": "VH_M_right_lateral_bronchopulmonary_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_right_medial_bronchopulmonary_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_hilum_middle_R",
+              "meshIndex": 16
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_R_lower_lobe",
+          "ontologyId": "UBERON:0002171",
+          "label": "Lower Lobe of Right Lung",
+          "index": 24,
+          "descendantMeshes": [
+            {
+              "index": 25,
+              "nodeName": "VH_M_hilum_lower_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_right_anterior_basal_bronchopulmonary_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_right_lateral_basal_bronchopulmonary_segment",
+              "meshIndex": 19
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_right_medial_basal_bronchopulmonary_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_M_right_posterior_basal_bronchopulmonary_segment",
+              "meshIndex": 21
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_M_right_superior_bronchopulmonary_segment",
+              "meshIndex": 22
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lungs_R_upper_lobe",
+          "ontologyId": "UBERON:0002170",
+          "label": "Upper Lobe of Right Lung",
+          "index": 31,
+          "descendantMeshes": [
+            {
+              "index": 32,
+              "nodeName": "VH_M_right_apical_bronchopulmonary_segment",
+              "meshIndex": 23
+            },
+            {
+              "index": 33,
+              "nodeName": "VH_M_right_posterior_bronchopulmonary_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 34,
+              "nodeName": "VH_M_right_anterior_bronchopulmonary_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 35,
+              "nodeName": "VH_M_hilum_upper_R",
+              "meshIndex": 26
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_bronchi",
+          "ontologyId": "UBERON:0002185",
+          "label": "bronchus",
+          "index": 37,
+          "descendantMeshes": [
+            {
+              "index": 40,
+              "nodeName": "VH_M_cartilage_of_the_lobar_bronchus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 41,
+              "nodeName": "VH_M_cartilage_of_the_tertiary_bronchus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 43,
+              "nodeName": "VH_M_left_superior_lobar_bronchus",
+              "meshIndex": 29
+            },
+            {
+              "index": 44,
+              "nodeName": "VH_M_left_inferior_lobar_bronchus",
+              "meshIndex": 30
+            },
+            {
+              "index": 46,
+              "nodeName": "VH_M_left_superior_bronchus",
+              "meshIndex": 31
+            },
+            {
+              "index": 47,
+              "nodeName": "VH_M_left_posterior_basal_bronchus",
+              "meshIndex": 32
+            },
+            {
+              "index": 48,
+              "nodeName": "VH_M_left_medial_basal_bronchus",
+              "meshIndex": 33
+            },
+            {
+              "index": 49,
+              "nodeName": "VH_M_left_apical_bronchus",
+              "meshIndex": 34
+            },
+            {
+              "index": 50,
+              "nodeName": "VH_M_left_anterior_bronchus",
+              "meshIndex": 35
+            },
+            {
+              "index": 51,
+              "nodeName": "VH_M_left_lingular_bronchus",
+              "meshIndex": 36
+            },
+            {
+              "index": 52,
+              "nodeName": "VH_M_left_lingula_superior_bronchus",
+              "meshIndex": 37
+            },
+            {
+              "index": 53,
+              "nodeName": "VH_M_left_lingula_inferior_bronchus",
+              "meshIndex": 38
+            },
+            {
+              "index": 54,
+              "nodeName": "VH_M_left_lateral_basal_bronchus",
+              "meshIndex": 39
+            },
+            {
+              "index": 55,
+              "nodeName": "VH_M_left_anterior_basal_bronchus",
+              "meshIndex": 40
+            },
+            {
+              "index": 58,
+              "nodeName": "VH_M_cartilage_of_the_lobar_bronchus_R",
+              "meshIndex": 41
+            },
+            {
+              "index": 59,
+              "nodeName": "VH_M_cartilage_of_the_tertiary_bronchus_R",
+              "meshIndex": 42
+            },
+            {
+              "index": 61,
+              "nodeName": "VH_M_right_intermediate_bronchus",
+              "meshIndex": 43
+            },
+            {
+              "index": 62,
+              "nodeName": "VH_M_right_middle_lobar_bronchus",
+              "meshIndex": 44
+            },
+            {
+              "index": 63,
+              "nodeName": "VH_M_right_superior_lobar_bronchus",
+              "meshIndex": 45
+            },
+            {
+              "index": 65,
+              "nodeName": "VH_M_right_anterior_bronchus",
+              "meshIndex": 46
+            },
+            {
+              "index": 66,
+              "nodeName": "VH_M_right_lateral_basal_bronchus",
+              "meshIndex": 47
+            },
+            {
+              "index": 67,
+              "nodeName": "VH_M_right_lateral_bronchus",
+              "meshIndex": 48
+            },
+            {
+              "index": 68,
+              "nodeName": "VH_M_right_lower_lobar_bronchus",
+              "meshIndex": 49
+            },
+            {
+              "index": 69,
+              "nodeName": "VH_M_right_medial_basal_bronchus",
+              "meshIndex": 50
+            },
+            {
+              "index": 70,
+              "nodeName": "VH_M_right_medial_bronchus",
+              "meshIndex": 51
+            },
+            {
+              "index": 71,
+              "nodeName": "VH_M_right_posterior_basal",
+              "meshIndex": 52
+            },
+            {
+              "index": 72,
+              "nodeName": "VH_M_right_posterior_bronchus",
+              "meshIndex": 53
+            },
+            {
+              "index": 73,
+              "nodeName": "VH_M_right_superior_bronchus",
+              "meshIndex": 54
+            },
+            {
+              "index": 74,
+              "nodeName": "VH_M_right_apical_bronchus",
+              "meshIndex": 55
+            },
+            {
+              "index": 75,
+              "nodeName": "VH_M_right_anterior_basal_bronchus",
+              "meshIndex": 56
+            },
+            {
+              "index": 76,
+              "nodeName": "VH_M_bronchus",
+              "meshIndex": 57
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lobar_bronchus_L",
+          "ontologyId": "UBERON:0003405",
+          "label": "lobar bronchus of left lung",
+          "index": 42,
+          "descendantMeshes": [
+            {
+              "index": 43,
+              "nodeName": "VH_M_left_superior_lobar_bronchus",
+              "meshIndex": 29
+            },
+            {
+              "index": 44,
+              "nodeName": "VH_M_left_inferior_lobar_bronchus",
+              "meshIndex": 30
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_tertiary_bronchi_L",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "index": 45,
+          "descendantMeshes": [
+            {
+              "index": 46,
+              "nodeName": "VH_M_left_superior_bronchus",
+              "meshIndex": 31
+            },
+            {
+              "index": 47,
+              "nodeName": "VH_M_left_posterior_basal_bronchus",
+              "meshIndex": 32
+            },
+            {
+              "index": 48,
+              "nodeName": "VH_M_left_medial_basal_bronchus",
+              "meshIndex": 33
+            },
+            {
+              "index": 49,
+              "nodeName": "VH_M_left_apical_bronchus",
+              "meshIndex": 34
+            },
+            {
+              "index": 50,
+              "nodeName": "VH_M_left_anterior_bronchus",
+              "meshIndex": 35
+            },
+            {
+              "index": 51,
+              "nodeName": "VH_M_left_lingular_bronchus",
+              "meshIndex": 36
+            },
+            {
+              "index": 52,
+              "nodeName": "VH_M_left_lingula_superior_bronchus",
+              "meshIndex": 37
+            },
+            {
+              "index": 53,
+              "nodeName": "VH_M_left_lingula_inferior_bronchus",
+              "meshIndex": 38
+            },
+            {
+              "index": 54,
+              "nodeName": "VH_M_left_lateral_basal_bronchus",
+              "meshIndex": 39
+            },
+            {
+              "index": 55,
+              "nodeName": "VH_M_left_anterior_basal_bronchus",
+              "meshIndex": 40
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_lobar_bronchi_R",
+          "ontologyId": "UBERON:0003404",
+          "label": "lobar bronchus of right lung",
+          "index": 60,
+          "descendantMeshes": [
+            {
+              "index": 61,
+              "nodeName": "VH_M_right_intermediate_bronchus",
+              "meshIndex": 43
+            },
+            {
+              "index": 62,
+              "nodeName": "VH_M_right_middle_lobar_bronchus",
+              "meshIndex": 44
+            },
+            {
+              "index": 63,
+              "nodeName": "VH_M_right_superior_lobar_bronchus",
+              "meshIndex": 45
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_tertiary_bronchi_R",
+          "ontologyId": "UBERON:0002184",
+          "label": "Segmental bronchus",
+          "index": 64,
+          "descendantMeshes": [
+            {
+              "index": 65,
+              "nodeName": "VH_M_right_anterior_bronchus",
+              "meshIndex": 46
+            },
+            {
+              "index": 66,
+              "nodeName": "VH_M_right_lateral_basal_bronchus",
+              "meshIndex": 47
+            },
+            {
+              "index": 67,
+              "nodeName": "VH_M_right_lateral_bronchus",
+              "meshIndex": 48
+            },
+            {
+              "index": 68,
+              "nodeName": "VH_M_right_lower_lobar_bronchus",
+              "meshIndex": 49
+            },
+            {
+              "index": 69,
+              "nodeName": "VH_M_right_medial_basal_bronchus",
+              "meshIndex": 50
+            },
+            {
+              "index": 70,
+              "nodeName": "VH_M_right_medial_bronchus",
+              "meshIndex": 51
+            },
+            {
+              "index": 71,
+              "nodeName": "VH_M_right_posterior_basal",
+              "meshIndex": 52
+            },
+            {
+              "index": 72,
+              "nodeName": "VH_M_right_posterior_bronchus",
+              "meshIndex": 53
+            },
+            {
+              "index": 73,
+              "nodeName": "VH_M_right_superior_bronchus",
+              "meshIndex": 54
+            },
+            {
+              "index": 74,
+              "nodeName": "VH_M_right_apical_bronchus",
+              "meshIndex": 55
+            },
+            {
+              "index": 75,
+              "nodeName": "VH_M_right_anterior_basal_bronchus",
+              "meshIndex": 56
+            },
+            {
+              "index": 76,
+              "nodeName": "VH_M_bronchus",
+              "meshIndex": 57
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_hyoid",
+          "ontologyId": "UBERON:0001685",
+          "label": "hyoid bone",
+          "status": "HOLD_NO_UNIQUE_SOURCE_GROUP"
+        }
+      ]
+    },
+    {
+      "id": "heart-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-female/v1.3/assets/3d-vh-f-heart.glb",
+      "sha256": "98f66e46b149bfc3836592d9404c50290e21d302ec55c98813435e2d9847b1d9",
+      "groups": [
+        {
+          "nodeName": "VH_F_heart",
+          "ontologyId": "UBERON:0000948",
+          "label": "heart",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "VH_F_interventricular_septum",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_left_cardiac_atrium",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_left_ventricle",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_right_cardiac_atrium",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_right_ventricle",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_papillary_muscle_of_heart_ant",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_papillary_muscle_of_heart_antlat",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_papillary_muscle_of_heart_med",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_papillary_muscle_of_heart_pos",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_papillary_muscle_of_heart_posmed",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_aortic_valve",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_pulmonary_valve",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_mitral_valve",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_tricuspid_valve",
+              "meshIndex": 13
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_papillary_muscle_of_heart",
+          "ontologyId": "UBERON:0002494",
+          "label": "papillary muscle of heart",
+          "index": 7,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_F_papillary_muscle_of_heart_ant",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_papillary_muscle_of_heart_antlat",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_papillary_muscle_of_heart_med",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_papillary_muscle_of_heart_pos",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_papillary_muscle_of_heart_posmed",
+              "meshIndex": 9
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_valve",
+          "ontologyId": "UBERON:0003978",
+          "label": "valve",
+          "index": 13,
+          "descendantMeshes": [
+            {
+              "index": 14,
+              "nodeName": "VH_F_aortic_valve",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_pulmonary_valve",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_mitral_valve",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_tricuspid_valve",
+              "meshIndex": 13
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "heart-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-male/v1.3/assets/3d-vh-m-heart.glb",
+      "sha256": "689df039c8bc264ea06a44cd926762976f0666c0ff2dc532d046409b185e6b0c",
+      "groups": [
+        {
+          "nodeName": "VH_M_heart",
+          "ontologyId": "UBERON:0000948",
+          "label": "heart",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "VH_M_mitral_valve",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_tricuspid_valve",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_aortic_valve",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_pulmonary_valve",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_papillary_muscle_of_heart_anterior",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_papillary_muscle_of_heart_anterolateral",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_papillary_muscle_of_heart_medial",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_papillary_muscle_of_heart_posterior",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_papillary_muscle_of_heart_posteromedial",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_left_cardiac_atrium",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_right_cardiac_atrium",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_heart_right_ventricle",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_interventricular_septum",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_heart_left_ventricle",
+              "meshIndex": 13
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_heart_valve",
+          "ontologyId": "UBERON:0003978",
+          "label": "valve",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "VH_M_mitral_valve",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_tricuspid_valve",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_aortic_valve",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_pulmonary_valve",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_papillary_muscle_of_heart",
+          "ontologyId": "UBERON:0002494",
+          "label": "papillary muscle of heart",
+          "index": 6,
+          "descendantMeshes": [
+            {
+              "index": 7,
+              "nodeName": "VH_M_papillary_muscle_of_heart_anterior",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_papillary_muscle_of_heart_anterolateral",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_papillary_muscle_of_heart_medial",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_papillary_muscle_of_heart_posterior",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_papillary_muscle_of_heart_posteromedial",
+              "meshIndex": 8
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "sourceCommit": "e8125e7a5f438f7bbb9f6daa4fb11402283a114f",
+  "workflowRun": 45763797465,
+  "workflowJob": 139719743391,
+  "secondRun": 45763797910
+}

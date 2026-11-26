@@ -2151,5 +2151,15 @@
   "geometryPublished": 0,
   "workflowRun": 45753200253,
   "workflowJob": 139685601068,
-  "scope": "Exact published source bytes and source crosswalk mapping only; no clinical validation, registration, redistribution approval, or rendering claim."
+  "scope": "Exact published bytes and source crosswalk plus combined browser replay. No clinical validation, registration or redistribution approval.",
+  "browserReplay": {
+    "commit": "bfe8517dabce88fd3afcf25f6fd745b49df4782e",
+    "workflowRun": 45763698287,
+    "workflowJob": 139719425350,
+    "conclusion": "success",
+    "combinedOriginalGLBs": 9,
+    "combinedExactMappedNodes": 160,
+    "isolationRestoreChecks": 5,
+    "bodyInventoryUnchanged": true
+  }
 }

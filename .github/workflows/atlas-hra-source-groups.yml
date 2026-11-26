@@ -9,7 +9,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,3 +19,15 @@ jobs:
           node-version: 22
       - run: node --test scripts/audit-hra-source-groups.test.mjs
       - run: node scripts/audit-hra-source-groups.mjs
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - name: Verify source group runtime mapping
+        run: npm test --prefix apps/atlas-independent
+      - name: Install isolated browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Replay all 37 source groups and 160 exact individual labels
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_HRA_COMBINED=1 ATLAS_TEST_HRA_GROUPS=1 node scripts/test-private-atlas-browser.mjs
