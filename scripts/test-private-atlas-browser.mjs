@@ -149,7 +149,9 @@ try{
   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),feedback=dialog.locator('#referenceChallengeFeedback'),next=dialog.locator('#referenceChallengeNext');
   const currentEntry=async()=>{const id=await viewport.getAttribute('data-rendered-id');const e=real43.inventory.items.find(x=>x.id===id);assert(e,'Challenge must use an audited source element');return e;};
   const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
-  const {challengeLabel}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
+  const {challengeLabel,hasChallengeGlossary}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
+  const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
+  if(real43.assets.size===246)assert.equal(glossaryCount,42);
   await start('mcq','en');
   const choices=challenge.locator('#referenceChallengeAnswers button');
   await choices.first().waitFor();
@@ -168,7 +170,7 @@ try{
   await start('typed','latin');
   const form=challenge.locator('#referenceChallengeTyped'),input=form.locator('#referenceChallengeInput');
   const seen=new Set();
-  for(let i=0;i<10;i++){
+  for(let i=0;i<glossaryCount;i++){
    await form.waitFor({state:'visible'});await input.waitFor({state:'visible'});
    e=await currentEntry();assert(!seen.has(e.name),'Repeated source label');seen.add(e.name);
    const answer=challengeLabel(e,i%3===0?'id':i%3===1?'latin':'en');
@@ -176,7 +178,7 @@ try{
    await feedback.filter({hasText:/^Benar\./}).waitFor();assert(await input.isDisabled());
    await next.click();
   }
-  await challenge.locator('#referenceChallengeProgress').filter({hasText:'10/10 benar · 0 gagal dimuat'}).waitFor();
+  await challenge.locator('#referenceChallengeProgress').filter({hasText:glossaryCount+'/'+glossaryCount+' benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
   if([115,129,147,177,192,224,246].includes(real43.assets.size)){
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
@@ -205,7 +207,7 @@ try{
   await start('mcq','id');await feedback.filter({hasText:'Model gagal dimuat; tidak masuk skor.'}).waitFor();assert.equal(await choices.count(),0);assert(await next.isEnabled());
   await page.unroute(pattern,fail);await next.click();await choices.first().waitFor();assert.equal(await choices.count(),4);
   await challenge.locator('#referenceChallengeQuit').click();
-  console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 10 distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
+  console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, '+glossaryCount+' distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
   }else{
    const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),mode=setup.locator('#referenceChallengeMode'),lang=setup.locator('#referenceChallengeLanguage');
    await setup.waitFor({state:'visible'});

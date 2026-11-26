@@ -64,7 +64,7 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Combined 246 actual source elements, 10 glossary-bound concepts and all 239 source-label concepts
+      - name: Combined 246 actual source elements, 42 glossary-bound concepts and all 239 source-label concepts
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
           ATLAS_TEST_REAL43=bronchial node scripts/test-private-atlas-browser.mjs
