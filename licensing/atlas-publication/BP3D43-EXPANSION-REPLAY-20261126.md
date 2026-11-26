@@ -7,3 +7,6 @@ Native Z-Anatomy [audit](https://github.com/khansazafiri-rgb/mpruy/actions/runs/
 
 ## Full combined replay evidence
 The 376-element combined source-native viewer passed on workflow 45775203863, job 139757080671, commit 3dca7261de209864f78c5321b9afea53947e7662: 17 exact BP3D and 2 HRA acquisitions, 376 rendered publisher GLBs, 368 source-label questions, 240 multilingual typed concepts, 9 HRA originals and 37 isolated groups. The 128 additional translations were implemented later; their browser results are separate and remain pending until confirmed. This is not a real workstation body-pack or clinical validation, and no production assets are approved.
+
+## Full 368-concept multilingual replay
+Workflow [45779012434](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45779012434), job 139769613877, commit 1ac26a0e7c8afff7da1e5b34a723f69ce6e5bfd8 completed successfully. The original 376 GLBs, 368 distinct source-label concepts, 368 provisional multilingual typed answers, nine HRA originals and 37 native source groups passed in one combined browser replay, including source concealment, correct/incorrect MCQ, single-submit lock and unavailable model exclusion. 53 unit/contract tests passed. No clinical, terminology authority, spatial registration, workstation body-pack or commercial approval is implied.

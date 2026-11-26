@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "sourceCommit": "1ac26a0e7c8afff7da1e5b34a723f69ce6e5bfd8",
+  "workflowRun": 45779012434,
+  "workflowJob": 139769613877,
+  "conclusion": "success",
+  "bp3dAcquisitions": 17,
+  "hraAcquisitions": 2,
+  "bp3dElementsRendered": 376,
+  "sourceLabelConceptsCompleted": 368,
+  "multilingualTypedConceptsCompleted": 368,
+  "hraOrgansRendered": 9,
+  "hraGroupsIsolatedAndRestored": 37,
+  "hraDirectMappedRows": 160,
+  "fullTopicFilterIntersections": 6,
+  "unitAndContractTests": 53,
+  "bodyInventoryUnchanged": true,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}
