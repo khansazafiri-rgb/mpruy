@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Five individually framed source organs, 22 published crosswalk rows. Pin exact Git blob identities for source metadata, crosswalk and GLB. Compare Git raw GLB and official CDN asset bytes; no implied full female pelvis, clinical validation or registration. Source metadata uterus v1.1 incorrectly said Visible Human Male; pin later v1.2 with corrected generic Visible Human Dataset attribution. Research-purpose disclaimer and asset-level rights review must be reconciled before release.",
+  "rows": [
+    {
+      "id": "uterus-female",
+      "version": "v1.2",
+      "filename": "3d-vh-f-uterus.glb",
+      "bytes": 980408,
+      "glbBlob": "5f3e38703b33a9e1e1d9beeb5d852329c580453d",
+      "metadataBlob": "2f0311bab2341cd19f9f8591e1d1e861e553a1db",
+      "crosswalkBlob": "01c2b2cf712996ac36f4f1090ab58fed12eb0ef8",
+      "doi": "https://doi.org/10.48539/HBM627.VTKD.892",
+      "expectedCrosswalkRows": 10,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/uterus-female/v1.2/assets/3d-vh-f-uterus.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/uterus-female/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ovary-female-left",
+      "version": "v1.3",
+      "filename": "3d-vh-f-ovary-l.glb",
+      "bytes": 9000,
+      "glbBlob": "74a10aa5940bdb07262c5ad5fb65caeb8b60edc6",
+      "metadataBlob": "bbde05d61a56acf6537720845d679897de673ccf",
+      "crosswalkBlob": "70d9bd15548e4a4c9a31fe2ac7ffd7039efd9e38",
+      "doi": "https://doi.org/10.48539/HBM695.KCXS.294",
+      "expectedCrosswalkRows": 1,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-left/v1.3/assets/3d-vh-f-ovary-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ovary-female-left/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ovary-female-right",
+      "version": "v1.3",
+      "filename": "3d-vh-f-ovary-r.glb",
+      "bytes": 8756,
+      "glbBlob": "830ba779cd91cd45b503c299beaa88e6dc74960f",
+      "metadataBlob": "b1fc36fe3c3e73a2424e54fc3f2753ac29948bba",
+      "crosswalkBlob": "ae2305388cd73e7aeff849877406131ec5f3cdf0",
+      "doi": "https://doi.org/10.48539/HBM277.TVMB.676",
+      "expectedCrosswalkRows": 1,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-right/v1.3/assets/3d-vh-f-ovary-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ovary-female-right/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "fallopian-tube-female-left",
+      "version": "v1.2",
+      "filename": "3d-vh-f-fallopian-tube-l.glb",
+      "bytes": 336732,
+      "glbBlob": "282aa488524bc3fc1c3eebf8c00c1676f39d00fa",
+      "metadataBlob": "7d46a9b695046dc3fb2645ea469bdf9476603f48",
+      "crosswalkBlob": "f63c6d12be80e660a6152a87e8024734452342c9",
+      "doi": "https://doi.org/10.48539/HBM529.KBQT.896",
+      "expectedCrosswalkRows": 5,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-left/v1.2/assets/3d-vh-f-fallopian-tube-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/fallopian-tube-female-left/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "fallopian-tube-female-right",
+      "version": "v1.2",
+      "filename": "3d-vh-f-fallopian-tube-r.glb",
+      "bytes": 327504,
+      "glbBlob": "d31e085639f21a8864a5978457e75ff355e700db",
+      "metadataBlob": "7899f6bdaf8674e65c7eef9509750b5ffa0274ff",
+      "crosswalkBlob": "29ed26f63a1c020e062adffbe049cd7358eb66db",
+      "doi": "https://doi.org/10.48539/HBM952.XJJV.857",
+      "expectedCrosswalkRows": 5,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-right/v1.2/assets/3d-vh-f-fallopian-tube-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/fallopian-tube-female-right/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    }
+  ],
+  "held": [
+    {
+      "id": "lymph-node-female",
+      "version": "v1.4",
+      "metadataBlob": "9beedced44177d76a6522e7cfb2e58e49233c897",
+      "reason": "Publisher metadata explicitly discusses mouse-derived Ce3D reference; not acceptable as verified human regional lymph node geometry without review."
+    },
+    {
+      "id": "lymph-node-male",
+      "version": "v1.4",
+      "metadataBlob": "f4c3b858be58533134ca60e959c39815baa3f994",
+      "reason": "Mouse/human anatomical comparison in metadata; do not count as human lymphatic vessel anatomy."
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

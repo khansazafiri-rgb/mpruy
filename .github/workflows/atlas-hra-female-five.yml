@@ -1,0 +1,21 @@
+name: Atlas HRA female five pinned source audit
+on:
+  push:
+    branches: [feat/atlas-hra-female-five-20261126]
+  pull_request:
+    branches: [feat/atlas-bronchial-thymus-22-20261126]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-hra-female-five.test.mjs
+      - run: node scripts/audit-hra-female-five.mjs

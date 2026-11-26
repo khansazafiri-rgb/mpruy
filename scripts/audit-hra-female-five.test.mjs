@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {gitBlob,crosswalkNodes} from './audit-hra-female-five.mjs';
+test('git empty blob identity',()=>assert.equal(gitBlob(Buffer.alloc(0)),'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391'));
+test('crosswalk never silently maps group or ambiguous node',()=>{const csv='node_name,OntologyID,label\nA,FMA:1,Alpha\nB,UBERON:2,Beta\nC,FMA:3,Gamma';const r=crosswalkNodes(csv,{meshes:[{}],nodes:[{name:'A',mesh:0},{name:'B'},{name:'C',mesh:0},{name:'C',mesh:0}]});assert.deepEqual(r.map(x=>x.status),['EXACT_NAMED_MESH_NODE','HOLD_GROUP_MISSING_OR_AMBIGUOUS','HOLD_GROUP_MISSING_OR_AMBIGUOUS']);assert.throws(()=>crosswalkNodes(csv+'\nA,FMA:4,Other',{nodes:[]}));});
