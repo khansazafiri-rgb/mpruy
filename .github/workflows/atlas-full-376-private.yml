@@ -4,6 +4,7 @@ on:
     branches: [feat/atlas-multilingual-coverage-20261126]
     paths:
       - 'scripts/replay-audited-bp3d43-suite*'
+      - 'scripts/intake-bp3d43-priority-elements*'
       - 'scripts/test-private-atlas-browser.mjs'
       - 'scripts/atlas-audited-reference-suite.mjs'
       - '.github/workflows/atlas-full-376-private.yml'
@@ -24,7 +25,7 @@ jobs:
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
       - name: Retained receipt and private inventory contract tests
         run: |
-          node --test scripts/replay-audited-bp3d43-suite.test.mjs scripts/atlas-expansion-evidence.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/atlas-audited-reference-suite.test.mjs
+          node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/atlas-expansion-evidence.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/atlas-audited-reference-suite.test.mjs
           npm test --prefix apps/atlas-independent
       - name: Reacquire only exact previously dual-source-audited publisher bytes
         run: node scripts/replay-audited-bp3d43-suite.mjs --all-fresh

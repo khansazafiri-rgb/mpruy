@@ -51,9 +51,9 @@ export function validateZipEnvelope(file){
  assert(names.length>0&&names.length<=10000&&names.every(n=>n.length>0),'Publisher archive directory invalid');
  return names;
 }
-// Retry transport/ZIP-envelope failures only. Semantic identity validation remains
-// outside the retry, and no mirror or substituted geometry can pass this gate.
-export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=3}={}){
+// Retry transport/ZIP-envelope failures and explicitly pinned manifest integrity.
+// Candidate membership and model identity remain strict; no mirror or substitute.
+export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=3,verify=null}={}){
  assert(Number.isInteger(attempts)&&attempts>=1&&attempts<=3);
  const part=file+'.partial';
  assert(!fs.existsSync(file),'Refusing to replace existing source archive');
@@ -63,6 +63,7 @@ export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=
    fs.rmSync(part,{force:true});
    fetch(url,part,extra);
    const names=validateZipEnvelope(part);
+   if(verify)verify(part,names);
    fs.renameSync(part,file);
    return names;
   }catch(e){
@@ -75,6 +76,18 @@ export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=
 
 function safeMember(name){return typeof name==='string'&&name.split('/').every(p=>/^[A-Za-z0-9_ .()-]+$/.test(p)&&p!=='.'&&p!=='..');}
 function member(file,name){assert(safeMember(name));return execFileSync('unzip',['-p',file,name],{maxBuffer:32*1024*1024});}
+// Check pinned source bytes before accepting even a syntactically valid ZIP.
+export function readPublisherManifest(file,names,expectedSHA256){
+ assert.deepEqual(names,['FMA2Obj.txt']);
+ const bytes=member(file,'FMA2Obj.txt');
+ if(expectedSHA256!==undefined)assert(/^[a-f0-9]{64}$/.test(expectedSHA256)&&digest(bytes)===expectedSHA256,'Pinned publisher manifest differs; replay held');
+ return {bytes,catalog:parseMembership(bytes.toString('utf8'))};
+}
+export function downloadPublisherManifest(url,file,extra=[],expectedSHA256,options={}){
+ if(expectedSHA256!==undefined)assert(/^[a-f0-9]{64}$/.test(expectedSHA256),'Invalid expected publisher manifest hash');
+ const names=downloadZipValidated(url,file,extra,{...options,verify:expectedSHA256===undefined?null:(part,entries)=>readPublisherManifest(part,entries,expectedSHA256)});
+ return readPublisherManifest(file,names,expectedSHA256);
+}
 export function selectMember(names,r){
  const prefix=r.fj+'_'+r.bp+'_'+r.fma+'_';
  const matched=names.filter(n=>safeMember(n)&&path.posix.basename(n).startsWith(prefix)&&/\.obj$/i.test(n));
@@ -94,9 +107,7 @@ export function run(inputDoc=null,{allowHeld=false}={}){
  // a bounded attempt at the version-stamped manifest itself.
  fs.writeFileSync(cookie,'# Netscape HTTP Cookie File\n',{mode:0o600});
  try{download(viewer,path.join(out,'session.html'),session);}catch{console.warn('Viewer bootstrap unavailable; trying direct version-stamped manifest');}
- const manifestZip=path.join(out,'manifest.zip');const manifestNames=downloadZipValidated(manifestURL,manifestZip,session);
- assert.deepEqual(manifestNames,['FMA2Obj.txt']);const bytes=member(manifestZip,'FMA2Obj.txt'),catalog=parseMembership(bytes.toString('utf8'));
- if(doc.expectedManifestSHA256!==undefined)assert(/^[a-f0-9]{64}$/.test(doc.expectedManifestSHA256)&&digest(bytes)===doc.expectedManifestSHA256,'Pinned publisher manifest differs; replay held');
+ const manifestZip=path.join(out,'manifest.zip');const {bytes,catalog}=downloadPublisherManifest(manifestURL,manifestZip,session,doc.expectedManifestSHA256);
  const candidates=validateCandidates(doc,catalog),results=[];
  fs.writeFileSync(path.join(out,'FMA2Obj.txt'),bytes,{flag:'wx',mode:0o600});
  for(const r of candidates){

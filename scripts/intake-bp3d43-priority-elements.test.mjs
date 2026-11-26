@@ -55,3 +55,20 @@ test('persistent bad publisher response never leaves an accepted ZIP',()=>{
  assert.equal(calls,3);assert(!fs.existsSync(out));assert(!fs.existsSync(out+'.partial'));
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+import {createHash} from 'node:crypto';
+import {downloadPublisherManifest} from './intake-bp3d43-priority-elements.mjs';
+test('pinned manifest replay rejects a valid ZIP with changed or malformed membership before retrying',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'bp43-manifest-'));
+ try{
+  const valid='# Data Version 4.3\n# Objects set 4.3\nFMA1 is_a FJ1\n',pin=createHash('sha256').update(valid).digest('hex');
+  const makeZip=(name,content)=>{const f=path.join(dir,name);execFileSync('python3',['-c','import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],"w"); z.writestr("FMA2Obj.txt",sys.argv[2]); z.close()',f,content]);return f;};
+  const malformed=makeZip('malformed.zip','# Data Version 4.3\n# Objects set 4.3\nFMA1 invalid FJ1'),changed=makeZip('changed.zip',valid.replace('FJ1','FJ2')),exact=makeZip('exact.zip',valid),out=path.join(dir,'out.zip');
+  let n=0;const fetch=(_url,dest)=>fs.copyFileSync([malformed,changed,exact][n++],dest);
+  const r=downloadPublisherManifest('https://example.invalid',out,[],pin,{fetch});
+  assert.equal(n,3);assert.equal(r.bytes.toString(),valid);assert(r.catalog.all.has('FJ1'));assert(!fs.existsSync(out+'.partial'));
+  const held=path.join(dir,'held.zip');
+  assert.throws(()=>downloadPublisherManifest('https://example.invalid',held,[],pin,{fetch:(_url,dest)=>fs.copyFileSync(changed,dest)}),/3 bounded attempts/);
+  assert(!fs.existsSync(held));assert(!fs.existsSync(held+'.partial'));
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
