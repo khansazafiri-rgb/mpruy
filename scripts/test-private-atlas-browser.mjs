@@ -12,10 +12,10 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null;
-if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
- const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json"];
- const size={cardio:10,pelvic:9,cns:8,visceral:7,'head-neck':6,axial:5,expanded:3,combined:2,'1':1};
+ const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json","bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json"];
+ const size={bronchial:11,cardio:10,pelvic:9,cns:8,visceral:7,'head-neck':6,axial:5,expanded:3,combined:2,'1':1};
  const selected=mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
  if(mode!=='gap')assert.equal(folders.length,selected.length,'Fresh exact source acquisitions required');
  else assert(folders.length>=1,'Fresh gap acquisition required');
@@ -27,6 +27,7 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
   return m.load43Elements(q,folder,evidence,evidence.matches.length);
  });
  real43=m.combine43Registries(registries);
+ if(mode==='bronchial'){assert.equal(real43.assets.size,246);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,239);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),667805);}
  if(mode==='cardio'){assert.equal(real43.assets.size,224);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,217);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),654933);}
  if(mode==='pelvic'){assert.equal(real43.assets.size,192);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,185);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),590913);}
  if(mode==='cns'){assert.equal(real43.assets.size,177);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,170);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),586721);}
@@ -121,17 +122,18 @@ try{
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect');
   await dialog.locator('#referenceStatus').filter({hasText:real43.assets.size+' kandidat referensi tersedia'}).waitFor();
   assert.equal(await select.locator('option').count(),real43.assets.size);
-  if([40,72,115,129,147,177,192,224].includes(real43.assets.size)){
+  if([40,72,115,129,147,177,192,224,246].includes(real43.assets.size)){
    const region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic'),search=dialog.locator('#referenceSearch');
    await region.selectOption('neck-upper-limb');await system.selectOption('nervous');assert.equal(await select.locator('option').count(),6);
    await search.fill('FJ4273');assert.equal(await select.locator('option').count(),1);
    await search.fill('');await region.selectOption('foot');assert.equal(await select.locator('option').count(),0);assert(await dialog.locator('#referenceLoad').isDisabled());
    await region.selectOption('all');await system.selectOption('ligament');assert.equal(await select.locator('option').count(),16);
-   if([115,129,147,177,192,224].includes(real43.assets.size)){await system.selectOption('cartilage');assert.equal(await select.locator('option').count(),real43.assets.size===224?58:real43.assets.size>=129?57:43);await region.selectOption('spine');assert.equal(await select.locator('option').count(),23);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),20);if(real43.assets.size>=129){await region.selectOption('neck');assert.equal(await select.locator('option').count(),real43.assets.size===224?10:9);await region.selectOption('head-neck');assert.equal(await select.locator('option').count(),5);}await region.selectOption('all');}
-   if(real43.assets.size>=147){await system.selectOption('urinary');assert.equal(await select.locator('option').count(),real43.assets.size>=192?6:5);await region.selectOption('abdomen-pelvis');assert.equal(await select.locator('option').count(),2);await region.selectOption('all');await system.selectOption('lymphoid');assert.equal(await select.locator('option').count(),1);}
+   if([115,129,147,177,192,224,246].includes(real43.assets.size)){await system.selectOption('cartilage');assert.equal(await select.locator('option').count(),real43.assets.size>=224?58:real43.assets.size>=129?57:43);await region.selectOption('spine');assert.equal(await select.locator('option').count(),23);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),20);if(real43.assets.size>=129){await region.selectOption('neck');assert.equal(await select.locator('option').count(),real43.assets.size>=224?10:9);await region.selectOption('head-neck');assert.equal(await select.locator('option').count(),5);}await region.selectOption('all');}
+   if(real43.assets.size>=147){await system.selectOption('urinary');assert.equal(await select.locator('option').count(),real43.assets.size>=192?6:5);await region.selectOption('abdomen-pelvis');assert.equal(await select.locator('option').count(),2);await region.selectOption('all');await system.selectOption('lymphoid');assert.equal(await select.locator('option').count(),real43.assets.size===246?3:1);}
    if(real43.assets.size>=177){await system.selectOption('nervous');await region.selectOption('brain');assert.equal(await select.locator('option').count(),28);await region.selectOption('spine');assert.equal(await select.locator('option').count(),3);await region.selectOption('all');}
    if(real43.assets.size>=192){await system.selectOption('reproductive');assert.equal(await select.locator('option').count(),7);await region.selectOption('scrotum');assert.equal(await select.locator('option').count(),4);await region.selectOption('pelvis');assert.equal(await select.locator('option').count(),3);await region.selectOption('all');}
-   if(real43.assets.size===224){await system.selectOption('heart');assert.equal(await select.locator('option').count(),4);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),4);await region.selectOption('all');await system.selectOption('vascular');assert.equal(await select.locator('option').count(),27);await region.selectOption('lower-limb');assert.equal(await select.locator('option').count(),2);await region.selectOption('all');}
+   if(real43.assets.size>=224){await system.selectOption('heart');assert.equal(await select.locator('option').count(),4);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),4);await region.selectOption('all');await system.selectOption('vascular');assert.equal(await select.locator('option').count(),27);await region.selectOption('lower-limb');assert.equal(await select.locator('option').count(),2);await region.selectOption('all');}
+   if(real43.assets.size===246){await system.selectOption('respiratory');assert.equal(await select.locator('option').count(),24);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),23);await region.selectOption('all');await system.selectOption('lymphoid');await region.selectOption('thorax');assert.equal(await select.locator('option').count(),2);await region.selectOption('all');}
    await system.selectOption('all');assert.equal(await select.locator('option').count(),real43.assets.size);
    console.log('BP3D43 TOPIC FILTER PASS: exact source-ID search, region/system intersection and empty-state load block.');
   }
@@ -147,7 +149,9 @@ try{
   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),feedback=dialog.locator('#referenceChallengeFeedback'),next=dialog.locator('#referenceChallengeNext');
   const currentEntry=async()=>{const id=await viewport.getAttribute('data-rendered-id');const e=real43.inventory.items.find(x=>x.id===id);assert(e,'Challenge must use an audited source element');return e;};
   const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
-  const {challengeLabel}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
+  const {challengeLabel,hasChallengeGlossary}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
+  const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
+  if(real43.assets.size===246)assert.equal(glossaryCount,42);
   await start('mcq','en');
   const choices=challenge.locator('#referenceChallengeAnswers button');
   await choices.first().waitFor();
@@ -166,7 +170,7 @@ try{
   await start('typed','latin');
   const form=challenge.locator('#referenceChallengeTyped'),input=form.locator('#referenceChallengeInput');
   const seen=new Set();
-  for(let i=0;i<10;i++){
+  for(let i=0;i<glossaryCount;i++){
    await form.waitFor({state:'visible'});await input.waitFor({state:'visible'});
    e=await currentEntry();assert(!seen.has(e.name),'Repeated source label');seen.add(e.name);
    const answer=challengeLabel(e,i%3===0?'id':i%3===1?'latin':'en');
@@ -174,13 +178,13 @@ try{
    await feedback.filter({hasText:/^Benar\./}).waitFor();assert(await input.isDisabled());
    await next.click();
   }
-  await challenge.locator('#referenceChallengeProgress').filter({hasText:'10/10 benar · 0 gagal dimuat'}).waitFor();
+  await challenge.locator('#referenceChallengeProgress').filter({hasText:glossaryCount+'/'+glossaryCount+' benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
-  if([115,129,147,177,192,224].includes(real43.assets.size)){
+  if([115,129,147,177,192,224,246].includes(real43.assets.size)){
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
    await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
-   const expected=real43.assets.size===224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
+   const expected=real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
    for(let i=0;i<expected;i++){
     await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/'+expected}).waitFor();
     await choices.first().waitFor({timeout:20000});assert.equal(await choices.count(),4);
@@ -203,7 +207,7 @@ try{
   await start('mcq','id');await feedback.filter({hasText:'Model gagal dimuat; tidak masuk skor.'}).waitFor();assert.equal(await choices.count(),0);assert(await next.isEnabled());
   await page.unroute(pattern,fail);await next.click();await choices.first().waitFor();assert.equal(await choices.count(),4);
   await challenge.locator('#referenceChallengeQuit').click();
-  console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 10 distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
+  console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, '+glossaryCount+' distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
   }else{
    const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),mode=setup.locator('#referenceChallengeMode'),lang=setup.locator('#referenceChallengeLanguage');
    await setup.waitFor({state:'visible'});

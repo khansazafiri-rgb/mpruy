@@ -6,7 +6,7 @@
   "sourceLabelConcepts": 217,
   "distinctRawSHA256": 224,
   "triangles": 654933,
-  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 224 pending. No complete vessel or cardiac chamber or whole-organ claim.",
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 224 passed. No registration, complete vessels or complete organs.",
   "clinicalValidation": false,
   "registrationValidated": false,
   "publicRelease": "NO_GO",
@@ -14,5 +14,16 @@
     "elements": 192,
     "sourceLabelConcepts": 185,
     "workflowRun": 45682861934
+  },
+  "browserReplay": {
+    "commit": "908d3c0c19fd3df33bc50b2895d96afccd70ebc4",
+    "workflowRun": 45685256580,
+    "workflowJob": 139456038581,
+    "conclusion": "success",
+    "renderedActualPublisherGLBs": 224,
+    "sourceLabelConceptsCompleted": 217,
+    "multilingualTypedConcepts": 10,
+    "unitAndIdentityTestsPassed": 46,
+    "registrationValidated": false
   }
 }

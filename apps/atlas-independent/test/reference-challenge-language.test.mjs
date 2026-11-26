@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {challengeLabel,typedReferenceAnswer} from '../src/reference-challenge-language.js';
+import {challengeLabel,typedReferenceAnswer,hasChallengeGlossary} from '../src/reference-challenge-language.js';
 const median={fmaId:'FMA37068',name:'Left median nerve'};
 const vagus={fmaId:'FMA18157',name:'Trunk of left vagus nerve'};
 test('exact multilingual labels and conservative typo',()=>{
@@ -13,4 +13,23 @@ test('reject missing or opposite side, wrong concept and mismatched source ident
  assert.equal(typedReferenceAnswer(vagus,'left vagus nerve').correct,false);
  assert.equal(typedReferenceAnswer(vagus,'truncus nervi vagi dextri').correct,false);
  assert.equal(typedReferenceAnswer({...median,name:'Right median nerve'},'left median nerve').correct,false);
+});
+
+import {REFERENCE43_TOPIC_ROWS} from '../src/reference43-topic-catalog.js';
+test('42 exact source-bound provisional concepts have distinct localized choices and exact scoring',()=>{
+ const pool=[...new Map(REFERENCE43_TOPIC_ROWS.filter(hasChallengeGlossary).map(e=>[e.fmaId,e])).values()];
+ assert.equal(pool.length,42);
+ for(const lang of ['id','en','latin']){
+  const labels=pool.map(e=>challengeLabel(e,lang));
+  assert.equal(new Set(labels.map(s=>s.toLowerCase())).size,pool.length);
+  for(const [i,e] of pool.entries()){
+   assert.equal(typedReferenceAnswer(e,labels[i]).correct,true);
+   for(const [j,other] of labels.entries())if(i!==j)assert.equal(typedReferenceAnswer(e,other).correct,false,e.name+' vs '+other);
+  }
+ }
+});
+test('new organ terms preserve laterality and chamber/segment scope',()=>{
+ const find=id=>REFERENCE43_TOPIC_ROWS.find(e=>e.fmaId===id);
+ for(const [id,bad] of [['FMA7205','ren dexter'],['FMA7204','ginjal'],['FMA9466','ventriculus sinister'],['FMA9531','atrium sinistrum'],['FMA71195','lobus dexter thymi'],['FMA18257','epididymis dextra']])assert.equal(typedReferenceAnswer(find(id),bad).correct,false);
+ assert.equal(hasChallengeGlossary({...find('FMA7205'),name:'Right kidney'}),false);
 });
