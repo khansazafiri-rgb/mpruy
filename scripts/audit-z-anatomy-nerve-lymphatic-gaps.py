@@ -11,6 +11,7 @@ import sys
 import tempfile
 import zipfile
 from collections import defaultdict
+sys.path.insert(0,str(pathlib.Path(__file__).resolve().parent))
 from z_anatomy_neural_identity import canonical as nerve_key
 from z_anatomy_lymphatic_identity import canonical as lymph_key, MIDLINE, TRUNKS, REGIONAL_VESSELS, lymphatic_identity
 

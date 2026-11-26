@@ -1,0 +1,335 @@
+{
+  "schema": 1,
+  "batchId": "axial-bone-32",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Exact tree and membership discovery only; FMA not in current 248-element reference collection, not proof of absence from body inventory. No clinical, registration or release approval.",
+  "rows": [
+    {
+      "fj": "FJ3154",
+      "discoveryBP": "BP23555",
+      "discoveryFMA": "FMA10037",
+      "name": "Tenth thoracic vertebra",
+      "faces": 2790,
+      "vertices": 1584,
+      "bytes": 181310,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3155",
+      "discoveryBP": "BP23648",
+      "discoveryFMA": "FMA10059",
+      "name": "Eleventh thoracic vertebra",
+      "faces": 2674,
+      "vertices": 1593,
+      "bytes": 177706,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3156",
+      "discoveryBP": "BP23373",
+      "discoveryFMA": "FMA10081",
+      "name": "Twelfth thoracic vertebra",
+      "faces": 2772,
+      "vertices": 1593,
+      "bytes": 181289,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3157",
+      "discoveryBP": "BP23647",
+      "discoveryFMA": "FMA13072",
+      "name": "First lumbar vertebra",
+      "faces": 2972,
+      "vertices": 1682,
+      "bytes": 193434,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3158",
+      "discoveryBP": "BP23701",
+      "discoveryFMA": "FMA5018",
+      "name": "First thoracic vertebra",
+      "faces": 1700,
+      "vertices": 1078,
+      "bytes": 113811,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3159",
+      "discoveryBP": "BP23671",
+      "discoveryFMA": "FMA13073",
+      "name": "Second lumbar vertebra",
+      "faces": 3214,
+      "vertices": 1875,
+      "bytes": 213652,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3160",
+      "discoveryBP": "BP23621",
+      "discoveryFMA": "FMA5018",
+      "name": "Second thoracic vertebra",
+      "faces": 1938,
+      "vertices": 1161,
+      "bytes": 126209,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3161",
+      "discoveryBP": "BP23693",
+      "discoveryFMA": "FMA12521",
+      "name": "Third cervical vertebra",
+      "faces": 2030,
+      "vertices": 1323,
+      "bytes": 139208,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3162",
+      "discoveryBP": "BP23454",
+      "discoveryFMA": "FMA13074",
+      "name": "Third lumbar vertebra",
+      "faces": 3272,
+      "vertices": 1849,
+      "bytes": 213996,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3163",
+      "discoveryBP": "BP23513",
+      "discoveryFMA": "FMA5018",
+      "name": "Third thoracic vertebra",
+      "faces": 2038,
+      "vertices": 1175,
+      "bytes": 130173,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3164",
+      "discoveryBP": "BP23757",
+      "discoveryFMA": "FMA12522",
+      "name": "Fourth cervical vertebra",
+      "faces": 2410,
+      "vertices": 1469,
+      "bytes": 161128,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3165",
+      "discoveryBP": "BP23680",
+      "discoveryFMA": "FMA13075",
+      "name": "Fourth lumbar vertebra",
+      "faces": 3512,
+      "vertices": 1968,
+      "bytes": 229439,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3166",
+      "discoveryBP": "BP23564",
+      "discoveryFMA": "FMA5018",
+      "name": "Fourth thoracic vertebra",
+      "faces": 2066,
+      "vertices": 1210,
+      "bytes": 133514,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3167",
+      "discoveryBP": "BP23524",
+      "discoveryFMA": "FMA12523",
+      "name": "Fifth cervical vertebra",
+      "faces": 2196,
+      "vertices": 1539,
+      "bytes": 158493,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3168",
+      "discoveryBP": "BP23617",
+      "discoveryFMA": "FMA13076",
+      "name": "Fifth lumbar vertebra",
+      "faces": 3892,
+      "vertices": 2115,
+      "bytes": 251770,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3169",
+      "discoveryBP": "BP23466",
+      "discoveryFMA": "FMA5018",
+      "name": "Fifth thoracic vertebra",
+      "faces": 2280,
+      "vertices": 1321,
+      "bytes": 147550,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3170",
+      "discoveryBP": "BP23576",
+      "discoveryFMA": "FMA12524",
+      "name": "Sixth cervical vertebra",
+      "faces": 2374,
+      "vertices": 1498,
+      "bytes": 161671,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3171",
+      "discoveryBP": "BP24088",
+      "discoveryFMA": "FMA5018",
+      "name": "Sixth thoracic vertebra",
+      "faces": 2248,
+      "vertices": 1353,
+      "bytes": 148727,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3172",
+      "discoveryBP": "BP23626",
+      "discoveryFMA": "FMA12525",
+      "name": "Seventh cervical vertebra",
+      "faces": 1820,
+      "vertices": 1324,
+      "bytes": 132995,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3173",
+      "discoveryBP": "BP23615",
+      "discoveryFMA": "FMA5018",
+      "name": "Seventh thoracic vertebra",
+      "faces": 2574,
+      "vertices": 1478,
+      "bytes": 167251,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3174",
+      "discoveryBP": "BP23727",
+      "discoveryFMA": "FMA5018",
+      "name": "Eighth thoracic vertebra",
+      "faces": 2424,
+      "vertices": 1392,
+      "bytes": 157078,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3175",
+      "discoveryBP": "BP23429",
+      "discoveryFMA": "FMA10014",
+      "name": "Ninth thoracic vertebra",
+      "faces": 2586,
+      "vertices": 1443,
+      "bytes": 165754,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6310",
+      "discoveryBP": "BP22997",
+      "discoveryFMA": "FMA5018",
+      "name": "Frontal bone",
+      "faces": 14448,
+      "vertices": 8399,
+      "bytes": 999177,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6380",
+      "discoveryBP": "BP23755",
+      "discoveryFMA": "FMA5018",
+      "name": "Left maxilla",
+      "faces": 5086,
+      "vertices": 3460,
+      "bytes": 373338,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6385",
+      "discoveryBP": "BP23158",
+      "discoveryFMA": "FMA5018",
+      "name": "Left parietal bone",
+      "faces": 13152,
+      "vertices": 8343,
+      "bytes": 952874,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6391",
+      "discoveryBP": "BP23760",
+      "discoveryFMA": "FMA5018",
+      "name": "Left temporal bone",
+      "faces": 4908,
+      "vertices": 2973,
+      "bytes": 337444,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6411",
+      "discoveryBP": "BP21571",
+      "discoveryFMA": "FMA5018",
+      "name": "Occipital bone",
+      "faces": 12382,
+      "vertices": 6947,
+      "bytes": 838243,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6468",
+      "discoveryBP": "BP23661",
+      "discoveryFMA": "FMA5018",
+      "name": "Right maxilla",
+      "faces": 5358,
+      "vertices": 3549,
+      "bytes": 391779,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6472",
+      "discoveryBP": "BP23064",
+      "discoveryFMA": "FMA5018",
+      "name": "Right parietal bone",
+      "faces": 12944,
+      "vertices": 7985,
+      "bytes": 923950,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6478",
+      "discoveryBP": "BP23685",
+      "discoveryFMA": "FMA5018",
+      "name": "Right temporal bone",
+      "faces": 4904,
+      "vertices": 3065,
+      "bytes": 346424,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6484",
+      "discoveryBP": "BP22840",
+      "discoveryFMA": "FMA16202",
+      "name": "Sacrum",
+      "faces": 9844,
+      "vertices": 5251,
+      "bytes": 649248,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6485",
+      "discoveryBP": "BP23082",
+      "discoveryFMA": "FMA5018",
+      "name": "Sphenoid bone",
+      "faces": 8034,
+      "vertices": 4920,
+      "bytes": 566968,
+      "group": "skeletal"
+    }
+  ]
+}
