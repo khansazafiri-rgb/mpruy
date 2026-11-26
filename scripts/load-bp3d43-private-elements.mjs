@@ -12,7 +12,7 @@ const read=(folder,name,max=64*1024*1024)=>{
  return fs.readFileSync(f);
 };
 export function load43Elements(privateRoot,folderName,evidence,expectedCount=12){
- assert([2,12,28,32,23,20,14,18,30,15,22].includes(expectedCount));
+ assert([2,10,12,25,28,29,32,23,20,14,18,30,15,22].includes(expectedCount));
  if(expectedCount===2)assert(evidence.batchId==='hyoid-2'&&evidence.matches.every(e=>e.fma==='FMA52749'&&['FJ2772','FJ3201'].includes(e.fj)),'Invalid supplemental hyoid evidence');
  assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folderName),'Explicit local acquisition folder required');
  assert(fs.realpathSync(privateRoot)===privateRoot&&path.basename(privateRoot)==='licensing-quarantine');
@@ -69,7 +69,7 @@ export function combine43Registries(registries){
    fjs.add(e.fj);hashes.add(e.rawSHA256);items.push(e);assets.set(e.id,a);
   }
  }
- assert([2,12,14,15,18,20,22,23,26,27,28,29,30,32,33,34,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,208,209,210,211,212,213,214,216,217,218,219,220,223,224,226,228,231,232,234,246,248].includes(items.length));
+ assert([2,12,14,15,18,20,22,23,26,27,28,29,30,32,33,34,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,208,209,210,211,212,213,214,216,217,218,219,220,223,224,226,228,231,232,234,246,248,376].includes(items.length));
  if(items.length===248){const h=items.filter(e=>['FJ2772','FJ3201'].includes(e.fj));assert.equal(h.length,2);assert(h.every(e=>e.fmaId==='FMA52749'&&e.bpId==='BP22977'&&e.triangles===1196));}
  return {inventory:{schema:1,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false,scope:'Separate 4.3 source elements, not registered body geometry',items},assets};
 }

@@ -12,11 +12,11 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null,realHra=null,serveHra=null,hraStages=[];
-if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended','expansion'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
  const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json","bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json"];
  const size={bronchial:11,cardio:10,pelvic:9,cns:8,visceral:7,'head-neck':6,axial:5,expanded:3,combined:2,'1':1};
- const selected=mode==='hyoid-extended'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
+ const selected=mode==='expansion'?["bp3d43-cerebral-29-dual-source-audit-20261126.json","bp3d43-axial-bone-32-dual-source-audit-20261126.json","bp3d43-cranial-32-dual-source-audit-20261126.json","bp3d43-limb-facial-bone-25-dual-source-audit-20261126.json","bp3d43-cranial-10-dual-source-audit-20261126.json"]:mode==='hyoid-extended'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
  if(mode!=='gap')assert.equal(folders.length,selected.length,'Fresh exact source acquisitions required');
  else assert(folders.length>=1,'Fresh gap acquisition required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
@@ -27,6 +27,7 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
   return m.load43Elements(q,folder,evidence,evidence.matches.length);
  });
  real43=mode==='hyoid'?registries[0]:mode==='hyoid-extended'?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11]]):m.combine43Registries(registries);
+ if(mode==='expansion'){real43.inventory.expansionProfile='BP43_128_20261126';assert.equal(real43.assets.size,128);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,128);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),338220);}
  if(mode==='hyoid-extended'){assert.equal(real43.assets.size,248);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,240);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),670197);}
  if(mode==='hyoid'){assert.equal(real43.assets.size,2);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,1);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),2392);}
  if(mode==='bronchial'){assert.equal(real43.assets.size,246);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,239);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),667805);}
@@ -201,6 +202,13 @@ try{
    const {focusedReferenceQuestions}=await import('../apps/atlas-independent/src/reference-challenge-state.js');
    assert.equal(focusedReferenceQuestions(real43.inventory.items).length,0,'One concept must not produce a four-choice quiz');assert(await dialog.locator('#referenceChallengeStart').isDisabled());assert((await dialog.locator('#referenceChallengePoolCount').innerText()).includes('Minimal 4 konsep berbeda'));
    console.log('BP3D43 HYOID PASS: two source elements, one concept; insufficient challenge pool remains blocked.');
+  }else if(real43.inventory.expansionProfile==='BP43_128_20261126'){
+   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),mode=setup.locator('#referenceChallengeMode'),lang=setup.locator('#referenceChallengeLanguage'),choices=challenge.locator('#referenceChallengeAnswers button');
+   await mode.selectOption('source-mcq');assert(await lang.isDisabled());assert.equal(await lang.inputValue(),'en');
+   assert(await mode.locator('option[value="mcq"]').isDisabled());assert(await mode.locator('option[value="typed"]').isDisabled());
+   await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});const seen=new Set();
+   for(let i=0;i<128;i++){await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/128'}).waitFor();await choices.first().waitFor({timeout:20000});const id=await viewport.getAttribute('data-rendered-id'),e=real43.inventory.items.find(x=>x.id===id);assert(e&&!seen.has(e.fmaId));seen.add(e.fmaId);assert.equal(await choices.count(),4);assert.equal(await viewport.getAttribute('data-rendered-triangles'),String(e.triangles));assert.equal((await choices.allTextContents()).filter(x=>x===e.name).length,1);await challenge.getByRole('button',{name:e.name,exact:true}).click();await challenge.locator('#referenceChallengeFeedback').filter({hasText:/^Benar\\./}).waitFor();await challenge.locator('#referenceChallengeNext').click();}
+   assert.equal(seen.size,128);await challenge.locator('#referenceChallengeProgress').filter({hasText:'128/128 benar · 0 gagal dimuat'}).waitFor();await challenge.locator('#referenceChallengeQuit').click();console.log('BP3D43 EXPANSION SOURCE CHALLENGE PASS: 128 exact concepts, English-only; unreviewed translations excluded.');
   }else if(real43.assets.size!==28){
   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),feedback=dialog.locator('#referenceChallengeFeedback'),next=dialog.locator('#referenceChallengeNext');
   const currentEntry=async()=>{const id=await viewport.getAttribute('data-rendered-id');const e=real43.inventory.items.find(x=>x.id===id);assert(e,'Challenge must use an audited source element');return e;};

@@ -1,0 +1,6 @@
+# Parallel expansion result — 26 November 2026
+
+**NO_GO.** 128/128 dual-source exact element matches, zero held in audit, 338,220 triangles. All 128 FJ, FMA and raw hashes are distinct from the 248-element baseline. Combined inventory target: 376 elements, 368 distinct source concepts, 1,008,417 triangles; 9 HRA organ files remain separate. Source evidence [workflow](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45773406377). Browser regression of expansion is not yet verified. The additional 128 labels are source-English only pending Indonesian/Latin and medical review. All 385 BP3D/HRA rights records remain HOLD. For authorized local preview after exact acquisitions are retained, opt into the audited suite with --include-expansion (implies hyoid). No distribution, anatomical completeness or registration claim.
+
+Native Z-Anatomy [audit](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45773405692) confirms 26/28 bilateral source nerve surfaces, 2 inferior gluteal nerves absent by exact name, and 0/57 exact lymphatic vessel/duct target matches. Geometry is not exported or served, source rights unresolved. Source-family counts are not additive unique anatomy concepts. Do not mirror or synthesize missing assets.
+
