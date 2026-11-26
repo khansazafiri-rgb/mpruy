@@ -18,3 +18,5 @@ test('never accept source ID with wrong identity, classification or release flag
  assert.throws(()=>guidedTracks({...doc(rows),publicRelease:'GO'},[a,b],{respiratory:'Respiratory'}));
  assert.throws(()=>guidedTracks(doc([rows[0],rows[0]]),[a,b],{respiratory:'Respiratory'}));
 });
+
+test('guided allows only explicit cross-system identity links, not arbitrary reassignment',()=>{const x={...a,name:'Thyroid cartilage',fmaId:'FMA55099',group:'skeletal'},r={...row(x,'BODY_MODEL'),group:'respiratory'};const [track]=guidedTracks(doc([r]),[x],{respiratory:'Respiratory'});assert.equal(track.steps[0].representations.length,1);const [bad]=guidedTracks(doc([{...r,group:'heart'}]),[x],{heart:'Heart'});assert.equal(bad.steps[0].representations.length,0);});
