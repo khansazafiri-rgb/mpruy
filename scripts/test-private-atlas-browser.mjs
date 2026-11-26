@@ -120,7 +120,7 @@ try{
  await guided.getByRole('button',{name:'Tutup'}).click();
  await guided.waitFor({state:'hidden'});
  if(realHra){
-  await page.locator('#openReferences').click();
+  await page.getByRole('button',{name:'HRA',exact:true}).click();
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect'),component=dialog.locator('#referenceComponentSelect');
   await dialog.locator('#referenceStatus').filter({hasText:'5 kandidat referensi tersedia'}).waitFor();assert.equal(await select.locator('option').count(),5);
   let n=0;
