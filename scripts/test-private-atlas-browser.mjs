@@ -78,6 +78,9 @@ const fixtureCoverage={schema:1,publicRelease:'NO_GO',clinicalValidation:false,r
  {group:'muscular',target:'Engineering fixture component',status:'EXACT_ELEMENT_SELECTION',fmaId:'FMA3',representations:[{id:selection,name:catalog.items[0].name,group:'muscular',type:'EXACT_ELEMENT_SELECTION'}]},
  {group:'muscular',target:'Unavailable fixture',status:'NOT_FOUND_BY_EXACT_CHECK',fmaId:null,representations:[]}
 ]};
+const {HRA_LEARNING_LINKS,hraLearningReferences}=await import('../apps/atlas-independent/src/hra-learning-links.js');
+const guidedHraRows=realHra&&realHra.assets.size===9&&process.env.ATLAS_TEST_HRA_GROUPS==='1'?[...new Map(HRA_LEARNING_LINKS.map(x=>[x.group+':'+x.target,x])).values()].map(({group,target})=>({group,target,status:'NOT_FOUND_BY_EXACT_CHECK',fmaId:null,representations:[],hraCandidates:hraLearningReferences(group,target,[...realHra.assets.values()].map(x=>x.public))})):[];
+if(guidedHraRows.length){assert.equal(guidedHraRows.length,15);assert.equal(guidedHraRows.reduce((n,r)=>n+r.hraCandidates.length,0),24);assert(guidedHraRows.every(r=>r.hraCandidates.length));fixtureCoverage.rows.push(...guidedHraRows);fixtureCoverage.targets=fixtureCoverage.rows.length;fixtureCoverage.hraReferenceTargets=guidedHraRows.length;}
 const triangle=(id,x)=>({id,positions:new Float32Array([x,0,0,x+1,0,0,x,.8,0]),normals:new Float32Array([0,0,1,0,0,1,0,0,1]),omitted:0});
 const assets=new Map([[ownerA,encodeNativeGlb([triangle('FJ1',-2)],{}).bytes],[ownerB,encodeNativeGlb([triangle('FJ2',0),triangle('FJ3',2)],{}).bytes]]);
 let server,browser;
@@ -153,6 +156,31 @@ try{
  assert((await guided.innerText()).includes('1 belum tersedia'));
  await guided.getByRole('button',{name:'Tutup'}).click();
  await guided.waitFor({state:'hidden'});
+ if(guidedHraRows.length){
+  await page.getByRole('button',{name:'Belajar',exact:true}).click();
+  const system=guided.getByRole('combobox',{name:'Pilih sistem anatomi'}),choice=guided.getByRole('combobox',{name:'Pilih representasi sumber'}),dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport');
+  await system.locator('option[value="reproductive"]').waitFor({state:'attached'});
+  let opened=0;
+  for(const group of [...new Set(guidedHraRows.map(r=>r.group))]){
+   await system.selectOption(group);
+   const rows=guidedHraRows.filter(r=>r.group===group);
+   for(const [i,row] of rows.entries()){
+    await guided.getByRole('heading',{name:row.target,exact:true}).waitFor();
+    assert.equal(await choice.locator('option').count(),row.hraCandidates.length);
+    for(const a of row.hraCandidates){
+     await choice.selectOption(a.id);await guided.getByRole('button',{name:'Tampilkan 3D'}).click();
+     const source=realHra.assets.get(a.assetId).public,record=(a.kind==='GROUP'?source.sourceGroups:source.sourceCrosswalk).find(x=>x.index===a.nodeIndex);
+     const nodes=a.kind==='GROUP'?record.descendantMeshes.map(x=>x.index).sort((a,b)=>a-b):[a.nodeIndex];
+     await page.waitForFunction(({id,node,nodes})=>{const e=document.getElementById('referenceViewport');return e.dataset.renderedId===id&&e.dataset.isolatedNode===String(node)&&JSON.stringify(JSON.parse(e.dataset.isolatedSourceNodes||'[]'))===JSON.stringify(nodes);},{id:a.assetId,node:a.nodeIndex,nodes},{timeout:60000});
+     assert((await dialog.locator('#referenceStatus').innerText()).includes(a.ontologyId));
+     await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});await guided.getByRole('status').filter({hasText:'tidak dihitung sebagai struktur utuh'}).waitFor();assert((await guided.innerText()).includes('0/0 checkpoint tersedia'));opened++;
+    }
+    if(i<rows.length-1)await guided.getByRole('button',{name:'Berikutnya'}).click();
+   }
+  }
+  assert.equal(opened,24);await guided.getByRole('button',{name:'Tutup'}).click();await guided.waitFor({state:'hidden'});
+  console.log('HRA GUIDED BROWSER PASS: 15 checkpoints, 24 exact source node/group opens and isolated descendant sets; no coverage promotion.');
+ }
  if(realLymph){
   const dialog=page.locator('#referenceDialog'),link=dialog.locator('#lymphaticHierarchyLink');
   let response=page.waitForResponse(r=>r.url().endsWith(hierarchyRoute)&&r.request().method()==='HEAD');await page.getByRole('button',{name:'HRA',exact:true}).click();assert.equal((await response).status(),404);assert(await link.isHidden());await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
@@ -210,6 +238,7 @@ try{
    await system.selectOption('all');assert.equal(await select.locator('option').count(),real43.assets.size);
    console.log('BP3D43 TOPIC FILTER PASS: exact source-ID search, region/system intersection and empty-state load block.');
   }
+  if(real43.assets.size===24){const system=dialog.locator('#referenceSystemTopic'),region=dialog.locator('#referenceRegionTopic');await system.selectOption('muscular');assert.equal(await select.locator('option').count(),24);await region.selectOption('upper-limb');assert.equal(await select.locator('option').count(),6);await region.selectOption('lower-limb');assert.equal(await select.locator('option').count(),18);await region.selectOption('all');await system.selectOption('all');}
   if([2,248].includes(real43.assets.size)){const system=dialog.locator('#referenceSystemTopic'),region=dialog.locator('#referenceRegionTopic');await system.selectOption('skeletal');await region.selectOption('neck');assert.equal(await select.locator('option').count(),2);await system.selectOption('all');await region.selectOption('all');}
   if(real43.assets.size===376){
    const {REFERENCE43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-topic-catalog.js'),{SUPPLEMENTAL43_TOPIC_ROWS,EXPANSION43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-topics.js');

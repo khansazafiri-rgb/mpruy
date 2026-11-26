@@ -1,6 +1,6 @@
 // Exact source hierarchy links, derived from retained HRA audits (2026-11-26).
 // Never a registered body model or whole-concept coverage claim.
-const links=[
+export const HRA_LEARNING_LINKS=[
   {
     "group": "reproductive",
     "target": "uterus",
@@ -221,7 +221,7 @@ const links=[
 const key=s=>String(s).trim().toLowerCase();
 export function hraLearningReferences(group,target,entries){
  const result=[];
- for(const link of links.filter(x=>x.group===group&&x.target===key(target))){
+ for(const link of HRA_LEARNING_LINKS.filter(x=>x.group===group&&x.target===key(target))){
   for(const e of entries){
    if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.approvedForDistribution!==false||e.registrationValidated!==false||!e.source?.startsWith('https://cdn.humanatlas.io/digital-objects/ref-organ/'+link.organ+'/'))continue;
    const rows=link.kind==='GROUP'?e.sourceGroups:e.sourceCrosswalk;
