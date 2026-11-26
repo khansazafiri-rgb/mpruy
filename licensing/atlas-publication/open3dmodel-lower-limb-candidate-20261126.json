@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "source": "Open3DModel - Lower limb - English labels",
+  "publisherPage": "https://anatomytool.org/content/open3dmodel-lower-limb-english-labels",
+  "publisherDownloadPage": "https://anatomytool.org/open3dmodel-create",
+  "archiveURL": "https://caskanatomy.info/open3dmodelfiles/lower-limb/lower-limb-glb.zip",
+  "archiveSHA256": "82ad6894bec6e77bb2aba970105f6ee7f0f694de93494932eb634fd0150745c7",
+  "glbFile": "lower-limb.glb",
+  "glbSHA256": "001677bac4e8b4f44f3be0c3695b0123bc9fad1df9a2bddceecccf4a6eef01eb",
+  "hashEvidence": "https://github.com/benben000000/anatomy-game/blob/main/private/assets/open3dmodel/PROVENANCE.json",
+  "hashEvidenceStatus": "HOLD_ARCHIVE_HASH_MISMATCH",
+  "reportedLicense": "CC BY-SA 4.0, model-specific publisher scope not independently verified",
+  "publisherPageStatus": "HTTP 502 on 2026-11-26",
+  "targetLabels": [
+    "Femoral nerve",
+    "Sciatic nerve",
+    "Tibial nerve",
+    "Common fibular nerve",
+    "Deep fibular nerve",
+    "Superficial fibular nerve",
+    "Obturator nerve",
+    "Sural nerve",
+    "Saphenous nerve",
+    "Medial plantar nerve",
+    "Lateral plantar nerve",
+    "Superior gluteal nerve",
+    "Inferior gluteal nerve",
+    "Pudendal nerve"
+  ],
+  "scope": "Audit exact source GLB metadata and named mesh-node candidates only. No Draco decoding, rendering, anatomical validity, whole-nerve continuity, or inferred laterality.",
+  "assetRightsReviewed": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "failedReplay": {
+    "run": 45676416547,
+    "job": 139425046544,
+    "reason": "archive hash or size mismatch; source download succeeded; actual digest not yet logged",
+    "unitTests": "PASS"
+  },
+  "licenseReviewNotes": [
+    "Third-party source review reports future-tense license grant on landing page and no license file in distributed archive. Exact publisher grant and contributor chain remain unverified.",
+    "Do not replace checksum automatically or import changed archive. Diagnose wrapper vs GLB change separately."
+  ]
+}
