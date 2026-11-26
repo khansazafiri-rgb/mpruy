@@ -273,8 +273,8 @@ async function init(){
  try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Tampilan anterior sumber BP3D · Z superior · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;configureSourceFrame(true);}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent){await initElementSelection();await initPriority();}notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
-mountReferences(base);
-const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,ready:()=>initialized});
+const referenceViewer=mountReferences(base);
+const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,openReference:referenceViewer.open43,ready:()=>initialized});
 $('openGuided').onclick=openGuided;
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),

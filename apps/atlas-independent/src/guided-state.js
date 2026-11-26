@@ -3,9 +3,9 @@
 import {permittedLearningGroup} from './learning-links.js';
 const kinds=new Set(['BODY_MODEL','EXACT_ELEMENT_SELECTION','NATIVE_CONTEXT_CANDIDATE','ISOLATED_REFERENCE']);
 const validId=id=>/^(bp|sel)-[a-f0-9]{24}$/.test(id||'');
-export function guidedTracks(doc,entries,groups){
+export function guidedTracks(doc,entries,groups,referenceEntries=[]){
  if(doc?.schema!==1||doc.publicRelease!=='NO_GO'||doc.clinicalValidation!==false||doc.registrationValidated!==false||!Array.isArray(doc.rows)||doc.rows.length!==doc.targets||doc.rows.length>3000)throw Error('Laporan belajar tidak valid');
- const byId=new Map(entries.map(e=>[e.id,e])),seen=new Set(),tracks=new Map(Object.entries(groups).map(([id,label])=>[id,{id,label,steps:[]}]));
+ const referenceById=new Map(referenceEntries.map(e=>[e.id,e])),byId=new Map(entries.map(e=>[e.id,e])),seen=new Set(),tracks=new Map(Object.entries(groups).map(([id,label])=>[id,{id,label,steps:[]}]));
  for(const r of doc.rows){
   if(!tracks.has(r.group)||typeof r.target!=='string'||!r.target.trim()||typeof r.status!=='string'||!Array.isArray(r.representations))throw Error('Checkpoint tidak valid');
   const key=r.group+':'+r.target.trim().toLowerCase();if(seen.has(key))throw Error('Checkpoint duplikat');seen.add(key);
@@ -17,7 +17,13 @@ export function guidedTracks(doc,entries,groups){
    if(type!==a.type||candidates.some(c=>c.id===e.id))continue;
    candidates.push({id:e.id,type,name:e.name});
   }
-  tracks.get(r.group).steps.push({key,target:r.target,fmaId:r.fmaId||null,status:r.status,representations:candidates});
+  const references=[];
+  if(r.status==='NOT_FOUND_BY_EXACT_CHECK'&&Array.isArray(r.referenceCandidates))for(const a of r.referenceCandidates){
+   const e=referenceById.get(a.id);
+   if(!e||!/^bp43-[a-f0-9]{24}$/.test(a.id)||a.type!=='BP43_SINGLE_SOURCE_ELEMENT'||a.name!==e.name||a.fmaId!==e.fmaId||a.fj!==e.fj||e.name.trim().toLowerCase()!==r.target.trim().toLowerCase()||e.scope!=='SINGLE_SOURCE_ELEMENT'||e.approvedForDistribution!==false||e.registrationValidated!==false||e.clinicalValidation!==false||references.some(x=>x.id===e.id))continue;
+   references.push({id:e.id,type:a.type,name:e.name,fj:e.fj});
+  }
+  tracks.get(r.group).steps.push({key,target:r.target,fmaId:r.fmaId||null,status:r.status,representations:candidates,references});
  }
  return [...tracks.values()].filter(t=>t.steps.length);
 }
