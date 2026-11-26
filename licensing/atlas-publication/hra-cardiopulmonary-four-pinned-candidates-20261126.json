@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Four original independent HRA organ reference objects (male/female respiratory and heart). 176 source crosswalk rows, not necessarily individual mesh nodes, independent anatomy concepts or complete structures. Exact file and crosswalk verification only. No cross-sex or cross-source registration.",
+  "rows": [
+    {
+      "id": "lung-female",
+      "version": "v1.4",
+      "filename": "3d-vh-f-lung.glb",
+      "bytes": 23255188,
+      "glbBlob": "6fcfff36d2d11b8c3884de40ad9515e830444d11",
+      "metadataBlob": "fa44414d5fe35cbd3ca4b91e25c9966c7f5b4a56",
+      "crosswalkBlob": "c6ccde655f8601fa5d47bbb0c25fed253e092e7f",
+      "doi": "https://doi.org/10.48539/HBM994.HXJP.575",
+      "expectedCrosswalkRows": 70,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-female/v1.4/assets/3d-vh-f-lung.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lung-female/v1.4/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "lung-male",
+      "version": "v1.4",
+      "filename": "3d-vh-m-lung.glb",
+      "bytes": 10942332,
+      "glbBlob": "900ef332cb4b72fdf70c61f4cdb0f73f9e39c241",
+      "metadataBlob": "b7fbdf23f39c7a5077c14230bfe99ef9ffae7e1c",
+      "crosswalkBlob": "228adf6f8cca021c1427c2ea5aa4d993fbfdc26f",
+      "doi": "https://doi.org/10.48539/HBM532.KLZD.394",
+      "expectedCrosswalkRows": 72,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-male/v1.4/assets/3d-vh-m-lung.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lung-male/v1.4/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "heart-female",
+      "version": "v1.3",
+      "filename": "3d-vh-f-heart.glb",
+      "bytes": 1745560,
+      "glbBlob": "750adbdaf5e43ece6bbbeaa8a283ebb0b7b20f5c",
+      "metadataBlob": "fc9e8d572a57f9dc544ac85fb459d2e60c78e22e",
+      "crosswalkBlob": "8b3492cec6a3b4a4433b60dae84ccbfc17085231",
+      "doi": "https://doi.org/10.48539/HBM449.SHRV.225",
+      "expectedCrosswalkRows": 17,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-female/v1.3/assets/3d-vh-f-heart.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/heart-female/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "heart-male",
+      "version": "v1.3",
+      "filename": "3d-vh-m-heart.glb",
+      "bytes": 4071772,
+      "glbBlob": "6faffa67aaa6588d9d1058021d5b335d781bba1c",
+      "metadataBlob": "f0e80e15b3cd909af93b88dc2c9eb16ef956087d",
+      "crosswalkBlob": "b26446dc3690c0c4635f7f14068a4efe1f9fbbec",
+      "doi": "https://doi.org/10.48539/HBM564.WKNG.249",
+      "expectedCrosswalkRows": 17,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-male/v1.3/assets/3d-vh-m-heart.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/heart-male/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne"
+      ],
+      "approvedForDistribution": false
+    }
+  ],
+  "held": [
+    {
+      "id": "lymph-node-female-left",
+      "version": "v1.0",
+      "reason": "Ce3D and mouse/human source caveat"
+    },
+    {
+      "id": "lymph-node-female-right",
+      "version": "v1.0",
+      "reason": "Ce3D and mouse/human source caveat"
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

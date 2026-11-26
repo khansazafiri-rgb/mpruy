@@ -1,0 +1,22 @@
+name: Atlas HRA cardiopulmonary four pinned source audit
+on:
+  push:
+    branches: [feat/atlas-hra-cardiopulmonary-four-20261126]
+  pull_request:
+    branches: [feat/atlas-hra-female-five-20261126]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-hra-female-five.test.mjs
+      - name: Compare exact HRA source files and crosswalks
+        run: node scripts/audit-hra-female-five.mjs cardiopulmonary-four
