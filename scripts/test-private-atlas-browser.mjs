@@ -42,7 +42,7 @@ if(process.env.ATLAS_TEST_HRA_FEMALE==='1'||process.env.ATLAS_TEST_HRA_COMBINED=
  const q=path.join(root,'local-data/licensing-quarantine'),m=await import('./load-hra-female-five.mjs');
  const batches=process.env.ATLAS_TEST_HRA_COMBINED==='1'?['female-five','cardiopulmonary-four']:['female-five'];
  realHra={assets:new Map(),blocked:[]};
- try{for(const batch of batches){const folder=await m.stageHraBatch(q,batch);hraStages.push(path.join(q,folder));realHra=m.mergeHraFemaleReferences(realHra,m.loadHraBatch(q,folder,batch));}}catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
+ try{for(const batch of batches){const folder=await m.stageHraBatch(q,batch);hraStages.push(path.join(q,folder));realHra=m.mergeHraFemaleReferences(realHra,m.loadHraBatch(q,folder,batch,process.env.ATLAS_TEST_HRA_GROUPS==='1'));}}catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
  serveHra=(await import('./atlas-hra-private-reference.mjs')).serveHraReference;assert.equal(realHra.assets.size,batches.length===2?9:5);
 }
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
@@ -130,12 +130,13 @@ try{
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect'),component=dialog.locator('#referenceComponentSelect');
   await dialog.locator('#referenceStatus').filter({hasText:realHra.assets.size+' kandidat referensi tersedia'}).waitFor();assert.equal(await select.locator('option').count(),realHra.assets.size);
   let n=0;
-  let isolated=0;
+  let isolated=0,groupCount=0;
   for(const [id,a] of realHra.assets){
    await select.selectOption(id);await dialog.locator('#referenceLoad').click();
-   await page.waitForFunction(({id,count})=>{const v=document.getElementById('referenceViewport');return v.dataset.renderedId===id&&Number(v.dataset.renderedTriangles)>0&&v.dataset.renderedComponents===String(count);},{id,count:a.public.sourceCrosswalk.length},{timeout:60000});
-   assert.equal(await component.locator('option').count(),a.public.sourceCrosswalk.length);
+   await page.waitForFunction(({id,count})=>{const v=document.getElementById('referenceViewport');return v.dataset.renderedId===id&&Number(v.dataset.renderedTriangles)>0&&v.dataset.renderedComponents===String(count);},{id,count:a.public.sourceCrosswalk.length+(a.public.sourceGroups?.length||0)},{timeout:60000});
+   assert.equal(await component.locator('option').count(),a.public.sourceCrosswalk.length+(a.public.sourceGroups?.length||0));
    for(const c of a.public.sourceCrosswalk){assert((await component.locator('option[value="'+c.index+'"]').textContent()).includes(c.ontologyId));n++;}
+   for(const g of a.public.sourceGroups||[]){const option=component.locator('option[value="'+g.index+'"]');assert((await option.textContent()).includes('[kelompok sumber]'));await component.selectOption(String(g.index));await dialog.locator('#referenceComponentIsolate').click();assert.equal(await viewport.getAttribute('data-isolated-node'),String(g.index));const actual=JSON.parse(await viewport.getAttribute('data-isolated-source-nodes'));assert.deepEqual(actual,g.descendantMeshes.map(x=>x.index).sort((a,b)=>a-b));await dialog.locator('#referenceComponentRestore').click();assert.equal(await viewport.getAttribute('data-isolated-node'),null);assert.equal(await viewport.getAttribute('data-isolated-source-nodes'),null);groupCount++;}
    const target=a.public.name==='uterus female'?'UBERON:0000002':a.public.name.startsWith('heart ')?'UBERON:0002135':a.public.name.startsWith('lung ')?'UBERON:0012065':null;
    if(target){
     const c=a.public.sourceCrosswalk.find(c=>c.ontologyId===target);assert(c,'Audited isolation target absent');
@@ -148,6 +149,8 @@ try{
     assert.equal(await viewport.getAttribute('data-isolated-node'),null);await dialog.locator('#referenceComponentSearch').fill('');isolated++;
    }
   }
+  assert.equal(groupCount,process.env.ATLAS_TEST_HRA_GROUPS==='1'?37:0);
+  if(groupCount)console.log('HRA SOURCE GROUP BROWSER PASS: '+groupCount+' exact native descendant sets isolated and restored; no held label exposed.');
   assert.equal(n,realHra.assets.size===9?160:19);assert.equal(isolated,realHra.assets.size===9?5:1);
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});await waitCounts(3,1);
   console.log(realHra.assets.size===9?'HRA COMBINED REAL BROWSER PASS: 9 original organs, 160 exact mapped source nodes, 5 isolation/restore checks; body inventory unchanged.':'HRA FEMALE REAL BROWSER PASS: 5 original organs, 19 exact mapped source nodes, cervix isolation and restore; body inventory unchanged.');

@@ -8,6 +8,7 @@ export function referenceEntries(doc){
    e.approvedForDistribution!==false||e.registrationValidated!==false||!Number.isInteger(e.meshCount)||e.meshCount<1)throw Error('Identitas referensi HRA tidak valid');
   const version=e.source.split('/')[6];if(version!==e.version)throw Error('Versi referensi tidak sesuai');
   if(e.sourceCrosswalk!==undefined){if(!Array.isArray(e.sourceCrosswalk)||!e.sourceCrosswalk.length)throw Error('Crosswalk HRA tidak valid');const idx=new Set();for(const c of e.sourceCrosswalk){if(!Number.isInteger(c.index)||c.index<0||idx.has(c.index)||typeof c.nodeName!=='string'||!c.nodeName.trim()||typeof c.label!=='string'||!c.label.trim()||!/^(FMA|UBERON):\d+$/.test(c.ontologyId))throw Error('Identitas crosswalk HRA tidak valid');idx.add(c.index);}}
+  if(e.sourceGroups!==undefined){if(!e.sourceCrosswalk||!Array.isArray(e.sourceGroups)||e.sourceGroups.length>100)throw Error('Inventaris kelompok HRA tidak valid');const used=new Set(e.sourceCrosswalk.map(c=>c.index));for(const g of e.sourceGroups){if(!Number.isInteger(g.index)||g.index<0||used.has(g.index)||typeof g.nodeName!=='string'||!g.nodeName||typeof g.label!=='string'||!g.label||!/^(FMA|UBERON):\d+$/.test(g.ontologyId)||!Array.isArray(g.descendantMeshes)||!g.descendantMeshes.length)throw Error('Identitas kelompok HRA tidak valid');used.add(g.index);}}
   ids.add(e.id);
  }
  return doc.items;
@@ -70,4 +71,31 @@ export function applyHraCrosswalk(components,crosswalk){
   return {...hits[0],label:row.label,ontologyId:row.ontologyId};
  });
  return result.sort((a,b)=>a.label.localeCompare(b.label)||a.index-b.index);
+}
+
+// Source groups are audited parent nodes, not independent mesh or new concepts.
+export function verifyHraGroupRows(gltf,groups){
+ const nodes=gltf?.nodes,meshes=gltf?.meshes;
+ if(!Array.isArray(nodes)||!Array.isArray(meshes)||!Array.isArray(groups))throw Error('Invalid HRA hierarchy');
+ const used=new Set();
+ for(const g of groups){
+  const root=nodes[g.index];if(!root||root.name!==g.nodeName||root.mesh!==undefined||used.has(g.index)||nodes.filter(n=>n.name===g.nodeName).length!==1)throw Error('Source group identity differs');
+  used.add(g.index);
+  const seen=new Set([g.index]),actual=[];
+  function descend(i){const n=nodes[i];if(!Number.isInteger(i)||!n||seen.has(i))throw Error('Ambiguous source hierarchy');seen.add(i);if(n.mesh!==undefined){if(!Number.isInteger(n.mesh)||!meshes[n.mesh]||typeof n.name!=='string'||!n.name)throw Error('Invalid descendant mesh');actual.push({index:i,nodeName:n.name,meshIndex:n.mesh});}for(const c of n.children||[])descend(c);}
+  for(const c of root.children||[])descend(c);
+  if(!actual.length||actual.length!==g.descendantMeshes.length||actual.some((x,i)=>{const a=g.descendantMeshes[i];return x.index!==a.index||x.nodeName!==a.nodeName||x.meshIndex!==a.meshIndex;}))throw Error('Audited source descendant set differs');
+ }
+ return groups;
+}
+export function applyHraGroups(gltf,rawComponents,crosswalk,groups){
+ const direct=applyHraCrosswalk(rawComponents,crosswalk);
+ if(groups===undefined)return direct;
+ verifyHraGroupRows(gltf,groups);
+ const result=groups.map(g=>{
+  const children=g.descendantMeshes.map(d=>{const hit=rawComponents.filter(c=>c.index===d.index&&c.label===d.nodeName);if(hit.length!==1||!hit[0].meshes.length)throw Error('Source group descendant not rendered');return hit[0];});
+  const all=children.flatMap(c=>c.meshes);if(new Set(all).size!==all.length)throw Error('Repeated group mesh');
+  return {index:g.index,label:g.label,ontologyId:g.ontologyId,meshes:all,sourceGroup:true,descendantNodeIndices:g.descendantMeshes.map(x=>x.index)};
+ });
+ return [...direct,...result].sort((a,b)=>a.label.localeCompare(b.label)||a.index-b.index);
 }
