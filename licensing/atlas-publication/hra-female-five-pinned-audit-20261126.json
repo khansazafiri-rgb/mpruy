@@ -396,5 +396,15 @@
   "sourceCommit": "ff26f366360535e87b57fe5500ffc54e65d30d50",
   "workflowRun": 45752523433,
   "workflowJob": 139683417134,
-  "secondSuccessfulRun": 45752521798
+  "secondSuccessfulRun": 45752521798,
+  "browserReplay": {
+    "commit": "2b0effeeadce4d80db6bc0671b686efaa10257d4",
+    "workflowRun": 45753127844,
+    "workflowJob": 139685375717,
+    "conclusion": "success",
+    "renderedOriginalGLBs": 5,
+    "exactMappedNodes": 19,
+    "cervixIsolationRestore": true,
+    "bodyInventoryUnchanged": true
+  }
 }

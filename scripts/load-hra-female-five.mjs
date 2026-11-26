@@ -10,10 +10,18 @@ import {gitBlob} from './audit-hra-female-five.mjs';
 const root=new URL('../',import.meta.url),dir='licensing/atlas-publication/';
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const sha=b=>createHash('sha256').update(b).digest('hex');
-const source=read(new URL(dir+'hra-female-five-pinned-candidates-20261126.json',root));
-const proof=read(new URL(dir+'hra-female-five-pinned-audit-20261126.json',root));
-assert(source.publicRelease==='NO_GO'&&proof.publicRelease==='NO_GO'&&proof.matched===5&&proof.held===0&&proof.exactNamedMeshNodes===19&&source.publisherRevision===proof.publisherRevision);
-const rows=source.rows.map(s=>{const a=proof.rows.find(x=>x.id===s.id&&x.version===s.version);assert(a?.status==='EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES'&&a.assetURL===s.assetURL&&a.bytes===s.bytes&&a.license===s.sourceLicense&&a.doi===s.doi&&a.approvedForDistribution===false&&a.registrationValidated===false&&a.clinicalValidation===false);assert(/^[a-f0-9]{64}$/.test(a.sha256));return {s,a,id:sha(s.assetURL).slice(0,24)};});
+const configs={
+ 'female-five':{source:'hra-female-five-pinned-candidates-20261126.json',proof:'hra-female-five-pinned-audit-20261126.json',count:5,labels:19},
+ 'cardiopulmonary-four':{source:'hra-cardiopulmonary-four-pinned-candidates-20261126.json',proof:'hra-cardiopulmonary-four-source-audit-20261126.json',count:4,labels:141}
+};
+function batchRows(batch){
+ assert(Object.hasOwn(configs,batch),'Unknown HRA reference batch');
+ const c=configs[batch],source=read(new URL(dir+c.source,root)),proof=read(new URL(dir+c.proof,root));
+ assert(source.publicRelease==='NO_GO'&&proof.publicRelease==='NO_GO'&&source.rows.length===c.count&&proof.rows.length===c.count&&proof.matched===c.count&&proof.held===0&&proof.exactNamedMeshNodes===c.labels&&source.publisherRevision===proof.publisherRevision);
+ const rows=source.rows.map(s=>{const a=proof.rows.find(x=>x.id===s.id&&x.version===s.version);assert(a?.status==='EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES'&&a.assetURL===s.assetURL&&a.bytes===s.bytes&&a.license===s.sourceLicense&&a.doi===s.doi&&a.approvedForDistribution===false&&a.registrationValidated===false&&a.clinicalValidation===false);assert(/^[a-f0-9]{64}$/.test(a.sha256));return {s,a,id:sha(s.assetURL).slice(0,24)};});
+ assert.equal(new Set(rows.map(r=>r.id)).size,c.count);
+ return rows;
+}
 function checkRoot(q){assert(fs.realpathSync(q)===q&&path.basename(q)==='licensing-quarantine','Explicit quarantine root required');}
 function verifyBytes(b,s,a){
  assert(b.length===s.bytes&&sha(b)===a.sha256&&gitBlob(b)===s.glbBlob,'Audited HRA bytes changed');
@@ -25,9 +33,10 @@ function verifyBytes(b,s,a){
  assert.equal(labels.length,a.exactMeshNodeCount);
  return labels;
 }
-export async function stageHraFemaleFive(q){
+export async function stageHraBatch(q,batch){
+ const rows=batchRows(batch);
  fs.mkdirSync(q,{recursive:true,mode:0o700});checkRoot(q);
- const folder=fs.mkdtempSync(path.join(q,'hra-female-five-'));fs.chmodSync(folder,0o700);
+ const folder=fs.mkdtempSync(path.join(q,'hra-'+batch+'-'));fs.chmodSync(folder,0o700);
  try{
   for(const {s,a,id} of rows){
    const response=await fetch(s.assetURL,{redirect:'error',signal:AbortSignal.timeout(60000)});
@@ -39,17 +48,19 @@ export async function stageHraFemaleFive(q){
   return path.basename(folder);
  }catch(e){fs.rmSync(folder,{recursive:true,force:true});throw e;}
 }
-export function loadHraFemaleFive(q,folder){
- checkRoot(q);assert(/^hra-female-five-[A-Za-z0-9_-]+$/.test(folder),'Explicit female reference folder required');
+export function loadHraBatch(q,folder,batch){
+ const rows=batchRows(batch);checkRoot(q);const prefix='hra-'+batch+'-';assert(typeof folder==='string'&&folder.startsWith(prefix)&&/^[A-Za-z0-9_-]+$/.test(folder.slice(prefix.length)),'Explicit matching reference folder required');
  const base=path.join(q,folder);assert(fs.realpathSync(base)===base);
  const assets=new Map();
  for(const {s,a,id} of rows){
   const file=path.join(base,id+'.glb');assert(fs.realpathSync(file)===file&&fs.statSync(file).isFile()&&fs.statSync(file).size===s.bytes);
   const crosswalk=verifyBytes(fs.readFileSync(file),s,a);
-  assets.set(id,{file,bytes:a.bytes,sha256:a.sha256,public:{id,name:s.id.replaceAll('-',' '),version:s.version,source:s.assetURL,meshCount:a.meshCount,frame:'HRA female reference source frame (not registered to BP3D)',sourceCrosswalk:crosswalk,sourceLicense:'CC-BY-4.0 (publisher stated; release held)',approvedForDistribution:false,registrationValidated:false}});
+  assets.set(id,{file,bytes:a.bytes,sha256:a.sha256,public:{id,name:s.id.replaceAll('-',' '),version:s.version,source:s.assetURL,meshCount:a.meshCount,frame:'HRA '+(s.id.includes('-female')?'female':'male')+' reference source frame (not registered to BP3D)',sourceCrosswalk:crosswalk,sourceLicense:'CC-BY-4.0 (publisher stated; release held)',approvedForDistribution:false,registrationValidated:false}});
  }
- assert.equal(assets.size,5);return {assets,blocked:[]};
+ assert.equal(assets.size,rows.length);return {assets,blocked:[]};
 }
+export const stageHraFemaleFive=q=>stageHraBatch(q,'female-five');
+export const loadHraFemaleFive=(q,folder)=>loadHraBatch(q,folder,'female-five');
 export function mergeHraFemaleReferences(existing,added){
  const assets=new Map(existing.assets);
  for(const [id,a] of added.assets){
@@ -60,7 +71,7 @@ export function mergeHraFemaleReferences(existing,added){
  return {assets,blocked:[...existing.blocked,...added.blocked]};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
- assert.deepEqual(process.argv.slice(2),['--stage'],'Explicit --stage only');
+ const args=process.argv.slice(2);assert(args[0]==='--stage'&&args.length<=2,'Explicit --stage [batch] only');
  const q=fileURLToPath(new URL('local-data/licensing-quarantine',root));
- const folder=await stageHraFemaleFive(q);console.log('HRA FEMALE PRIVATE FOLDER '+folder);
+ const folder=await stageHraBatch(q,args[1]||'female-five');console.log('HRA PRIVATE FOLDER '+folder);
 }

@@ -15,7 +15,7 @@ export function mountReferences(base){
  const dialog=$('referenceDialog'),host=$('referenceViewport'),tracker=requestTracker();
  let sourceKind='hra',entries=[],renderer=null,controls=null,camera=null,scene=null,model=null,observer=null,selected=null,components=[],visibility=new Map(),activeComponent=null;
  const status=t=>$('referenceStatus').textContent=t;
- function clearComponents(){delete host.dataset.renderedId;delete host.dataset.renderedTriangles;delete host.dataset.renderedComponents;components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
+ function clearComponents(){delete host.dataset.renderedId;delete host.dataset.renderedTriangles;delete host.dataset.renderedComponents;delete host.dataset.isolatedNode;components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
  function listComponents(){const select=$('referenceComponentSelect'),q=$('referenceComponentSearch').value.trim().toLowerCase();select.replaceChildren();for(const c of components.filter(c=>c.label.toLowerCase().includes(q)||String(c.index)===q||c.ontologyId?.toLowerCase().includes(q))){const option=document.createElement('option');option.value=String(c.index);option.textContent=c.label+(c.ontologyId?' · '+c.ontologyId:'')+' · node '+c.index;select.append(option);}$('referenceComponentIsolate').disabled=!select.options.length;}
  function cleanup(){
   clearComponents();
@@ -99,8 +99,8 @@ export function mountReferences(base){
   $('referenceLoad').disabled=!select.options.length;
  }
  $('referenceComponentSearch').oninput=listComponents;
- $('referenceComponentIsolate').onclick=()=>{const c=components.find(c=>String(c.index)===$('referenceComponentSelect').value);if(!c||!isolateSourceComponent([...visibility.keys()],c,visibility)){status('Komponen tidak dapat diisolasi secara tepat.');return;}activeComponent=c;fit();status(c.label+' · node sumber '+c.index+' · label belum divalidasi klinis.');};
- $('referenceComponentRestore').onclick=()=>{if(!model)return;isolateSourceComponent([...visibility.keys()],null,visibility);activeComponent=null;fit();status('Semua komponen sumber ditampilkan kembali. Referensi terpisah.');};
+ $('referenceComponentIsolate').onclick=()=>{const c=components.find(c=>String(c.index)===$('referenceComponentSelect').value);if(!c||!isolateSourceComponent([...visibility.keys()],c,visibility)){status('Komponen tidak dapat diisolasi secara tepat.');return;}activeComponent=c;fit();host.dataset.isolatedNode=String(c.index);status(c.label+' · node sumber '+c.index+' · label belum divalidasi klinis.');};
+ $('referenceComponentRestore').onclick=()=>{if(!model)return;isolateSourceComponent([...visibility.keys()],null,visibility);activeComponent=null;delete host.dataset.isolatedNode;fit();status('Semua komponen sumber ditampilkan kembali. Referensi terpisah.');};
  $('referenceSearch').oninput=list;regionTopic.onchange=list;systemTopic.onchange=list;
  $('referenceLoad').onclick=()=>{const e=entries.find(x=>x.id===$('referenceSelect').value);if(e)load(e);};
  $('referenceFit').onclick=()=>fit();

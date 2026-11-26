@@ -25,9 +25,11 @@ export function crosswalkNodes(csv,doc){
   return {nodeName:m[1],ontologyId:m[2],label:m[3],nodeIndices:hits.map(x=>x.i),meshNodeIndices:meshNodes.map(x=>x.i),status:hits.length===1&&meshNodes.length===1?'EXACT_NAMED_MESH_NODE':'HOLD_GROUP_MISSING_OR_AMBIGUOUS'};
  });
 }
-export async function audit(){
- const spec=JSON.parse(fs.readFileSync(new URL('licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',root),'utf8'));
- assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===5);
+export async function audit(batch='female-five'){
+ const configs={'female-five':{file:'licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',count:5,marker:'HRA FEMALE PINNED QUARANTINE REPORT '},'cardiopulmonary-four':{file:'licensing/atlas-publication/hra-cardiopulmonary-four-pinned-candidates-20261126.json',count:4,marker:'HRA CARDIOPULMONARY PINNED QUARANTINE REPORT '}};
+ assert(Object.hasOwn(configs,batch),'Unknown HRA batch');const config=configs[batch];
+ const spec=JSON.parse(fs.readFileSync(new URL(config.file,root),'utf8'));
+ assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===config.count);
  const rows=[];
  for(const e of spec.rows){
   try{
@@ -35,7 +37,7 @@ export async function audit(){
    const base='https://raw.githubusercontent.com/hubmapconsortium/hra-kg/'+pin+'/digital-objects/ref-organ/'+e.id+'/'+e.version+'/raw/';
    const expected='https://cdn.humanatlas.io/digital-objects/ref-organ/'+e.id+'/'+e.version+'/assets/'+e.filename;
    assert(e.assetURL===expected&&e.approvedForDistribution===false);
-   const [meta,cross,raw,cdn]=await Promise.all([download(base+'metadata.yaml',262144),download(base+'crosswalk.csv',262144),download(base+e.filename,16*1024*1024),download(expected,16*1024*1024)]);
+   const [meta,cross,raw,cdn]=await Promise.all([download(base+'metadata.yaml',262144),download(base+'crosswalk.csv',262144),download(base+e.filename,32*1024*1024),download(expected,32*1024*1024)]);
    assert(gitBlob(meta)===e.metadataBlob&&gitBlob(cross)===e.crosswalkBlob&&gitBlob(raw)===e.glbBlob&&raw.length===e.bytes,'Pinned Git bytes differ');
    const proof=parsePublisherMetadata(meta.toString('utf8'),expected);assert(proof.doi===e.doi&&proof.license===e.sourceLicense);assert.deepEqual(proof.creators,e.creators);
    assert(raw.equals(cdn),'CDN and pinned Git GLB differ');
@@ -46,7 +48,7 @@ export async function audit(){
  }
  const matched=rows.filter(e=>e.status==='EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES');
  const report={schema:1,publisherRevision:pin,matched:matched.length,held:rows.length-matched.length,exactNamedMeshNodes:matched.reduce((n,e)=>n+e.exactMeshNodeCount,0),rows,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false,geometryPublished:0};
- console.log('HRA FEMALE PINNED QUARANTINE REPORT '+JSON.stringify(report));assert.equal(matched.length,spec.rows.length,'Source or metadata on hold');
+ console.log(config.marker+JSON.stringify(report));assert.equal(matched.length,spec.rows.length,'Source or metadata on hold');
  return report;
 }
-if(process.argv[1]===fileURLToPath(import.meta.url))await audit();
+if(process.argv[1]===fileURLToPath(import.meta.url))await audit(process.argv[2]||'female-five');
