@@ -15,10 +15,10 @@ export function mountGuided({base,groups,entries,choose,openReference,ready}){
   const t=track(),s=t?.steps[index];if(!s){target.textContent='Belum ada checkpoint';identity.textContent='';progress.textContent='';representations.replaceChildren();show.disabled=previous.disabled=next.disabled=true;return;}
   const p=guidedProgress(t,visited);progress.textContent=(index+1)+'/'+p.total+' · '+p.visited+'/'+p.available+' checkpoint tersedia telah dibuka · '+p.held+' belum tersedia sebagai struktur · '+t.steps.filter(s=>s.references.length).length+' referensi elemen';
   target.textContent=s.target;identity.textContent=s.references.length&&!s.representations.length?'Referensi elemen BP3D 4.3 · identitas struktur utuh belum terverifikasi':(s.fmaId||'Identitas belum cocok')+' · '+s.status;
-  const choices=[...s.representations,...s.references];representations.replaceChildren();for(const a of choices){const o=make('option',a.name+' · '+(a.fj?'elemen '+a.fj+' (terpisah)':a.type));o.value=a.id;representations.append(o);}
+  const choices=[...s.representations,...s.references];representations.replaceChildren();for(const a of choices){const o=make('option',a.name+' · '+(a.fj?'elemen '+a.fj+' · '+(a.relation==='RELATED_COMPONENT_ONLY'?'komponen terkait, bukan struktur utuh':'label sesuai, terpisah'):a.type));o.value=a.id;representations.append(o);}
   const prior=preferred.get(s.key);if(choices.some(a=>a.id===prior))representations.value=prior;
   representations.disabled=busy;representations.hidden=!choices.length;show.disabled=busy||!choices.length;previous.disabled=busy||index===0;next.disabled=busy||index>=t.steps.length-1;select.disabled=busy;
-  status.textContent=s.representations.length?(visited.has(s.key)?'Sudah dibuka.':'Tampilkan struktur untuk memulai.'):s.references.length?'Elemen referensi tersedia secara terpisah. Tidak dihitung sebagai struktur utuh.':'Belum tersedia pada inventaris ini; tidak dihitung sebagai selesai.';
+  status.textContent=s.representations.length?(visited.has(s.key)?'Sudah dibuka.':'Tampilkan struktur untuk memulai.'):s.references.length?'Elemen referensi atau komponen terkait tersedia secara terpisah. Tidak dihitung sebagai struktur utuh.':'Belum tersedia pada inventaris ini; tidak dihitung sebagai selesai.';
  }
  close.onclick=()=>{epoch++;busy=false;panel.hidden=true;};
  representations.onchange=()=>{const s=track()?.steps[index];if(s&&!busy)preferred.set(s.key,representations.value);};

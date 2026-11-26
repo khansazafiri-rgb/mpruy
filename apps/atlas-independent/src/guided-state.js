@@ -1,6 +1,7 @@
 // Guided learning from verified inventory links only. No guessed identity,
 // clinical completeness claim, or score for an unavailable representation.
 import {permittedLearningGroup} from './learning-links.js';
+import {referenceRelation,privateReference} from './learning-reference-links.js';
 const kinds=new Set(['BODY_MODEL','EXACT_ELEMENT_SELECTION','NATIVE_CONTEXT_CANDIDATE','ISOLATED_REFERENCE']);
 const validId=id=>/^(bp|sel)-[a-f0-9]{24}$/.test(id||'');
 export function guidedTracks(doc,entries,groups,referenceEntries=[]){
@@ -20,8 +21,8 @@ export function guidedTracks(doc,entries,groups,referenceEntries=[]){
   const references=[];
   if(r.status==='NOT_FOUND_BY_EXACT_CHECK'&&Array.isArray(r.referenceCandidates))for(const a of r.referenceCandidates){
    const e=referenceById.get(a.id);
-   if(!e||!/^bp43-[a-f0-9]{24}$/.test(a.id)||a.type!=='BP43_SINGLE_SOURCE_ELEMENT'||a.name!==e.name||a.fmaId!==e.fmaId||a.fj!==e.fj||e.name.trim().toLowerCase()!==r.target.trim().toLowerCase()||e.scope!=='SINGLE_SOURCE_ELEMENT'||e.approvedForDistribution!==false||e.registrationValidated!==false||e.clinicalValidation!==false||references.some(x=>x.id===e.id))continue;
-   references.push({id:e.id,type:a.type,name:e.name,fj:e.fj});
+   if(!e||!privateReference(e)||a.type!=='BP43_SINGLE_SOURCE_ELEMENT'||a.name!==e.name||a.fmaId!==e.fmaId||a.fj!==e.fj||!referenceRelation(r.group,r.target,e.name)||a.relation!==referenceRelation(r.group,r.target,e.name)||references.some(x=>x.id===e.id))continue;
+   references.push({id:e.id,type:a.type,name:e.name,fj:e.fj,relation:a.relation});
   }
   tracks.get(r.group).steps.push({key,target:r.target,fmaId:r.fmaId||null,status:r.status,representations:candidates,references});
  }

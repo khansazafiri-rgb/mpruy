@@ -5,6 +5,7 @@ import {priorityPlan,priorityTargets} from './independent-atlas-priority-recover
 import {learningPriorityTargets} from './atlas-learning-priority-targets.mjs';
 import {checkpoints} from './audit-independent-system-coverage.mjs';
 import {permittedLearningGroup,lungCheckpointAliases} from '../apps/atlas-independent/src/learning-links.js';
+import {referenceRelation,privateReference} from '../apps/atlas-independent/src/learning-reference-links.js';
 const key=n=>String(n).trim().toLowerCase().replace(/\s+/g,' ');
 export function learningCoverage({sources,body,selection=[],recovery=[],results=[],references43=[],specs}){
  const all=specs||[...priorityTargets,...learningPriorityTargets,...Object.entries(checkpoints).flatMap(([g,rows])=>rows.map(([, ...names])=>[g,names]))];
@@ -25,7 +26,7 @@ export function learningCoverage({sources,body,selection=[],recovery=[],results=
   const matches=candidates.filter(e=>permittedLearningGroup(p.fmaId,p.group,e.group));
   const reasons=results.filter(r=>r.fmaId&&r.fmaId===p.fmaId).map(r=>({status:r.status,reason:r.reason||null}));
   const status=p.status!=='EXPORT_CANDIDATE'?p.status:matches.length?matches[0].type:candidates.length?'GROUP_REVIEW':reasons.some(r=>r.status==='HOLD_EXPORT'||r.status==='HOLD_STORAGE_BUDGET')?'EXPORT_HELD':'SOURCE_AVAILABLE_NOT_EXPORTED';
-  const referenceCandidates=status==='NOT_FOUND_BY_EXACT_CHECK'?references43.filter(e=>key(e.name)===key(p.target)&&e.scope==='SINGLE_SOURCE_ELEMENT'&&e.approvedForDistribution===false&&e.registrationValidated===false&&e.clinicalValidation===false).map(e=>({id:e.id,name:e.name,fmaId:e.fmaId,fj:e.fj,type:'BP43_SINGLE_SOURCE_ELEMENT'})):[];
+  const referenceCandidates=status==='NOT_FOUND_BY_EXACT_CHECK'?references43.filter(e=>privateReference(e)&&referenceRelation(p.group,p.target,e.name)).map(e=>({id:e.id,name:e.name,fmaId:e.fmaId,fj:e.fj,type:'BP43_SINGLE_SOURCE_ELEMENT',relation:referenceRelation(p.group,p.target,e.name)})):[];
   return {group:p.group,target:p.target,status,referenceCandidates,fmaId:p.fmaId||null,officialName:p.name||null,learningLink:p.learningLink||(matches.some(e=>e.group!==p.group)?'EXACT_FMA_CROSS_SYSTEM_LINK':null),representations:matches,otherGroupRepresentations:candidates.filter(e=>e.group!==p.group),recoveryEvidence:reasons};
  });
  const systems=Object.fromEntries(Object.keys(groups).map(g=>{
@@ -33,5 +34,5 @@ export function learningCoverage({sources,body,selection=[],recovery=[],results=
   return [g,{targets:r.length,counts,unresolved:r.filter(x=>!['BODY_MODEL','EXACT_ELEMENT_SELECTION','NATIVE_CONTEXT_CANDIDATE','ISOLATED_REFERENCE'].includes(x.status)).map(x=>({target:x.target,status:x.status,fmaId:x.fmaId}))}];
  }));
  assert(Object.values(systems).reduce((n,s)=>n+s.targets,0)===rows.length);
- return {schema:1,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false,lymphaticNetworkContinuity:'NOT_VERIFIED',scope:'Exact publisher checkpoint identity and currently available representations only; isolated references are not whole-body coverage; no completeness percentage.',targets:rows.length,referenceOnlyTargets:rows.filter(r=>r.referenceCandidates.length).length,systems,rows};
+ return {schema:1,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false,lymphaticNetworkContinuity:'NOT_VERIFIED',scope:'Exact publisher checkpoint identity and currently available representations only; isolated references are not whole-body coverage; no completeness percentage.',targets:rows.length,referenceOnlyTargets:rows.filter(r=>r.referenceCandidates.length).length,exactLabelReferenceTargets:rows.filter(r=>r.referenceCandidates.some(e=>e.relation==='EXACT_LABEL')).length,relatedComponentOnlyTargets:rows.filter(r=>r.referenceCandidates.length&&!r.referenceCandidates.some(e=>e.relation==='EXACT_LABEL')).length,systems,rows};
 }
