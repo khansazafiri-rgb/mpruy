@@ -22,7 +22,7 @@ jobs:
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
       - run: npm test --prefix apps/atlas-independent
-      - run: node --test scripts/launch-atlas-private-workstation.test.mjs scripts/independent-atlas-learning-coverage.test.mjs scripts/atlas-muscle-supplement.test.mjs
+      - run: node --test scripts/launch-atlas-private-workstation.test.mjs scripts/independent-atlas-learning-coverage.test.mjs scripts/atlas-muscle-supplement.test.mjs scripts/audit-atlas-gap-reconciliation.test.mjs
       - run: node scripts/replay-audited-bp3d43-suite.mjs --receipt=bp3d43-muscle-24-dual-source-audit-20261126.json
       - run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
