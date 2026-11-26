@@ -7,6 +7,7 @@ export function referenceEntries(doc){
    !/^https:\/\/cdn\.humanatlas\.io\/digital-objects\/ref-organ\/[a-z0-9-]+\/v\d+\.\d+(?:\.\d+)?\/assets\/[a-z0-9-]+\.glb$/.test(e.source||'')||
    e.approvedForDistribution!==false||e.registrationValidated!==false||!Number.isInteger(e.meshCount)||e.meshCount<1)throw Error('Identitas referensi HRA tidak valid');
   const version=e.source.split('/')[6];if(version!==e.version)throw Error('Versi referensi tidak sesuai');
+  if(e.sourceCrosswalk!==undefined){if(!Array.isArray(e.sourceCrosswalk)||!e.sourceCrosswalk.length)throw Error('Crosswalk HRA tidak valid');const idx=new Set();for(const c of e.sourceCrosswalk){if(!Number.isInteger(c.index)||c.index<0||idx.has(c.index)||typeof c.nodeName!=='string'||!c.nodeName.trim()||typeof c.label!=='string'||!c.label.trim()||!/^(FMA|UBERON):\d+$/.test(c.ontologyId))throw Error('Identitas crosswalk HRA tidak valid');idx.add(c.index);}}
   ids.add(e.id);
  }
  return doc.items;
@@ -58,4 +59,15 @@ export function reference43Entries(doc){
   if(hashes.has(e.rawSHA256))throw Error('Geometri sumber ganda');ids.add(e.id);elements.add(e.fj);hashes.add(e.rawSHA256);
  }
  return doc.items.map(e=>({...e,version:'4.3 · '+e.fj,meshCount:1}));
+}
+
+// Only exact publisher crosswalk node indexes and names may carry ontology labels.
+export function applyHraCrosswalk(components,crosswalk){
+ if(crosswalk===undefined)return components;
+ const result=crosswalk.map(row=>{
+  const hits=components.filter(c=>c.index===row.index&&c.label===row.nodeName);
+  if(hits.length!==1)throw Error('Crosswalk node differs from rendered GLB');
+  return {...hits[0],label:row.label,ontologyId:row.ontologyId};
+ });
+ return result.sort((a,b)=>a.label.localeCompare(b.label)||a.index-b.index);
 }

@@ -53,7 +53,7 @@ export async function buildHraRegistry(privateRoot){
    assert.equal(await hashFile(file),a.sha256,'Source hash differs');
    const info=inspectGlb(fs.readFileSync(file));
    assert.equal(info.meshCount,a.meshCount);assert(!assets.has(id),'Duplicate cache ID');
-   assets.set(id,{file,bytes:a.bytes,public:{id,name:match[1].replaceAll('-',' '),version:match[2],source:url,meshCount:info.meshCount,
+   assets.set(id,{file,bytes:a.bytes,sha256:a.sha256,public:{id,name:match[1].replaceAll('-',' '),version:match[2],source:url,meshCount:info.meshCount,
     frame:'HRA source frame (independent of BP3D)',approvedForDistribution:false,registrationValidated:false}});
   }catch(e){blocked.push({url:a.url||null,reason:String(e.message)});}
  }
@@ -64,13 +64,17 @@ export function serveHraReference(req,res,registry){
  if(!u.startsWith(prefix))return false;
  const rel=u.slice(prefix.length);
  const send=(status,body,type='text/plain; charset=utf-8')=>{res.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(req.method==='HEAD'?undefined:body);};
+ if(!['GET','HEAD'].includes(req.method)){send(404,'Not found');return true;}
  if(rel==='inventory.json'){
   const items=[...registry.assets.values()].map(x=>x.public).sort((a,b)=>a.name.localeCompare(b.name));
   send(200,JSON.stringify({items,blockedCount:registry.blocked.length,publicRelease:'NO_GO',registrationValidated:false}),'application/json');return true;
  }
  const match=rel.match(/^([a-f0-9]{24})\.glb$/),a=match&&registry.assets.get(match[1]);
  if(!a){send(404,'Not found');return true;}
- res.writeHead(200,{'Content-Type':'model/gltf-binary','Content-Length':a.bytes,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
- if(req.method==='HEAD'){res.end();return true;}
- const stream=createReadStream(a.file);stream.on('error',()=>res.destroy());res.on('close',()=>stream.destroy());stream.pipe(res);return true;
+ try{
+  assert(fs.realpathSync(a.file)===a.file&&fs.statSync(a.file).isFile()&&fs.statSync(a.file).size===a.bytes&&/^[a-f0-9]{64}$/.test(a.sha256),'HRA source changed');
+  const bytes=fs.readFileSync(a.file);assert(sha(bytes)===a.sha256,'HRA source hash changed');
+  send(200,bytes,'model/gltf-binary');
+ }catch{send(404,'Reference unavailable');}
+ return true;
 }
