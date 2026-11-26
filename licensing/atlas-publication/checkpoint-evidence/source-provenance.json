@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "publicRelease": "NO_GO",
+  "copies": [
+    {
+      "sourceCommit": "5e730e1de17cdd3316efce005e36406a25389114",
+      "sourcePath": "licensing/atlas-publication/open3dmodel-lower-limb-private-draco-audit-20261126.json",
+      "gitBlob": "7e5b83cdd13186f0af89482a5013d42d6a477c8c",
+      "copyPath": "licensing/atlas-publication/checkpoint-evidence/open3dmodel-lower-limb-private-draco-audit-20261126.json",
+      "scope": "Evidence copy only; source pipeline and geometry not imported."
+    },
+    {
+      "sourceCommit": "b1cea1dd25c2a9d60a43e6c66a13236e24337355",
+      "sourcePath": "licensing/atlas-publication/sio-publisher-html-metadata-review-20261126.json",
+      "gitBlob": "c3a11507ef7ad54f5f94fa7a062301746687e1e7",
+      "copyPath": "licensing/atlas-publication/checkpoint-evidence/sio-publisher-html-metadata-review-20261126.json",
+      "scope": "Evidence copy only; source pipeline and geometry not imported."
+    }
+  ]
+}
