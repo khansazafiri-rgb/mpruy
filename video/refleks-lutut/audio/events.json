@@ -1,0 +1,135 @@
+{
+ "durasi_edu": 29.4,
+ "potong_narasi": 27.85,
+ "skalar_normalisasi": 1.1028,
+ "sfx": [
+  {
+   "t": 0.608,
+   "sfx": "ketukan-palu"
+  },
+  {
+   "t": 2.5,
+   "sfx": "judul"
+  },
+  {
+   "t": 3.388,
+   "sfx": "ketukan-palu"
+  },
+  {
+   "t": 4.42,
+   "sfx": "kamera-masuk-lutut"
+  },
+  {
+   "t": 4.78,
+   "sfx": "label-tendon"
+  },
+  {
+   "t": 5.188,
+   "sfx": "ketukan-palu"
+  },
+  {
+   "t": 6.08,
+   "sfx": "label-otot"
+  },
+  {
+   "t": 7.98,
+   "sfx": "label-sensor"
+  },
+  {
+   "t": 8.7,
+   "sfx": "judul"
+  },
+  {
+   "t": 8.78,
+   "sfx": "pulsa-sensorik-masuk"
+  },
+  {
+   "t": 9.6,
+   "sfx": "kamera-ikuti-sinyal"
+  },
+  {
+   "t": 10.32,
+   "sfx": "label-sumsum"
+  },
+  {
+   "t": 11.52,
+   "sfx": "sinaps"
+  },
+  {
+   "t": 11.95,
+   "sfx": "judul"
+  },
+  {
+   "t": 13.25,
+   "sfx": "pulsa-motorik-kembali"
+  },
+  {
+   "t": 15.3,
+   "sfx": "otot-berkontraksi"
+  },
+  {
+   "t": 16.35,
+   "sfx": "kamera-keluar"
+  },
+  {
+   "t": 18.2,
+   "sfx": "judul"
+  },
+  {
+   "t": 18.57,
+   "sfx": "kartu-1"
+  },
+  {
+   "t": 18.87,
+   "sfx": "kartu-2"
+  },
+  {
+   "t": 19.17,
+   "sfx": "kartu-3"
+  },
+  {
+   "t": 19.47,
+   "sfx": "kartu-4"
+  },
+  {
+   "t": 19.938,
+   "sfx": "ketukan-palu"
+  },
+  {
+   "t": 20.05,
+   "sfx": "rangkaian-1"
+  },
+  {
+   "t": 20.55,
+   "sfx": "rangkaian-2"
+  },
+  {
+   "t": 20.95,
+   "sfx": "rangkaian-3"
+  },
+  {
+   "t": 21.35,
+   "sfx": "rangkaian-4"
+  },
+  {
+   "t": 23.9,
+   "sfx": "judul"
+  },
+  {
+   "t": 23.98,
+   "sfx": "panel-perbandingan"
+  },
+  {
+   "t": 24.588,
+   "sfx": "ketukan-palu"
+  },
+  {
+   "t": 25.488,
+   "sfx": "ketukan-palu"
+  },
+  {
+   "t": 26.538,
+   "sfx": "ketukan-palu"
+  }
+ ]
+}
