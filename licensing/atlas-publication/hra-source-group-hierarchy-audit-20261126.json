@@ -2727,5 +2727,20 @@
   "sourceCommit": "e8125e7a5f438f7bbb9f6daa4fb11402283a114f",
   "workflowRun": 45763797465,
   "workflowJob": 139719743391,
-  "secondRun": 45763797910
+  "secondRun": 45763797910,
+  "browserReplay": {
+    "commit": "b5d75870a5decb02e7dbbaff94ec9a2b45eb2b57",
+    "workflowRun": 45764063688,
+    "workflowJob": 139720614014,
+    "conclusion": "success",
+    "renderedOriginalGLBs": 9,
+    "exactIndividualLabels": 160,
+    "exactNativeDescendantSetsIsolatedAndRestored": 37,
+    "heldGroupLabelsExposed": 0,
+    "additionalIsolationRestoreChecks": 5,
+    "unitTestsPassed": 43,
+    "bodyInventoryUnchanged": true,
+    "registrationValidated": false,
+    "clinicalValidation": false
+  }
 }
