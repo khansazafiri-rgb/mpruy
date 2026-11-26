@@ -21,6 +21,26 @@ export function exactSourceCandidates(ref,sources){
   return {tree:s.tree,conceptNames:names.map(n=>({bpId:n.bpId,name:n.name})),exactConcept:exact.length===1,conceptIncludesFJ:members.has(ref.fj),sourceElementPresent:s.archiveIndex.has(ref.fj),conceptElementCount:members.size};
  });
 }
+// Distinguish possible version-specific representation changes from missing
+// concept membership. A candidate is not a verified crosswalk or geometry match.
+export function classifyIdentityGate(ref,c){
+ if(!c.sourceElementPresent)return 'FJ_NOT_IN_ARCHIVE';
+ if(c.exactConcept&&c.conceptIncludesFJ)return 'EXACT_IDENTITY_ELIGIBLE';
+ if(!c.conceptNames.length)return 'HOLD_FMA_ABSENT';
+ if(!c.conceptIncludesFJ)return 'HOLD_FJ_NOT_IN_FMA_MEMBERSHIP';
+ const names=c.conceptNames.filter(n=>norm(n.name)===norm(ref.name));
+ if(names.length===1&&c.conceptNames.length===1&&names[0].bpId!==ref.bp)return 'CANDIDATE_VERSIONED_BP_CHANGE';
+ if(names.length===0)return 'HOLD_NAME_MISMATCH';
+ return 'HOLD_AMBIGUOUS_REPRESENTATION';
+}
+export function summarizeIdentityGates(rows){
+ const counts={},candidates=[];
+ for(const r of rows)for(const c of r.trees){
+  const status=classifyIdentityGate(r,c);counts[status]=(counts[status]||0)+1;
+  if(status==='CANDIDATE_VERSIONED_BP_CHANGE')candidates.push({fj:r.fj,fma:r.fma,bp43:r.bp,bp40:c.conceptNames[0].bpId,tree:c.tree});
+ }
+ return {archiveComparisons:rows.reduce((n,r)=>n+r.trees.length,0),counts,candidates,verifiedCrosswalk:false,registrationValidated:false,publicRelease:'NO_GO'};
+}
 export function comparePublisherElement(ref,sources,readElement){
  assert(/^FJ\d+[A-Za-z]?$/.test(ref.fj)&&/^FMA\d+$/.test(ref.fma)&&/^BP\d+$/.test(ref.bp)&&/^[a-f0-9]{64}$/.test(ref.rawSHA256)&&Number.isInteger(ref.triangles)&&ref.triangles>0);
  const trees=exactSourceCandidates(ref,sources).map((c,i)=>{
@@ -105,7 +125,9 @@ export async function auditPublisher({compareNative=false}={}){
  const readElement=(s,fj)=>execFileSync('unzip',['-p',s.archive,s.archiveIndex.get(fj)],{maxBuffer:96*1024*1024});
  const rows=refs.map(ref=>comparePublisherElement(ref,sources,readElement));
  const counts={};for(const r of rows)counts[r.status]=(counts[r.status]||0)+1;
- const report={schema:1,scope:'Pinned official BP3D 4.0 ISA and PARTOF archives versus 376 retained dual-source-audited BP3D 4.3 element receipts. Exact raw identity is not whole concept completeness or spatial registration. Different bytes are not compared geometrically. Not the workstation body inventory.',receipts,referenceElements:refs.length,sourceArchiveElementCounts:Object.fromEntries(sources.map(s=>[s.tree,s.archiveIndex.size])),counts,rows,clinicalValidation:false,registrationValidated:false,fullBodyInventoryCompared:false,approvedForDistribution:false,geometryPublished:0,publicRelease:'NO_GO'};
+ const report={schema:1,scope:'Pinned official BP3D 4.0 ISA and PARTOF archives versus 376 retained dual-source-audited BP3D 4.3 element receipts. Exact raw identity is not whole concept completeness or spatial registration. Native comparisons are optional and require exact identity. Not the workstation body inventory.',receipts,referenceElements:refs.length,sourceArchiveElementCounts:Object.fromEntries(sources.map(s=>[s.tree,s.archiveIndex.size])),counts,rows,clinicalValidation:false,registrationValidated:false,fullBodyInventoryCompared:false,approvedForDistribution:false,geometryPublished:0,publicRelease:'NO_GO'};
+ report.identityDiagnostics=summarizeIdentityGates(rows);
+ console.log('BP3D CROSS VERSION IDENTITY DIAGNOSTICS '+JSON.stringify(report.identityDiagnostics));
  if(compareNative){
   const readReference=verifiedReferenceReader();
   const nativeRows=refs.map((ref,i)=>comparePublisherNative(ref,rows[i],sources,readElement,readReference));
@@ -116,6 +138,6 @@ export async function auditPublisher({compareNative=false}={}){
  }
  fs.writeFileSync(path.join(folder,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
  console.log('BP3D CROSS VERSION PUBLISHER IDS '+JSON.stringify(summarizePublisherIds(rows)));
- console.log('BP3D CROSS VERSION PUBLISHER PASS '+JSON.stringify({...report,rows:undefined,nativeComparison:report.nativeComparison?{...report.nativeComparison,rows:undefined}:undefined,folder:path.basename(folder)}));return report;
+ console.log('BP3D CROSS VERSION PUBLISHER PASS '+JSON.stringify({...report,rows:undefined,identityDiagnostics:{...report.identityDiagnostics,candidates:undefined},nativeComparison:report.nativeComparison?{...report.nativeComparison,rows:undefined}:undefined,folder:path.basename(folder)}));return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){const args=process.argv.slice(2);assert(args.length===1&&['--audit-private','--compare-native-private'].includes(args[0]));await auditPublisher({compareNative:args[0]==='--compare-native-private'});}
