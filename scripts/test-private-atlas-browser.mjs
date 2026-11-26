@@ -45,6 +45,17 @@ if(process.env.ATLAS_TEST_HRA_FEMALE==='1'||process.env.ATLAS_TEST_HRA_COMBINED=
  try{for(const batch of batches){const folder=await m.stageHraBatch(q,batch);hraStages.push(path.join(q,folder));realHra=m.mergeHraFemaleReferences(realHra,m.loadHraBatch(q,folder,batch,process.env.ATLAS_TEST_HRA_GROUPS==='1'));}}catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
  serveHra=(await import('./atlas-hra-private-reference.mjs')).serveHraReference;assert.equal(realHra.assets.size,batches.length===2?9:5);
 }
+if(real43&&realHra&&process.env.ATLAS_TEST_REAL43==='bronchial'&&process.env.ATLAS_TEST_HRA_GROUPS==='1'){
+ const q=path.join(root,'local-data/licensing-quarantine');
+ try{
+  const {loadAuditedReferenceSuite}=await import('./atlas-audited-reference-suite.mjs'),suite=loadAuditedReferenceSuite(q);
+  assert.equal(suite.publicRelease,'NO_GO');assert.equal(suite.plan.bp.length,11);assert.equal(suite.plan.hra.length,2);
+  assert.deepEqual([...suite.bp.assets.keys()].sort(),[...real43.assets.keys()].sort());
+  assert.deepEqual([...suite.hra.assets.keys()].sort(),[...realHra.assets.keys()].sort());
+  real43=suite.bp;realHra=suite.hra;
+  console.log('ATLAS AUDITED SUITE PASS: exact 11 BP3D and 2 HRA acquisitions selected without fallback; actual suite registries served in browser.');
+ }catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
+}
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const {build}=await import(pathToFileURL(appRequire.resolve('vite')).href);
@@ -189,6 +200,8 @@ try{
   const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
   const {challengeLabel,hasChallengeGlossary}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
   const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
+  assert.equal(await setup.locator('#referenceChallengeLanguage option[value="latin"]').textContent(),'Latin (provisional)');
+  assert((await setup.locator('.hint').textContent()).includes('bukan terminologi FIPAT terverifikasi'));
   if(real43.assets.size===246)assert.equal(glossaryCount,239);
   await start('mcq','en');
   const choices=challenge.locator('#referenceChallengeAnswers button');
