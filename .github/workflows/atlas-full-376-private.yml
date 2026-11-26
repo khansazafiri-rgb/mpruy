@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/replay-audited-bp3d43-suite*'
       - 'scripts/intake-bp3d43-priority-elements*'
+      - 'scripts/audit-bp3d-cross-version-publisher*'
       - 'scripts/test-private-atlas-browser.mjs'
       - 'scripts/atlas-audited-reference-suite.mjs'
       - '.github/workflows/atlas-full-376-private.yml'
@@ -25,7 +26,7 @@ jobs:
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
       - name: Retained receipt and private inventory contract tests
         run: |
-          node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/atlas-expansion-evidence.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/atlas-audited-reference-suite.test.mjs
+          node --test scripts/audit-bp3d-cross-version-publisher.test.mjs scripts/intake-bp3d43-priority-elements.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/atlas-expansion-evidence.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/atlas-audited-reference-suite.test.mjs
           npm test --prefix apps/atlas-independent
       - name: Reacquire only exact previously dual-source-audited publisher bytes
         run: node scripts/replay-audited-bp3d43-suite.mjs --all-fresh
@@ -37,6 +38,9 @@ jobs:
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
           ATLAS_TEST_REAL43=full-376 ATLAS_TEST_HRA_COMBINED=1 ATLAS_TEST_HRA_GROUPS=1 node scripts/test-private-atlas-browser.mjs
+      - name: Compare native source coordinates after exact private replay
+        timeout-minutes: 25
+        run: node scripts/audit-bp3d-cross-version-publisher.mjs --compare-native-private
       - name: Delete temporary private source bytes
         if: always()
-        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/hra-female-five-* local-data/licensing-quarantine/hra-cardiopulmonary-four-*
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/hra-female-five-* local-data/licensing-quarantine/hra-cardiopulmonary-four-* local-data/licensing-quarantine/bp3d-cross-version-publisher-*

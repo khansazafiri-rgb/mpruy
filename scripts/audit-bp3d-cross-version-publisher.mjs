@@ -5,7 +5,10 @@ import {execFileSync} from 'node:child_process';
 import {fetchOfficialFile,parseOfficialNames,parseOfficialElements,checkArchiveEntryNames} from '../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {parseObj} from './independent-bp3d-export.mjs';
 import {BP43_SUITE,BP43_HYOID,BP43_EXPANSION} from './atlas-reference-suite-spec.mjs';
-import {retainedReceipt,replayPlan} from './replay-audited-bp3d43-suite.mjs';
+import {retainedReceipt,replayPlan,readRetainedReports} from './replay-audited-bp3d43-suite.mjs';
+import {load43Elements,select43Acquisition} from './load-bp3d43-private-elements.mjs';
+import {parseNativePositions,comparePositions} from './audit-bp3d-publication-geometry.mjs';
+import {readVerifiedPrivateModel} from './serve-verified-private-model.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url))),q=path.join(root,'local-data/licensing-quarantine');
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',p),'utf8'));
@@ -58,16 +61,61 @@ async function loadSources(folder){
  }
  return {sources,receipts:receipt.receipts};
 }
-export async function auditPublisher(){
+// Native float32 triangle comparison only; no resampling, transforms or tolerance.
+// Equal unordered triangle multisets ignore winding, cyclic order and face order.
+export function compareNativeTriangles(a,b){
+ for(const p of [a,b])assert(p instanceof Float32Array&&p.length>0&&p.length%9===0&&p.every(Number.isFinite),'Invalid native triangles');
+ const base={archiveTriangles:a.length/9,referenceTriangles:b.length/9};
+ if(a.length!==b.length)return {...base,status:'DIFFERENT_TRIANGLE_COUNT'};
+ if(comparePositions(a,b))return {...base,status:'EXACT_ORDERED_NATIVE_TRIANGLES'};
+ if(a.length/9>250000)return {...base,status:'HOLD_UNORDERED_COMPARISON_LIMIT'};
+ const keys=p=>{const out=[];for(let i=0;i<p.length;i+=9){const vertices=[];for(let j=0;j<9;j+=3)vertices.push(JSON.stringify([p[i+j],p[i+j+1],p[i+j+2]]));out.push(vertices.sort().join('|'));}return out.sort();};
+ const x=keys(a),y=keys(b);
+ return {...base,status:x.every((v,i)=>v===y[i])?'EXACT_UNORDERED_NATIVE_TRIANGLES':'DIFFERENT_NATIVE_TRIANGLE_MULTISET'};
+}
+export function comparePublisherNative(ref,row,sources,readElement,readReference){
+ assert(ref.fj===row.fj&&ref.rawSHA256===row.rawSHA256&&row.trees.length===sources.length);
+ const eligible=row.trees.some(t=>t.sourceElementPresent&&t.exactConcept&&t.conceptIncludesFJ);
+ const reference=eligible?readReference(ref):null;
+ if(reference)assert(reference.length/9===ref.triangles,'Reference triangle receipt differs');
+ return {fj:ref.fj,trees:row.trees.map((t,i)=>{
+  assert(t.tree===sources[i].tree);
+  if(!t.sourceElementPresent)return {tree:t.tree,status:'FJ_NOT_IN_ARCHIVE'};
+  if(!t.exactConcept||!t.conceptIncludesFJ)return {tree:t.tree,status:'HOLD_IDENTITY_REVIEW'};
+  const raw=readElement(sources[i],ref.fj);assert(sha(raw)===t.rawSHA256,'Publisher raw bytes changed between comparisons');
+  const a=parseObj(raw.toString('utf8').replace(/\r\n|\r/g,'\n')).positions;
+  return {tree:t.tree,...compareNativeTriangles(a,reference)};
+ }),registrationValidated:false};
+}
+function verifiedReferenceReader(){
+ const reports=readRetainedReports(q),byFj=new Map();
+ for(const [,file,count] of [...BP43_SUITE,BP43_HYOID,...BP43_EXPANSION]){
+  const {evidence}=retainedReceipt(file);replayPlan(evidence,count);
+  const r=load43Elements(q,select43Acquisition(reports,evidence),evidence,count);
+  for(const item of r.inventory.items){assert(!byFj.has(item.fj));byFj.set(item.fj,{item,asset:r.assets.get(item.id)});}
+ }
+ assert.equal(byFj.size,376);
+ return ref=>{const entry=byFj.get(ref.fj);assert(entry?.item.rawSHA256===ref.rawSHA256&&entry.item.glbSHA256===ref.publisherGLBSHA256&&entry.item.fmaId===ref.fma&&entry.item.bpId===ref.bp);const p=parseNativePositions(readVerifiedPrivateModel(entry.asset),'4.3');assert(p.size===1&&p.has(ref.fj));return p.get(ref.fj);};
+}
+export async function auditPublisher({compareNative=false}={}){
  fs.mkdirSync(q,{recursive:true,mode:0o700});assert(fs.realpathSync(q)===q);const folder=fs.mkdtempSync(path.join(q,'bp3d-cross-version-publisher-'));fs.chmodSync(folder,0o700);
  const {sources,receipts}=await loadSources(folder);
  const refs=[...BP43_SUITE,BP43_HYOID,...BP43_EXPANSION].flatMap(([,file,count])=>{const {evidence}=retainedReceipt(file);replayPlan(evidence,count);return evidence.matches;});
  assert.equal(refs.length,376);assert.equal(new Set(refs.map(x=>x.fj)).size,376);
- const rows=refs.map(ref=>comparePublisherElement(ref,sources,(s,fj)=>execFileSync('unzip',['-p',s.archive,s.archiveIndex.get(fj)],{maxBuffer:96*1024*1024})));
+ const readElement=(s,fj)=>execFileSync('unzip',['-p',s.archive,s.archiveIndex.get(fj)],{maxBuffer:96*1024*1024});
+ const rows=refs.map(ref=>comparePublisherElement(ref,sources,readElement));
  const counts={};for(const r of rows)counts[r.status]=(counts[r.status]||0)+1;
  const report={schema:1,scope:'Pinned official BP3D 4.0 ISA and PARTOF archives versus 376 retained dual-source-audited BP3D 4.3 element receipts. Exact raw identity is not whole concept completeness or spatial registration. Different bytes are not compared geometrically. Not the workstation body inventory.',receipts,referenceElements:refs.length,sourceArchiveElementCounts:Object.fromEntries(sources.map(s=>[s.tree,s.archiveIndex.size])),counts,rows,clinicalValidation:false,registrationValidated:false,fullBodyInventoryCompared:false,approvedForDistribution:false,geometryPublished:0,publicRelease:'NO_GO'};
+ if(compareNative){
+  const readReference=verifiedReferenceReader();
+  const nativeRows=refs.map((ref,i)=>comparePublisherNative(ref,rows[i],sources,readElement,readReference));
+  const nativeCounts={};
+  for(const r of nativeRows)for(const t of r.trees)nativeCounts[t.status]=(nativeCounts[t.status]||0)+1;
+  report.nativeComparison={scope:'Per-archive source element comparison in native float32 coordinates, without registration; unordered equality ignores winding. Different triangle count or multiset is not proof of a spatial misalignment.',referenceElements:nativeRows.length,archiveComparisons:nativeRows.reduce((n,r)=>n+r.trees.length,0),counts:nativeCounts,rows:nativeRows,registrationValidated:false};
+  console.log('BP3D CROSS VERSION NATIVE COUNTS '+JSON.stringify({referenceElements:nativeRows.length,archiveComparisons:report.nativeComparison.archiveComparisons,counts:nativeCounts,registrationValidated:false,publicRelease:'NO_GO'}));
+ }
  fs.writeFileSync(path.join(folder,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
  console.log('BP3D CROSS VERSION PUBLISHER IDS '+JSON.stringify(summarizePublisherIds(rows)));
- console.log('BP3D CROSS VERSION PUBLISHER PASS '+JSON.stringify({...report,rows:undefined,folder:path.basename(folder)}));return report;
+ console.log('BP3D CROSS VERSION PUBLISHER PASS '+JSON.stringify({...report,rows:undefined,nativeComparison:report.nativeComparison?{...report.nativeComparison,rows:undefined}:undefined,folder:path.basename(folder)}));return report;
 }
-if(process.argv[1]===fileURLToPath(import.meta.url)){assert.deepEqual(process.argv.slice(2),['--audit-private']);await auditPublisher();}
+if(process.argv[1]===fileURLToPath(import.meta.url)){const args=process.argv.slice(2);assert(args.length===1&&['--audit-private','--compare-native-private'].includes(args[0]));await auditPublisher({compareNative:args[0]==='--compare-native-private'});}
