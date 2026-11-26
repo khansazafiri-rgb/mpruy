@@ -12,9 +12,21 @@ export function summarizeVerifiedBody(body,display,refs,samples){
   const g=systems[m.group]??={models:0,fma:new Set()};g.models++;g.fma.add(m.fmaId);
  }
  const overlap=auditCrossVersionOverlap(body,refs,samples);
+ // Byte identity alone is not anatomical identity. A raw match can have several local labels.
+ const identityEvidence={
+  exactRawSameFMA:overlap.rows.filter(r=>r.localExactRawByteMatches.some(m=>m.fmaId===r.fmaId)).length,
+  exactRawSameFMAAndFJ:overlap.rows.filter(r=>r.localExactRawByteMatches.some(m=>m.fmaId===r.fmaId&&m.fj===r.fj)).length,
+  exactRawDifferentFMA:overlap.rows.filter(r=>r.localExactRawByteMatches.some(m=>m.fmaId!==r.fmaId)).length,
+  exactRawDifferentFMAOnly:overlap.rows.filter(r=>r.localExactRawByteMatches.length>0&&r.localExactRawByteMatches.every(m=>m.fmaId!==r.fmaId)).length,
+  reusedFJDifferentFMA:overlap.rows.filter(r=>r.localElementIdMatches.some(m=>m.fmaId!==r.fmaId)).length,
+  referenceConceptsNotInBodyIndex:new Set(overlap.rows.filter(r=>!r.localConceptMatches.length).map(r=>r.fmaId)).size,
+  referenceElementsWithoutAnyMatch:overlap.rows.filter(r=>r.status==='NO_MATCH_IN_LOCAL_INDEX').length,
+  referenceElementsUnresolvedRawIndex:overlap.rows.filter(r=>r.status==='INCOMPLETE_LOCAL_RAW_DIGEST_INDEX').length,
+  scope:'Counts can overlap. Identity conflicts require review; missing local index entries do not establish net-new geometry or anatomical absence.'
+ };
  const regions=display.filter(e=>Array.isArray(e.regions)&&e.regions.some(r=>r!=='whole')).length;
  const layers=display.filter(e=>Number.isInteger(e.layer)&&e.layer>=0).length;
- return {schema:1,scope:'Verified local BP3D 4.0 review pack only. Reference FMA, FJ and raw OBJ hash overlaps do not imply geometry registration or whole-human completeness.',bodyModels:body.length,bodyFMA:new Set(body.map(m=>m.fmaId)).size,systems:Object.fromEntries(Object.entries(systems).map(([k,v])=>[k,{models:v.models,fma:v.fma.size}])),bodySourceElementOccurrences:overlap.sourceElementOccurrences,bodyRawDigestOccurrences:overlap.rawDigestOccurrences,referenceElements:overlap.referenceElements,overlapCounts:overlap.counts,localReferenceConceptMatches:new Set(overlap.rows.filter(r=>r.localConceptMatches.length).map(r=>r.fmaId)).size,localRawDigestIndexComplete:overlap.sourceElementOccurrences>0&&overlap.sourceElementOccurrences===overlap.rawDigestOccurrences,displayMetadata:{nonWholeRegionAssigned:regions,integerLayerAssigned:layers,scope:'Assignments only; not validation of anatomical regions or layers.'},clinicalValidation:false,registrationValidated:false,fullHumanCompletenessClaim:false,publicRelease:'NO_GO'};
+ return {schema:1,scope:'Verified local BP3D 4.0 review pack only. Reference FMA, FJ and raw OBJ hash overlaps do not imply geometry registration or whole-human completeness.',bodyModels:body.length,bodyFMA:new Set(body.map(m=>m.fmaId)).size,systems:Object.fromEntries(Object.entries(systems).map(([k,v])=>[k,{models:v.models,fma:v.fma.size}])),bodySourceElementOccurrences:overlap.sourceElementOccurrences,bodyRawDigestOccurrences:overlap.rawDigestOccurrences,referenceElements:overlap.referenceElements,overlapCounts:overlap.counts,identityEvidence,localReferenceConceptMatches:new Set(overlap.rows.filter(r=>r.localConceptMatches.length).map(r=>r.fmaId)).size,localRawDigestIndexComplete:overlap.sourceElementOccurrences>0&&overlap.sourceElementOccurrences===overlap.rawDigestOccurrences,displayMetadata:{nonWholeRegionAssigned:regions,integerLayerAssigned:layers,wholeOnly:display.filter(e=>Array.isArray(e.regions)&&e.regions.length===1&&e.regions[0]==='whole').length,withoutLayer:display.filter(e=>e.layer===undefined).length,scope:'Assignments only; not validation of anatomical regions or layers.'},clinicalValidation:false,registrationValidated:false,fullHumanCompletenessClaim:false,publicRelease:'NO_GO'};
 }
 export async function auditWorkstation(folder){
  assert(/^independent-source-review-[A-Za-z0-9_-]+$/.test(folder),'Explicit existing private body pack required');
