@@ -2,6 +2,7 @@ import {browseReferenceTopics,topicOptions} from './reference43-topics.js';
 import {challengeLabel,typedReferenceAnswer} from './reference-challenge-language.js';
 import {focusedReferenceQuestions,scoreReferenceAnswer} from './reference-challenge-state.js';
 import * as THREE from 'three';
+import {viewFrame} from './view-frame.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {referenceEntries,reference43Entries,filterReferences,requestTracker,sourceNodeComponents,isolateSourceComponent,applyHraGroups} from './reference-state.js';
@@ -30,15 +31,16 @@ export function mountReferences(base){
   const box=new THREE.Box3();if(activeComponent){model.updateMatrixWorld(true);for(const m of activeComponent.meshes){m.geometry.computeBoundingBox();if(m.geometry.boundingBox)box.union(m.geometry.boundingBox.clone().applyMatrix4(m.matrixWorld));}}else box.setFromObject(model);if(box.isEmpty())throw Error('Model referensi kosong');
   const center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()),span=Math.max(size.length(),.00001);
   const distance=span/Math.max(.1,Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*Math.min(camera.aspect,1));
-  camera.near=Math.max(span*.0001,.0000001);camera.far=distance*100;camera.position.copy(center).add(new THREE.Vector3(0,0,distance));camera.updateProjectionMatrix();
+  camera.near=Math.max(span*.0001,.0000001);camera.far=distance*100;camera.position.copy(center).addScaledVector(new THREE.Vector3(...viewFrame(sourceKind==='bp43').front),distance);camera.updateProjectionMatrix();
   controls.target.copy(center);controls.update();
  }
  function createScene(){
   renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));host.append(renderer.domElement);
-  scene=new THREE.Scene();scene.background=new THREE.Color(0x092b27);camera=new THREE.PerspectiveCamera(40,1,.00001,100);camera.position.set(0,0,3);
+  scene=new THREE.Scene();scene.background=new THREE.Color(0x092b27);camera=new THREE.PerspectiveCamera(40,1,.00001,100);const frame=viewFrame(sourceKind==='bp43');camera.up.set(...frame.up);camera.position.set(...frame.front).multiplyScalar(3);
   controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
-  scene.add(new THREE.HemisphereLight(0xffffff,0x526c64,2.4));
-  const l=new THREE.DirectionalLight(0xffffff,2);l.position.set(2,3,4);scene.add(l);
+  const ambient=new THREE.HemisphereLight(0xffffff,0x526c64,2.4);ambient.position.set(...frame.up);scene.add(ambient);
+  const l=new THREE.DirectionalLight(0xffffff,2);l.position.set(...frame.key);scene.add(l);
+  if(sourceKind==='bp43'){const fill=new THREE.DirectionalLight(0xffffff,1);fill.position.set(...frame.fill);scene.add(fill);}
   const resize=()=>{if(!renderer||!host.clientWidth||!host.clientHeight)return;renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();};
   observer=new ResizeObserver(resize);observer.observe(host);resize();
   renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});

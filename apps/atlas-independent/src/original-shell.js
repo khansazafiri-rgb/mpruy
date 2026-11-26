@@ -20,9 +20,9 @@ export function mountOriginalShell(api){
  click('returnContext',()=>act(()=>api.restoreContext()));
  click('resetBtn',()=>api.fit());click('zoomInAtlas',()=>api.zoom(.8));click('zoomOutAtlas',()=>api.zoom(1.25));
  click('panAtlas',()=>{const b=$('panAtlas');const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));api.pan(on);});
- for(const [id,axis,label] of [['frontViewBtn','front','+Z'],['sideViewBtn','side','−X'],['backViewBtn','back','−Z'],['topViewBtn','top','+Y']]){
-  $(id).textContent=label;$(id).title='Sumbu sumber '+label+'; orientasi anatomi belum divalidasi';click(id,()=>api.axis(axis));
- }
+ const axisButtons=[['frontViewBtn','front','+Z'],['sideViewBtn','side','−X'],['backViewBtn','back','−Z'],['topViewBtn','top','+Y']];
+ for(const [id,axis,label] of axisButtons){$(id).textContent=label;$(id).title='Sumbu sumber '+label;click(id,()=>api.axis(axis));}
+ function setAxes(labels){for(const [id,axis] of axisButtons){const [label,name]=labels[axis];$(id).textContent=label;$(id).title=name+' · '+label+' (sumbu publisher)';$(id).setAttribute('aria-label',name+' '+label);}}
  click('infoToggle',()=>api.clear());click('infoOpen',()=>original.classList.add('info-open'));click('infoExpand',()=>{const on=original.classList.toggle('info-expanded');$('infoExpand').setAttribute('aria-expanded',String(on));});
  click('footerIsolateBtn',()=>act(()=>api.isolate()));click('footerHideBtn',()=>act(()=>api.hide()));
  click('footerTransparentBtn',()=>act(()=>api.fadeSelected()));click('footerFadeOthersBtn',()=>act(()=>api.fadeOthers()));
@@ -64,5 +64,5 @@ export function mountOriginalShell(api){
  function render(){if(!scheduled){scheduled=true;requestAnimationFrame(renderNow);}}
  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!['INPUT','TEXTAREA'].includes(e.target?.tagName)){e.preventDefault();$('undoAtlas').click();}});
  const full=make('button','btn-icon','⛶');full.title='Layar penuh';full.setAttribute('aria-label','Layar penuh');full.onclick=()=>api.fullscreen();original.querySelector('.header-right').append(full);
- return {render};
+ return {render,setAxes};
 }
