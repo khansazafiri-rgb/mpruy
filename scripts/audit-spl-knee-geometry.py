@@ -2,6 +2,7 @@
 import hashlib
 import importlib.util
 import json
+import re
 import subprocess
 import struct
 import tempfile
@@ -26,7 +27,33 @@ vtkObject.GlobalWarningDisplayOff()
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
-def scene_links(z, mesh_paths):
+# Allow only exact anatomical vocabulary. Never emit arbitrary scene names,
+# filenames, patient metadata, or guessed laterality.
+KNEE_TERMS = {
+    "acl": "anterior cruciate ligament", "anterior cruciate ligament": "anterior cruciate ligament",
+    "pcl": "posterior cruciate ligament", "posterior cruciate ligament": "posterior cruciate ligament",
+    "mcl": "medial collateral ligament", "medial collateral ligament": "medial collateral ligament",
+    "lcl": "lateral collateral ligament", "lateral collateral ligament": "lateral collateral ligament",
+    "medial meniscus": "medial meniscus", "lateral meniscus": "lateral meniscus",
+    "patellar ligament": "patellar ligament", "patellar tendon": "patellar tendon",
+    "femur": "femur", "tibia": "tibia", "fibula": "fibula", "patella": "patella",
+    "femoral cartilage": "femoral cartilage", "tibial cartilage": "tibial cartilage",
+    "patellar cartilage": "patellar cartilage", "quadriceps tendon": "quadriceps tendon",
+}
+def anatomical_label(value):
+    value = re.sub(r"[ _-]+", " ", value.strip().lower())
+    side = "UNSPECIFIED"
+    for name in ("left", "right"):
+        if value.startswith(name + " "):
+            side, value = name.upper(), value[len(name)+1:]
+            break
+        if value.endswith(" " + name):
+            side, value = name.upper(), value[:-len(name)-1]
+            break
+    term = KNEE_TERMS.get(value)
+    return (term, side) if term else None
+
+def scene_links(z, mesh_paths, anatomical=None):
     """Resolve only local MRML model/storage references; never load a scene or volume."""
     links = {p: set() for p in mesh_paths}
     counts = Counter()
@@ -68,6 +95,8 @@ def scene_links(z, mesh_paths):
             if target and ident:
                 node_hash = digest((info.filename + "\0" + ident).encode("utf8"))
                 links[target].add(node_hash)
+                if anatomical is not None:
+                    anatomical[target].add(anatomical_label(node.get('name', '')) or ('UNRECOGNIZED', 'UNSPECIFIED'))
                 if node.get("transformNodeRef") or node.get("parentTransformNodeRef"):
                     transform_links[target].add(node_hash)
                     counts["modelNodesWithTransformRef"] += 1
@@ -176,7 +205,8 @@ def audit(archive, receipt, scratch):
         meshes = [i for i in z.infolist() if PurePosixPath(i.filename).suffix.lower() == ".vtk"]
         if len(meshes) != 48:
             raise ValueError("unexpected VTK count")
-        links, scene_counts, transform_links = scene_links(z, {i.filename for i in meshes})
+        anatomical = {i.filename: set() for i in meshes}
+        links, scene_counts, transform_links = scene_links(z, set(anatomical), anatomical)
         rows = []
         for i in meshes:
             raw = z.read(i)
@@ -185,6 +215,11 @@ def audit(archive, receipt, scratch):
                    "sceneNodeIdentityHashes": sorted(links[i.filename]),
                    "sceneNodesWithTransformRef": len(transform_links[i.filename]),
                    "sceneTransformsApplied": False}
+            labels = anatomical[i.filename]
+            recognized = sorted(labels - {("UNRECOGNIZED", "UNSPECIFIED")})
+            row["anatomicalCandidates"] = [{"term": term, "side": side} for term, side in recognized]
+            row["anatomicalIdentityStatus"] = ("EXACT_ALLOWLIST_LABEL_CANDIDATE" if len(labels) == 1 and recognized else "HOLD_UNRESOLVED_OR_CONFLICTING_LABEL")
+            row["lateralityValidated"] = False
             try:
                 row.update(parse_mesh(raw, scratch))
                 row["status"] = "NATIVE_TRIANGLE_GEOMETRY_PARSED"
@@ -206,6 +241,9 @@ def audit(archive, receipt, scratch):
             "linkedMeshes": sum(r["sceneNodeLinks"] > 0 for r in rows),
             "exactGLBRoundtrips": sum(r.get("glbRoundtrip", {}).get("status") == "EXACT_NATIVE_GLTF_ROUNDTRIP" for r in rows),
             "sceneCounts": scene_counts, "rows": rows, "privacyReview": "PENDING",
+            "exactLabelCandidates": sum(r["anatomicalIdentityStatus"] == "EXACT_ALLOWLIST_LABEL_CANDIDATE" for r in rows),
+            "heldIdentity": sum(r["anatomicalIdentityStatus"] != "EXACT_ALLOWLIST_LABEL_CANDIDATE" for r in rows),
+            "lateralityValidated": False,
             "assetRightsReviewed": False, "clinicalValidation": False,
             "registrationValidated": False, "geometryPublished": 0, "publicRelease": "NO_GO"}
 
@@ -226,6 +264,21 @@ def main():
 
 FIXTURE = b"# vtk DataFile Version 3.0\nEngineering fixture\nASCII\nDATASET POLYDATA\nPOINTS 3 float\n0 0 0 1 0 0 0 1 0\nPOLYGONS 1 4\n3 0 1 2\n"
 class Tests(unittest.TestCase):
+    def test_allowlist_preserves_laterality_and_rejects_arbitrary_metadata(self):
+        self.assertEqual(anatomical_label('Left ACL'), ('anterior cruciate ligament', 'LEFT'))
+        self.assertEqual(anatomical_label('medial_meniscus_right'), ('medial meniscus', 'RIGHT'))
+        self.assertEqual(anatomical_label('PCL'), ('posterior cruciate ligament', 'UNSPECIFIED'))
+        for value in ('left right ACL', 'ACL of patient X', 'John Doe', 'ACL 1', 'meniscus'):
+            self.assertIsNone(anatomical_label(value))
+    def test_conflicting_scene_labels_not_collapsed(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / 'test.zip'
+            with zipfile.ZipFile(p, 'w') as z:
+                z.writestr('pack/scene.mrml', '<MRML><ModelStorage id="s" fileName="Data/test.vtk"/><Model id="a" storageNodeRef="s" name="ACL"/><Model id="b" storageNodeRef="s" name="PCL"/></MRML>')
+            labels = {'pack/Data/test.vtk': set()}
+            with zipfile.ZipFile(p) as z:
+                scene_links(z, set(labels), labels)
+            self.assertEqual(len(labels['pack/Data/test.vtk']), 2)
     def test_triangle(self):
         with tempfile.TemporaryDirectory() as d:
             r = parse_mesh(FIXTURE, Path(d))
