@@ -82,6 +82,8 @@ const {HRA_LEARNING_LINKS,hraLearningReferences}=await import('../apps/atlas-ind
 const guidedHraRows=realHra&&realHra.assets.size===9&&process.env.ATLAS_TEST_HRA_GROUPS==='1'?[...new Map(HRA_LEARNING_LINKS.map(x=>[x.group+':'+x.target,x])).values()].map(({group,target})=>({group,target,status:'NOT_FOUND_BY_EXACT_CHECK',fmaId:null,representations:[],hraCandidates:hraLearningReferences(group,target,[...realHra.assets.values()].map(x=>x.public))})):[];
 if(guidedHraRows.length){assert.equal(guidedHraRows.length,15);assert.equal(guidedHraRows.reduce((n,r)=>n+r.hraCandidates.length,0),24);assert(guidedHraRows.every(r=>r.hraCandidates.length));fixtureCoverage.rows.push(...guidedHraRows);fixtureCoverage.targets=fixtureCoverage.rows.length;fixtureCoverage.hraReferenceTargets=guidedHraRows.length;}
 const triangle=(id,x)=>({id,positions:new Float32Array([x,0,0,x+1,0,0,x,.8,0]),normals:new Float32Array([0,0,1,0,0,1,0,0,1]),omitted:0});
+const recoveryId='bp-'+'e'.repeat(24),recoveryFixture={...entry(recoveryId,4,'joints'),name:'Engineering recovery fixture',path:'priority-recovery/'+recoveryId+'.glb',sourceTree:'isa',priorityOnly:true,clinicalValidation:false,contextCandidate:false};
+const recoveryBytes=encodeNativeGlb([triangle('FJ4',0),triangle('FJ5',2)],{}).bytes;
 const assets=new Map([[ownerA,encodeNativeGlb([triangle('FJ1',-2)],{}).bytes],[ownerB,encodeNativeGlb([triangle('FJ2',0),triangle('FJ3',2)],{}).bytes]]);
 let server,browser;
 try{
@@ -100,7 +102,8 @@ try{
   if(rel==='inventory.json')return send(200,JSON.stringify({schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:'native-official-OBJ',sourceKind:'independent-bp3d',entries}),'application/json');
   if(rel==='learning-coverage.json')return send(200,JSON.stringify(fixtureCoverage),'application/json');
   if(rel==='element-selection.json')return send(200,JSON.stringify(catalog),'application/json');
-  if(rel==='priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,publicRelease:'NO_GO',contextMode:null,registrationValidated:false,clinicalValidation:false,items:[]}),'application/json');
+  if(rel==='priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,publicRelease:'NO_GO',contextMode:null,registrationValidated:false,clinicalValidation:false,items:[recoveryFixture]}),'application/json');
+  if(rel===recoveryFixture.path)return send(200,recoveryBytes,'model/gltf-binary');
   const model=rel.match(/^models\/(bp-[a-f0-9]{24})\.glb$/);
   if(model&&assets.has(model[1]))return send(200,assets.get(model[1]),'model/gltf-binary');
   if(rel===''||/^assets\/[A-Za-z0-9_.-]+\.(js|css)$/.test(rel)){
@@ -360,6 +363,12 @@ try{
   await waitCounts(3,1);
   console.log('BP3D43 REAL BROWSER PASS: '+real43.assets.size+' actual publisher GLBs rendered with audited triangle counts; body inventory unchanged.');
  }
+ // Regression of the exact local recovery QC selection and isolation path.
+ const search=page.locator('#searchInput');if(!await search.isVisible())await page.locator('#searchOpen').click();await search.fill('FMA4');
+ await page.locator('#searchResults [data-atlas-entry-id="'+recoveryId+'"]').click();
+ await page.waitForFunction(id=>{const s=document.getElementById('atlasStatus'),d=JSON.parse(document.getElementById('view').dataset.renderQc||'{}');return s.dataset.selectedId===id&&s.dataset.isolatedId===id&&s.dataset.loading==='false'&&s.dataset.failedModels==='0'&&s.dataset.visibleModels==='0'&&s.dataset.visibleMeshes==='2'&&s.dataset.highlightedMeshes==='2'&&d.visibleGeometryTriangles===2&&d.triangles>0;},recoveryId,{timeout:20000});
+ await page.locator('#frontViewBtn').click();await page.waitForFunction(()=>{const d=JSON.parse(document.getElementById('view').dataset.renderQc||'{}');return d.up?.join(',')==='0,0,1'&&d.axis?.[1]<-.99;});
+ console.log('RECOVERY BROWSER FIXTURE PASS: exact source ID, two isolated/highlighted meshes, two geometry triangles and source anterior axis; no body context.');
  await page.setViewportSize({width:390,height:844});
  await page.locator('#searchOpen').click();
  await page.locator('#searchInput').waitFor({state:'visible'});

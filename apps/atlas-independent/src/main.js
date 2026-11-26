@@ -140,7 +140,7 @@ function fit(axis=currentAxis()){
  frameBounds(bounds,axis);
 }
 function resize(){const w=$('view').clientWidth,h=$('view').clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}
-new ResizeObserver(resize).observe($('view'));resize();let lastRenderQC='';renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);const axis=currentAxis().toArray().map(v=>Math.round(v*1000)/1000);const qc=JSON.stringify({axis,up:camera.up.toArray(),triangles:renderer.info.render.triangles});if(qc!==lastRenderQC){$('view').dataset.renderQc=qc;lastRenderQC=qc;}});
+new ResizeObserver(resize).observe($('view'));resize();let lastRenderQC='';renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);const axis=currentAxis().toArray().map(v=>Math.round(v*1000)/1000);const visibleGeometryTriangles=[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.reduce((sum,mesh)=>sum+(mesh.visible?(mesh.geometry.index?.count??mesh.geometry.attributes.position.count)/3:0),0):0),0);const qc=JSON.stringify({axis,up:camera.up.toArray(),triangles:renderer.info.render.triangles,visibleGeometryTriangles});if(qc!==lastRenderQC){$('view').dataset.renderQc=qc;lastRenderQC=qc;}});
 for(const id of ['front','side','right','top','back'])$(id).onclick=()=>fit(axisVector(id));$('fit').onclick=()=>fit();
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let down=null;
 renderer.domElement.addEventListener('pointerdown',ev=>{down=ev.button===0?[ev.clientX,ev.clientY,ev.pointerId]:null;});
