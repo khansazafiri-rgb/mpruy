@@ -49,7 +49,7 @@ export async function stageHraBatch(q,batch){
  }catch(e){fs.rmSync(folder,{recursive:true,force:true});throw e;}
 }
 export function loadHraBatch(q,folder,batch){
- const rows=batchRows(batch);checkRoot(q);assert(new RegExp('^hra-'+batch+'-[A-Za-z0-9_-]+
+ const rows=batchRows(batch);checkRoot(q);const prefix='hra-'+batch+'-';assert(typeof folder==='string'&&folder.startsWith(prefix)&&/^[A-Za-z0-9_-]+$/.test(folder.slice(prefix.length)),'Explicit matching reference folder required');
  const base=path.join(q,folder);assert(fs.realpathSync(base)===base);
  const assets=new Map();
  for(const {s,a,id} of rows){
@@ -74,28 +74,4 @@ if(process.argv[1]===fileURLToPath(import.meta.url)){
  const args=process.argv.slice(2);assert(args[0]==='--stage'&&args.length<=2,'Explicit --stage [batch] only');
  const q=fileURLToPath(new URL('local-data/licensing-quarantine',root));
  const folder=await stageHraBatch(q,args[1]||'female-five');console.log('HRA PRIVATE FOLDER '+folder);
-}
-).test(folder),'Explicit matching reference folder required');
- const base=path.join(q,folder);assert(fs.realpathSync(base)===base);
- const assets=new Map();
- for(const {s,a,id} of rows){
-  const file=path.join(base,id+'.glb');assert(fs.realpathSync(file)===file&&fs.statSync(file).isFile()&&fs.statSync(file).size===s.bytes);
-  const crosswalk=verifyBytes(fs.readFileSync(file),s,a);
-  assets.set(id,{file,bytes:a.bytes,sha256:a.sha256,public:{id,name:s.id.replaceAll('-',' '),version:s.version,source:s.assetURL,meshCount:a.meshCount,frame:'HRA female reference source frame (not registered to BP3D)',sourceCrosswalk:crosswalk,sourceLicense:'CC-BY-4.0 (publisher stated; release held)',approvedForDistribution:false,registrationValidated:false}});
- }
- assert.equal(assets.size,5);return {assets,blocked:[]};
-}
-export function mergeHraFemaleReferences(existing,added){
- const assets=new Map(existing.assets);
- for(const [id,a] of added.assets){
-  const old=assets.get(id);
-  if(old)assert(old.sha256===a.sha256,'Conflicting HRA version bytes');
-  assets.set(id,a);
- }
- return {assets,blocked:[...existing.blocked,...added.blocked]};
-}
-if(process.argv[1]===fileURLToPath(import.meta.url)){
- assert.deepEqual(process.argv.slice(2),['--stage'],'Explicit --stage only');
- const q=fileURLToPath(new URL('local-data/licensing-quarantine',root));
- const folder=await stageHraFemaleFive(q);console.log('HRA FEMALE PRIVATE FOLDER '+folder);
 }
