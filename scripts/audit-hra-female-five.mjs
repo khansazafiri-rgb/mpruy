@@ -27,6 +27,7 @@ export function crosswalkNodes(csv,doc){
 }
 export async function audit(batch='female-five'){
  const configs={'female-five':{file:'licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',count:5,marker:'HRA FEMALE PINNED QUARANTINE REPORT '},'cardiopulmonary-four':{file:'licensing/atlas-publication/hra-cardiopulmonary-four-pinned-candidates-20261126.json',count:4,marker:'HRA CARDIOPULMONARY PINNED QUARANTINE REPORT '},'urogenital-7':{file:'licensing/atlas-publication/hra-urogenital-7-pinned-candidates-20261126.json',count:7,marker:'HRA UROGENITAL PINNED QUARANTINE REPORT '}};
+ configs['ureter-four']={file:'licensing/atlas-publication/hra-ureter-four-pinned-candidates-20261126.json',count:4,marker:'HRA URETER PINNED QUARANTINE REPORT '};
  assert(Object.hasOwn(configs,batch),'Unknown HRA batch');const config=configs[batch];
  const spec=JSON.parse(fs.readFileSync(new URL(config.file,root),'utf8'));
  assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===config.count);
@@ -43,6 +44,7 @@ export async function audit(batch='female-five'){
    assert(raw.equals(cdn),'CDN and pinned Git GLB differ');
    const info=inspectGlb(raw);const gltf=JSON.parse(raw.subarray(20,20+raw.readUInt32LE(12)).toString('utf8'));
    const labels=crosswalkNodes(cross.toString('utf8'),gltf);assert.equal(labels.length,e.expectedCrosswalkRows);
+   if(batch==='ureter-four')assert.deepEqual(labels.map(({nodeName,ontologyId,label})=>({nodeName,ontologyId,label})),e.sourceLabels,'Pinned crosswalk label mismatch');
    rows.push({id:e.id,version:e.version,assetURL:expected,bytes:raw.length,sha256:sha(raw),metadataSHA256:sha(meta),crosswalkSHA256:sha(cross),...info,labels,exactMeshNodeCount:labels.filter(x=>x.status==='EXACT_NAMED_MESH_NODE').length,license:proof.license,doi:proof.doi,creators:proof.creators,status:'EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES',clinicalValidation:false,registrationValidated:false,approvedForDistribution:false});
   }catch(error){rows.push({id:e.id,version:e.version,status:'HOLD',reason:String(error.message).slice(0,500),approvedForDistribution:false});}
  }
