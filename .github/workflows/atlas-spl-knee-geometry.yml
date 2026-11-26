@@ -1,7 +1,13 @@
 name: Atlas SPL knee native geometry audit
 on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/audit-spl-knee-*.py'
+      - 'licensing/atlas-publication/spl-knee-source-inventory-20261125.json'
+      - '.github/workflows/atlas-spl-knee-geometry.yml'
   pull_request:
-    branches: [feat/atlas-axial-cartilage-20261125]
+    branches: [feat/atlas-axial-cartilage-20261125, feat/atlas-multilingual-coverage-20261126]
     paths:
       - 'scripts/audit-spl-knee-*.py'
       - 'licensing/atlas-publication/spl-knee-source-inventory-20261125.json'

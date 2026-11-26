@@ -50,7 +50,7 @@ export function learningAccess(coverage,entries,refs,hra){
  const summarize=rows=>{
   const counts={VERIFIED_REPRESENTATION:0,BOTH_REFERENCE_SOURCES:0,BP43_REFERENCE_ONLY:0,HRA_REFERENCE_ONLY:0,NO_GUIDED_REPRESENTATION:0};
   for(const row of rows)counts[row.status]++;
-  return {targets:rows.length,...counts,referenceOnly:counts.BOTH_REFERENCE_SOURCES+counts.BP43_REFERENCE_ONLY+counts.HRA_REFERENCE_ONLY,accessible:rows.length-counts.NO_GUIDED_REPRESENTATION,pinnedMuscleReferenceTargets:rows.filter(r=>r.bp43.some(x=>x.relation==='PINNED_MUSCLE_LABEL')).length,relatedComponentOnlyTargets:rows.filter(r=>r.bp43.length&&r.bp43.every(x=>x.relation==='RELATED_COMPONENT_ONLY')).length};
+  return {targets:rows.length,...counts,referenceOnly:counts.BOTH_REFERENCE_SOURCES+counts.BP43_REFERENCE_ONLY+counts.HRA_REFERENCE_ONLY,accessible:rows.length-counts.NO_GUIDED_REPRESENTATION,pinnedMuscleReferenceTargets:rows.filter(r=>r.bp43.some(x=>x.relation==='PINNED_MUSCLE_LABEL')).length,levelSpecificReferenceTargets:rows.filter(r=>r.bp43.some(x=>x.relation==='LEVEL_SPECIFIC_REFERENCE')).length,relatedComponentOnlyTargets:rows.filter(r=>r.bp43.length&&r.bp43.every(x=>x.relation==='RELATED_COMPONENT_ONLY')).length};
  };
  return {scope:'Validated Guided Learning links only; not browser rendering, anatomy completeness or clinical validation.',...summarize(rows),systems:Object.fromEntries(Object.keys(groups).map(g=>[g,summarize(rows.filter(r=>r.group===g))])),rows};
 }
