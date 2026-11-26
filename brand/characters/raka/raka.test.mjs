@@ -215,3 +215,20 @@ test('lapar, ngantuk, dan pose pegang_perut tergambar tanpa mengubah desain kano
   for (const [e, p] of [['lapar', 'pegang_perut'], ['ngantuk', 'jalan'], ['lapar', 'jalan']]) { const s = rakaSvg(raka(e, p, { bags: 0.4 })); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
   assert.equal(rakaSvg(raka('netral')), base);
 });
+
+test('duduk: kurva kaki melewati lutut, paha mendatar, tungkai bawah menggantung dan bisa diayun dari lutut', async () => {
+  const { raka, rakaSvg, legShape } = await import('./raka.js');
+  const st = raka('netral', 'duduk');
+  const R = legShape('R', st), L = legShape('L', st);
+  const mid = R.dots[Math.floor(R.dots.length / 2)];
+  assert.ok(Math.hypot(mid[0] - 343, mid[1] - 578) < 14, 'titik tengah kurva dekat lutut');
+  assert.ok(Math.abs(R.dots[0][0] - 236) < 1 && Math.abs(R.dots[0][1] - 566) < 1, 'pinggul tetap menempel di badan');
+  assert.ok(R.ankle[1] > 660 && R.ankle[1] < 700 && Math.abs(R.ankle[0] - 337) < 2, 'tungkai bawah menggantung di bawah lutut');
+  assert.ok(L.ankle[0] < R.ankle[0], 'kaki jauh di kiri kaki dekat');
+  const a = 30 * Math.PI / 180, kick = { ...st, legs: { ...st.legs, R: { ...st.legs.R, dx: 343 + 98 * Math.sin(a) - 238, lift: 752 - (578 + 98 * Math.cos(a)), foot: -30 } } };
+  const K = legShape('R', kick);
+  assert.ok(Math.abs(Math.hypot(K.ankle[0] - 343, K.ankle[1] - 578) - 98) < 0.5, 'panjang tungkai bawah tetap saat diayun');
+  assert.ok(K.ankle[0] > R.ankle[0] + 40 && K.ankle[1] < R.ankle[1], 'tungkai bawah maju dan naik');
+  const svg = rakaSvg(kick, { uid: 'dd' });
+  assert.ok(svg.includes('class="raka-legs"') && !/NaN|undefined/.test(svg));
+});

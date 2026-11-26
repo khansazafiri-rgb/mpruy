@@ -1,0 +1,16 @@
+# Sumber dan asal-usul
+## Audio
+| Berkas | Asal | Lisensi / catatan |
+|---|---|---|
+| `audio/sumber-asli.wav` | Narasi Google AI Studio dari pemesan (`Generated_Audio_November_26_2026_-_5_07PM.wav`), 24 kHz mono, 27,85 dtk; seluruhnya naskah edukasi (tanpa paragraf promosi). Header WAV tidak baku, jadi didekode lewat ffmpeg. | Dari pemesan. Tidak diubah. |
+| `audio/mix.wav` (hasil `audio_mix.py`) | Suara = berkas di atas utuh (fade-out 80 ms di ujung, resample 24 -> 48 kHz); tempo dan nada tidak diubah, bukan TTS pengganti. Musik dan efek disintesis dari kode (numpy/scipy). | Musik dan efek **CC0 1.0** (tanpa sampel pihak ketiga), aman untuk promosi Instagram/TikTok. Daftar efek + waktu: `audio/events.json`. |
+| `brand/video/outro/medcoel-outro-master.mp4` | Master outro baku MEDCOEL di repo (16,20 dtk), ditempel utuh satu kali, re-encode sesuai README master. | Aset MEDCOEL. |
+| `audio/asr-outro.json` | Takarir kalimat narasi master (teks dari README master; waktu dari ASR master). | Hanya untuk `takarir.srt`. |
+## Gambar
+Semua dari kode (`stage/*.js`). Raka hanya lewat `rakaSvg()` (`brand/characters/raka/raka.js`) dengan ekspresi bawaan, pose `duduk` (baru, lihat README Raka), dan `lerpState`; tidak ada gambar referensi Raka dan tidak ada karakter baru. Kursi, ruang, palu refleks, lengan jas dokter (hanya lengan, tangan, dan palu), otot, tulang, saraf, tulang belakang, gelendong otot, dan penampang sumsum tulang belakang: vektor skematis buatan sendiri (ilustrasi edukatif; skala, jumlah serabut, dan gerak disederhanakan). Logo `apps/web/src/assets/logo-full.webp` (hanya cover). Font `video/kopi-kafein-adenosin/stage/fonts`. Gaya diacu dari `video/mekanisme-varises` dan `video/spo2-pulse-oximeter`.
+## Sumber isi (diakses 2026-11-26)
+**Halaman NCBI Bookshelf dilindungi pemeriksaan reCAPTCHA dan tidak bisa dibuka langsung dari lingkungan kerja**; isinya dirangkum dari hasil pencarian web (bukan dibaca langsung). Mohon cocokkan dengan halaman aslinya.
+- **StatPearls, Physiology, Deep Tendon Reflexes** (ncbi.nlm.nih.gov/books/NBK562238/): refleks tendon dalam disebut juga refleks regang/miotatik; jalurnya bermula di gelendong otot (organ proprioseptif); serabut aferen Ia bersinaps langsung (monosinaptik) pada neuron motorik alfa untuk otot yang sama di tanduk ventral; pemeriksaan: ketuk tendon patela dan lihat kontraksi kuadrisep serta ekstensi tungkai di lutut; pasien duduk dengan tungkai menggantung.
+- **StatPearls, Neuroanatomy, Spinal Cord Myotatic Reflex** (ncbi.nlm.nih.gov/books/NBK551629/): refleks patela lewat saraf femoralis dan segmen sumsum L2-L4 (L4 dominan); aferen Ia juga memicu interneuron penghambat otot antagonis (hamstring dihambat secara timbal balik).
+Video **tidak** menampilkan: segmen spinal (L2-L4), penghambatan timbal balik hamstring, skala refleks, hasil pemeriksaan, atau penyakit; otak tidak digambar sebagai sumber perintah.
+Penyederhanaan yang disengaja: satu serabut sensorik dan satu motorik (tanpa banyak serabut), sinaps langsung (monosinaptik) digambar sebagai satu titik, sumsum tulang belakang bagian bawah digambar di punggung Raka pada ketinggian pinggang; kuadrisep digambar sebagai satu otot; "ULANGI PELAN-PELAN" menandai bahwa penjelasan langkah demi langkah memperlambat kejadian yang sebenarnya hampir seketika.

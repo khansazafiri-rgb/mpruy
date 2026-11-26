@@ -91,7 +91,8 @@ export const NEUTRAL = {
   tears: 0, tearsT: 0, fxCough: 0, // air mata di pipi (0..1, tearsT = fase tetesan), efek batuk di dekat mulut
   bags: 0, sparkle: 0, shades: 0, shadesY: 0, sweat: 0, slump: 0, dizzy: 0, dizzyT: 0, // kantung mata, kilau mata, kacamata, keringat, bahu turun, mata berputar
   // ---- kaki: on 0 = kaki kanonik (lurus, sepatu di samping). on 1 = kaki berengsel halus untuk jalan, lari, dan jongkok
-  legs: { on: 0, dir: 0, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } },
+  // sit: 0 = kurva kaki lama; 1 = kurva MELEWATI lutut (kneeX, kneeY) seperti siku pada lengan, untuk duduk (paha mendatar, tungkai bawah menggantung); foot = sudut sepatu (derajat)
+  legs: { on: 0, dir: 0, L: { dx: 0, lift: 0, kx: 0, sit: 0, kneeX: 0, kneeY: 0, foot: 0 }, R: { dx: 0, lift: 0, kx: 0, sit: 0, kneeX: 0, kneeY: 0, foot: 0 } },
 };
 
 /** Ekspresi wajah (hanya bagian wajah; pose lengan terpisah). */
@@ -177,6 +178,13 @@ export const POSES = {
   jalan: { legs: { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } } },
   // berhenti mendadak: badan condong ke belakang, kaki selebar bahu
   berhenti: { lean: -4, legs: { on: 1, dir: 1, L: { dx: -14, lift: 0, kx: 0 }, R: { dx: 26, lift: 0, kx: 0 } }, armL: { wx: 70, wy: 520, ex: 62, ey: 470, finger: 0, front: 1 }, armR: { wx: 330, wy: 520, ex: 338, ey: 470, finger: 0, front: 1 } },
+  // duduk di tepi kursi tinggi, tampak samping tiga perempat (menghadap kanan layar): paha mendatar ke kanan, tungkai bawah menggantung bebas; tangan di paha.
+  // Kaki kanan-layar (R) = kaki dekat kamera. Tungkai bawah diayun dari lutut: ankle = lutut + 98 * (sin a, cos a); sepatu foot = -a. Lihat README, "Duduk".
+  duduk: {
+    legs: { on: 1, dir: 1, L: { dx: 103, lift: 64, kx: 0, sit: 1, kneeX: 271, kneeY: 590, foot: 0 }, R: { dx: 99, lift: 76, kx: 0, sit: 1, kneeX: 343, kneeY: 578, foot: 0 } },
+    armL: { wx: 168, wy: 540, ex: 92, ey: 522, finger: 0, front: 1 },
+    armR: { wx: 262, wy: 536, ex: 322, ey: 526, finger: 0, front: 1 },
+  },
   // jongkok: pinggul turun, lutut keluar, tangan di lutut
   jongkok: {
     bob: 142, lean: 2,
@@ -437,14 +445,16 @@ export function legShape(side, s) {
   const g = s.legs, leg = side === 'L' ? g.L : g.R;
   const hx = HIP[side][0], hy = HIP[side][1] + s.bob;
   const ax = (side === 'L' ? 162 : 238) + leg.dx, ay = ANKLE_Y - leg.lift;
-  const cx = (hx + ax) / 2 + leg.kx * 2, cy = (hy + ay) / 2;
+  let cx = (hx + ax) / 2 + leg.kx * 2, cy = (hy + ay) / 2;
+  const sit = clamp(leg.sit || 0, 0, 1);
+  if (sit > 0.001) { cx = lerp(cx, 2 * leg.kneeX - (hx + ax) / 2, sit); cy = lerp(cy, 2 * (leg.kneeY + s.bob) - (hy + ay) / 2, sit); }   // kurva melewati lutut
   const N = 30, dots = [];
   for (let i = 0; i <= N; i += 1) {
     const t = i / N, u = 1 - t;
     dots.push([u * u * hx + 2 * u * t * cx + t * t * ax, u * u * hy + 2 * u * t * cy + t * t * ay, lerp(36, 27, ease(t))]);
   }
   const dir = Math.abs(g.dir) < 0.5 ? (side === 'L' ? -1 : 1) : Math.sign(g.dir);
-  return { dots, ankle: [ax, ay], dir, tilt: -leg.lift * 0.55 };
+  return { dots, ankle: [ax, ay], dir, tilt: lerp(-leg.lift * 0.55, leg.foot || 0, sit) };
 }
 function legsRigSvg(s, P) {
   const body = ['L', 'R'].map((side) => {

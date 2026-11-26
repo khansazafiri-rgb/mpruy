@@ -1,0 +1,177 @@
+{
+ "dur": 45.6,
+ "edu_dur": 29.4,
+ "outro_dur": 16.2,
+ "cut": 27.85,
+ "w": {
+  "doktor": 0.0,
+  "mengetuk": 0.42,
+  "tepat": 0.84,
+  "bawah": 1.44,
+  "tempurung": 1.68,
+  "lutut": 2.02,
+  "kok": 2.68,
+  "kaki": 3.02,
+  "langsung": 3.32,
+  "bergerak": 3.52,
+  "ketukan": 4.54,
+  "itu": 5.18,
+  "meregangkan": 5.5,
+  "otot1": 6.1,
+  "pahadepan1": 6.32,
+  "sesaat": 6.76,
+  "sensor": 7.4,
+  "regang": 8.04,
+  "diotot": 8.36,
+  "otot2": 8.52,
+  "mengirim": 8.78,
+  "sinyal1": 9.08,
+  "lewat": 9.46,
+  "saraf": 9.68,
+  "menuju": 10.08,
+  "sumsum": 10.38,
+  "tulang": 10.8,
+  "belakang": 11.04,
+  "dari": 11.96,
+  "sana": 12.14,
+  "sinyal2": 12.78,
+  "dikirim": 13.04,
+  "kembali": 13.26,
+  "ke": 13.64,
+  "otot3": 13.76,
+  "pahadepan2": 13.92,
+  "otot4": 15.06,
+  "berkontraksi": 15.36,
+  "lalu": 16.46,
+  "tungkai": 16.64,
+  "bawah2": 16.9,
+  "terangkat": 17.1,
+  "terangkat_end": 17.46,
+  "inilah": 18.26,
+  "refleks1": 18.58,
+  "lutut2": 18.84,
+  "gerakannya": 19.78,
+  "cepat": 20.24,
+  "karena": 20.68,
+  "memakai": 21.0,
+  "jalur1": 21.4,
+  "refleks2": 21.68,
+  "melalui": 22.02,
+  "sumsum2": 22.42,
+  "tulang2": 22.76,
+  "belakang2": 23.0,
+  "doktor2": 23.94,
+  "memeriksa": 24.34,
+  "untuk": 24.96,
+  "membantu": 25.24,
+  "menilai": 25.74,
+  "kerja": 26.08,
+  "jalur2": 26.38,
+  "saraf2": 26.64,
+  "dan": 26.96,
+  "otot5": 27.1,
+  "otot5_end": 27.4
+ },
+ "cap": [
+  [
+   0.0,
+   1.64,
+   "Dokter mengetuk tepat di bawah"
+  ],
+  [
+   1.66,
+   2.5,
+   "tempurung lutut,"
+  ],
+  [
+   2.64,
+   4.1,
+   "kok kaki langsung bergerak?"
+  ],
+  [
+   4.5,
+   6.05,
+   "Ketukan itu meregangkan"
+  ],
+  [
+   6.08,
+   7.28,
+   "otot paha depan sesaat."
+  ],
+  [
+   7.36,
+   8.72,
+   "Sensor regang di otot"
+  ],
+  [
+   8.74,
+   10.05,
+   "mengirim sinyal lewat saraf"
+  ],
+  [
+   10.06,
+   11.5,
+   "menuju sumsum tulang belakang."
+  ],
+  [
+   11.92,
+   12.75,
+   "Dari sana,"
+  ],
+  [
+   12.76,
+   13.72,
+   "sinyal dikirim kembali"
+  ],
+  [
+   13.72,
+   14.55,
+   "ke otot paha depan."
+  ],
+  [
+   15.02,
+   16.42,
+   "Otot berkontraksi,"
+  ],
+  [
+   16.44,
+   17.62,
+   "lalu tungkai bawah terangkat."
+  ],
+  [
+   18.22,
+   19.42,
+   "Inilah refleks lutut."
+  ],
+  [
+   19.74,
+   21.36,
+   "Gerakannya cepat karena memakai"
+  ],
+  [
+   21.38,
+   22.4,
+   "jalur refleks melalui"
+  ],
+  [
+   22.42,
+   23.55,
+   "sumsum tulang belakang."
+  ],
+  [
+   23.9,
+   25.22,
+   "Dokter memeriksanya untuk"
+  ],
+  [
+   25.24,
+   26.36,
+   "membantu menilai kerja"
+  ],
+  [
+   26.38,
+   27.65,
+   "jalur saraf dan otot."
+  ]
+ ]
+}

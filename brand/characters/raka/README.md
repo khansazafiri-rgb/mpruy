@@ -225,3 +225,16 @@ rakaSvg(idle(raka('lapar', 'pegang_perut', { bags: 0.3 }), t), { outfit: 'harian
 rakaSvg(idle(raka('ngantuk', 'jalan', { bags: 0.6 }), t), { outfit: 'harian' });        // begadang
 ```
 Karakter tubuh yang menemani Raka di video ini ada di `brand/characters/grelin` dan `brand/characters/jambi` (lihat `brand/characters/README.md`).
+
+## Duduk (video "Kenapa lutut diketuk, kaki bergerak?")
+Pose `duduk`: Raka duduk di tepi kursi tinggi, **tampak samping tiga perempat menghadap kanan layar**; paha mendatar ke kanan, tungkai bawah menggantung bebas. Kaki berengsel diperluas tanpa mengubah gambar lama: setiap kaki punya `sit` (0 = kurva lama, 1 = kurva **melewati lutut** `kneeX`/`kneeY`, seperti siku pada lengan) dan `foot` (sudut sepatu, derajat). Kaki kanan-layar (`R`) = kaki dekat kamera.
+
+```js
+import { raka, rakaSvg } from './raka.js';
+rakaSvg(raka('netral', 'duduk'));                        // duduk, tungkai menggantung
+// ayun tungkai bawah dari lutut sebesar a derajat (panjang tungkai bawah tetap 98): ankle = lutut + 98 * (sin a, cos a); sepatu foot = -a
+const a = 30 * Math.PI / 180, st = raka('netral', 'duduk');
+st.legs.R.dx = 343 + 98 * Math.sin(a) - 238; st.legs.R.lift = 752 - (578 + 98 * Math.cos(a)); st.legs.R.foot = -30;
+rakaSvg(st);
+```
+Kursi, lantai, dan palu bukan bagian dari Raka (digambar di sisi video; lihat `video/refleks-lutut/stage/seat.js`). Dicerminkan dengan `flip: 1` bila perlu (kursi harus dicerminkan sendiri).
