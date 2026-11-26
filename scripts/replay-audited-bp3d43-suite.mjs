@@ -2,7 +2,7 @@
 // No assets leave the runner. Each child uses a fresh private acquisition directory.
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';import {fileURLToPath} from 'node:url';
-import {BP43_SUITE,BP43_HYOID,BP43_EXPANSION} from './atlas-reference-suite-spec.mjs';
+import {BP43_SUITE,BP43_HYOID,BP43_EXPANSION,BP43_MUSCLE} from './atlas-reference-suite-spec.mjs';
 import {run} from './intake-bp3d43-priority-elements.mjs';
 import {load43Elements,select43Acquisition} from './load-bp3d43-private-elements.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url))),q=path.join(root,'local-data/licensing-quarantine');
@@ -20,7 +20,7 @@ export function replayPlan(receipt,count){
  });
  return {schema:1,sourceVersion:'4.3',geometryVerified:false,publicRelease:'NO_GO',licenseReview:'VERSION_SPECIFIC_REVIEW_REQUIRED',expectedManifestSHA256:publisher.manifestSHA256,rows};
 }
-export function retainedReceipt(file){const d=receipts.find(x=>x[1]===file);assert(d,'Unknown receipt');return {evidence:JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count:d[2]};}
+export function retainedReceipt(file){const d=[...receipts,BP43_MUSCLE].find(x=>x[1]===file);assert(d,'Unknown receipt');return {evidence:JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count:d[2]};}
 export function readRetainedReports(q){assert(fs.realpathSync(q)===q&&path.basename(q)==='licensing-quarantine');return fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x)).flatMap(folder=>{const base=path.join(q,folder),f=path.join(base,'report.json');if(!fs.existsSync(f))return [];assert(fs.realpathSync(base)===base&&fs.realpathSync(f)===f&&fs.statSync(f).isFile()&&fs.statSync(f).size<1024*1024);return [{folder,report:JSON.parse(fs.readFileSync(f,'utf8'))}];});}
 function replayOne(file){const {evidence,count}=retainedReceipt(file),doc=replayPlan(evidence,count);run(doc);const folder=select43Acquisition(readRetainedReports(q),evidence);const registry=load43Elements(q,folder,evidence,count);assert.equal(registry.assets.size,count);console.log('EXACT RETAINED PUBLISHER REPLAY PASS '+file+' '+count);}
 export async function boundedReplay(items,worker,parallel=2){assert(Number.isInteger(parallel)&&parallel>=1&&parallel<=2);let next=0;const failures=[];await Promise.all(Array.from({length:parallel},async()=>{while(next<items.length&&!failures.length){const item=items[next++];try{await worker(item);}catch(e){failures.push({item,reason:String(e.message)});}}}));assert(!failures.length,'Replay failed; no partial suite: '+JSON.stringify(failures));}
