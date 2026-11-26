@@ -1,0 +1,528 @@
+{
+  "nodeCount": 482,
+  "meshCount": 472,
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "targets": [
+    {
+      "target": "Femoral nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Femoral nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 334,
+          "meshIndex": 327,
+          "sourceName": "Femoral nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Sciatic nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Sciatic nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 381,
+          "meshIndex": 374,
+          "sourceName": "Sciatic nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Tibial nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Tibial nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 390,
+          "meshIndex": 383,
+          "sourceName": "Tibial nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Common fibular nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Common fibular nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 326,
+          "meshIndex": 319,
+          "sourceName": "Common fibular nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Deep fibular nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Deep fibular nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 329,
+          "meshIndex": 322,
+          "sourceName": "Deep fibular nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Superficial fibular nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Superficial fibular nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 384,
+          "meshIndex": 377,
+          "sourceName": "Superficial fibular nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Obturator nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Obturator nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 368,
+          "meshIndex": 361,
+          "sourceName": "Obturator nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Sural nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Sural nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 388,
+          "meshIndex": 381,
+          "sourceName": "Sural nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Saphenous nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Saphenous nerve",
+      "side": "right",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Medial plantar nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Medial plantar nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 359,
+          "meshIndex": 352,
+          "sourceName": "Medial plantar nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Lateral plantar nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Lateral plantar nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 352,
+          "meshIndex": 345,
+          "sourceName": "Lateral plantar nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Superior gluteal nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Superior gluteal nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 386,
+          "meshIndex": 379,
+          "sourceName": "Superior gluteal nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Inferior gluteal nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Inferior gluteal nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 341,
+          "meshIndex": 334,
+          "sourceName": "Inferior gluteal nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    },
+    {
+      "target": "Pudendal nerve",
+      "side": "left",
+      "matches": [],
+      "status": "HOLD_MISSING_OR_AMBIGUOUS"
+    },
+    {
+      "target": "Pudendal nerve",
+      "side": "right",
+      "matches": [
+        {
+          "nodeIndex": 372,
+          "meshIndex": 365,
+          "sourceName": "Pudendal nerve.r"
+        }
+      ],
+      "status": "EXACT_NAMED_MESH_NODE_CANDIDATE"
+    }
+  ],
+  "uniqueNamedCandidates": 13,
+  "geometryDecoded": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "assetRightsReviewed": false,
+  "publicRelease": "NO_GO",
+  "nerveMeshNodeNames": [
+    {
+      "nodeIndex": 325,
+      "meshIndex": 318,
+      "sourceName": "Coccygeal nerve.r"
+    },
+    {
+      "nodeIndex": 326,
+      "meshIndex": 319,
+      "sourceName": "Common fibular nerve.r"
+    },
+    {
+      "nodeIndex": 327,
+      "meshIndex": 320,
+      "sourceName": "Common plantar digital nerves.r"
+    },
+    {
+      "nodeIndex": 328,
+      "meshIndex": 321,
+      "sourceName": "Deep branch of Lateral plantar nerve.r"
+    },
+    {
+      "nodeIndex": 329,
+      "meshIndex": 322,
+      "sourceName": "Deep fibular nerve.r"
+    },
+    {
+      "nodeIndex": 330,
+      "meshIndex": 323,
+      "sourceName": "Dorsal digital branches of deep fibular nerve.r"
+    },
+    {
+      "nodeIndex": 331,
+      "meshIndex": 324,
+      "sourceName": "Dorsal digital branches of superficial fibular nerve.r"
+    },
+    {
+      "nodeIndex": 332,
+      "meshIndex": 325,
+      "sourceName": "Femoral nerve, anterior cutaneous branches.r "
+    },
+    {
+      "nodeIndex": 333,
+      "meshIndex": 326,
+      "sourceName": "Femoral nerve, muscular branches.r"
+    },
+    {
+      "nodeIndex": 334,
+      "meshIndex": 327,
+      "sourceName": "Femoral nerve.r"
+    },
+    {
+      "nodeIndex": 335,
+      "meshIndex": 328,
+      "sourceName": "Genitofemoral nerve, femoral branch.r "
+    },
+    {
+      "nodeIndex": 336,
+      "meshIndex": 329,
+      "sourceName": "Genitofemoral nerve, genital branch.r "
+    },
+    {
+      "nodeIndex": 337,
+      "meshIndex": 330,
+      "sourceName": "Iliohypogastric nerve, anterior branch.r"
+    },
+    {
+      "nodeIndex": 338,
+      "meshIndex": 331,
+      "sourceName": "Iliohypogastric nerve, lateral cutaneous branch.r "
+    },
+    {
+      "nodeIndex": 339,
+      "meshIndex": 332,
+      "sourceName": "Ilioinguinal nerve.r"
+    },
+    {
+      "nodeIndex": 340,
+      "meshIndex": 333,
+      "sourceName": "Inferior clunial br. of Post. cutaneous nerve of the thigh."
+    },
+    {
+      "nodeIndex": 341,
+      "meshIndex": 334,
+      "sourceName": "Inferior gluteal nerve.r"
+    },
+    {
+      "nodeIndex": 342,
+      "meshIndex": 335,
+      "sourceName": "Infrapatellar branch of Saphenous nerve.r"
+    },
+    {
+      "nodeIndex": 348,
+      "meshIndex": 341,
+      "sourceName": "Lateral branch of deep fibular nerve.r"
+    },
+    {
+      "nodeIndex": 349,
+      "meshIndex": 342,
+      "sourceName": "Lateral calcaneal nerves.r"
+    },
+    {
+      "nodeIndex": 350,
+      "meshIndex": 343,
+      "sourceName": "Lateral dorsal cutaneous nerve.r"
+    },
+    {
+      "nodeIndex": 351,
+      "meshIndex": 344,
+      "sourceName": "Lateral femoral cuteneous nerve.r"
+    },
+    {
+      "nodeIndex": 352,
+      "meshIndex": 345,
+      "sourceName": "Lateral plantar nerve.r"
+    },
+    {
+      "nodeIndex": 353,
+      "meshIndex": 346,
+      "sourceName": "Lateral sural cutaneous nerve.r"
+    },
+    {
+      "nodeIndex": 356,
+      "meshIndex": 349,
+      "sourceName": "Medial branch of deep fibular nerve.r"
+    },
+    {
+      "nodeIndex": 357,
+      "meshIndex": 350,
+      "sourceName": "Medial calcaneal branches of Tibial nerve.r"
+    },
+    {
+      "nodeIndex": 358,
+      "meshIndex": 351,
+      "sourceName": "Medial dorsal cutaneous nerve.r"
+    },
+    {
+      "nodeIndex": 359,
+      "meshIndex": 352,
+      "sourceName": "Medial plantar nerve.r"
+    },
+    {
+      "nodeIndex": 360,
+      "meshIndex": 353,
+      "sourceName": "Medial sural cutaneous nerve.r"
+    },
+    {
+      "nodeIndex": 361,
+      "meshIndex": 354,
+      "sourceName": "Nerve to Levator ani and coccygeus.r"
+    },
+    {
+      "nodeIndex": 362,
+      "meshIndex": 355,
+      "sourceName": "Nerve to obturator internus (and superior gemellus).r"
+    },
+    {
+      "nodeIndex": 363,
+      "meshIndex": 356,
+      "sourceName": "Nerve to psoas major and iliacus.r"
+    },
+    {
+      "nodeIndex": 364,
+      "meshIndex": 357,
+      "sourceName": "Nerve to quadratus femoris.r"
+    },
+    {
+      "nodeIndex": 365,
+      "meshIndex": 358,
+      "sourceName": "Obturator nerve, anterior br, cutaneous br.r"
+    },
+    {
+      "nodeIndex": 366,
+      "meshIndex": 359,
+      "sourceName": "Obturator nerve, anterior branch.r"
+    },
+    {
+      "nodeIndex": 367,
+      "meshIndex": 360,
+      "sourceName": "Obturator nerve, posterior branch.r"
+    },
+    {
+      "nodeIndex": 368,
+      "meshIndex": 361,
+      "sourceName": "Obturator nerve.r"
+    },
+    {
+      "nodeIndex": 369,
+      "meshIndex": 362,
+      "sourceName": "Posterior cutaneous nerve of the thigh.r"
+    },
+    {
+      "nodeIndex": 370,
+      "meshIndex": 363,
+      "sourceName": "Proper plantar digital branches (Lateral plantar nerve).r"
+    },
+    {
+      "nodeIndex": 371,
+      "meshIndex": 364,
+      "sourceName": "Proper plantar digital branches (Medial plantar nerve).r"
+    },
+    {
+      "nodeIndex": 372,
+      "meshIndex": 365,
+      "sourceName": "Pudendal nerve.r"
+    },
+    {
+      "nodeIndex": 379,
+      "meshIndex": 372,
+      "sourceName": "Saphenous branch of Femoralis nerve.r"
+    },
+    {
+      "nodeIndex": 380,
+      "meshIndex": 373,
+      "sourceName": "Saphenous nerve (Medial crural cutaneous branches).r"
+    },
+    {
+      "nodeIndex": 381,
+      "meshIndex": 374,
+      "sourceName": "Sciatic nerve.r"
+    },
+    {
+      "nodeIndex": 383,
+      "meshIndex": 376,
+      "sourceName": "Superficial branch of Lateral plantar nerve.r"
+    },
+    {
+      "nodeIndex": 384,
+      "meshIndex": 377,
+      "sourceName": "Superficial fibular nerve.r"
+    },
+    {
+      "nodeIndex": 385,
+      "meshIndex": 378,
+      "sourceName": "Superior clunial nerve (posterior rami).r"
+    },
+    {
+      "nodeIndex": 386,
+      "meshIndex": 379,
+      "sourceName": "Superior gluteal nerve.r"
+    },
+    {
+      "nodeIndex": 387,
+      "meshIndex": 380,
+      "sourceName": "Sural nerve, Lateral dorsal cutaneous nerve.r"
+    },
+    {
+      "nodeIndex": 388,
+      "meshIndex": 381,
+      "sourceName": "Sural nerve.r"
+    },
+    {
+      "nodeIndex": 390,
+      "meshIndex": 383,
+      "sourceName": "Tibial nerve.r"
+    }
+  ],
+  "scope": "Observed current publisher bytes only; exact source names are discovery candidates, not validated anatomy, rights clearance, or production assets.",
+  "schema": 1,
+  "archiveSHA256": "d989a6f076054ada639f597a0d21764e7e7b165a008f73493b5c803af826d7f0",
+  "glbSHA256": "5ecb1ef4c07a2f6aa17021ee6f6d0bb0587595821467ec8c6a14f24ee1091173",
+  "archiveBytes": 5980787,
+  "glbBytes": 6597544,
+  "exactObservedPublisherBytesReplay": true,
+  "legacyComparison": "HOLD_SOURCE_BYTES_CHANGED_OR_UNREADABLE",
+  "workflowRun": 45753008988,
+  "workflowJob": 139684987484
+}
