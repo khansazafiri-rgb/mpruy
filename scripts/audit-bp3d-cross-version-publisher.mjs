@@ -38,7 +38,7 @@ export function comparePublisherElement(ref,sources,readElement){
 export function summarizePublisherIds(rows){
  const statuses=['EXACT_IDENTITY_AND_RAW_BYTES','EXACT_RAW_BYTES_IDENTITY_REVIEW','REUSED_FJ_DIFFERENT_RAW_BYTES','FJ_NOT_IN_EITHER_ARCHIVE'];
  const byStatus=Object.fromEntries(statuses.map(status=>[status,[]])),seen=new Set();
- for(const {fj,status} of rows){assert(/^FJ\\d+[A-Za-z]?$/.test(fj)&&!seen.has(fj)&&Object.hasOwn(byStatus,status),'Invalid or duplicate publisher audit result');seen.add(fj);byStatus[status].push(fj);}
+ for(const {fj,status} of rows){assert(/^FJ\d+[A-Za-z]?$/.test(fj)&&!seen.has(fj)&&Object.hasOwn(byStatus,status),'Invalid or duplicate publisher audit result');seen.add(fj);byStatus[status].push(fj);}
  for(const ids of Object.values(byStatus))ids.sort();
  return byStatus;
 }
