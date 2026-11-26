@@ -155,6 +155,7 @@ export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[
   const cached=findRecoveryCache(privateRoot,cacheKey,plan,sources,inventorySHA256,broad,maxBytes);
   if(cached){console.log('PRIORITY RECOVERY CACHE',JSON.stringify({folder:cached.folder,exported:cached.items.length,totalBytes:cached.report.totalBytes,publicRelease:'NO_GO'}));return cached;}
  }
+ console.log('PRIORITY RECOVERY START '+JSON.stringify({planned:plan.length,exportCandidates:plan.filter(c=>c.status==='EXPORT_CANDIDATE').length,broad,maxBytes,publicRelease:'NO_GO'}));
  const out=fs.mkdtempSync(path.join(privateRoot,'atlas-priority-recovery-'));fs.chmodSync(out,0o700);
  const items=[],models=new Map(),results=[],used=new Set();let totalBytes=0;
  for(const c of plan){
