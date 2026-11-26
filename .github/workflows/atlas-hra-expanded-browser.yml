@@ -1,0 +1,35 @@
+name: Atlas expanded HRA direct browser regression
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - '.github/workflows/atlas-hra-expanded-browser.yml'
+      - 'scripts/load-hra-female-five.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/audit-hra-female-five.test.mjs
+      - name: Install isolated browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Render exact 15 retained HRA GLBs without exposing held groups
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_HRA_EXPANDED=1 node scripts/test-private-atlas-browser.mjs
+      - name: Remove private temporary source bytes
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/hra-urogenital-7-* local-data/licensing-quarantine/hra-ureter-four-* local-data/licensing-quarantine/hra-cns-four-*
