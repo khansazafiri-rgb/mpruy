@@ -13,3 +13,5 @@ export const BP43_SUITE=Object.freeze([
  ['--bp3d43-bronchial-folder=','bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json',22]
 ].map(Object.freeze));
 export const HRA_SUITE=Object.freeze([['--hra-female-folder=','female-five',5],['--hra-cardio-folder=','cardiopulmonary-four',4]].map(Object.freeze));
+
+export const BP43_HYOID=Object.freeze(['--bp3d43-hyoid-folder=','bp3d43-hyoid-2-dual-source-audit-20261126.json',2]);

@@ -5,12 +5,22 @@ on:
     paths:
       - 'licensing/atlas-publication/bp3d43-hyoid-2-candidates.json'
       - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - 'scripts/atlas-hyoid-supplement.test.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - 'licensing/atlas-publication/bp3d43-hyoid-2-dual-source-audit-20261126.json'
       - '.github/workflows/atlas-bp3d43-hyoid.yml'
   pull_request:
     branches: [feat/atlas-multilingual-coverage-20261126]
     paths:
       - 'licensing/atlas-publication/bp3d43-hyoid-2-candidates.json'
       - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - 'scripts/atlas-hyoid-supplement.test.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - 'licensing/atlas-publication/bp3d43-hyoid-2-dual-source-audit-20261126.json'
       - '.github/workflows/atlas-bp3d43-hyoid.yml'
 permissions:
   contents: read
