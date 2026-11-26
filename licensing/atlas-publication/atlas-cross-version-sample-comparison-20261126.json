@@ -1,0 +1,1023 @@
+{
+  "schema": 1,
+  "scope": "Comparison with 247 exact source geometry audit rows from BP3D 4.0 only. FMA identity overlap is not raw byte identity, geometric equivalence or registration. Full 4.0 body inventory is not present in this GitHub evidence; 169 FMA absent from sample are not a net-new count.",
+  "sourceCommit": "b4b564b0d0d187cad2afe590476c0342fd91a7fa",
+  "sourceFiles": [
+    {
+      "path": "apps/atlas-independent/src/reference43-topic-catalog.js",
+      "gitBlob": "75db89a5fd8497027ea7430a3783f53d482adab4"
+    },
+    {
+      "path": "licensing/atlas-publication/dbcls-full-geometry-audit-20261125.json",
+      "gitBlob": "d76fe0d86609250d8e04d0750c31a257e6a55fa0"
+    }
+  ],
+  "referenceElements": 246,
+  "referenceConcepts": 239,
+  "officialSampleRows": 247,
+  "officialSampleConcepts": 246,
+  "overlappingReferenceElements": 71,
+  "overlappingFMAConcepts": 70,
+  "referenceConceptsNotFoundInSample": 169,
+  "exactCrossVersionRawBytesVerified": false,
+  "fullBodyInventoryCompared": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "overlaps": [
+    {
+      "fj": "FJ6533",
+      "fmaId": "FMA7396",
+      "bpId": "BP23336",
+      "name": "Left main bronchus",
+      "officialSample": [
+        {
+          "bpId": "BP8386",
+          "tree": "isa",
+          "triangles": 4136,
+          "name": "left main bronchus"
+        }
+      ]
+    },
+    {
+      "fj": "FJ6583",
+      "fmaId": "FMA7395",
+      "bpId": "BP29545",
+      "name": "Right main bronchus",
+      "officialSample": [
+        {
+          "bpId": "BP9932",
+          "tree": "partof",
+          "triangles": 4468,
+          "name": "right main bronchus"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2769",
+      "fmaId": "FMA9615",
+      "bpId": "BP22903",
+      "name": "Cricoid cartilage",
+      "officialSample": [
+        {
+          "bpId": "BP9117",
+          "tree": "isa",
+          "triangles": 3404,
+          "name": "cricoid cartilage"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2808",
+      "fmaId": "FMA55099",
+      "bpId": "BP22917",
+      "name": "Thyroid cartilage",
+      "officialSample": [
+        {
+          "bpId": "BP7901",
+          "tree": "isa",
+          "triangles": 2610,
+          "name": "thyroid cartilage"
+        }
+      ]
+    },
+    {
+      "fj": "FJ6487",
+      "fmaId": "FMA9615",
+      "bpId": "BP22903",
+      "name": "Cricoid cartilage",
+      "officialSample": [
+        {
+          "bpId": "BP9117",
+          "tree": "isa",
+          "triangles": 3404,
+          "name": "cricoid cartilage"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2561",
+      "fmaId": "FMA7196",
+      "bpId": "BP21570",
+      "name": "Spleen",
+      "officialSample": [
+        {
+          "bpId": "BP8804",
+          "tree": "isa",
+          "triangles": 1330,
+          "name": "spleen"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2563",
+      "fmaId": "FMA7131",
+      "bpId": "BP22674",
+      "name": "Esophagus",
+      "officialSample": [
+        {
+          "bpId": "BP9222",
+          "tree": "isa",
+          "triangles": 578,
+          "name": "esophagus"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2564",
+      "fmaId": "FMA7148",
+      "bpId": "BP22633",
+      "name": "Stomach",
+      "officialSample": [
+        {
+          "bpId": "BP7926",
+          "tree": "isa",
+          "triangles": 1810,
+          "name": "stomach"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2565",
+      "fmaId": "FMA14542",
+      "bpId": "BP23696",
+      "name": "Appendix",
+      "officialSample": [
+        {
+          "bpId": "BP8994",
+          "tree": "isa",
+          "triangles": 442,
+          "name": "appendix"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2566",
+      "fmaId": "FMA14545",
+      "bpId": "BP22851",
+      "name": "Ascending colon",
+      "officialSample": [
+        {
+          "bpId": "BP9195",
+          "tree": "isa",
+          "triangles": 3310,
+          "name": "ascending colon"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2567",
+      "fmaId": "FMA14547",
+      "bpId": "BP22849",
+      "name": "Descending colon",
+      "officialSample": [
+        {
+          "bpId": "BP8743",
+          "tree": "isa",
+          "triangles": 5588,
+          "name": "descending colon"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2571",
+      "fmaId": "FMA14544",
+      "bpId": "BP21902",
+      "name": "Rectum",
+      "officialSample": [
+        {
+          "bpId": "BP9212",
+          "tree": "isa",
+          "triangles": 2118,
+          "name": "rectum"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2572",
+      "fmaId": "FMA14546",
+      "bpId": "BP23966",
+      "name": "Transverse colon",
+      "officialSample": [
+        {
+          "bpId": "BP8403",
+          "tree": "isa",
+          "triangles": 3472,
+          "name": "transverse colon"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2573",
+      "fmaId": "FMA7206",
+      "bpId": "BP24104",
+      "name": "Duodenum",
+      "officialSample": [
+        {
+          "bpId": "BP8646",
+          "tree": "isa",
+          "triangles": 1860,
+          "name": "duodenum"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2816",
+      "fmaId": "FMA13365",
+      "bpId": "BP23891",
+      "name": "Caudate lobe of liver",
+      "officialSample": [
+        {
+          "bpId": "BP8727",
+          "tree": "isa",
+          "triangles": 5020,
+          "name": "caudate lobe of liver"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2817",
+      "fmaId": "FMA7202",
+      "bpId": "BP23957",
+      "name": "Gallbladder",
+      "officialSample": [
+        {
+          "bpId": "BP9029",
+          "tree": "isa",
+          "triangles": 2396,
+          "name": "gallbladder"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3129",
+      "fmaId": "FMA15630",
+      "bpId": "BP22924",
+      "name": "Left adrenal gland",
+      "officialSample": [
+        {
+          "bpId": "BP9014",
+          "tree": "isa",
+          "triangles": 3996,
+          "name": "left adrenal gland"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3130",
+      "fmaId": "FMA15629",
+      "bpId": "BP23803",
+      "name": "Right adrenal gland",
+      "officialSample": [
+        {
+          "bpId": "BP9132",
+          "tree": "isa",
+          "triangles": 2294,
+          "name": "right adrenal gland"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3144",
+      "fmaId": "FMA15572",
+      "bpId": "BP21722",
+      "name": "Left ureter",
+      "officialSample": [
+        {
+          "bpId": "BP8750",
+          "tree": "isa",
+          "triangles": 2062,
+          "name": "left ureter"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3145",
+      "fmaId": "FMA7205",
+      "bpId": "BP21596",
+      "name": "Left kidney",
+      "officialSample": [
+        {
+          "bpId": "BP9289",
+          "tree": "isa",
+          "triangles": 2982,
+          "name": "left kidney"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3146",
+      "fmaId": "FMA15571",
+      "bpId": "BP22675",
+      "name": "Right ureter",
+      "officialSample": [
+        {
+          "bpId": "BP8912",
+          "tree": "isa",
+          "triangles": 1924,
+          "name": "right ureter"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3147",
+      "fmaId": "FMA7204",
+      "bpId": "BP23801",
+      "name": "Right kidney",
+      "officialSample": [
+        {
+          "bpId": "BP8907",
+          "tree": "isa",
+          "triangles": 2310,
+          "name": "right kidney"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3149",
+      "fmaId": "FMA15900",
+      "bpId": "BP22630",
+      "name": "Urinary bladder",
+      "officialSample": [
+        {
+          "bpId": "BP8497",
+          "tree": "isa",
+          "triangles": 226,
+          "name": "urinary bladder"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1730",
+      "fmaId": "FMA78454",
+      "bpId": "BP24045",
+      "name": "Third ventricle",
+      "officialSample": [
+        {
+          "bpId": "BP5515",
+          "tree": "isa",
+          "triangles": 3870,
+          "name": "third ventricle"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1731",
+      "fmaId": "FMA78469",
+      "bpId": "BP21438",
+      "name": "Fourth ventricle",
+      "officialSample": [
+        {
+          "bpId": "BP5514",
+          "tree": "isa",
+          "triangles": 6940,
+          "name": "fourth ventricle"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1742",
+      "fmaId": "FMA86464",
+      "bpId": "BP21574",
+      "name": "Corpus callosum",
+      "officialSample": [
+        {
+          "bpId": "BP6576",
+          "tree": "isa",
+          "triangles": 30232,
+          "name": "corpus callosum"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1760",
+      "fmaId": "FMA62008",
+      "bpId": "BP21294",
+      "name": "Hypothalamus",
+      "officialSample": [
+        {
+          "bpId": "BP6496",
+          "tree": "isa",
+          "triangles": 4078,
+          "name": "hypothalamus"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1769",
+      "fmaId": "FMA62004",
+      "bpId": "BP23201",
+      "name": "Medulla oblongata",
+      "officialSample": [
+        {
+          "bpId": "BP5693",
+          "tree": "isa",
+          "triangles": 12096,
+          "name": "medulla oblongata"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1775",
+      "fmaId": "FMA67943",
+      "bpId": "BP22028",
+      "name": "Pons",
+      "officialSample": [
+        {
+          "bpId": "BP6545",
+          "tree": "isa",
+          "triangles": 20650,
+          "name": "pons"
+        }
+      ]
+    },
+    {
+      "fj": "FJ1781",
+      "fmaId": "FMA67944",
+      "bpId": "BP22033",
+      "name": "Cerebellum",
+      "officialSample": [
+        {
+          "bpId": "BP5696",
+          "tree": "isa",
+          "triangles": 47700,
+          "name": "cerebellum"
+        }
+      ]
+    },
+    {
+      "fj": "FJ7503",
+      "fmaId": "FMA62045",
+      "bpId": "BP22996",
+      "name": "Optic chiasm",
+      "officialSample": [
+        {
+          "bpId": "BP5710",
+          "tree": "isa",
+          "triangles": 1788,
+          "name": "optic chiasm"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3080",
+      "fmaId": "FMA14539",
+      "bpId": "BP23311",
+      "name": "Cystic duct",
+      "officialSample": [
+        {
+          "bpId": "BP9078",
+          "tree": "isa",
+          "triangles": 278,
+          "name": "cystic duct"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3136",
+      "fmaId": "FMA18257",
+      "bpId": "BP23180",
+      "name": "Left epididymis",
+      "officialSample": [
+        {
+          "bpId": "BP8772",
+          "tree": "isa",
+          "triangles": 238,
+          "name": "left epididymis"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3138",
+      "fmaId": "FMA7212",
+      "bpId": "BP22947",
+      "name": "Left testis",
+      "officialSample": [
+        {
+          "bpId": "BP8578",
+          "tree": "isa",
+          "triangles": 210,
+          "name": "left testis"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3139",
+      "fmaId": "FMA9600",
+      "bpId": "BP21548",
+      "name": "Prostate",
+      "officialSample": [
+        {
+          "bpId": "BP8469",
+          "tree": "isa",
+          "triangles": 442,
+          "name": "prostate"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3141",
+      "fmaId": "FMA18256",
+      "bpId": "BP23020",
+      "name": "Right epididymis",
+      "officialSample": [
+        {
+          "bpId": "BP8141",
+          "tree": "isa",
+          "triangles": 76,
+          "name": "right epididymis"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3142",
+      "fmaId": "FMA7211",
+      "bpId": "BP22902",
+      "name": "Right testis",
+      "officialSample": [
+        {
+          "bpId": "BP9204",
+          "tree": "isa",
+          "triangles": 212,
+          "name": "right testis"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3148",
+      "fmaId": "FMA19667",
+      "bpId": "BP22605",
+      "name": "Urethra",
+      "officialSample": [
+        {
+          "bpId": "BP9098",
+          "tree": "isa",
+          "triangles": 440,
+          "name": "urethra"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2541",
+      "fmaId": "FMA7394",
+      "bpId": "BP21463",
+      "name": "Trachea",
+      "officialSample": [
+        {
+          "bpId": "BP7849",
+          "tree": "isa",
+          "triangles": 4996,
+          "name": "trachea"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2770",
+      "fmaId": "FMA55130",
+      "bpId": "BP21503",
+      "name": "Epiglottis",
+      "officialSample": [
+        {
+          "bpId": "BP9263",
+          "tree": "isa",
+          "triangles": 3602,
+          "name": "epiglottis"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2966",
+      "fmaId": "FMA8612",
+      "bpId": "BP23682",
+      "name": "Pulmonary trunk",
+      "officialSample": [
+        {
+          "bpId": "BP8690",
+          "tree": "isa",
+          "triangles": 1302,
+          "name": "pulmonary trunk"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3411",
+      "fmaId": "FMA3768",
+      "bpId": "BP23913",
+      "name": "Arch of aorta",
+      "officialSample": [
+        {
+          "bpId": "BP10322",
+          "tree": "isa",
+          "triangles": 670,
+          "name": "arch of aorta"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3413",
+      "fmaId": "FMA3736",
+      "bpId": "BP20272",
+      "name": "Ascending aorta",
+      "officialSample": [
+        {
+          "bpId": "BP10329",
+          "tree": "isa",
+          "triangles": 396,
+          "name": "ascending aorta"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3427",
+      "fmaId": "FMA3784",
+      "bpId": "BP23707",
+      "name": "Descending aorta",
+      "officialSample": [
+        {
+          "bpId": "BP10248",
+          "tree": "isa",
+          "triangles": 4562,
+          "name": "descending aorta"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3441",
+      "fmaId": "FMA10951",
+      "bpId": "BP23720",
+      "name": "Inferior vena cava",
+      "officialSample": [
+        {
+          "bpId": "BP10311",
+          "tree": "isa",
+          "triangles": 3080,
+          "name": "inferior vena cava"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3645",
+      "fmaId": "FMA4720",
+      "bpId": "BP23624",
+      "name": "Superior vena cava",
+      "officialSample": [
+        {
+          "bpId": "BP10292",
+          "tree": "isa",
+          "triangles": 598,
+          "name": "superior vena cava"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3421",
+      "fmaId": "FMA14812",
+      "bpId": "BP23568",
+      "name": "Celiac trunk",
+      "officialSample": [
+        {
+          "bpId": "BP10622",
+          "tree": "isa",
+          "triangles": 238,
+          "name": "celiac trunk"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3477",
+      "fmaId": "FMA14336",
+      "bpId": "BP22197",
+      "name": "Left renal vein",
+      "officialSample": [
+        {
+          "bpId": "BP10330",
+          "tree": "isa",
+          "triangles": 4912,
+          "name": "left renal vein"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3577",
+      "fmaId": "FMA14335",
+      "bpId": "BP19745",
+      "name": "Right renal vein",
+      "officialSample": [
+        {
+          "bpId": "BP10256",
+          "tree": "isa",
+          "triangles": 5014,
+          "name": "right renal vein"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3465",
+      "fmaId": "FMA21388",
+      "bpId": "BP21633",
+      "name": "Left common iliac vein",
+      "officialSample": [
+        {
+          "bpId": "BP10352",
+          "tree": "isa",
+          "triangles": 430,
+          "name": "left common iliac vein"
+        }
+      ]
+    },
+    {
+      "fj": "FJ3566",
+      "fmaId": "FMA21387",
+      "bpId": "BP21679",
+      "name": "Right common iliac vein",
+      "officialSample": [
+        {
+          "bpId": "BP10313",
+          "tree": "isa",
+          "triangles": 358,
+          "name": "right common iliac vein"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2441",
+      "fmaId": "FMA68227",
+      "bpId": "BP23127",
+      "name": "Inferior lingular bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP10152",
+          "tree": "partof",
+          "triangles": 1348,
+          "name": "inferior lingular bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2442",
+      "fmaId": "FMA68230",
+      "bpId": "BP23836",
+      "name": "Left medial basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9943",
+          "tree": "partof",
+          "triangles": 822,
+          "name": "left medial basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2443",
+      "fmaId": "FMA68222",
+      "bpId": "BP23746",
+      "name": "Left anterior segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9474",
+          "tree": "partof",
+          "triangles": 1626,
+          "name": "left anterior segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2444",
+      "fmaId": "FMA68223",
+      "bpId": "BP23781",
+      "name": "Left apical segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9676",
+          "tree": "partof",
+          "triangles": 1226,
+          "name": "left apical segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2445",
+      "fmaId": "FMA68232",
+      "bpId": "BP22396",
+      "name": "Left lateral basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP10117",
+          "tree": "partof",
+          "triangles": 1126,
+          "name": "left lateral basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2446",
+      "fmaId": "FMA68233",
+      "bpId": "BP22359",
+      "name": "Left posterior basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9860",
+          "tree": "partof",
+          "triangles": 1460,
+          "name": "left posterior basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2447",
+      "fmaId": "FMA68225",
+      "bpId": "BP23441",
+      "name": "Left posterior segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9913",
+          "tree": "partof",
+          "triangles": 440,
+          "name": "left posterior segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2448",
+      "fmaId": "FMA68228",
+      "bpId": "BP23530",
+      "name": "Left superior segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9761",
+          "tree": "partof",
+          "triangles": 1144,
+          "name": "left superior segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2449",
+      "fmaId": "FMA68215",
+      "bpId": "BP23125",
+      "name": "Lateral segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9520",
+          "tree": "partof",
+          "triangles": 4520,
+          "name": "lateral segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2451",
+      "fmaId": "FMA68214",
+      "bpId": "BP23098",
+      "name": "Medial segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9722",
+          "tree": "partof",
+          "triangles": 5346,
+          "name": "medial segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2452",
+      "fmaId": "FMA68321",
+      "bpId": "BP21654",
+      "name": "Right anterior basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9684",
+          "tree": "partof",
+          "triangles": 2260,
+          "name": "right anterior basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2453",
+      "fmaId": "FMA68212",
+      "bpId": "BP24079",
+      "name": "Right anterior segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9525",
+          "tree": "partof",
+          "triangles": 5608,
+          "name": "right anterior segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2454",
+      "fmaId": "FMA68211",
+      "bpId": "BP23435",
+      "name": "Right apical segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9592",
+          "tree": "partof",
+          "triangles": 4504,
+          "name": "right apical segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2455",
+      "fmaId": "FMA68220",
+      "bpId": "BP22414",
+      "name": "Right lateral basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9606",
+          "tree": "partof",
+          "triangles": 2928,
+          "name": "right lateral basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2456",
+      "fmaId": "FMA68218",
+      "bpId": "BP23914",
+      "name": "Right medial basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9489",
+          "tree": "partof",
+          "triangles": 902,
+          "name": "right medial basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2457",
+      "fmaId": "FMA68221",
+      "bpId": "BP23851",
+      "name": "Right posterior basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9468",
+          "tree": "partof",
+          "triangles": 4158,
+          "name": "right posterior basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2458",
+      "fmaId": "FMA68213",
+      "bpId": "BP23453",
+      "name": "Right posterior segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9884",
+          "tree": "partof",
+          "triangles": 4336,
+          "name": "right posterior segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2459",
+      "fmaId": "FMA68216",
+      "bpId": "BP23999",
+      "name": "Right superior segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9539",
+          "tree": "partof",
+          "triangles": 7716,
+          "name": "right superior segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2535",
+      "fmaId": "FMA68231",
+      "bpId": "BP22399",
+      "name": "Left anterior basal segmental bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9552",
+          "tree": "partof",
+          "triangles": 732,
+          "name": "left anterior basal segmental bronchial tree"
+        }
+      ]
+    },
+    {
+      "fj": "FJ2540",
+      "fmaId": "FMA68226",
+      "bpId": "BP23363",
+      "name": "Superior lingular bronchial tree",
+      "officialSample": [
+        {
+          "bpId": "BP9981",
+          "tree": "partof",
+          "triangles": 664,
+          "name": "superior lingular bronchial tree"
+        }
+      ]
+    }
+  ]
+}

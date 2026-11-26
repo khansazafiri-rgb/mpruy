@@ -1,0 +1,436 @@
+{
+  "schema": 1,
+  "sourceSHA256": "5ecb1ef4c07a2f6aa17021ee6f6d0bb0587595821467ec8c6a14f24ee1091173",
+  "decoder": "draco3dgltf@1.5.7",
+  "decoded": 13,
+  "triangles": 86204,
+  "rows": [
+    {
+      "target": "Femoral nerve",
+      "side": "right",
+      "nodeIndex": 334,
+      "meshIndex": 327,
+      "sourceName": "Femoral nerve.r",
+      "primitives": [
+        {
+          "vertices": 661,
+          "triangles": 1172,
+          "nativeLocalBounds": {
+            "min": [
+              -0.07981231808662415,
+              0.8480726480484009,
+              -0.01650850847363472
+            ],
+            "max": [
+              -0.06444213539361954,
+              0.9900172352790833,
+              0.04560470208525658
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 661,
+      "triangles": 1172,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Sciatic nerve",
+      "side": "right",
+      "nodeIndex": 381,
+      "meshIndex": 374,
+      "sourceName": "Sciatic nerve.r",
+      "primitives": [
+        {
+          "vertices": 6208,
+          "triangles": 10688,
+          "nativeLocalBounds": {
+            "min": [
+              -0.1156691312789917,
+              0.5571303963661194,
+              -0.07201796770095825
+            ],
+            "max": [
+              -0.026898033916950226,
+              0.8940944671630859,
+              -0.009635496884584427
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 6208,
+      "triangles": 10688,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Tibial nerve",
+      "side": "right",
+      "nodeIndex": 390,
+      "meshIndex": 383,
+      "sourceName": "Tibial nerve.r",
+      "primitives": [
+        {
+          "vertices": 12614,
+          "triangles": 22080,
+          "nativeLocalBounds": {
+            "min": [
+              -0.12020301818847656,
+              0.06105601787567139,
+              -0.10161521285772324
+            ],
+            "max": [
+              -0.043323494493961334,
+              0.6955735087394714,
+              -0.023109018802642822
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 12614,
+      "triangles": 22080,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Common fibular nerve",
+      "side": "right",
+      "nodeIndex": 326,
+      "meshIndex": 319,
+      "sourceName": "Common fibular nerve.r",
+      "primitives": [
+        {
+          "vertices": 1515,
+          "triangles": 2652,
+          "nativeLocalBounds": {
+            "min": [
+              -0.12114433944225311,
+              0.404355525970459,
+              -0.0592355839908123
+            ],
+            "max": [
+              -0.06471972167491913,
+              0.6957818865776062,
+              -0.026985324919223785
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 1515,
+      "triangles": 2652,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Deep fibular nerve",
+      "side": "right",
+      "nodeIndex": 329,
+      "meshIndex": 322,
+      "sourceName": "Deep fibular nerve.r",
+      "primitives": [
+        {
+          "vertices": 3104,
+          "triangles": 5344,
+          "nativeLocalBounds": {
+            "min": [
+              -0.12076137959957123,
+              0.0774611234664917,
+              -0.05632184073328972
+            ],
+            "max": [
+              -0.07848092913627625,
+              0.4049696922302246,
+              0.004709940403699875
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 3104,
+      "triangles": 5344,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Superficial fibular nerve",
+      "side": "right",
+      "nodeIndex": 384,
+      "meshIndex": 377,
+      "sourceName": "Superficial fibular nerve.r",
+      "primitives": [
+        {
+          "vertices": 2057,
+          "triangles": 3556,
+          "nativeLocalBounds": {
+            "min": [
+              -0.12642668187618256,
+              0.11666309833526611,
+              -0.055939894169569016
+            ],
+            "max": [
+              -0.10476390272378922,
+              0.4049663543701172,
+              -0.035297781229019165
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 2057,
+      "triangles": 3556,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Obturator nerve",
+      "side": "right",
+      "nodeIndex": 368,
+      "meshIndex": 361,
+      "sourceName": "Obturator nerve.r",
+      "primitives": [
+        {
+          "vertices": 1671,
+          "triangles": 2940,
+          "nativeLocalBounds": {
+            "min": [
+              -0.07265247404575348,
+              0.8458620309829712,
+              -0.025413457304239273
+            ],
+            "max": [
+              -0.01565323770046234,
+              1.0645036697387695,
+              0.017959877848625183
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 1671,
+      "triangles": 2940,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Sural nerve",
+      "side": "right",
+      "nodeIndex": 388,
+      "meshIndex": 381,
+      "sourceName": "Sural nerve.r",
+      "primitives": [
+        {
+          "vertices": 973,
+          "triangles": 1748,
+          "nativeLocalBounds": {
+            "min": [
+              -0.10570971667766571,
+              0.05555140972137451,
+              -0.10218910127878189
+            ],
+            "max": [
+              -0.07435928285121918,
+              0.4810810089111328,
+              -0.04722842946648598
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 973,
+      "triangles": 1748,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Medial plantar nerve",
+      "side": "right",
+      "nodeIndex": 359,
+      "meshIndex": 352,
+      "sourceName": "Medial plantar nerve.r",
+      "primitives": [
+        {
+          "vertices": 1240,
+          "triangles": 2096,
+          "nativeLocalBounds": {
+            "min": [
+              -0.09129403531551361,
+              0.018398165702819824,
+              -0.06251417845487595
+            ],
+            "max": [
+              -0.05706731230020523,
+              0.06694208085536957,
+              0.019729353487491608
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 1240,
+      "triangles": 2096,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Lateral plantar nerve",
+      "side": "right",
+      "nodeIndex": 352,
+      "meshIndex": 345,
+      "sourceName": "Lateral plantar nerve.r",
+      "primitives": [
+        {
+          "vertices": 2250,
+          "triangles": 3864,
+          "nativeLocalBounds": {
+            "min": [
+              -0.12622500956058502,
+              0.015957117080688477,
+              -0.06085985526442528
+            ],
+            "max": [
+              -0.057980798184871674,
+              0.06178189814090729,
+              0.025057677179574966
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 2250,
+      "triangles": 3864,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Superior gluteal nerve",
+      "side": "right",
+      "nodeIndex": 386,
+      "meshIndex": 379,
+      "sourceName": "Superior gluteal nerve.r",
+      "primitives": [
+        {
+          "vertices": 6767,
+          "triangles": 11998,
+          "nativeLocalBounds": {
+            "min": [
+              -0.13991813361644745,
+              0.8690409660339355,
+              -0.04032539948821068
+            ],
+            "max": [
+              -0.03200347721576691,
+              0.9646445512771606,
+              0.035925593227148056
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 6767,
+      "triangles": 11998,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Inferior gluteal nerve",
+      "side": "right",
+      "nodeIndex": 341,
+      "meshIndex": 334,
+      "sourceName": "Inferior gluteal nerve.r",
+      "primitives": [
+        {
+          "vertices": 8041,
+          "triangles": 14302,
+          "nativeLocalBounds": {
+            "min": [
+              -0.13708552718162537,
+              0.7602954506874084,
+              -0.09625628590583801
+            ],
+            "max": [
+              -0.0067027658224105835,
+              0.9534468054771423,
+              -0.017206065356731415
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 8041,
+      "triangles": 14302,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "target": "Pudendal nerve",
+      "side": "right",
+      "nodeIndex": 372,
+      "meshIndex": 365,
+      "sourceName": "Pudendal nerve.r",
+      "primitives": [
+        {
+          "vertices": 2065,
+          "triangles": 3764,
+          "nativeLocalBounds": {
+            "min": [
+              -0.050906065851449966,
+              0.8129732608795166,
+              -0.05837510898709297
+            ],
+            "max": [
+              -0.006565745919942856,
+              0.8767833709716797,
+              0.0309983529150486
+            ]
+          },
+          "repeatedIndexFaces": 0
+        }
+      ],
+      "vertices": 2065,
+      "triangles": 3764,
+      "status": "EXACT_SOURCE_DRACO_DECODE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "geometryExported": 0,
+  "assetRightsReviewed": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "sourceCommit": "8cbcb579e655028946a858edd1f9cc82b13066d7",
+  "workflowRun": 45763902994,
+  "workflowJob": 139720089040,
+  "secondWorkflowRun": 45763902602,
+  "secondWorkflowJob": 139720087935,
+  "scope": "Decoded original observed current right-sided source candidate primitives privately; native local bounds and triangle counts only. No clinical identity, asset rights clearance, left-side inference, viewer import, registration or production release."
+}

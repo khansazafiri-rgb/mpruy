@@ -16,9 +16,9 @@ test('reject missing or opposite side, wrong concept and mismatched source ident
 });
 
 import {REFERENCE43_TOPIC_ROWS} from '../src/reference43-topic-catalog.js';
-test('42 exact source-bound provisional concepts have distinct localized choices and exact scoring',()=>{
+test('239 exact source-bound provisional concepts have distinct localized choices and exact scoring',()=>{
  const pool=[...new Map(REFERENCE43_TOPIC_ROWS.filter(hasChallengeGlossary).map(e=>[e.fmaId,e])).values()];
- assert.equal(pool.length,42);
+ assert.equal(pool.length,239);
  for(const lang of ['id','en','latin']){
   const labels=pool.map(e=>challengeLabel(e,lang));
   assert.equal(new Set(labels.map(s=>s.toLowerCase())).size,pool.length);
@@ -33,3 +33,5 @@ test('new organ terms preserve laterality and chamber/segment scope',()=>{
  for(const [id,bad] of [['FMA7205','ren dexter'],['FMA7204','ginjal'],['FMA9466','ventriculus sinister'],['FMA9531','atrium sinistrum'],['FMA71195','lobus dexter thymi'],['FMA18257','epididymis dextra']])assert.equal(typedReferenceAnswer(find(id),bad).correct,false);
  assert.equal(hasChallengeGlossary({...find('FMA7205'),name:'Right kidney'}),false);
 });
+
+test('all source concepts have explicit glossary coverage and numeric labels cannot be typo-corrected',()=>{const rows=REFERENCE43_TOPIC_ROWS;assert(rows.every(hasChallengeGlossary));const c=rows.find(x=>x.fmaId==='FMA13501');assert(c);assert.equal(typedReferenceAnswer(c,'diskus intervertebralis vertebra torakal T5').correct,false);assert.equal(typedReferenceAnswer(c,'diskus intervertebralis vertebra torakal T44').correct,false);});

@@ -1,0 +1,29 @@
+name: Atlas consolidated private evidence checkpoint
+on:
+  push:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/audit-atlas-private-checkpoint*'
+      - 'licensing/atlas-publication/checkpoint-evidence/**'
+      - '.github/workflows/atlas-private-evidence-checkpoint.yml'
+  pull_request:
+    branches: [feat/atlas-hra-group-hierarchy-20261126]
+    paths:
+      - 'scripts/audit-atlas-private-checkpoint*'
+      - 'licensing/atlas-publication/checkpoint-evidence/**'
+      - '.github/workflows/atlas-private-evidence-checkpoint.yml'
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-atlas-private-checkpoint.test.mjs scripts/audit-atlas-cross-version-sample.test.mjs
+      - run: node scripts/audit-atlas-private-checkpoint.mjs
