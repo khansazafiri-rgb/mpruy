@@ -7,7 +7,7 @@ on:
       - 'licensing/atlas-publication/checkpoint-evidence/**'
       - '.github/workflows/atlas-private-evidence-checkpoint.yml'
   pull_request:
-    branches: [feat/atlas-hra-group-hierarchy-20261126]
+    branches: [feat/atlas-hra-group-hierarchy-20261126, feat/atlas-multilingual-coverage-20261126]
     paths:
       - 'scripts/audit-atlas-private-checkpoint*'
       - 'licensing/atlas-publication/checkpoint-evidence/**'

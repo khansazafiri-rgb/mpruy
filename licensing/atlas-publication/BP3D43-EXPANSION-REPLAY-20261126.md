@@ -4,3 +4,6 @@
 
 Native Z-Anatomy [audit](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45773405692) confirms 26/28 bilateral source nerve surfaces, 2 inferior gluteal nerves absent by exact name, and 0/57 exact lymphatic vessel/duct target matches. Geometry is not exported or served, source rights unresolved. Source-family counts are not additive unique anatomy concepts. Do not mirror or synthesize missing assets.
 
+
+## Full combined replay evidence
+The 376-element combined source-native viewer passed on workflow 45775203863, job 139757080671, commit 3dca7261de209864f78c5321b9afea53947e7662: 17 exact BP3D and 2 HRA acquisitions, 376 rendered publisher GLBs, 368 source-label questions, 240 multilingual typed concepts, 9 HRA originals and 37 isolated groups. The 128 additional translations were implemented later; their browser results are separate and remain pending until confirmed. This is not a real workstation body-pack or clinical validation, and no production assets are approved.
