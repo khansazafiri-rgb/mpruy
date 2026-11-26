@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "batchId": "hyoid-2",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Two hyoid source elements from a single FMA concept. Separate BP3D recovery only, not a correction of the missing HRA male lung node; compare raw geometry before deduplication.",
+  "rows": [
+    {
+      "fj": "FJ2772",
+      "discoveryBP": "BP22977",
+      "discoveryFMA": "FMA5018",
+      "name": "Hyoid bone",
+      "faces": 1196,
+      "vertices": 687,
+      "bytes": 75198,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3201",
+      "discoveryBP": "BP22977",
+      "discoveryFMA": "FMA5018",
+      "name": "Hyoid bone",
+      "faces": 1196,
+      "vertices": 687,
+      "bytes": 75198,
+      "group": "skeletal"
+    }
+  ]
+}
