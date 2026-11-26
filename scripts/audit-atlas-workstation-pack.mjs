@@ -41,7 +41,8 @@ export async function auditWorkstation(folder,flags=[]){
  assert(pack.inventory.publicRelease==='NO_GO'&&suite.publicRelease==='NO_GO'&&suite.bp.inventory.items.length===profile.expectedElements);
  const samples=JSON.parse(fs.readFileSync(new URL('licensing/atlas-publication/dbcls-full-geometry-audit-20261125.json',root),'utf8')).report.samples;
  const result=summarizeVerifiedBody(pack.inventory.bodyModels,pack.manifest.entries,suite.bp.inventory.items,samples);
+ const {auditPackNativeOverlap}=await import('./audit-atlas-native-overlap.mjs');const nativeElementOverlap=auditPackNativeOverlap(pack,suite);
  const inv=path.join(pack.folder,'inventory.json');assert(fs.realpathSync(inv)===inv&&fs.statSync(inv).isFile());
- return {...result,bodyInventorySHA256:hash(fs.readFileSync(inv)),verifiedBodyPack:true,verifiedReferenceSuite:true,hraReferenceFiles:suite.hra.assets.size,expectedReferenceConcepts:profile.expectedConcepts,referenceProfile:profile};
+ return {...result,nativeElementOverlap,bodyInventorySHA256:hash(fs.readFileSync(inv)),verifiedBodyPack:true,verifiedReferenceSuite:true,hraReferenceFiles:suite.hra.assets.size,expectedReferenceConcepts:profile.expectedConcepts,referenceProfile:profile};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){assert(process.argv.length>=3&&process.argv.length<=5,'One explicit private folder and optional profile flags required');console.log('ATLAS WORKSTATION PACK AUDIT '+JSON.stringify(await auditWorkstation(process.argv[2],process.argv.slice(3))));}
