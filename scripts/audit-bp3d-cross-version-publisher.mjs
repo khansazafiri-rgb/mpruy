@@ -3,7 +3,8 @@ import fs from 'node:fs';import path from 'node:path';import assert from 'node:a
 import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {fetchOfficialFile,parseOfficialNames,parseOfficialElements,checkArchiveEntryNames} from '../licensing/tools/prepare-bodyparts3d-source.mjs';
-import {parseObj} from './independent-bp3d-export.mjs';
+import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
+import {auditVersionedLocalCandidates,loadVersionedCandidateEvidence} from './audit-atlas-native-overlap.mjs';
 import {BP43_SUITE,BP43_HYOID,BP43_EXPANSION} from './atlas-reference-suite-spec.mjs';
 import {retainedReceipt,replayPlan,readRetainedReports} from './replay-audited-bp3d43-suite.mjs';
 import {load43Elements,select43Acquisition} from './load-bp3d43-private-elements.mjs';
@@ -122,6 +123,40 @@ export function compareVersionedCandidates(ref,row,sources,readElement,readRefer
   return {fj:ref.fj,fma:ref.fma,bp43:ref.bp,bp40:c.conceptNames[0].bpId,tree:c.tree,identityStatus:'CANDIDATE_VERSIONED_BP_CHANGE',...compareNativeTriangles(a,reference),verifiedCrosswalk:false,registrationValidated:false,approvedForDistribution:false};
  });
 }
+// Reconstruct complete publisher concepts in memory, then exercise the same
+// GLB overlap function used on the workstation. This is NOT its body pack.
+export function replayPublisherConceptCandidates(evidence,refs,sources,readElement,readReferenceBytes){
+ const grouped=new Map(),byFj=new Map(refs.map(r=>[r.fj,r]));
+ for(const c of evidence.rows){const k=JSON.stringify([c.tree,c.fma,c.bp40]),a=grouped.get(k)||[];a.push(c);grouped.set(k,a);}
+ const rows=[],conceptCounts={};
+ for(const candidates of grouped.values()){
+  const c=candidates[0],source=sources.find(s=>s.tree===c.tree);assert(source);
+  const names=source.names.filter(n=>n.fmaId===c.fma&&n.bpId===c.bp40),members=[...(source.elements.get(c.fma)||[])].sort();
+  assert(names.length===1&&candidates.every(x=>members.includes(x.fj)&&byFj.get(x.fj)?.fma===x.fma&&byFj.get(x.fj)?.bp===x.bp43&&norm(byFj.get(x.fj).name)===norm(names[0].name)),'Candidate metadata changed');
+  const hold=status=>{conceptCounts[status]=(conceptCounts[status]||0)+1;for(const x of candidates)rows.push({...x,status});};
+  if(!members.every(fj=>source.archiveIndex.has(fj))){hold('HOLD_INCOMPLETE_PUBLISHER_CONCEPT');continue;}
+  if(members.length>64){hold('HOLD_CONCEPT_ELEMENT_BUDGET');continue;}
+  const parts=[],proof=[];let triangles=0,held=false;
+  for(const fj of members){
+   const raw=readElement(source,fj),parsed=parseObj(raw.toString('utf8').replace(/\r\n|\r/g,'\n'));triangles+=parsed.positions.length/9;
+   if(triangles>500000){held=true;break;}
+   parts.push({id:fj,...parsed});proof.push({id:fj,sha256:sha(raw)});
+  }
+  if(held){hold('HOLD_CONCEPT_TRIANGLE_BUDGET');continue;}
+  const pins=evidence.pins[c.tree],id='publisher-'+c.tree+'-'+c.fma+'-'+c.bp40;
+  const encoded=encodeNativeGlb(parts,{fmaId:c.fma,bpId:c.bp40,tree:c.tree,officialName:names[0].name,sourceHashes:pins,sourceElements:proof},'4.0');
+  const body={id,name:names[0].name,fmaId:c.fma,bpId:c.bp40,sourceTree:c.tree,sourceHashes:pins,sourceElements:proof,sha256:encoded.sha256,frame:'native-official-OBJ',approvedForDistribution:false};
+  const items=candidates.map(x=>{const r=byFj.get(x.fj);return {id:r.fj,fj:r.fj,fmaId:r.fma,bpId:r.bp,name:r.name,approvedForDistribution:false,registrationValidated:false};});
+  const result=auditVersionedLocalCandidates([body],items,{pins:evidence.pins,rows:candidates},{readBody:requested=>{assert(requested===id);return encoded.bytes;},readReference:fj=>readReferenceBytes(byFj.get(fj))});
+  assert(result.candidatePairs===candidates.length);
+  const status=result.matchedPairs===candidates.length?'COMPLETE_CONCEPT_GLBS_MATCHED':'HOLD_CONCEPT_GLBS';
+  conceptCounts[status]=(conceptCounts[status]||0)+1;rows.push(...result.rows);
+ }
+ assert.equal(rows.length,evidence.rows.length);
+ const counts={};for(const r of rows)counts[r.status]=(counts[r.status]||0)+1;
+ const matched=rows.filter(r=>r.status==='EXACT_CANDIDATE_LOCAL_NATIVE_COORDINATES');
+ return {scope:'In-memory reconstruction of complete pinned publisher concepts, using actual 4.3 GLBs; not the workstation inventory.',concepts:grouped.size,conceptCounts,pairs:rows.length,uniqueElements:new Set(rows.map(r=>r.fj)).size,matchedPairs:matched.length,matchedElements:new Set(matched.map(r=>r.fj)).size,counts,rows,workstationInventoryCompared:false,verifiedCrosswalk:false,clinicalValidation:false,registrationValidated:false,publicRelease:'NO_GO'};
+}
 function verifiedReferenceReader(){
  const reports=readRetainedReports(q),byFj=new Map();
  for(const [,file,count] of [...BP43_SUITE,BP43_HYOID,...BP43_EXPANSION]){
@@ -130,7 +165,8 @@ function verifiedReferenceReader(){
   for(const item of r.inventory.items){assert(!byFj.has(item.fj));byFj.set(item.fj,{item,asset:r.assets.get(item.id)});}
  }
  assert.equal(byFj.size,376);
- return ref=>{const entry=byFj.get(ref.fj);assert(entry?.item.rawSHA256===ref.rawSHA256&&entry.item.glbSHA256===ref.publisherGLBSHA256&&entry.item.fmaId===ref.fma&&entry.item.bpId===ref.bp);const p=parseNativePositions(readVerifiedPrivateModel(entry.asset),'4.3');assert(p.size===1&&p.has(ref.fj));return p.get(ref.fj);};
+ const readBytes=ref=>{const entry=byFj.get(ref.fj);assert(entry?.item.rawSHA256===ref.rawSHA256&&entry.item.glbSHA256===ref.publisherGLBSHA256&&entry.item.fmaId===ref.fma&&entry.item.bpId===ref.bp);return readVerifiedPrivateModel(entry.asset);};
+ const readPositions=ref=>{const p=parseNativePositions(readBytes(ref),'4.3');assert(p.size===1&&p.has(ref.fj));return p.get(ref.fj);};readPositions.readBytes=readBytes;return readPositions;
 }
 export async function auditPublisher({compareNative=false}={}){
  fs.mkdirSync(q,{recursive:true,mode:0o700});assert(fs.realpathSync(q)===q);const folder=fs.mkdtempSync(path.join(q,'bp3d-cross-version-publisher-'));fs.chmodSync(folder,0o700);
@@ -157,10 +193,14 @@ export async function auditPublisher({compareNative=false}={}){
   report.candidateComparison={scope:'Exploratory native float32 triangle comparison for versioned BP candidates only; not an anatomical crosswalk, registration, or release decision.',pairs:candidateRows.length,uniqueElements:new Set(candidateRows.map(r=>r.fj)).size,counts:candidateCounts,rows:candidateRows,verifiedCrosswalk:false,registrationValidated:false,publicRelease:'NO_GO'};
   console.log('BP3D CROSS VERSION CANDIDATE COUNTS '+JSON.stringify({...report.candidateComparison,rows:undefined}));
   console.log('BP3D CROSS VERSION CANDIDATE RESULTS '+JSON.stringify(candidateRows.map(({fj,fma,bp43,bp40,tree,status})=>({fj,fma,bp43,bp40,tree,status}))));
+  const retained=loadVersionedCandidateEvidence();
+  assert.deepEqual(candidateRows.filter(r=>r.status==='EXACT_ORDERED_NATIVE_TRIANGLES').map(key).sort(),retained.rows.map(key).sort(),'Previously exact candidate geometry changed');
+  report.publisherConceptReplay=replayPublisherConceptCandidates(retained,refs,sources,readElement,readReference.readBytes);
+  console.log('BP3D PUBLISHER CONCEPT GLB REPLAY '+JSON.stringify({...report.publisherConceptReplay,rows:undefined}));
   console.log('BP3D CROSS VERSION NATIVE COUNTS '+JSON.stringify({referenceElements:nativeRows.length,archiveComparisons:report.nativeComparison.archiveComparisons,counts:nativeCounts,registrationValidated:false,publicRelease:'NO_GO'}));
  }
  fs.writeFileSync(path.join(folder,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
  console.log('BP3D CROSS VERSION PUBLISHER IDS '+JSON.stringify(summarizePublisherIds(rows)));
- console.log('BP3D CROSS VERSION PUBLISHER PASS '+JSON.stringify({...report,rows:undefined,identityDiagnostics:{...report.identityDiagnostics,candidates:undefined},candidateComparison:report.candidateComparison?{...report.candidateComparison,rows:undefined}:undefined,nativeComparison:report.nativeComparison?{...report.nativeComparison,rows:undefined}:undefined,folder:path.basename(folder)}));return report;
+ console.log('BP3D CROSS VERSION PUBLISHER PASS '+JSON.stringify({...report,rows:undefined,identityDiagnostics:{...report.identityDiagnostics,candidates:undefined},candidateComparison:report.candidateComparison?{...report.candidateComparison,rows:undefined}:undefined,publisherConceptReplay:report.publisherConceptReplay?{...report.publisherConceptReplay,rows:undefined}:undefined,nativeComparison:report.nativeComparison?{...report.nativeComparison,rows:undefined}:undefined,folder:path.basename(folder)}));return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){const args=process.argv.slice(2);assert(args.length===1&&['--audit-private','--compare-native-private'].includes(args[0]));await auditPublisher({compareNative:args[0]==='--compare-native-private'});}

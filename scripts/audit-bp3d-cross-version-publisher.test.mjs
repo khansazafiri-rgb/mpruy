@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {comparePublisherElement,summarizePublisherIds,compareNativeTriangles,comparePublisherNative,classifyIdentityGate,summarizeIdentityGates,compareVersionedCandidates} from './audit-bp3d-cross-version-publisher.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {comparePublisherElement,summarizePublisherIds,compareNativeTriangles,comparePublisherNative,classifyIdentityGate,summarizeIdentityGates,compareVersionedCandidates,replayPublisherConceptCandidates} from './audit-bp3d-cross-version-publisher.mjs';
 const obj=Buffer.from('v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n'),hash=createHash('sha256').update(obj).digest('hex'),ref={fj:'FJ1',fma:'FMA1',bp:'BP1',name:'Fixture only',rawSHA256:hash,triangles:1};
 const s={tree:'isa',names:[{fmaId:'FMA1',bpId:'BP1',name:'Fixture only'}],elements:new Map([['FMA1',new Set(['FJ1','FJ2'])]]),archiveIndex:new Map([['FJ1','FJ1.obj']])};
 test('exact publisher bytes with unique identity and membership do not imply whole concept',()=>{const r=comparePublisherElement(ref,[s],()=>obj);assert.equal(r.status,'EXACT_IDENTITY_AND_RAW_BYTES');assert.equal(r.trees[0].conceptElementCount,2);assert.equal(r.wholeConceptClaim,false);});
@@ -54,4 +54,16 @@ test('exploratory BP candidate geometry never opens exact identity or release ga
  const bad={...row,trees:[{...row.trees[0],conceptIncludesFJ:false}]};
  assert.deepEqual(compareVersionedCandidates(ref,bad,[changed],()=>{throw Error('held')},()=>{throw Error('held')}),[]);
  assert.equal(comparePublisherNative(ref,row,[changed],()=>{throw Error('held')},()=>{throw Error('held')}).trees[0].status,'HOLD_IDENTITY_REVIEW');
+});
+
+import {encodeNativeGlb,parseObj} from './independent-bp3d-export.mjs';
+
+test('publisher concept replay tests complete composite source GLBs, not an invented body pack',()=>{
+ const changed={...s,names:[{fmaId:'FMA1',bpId:'BP9',name:'Fixture only'}],archiveIndex:new Map([['FJ1','FJ1.obj'],['FJ2','FJ2.obj']])};
+ const pins={isa:{archive:hash,names:hash,elements:hash}},e={pins,rows:[{fj:'FJ1',fma:'FMA1',bp43:'BP1',bp40:'BP9',tree:'isa',status:'EXACT_ORDERED_NATIVE_TRIANGLES'}]};
+ const read=()=>encodeNativeGlb([{id:'FJ1',...parseObj(obj.toString())}],{},'4.3').bytes;
+ const out=replayPublisherConceptCandidates(e,[ref],[changed],()=>obj,read);
+ assert.equal(out.matchedPairs,1);assert.equal(out.rows[0].otherBodyElements,1);assert.equal(out.rows[0].entireLocalModelPositionArrayMatchesReferenceElement,false);assert.equal(out.workstationInventoryCompared,false);assert.equal(out.registrationValidated,false);
+ const held=replayPublisherConceptCandidates(e,[ref],[{...changed,archiveIndex:new Map([['FJ1','FJ1.obj']])}],()=>{throw Error('held')},()=>{throw Error('held')});
+ assert.equal(held.counts.HOLD_INCOMPLETE_PUBLISHER_CONCEPT,1);
 });
