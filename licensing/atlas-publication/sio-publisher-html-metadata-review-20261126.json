@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "reviewDate": "2026-11-26",
+  "doi": "10.5281/zenodo.15882019",
+  "scope": "Manual review of public publisher HTML and Zenodo landing page only. Not an API response, workbook receipt, ZIP receipt, TIFF measurement or geometry verification.",
+  "sources": [
+    {
+      "url": "https://zenodo.org/records/15882019",
+      "recordVersion": "v1",
+      "published": "2025-08-11",
+      "modified": "2026-03-19",
+      "publishedFileMD5": [
+        {
+          "key": "SIO Object Labels.xlsx",
+          "md5": "3f996d6e1113a24e58304381b8e689e2"
+        },
+        {
+          "key": "VOXEL-MAN_segmented-internal-organs.zip",
+          "md5": "dbdfada24e69591bdf9650453918d9ef"
+        }
+      ]
+    },
+    {
+      "url": "https://www.virtual-body.org/segmented-internal-organs/",
+      "statedLicense": "CC BY 4.0",
+      "dimensions": [
+        573,
+        330,
+        774
+      ],
+      "spacingMM": [
+        1,
+        1,
+        1
+      ],
+      "sourceLabelEncoding": "16-bit TIFF"
+    },
+    {
+      "url": "https://www.virtual-body.org/segmented-internal-organs/faq/",
+      "statedAttributionForApps": true,
+      "sourceGeometryType": "voxel data, not surface mesh"
+    }
+  ],
+  "priorityLabelsPresentInPublisherText": [
+    "cystic duct",
+    "duodenum (retroperitoneal part)",
+    "left renal medulla",
+    "right renal medulla",
+    "trachea lumen",
+    "left atrium",
+    "right atrium",
+    "left ventricle",
+    "right ventricle",
+    "myocardium",
+    "pericardium",
+    "pulmonary trunk",
+    "pulmonary arteries",
+    "pulmonary veins",
+    "portal vein",
+    "inferior mesenteric vein",
+    "superior mesenteric vein",
+    "pancreas",
+    "cardia",
+    "fundus of stomach",
+    "body of stomach",
+    "left colic flexure",
+    "right colic flexure"
+  ],
+  "priorityLabelsPresentCount": 23,
+  "priorityNumericLabelMappingVerified": false,
+  "apiMetadataVerified": false,
+  "sourceFileBytesVerified": false,
+  "geometryParsed": false,
+  "privacyReviewed": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "blocked": [
+    "Zenodo API unavailable in browsing session",
+    "Direct workbook download failed",
+    "GitHub workflow 45752602891 and independent retry 45763795876 created no jobs; no TIFF audit result"
+  ]
+}
