@@ -1,0 +1,191 @@
+{
+ "durasi_edu": 25.4,
+ "potong_narasi": 23.5,
+ "skalar_normalisasi": 1.3259,
+ "sfx": [
+  {
+   "t": 0.29,
+   "sfx": "potong-bawang"
+  },
+  {
+   "t": 0.75,
+   "sfx": "potong-bawang"
+  },
+  {
+   "t": 0.95,
+   "sfx": "kamera-ikuti-partikel"
+  },
+  {
+   "t": 1.21,
+   "sfx": "potong-bawang"
+  },
+  {
+   "t": 1.67,
+   "sfx": "potong-bawang"
+  },
+  {
+   "t": 2.47,
+   "sfx": "judul"
+  },
+  {
+   "t": 5.25,
+   "sfx": "kamera-masuk-bawang"
+  },
+  {
+   "t": 5.7,
+   "sfx": "pisau-menyentuh-sel"
+  },
+  {
+   "t": 5.9,
+   "sfx": "lensa-sel"
+  },
+  {
+   "t": 6.74,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 7.93,
+   "sfx": "judul-isi-sel"
+  },
+  {
+   "t": 8.7,
+   "sfx": "reaksi"
+  },
+  {
+   "t": 8.95,
+   "sfx": "reaksi"
+  },
+  {
+   "t": 9.2,
+   "sfx": "reaksi"
+  },
+  {
+   "t": 9.45,
+   "sfx": "reaksi"
+  },
+  {
+   "t": 9.78,
+   "sfx": "judul-iritan"
+  },
+  {
+   "t": 9.82,
+   "sfx": "iritan-terbentuk"
+  },
+  {
+   "t": 10.62,
+   "sfx": "iritan-menguap"
+  },
+  {
+   "t": 11.5,
+   "sfx": "lensa-keluar"
+  },
+  {
+   "t": 11.7,
+   "sfx": "partikel-ke-mata"
+  },
+  {
+   "t": 13.12,
+   "sfx": "tiba-di-mata"
+  },
+  {
+   "t": 13.4,
+   "sfx": "lensa-mata"
+  },
+  {
+   "t": 14.68,
+   "sfx": "kelenjar"
+  },
+  {
+   "t": 16.0,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 16.16,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 16.32,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 16.48,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 16.64,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 16.8,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 16.96,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 17.12,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 17.28,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 17.44,
+   "sfx": "tetes-air-mata"
+  },
+  {
+   "t": 17.75,
+   "sfx": "sapuan-air-mata"
+  },
+  {
+   "t": 19.0,
+   "sfx": "tetes-jatuh"
+  },
+  {
+   "t": 19.3,
+   "sfx": "tetes-jatuh"
+  },
+  {
+   "t": 19.62,
+   "sfx": "tarik-kembali"
+  },
+  {
+   "t": 19.65,
+   "sfx": "tetes-jatuh"
+  },
+  {
+   "t": 20.57,
+   "sfx": "tahap-1"
+  },
+  {
+   "t": 21.22,
+   "sfx": "tahap-2"
+  },
+  {
+   "t": 21.87,
+   "sfx": "tahap-3"
+  },
+  {
+   "t": 22.52,
+   "sfx": "tahap-4"
+  },
+  {
+   "t": 23.52,
+   "sfx": "denyut-tahap-1"
+  },
+  {
+   "t": 23.85,
+   "sfx": "denyut-tahap-2"
+  },
+  {
+   "t": 24.18,
+   "sfx": "denyut-tahap-3"
+  },
+  {
+   "t": 24.51,
+   "sfx": "denyut-tahap-4"
+  }
+ ]
+}

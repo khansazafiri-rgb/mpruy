@@ -1,0 +1,145 @@
+{
+ "dur": 41.6,
+ "edu_dur": 25.4,
+ "outro_dur": 16.2,
+ "cut": 23.5,
+ "w": {
+  "baru": 0.0,
+  "potong": 0.54,
+  "bawang1": 0.84,
+  "mata1": 1.6,
+  "berair": 1.94,
+  "apa": 3.08,
+  "terjadi": 3.76,
+  "saat": 5.16,
+  "pisau": 5.46,
+  "memotong": 5.6,
+  "bawang2": 6.0,
+  "sel": 6.64,
+  "pecah": 6.98,
+  "proses": 7.86,
+  "kimia": 8.14,
+  "didalamnya": 8.54,
+  "menghasilkan": 9.14,
+  "senyawa1": 9.8,
+  "iritan1": 10.14,
+  "yang": 10.5,
+  "mudah": 10.68,
+  "menguap": 10.94,
+  "senyawa2": 11.88,
+  "itu": 12.24,
+  "mencapai": 12.54,
+  "permukaan": 13.12,
+  "mata2": 13.56,
+  "kelenjar": 14.66,
+  "air": 14.96,
+  "mata3": 15.12,
+  "kemudian": 15.46,
+  "menghasilkan2": 15.98,
+  "lebih": 16.52,
+  "banyak": 16.68,
+  "air2": 16.92,
+  "mata4": 17.1,
+  "untuk": 17.46,
+  "membantu": 18.0,
+  "membilas": 18.42,
+  "iritan2": 18.86,
+  "tersebut": 19.26,
+  "jadi": 20.3,
+  "mata5": 20.6,
+  "berair2": 21.0,
+  "ini": 21.32,
+  "adalah": 21.52,
+  "respons": 21.78,
+  "perlindungan": 22.14,
+  "tubuh": 22.74,
+  "tubuh_end": 23.1
+ },
+ "cap": [
+  [
+   0.0,
+   1.4,
+   "Baru beberapa potong bawang,"
+  ],
+  [
+   1.5,
+   2.6,
+   "mata sudah berair."
+  ],
+  [
+   3.05,
+   4.3,
+   "Apa yang sebenarnya terjadi?"
+  ],
+  [
+   5.12,
+   6.58,
+   "Saat pisau memotong bawang,"
+  ],
+  [
+   6.6,
+   7.78,
+   "sel-selnya pecah."
+  ],
+  [
+   7.84,
+   9.08,
+   "Proses kimia di dalamnya"
+  ],
+  [
+   9.1,
+   10.46,
+   "menghasilkan senyawa iritan"
+  ],
+  [
+   10.48,
+   11.5,
+   "yang mudah menguap."
+  ],
+  [
+   11.84,
+   13.06,
+   "Senyawa itu mencapai"
+  ],
+  [
+   13.08,
+   13.95,
+   "permukaan mata."
+  ],
+  [
+   14.6,
+   15.44,
+   "Kelenjar air mata"
+  ],
+  [
+   15.46,
+   16.6,
+   "kemudian menghasilkan"
+  ],
+  [
+   16.62,
+   17.62,
+   "lebih banyak air mata"
+  ],
+  [
+   17.44,
+   18.9,
+   "untuk membantu membilas"
+  ],
+  [
+   18.84,
+   19.9,
+   "iritan tersebut."
+  ],
+  [
+   20.26,
+   21.74,
+   "Jadi, mata berair ini adalah"
+  ],
+  [
+   21.74,
+   23.25,
+   "respons perlindungan tubuh."
+  ]
+ ]
+}

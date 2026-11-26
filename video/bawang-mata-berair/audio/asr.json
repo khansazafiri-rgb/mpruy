@@ -1,0 +1,486 @@
+[
+ {
+  "start": 0.0,
+  "end": 2.46,
+  "text": "Baru beberapa potong bawang, mata sudah berair.",
+  "words": [
+   {
+    "w": "Baru",
+    "s": 0.0,
+    "e": 0.24
+   },
+   {
+    "w": "beberapa",
+    "s": 0.24,
+    "e": 0.54
+   },
+   {
+    "w": "potong",
+    "s": 0.54,
+    "e": 0.84
+   },
+   {
+    "w": "bawang,",
+    "s": 0.84,
+    "e": 1.26
+   },
+   {
+    "w": "mata",
+    "s": 1.6,
+    "e": 1.74
+   },
+   {
+    "w": "sudah",
+    "s": 1.74,
+    "e": 1.94
+   },
+   {
+    "w": "berair.",
+    "s": 1.94,
+    "e": 2.46
+   }
+  ]
+ },
+ {
+  "start": 3.08,
+  "end": 4.22,
+  "text": "Apa yang sebenarnya terjadi?",
+  "words": [
+   {
+    "w": "Apa",
+    "s": 3.08,
+    "e": 3.32
+   },
+   {
+    "w": "yang",
+    "s": 3.32,
+    "e": 3.46
+   },
+   {
+    "w": "sebenarnya",
+    "s": 3.46,
+    "e": 3.76
+   },
+   {
+    "w": "terjadi?",
+    "s": 3.76,
+    "e": 4.22
+   }
+  ]
+ },
+ {
+  "start": 5.16,
+  "end": 7.68,
+  "text": "Saat bisa memotong bawang, cel-celnya pecah.",
+  "words": [
+   {
+    "w": "Saat",
+    "s": 5.16,
+    "e": 5.46
+   },
+   {
+    "w": "bisa",
+    "s": 5.46,
+    "e": 5.6
+   },
+   {
+    "w": "memotong",
+    "s": 5.6,
+    "e": 6.0
+   },
+   {
+    "w": "bawang,",
+    "s": 6.0,
+    "e": 6.4
+   },
+   {
+    "w": "cel",
+    "s": 6.64,
+    "e": 6.7
+   },
+   {
+    "w": "-celnya",
+    "s": 6.7,
+    "e": 6.98
+   },
+   {
+    "w": "pecah.",
+    "s": 6.98,
+    "e": 7.68
+   }
+  ]
+ },
+ {
+  "start": 7.86,
+  "end": 11.34,
+  "text": "Proses skiminya didalamnya menghasilkan senyawa iritan yang mudah menguap.",
+  "words": [
+   {
+    "w": "Proses",
+    "s": 7.86,
+    "e": 8.14
+   },
+   {
+    "w": "skiminya",
+    "s": 8.14,
+    "e": 8.54
+   },
+   {
+    "w": "didalamnya",
+    "s": 8.54,
+    "e": 9.14
+   },
+   {
+    "w": "menghasilkan",
+    "s": 9.14,
+    "e": 9.8
+   },
+   {
+    "w": "senyawa",
+    "s": 9.8,
+    "e": 10.14
+   },
+   {
+    "w": "iritan",
+    "s": 10.14,
+    "e": 10.5
+   },
+   {
+    "w": "yang",
+    "s": 10.5,
+    "e": 10.68
+   },
+   {
+    "w": "mudah",
+    "s": 10.68,
+    "e": 10.94
+   },
+   {
+    "w": "menguap.",
+    "s": 10.94,
+    "e": 11.34
+   }
+  ]
+ },
+ {
+  "start": 11.88,
+  "end": 13.8,
+  "text": "Senyawa itu mencapai permukaan mata.",
+  "words": [
+   {
+    "w": "Senyawa",
+    "s": 11.88,
+    "e": 12.24
+   },
+   {
+    "w": "itu",
+    "s": 12.24,
+    "e": 12.54
+   },
+   {
+    "w": "mencapai",
+    "s": 12.54,
+    "e": 13.12
+   },
+   {
+    "w": "permukaan",
+    "s": 13.12,
+    "e": 13.56
+   },
+   {
+    "w": "mata.",
+    "s": 13.56,
+    "e": 13.8
+   }
+  ]
+ },
+ {
+  "start": 14.66,
+  "end": 17.46,
+  "text": "Kelenjar air mata kemudian menghasilkan lebih banyak air mata",
+  "words": [
+   {
+    "w": "Kelenjar",
+    "s": 14.66,
+    "e": 14.96
+   },
+   {
+    "w": "air",
+    "s": 14.96,
+    "e": 15.12
+   },
+   {
+    "w": "mata",
+    "s": 15.12,
+    "e": 15.46
+   },
+   {
+    "w": "kemudian",
+    "s": 15.46,
+    "e": 15.98
+   },
+   {
+    "w": "menghasilkan",
+    "s": 15.98,
+    "e": 16.52
+   },
+   {
+    "w": "lebih",
+    "s": 16.52,
+    "e": 16.68
+   },
+   {
+    "w": "banyak",
+    "s": 16.68,
+    "e": 16.92
+   },
+   {
+    "w": "air",
+    "s": 16.92,
+    "e": 17.1
+   },
+   {
+    "w": "mata",
+    "s": 17.1,
+    "e": 17.46
+   }
+  ]
+ },
+ {
+  "start": 17.46,
+  "end": 19.72,
+  "text": "untuk membantu membilas iritan tersebut.",
+  "words": [
+   {
+    "w": "untuk",
+    "s": 17.46,
+    "e": 18.0
+   },
+   {
+    "w": "membantu",
+    "s": 18.0,
+    "e": 18.42
+   },
+   {
+    "w": "membilas",
+    "s": 18.42,
+    "e": 18.86
+   },
+   {
+    "w": "iritan",
+    "s": 18.86,
+    "e": 19.26
+   },
+   {
+    "w": "tersebut.",
+    "s": 19.26,
+    "e": 19.72
+   }
+  ]
+ },
+ {
+  "start": 20.3,
+  "end": 23.04,
+  "text": "Jadi mata berair ini adalah respons perlindungan tubuh.",
+  "words": [
+   {
+    "w": "Jadi",
+    "s": 20.3,
+    "e": 20.6
+   },
+   {
+    "w": "mata",
+    "s": 20.6,
+    "e": 21.0
+   },
+   {
+    "w": "berair",
+    "s": 21.0,
+    "e": 21.32
+   },
+   {
+    "w": "ini",
+    "s": 21.32,
+    "e": 21.52
+   },
+   {
+    "w": "adalah",
+    "s": 21.52,
+    "e": 21.78
+   },
+   {
+    "w": "respons",
+    "s": 21.78,
+    "e": 22.14
+   },
+   {
+    "w": "perlindungan",
+    "s": 22.14,
+    "e": 22.74
+   },
+   {
+    "w": "tubuh.",
+    "s": 22.74,
+    "e": 23.04
+   }
+  ]
+ },
+ {
+  "start": 23.62,
+  "end": 25.46,
+  "text": "Mau melihat proses tubuh dengan lebih jelas,",
+  "words": [
+   {
+    "w": "Mau",
+    "s": 23.62,
+    "e": 24.06
+   },
+   {
+    "w": "melihat",
+    "s": 24.06,
+    "e": 24.34
+   },
+   {
+    "w": "proses",
+    "s": 24.34,
+    "e": 24.58
+   },
+   {
+    "w": "tubuh",
+    "s": 24.58,
+    "e": 24.84
+   },
+   {
+    "w": "dengan",
+    "s": 24.84,
+    "e": 24.98
+   },
+   {
+    "w": "lebih",
+    "s": 24.98,
+    "e": 25.2
+   },
+   {
+    "w": "jelas,",
+    "s": 25.2,
+    "e": 25.46
+   }
+  ]
+ },
+ {
+  "start": 25.94,
+  "end": 27.26,
+  "text": "lanjut belajar di metcoil.",
+  "words": [
+   {
+    "w": "lanjut",
+    "s": 25.94,
+    "e": 26.24
+   },
+   {
+    "w": "belajar",
+    "s": 26.24,
+    "e": 26.6
+   },
+   {
+    "w": "di",
+    "s": 26.6,
+    "e": 26.8
+   },
+   {
+    "w": "metcoil.",
+    "s": 26.8,
+    "e": 27.26
+   }
+  ]
+ },
+ {
+  "start": 27.26,
+  "end": 31.82,
+  "text": "Ada materi, latihan soal, Atlas 3D, dan Live 4D Lab.",
+  "words": [
+   {
+    "w": "Ada",
+    "s": 27.26,
+    "e": 27.92
+   },
+   {
+    "w": "materi,",
+    "s": 27.92,
+    "e": 28.44
+   },
+   {
+    "w": "latihan",
+    "s": 28.68,
+    "e": 28.98
+   },
+   {
+    "w": "soal,",
+    "s": 28.98,
+    "e": 29.38
+   },
+   {
+    "w": "Atlas",
+    "s": 29.68,
+    "e": 29.98
+   },
+   {
+    "w": "3D,",
+    "s": 29.98,
+    "e": 30.48
+   },
+   {
+    "w": "dan",
+    "s": 30.64,
+    "e": 30.88
+   },
+   {
+    "w": "Live",
+    "s": 30.88,
+    "e": 31.16
+   },
+   {
+    "w": "4D",
+    "s": 31.16,
+    "e": 31.6
+   },
+   {
+    "w": "Lab.",
+    "s": 31.6,
+    "e": 31.82
+   }
+  ]
+ },
+ {
+  "start": 32.16,
+  "end": 33.62,
+  "text": "Coba gratis di Medcoil.com",
+  "words": [
+   {
+    "w": "Coba",
+    "s": 32.16,
+    "e": 32.46
+   },
+   {
+    "w": "gratis",
+    "s": 32.46,
+    "e": 32.78
+   },
+   {
+    "w": "di",
+    "s": 32.78,
+    "e": 32.9
+   },
+   {
+    "w": "Medcoil",
+    "s": 32.9,
+    "e": 33.28
+   },
+   {
+    "w": ".com",
+    "s": 33.28,
+    "e": 33.62
+   }
+  ]
+ }
+]

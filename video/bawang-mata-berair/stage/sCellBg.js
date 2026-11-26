@@ -1,0 +1,1 @@
+export const navyBg = `<defs><linearGradient id="nbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1D2E5E"/><stop offset="1" stop-color="#0F1938"/></linearGradient></defs><rect x="-9000" y="-9000" width="18000" height="18000" fill="url(#nbg)"/>`;
