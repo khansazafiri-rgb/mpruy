@@ -13,7 +13,8 @@ import {inspectInstalled,publicationBundleGate} from './atlas-independent-depend
 import {checkSourceNotices} from './audit-atlas-publication-rights.mjs';
 import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
 import {loadHraFemaleFive,loadHraBatch,mergeHraFemaleReferences} from './load-hra-female-five.mjs';
-import {loadAuditedReferenceSuite} from './atlas-audited-reference-suite.mjs';
+import {loadAuditedReferenceSuite,exactSuiteHra} from './atlas-audited-reference-suite.mjs';
+import {serveVerifiedPrivateModel} from './serve-verified-private-model.mjs';
 import {classifyIndependentPath,rawRequestPath} from './independent-atlas-routes.mjs';
 import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
 import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
@@ -98,7 +99,7 @@ const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=u
 let hra;try{hra=independent?sourcePack.hra:await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message||error)}]};}
 if(hraFemaleArgs.length)hra=mergeHraFemaleReferences(hra,loadHraFemaleFive(privateRoot,hraFemaleArgs[0].slice('--hra-female-folder='.length),hraGroups));
 if(hraCardioArgs.length)hra=mergeHraFemaleReferences(hra,loadHraBatch(privateRoot,hraCardioArgs[0].slice('--hra-cardio-folder='.length),'cardiopulmonary-four',hraGroups));
-if(suite)hra=mergeHraFemaleReferences(hra,suite.hra);
+if(suite)hra=exactSuiteHra(hra,suite);
 const port=Number(process.env.PORT||4186);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
 // Independent review builds the actual main-web App with a preview-only Anatomy
 // page alias. No public assets, stale host build, legacy Atlas or live backend.
@@ -141,15 +142,10 @@ const server=createServer((request,response)=>{
   thumbnails.get(thumb[1]).then(bytes=>{if(!response.destroyed)send(200,bytes,'image/png');}).catch(()=>{if(!response.destroyed)send(503,'Thumbnail unavailable');});return;
  }
  const supplemental=priority?.models.get(p);
- if(supplemental){
-  try{assert(fs.realpathSync(supplemental.file)===supplemental.file);const info=fs.statSync(supplemental.file);assert(info.isFile()&&info.size===supplemental.bytes);
-   response.writeHead(200,{'Content-Type':'model/gltf-binary','Content-Length':info.size,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
-   if(request.method==='HEAD'){response.end();return;}
-   const stream=fs.createReadStream(supplemental.file);stream.on('error',()=>response.destroy());response.on('close',()=>stream.destroy());stream.pipe(response);return;
-  }catch{return send(404,'Priority model not available');}
- }
+ if(supplemental)return serveVerifiedPrivateModel(request,response,supplemental);
  const model=models.get(p);
  if(model){
+  if(independent)return serveVerifiedPrivateModel(request,response,sourcePack.modelReceipts.get(p));
   try{assert(fs.realpathSync(model)===model);const info=fs.statSync(model);assert(info.isFile());
   response.writeHead(200,{'Content-Type':'model/gltf-binary','Content-Length':info.size,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
   if(request.method==='HEAD'){response.end();return;}

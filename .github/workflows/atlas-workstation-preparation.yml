@@ -5,6 +5,10 @@ on:
     paths:
       - 'scripts/prepare-atlas-private-workstation*'
       - 'scripts/replay-audited-bp3d43-suite*'
+      - 'scripts/serve-verified-private-model*'
+      - 'scripts/load-independent-source-review.mjs'
+      - 'scripts/preview-independent-atlas.mjs'
+      - 'scripts/atlas-audited-reference-suite.mjs'
       - '.github/workflows/atlas-workstation-preparation.yml'
 permissions:
   contents: read
@@ -21,4 +25,4 @@ jobs:
           node-version: 22
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
-      - run: node --test scripts/prepare-atlas-private-workstation.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/audit-atlas-private-checkpoint.test.mjs
+      - run: node --test scripts/prepare-atlas-private-workstation.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/audit-atlas-private-checkpoint.test.mjs scripts/serve-verified-private-model.test.mjs

@@ -45,3 +45,7 @@ export function loadAuditedReferenceSuite(q,{includeHyoid=false,includeExpansion
  assert.equal([...hra.assets.values()].reduce((n,a)=>n+a.public.sourceGroups.length,0),37);
  return {plan,bp,hra,publicRelease:'NO_GO',registrationValidated:false};
 }
+
+// An explicit suite is exactly the 9 HRA objects which were tested. Never append
+// previously staged organs with different versions/labels to this audited scope.
+export function exactSuiteHra(existing,suite){assert(suite?.publicRelease==='NO_GO'&&suite.hra?.assets instanceof Map&&suite.hra.assets.size===9&&suite.hra.blocked.length===0,'Invalid audited HRA scope');for(const [id,asset] of suite.hra.assets){const previous=existing?.assets?.get(id);if(previous)assert(previous.sha256===asset.sha256,'Conflicting HRA version bytes');assert(asset.public.approvedForDistribution===false&&asset.public.registrationValidated===false);}return suite.hra;}
