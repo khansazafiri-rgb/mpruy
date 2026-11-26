@@ -4,7 +4,7 @@ import {buildReferenceQuestions,buildSourceLabelQuestions,scoreReferenceAnswer} 
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {referenceEntries,reference43Entries,filterReferences,requestTracker,sourceNodeComponents,isolateSourceComponent} from './reference-state.js';
+import {referenceEntries,reference43Entries,filterReferences,requestTracker,sourceNodeComponents,isolateSourceComponent,applyHraCrosswalk} from './reference-state.js';
 const $=id=>document.getElementById(id);
 function dispose(object){
  const resources=new Set();
@@ -15,8 +15,8 @@ export function mountReferences(base){
  const dialog=$('referenceDialog'),host=$('referenceViewport'),tracker=requestTracker();
  let sourceKind='hra',entries=[],renderer=null,controls=null,camera=null,scene=null,model=null,observer=null,selected=null,components=[],visibility=new Map(),activeComponent=null;
  const status=t=>$('referenceStatus').textContent=t;
- function clearComponents(){delete host.dataset.renderedId;delete host.dataset.renderedTriangles;components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
- function listComponents(){const select=$('referenceComponentSelect'),q=$('referenceComponentSearch').value.trim().toLowerCase();select.replaceChildren();for(const c of components.filter(c=>c.label.toLowerCase().includes(q)||String(c.index)===q)){const option=document.createElement('option');option.value=String(c.index);option.textContent=c.label+' · node '+c.index;select.append(option);}$('referenceComponentIsolate').disabled=!select.options.length;}
+ function clearComponents(){delete host.dataset.renderedId;delete host.dataset.renderedTriangles;delete host.dataset.renderedComponents;components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
+ function listComponents(){const select=$('referenceComponentSelect'),q=$('referenceComponentSearch').value.trim().toLowerCase();select.replaceChildren();for(const c of components.filter(c=>c.label.toLowerCase().includes(q)||String(c.index)===q||c.ontologyId?.toLowerCase().includes(q))){const option=document.createElement('option');option.value=String(c.index);option.textContent=c.label+(c.ontologyId?' · '+c.ontologyId:'')+' · node '+c.index;select.append(option);}$('referenceComponentIsolate').disabled=!select.options.length;}
  function cleanup(){
   clearComponents();
   tracker.cancel();observer?.disconnect();observer=null;
@@ -52,7 +52,7 @@ export function mountReferences(base){
    const g=await new GLTFLoader().loadAsync(base+(sourceKind==='bp43'?'bp3d43-reference/':'hra-reference/')+e.id+'.glb');candidate=g.scene;
    if(!tracker.current(token)||!dialog.open){dispose(candidate);return;}
    let meshes=0;candidate.traverse(m=>{if(m.isMesh)meshes++;});if(!meshes||sourceKind==='bp43'&&(meshes!==1||g.parser.json.extras?.source!=='Official BodyParts3D 4.3'||g.parser.json.nodes?.[0]?.extras?.officialElementFileId!==e.fj))throw Error('Identitas mesh referensi tidak sesuai');
-   model=candidate;scene.add(model);components=sourceNodeComponents(g);model.traverse(m=>{if(m.isMesh)visibility.set(m,m.visible);});$('referenceComponents').hidden=conceal||!components.length;listComponents();fit();renderer.render(scene,camera);if(sourceKind==='bp43'){const count=renderer.info.render.triangles;if(count!==e.triangles)throw Error('Jumlah triangle yang dirender berbeda dari audit');host.dataset.renderedId=e.id;host.dataset.renderedTriangles=String(count);}status(conceal?'Elemen berhasil dirender. Pilih label sumbernya.':e.name+' · '+e.version+' · '+meshes+' mesh dirender · '+components.length+' node sumber teridentifikasi. Label node belum divalidasi klinis.');return true;
+   model=candidate;scene.add(model);components=sourceKind==='hra'?applyHraCrosswalk(sourceNodeComponents(g),e.sourceCrosswalk):sourceNodeComponents(g);model.traverse(m=>{if(m.isMesh)visibility.set(m,m.visible);});$('referenceComponents').hidden=conceal||!components.length;listComponents();fit();renderer.render(scene,camera);if(sourceKind==='bp43'){const count=renderer.info.render.triangles;if(count!==e.triangles)throw Error('Jumlah triangle yang dirender berbeda dari audit');host.dataset.renderedId=e.id;host.dataset.renderedTriangles=String(count);}else{host.dataset.renderedId=e.id;host.dataset.renderedTriangles=String(renderer.info.render.triangles);host.dataset.renderedComponents=String(components.length);}status(conceal?'Elemen berhasil dirender. Pilih label sumbernya.':e.name+' · '+e.version+' · '+meshes+' mesh dirender · '+components.length+' node sumber teridentifikasi. Label node belum divalidasi klinis.');return true;
   }catch(error){if(candidate){scene?.remove(candidate);dispose(candidate);if(model===candidate)model=null;}if(tracker.current(token)){clearComponents();status(conceal?'Elemen gagal dimuat. Soal tidak dinilai.':'Referensi gagal dimuat: '+String(error.message||error));}return false;}
  }
  const topics=$('referenceTopics'),regionTopic=$('referenceRegionTopic'),systemTopic=$('referenceSystemTopic'),topicCount=$('referenceTopicCount');
