@@ -140,7 +140,7 @@ function fit(axis=currentAxis()){
  frameBounds(bounds,axis);
 }
 function resize(){const w=$('view').clientWidth,h=$('view').clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}
-new ResizeObserver(resize).observe($('view'));resize();renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
+new ResizeObserver(resize).observe($('view'));resize();let lastRenderQC='';renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);const axis=currentAxis().toArray().map(v=>Math.round(v*1000)/1000);const qc=JSON.stringify({axis,up:camera.up.toArray(),triangles:renderer.info.render.triangles});if(qc!==lastRenderQC){$('view').dataset.renderQc=qc;lastRenderQC=qc;}});
 for(const id of ['front','side','right','top','back'])$(id).onclick=()=>fit(axisVector(id));$('fit').onclick=()=>fit();
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let down=null;
 renderer.domElement.addEventListener('pointerdown',ev=>{down=ev.button===0?[ev.clientX,ev.clientY,ev.pointerId]:null;});
@@ -278,7 +278,7 @@ const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:
 $('openGuided').onclick=openGuided;
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
- state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0),highlightedMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')).length:0),0)}),
+ state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleModels:[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length,failedModels:failed.size,visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0),highlightedMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')).length:0),0)}),
  status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},

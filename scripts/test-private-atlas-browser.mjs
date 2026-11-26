@@ -114,6 +114,12 @@ try{
  await page.locator('#loadingOverlay.hidden').waitFor({state:'attached',timeout:30000});
  await waitCounts(1,0);
  assert.equal(await page.locator('#app .atlas-topbar').count(),1);
+ assert.equal(await page.locator('#systemsList [data-group]').count(),13);
+ await page.waitForFunction(()=>{const d=JSON.parse(document.getElementById('view').dataset.renderQc||'{}');return d.up?.join(',')==='0,0,1'&&d.axis?.[1]<-.99;});
+ assert.equal(await page.locator('#atlasStatus').getAttribute('data-visible-models'),'1');
+ assert.equal(await page.locator('#atlasStatus').getAttribute('data-failed-models'),'0');
+ await page.locator('#backViewBtn').click();await page.waitForFunction(()=>JSON.parse(document.getElementById('view').dataset.renderQc||'{}').axis?.[1]>.99);
+ await page.locator('#frontViewBtn').click();await page.waitForFunction(()=>JSON.parse(document.getElementById('view').dataset.renderQc||'{}').axis?.[1]<-.99);
  assert.equal(await page.locator('#systemsList .sys-tile').count(),13);
  const top=await page.locator('.atlas-topbar').boundingBox(),bottom=await page.locator('.atlas-systembar').boundingBox(),canvas=await page.locator('#threeCanvas').boundingBox();
  assert(top&&bottom&&canvas&&bottom.y>top.y+top.height&&canvas.height>350&&canvas.width>800,'original desktop layout invalid');
