@@ -203,6 +203,21 @@ try{
   assert.equal(await setup.locator('#referenceChallengeLanguage option[value="latin"]').textContent(),'Latin (provisional)');
   assert((await setup.locator('.hint').textContent()).includes('bukan terminologi FIPAT terverifikasi'));
   if(real43.assets.size===246)assert.equal(glossaryCount,239);
+  if(real43.assets.size===246||real43.assets.size===12){
+   const scope=setup.locator('#referenceChallengeScope'),limit=setup.locator('#referenceChallengeLimit'),region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic');
+   await scope.check();await region.selectOption('neck-upper-limb');await system.selectOption('nervous');await limit.selectOption('10');
+   await setup.locator('#referenceChallengePoolCount').filter({hasText:'6 soal tersedia'}).waitFor();
+   await start('mcq','en');
+   const qchoices=challenge.locator('#referenceChallengeAnswers button'),seen=new Set();
+   const {referenceTopic}=await import('../apps/atlas-independent/src/reference43-topics.js');
+   for(let i=0;i<6;i++){await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/6'}).waitFor();await qchoices.first().waitFor();const e=await currentEntry();assert.deepEqual(referenceTopic(e),{region:'neck-upper-limb',system:'nervous'});assert(!seen.has(e.fmaId));seen.add(e.fmaId);await challenge.getByRole('button',{name:challengeLabel(e,'en'),exact:true}).click();await next.click();}
+   await challenge.locator('#referenceChallengeProgress').filter({hasText:'6/6 benar'}).waitFor();
+   await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
+   await region.selectOption('all');await system.selectOption('all');
+   await setup.locator('#referenceChallengePoolCount').filter({hasText:'10 soal tersedia'}).waitFor();
+   await scope.uncheck();await limit.selectOption('all');
+   console.log('BP3D43 FOCUSED CHALLENGE PASS: six exact regional concepts, 10-question limit, full mode restored.');
+  }
   await start('mcq','en');
   const choices=challenge.locator('#referenceChallengeAnswers button');
   await choices.first().waitFor();

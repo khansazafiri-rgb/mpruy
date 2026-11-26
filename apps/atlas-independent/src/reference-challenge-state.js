@@ -1,3 +1,5 @@
+import {browseReferenceTopics} from './reference43-topics.js';
+import {hasChallengeGlossary} from './reference-challenge-language.js';
 // Source-label recognition, not a clinical assessment or full-structure exam.
 const canonical=s=>String(s).trim().toLowerCase().replace(/\s+/g,' ');
 function shuffle(items,random){
@@ -27,4 +29,15 @@ export function buildSourceLabelQuestions(entries,random=Math.random){
  const byFMA=new Map(),byLabel=new Map();
  for(const e of entries){const key=canonical(e.name);const names=byFMA.get(e.fmaId)||new Set();names.add(key);byFMA.set(e.fmaId,names);const concepts=byLabel.get(key)||new Set();concepts.add(e.fmaId);byLabel.set(key,concepts);}
  return buildReferenceQuestions(entries.filter(e=>byFMA.get(e.fmaId).size===1&&byLabel.get(canonical(e.name)).size===1),random);
+}
+
+// Keep global ambiguity checks before applying region/system filters.
+// Search text is deliberately excluded: it can reveal a quiz answer.
+export function focusedReferenceQuestions(entries,{mode='mcq',region='all',system='all',limit='all'}={},random=Math.random){
+ if(!['mcq','typed','source-mcq'].includes(mode)||!['all','10','20'].includes(String(limit)))throw Error('Invalid challenge settings');
+ const global=buildSourceLabelQuestions(entries,()=>.5),eligible=new Set(global.map(q=>q.entry.fmaId));
+ const filtered=browseReferenceTopics(entries.filter(e=>eligible.has(e.fmaId)),{region,system});
+ const pool=mode==='source-mcq'?filtered:filtered.filter(hasChallengeGlossary);
+ const questions=buildSourceLabelQuestions(pool,random);
+ return limit==='all'?questions:questions.slice(0,Number(limit));
 }
