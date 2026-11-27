@@ -4,6 +4,7 @@ on:
     branches: [feat/atlas-focused-challenge-20261126]
     paths:
       - 'licensing/atlas-publication/hra-*-pinned-audit-20261126.json'
+      - 'licensing/atlas-publication/hra-digestive-six-pinned-audit-20261127.json'
       - 'scripts/hra-exact-source-groups.mjs'
       - '.github/workflows/atlas-hra-expanded-groups.yml'
 permissions:
@@ -15,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        batch: [urogenital-7, ureter-four, cns-four]
+        batch: [urogenital-7, ureter-four, cns-four, digestive-six]
     steps:
       - uses: actions/checkout@v4
         with:

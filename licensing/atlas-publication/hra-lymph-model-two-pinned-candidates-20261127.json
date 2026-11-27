@@ -89,8 +89,7 @@
       "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lymph-node-male/v1.4/raw/metadata.yaml",
       "creators": [
         "Li Yao",
-        "Kristen Browne",
-        "Heidi Schlehlein"
+        "Kristen Browne"
       ],
       "approvedForDistribution": false,
       "sourceMethod": "CE3D_MOUSE_DERIVED_REFERENCE",
