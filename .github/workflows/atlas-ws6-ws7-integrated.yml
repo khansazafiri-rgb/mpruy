@@ -8,6 +8,8 @@ on:
       - 'scripts/*atlas*'
       - 'scripts/*hra*'
       - 'scripts/*bp3d*'
+      - 'scripts/audit-sio-*.py'
+      - 'licensing/atlas-publication/checkpoint-evidence/sio-label-volume-audit-20261127.json'
       - 'scripts/backup-rehearsal.test.py'
       - 'deploy/backup*'
       - '.github/workflows/atlas-ws6-ws7-integrated.yml'
@@ -16,7 +18,7 @@ permissions:
   contents: read
 concurrency:
   group: atlas-ws6-ws7-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   contracts-security-backup:
     runs-on: ubuntu-24.04
@@ -86,3 +88,19 @@ jobs:
           path: ${{ runner.temp }}/atlas-ws6-browser.log
           if-no-files-found: ignore
           retention-days: 14
+  sio-private-mesh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --only-binary=:all: numpy==1.26.4 pillow==11.3.0 openpyxl==3.1.5 scipy==1.15.3 scikit-image==0.25.2
+      - name: Synthetic geometry and rejection tests
+        run: python scripts/audit-sio-private-mesh.py --test
+      - name: Reacquire pinned segmentation and convert private GLBs
+        run: python scripts/audit-sio-private-mesh.py
+      # Never upload source or derived geometry. Retain numeric logs only.
