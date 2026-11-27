@@ -35,6 +35,7 @@ export async function audit(batch='female-five',{groups=false,freshGroups=false}
  configs['lymph-model-two']={file:'licensing/atlas-publication/hra-lymph-model-two-pinned-candidates-20261127.json',count:2,marker:'HRA LYMPH MODEL QUARANTINE REPORT '};
  configs['knee-larynx-six']={file:'licensing/atlas-publication/hra-knee-larynx-six-pinned-candidates-20261127.json',count:6,marker:'HRA KNEE LARYNX PINNED QUARANTINE REPORT '};
  configs['tonsil-four']={file:'licensing/atlas-publication/hra-tonsil-four-pinned-candidates-20261127.json',count:4,marker:'HRA TONSIL PINNED QUARANTINE REPORT '};
+ configs['pelvis-two']={file:'licensing/atlas-publication/hra-pelvis-two-pinned-candidates-20261127.json',count:2,marker:'HRA PELVIS PINNED QUARANTINE REPORT '};
  assert(Object.hasOwn(configs,batch),'Unknown HRA batch');const config=configs[batch];
  const spec=JSON.parse(fs.readFileSync(new URL(config.file,root),'utf8'));
  assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===config.count);
@@ -53,7 +54,7 @@ export async function audit(batch='female-five',{groups=false,freshGroups=false}
    assert(raw.equals(cdn),'CDN and pinned Git GLB differ');
    const info=inspectGlb(raw);const gltf=JSON.parse(raw.subarray(20,20+raw.readUInt32LE(12)).toString('utf8'));
    const labels=crosswalkNodes(cross.toString('utf8'),gltf);assert.equal(labels.length,e.expectedCrosswalkRows);
-   if(['urogenital-7','ureter-four','cns-four','digestive-six','lymph-model-two','knee-larynx-six','tonsil-four'].includes(batch))assert.deepEqual(labels.map(({nodeName,ontologyId,label})=>({nodeName,ontologyId,label})),e.sourceLabels,'Pinned crosswalk label mismatch');
+   if(['urogenital-7','ureter-four','cns-four','digestive-six','lymph-model-two','knee-larynx-six','tonsil-four','pelvis-two'].includes(batch))assert.deepEqual(labels.map(({nodeName,ontologyId,label})=>({nodeName,ontologyId,label})),e.sourceLabels,'Pinned crosswalk label mismatch');
    let sourceGroups;
    if(groups&&!freshGroups){const prior=retained.rows.find(r=>r.id===e.id);assert(prior&&prior.assetURL===expected&&prior.sha256===sha(raw)&&prior.metadataSHA256===sha(meta)&&prior.crosswalkSHA256===sha(cross),'Retained receipt differs');assert.deepEqual(prior.labels,labels);}
    if(groups)sourceGroups=resolveSourceGroups(gltf,labels);
