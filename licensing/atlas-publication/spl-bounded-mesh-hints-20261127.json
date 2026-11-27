@@ -1,0 +1,245 @@
+{
+  "schema": 1,
+  "sourceCommit": "8841f216f687f7bbead521270c9641055df6b02c",
+  "scope": "Matching bounded source model and mesh filename vocabulary, not independently validated anatomy or laterality.",
+  "knee": {
+    "workflowRun": 45938433081,
+    "workflowJob": 140306917152,
+    "rows": [
+      {
+        "meshSHA256": "f4aeab5174034fdd2169895933b33b40e17cfdcc78aa762a85044670ac4b48cc",
+        "pairs": [
+          {
+            "modelHints": [
+              "anterior cruciate ligament"
+            ],
+            "filenameHints": [
+              "anterior cruciate ligament"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "ffdb2feb661b2606f87dec7d3a0304dd2318a29b12446a9d68830749c4527cec",
+        "pairs": [
+          {
+            "modelHints": [
+              "posterior cruciate ligament"
+            ],
+            "filenameHints": [
+              "posterior cruciate ligament"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "dc9c8b345e73d91f169aa34400fe3203c8019c270cd13a0eb8e482129647f60b",
+        "pairs": [
+          {
+            "modelHints": [
+              "patellar ligament"
+            ],
+            "filenameHints": [
+              "patellar ligament"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "c161104052b12ef8ad84e2634d0bc75d3d2fd31b87bf10fd40a9fb1f4452b96a",
+        "pairs": [
+          {
+            "modelHints": [
+              "lateral meniscus"
+            ],
+            "filenameHints": [
+              "lateral meniscus"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "5d347c130656a21af2c9fc5066a55b45df4129a8c415bd4cc8bc39949100ba29",
+        "pairs": [
+          {
+            "modelHints": [
+              "medial meniscus"
+            ],
+            "filenameHints": [
+              "medial meniscus"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "e57c5b6d3831051dcef49e9db53fdee7010aaa67b9dab1eb9f1c66bd6a170678",
+        "pairs": [
+          {
+            "modelHints": [
+              "femoral cartilage"
+            ],
+            "filenameHints": [
+              "femoral cartilage"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "39f1cf56e230f8ab8cc37d234aeb95899e93f25cf667cd658da3ef8a8ee70ab0",
+        "pairs": [
+          {
+            "modelHints": [
+              "tibial cartilage"
+            ],
+            "filenameHints": [
+              "tibial cartilage"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "478f40e578961a33d31479f91fc64a246a163c2e06a1df42accda62f577be838",
+        "pairs": [
+          {
+            "modelHints": [
+              "tibial cartilage"
+            ],
+            "filenameHints": [
+              "tibial cartilage"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "655e2d22eaa107c14983d6404fcd634418ec04a5f2702a4921a95a218cd3afcb",
+        "pairs": [
+          {
+            "modelHints": [
+              "patellar cartilage"
+            ],
+            "filenameHints": [
+              "patellar cartilage"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "d099e5a6717369846badbb753ae690566fd3451b1ce91dde92817d03d7abd32f",
+        "pairs": [
+          {
+            "modelHints": [
+              "femur"
+            ],
+            "filenameHints": [
+              "femur"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "f37da13f3a5bf4165647358be9f1418fc3a2b4bc6742ceaea57ea5f934b24283",
+        "pairs": [
+          {
+            "modelHints": [
+              "tibia"
+            ],
+            "filenameHints": [
+              "tibia"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "5ad311858fd4ed44999328d0c3d2fca8b1a8aa9ff8390788ca05dee13e6abc49",
+        "pairs": [
+          {
+            "modelHints": [
+              "fibula"
+            ],
+            "filenameHints": [
+              "fibula"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "592fdfbb7dda4b1a9fe89a5c2d3cc1b5eacfed12490eceda92c3d1d0958ede76",
+        "pairs": [
+          {
+            "modelHints": [
+              "patella"
+            ],
+            "filenameHints": [
+              "patella"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      }
+    ]
+  },
+  "ear": {
+    "workflowRun": 45938433085,
+    "workflowJob": 140306917433,
+    "archiveSHA256": "4e96855faf52b0432b7324b2e4f5508536d53fdeadd090439e292e93ae3fd737",
+    "rows": [
+      {
+        "meshSHA256": "09b0f86f72c5dd0da5719f26f2652758b13614bf6f361315b14f3827729f373f",
+        "pairs": [
+          {
+            "modelHints": [
+              "malleus"
+            ],
+            "filenameHints": [
+              "malleus"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "538b9692d27bf66457efc4efdcf75aec1781a2d92f82343f4dc43e12611832a9",
+        "pairs": [
+          {
+            "modelHints": [
+              "incus"
+            ],
+            "filenameHints": [
+              "incus"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      },
+      {
+        "meshSHA256": "6b22ca62d3d6e2a1bab66b95020ee9129e4bbb9966c34fa09fab49fdcd542d95",
+        "pairs": [
+          {
+            "modelHints": [
+              "stapes"
+            ],
+            "filenameHints": [
+              "stapes"
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_NOT_IDENTITY"
+      }
+    ]
+  },
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}
