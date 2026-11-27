@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "scope": "Actual private digestive guided and browser regression after layer isolation change; no whole anatomy coverage promotion.",
+  "sourceCommit": "05804415af9e32ebc9a7d1f7fff92fc230369996",
+  "workflowRun": 45937099618,
+  "workflowJob": 140302714185,
+  "conclusion": "success",
+  "guidedCheckpoints": 5,
+  "guidedSourceOpens": 10,
+  "renderedGLBs": 6,
+  "mappedNodes": 66,
+  "directIsolationRestore": 10,
+  "quadrateLobeGuidedReplay": "PASS_AS_PART_OF_ALL_TEN_SOURCE_OPENS",
+  "unitTestsPassed": 14,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

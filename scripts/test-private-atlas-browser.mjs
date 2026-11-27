@@ -148,6 +148,11 @@ try{
  await page.locator('#footerTransparentBtn').click();await waitCounts(3,1);
  await page.getByRole('button',{name:'Belajar',exact:true}).click();
  const guided=page.locator('#guidedLearningPanel');
+ // Other source tracks may precede muscular in the canonical system order.
+ // Explicitly select the engineering fixture track rather than assuming the default.
+ const fixtureSystem=guided.getByRole('combobox',{name:'Pilih sistem anatomi'});
+ await fixtureSystem.locator('option[value="muscular"]').waitFor({state:'attached'});
+ await fixtureSystem.selectOption('muscular');
  await guided.getByRole('heading',{name:'Engineering fixture 2'}).waitFor();
  assert((await guided.innerText()).includes('0/2 checkpoint tersedia'));
  await guided.getByRole('button',{name:'Tampilkan 3D'}).click();
