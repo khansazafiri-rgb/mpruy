@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "scope": "Publisher discovery only; archives not downloaded or inspected; exact geometry, laterality, patient privacy and rights remain held",
+  "sources": [
+    {
+      "id": "spl-inner-ear",
+      "page": "https://www.openanatomy.org/atlas-pages/atlas-spl-inner-ear.html",
+      "archive": "https://www.openanatomy.org/atlases/nac/inner-ear-2018-02.zip",
+      "reportedLicense": "3D Slicer License Part B",
+      "method": "Human high-resolution flat-panel CT",
+      "targets": [
+        "malleus",
+        "incus",
+        "stapes"
+      ],
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "id": "spl-head-neck",
+      "page": "https://www.openanatomy.org/atlas-pages/atlas-spl-head-and-neck.html",
+      "archive": "https://www.openanatomy.org/atlases/nac/head-neck-2016-09.zip",
+      "reportedLicense": "3D Slicer License Part B",
+      "method": "CT MANIX dataset; upstream rights review needed",
+      "targets": [
+        "nasal cavity",
+        "nasopharynx",
+        "oropharynx",
+        "laryngopharynx",
+        "parotid gland"
+      ],
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "id": "openear",
+      "page": "https://zenodo.org/records/1342658",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326113/",
+      "reportedLicense": "CC BY 4.0 article; dataset license requires independent verification",
+      "method": "Human temporal bone CT and micro-slicing",
+      "targets": [
+        "malleus",
+        "incus",
+        "stapes"
+      ],
+      "laterality": "UNVERIFIED"
+    }
+  ],
+  "licensePage": "https://www.openanatomy.org/atlas-pages/slicer-license.html",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}
