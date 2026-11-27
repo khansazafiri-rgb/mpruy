@@ -53,7 +53,7 @@ def anatomical_label(value):
     term = KNEE_TERMS.get(value)
     return (term, side) if term else None
 
-def scene_links(z, mesh_paths, anatomical=None):
+def scene_links(z, mesh_paths, anatomical=None, bounded_hints=None):
     """Resolve only local MRML model/storage references; never load a scene or volume."""
     links = {p: set() for p in mesh_paths}
     counts = Counter()
@@ -105,10 +105,14 @@ def scene_links(z, mesh_paths, anatomical=None):
                     candidate_labels = hierarchy.get(ident,set())
                     for term, side in candidate_labels:
                         counts["hierarchyCandidate:"+term+":"+side] += 1
-                    for hint in source.bounded_label_hints(node.get("name",""), KNEE_TERMS):
+                    model_hints = source.bounded_label_hints(node.get("name",""), KNEE_TERMS)
+                    file_hints = source.bounded_label_hints(PurePosixPath(target).stem, KNEE_TERMS)
+                    for hint in model_hints:
                         counts["modelNameHint:"+hint] += 1
-                    for hint in source.bounded_label_hints(PurePosixPath(target).stem, KNEE_TERMS):
+                    for hint in file_hints:
                         counts["meshFilenameHint:"+hint] += 1
+                    if bounded_hints is not None:
+                        bounded_hints[target].add((tuple(model_hints), tuple(file_hints)))
                     if anatomical is not None:
                         anatomical[target].add(direct or ('UNRECOGNIZED', 'UNSPECIFIED'))
                         # Hierarchy-only hints remain held, never replace unknown direct evidence.
@@ -270,7 +274,8 @@ def audit(archive, receipt, scratch):
         if len(meshes) != 48:
             raise ValueError("unexpected VTK count")
         anatomical = {i.filename: set() for i in meshes}
-        links, scene_counts, transform_links = scene_links(z, set(anatomical), anatomical)
+        bounded_hints = {i.filename: set() for i in meshes}
+        links, scene_counts, transform_links = scene_links(z, set(anatomical), anatomical, bounded_hints)
         rows = []
         for i in meshes:
             raw = z.read(i)
@@ -281,6 +286,8 @@ def audit(archive, receipt, scratch):
                    "sceneTransformsApplied": False}
             labels = anatomical[i.filename]
             recognized = sorted(labels - {("UNRECOGNIZED", "UNSPECIFIED")})
+            row["boundedLabelHintPairs"] = [{"modelHints":list(m),"filenameHints":list(f)} for m,f in sorted(bounded_hints[i.filename])]
+            row["boundedLabelHintStatus"] = "UNVERIFIED_NOT_IDENTITY"
             row["anatomicalCandidates"] = [{"term": term, "side": side} for term, side in recognized]
             row["anatomicalIdentityStatus"] = ("EXACT_ALLOWLIST_LABEL_CANDIDATE" if len(labels) == 1 and recognized else "HOLD_UNRESOLVED_OR_CONFLICTING_LABEL")
             row["lateralityValidated"] = False

@@ -39,6 +39,7 @@ def audit(archive, kind):
         raise ValueError("archive size outside policy")
     receipt = source.inventory(archive)
     hits = {}
+    bounded_hints = {}
     held_scenes = 0
     diagnostics = Counter()
     filename_candidates = []
@@ -101,13 +102,24 @@ def audit(archive, kind):
                         for term,side in hierarchy_candidates:
                             diagnostics["hierarchyCandidate:"+term+":"+side] += 1
                         vocabulary = {term:term for term in terms}
-                        for hint in source.bounded_label_hints(n.get("name",""),vocabulary):
+                        model_hints = source.bounded_label_hints(n.get("name",""),vocabulary)
+                        file_hints = source.bounded_label_hints(PurePosixPath(target).stem,vocabulary)
+                        for hint in model_hints:
                             diagnostics["modelNameHint:"+hint] += 1
-                        for hint in source.bounded_label_hints(PurePosixPath(target).stem,vocabulary):
+                        for hint in file_hints:
                             diagnostics["meshFilenameHint:"+hint] += 1
+                        bounded_hints.setdefault(target,set()).add((tuple(model_hints),tuple(file_hints)))
                         hits.setdefault(target,set()).add(candidate)
                         if candidate and hierarchy_candidates and hierarchy_candidates != {candidate}:
                             hits[target].update(hierarchy_candidates)
+        hint_rows = []
+        import hashlib
+        for member, pairs in sorted(bounded_hints.items()):
+            if not any(m or f for m,f in pairs):
+                continue
+            with z.open(members[member]) as stream:
+                digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+            hint_rows.append({'meshSHA256':digest,'pairs':[{'modelHints':list(m),'filenameHints':list(f)} for m,f in sorted(pairs)],'status':'UNVERIFIED_NOT_IDENTITY'})
         rows = []
         for member, labels in hits.items():
             if not any(x is not None for x in labels):
@@ -122,7 +134,7 @@ def audit(archive, kind):
                          "status":"EXACT_LABEL_CANDIDATE" if len(labels)==1 else "HOLD_CONFLICTING_LABELS",
                          "lateralityValidated":False})
     return {"schema":1,"source":url,"archiveSHA256":source.sha_file(archive),"archiveBytes":archive.stat().st_size,
-            "inventory":receipt,"labelCandidates":rows,"filenameOnlyCandidates":filename_candidates,"sceneDiagnostics":dict(diagnostics),"heldScenes":held_scenes,"geometryParsed":False,
+            "inventory":receipt,"labelCandidates":rows,"filenameOnlyCandidates":filename_candidates,"boundedLabelHints":hint_rows,"sceneDiagnostics":dict(diagnostics),"heldScenes":held_scenes,"geometryParsed":False,
             "privacyReview":"PENDING","assetRightsReviewed":False,"clinicalValidation":False,
             "registrationValidated":False,"geometryPublished":0,"publicRelease":"NO_GO"}
 
