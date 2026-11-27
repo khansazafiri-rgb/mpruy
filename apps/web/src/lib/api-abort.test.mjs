@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { URL } from 'node:url';
+import { Buffer } from 'node:buffer';
+const { AbortController, DOMException } = globalThis;
 
 test('API abort cancels a pending request and preserves AbortError rather than a network-error message', async () => {
  const originalFetch=globalThis.fetch;

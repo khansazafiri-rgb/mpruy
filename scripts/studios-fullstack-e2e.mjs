@@ -72,6 +72,9 @@ const page = await ctx.newPage();
 const errors = []; page.on('pageerror', e => errors.push(e.message));
 const studioFrame = () => page.frames().find(f => f.url().includes('/api/medcoel/studio-assets/' + TEST_ID + '/'));
 const waitFrameReady = async (expectedMode = 'explore') => {
+  // URL navigation can precede React's commit. Bind readiness to the rendered
+  // mode before acquiring a Frame, so the previous mode's frame is never reused.
+  await page.waitForFunction(mode => document.querySelector('[data-testid="studio-mode-' + mode + '"]')?.getAttribute('aria-selected') === 'true', expectedMode, { timeout: 120000 });
   await page.getByText('Studio siap digunakan.').waitFor({ timeout: 120000 });
   const f = studioFrame(); assert.ok(f, 'studio iframe');
   await f.waitForFunction(() => /struktur dimuat/.test(document.querySelector('[data-testid=studio-status]')?.textContent || ''), null, { timeout: 120000 });
