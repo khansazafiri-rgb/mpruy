@@ -76,7 +76,7 @@ def encode_isolated(buf,doc,start,limit,index):
     if len(check["meshes"])!=1 or sum("mesh" in n for n in check["nodes"])!=1:
         raise ValueError("unselected geometry leaked")
     return bytes(result),actual
-def audit(item,row):
+def audit(item,row,stage=None):
     with tempfile.TemporaryDirectory(prefix="medcoel-hra-isolation-") as d:
         path=Path(d)/"source.glb"
         if source.fetch_asset(row,path)!=item["sourceSHA256"]:
@@ -92,8 +92,11 @@ def audit(item,row):
                 result,fp=encode_isolated(buf,doc,start,limit,i)
                 if fp!=t["orderedLocalPrimitiveFingerprints"]:
                     raise ValueError("retained local geometry mismatch")
-                results.append({"nodeIndex":i,"ontologyId":t["ontologyId"],"label":t["label"],"isolatedBytes":len(result),"isolatedSHA256":hashlib.sha256(result).hexdigest(),"status":"EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"})
-            return {"schema":1,"id":item["id"],"sourceSHA256":item["sourceSHA256"],"results":results,"geometryPersisted":False,"materialsPreserved":False,"clinicalValidation":False,"registrationValidated":False,"approvedForDistribution":False,"publicRelease":"NO_GO"}
+                result_row={"nodeIndex":i,"ontologyId":t["ontologyId"],"label":t["label"],"isolatedBytes":len(result),"isolatedSHA256":hashlib.sha256(result).hexdigest(),"status":"EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"}
+                if stage:
+                    stage(item,row,t,result,result_row)
+                results.append(result_row)
+            return {"schema":1,"id":item["id"],"sourceSHA256":item["sourceSHA256"],"results":results,"geometryPersisted":bool(stage),"materialsPreserved":False,"clinicalValidation":False,"registrationValidated":False,"approvedForDistribution":False,"publicRelease":"NO_GO"}
 class Tests(unittest.TestCase):
     def test_minimal_isolation(self):
         p=np.array([[0,0,0],[1,0,0],[0,1,0]],dtype="<f4").tobytes()

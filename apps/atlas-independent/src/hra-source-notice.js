@@ -8,6 +8,7 @@ const notes=Object.freeze({
  SOURCE_CROSSWALK_DOES_NOT_ESTABLISH_FULL_STANDARD_SEGMENT_SET:'Crosswalk tidak membuktikan kelengkapan seluruh segmen standar.'
 });
 export function hraSourceNotice(e){
+ if(e?.geometryOnly===true)return ' · Geometri terisolasi; material sumber tidak dipertahankan. Bukan overlay tubuh terdaftar atau validasi klinis.';
  const organ=typeof e?.source==='string'?e.source.match(/^https:\/\/cdn\.humanatlas\.io\/digital-objects\/ref-organ\/(brain|spinal-cord)-(female|male)\/v(1\.4|1\.1)\/assets\/[a-z0-9-]+\.glb$/):null;
  if(!organ||organ[1]==='brain'&&organ[3]!=='1.4'||organ[1]==='spinal-cord'&&organ[3]!=='1.1')return '';
  const expected=organ[1]==='brain'?'PUBLISHER_MIRRORED_AND_RESCALED_ALLEN_ATLAS':'VISIBLE_HUMAN_SOURCE';
