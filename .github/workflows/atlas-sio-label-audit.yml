@@ -1,7 +1,14 @@
 name: Atlas SIO source label quarantine audit
 on:
   pull_request:
-    branches: [feat/atlas-spl-knee-intake-20261125]
+    branches: [feat/atlas-spl-knee-intake-20261125, claude/focused-wozniak-1ayrxa]
+    paths:
+      - '.github/workflows/atlas-sio-label-audit.yml'
+      - 'scripts/audit-sio-*.py'
+      - 'licensing/atlas-publication/sio-visible-human-source-candidate.json'
+concurrency:
+  group: atlas-sio-label-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
