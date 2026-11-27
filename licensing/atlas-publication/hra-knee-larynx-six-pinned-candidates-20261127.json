@@ -1,0 +1,598 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Pinned source metadata and crosswalk only. No mesh audit, whole joint validation, clinical validation, registration, or release. Generic meniscus is not medial or lateral meniscus.",
+  "rows": [
+    {
+      "id": "knee-female-left",
+      "version": "v1.3",
+      "filename": "3d-vh-f-knee-l.glb",
+      "bytes": 348328,
+      "glbBlob": "c6cbe147f4c2416f4b097288d3a25ea2dff9b152",
+      "metadataBlob": "41f71586f76561e0e4825b24bbbc680a50c49dc6",
+      "crosswalkBlob": "e813ebd983ef711d2605d841bba08d8832625dde",
+      "doi": "https://doi.org/10.48539/HBM892.RGKB.238",
+      "expectedCrosswalkRows": 16,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-female-left/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_knee_L",
+          "ontologyId": "FMA:24978",
+          "label": "Left knee"
+        },
+        {
+          "nodeName": "VH_F_meniscus_L",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint"
+        },
+        {
+          "nodeName": "VH_F_knee_joint_L",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint"
+        },
+        {
+          "nodeName": "VH_F_femur_L",
+          "ontologyId": "FMA:24475",
+          "label": "Left femur"
+        },
+        {
+          "nodeName": "VH_F_intercondylar_fossa_L",
+          "ontologyId": "FMA:43750",
+          "label": "Intercondylar fossa of left femur"
+        },
+        {
+          "nodeName": "VH_F_trochlear_groove_L",
+          "ontologyId": "FMA:43747",
+          "label": "Patellar surface of left femur"
+        },
+        {
+          "nodeName": "VH_F_articular_cartilage_of_knee_L",
+          "ontologyId": "FMA:33190",
+          "label": "Articular cartilage of distal epiphysis of left femur"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_left_femur_inf",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_inf_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_frontal_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur"
+        },
+        {
+          "nodeName": "VH_F_distal_most_point_of_medial_condyle_L",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_sup_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_left_femur_sup",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur"
+        },
+        {
+          "nodeName": "VH_F_patella_L",
+          "ontologyId": "FMA:24487",
+          "label": "Left patella"
+        },
+        {
+          "nodeName": "VH_F_tibia_L",
+          "ontologyId": "FMA:24478",
+          "label": "Left tibia"
+        },
+        {
+          "nodeName": "VH_F_fibula_L",
+          "ontologyId": "FMA:24481",
+          "label": "Left fibula"
+        }
+      ]
+    },
+    {
+      "id": "knee-female-right",
+      "version": "v1.3",
+      "filename": "3d-vh-f-knee-r.glb",
+      "bytes": 348376,
+      "glbBlob": "591b01eff98bea1f9c96b8084be7971f037bfd82",
+      "metadataBlob": "4d9713e4c6c8cb2f8d11da06c399bc17a4e65f2a",
+      "crosswalkBlob": "224f1a9d8749e493317c81eb60298ef05388d083",
+      "doi": "https://doi.org/10.48539/HBM542.WHJW.673",
+      "expectedCrosswalkRows": 16,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-female-right/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_knee_R",
+          "ontologyId": "FMA:24977",
+          "label": "Right knee"
+        },
+        {
+          "nodeName": "VH_F_meniscus_R",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint"
+        },
+        {
+          "nodeName": "VH_F_knee_joint_R",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint"
+        },
+        {
+          "nodeName": "VH_F_femur_R",
+          "ontologyId": "FMA:24474",
+          "label": "Right femur"
+        },
+        {
+          "nodeName": "VH_F_trochlear_groove_R",
+          "ontologyId": "FMA:43746",
+          "label": "Patellar surface of right femur"
+        },
+        {
+          "nodeName": "VH_F_articular_cartilage_of_knee_R",
+          "ontologyId": "FMA:33189",
+          "label": "Articular cartilage of distal epiphysis of right femur"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_right_femur_sup",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_sup_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_right_femur_inf",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_inf_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_frontal_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur"
+        },
+        {
+          "nodeName": "VH_F_distal_most_point_of_medial_condyle_R",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur"
+        },
+        {
+          "nodeName": "VH_F_intercondylar_fossa_R",
+          "ontologyId": "FMA:43749",
+          "label": "Intercondylar fossa of right femur"
+        },
+        {
+          "nodeName": "VH_F_tibia_R",
+          "ontologyId": "FMA:24477",
+          "label": "Right tibia"
+        },
+        {
+          "nodeName": "VH_F_fibula_R",
+          "ontologyId": "FMA:24480",
+          "label": "Right fibula"
+        },
+        {
+          "nodeName": "VH_F_patella_R",
+          "ontologyId": "FMA:24486",
+          "label": "Right patella"
+        }
+      ]
+    },
+    {
+      "id": "knee-male-left",
+      "version": "v1.2",
+      "filename": "3d-vh-m-knee-l.glb",
+      "bytes": 440020,
+      "glbBlob": "6ef022fce4cf3126066686d84e7d9d25e4d2810a",
+      "metadataBlob": "8d6cdce6cec226b1899bb9990473e3841ab58e31",
+      "crosswalkBlob": "b2af10ad2b400517b797932e0cfe1a96e9e39292",
+      "doi": "https://doi.org/10.48539/HBM839.JJQF.873",
+      "expectedCrosswalkRows": 16,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-male-left/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_knee_L",
+          "ontologyId": "FMA:24978",
+          "label": "Left knee"
+        },
+        {
+          "nodeName": "VH_M_meniscus_L",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint"
+        },
+        {
+          "nodeName": "VH_M_knee_joint_L",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint"
+        },
+        {
+          "nodeName": "VH_M_fibula_L",
+          "ontologyId": "FMA:24481",
+          "label": "Left fibula"
+        },
+        {
+          "nodeName": "VH_M_femur_L",
+          "ontologyId": "FMA:24475",
+          "label": "Left femur"
+        },
+        {
+          "nodeName": "VH_M_articular_cartilage_of_knee_L",
+          "ontologyId": "FMA:33190",
+          "label": "Articular cartilage of distal epiphysis of left femur"
+        },
+        {
+          "nodeName": "VH_M_intercondylar_fossa_L",
+          "ontologyId": "FMA:43750",
+          "label": "Intercondylar fossa of left femur"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_frontal_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_inf_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_sup_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur"
+        },
+        {
+          "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_L",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_left_femur_inf",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_left_femur_sup",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur"
+        },
+        {
+          "nodeName": "VH_M_patellar_surface_L",
+          "ontologyId": "FMA:43747",
+          "label": "Patellar surface of left femur"
+        },
+        {
+          "nodeName": "VH_M_tibia_L",
+          "ontologyId": "FMA:24478",
+          "label": "Left tibia"
+        },
+        {
+          "nodeName": "VH_M_patella_L",
+          "ontologyId": "FMA:24487",
+          "label": "Left patella"
+        }
+      ]
+    },
+    {
+      "id": "knee-male-right",
+      "version": "v1.2",
+      "filename": "3d-vh-m-knee-r.glb",
+      "bytes": 440080,
+      "glbBlob": "16fdc7c70ce9c1e2a5475ab5471c47cd91540a30",
+      "metadataBlob": "9ceabf46df97209c3c6aa545b50f116eb64b9b27",
+      "crosswalkBlob": "0aa010d1524f92aef9f51c8cd983d65452b9e4de",
+      "doi": "https://doi.org/10.48539/HBM984.JRHT.838",
+      "expectedCrosswalkRows": 16,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-male-right/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_knee_R",
+          "ontologyId": "FMA:24977",
+          "label": "Right knee"
+        },
+        {
+          "nodeName": "VH_M_knee_joint_R",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint"
+        },
+        {
+          "nodeName": "VH_M_tibia_R",
+          "ontologyId": "FMA:24477",
+          "label": "Right tibia"
+        },
+        {
+          "nodeName": "VH_M_fibula_R",
+          "ontologyId": "FMA:24480",
+          "label": "Right fibula"
+        },
+        {
+          "nodeName": "VH_M_patella_R",
+          "ontologyId": "FMA:24486",
+          "label": "Right patella"
+        },
+        {
+          "nodeName": "VH_M_femur_R",
+          "ontologyId": "FMA:24474",
+          "label": "Right femur"
+        },
+        {
+          "nodeName": "VH_M_articular_cartilage_of_knee_R",
+          "ontologyId": "FMA:33189",
+          "label": "Articular cartilage of distal epiphysis of right femur"
+        },
+        {
+          "nodeName": "VH_M_intercondylar_fossa_R",
+          "ontologyId": "FMA:43749",
+          "label": "Intercondylar fossa of right femur"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_frontal_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_inf_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_sup_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur"
+        },
+        {
+          "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_R",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_right_femur_inf",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_right_femur_sup",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur"
+        },
+        {
+          "nodeName": "VH_M_patellar_surface_R",
+          "ontologyId": "FMA:43746",
+          "label": "Patellar surface of right femur"
+        },
+        {
+          "nodeName": "VH_M_meniscus_R",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint"
+        }
+      ]
+    },
+    {
+      "id": "larynx-female",
+      "version": "v1.1",
+      "filename": "3d-vh-f-larynx.glb",
+      "bytes": 463320,
+      "glbBlob": "9e8d2afc32f487677aab252e9a711ee8e63581cd",
+      "metadataBlob": "8018ec96698c4db5b06fd43a0fd9b173a484d0ab",
+      "crosswalkBlob": "53f9592db5ae165be241d60774b7327986e43967",
+      "doi": "https://doi.org/10.48539/HBM525.FJHR.643",
+      "expectedCrosswalkRows": 11,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/larynx-female/v1.1/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_larynx",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx"
+        },
+        {
+          "nodeName": "VH_F_laryngeal_cartilage",
+          "ontologyId": "UBERON:0001739",
+          "label": "laryngeal cartilage"
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage",
+          "ontologyId": "UBERON:0001740",
+          "label": "arytenoid cartilage"
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage_R",
+          "ontologyId": "FMA:55113",
+          "label": "Right arytenoid cartilage"
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage_L",
+          "ontologyId": "FMA:55114",
+          "label": "Left arytenoid cartilage"
+        },
+        {
+          "nodeName": "VH_F_epiglotic_cartilage",
+          "ontologyId": "UBERON:0001742",
+          "label": "epiglottic cartilage"
+        },
+        {
+          "nodeName": "VH_F_cricoid_cartilage",
+          "ontologyId": "UBERON:0002375",
+          "label": "cricoid cartilage"
+        },
+        {
+          "nodeName": "VH_F_thyroid_cartilage",
+          "ontologyId": "UBERON:0001738",
+          "label": "thyroid cartilage"
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage",
+          "ontologyId": "UBERON:0001741",
+          "label": "corniculate cartilage"
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage_L",
+          "ontologyId": "FMA:55116",
+          "label": "Left corniculate cartilage"
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage_R",
+          "ontologyId": "FMA:55115",
+          "label": "Right corniculate cartilage"
+        }
+      ]
+    },
+    {
+      "id": "larynx-male",
+      "version": "v1.1",
+      "filename": "3d-vh-m-larynx.glb",
+      "bytes": 335576,
+      "glbBlob": "51ed1e9b4a3a252ce93baafcfe057565cf4c31a5",
+      "metadataBlob": "56f139f9151f74a3fc49f895ecb0303c21264b56",
+      "crosswalkBlob": "3c8735a8978d79b65f3969d8b267ea6165f45d97",
+      "doi": "https://doi.org/10.48539/HBM362.HNZB.247",
+      "expectedCrosswalkRows": 11,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/larynx-male/v1.1/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_larynx",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx"
+        },
+        {
+          "nodeName": "VH_M_laryngeal_cartilage",
+          "ontologyId": "UBERON:0001739",
+          "label": "laryngeal cartilage"
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage",
+          "ontologyId": "UBERON:0001740",
+          "label": "arytenoid cartilage"
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage_R",
+          "ontologyId": "FMA:55113",
+          "label": "Right arytenoid cartilage"
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage_L",
+          "ontologyId": "FMA:55114",
+          "label": "Left arytenoid cartilage"
+        },
+        {
+          "nodeName": "VH_M_epiglottic_cartilage",
+          "ontologyId": "UBERON:0001742",
+          "label": "epiglottic cartilage"
+        },
+        {
+          "nodeName": "VH_M_cricoid_cartilage",
+          "ontologyId": "UBERON:0002375",
+          "label": "cricoid cartilage"
+        },
+        {
+          "nodeName": "VH_M_thyroid_cartilage",
+          "ontologyId": "UBERON:0001738",
+          "label": "thyroid cartilage"
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage",
+          "ontologyId": "UBERON:0001741",
+          "label": "corniculate cartilage"
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage_L",
+          "ontologyId": "FMA:55116",
+          "label": "Left corniculate cartilage"
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage_R",
+          "ontologyId": "FMA:55115",
+          "label": "Right corniculate cartilage"
+        }
+      ]
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0
+}
