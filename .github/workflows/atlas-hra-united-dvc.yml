@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        source: [united-female, united-male]
+        source: [united-female, united-male, mouth-female, mouth-male]
     steps:
       - uses: actions/checkout@v4
         with:

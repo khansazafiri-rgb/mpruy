@@ -111,7 +111,8 @@
         }
       ],
       "geometryAudited": false,
-      "approvedForDistribution": false
+      "approvedForDistribution": false,
+      "metadataBlob": "b51d522fc0690faa34f35595f12304d1e3715b04"
     },
     {
       "id": "united-male",
@@ -165,7 +166,8 @@
         }
       ],
       "geometryAudited": false,
-      "approvedForDistribution": false
+      "approvedForDistribution": false,
+      "metadataBlob": "862320d450407960df63daaa3a766b130994ef02"
     },
     {
       "id": "mouth-female",
@@ -189,7 +191,8 @@
         }
       ],
       "geometryAudited": false,
-      "approvedForDistribution": false
+      "approvedForDistribution": false,
+      "metadataBlob": "476983942c53a852f8b03e2e9bb37aec411604fb"
     },
     {
       "id": "mouth-male",
@@ -209,7 +212,9 @@
         }
       ],
       "geometryAudited": false,
-      "approvedForDistribution": false
+      "approvedForDistribution": false,
+      "metadataBlob": "34c2af8a949fb02deb2868f1c788cb613f065e1d",
+      "glbBlob": "141812bc3200e7f6a637eda77ce8931f6f5909bf"
     }
   ],
   "clinicalValidation": false,

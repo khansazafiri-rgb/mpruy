@@ -42,6 +42,7 @@ def fetch_asset(row,path):
     n=0
     sha=hashlib.sha256()
     md5=hashlib.md5()
+    git=hashlib.sha1(b"blob "+str(row["bytes"]).encode()+b"\0")
     with OPENER.open(row["sourceURL"],timeout=120) as f,path.open("xb") as out:
         while chunk:=f.read(1024**2):
             n+=len(chunk)
@@ -50,8 +51,14 @@ def fetch_asset(row,path):
             out.write(chunk)
             sha.update(chunk)
             md5.update(chunk)
-    if n!=row["bytes"] or md5.hexdigest()!=row["dvcPointer"]["md5"]:
-        raise ValueError("DVC bytes or MD5 differ")
+            git.update(chunk)
+    if n!=row["bytes"]:
+        raise ValueError("asset byte count differs")
+    if "dvcPointer" in row:
+        if md5.hexdigest()!=row["dvcPointer"]["md5"]:
+            raise ValueError("DVC MD5 differs")
+    elif git.hexdigest()!=row.get("glbBlob"):
+        raise ValueError("Git GLB blob differs")
     return sha.hexdigest()
 def glb_document(buf):
     if len(buf)<28 or struct.unpack_from("<4sII",buf)!=(b"glTF",2,len(buf)):
@@ -128,7 +135,13 @@ def audit(row):
     if row["sourceURL"]!=expected or not 0<row["bytes"]<=CAP or row["approvedForDistribution"] is not False:
         raise ValueError("manifest policy")
     base=f"https://raw.githubusercontent.com/hubmapconsortium/hra-kg/{PIN}/digital-objects/ref-organ/{row['id']}/{row['version']}/raw/"
-    validate_pointer(read_small(base+row["filename"]+".dvc",4096),row)
+    metadata=read_small(base+"metadata.yaml",65536)
+    if git_blob(metadata)!=row["metadataBlob"] or b"CC BY 4.0" not in metadata or row["doi"].encode() not in metadata:
+        raise ValueError("publisher metadata differs")
+    if "dvcPointer" in row:
+        validate_pointer(read_small(base+row["filename"]+".dvc",4096),row)
+    elif not re.fullmatch(r"[a-f0-9]{40}",row.get("glbBlob","")):
+        raise ValueError("missing pinned binary identity")
     cw=read_small(base+"crosswalk.csv",2*1024**2)
     if git_blob(cw)!=row["crosswalkBlob"]:
         raise ValueError("crosswalk blob")
@@ -154,8 +167,24 @@ def audit(row):
                         result.update(status="EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",nodeIndex=i,vertices=v,triangles=t)
                     except (ValueError,KeyError,IndexError,TypeError,OverflowError):
                         result["status"]="HOLD_UNSUPPORTED_OR_INVALID_GEOMETRY"
+                if len(hits)==1 and hits[0] in reachable and "mesh" not in doc["nodes"][hits[0]]:
+                    descendants=[]
+                    def descend(i):
+                        n=doc["nodes"][i]
+                        if "mesh" in n:
+                            v,t=audit_mesh(buf,doc,start,limit,n["mesh"])
+                            descendants.append({"nodeIndex":i,"vertices":v,"triangles":t})
+                        for child in n.get("children",[]):
+                            descend(child)
+                    try:
+                        descend(hits[0])
+                        if descendants:
+                            result.update(status="EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",nodeIndex=hits[0],descendantMeshes=descendants)
+                    except (ValueError,KeyError,IndexError,TypeError,OverflowError):
+                        result["status"]="HOLD_INVALID_GROUP_GEOMETRY"
+                result["exactNameMatches"]=len(hits)
                 results.append(result)
-            return {"schema":1,"id":row["id"],"sourceURL":expected,"publisherRevision":PIN,"bytes":row["bytes"],"dvcMD5":row["dvcPointer"]["md5"],"sha256":sha,"results":results,"componentLineage":"PENDING_MIXED_COMPOSITE_SOURCE","clinicalValidation":False,"registrationValidated":False,"approvedForDistribution":False,"publicRelease":"NO_GO"}
+            return {"schema":1,"id":row["id"],"sourceURL":expected,"publisherRevision":PIN,"bytes":row["bytes"],"dvcMD5":row.get("dvcPointer",{}).get("md5"),"gitGLBBlob":row.get("glbBlob"),"metadataBlob":row["metadataBlob"],"sha256":sha,"results":results,"componentLineage":"PENDING_MIXED_COMPOSITE_SOURCE","clinicalValidation":False,"registrationValidated":False,"approvedForDistribution":False,"publicRelease":"NO_GO"}
 class Tests(unittest.TestCase):
     def test_pointer(self):
         data=b"outs:\n- md5: "+b"a"*32+b"\n  size: 10\n  path: a.glb\n"
@@ -175,7 +204,7 @@ if __name__=="__main__":
         unittest.main(argv=[sys.argv[0]])
     else:
         parser=argparse.ArgumentParser()
-        parser.add_argument("source",choices=["united-female","united-male"])
+        parser.add_argument("source",choices=["united-female","united-male","mouth-female","mouth-male"])
         args=parser.parse_args()
         manifest=json.loads(MANIFEST.read_text())
         if manifest["publisherRevision"]!=PIN or manifest["publicRelease"]!="NO_GO":
