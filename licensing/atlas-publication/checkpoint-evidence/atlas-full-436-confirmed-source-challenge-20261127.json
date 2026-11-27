@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "scope": "Exact private reference suite replay, not real workstation or production readiness.",
+  "runs": [
+    {
+      "sourceCommit": "806e2c8dc60564d9983d7b85149dc6413665267c",
+      "workflowRun": 45916913693,
+      "workflowJob": 140238243685,
+      "optimizedManifest": false,
+      "conclusion": "success",
+      "renderedBP3D": 436,
+      "renderedHRA": 24,
+      "sourceLabelConcepts": 428,
+      "multilingualTypedConcepts": 428,
+      "hraDirectLabels": 606,
+      "hraGroups": 87,
+      "bp3dBatches": 19,
+      "hraBatches": 5,
+      "bodyInventoryUnchanged": true,
+      "logEvidence": [
+        "2026-11-27T00:38:10.5294966Z ATLAS EXACT PUBLISHER REPLAY PASS: 19 acquisitions, 436 elements; no new dual-source or release claim.",
+        "2026-11-27T00:38:40.8761658Z ATLAS AUDITED SUITE PASS: exact 19 BP3D and 5 HRA acquisitions selected without fallback; actual suite registries served in browser.",
+        "2026-11-27T00:40:14.4641643Z HRA SOURCE GROUP BROWSER PASS: 87 exact native descendant sets isolated and restored; no held label exposed.",
+        "2026-11-27T00:40:14.6270610Z HRA FULL 24 BROWSER PASS: 24 original organs, 606 exact mapped source nodes, 87 source groups, 24 direct isolation/restore checks; body inventory unchanged.",
+        "2026-11-27T00:40:16.8909533Z BP3D43 FULL TOPIC FILTER PASS: six exact regional/system intersections and old/new source ID search.",
+        "2026-11-27T00:53:40.1869718Z BP3D43 SOURCE LABEL CHALLENGE PASS: 428 distinct concepts completed, exact source label, English-only, previous mode restored.",
+        "2026-11-27T00:53:41.1099536Z BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 428 distinct multilingual typed answers, single-submit lock and unavailable model excluded.",
+        "2026-11-27T00:53:41.8039677Z BP3D43 REAL BROWSER PASS: 436 actual publisher GLBs rendered with audited triangle counts; body inventory unchanged."
+      ]
+    },
+    {
+      "sourceCommit": "fcddcbcbd55a0cfb2c64a6a6a4b04a4c5556eac5",
+      "workflowRun": 45917423598,
+      "workflowJob": 140239894945,
+      "optimizedManifest": true,
+      "conclusion": "success",
+      "renderedBP3D": 436,
+      "renderedHRA": 24,
+      "sourceLabelConcepts": 428,
+      "multilingualTypedConcepts": 428,
+      "hraDirectLabels": 606,
+      "hraGroups": 87,
+      "bp3dBatches": 19,
+      "hraBatches": 5,
+      "bodyInventoryUnchanged": true,
+      "logEvidence": [
+        "2026-11-27T00:39:35.1027916Z ATLAS EXACT PUBLISHER REPLAY PASS: 19 acquisitions, 436 elements; no new dual-source or release claim.",
+        "2026-11-27T00:40:09.1115096Z ATLAS AUDITED SUITE PASS: exact 19 BP3D and 5 HRA acquisitions selected without fallback; actual suite registries served in browser.",
+        "2026-11-27T00:41:49.5902521Z HRA SOURCE GROUP BROWSER PASS: 87 exact native descendant sets isolated and restored; no held label exposed.",
+        "2026-11-27T00:41:49.7695461Z HRA FULL 24 BROWSER PASS: 24 original organs, 606 exact mapped source nodes, 87 source groups, 24 direct isolation/restore checks; body inventory unchanged.",
+        "2026-11-27T00:41:52.8347131Z BP3D43 FULL TOPIC FILTER PASS: six exact regional/system intersections and old/new source ID search.",
+        "2026-11-27T00:55:39.1328062Z BP3D43 SOURCE LABEL CHALLENGE PASS: 428 distinct concepts completed, exact source label, English-only, previous mode restored.",
+        "2026-11-27T00:55:40.1515550Z BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 428 distinct multilingual typed answers, single-submit lock and unavailable model excluded.",
+        "2026-11-27T00:55:40.8231749Z BP3D43 REAL BROWSER PASS: 436 actual publisher GLBs rendered with audited triangle counts; body inventory unchanged."
+      ]
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "actualWorkstationInventoryVerified": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}
