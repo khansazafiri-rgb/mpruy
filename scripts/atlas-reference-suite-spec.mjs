@@ -21,3 +21,5 @@ export const BP43_EXPANSION=Object.freeze([["--bp3d43-cerebral-29-folder=","bp3d
 export const BP43_MUSCLE=Object.freeze(['--include-muscle-24','bp3d43-muscle-24-dual-source-audit-20261126.json',24]);
 
 export const BP43_COMPONENTS=Object.freeze(['--include-checkpoint-components-36','bp3d43-checkpoint-components-36-dual-source-audit-20261126.json',36]);
+
+export const HRA_EXPANSION=Object.freeze([['--hra-urogenital-folder=','urogenital-7',7],['--hra-ureter-folder=','ureter-four',4],['--hra-cns-folder=','cns-four',4]].map(Object.freeze));

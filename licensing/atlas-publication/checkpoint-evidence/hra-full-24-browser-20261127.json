@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "sourceCommit": "13a926d774b6144afe658513d35ef1fa60e6aa53",
+  "workflowRun": 45915364515,
+  "workflowJob": 140233144540,
+  "conclusion": "success",
+  "rendered": 24,
+  "directSourceNodes": 606,
+  "exactGroupsIsolatedAndRestored": 87,
+  "directIsolationRestoreChecks": 24,
+  "bodyInventoryUnchanged": true,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}
