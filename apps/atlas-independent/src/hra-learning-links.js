@@ -861,10 +861,113 @@ export const HRA_EXPANDED_LEARNING_LINKS=[
     "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb"
   }
 ];
+// Pinned exact digestive source mesh nodes: retained run 45923445671, no whole-body coverage.
+export const HRA_DIGESTIVE_LEARNING_LINKS=[
+  {
+    "group": "digestive",
+    "target": "tail of pancreas",
+    "organ": "pancreas-female",
+    "label": "tail of pancreas",
+    "ontologyId": "UBERON:0001151",
+    "index": 1,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "body of pancreas",
+    "organ": "pancreas-female",
+    "label": "body of pancreas",
+    "ontologyId": "UBERON:0001150",
+    "index": 2,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "head of pancreas",
+    "organ": "pancreas-female",
+    "label": "head of pancreas",
+    "ontologyId": "UBERON:0001069",
+    "index": 4,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "body of pancreas",
+    "organ": "pancreas-male",
+    "label": "body of pancreas",
+    "ontologyId": "UBERON:0001150",
+    "index": 1,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "tail of pancreas",
+    "organ": "pancreas-male",
+    "label": "tail of pancreas",
+    "ontologyId": "UBERON:0001151",
+    "index": 2,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "head of pancreas",
+    "organ": "pancreas-male",
+    "label": "head of pancreas",
+    "ontologyId": "UBERON:0001069",
+    "index": 3,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "quadrate lobe of liver",
+    "organ": "liver-female",
+    "label": "quadrate lobe of liver",
+    "ontologyId": "UBERON:0001116",
+    "index": 19,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "quadrate lobe of liver",
+    "organ": "liver-male",
+    "label": "quadrate lobe of liver",
+    "ontologyId": "UBERON:0001116",
+    "index": 25,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-male/v1.2/assets/3d-vh-m-liver.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "sigmoid colon",
+    "organ": "large-intestine-female",
+    "label": "sigmoid colon",
+    "ontologyId": "UBERON:0001159",
+    "index": 9,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-female/v1.3/assets/3d-sbu-f-large-intestine.glb"
+  },
+  {
+    "group": "digestive",
+    "target": "sigmoid colon",
+    "organ": "large-intestine-male",
+    "label": "sigmoid colon",
+    "ontologyId": "UBERON:0001159",
+    "index": 5,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb"
+  }
+];
 const key=s=>String(s).trim().toLowerCase();
 export function hraLearningReferences(group,target,entries){
  const result=[];
- for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
+ for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS,...HRA_DIGESTIVE_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
   for(const e of entries){
    if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.approvedForDistribution!==false||e.registrationValidated!==false||!e.source?.startsWith('https://cdn.humanatlas.io/digital-objects/ref-organ/'+link.organ+'/'))continue;
    if(link.assetURL&&e.source!==link.assetURL)continue;

@@ -37,7 +37,7 @@ const completeSuite=process.argv.includes('--audited-reference-suite');
 const includeExpansion=process.argv.includes('--include-expansion');assert(!includeExpansion||completeSuite,'Expansion requires audited reference suite');
 const includeAuditedExpansion=process.argv.includes('--include-audited-expansion');assert(!includeAuditedExpansion||includeExpansion&&!process.argv.includes('--include-muscle-24'),'Expanded profile requires complete suite and no separate muscle flag');
 const includeHyoid=includeExpansion||process.argv.includes('--include-hyoid');assert(!includeHyoid||completeSuite,'Extended hyoid requires audited reference suite');
-assert(!completeSuite||!process.argv.some(a=>/^--(?:bp3d43.*-folder|hra.*-folder)=/.test(a)||a==='--hra-source-groups'),'Suite cannot be mixed with explicit reference folders');
+assert(!completeSuite||!process.argv.some(a=>(/^--(?:bp3d43.*-folder|hra.*-folder)=/.test(a)&&!a.startsWith('--hra-digestive-folder='))||a==='--hra-source-groups'),'Suite cannot be mixed with explicit reference folders');
 const source43Args=process.argv.filter(x=>x.startsWith('--bp3d43-folder='));assert(source43Args.length<=1,'One explicit 4.3 folder only');
 const nerve43Args=process.argv.filter(x=>x.startsWith('--bp3d43-nerves-folder='));assert(nerve43Args.length<=1,'One explicit nerve folder only');
 const discs43Args=process.argv.filter(x=>x.startsWith('--bp3d43-discs-folder='));assert(discs43Args.length<=1,'One explicit disc folder only');
@@ -49,6 +49,7 @@ const pelvic43Args=process.argv.filter(x=>x.startsWith('--bp3d43-pelvic-folder='
 const cardio43Args=process.argv.filter(x=>x.startsWith('--bp3d43-cardio-folder='));assert(cardio43Args.length<=1,'One explicit cardiovascular folder only');
 const bronchial43Args=process.argv.filter(x=>x.startsWith('--bp3d43-bronchial-folder='));assert(bronchial43Args.length<=1,'One explicit bronchial folder only');
 const hraGroups=process.argv.includes('--hra-source-groups');
+const hraDigestiveArgs=process.argv.filter(x=>x.startsWith('--hra-digestive-folder='));assert(hraDigestiveArgs.length<=1,'One explicit HRA digestive folder only');
 const hraCardioArgs=process.argv.filter(x=>x.startsWith('--hra-cardio-folder='));assert(hraCardioArgs.length<=1,'One explicit HRA cardiopulmonary folder only');
 const hraFemaleArgs=process.argv.filter(x=>x.startsWith('--hra-female-folder='));assert(hraFemaleArgs.length<=1,'One explicit HRA female folder only');
 const gap43Args=process.argv.filter(x=>x.startsWith('--bp3d43-gap-folder='));assert(gap43Args.length<=1,'One explicit gap folder only');
@@ -67,7 +68,7 @@ else{
 }
 assert(!(source43Args.length||gap43Args.length||nerve43Args.length||discs43Args.length||costal43Args.length||neck43Args.length||visceral43Args.length||cns43Args.length||pelvic43Args.length||cardio43Args.length||bronchial43Args.length||hyoidArgs.length)||independent,'4.3 reference requires independent private preview');
 assert(!hraGroups||hraFemaleArgs.length||hraCardioArgs.length,'Explicit audited HRA folder required for source groups');
-assert(!(hraFemaleArgs.length||hraCardioArgs.length)||independent,'HRA female reference requires independent private preview');
+assert(!(hraFemaleArgs.length||hraCardioArgs.length||hraDigestiveArgs.length)||independent,'HRA reference requires independent private preview');
 const source43Registries=[];
 for(const [args,flag,file,count] of [[source43Args,'--bp3d43-folder=','bp3d43-dual-source-audit-20261125.json',12],[gap43Args,'--bp3d43-gap-folder=','bp3d43-gap-batch-dual-source-audit-20261125.json',28],[nerve43Args,'--bp3d43-nerves-folder=','bp3d43-nerves32-dual-source-audit-20261125.json',32],[discs43Args,'--bp3d43-discs-folder=','bp3d43-discs-23-dual-source-audit-20261125.json',23],[costal43Args,'--bp3d43-costal-folder=','bp3d43-costal-20-dual-source-audit-20261125.json',20],[neck43Args,'--bp3d43-neck-cartilage-folder=','bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json',14],[visceral43Args,'--bp3d43-visceral-folder=','bp3d43-visceral-18-dual-source-audit-20261126.json',18],[cns43Args,'--bp3d43-cns-folder=','bp3d43-cns-30-dual-source-audit-20261126.json',30],[pelvic43Args,'--bp3d43-pelvic-folder=','bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json',15],[cardio43Args,'--bp3d43-cardio-folder=','bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json',32],[bronchial43Args,'--bp3d43-bronchial-folder=','bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json',22]])if(args.length)source43Registries.push(load43Elements(privateRoot,args[0].slice(flag.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count));
 const suite=completeSuite?loadAuditedReferenceSuite(privateRoot,{includeHyoid,includeExpansion,includeAuditedExpansion}):null;
@@ -99,6 +100,8 @@ let hra;try{hra=independent?sourcePack.hra:await buildHraRegistry(privateRoot);}
 if(hraFemaleArgs.length)hra=mergeHraFemaleReferences(hra,loadHraFemaleFive(privateRoot,hraFemaleArgs[0].slice('--hra-female-folder='.length),hraGroups));
 if(hraCardioArgs.length)hra=mergeHraFemaleReferences(hra,loadHraBatch(privateRoot,hraCardioArgs[0].slice('--hra-cardio-folder='.length),'cardiopulmonary-four',hraGroups));
 if(suite)hra=exactSuiteHra(hra,suite);
+// Explicit supplement after verifying the unchanged baseline suite. Never auto-load held groups.
+if(hraDigestiveArgs.length)hra=mergeHraFemaleReferences(hra,loadHraBatch(privateRoot,hraDigestiveArgs[0].slice('--hra-digestive-folder='.length),'digestive-six',false));
 const learningSources=independent&&broadRecovery?loadVerifiedPublisherSources(sourcePack.folder):null;
 const coverage=learningSources?learningCoverage({sources:learningSources,body:manifest.entries,selection:elementCatalog?.items||[],recovery:recoveryItems,results:priority?.report.results||[],references43:source43?.inventory.items||[],hraReferences:[...hra.assets.values()].map(a=>a.public)}):null;
 const coverageFile=coverage?path.join(privateRoot,folder,'publication-learning-coverage-'+process.pid+'-'+Date.now()+'.json'):null;
