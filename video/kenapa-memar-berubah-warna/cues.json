@@ -1,0 +1,169 @@
+{
+ "dur": 46.2,
+ "edu_dur": 30.0,
+ "outro_dur": 16.2,
+ "cut": 28.46,
+ "w": {
+  "baru": 0.0,
+  "bentur": 0.28,
+  "meja": 0.5,
+  "muncul": 1.16,
+  "memar": 1.46,
+  "kenapa": 2.38,
+  "beberapa": 2.82,
+  "hari": 3.18,
+  "kemudian": 3.36,
+  "warnanya": 3.78,
+  "berubah": 4.46,
+  "benturan": 5.9,
+  "bisa": 6.54,
+  "merusak": 6.76,
+  "pembuluh": 7.12,
+  "darah1": 7.38,
+  "kecil": 7.6,
+  "dibawah": 7.9,
+  "kulit1": 8.2,
+  "darah2": 8.96,
+  "merembes": 9.36,
+  "kejaringan": 9.7,
+  "sementara": 10.58,
+  "permukaan": 11.0,
+  "kulit2": 11.42,
+  "tetap": 11.62,
+  "utuh": 11.86,
+  "saat": 12.9,
+  "tubuh": 13.3,
+  "membersihkan": 13.44,
+  "darah3": 13.88,
+  "yang": 14.14,
+  "terperangkap": 14.26,
+  "hemoglobin": 15.16,
+  "didalamnya": 15.58,
+  "ikut": 16.12,
+  "diuraikan": 16.42,
+  "karena": 17.5,
+  "proses": 17.76,
+  "itulah": 18.04,
+  "memar2": 18.7,
+  "bisa2": 19.02,
+  "berubah2": 19.26,
+  "dari": 19.66,
+  "kemerahan": 19.9,
+  "atau": 20.3,
+  "keunguan": 20.5,
+  "menjadi": 21.34,
+  "kehijauan": 21.68,
+  "lalu": 22.6,
+  "kekuningan": 22.78,
+  "sebelum": 23.34,
+  "memudar": 23.62,
+  "urutan": 24.7,
+  "warna": 25.1,
+  "dan": 25.52,
+  "waktu": 25.7,
+  "pulihnya": 25.96,
+  "tidak": 26.44,
+  "selalu": 26.86,
+  "sama": 27.14,
+  "pada": 27.36,
+  "setiap": 27.54,
+  "orang": 27.82
+ },
+ "cap": [
+  [
+   0.0,
+   1.05,
+   "Baru kebentur meja,"
+  ],
+  [
+   1.1,
+   1.9,
+   "muncul memar."
+  ],
+  [
+   2.34,
+   3.78,
+   "Kenapa beberapa hari kemudian"
+  ],
+  [
+   3.78,
+   5.05,
+   "warnanya berubah?"
+  ],
+  [
+   5.86,
+   7.1,
+   "Benturan bisa merusak"
+  ],
+  [
+   7.1,
+   8.6,
+   "pembuluh darah kecil di bawah kulit."
+  ],
+  [
+   8.92,
+   10.52,
+   "Darah merembes ke jaringan,"
+  ],
+  [
+   10.54,
+   12.2,
+   "sementara permukaan kulit tetap utuh."
+  ],
+  [
+   12.86,
+   14.22,
+   "Saat tubuh membersihkan"
+  ],
+  [
+   14.22,
+   15.12,
+   "darah yang terperangkap,"
+  ],
+  [
+   15.12,
+   16.38,
+   "hemoglobin di dalamnya"
+  ],
+  [
+   16.4,
+   17.2,
+   "ikut diuraikan."
+  ],
+  [
+   17.46,
+   18.66,
+   "Karena proses itulah,"
+  ],
+  [
+   18.66,
+   19.86,
+   "memar bisa berubah dari"
+  ],
+  [
+   19.86,
+   21.2,
+   "kemerahan atau keunguan,"
+  ],
+  [
+   21.3,
+   22.56,
+   "menjadi kehijauan,"
+  ],
+  [
+   22.58,
+   24.12,
+   "lalu kekuningan sebelum memudar."
+  ],
+  [
+   24.66,
+   26.4,
+   "Urutan warna dan waktu pulihnya"
+  ],
+  [
+   26.4,
+   28.25,
+   "tidak selalu sama pada setiap orang."
+  ]
+ ]
+}
