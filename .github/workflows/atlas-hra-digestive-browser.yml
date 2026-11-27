@@ -6,6 +6,9 @@ on:
       - 'scripts/load-hra-female-five.mjs'
       - 'scripts/test-private-atlas-browser.mjs'
       - 'apps/atlas-independent/src/hra-learning-links.js'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'apps/atlas-independent/src/reference-viewer.js'
+      - 'apps/atlas-independent/test/reference-components.test.mjs'
       - 'scripts/hra-digestive-learning-links.test.mjs'
       - 'licensing/atlas-publication/hra-digestive-six-pinned-audit-20261127.json'
       - '.github/workflows/atlas-hra-digestive-browser.yml'
@@ -28,7 +31,7 @@ jobs:
           node-version: 22
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
-      - run: node --test scripts/audit-hra-female-five.test.mjs scripts/audit-hra-source-groups.test.mjs scripts/hra-digestive-learning-links.test.mjs
+      - run: node --test scripts/audit-hra-female-five.test.mjs scripts/audit-hra-source-groups.test.mjs scripts/hra-digestive-learning-links.test.mjs apps/atlas-independent/test/reference-components.test.mjs
       - name: Install pinned isolated Chromium
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1

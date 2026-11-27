@@ -1008,10 +1008,133 @@ export const HRA_PINEAL_LEARNING_LINKS=[
     "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
   }
 ];
+// Source-native references only; paired tonsil assets are components, not a whole concept.
+export const HRA_SUPPLEMENT_LEARNING_LINKS=[
+  {
+    "group": "joints",
+    "target": "left knee joint",
+    "organ": "knee-female-left",
+    "label": "Left knee joint",
+    "ontologyId": "FMA:35177",
+    "index": 2,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb"
+  },
+  {
+    "group": "joints",
+    "target": "right knee joint",
+    "organ": "knee-female-right",
+    "label": "Right knee joint",
+    "ontologyId": "FMA:35176",
+    "index": 2,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb"
+  },
+  {
+    "group": "joints",
+    "target": "left knee joint",
+    "organ": "knee-male-left",
+    "label": "Left knee joint",
+    "ontologyId": "FMA:35177",
+    "index": 2,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb"
+  },
+  {
+    "group": "joints",
+    "target": "right knee joint",
+    "organ": "knee-male-right",
+    "label": "Right knee joint",
+    "ontologyId": "FMA:35176",
+    "index": 1,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb"
+  },
+  {
+    "group": "respiratory",
+    "target": "larynx",
+    "organ": "larynx-female",
+    "label": "larynx",
+    "ontologyId": "UBERON:0001737",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb"
+  },
+  {
+    "group": "respiratory",
+    "target": "larynx",
+    "organ": "larynx-male",
+    "label": "larynx",
+    "ontologyId": "UBERON:0001737",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb"
+  },
+  {
+    "group": "skeletal",
+    "target": "coccyx",
+    "organ": "pelvis-female",
+    "label": "coccyx",
+    "ontologyId": "UBERON:0001350",
+    "index": 2,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-female/v1.3/assets/3d-vh-f-pelvis.glb"
+  },
+  {
+    "group": "skeletal",
+    "target": "coccyx",
+    "organ": "pelvis-male",
+    "label": "coccyx",
+    "ontologyId": "UBERON:0001350",
+    "index": 2,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-male/v1.3/assets/3d-vh-m-pelvis.glb"
+  },
+  {
+    "group": "lymphatic",
+    "target": "palatine tonsil",
+    "organ": "palatine-tonsil-female-left",
+    "label": "left palatine tonsil",
+    "ontologyId": "FMA:54974",
+    "index": 0,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/assets/3d-vh-f-palatine-tonsil-l.glb"
+  },
+  {
+    "group": "lymphatic",
+    "target": "palatine tonsil",
+    "organ": "palatine-tonsil-female-right",
+    "label": "right palatine tonsil",
+    "ontologyId": "FMA:54973",
+    "index": 0,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/assets/3d-vh-f-palatine-tonsil-r.glb"
+  },
+  {
+    "group": "lymphatic",
+    "target": "palatine tonsil",
+    "organ": "palatine-tonsil-male-left",
+    "label": "Left palatine tonsil",
+    "ontologyId": "FMA:54974",
+    "index": 0,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/assets/3d-vh-m-palatine-tonsil-l.glb"
+  },
+  {
+    "group": "lymphatic",
+    "target": "palatine tonsil",
+    "organ": "palatine-tonsil-male-right",
+    "label": "Right palatine tonsil",
+    "ontologyId": "FMA:54973",
+    "index": 0,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb"
+  }
+];
 const key=s=>String(s).trim().toLowerCase();
 export function hraLearningReferences(group,target,entries){
  const result=[];
- for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS,...HRA_DIGESTIVE_LEARNING_LINKS,...HRA_PINEAL_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
+ for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS,...HRA_DIGESTIVE_LEARNING_LINKS,...HRA_PINEAL_LEARNING_LINKS,...HRA_SUPPLEMENT_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
   for(const e of entries){
    if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.approvedForDistribution!==false||e.registrationValidated!==false||!e.source?.startsWith('https://cdn.humanatlas.io/digital-objects/ref-organ/'+link.organ+'/'))continue;
    if(link.assetURL&&e.source!==link.assetURL)continue;
