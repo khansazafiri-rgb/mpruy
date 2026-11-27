@@ -33,7 +33,7 @@ function friendly(status, message, path) {
   return message || 'Terjadi kesalahan. Coba lagi.';
 }
 
-export async function api(path, { method = 'GET', body, query } = {}) {
+export async function api(path, { method = 'GET', body, query, signal } = {}) {
   let url = path.startsWith('/') ? path : `/api/medcoel/${path}`;
   if (query) {
     const qs = new URLSearchParams();
@@ -53,8 +53,9 @@ export async function api(path, { method = 'GET', body, query } = {}) {
   }
   let res;
   try {
-    res = await fetch(pb.buildURL(url), { method, headers, body: payload });
-  } catch {
+    res = await fetch(pb.buildURL(url), { method, headers, body: payload, signal });
+  } catch (err) {
+    if (err?.name === 'AbortError') throw err;
     throw new ApiError(friendly(0), 0);
   }
   const text = await res.text();

@@ -71,10 +71,12 @@ const ctx = await browser.newContext({ viewport: { width: 1360, height: 960 }, d
 const page = await ctx.newPage();
 const errors = []; page.on('pageerror', e => errors.push(e.message));
 const studioFrame = () => page.frames().find(f => f.url().includes('/api/medcoel/studio-assets/' + TEST_ID + '/'));
-const waitFrameReady = async () => {
+const waitFrameReady = async (expectedMode = 'explore') => {
   await page.getByText('Studio siap digunakan.').waitFor({ timeout: 120000 });
   const f = studioFrame(); assert.ok(f, 'studio iframe');
   await f.waitForFunction(() => /struktur dimuat/.test(document.querySelector('[data-testid=studio-status]')?.textContent || ''), null, { timeout: 120000 });
+  if (expectedMode === 'guided') await f.locator('[data-testid=guide]').waitFor();
+  if (expectedMode === 'challenge') await f.locator('[data-testid=challenge]').waitFor();
   return f;
 };
 const shot = async name => { if (shots) await page.screenshot({ path: path.join(shots, name + '.png') }); };
@@ -99,7 +101,7 @@ await step('FS-002 Explore: server launch, scoped cookie, manifest check, iframe
 await step('FS-003 Guided: real orbit drags complete a step; progress is reported (self-reported) and shown on the host page', async () => {
   await page.getByTestId('studio-mode-guided').click();
   await page.waitForURL(u => u.search === '?mode=guided');
-  frame = await waitFrameReady();
+  frame = await waitFrameReady('guided');
   const canvas = frame.locator('canvas'), box = await canvas.boundingBox();
   for (let k = 0; k < 4; k++) { await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2); await page.mouse.down(); await page.mouse.move(box.x + box.width / 2 + 220, box.y + box.height / 2, { steps: 8 }); await page.mouse.up(); }
   await frame.waitForFunction(() => /Terdeteksi/.test(document.querySelector('[data-testid=guide]')?.innerText || ''), null, { timeout: 30000 });
@@ -113,7 +115,7 @@ let finalText = '';
 await step('FS-004 Challenge: items without answers, answered through the UI, graded by the server, score persisted', async () => {
   await page.getByTestId('studio-mode-challenge').click();
   await page.waitForURL(u => u.search === '?mode=challenge');
-  frame = await waitFrameReady();
+  frame = await waitFrameReady('challenge');
   const box = frame.locator('[data-testid=challenge]');
   await box.getByText(/Soal 1 dari/).waitFor({ timeout: 30000 });
   assert.equal(await frame.locator('[data-testid=hierarchy] button').count(), 0, 'structure names withheld in Challenge');
@@ -148,7 +150,7 @@ await step('FS-005 re-entry: reload shows the persisted progress; a new launch s
   await page.reload();
   await page.getByTestId('studio-progress').getByText(/Skor Challenge terbaik: \d+ \/ \d+/).waitFor({ timeout: 30000 });
   await page.getByTestId('studio-progress').getByText(/1 selesai/).waitFor();
-  frame = await waitFrameReady();
+  frame = await waitFrameReady('challenge');
   await frame.locator('[data-testid=challenge]').getByText(/Soal 1 dari/).waitFor({ timeout: 30000 });
 });
 await step('FS-006 revocation: after the release is revoked, assets and new launches are refused and the host says so', async () => {

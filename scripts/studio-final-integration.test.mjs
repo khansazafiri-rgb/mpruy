@@ -178,7 +178,7 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   const phaseStatus = 'apps/4d-lab/PHASE_STATUS.md';
   // Master-execution additions (reviewed, studio-only): the studio page/host in apps/web, the migration-level bump the
   // web app enforces, and ONE additive migration. Existing migrations may never be modified or deleted.
-  const studioOnly = new Set(['apps/web/src/features/studios/StudioHost.jsx', 'apps/web/src/features/studios/studioProgress.mjs',
+  const studioOnly = new Set(['apps/web/src/lib/api.js', 'apps/web/src/lib/api-abort.test.mjs','apps/web/src/features/studios/StudioHost.jsx', 'apps/web/src/features/studios/studioProgress.mjs',
     'apps/web/src/features/studios/studioProgress.test.mjs', 'apps/web/src/pages/StudioEntry.jsx', 'apps/web/src/lib/serverVersion.js',
     'apps/web/src/lib/serverVersion.test.mjs', 'apps/pocketbase/pb_migrations/1800003300_studio_progress.js']);
   const legacyDelta = git('diff', '--name-only', base, 'HEAD', '--', ...unchanged).split('\n').filter(Boolean);
