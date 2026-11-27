@@ -1,10 +1,11 @@
-name: Atlas new digestive and held lymph model source audit
+name: Atlas digestive, held lymph, knee and larynx source audit
 on:
   push:
     branches: [feat/atlas-focused-challenge-20261126]
     paths:
       - 'licensing/atlas-publication/hra-digestive-six-pinned-candidates-20261127.json'
       - 'licensing/atlas-publication/hra-lymph-model-two-pinned-candidates-20261127.json'
+      - 'licensing/atlas-publication/hra-knee-larynx-six-pinned-candidates-20261127.json'
       - 'scripts/audit-hra-female-five.mjs'
       - '.github/workflows/atlas-hra-digestive-source.yml'
 permissions:
@@ -16,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        batch: [digestive-six, lymph-model-two]
+        batch: [digestive-six, lymph-model-two, knee-larynx-six]
     steps:
       - uses: actions/checkout@v4
         with:
