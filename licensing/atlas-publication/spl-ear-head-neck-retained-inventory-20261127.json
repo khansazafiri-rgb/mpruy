@@ -1,0 +1,441 @@
+{
+  "schema": 1,
+  "scope": "Exact retained source inventory only. Empty labelCandidates means no exact linked label identified by this parser, not absence of anatomy. No geometry conversion or rights clearance.",
+  "rows": [
+    {
+      "schema": 1,
+      "source": "https://www.openanatomy.org/atlases/nac/inner-ear-2018-02.zip",
+      "archiveSHA256": "4e96855faf52b0432b7324b2e4f5508536d53fdeadd090439e292e93ae3fd737",
+      "archiveBytes": 190136365,
+      "inventory": {
+        "counts": {
+          "scene": 3,
+          "other": 62,
+          "volume": 4,
+          "mesh": 15
+        },
+        "uncompressedBytes": 207070485,
+        "meshMembers": [
+          {
+            "extension": ".vtk",
+            "bytes": 627586,
+            "sha256": "d0a5940d35d084263618cbf8f3ede048e2e93616e2f684b1ca54f6e132c6db5c"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 41252,
+            "sha256": "c63124ee52ccdec37651fa66b0e4118f55a783606ac4351499e1d76c015ad456"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 119479,
+            "sha256": "09b0f86f72c5dd0da5719f26f2652758b13614bf6f361315b14f3827729f373f"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 100943,
+            "sha256": "538b9692d27bf66457efc4efdcf75aec1781a2d92f82343f4dc43e12611832a9"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 152781,
+            "sha256": "6b22ca62d3d6e2a1bab66b95020ee9129e4bbb9966c34fa09fab49fdcd542d95"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 99879,
+            "sha256": "6e8cb7745c168d44cf1836263264981dbb2d073f3deb46d976799cd731c427de"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 1277091,
+            "sha256": "e2711fff874382653ddf71cc6af89d91d2fbacc2ad043723d95f8618366450cc"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 158911,
+            "sha256": "63142c483b1f8ecfcd6b0e51c8cd3af4aff57044f5ef0bb7147d0adae241e635"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 435792,
+            "sha256": "836cc468b2c68ce57ee53d500353a26a8f0cf395846159561a61caa6ae94cdaa"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 142647,
+            "sha256": "b10d1ea248c23498c6440479cf35326ec0da6d1df7238aae1810b4a0c557fafa"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 48092,
+            "sha256": "663dd93ebe26b25cc9d3b815411a5431fed6814af96374553b0fd4bcb557e68c"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 21392111,
+            "sha256": "4226a6b43e8fd555d13a27bc7baaa0cf38b38d36ace6c5ae815de1ed4a0f906c"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 136783,
+            "sha256": "6f2ca904e256cadc9e2172e0d7b6c13f1da7957c9604b483633f78e6b8b3080e"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 195831,
+            "sha256": "8ae918d1be3eccf6732a533941312ac93b65132687a4020ace55fc991bc405cd"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 82295,
+            "sha256": "5b1b3cb3bb037ae544c1b27bea6e2ad821b3ece75551a8e7bda307ace706b543"
+          }
+        ]
+      },
+      "labelCandidates": [],
+      "heldScenes": 0,
+      "geometryParsed": false,
+      "privacyReview": "PENDING",
+      "assetRightsReviewed": false,
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "geometryPublished": 0,
+      "publicRelease": "NO_GO",
+      "kind": "ear",
+      "workflowRun": 45924230793,
+      "workflowJob": 140261741918,
+      "conclusion": "success",
+      "sourceCommit": "983f4d64e21779c36e9b19826ef1ef48a1967eba"
+    },
+    {
+      "schema": 1,
+      "source": "https://www.openanatomy.org/atlases/nac/head-neck-2016-09.zip",
+      "archiveSHA256": "c224f054569b284c9a948f6f96b0299eaee13d3ac661a3386657a743fa8552c4",
+      "archiveBytes": 31612667,
+      "inventory": {
+        "counts": {
+          "scene": 3,
+          "other": 58,
+          "volume": 2,
+          "mesh": 59
+        },
+        "uncompressedBytes": 47639359,
+        "meshMembers": [
+          {
+            "extension": ".vtk",
+            "bytes": 120172,
+            "sha256": "aa547a072e3b7c7a5d28b27c23908766d1ca2cecf3a893f3f502c238cf3f8748"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 105411,
+            "sha256": "dad82e4ab16f9e3a11c047646880a49e41ae8cfe0ced8647e026cade0b0dadf6"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 155908,
+            "sha256": "41a71272689ece6fe35ac574eb83ef284558aa69b874b5a2ea9d8cda1d30a8fd"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 146328,
+            "sha256": "778e78e1db9c63cd2aa34afd522f9f0f6f2154d9dbe583b1491799419d42d1fa"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 135336,
+            "sha256": "1abc82e0b2bf2c852e54a09fadf873e6069ddfed84c7fcb024172dfd066224f1"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 122248,
+            "sha256": "08779f0f30cee6607e7e8ab231516d4a3ed5a0004128c7b0ef8ec72ed78e118a"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 48950,
+            "sha256": "a7bf099f712a63ed6469e3e98177eb3ff38718b2c9e04fa80bdaf650e9771b52"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 60826,
+            "sha256": "e4b0ad9fb00393a22a5f84cf525153e4827a9034aeb9459e82de8537a742d9f8"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 226192,
+            "sha256": "9748adf63ba885ccc9d2f69b77c1261fe03dab7da8329ec0c2c3b5ab8d8505d2"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 7107970,
+            "sha256": "ba4e7daa154d3cbb07aea83c98e691fe3198b1306d88d02e5123fa9547e84f27"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 131964,
+            "sha256": "2bca0a661e3f264000101dc18c0d7b09f7fbf24a8a332d614f46edf6e3ca0834"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 29760,
+            "sha256": "feab7dafa2bd9d28fd8021ea71eaeeac901d47b0cff1df9cc42feca87bae0991"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 21188,
+            "sha256": "dcf69493aa69f549d6563f675938ef26e23bb654540003b3b8d8d28d88a13710"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 189844,
+            "sha256": "19c1264071e7548d104342706f71a934ee39487914cb17f3d35d5832e7864107"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 255276,
+            "sha256": "1c459e00038ea6a4ca1000594b33eee28586aa8306c4de1d102b8dc74a1e10a6"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 321648,
+            "sha256": "79683ca64953e88fe95922c861bf927385108d27b227febe6fe93a21bb9d7497"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 33660,
+            "sha256": "85178f3c0d47647143e7a115c56929a94bd7e6a1ef6fe18f1e0f370db86c63ec"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 85642,
+            "sha256": "c8cb716a3c0e77f0ebb71feb0c66fcb0f28662fa5c7a4e1d75a0c4e1dac908b5"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 160432,
+            "sha256": "88e40ee685ef6f094d1ecf2ea4d31061f866227b458d912caf5bf23ec4f99d7b"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 149440,
+            "sha256": "fa9f4d0b15d02c475ba3cd193a73a18549bd74f4f98ad123e9d63c9546238663"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 288232,
+            "sha256": "303a0dc4a7908052ab9ce18078d76b7abbc4db3d0d589d87f51d611be4d28578"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 68698,
+            "sha256": "bb84df314a752c7afa88a23a3b342f8a3bfa28c1f358e09e09808ad9d35f9eee"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 257148,
+            "sha256": "232389828559e86a0c12a77e7b86c34c6b5712668c1744ad5362e1a09f69ccdd"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 203008,
+            "sha256": "d2424fcfd8fdb13d24c8e0f005da087d350be4d041bffd61bf04814d539dc88a"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 204624,
+            "sha256": "edff1b46c1f3ac161d2ce115aa5549c7a7c47c18c9f3254f7305fb596fb25d30"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 200928,
+            "sha256": "fa3af6b1f0b4e52bd6dcb469f94704b1c5a63bd9378bc1f3b06b00ecc120a466"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 231700,
+            "sha256": "e8a35c23e48fe8edf8329b1d910c795b35b0f401f40f571709779b9c113d7ea6"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 235948,
+            "sha256": "deb40e5a5de188825e89a2cde9f2465312a89c743baeda989be54001c0e1672f"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 272592,
+            "sha256": "91550031f0b8ca2231bac4c6f9b0290d2749ca770f34be18efb8c5ebb0d1eadb"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 263124,
+            "sha256": "4733ada8cc1694434e42dc489648da34e4d8cf997559eb8ead17176092ffd838"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 283620,
+            "sha256": "2df61cf1301c268dc0637b4af4afa66598b2cd121a49cc889adc311d534f9aca"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 261612,
+            "sha256": "952ba2aa789c57fea8e5ee64fba2a94953d97bd9b7bc2ff94b0395575af84df1"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 689514,
+            "sha256": "2da943525c14d1bc18ae97d212662c05129a1944a322a1a7e3c9a12492935d50"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 369818,
+            "sha256": "6bfa4a68eb7269387fc88c773df7eebb04e34a151d267b76a54f371cc9ce7321"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 332220,
+            "sha256": "1f81f18979379af690ed7ed0ee365cfbe2de7fce7e8b057449c4307754e9896e"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 389270,
+            "sha256": "7a741187b984fb1bf3677b6435377a76ff08e291134704fa8268e0ca59655a17"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 540018,
+            "sha256": "79b7304ef564e9631d6119e17e8e7ad1a120f07d39ea85de180adc1d8963a449"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 655014,
+            "sha256": "a4aa46d4994ac6baabc5a0cfd89b5c0c2e6bbab1bbe942c142fa748635c7719a"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 424046,
+            "sha256": "3cb0e27ea1d9539cbcd5750788e3c7dd96c7f2fc9b44a385619fb1f8b35f90a6"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 229972,
+            "sha256": "b780b045dd8206c992c8b0bc846144d6f7492d0940eb9e48606011a5297b363f"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 199116,
+            "sha256": "3d56679cda9ca835ca4db8ee608929f4c12a2cc4ddc77b7bfd2d82be341c9177"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 230284,
+            "sha256": "939126afe8a78bc1a82a81ba404013fd9fe6543ff5a4e8065b8130ae843b7589"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 166656,
+            "sha256": "bf8991e881c0024ff4c5c087d93ee1acd51a61fc674cbae2912ef4b8ec6f9145"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 140008,
+            "sha256": "f843888b44e7161da7a42aac06fcd86b8984a33e876c1debab73a3e4531e9a27"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 142644,
+            "sha256": "151ca5a3448aeba418d802f106ae648dee047f49588ffe28e07ff9b16289b240"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 111291,
+            "sha256": "8f12c9c64c3327ab2486cb9a0c90b5d25eb8617deb7994f3b2ad4a5cda27a2e9"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 376530,
+            "sha256": "b6f00ee6454fe9c3499c92f2cf4f464dbad3a36d2f4223f3ba0f73131fb9ff59"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 488994,
+            "sha256": "5a5117807559ff68439acaf33f2926ef7a8b2109c8c706271bcd383232a01ead"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 119764,
+            "sha256": "07094b0c692a8e1d13c5e902c3219df058673ea9416ce8f17c7d956a764f2c69"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 109523,
+            "sha256": "70bb30676126febc02089d58c3e9874d62c612078b951a8818c1a4e7a29cdd76"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 118456,
+            "sha256": "8f4aa7e827b867df8c9f21ababf92dac419fa4f33126a79c4606b01412815fb7"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 141844,
+            "sha256": "f2f368d997a3030d2eeef65d37c8ea0feec5d923da0fe750bb75d1f154e56e21"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 43298,
+            "sha256": "1076555c65a88fbb8b64eb4b6597ba6a1eccba70e7e51a7fd569d63e33bdc511"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 40150,
+            "sha256": "b3bad508a903b682916860b7d3b9d4c49b3996a14e4dd4bb0268ed53198ddb8c"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 242380,
+            "sha256": "9fe9238a01d5d0d5bf141bfec6c5d31e90a9b53aef7ee024ce072dad8624a1c4"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 237940,
+            "sha256": "0648d7493750ffd03ddaa38d61f4879322e856fe26a0ebac7406fe8b451206b2"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 32676,
+            "sha256": "34204cf67549d064350e74f552b11833ca17aa8dad7fb831906cb190bcd9d3fe"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 37706,
+            "sha256": "a895bac100a07ae24eeacabb2f61b68649df628f650787c4d70ed4eb31863099"
+          },
+          {
+            "extension": ".vtk",
+            "bytes": 61058,
+            "sha256": "f8c3cf8cc3faec40f7bcc582614545d17f0553cd3deecdfd65e2b791a2ffc702"
+          }
+        ]
+      },
+      "labelCandidates": [],
+      "heldScenes": 0,
+      "geometryParsed": false,
+      "privacyReview": "PENDING",
+      "assetRightsReviewed": false,
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "geometryPublished": 0,
+      "publicRelease": "NO_GO",
+      "kind": "head-neck",
+      "workflowRun": 45924230793,
+      "workflowJob": 140261742256,
+      "conclusion": "success",
+      "sourceCommit": "983f4d64e21779c36e9b19826ef1ef48a1967eba"
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false
+}

@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "sourceCommit": "77cf830da8f7ef935d8e34b2468be5e636033462",
+  "workflowRun": 45939307840,
+  "conclusion": "success",
+  "rows": [
+    {
+      "schema": 1,
+      "id": "mouth-male",
+      "sourceSHA256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+      "results": [
+        {
+          "nodeIndex": 6,
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland",
+          "isolatedBytes": 55460,
+          "isolatedSHA256": "835b1da602e2949e81e327cb231195fe669b5b3a258ada08254a49deeec41da4",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 7,
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland",
+          "isolatedBytes": 63728,
+          "isolatedSHA256": "b5021f2b5d2dbd8adfe76186c85d6827071ab56a9329923e1b078fa770e17aa5",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        }
+      ],
+      "geometryPersisted": false,
+      "materialsPreserved": false,
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140309695714
+    },
+    {
+      "schema": 1,
+      "id": "mouth-female",
+      "sourceSHA256": "bd8e24e9d52b49719c6a1cafa1f54fc40c1d3f811b9d32df78d5c20ebb78c197",
+      "results": [
+        {
+          "nodeIndex": 6,
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland",
+          "isolatedBytes": 108132,
+          "isolatedSHA256": "b4216dd8977ddcb0bba20f166ab36e821e2d685cef5f49e2b9e3ab1da226deba",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 7,
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland",
+          "isolatedBytes": 123684,
+          "isolatedSHA256": "d031d63ee594ed250922a32ca5268a8f074d3f218bac19d743c9ef43bdc9f78a",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        }
+      ],
+      "geometryPersisted": false,
+      "materialsPreserved": false,
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140309695877
+    },
+    {
+      "schema": 1,
+      "id": "united-female",
+      "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+      "results": [
+        {
+          "nodeIndex": 437,
+          "ontologyId": "UBERON:0000996",
+          "label": "vagina",
+          "isolatedBytes": 159648,
+          "isolatedSHA256": "0aa6f24645af9d2d57f914a3bc2f55dc5cce499ecd5883fb8fa9f9b362d8588a",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 572,
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "isolatedBytes": 27628,
+          "isolatedSHA256": "08526a4542d2e717081c36523f1ea91e57c078f164e0a2bcdf8e349569ba245d",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 1103,
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "isolatedBytes": 18624,
+          "isolatedSHA256": "7d1b4c30819b757907a52e942eb9fc0f7ec04581ea90a22b409988c34e63d0c0",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 1104,
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "isolatedBytes": 18624,
+          "isolatedSHA256": "c5b434923a0f3328205e86ad6f95aaec749ba8135d35052b3b45827156b0d6e5",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 1136,
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "isolatedBytes": 18620,
+          "isolatedSHA256": "79464eacb4bbe3fcc5a3246e25a5f88df054210d90ebb98f347d7e1cc973ddd6",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 1137,
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "isolatedBytes": 18624,
+          "isolatedSHA256": "2796febd7e3cb6bf50370601427a19ec389af07126e5d6eda7ef794a7a250035",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        }
+      ],
+      "geometryPersisted": false,
+      "materialsPreserved": false,
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140309695968
+    },
+    {
+      "schema": 1,
+      "id": "united-male",
+      "sourceSHA256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+      "results": [
+        {
+          "nodeIndex": 528,
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "isolatedBytes": 99152,
+          "isolatedSHA256": "13f1f50b5b243c78129163baff43784caf1b1848a725f80d3761fceabaed86c9",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 994,
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "isolatedBytes": 19292,
+          "isolatedSHA256": "fa49edd4e16eeeda952a1062c7e15b2c389ea62f4daca6b978dfd7616c062b69",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 997,
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "isolatedBytes": 7452,
+          "isolatedSHA256": "50c02fb2d69fce0a033486bdb53927741d85b935732671dd215490459d3fea09",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 1026,
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "isolatedBytes": 7448,
+          "isolatedSHA256": "a6a2396c3aec8d6ba6611b5041c12cfe11a7d054475975f0c0658554bd417bf8",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        },
+        {
+          "nodeIndex": 1028,
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "isolatedBytes": 19292,
+          "isolatedSHA256": "1ace9b2e24832f8271e4a11133f09cbe58bfd53731d7d2a3b04b4a0a5d9093cd",
+          "status": "EXACT_GEOMETRY_AND_TRANSFORM_CHAIN_ROUNDTRIP"
+        }
+      ],
+      "geometryPersisted": false,
+      "materialsPreserved": false,
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140309696044
+    }
+  ],
+  "isolatedMeshes": 15,
+  "totalIsolatedBytes": 765408,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

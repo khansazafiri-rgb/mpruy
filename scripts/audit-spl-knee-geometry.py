@@ -2,6 +2,7 @@
 import hashlib
 import importlib.util
 import json
+import re
 import subprocess
 import struct
 import tempfile
@@ -26,7 +27,33 @@ vtkObject.GlobalWarningDisplayOff()
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
-def scene_links(z, mesh_paths):
+# Allow only exact anatomical vocabulary. Never emit arbitrary scene names,
+# filenames, patient metadata, or guessed laterality.
+KNEE_TERMS = {
+    "acl": "anterior cruciate ligament", "anterior cruciate ligament": "anterior cruciate ligament",
+    "pcl": "posterior cruciate ligament", "posterior cruciate ligament": "posterior cruciate ligament",
+    "mcl": "medial collateral ligament", "medial collateral ligament": "medial collateral ligament",
+    "lcl": "lateral collateral ligament", "lateral collateral ligament": "lateral collateral ligament",
+    "medial meniscus": "medial meniscus", "lateral meniscus": "lateral meniscus",
+    "patellar ligament": "patellar ligament", "patellar tendon": "patellar tendon",
+    "femur": "femur", "tibia": "tibia", "fibula": "fibula", "patella": "patella",
+    "femoral cartilage": "femoral cartilage", "tibial cartilage": "tibial cartilage",
+    "patellar cartilage": "patellar cartilage", "quadriceps tendon": "quadriceps tendon",
+}
+def anatomical_label(value):
+    value = re.sub(r"[ _-]+", " ", value.strip().lower())
+    side = "UNSPECIFIED"
+    for name in ("left", "right"):
+        if value.startswith(name + " "):
+            side, value = name.upper(), value[len(name)+1:]
+            break
+        if value.endswith(" " + name):
+            side, value = name.upper(), value[:-len(name)-1]
+            break
+    term = KNEE_TERMS.get(value)
+    return (term, side) if term else None
+
+def scene_links(z, mesh_paths, anatomical=None, bounded_hints=None):
     """Resolve only local MRML model/storage references; never load a scene or volume."""
     links = {p: set() for p in mesh_paths}
     counts = Counter()
@@ -46,34 +73,58 @@ def scene_links(z, mesh_paths):
         except ElementTree.ParseError:
             counts["heldScene"] += 1
             continue
-        storage = {}
-        for node in root.iter():
-            tag = node.tag.rsplit("}", 1)[-1].lower()
-            if tag == "modelstorage":
-                key = node.get("id", "")
-                file = unquote(node.get("fileName", ""))
-                rel = PurePosixPath(file)
-                if not key or not file or rel.is_absolute() or ".." in rel.parts or "\\" in file or ":" in file:
+        for scope_index, scope_nodes in enumerate(source.mrml_scene_scopes(root)):
+            storage = {}
+            for node in scope_nodes:
+                tag = node.tag.rsplit("}", 1)[-1].lower()
+                if tag == "modelstorage":
+                    key = node.get("id", "")
+                    file = unquote(node.get("fileName", ""))
+                    counts["modelStorageNodes"] += 1
+                    if not key:
+                        counts["storageMissingID"] += 1
+                        continue
+                    target = source.storage_path_diagnostics(info.filename, file, mesh_paths, counts)
+                    if key in storage:
+                        counts["duplicateStorageID"] += 1
+                        storage[key] = None
+                    else:
+                        storage[key] = target
+            hierarchy = source.hierarchy_label_candidates(scope_nodes, anatomical_label, counts)
+            for node in scope_nodes:
+                if node.tag.rsplit("}", 1)[-1].lower() != "model":
                     continue
-                target = str(PurePosixPath(info.filename).parent / rel)
-                if key in storage:
-                    storage[key] = None
+                target = source.model_storage_target(node, storage, counts)
+                if anatomical_label(node.get("name", "")):
+                    counts["allowlistedModelLabelsLinked" if target else "allowlistedModelLabelsUnlinked"] += 1
+                ident = node.get("id", "")
+                if target and ident:
+                    node_hash = digest((info.filename + "\0" + str(scope_index) + "\0" + ident).encode("utf8"))
+                    links[target].add(node_hash)
+                    direct = anatomical_label(node.get("name",""))
+                    candidate_labels = hierarchy.get(ident,set())
+                    for term, side in candidate_labels:
+                        counts["hierarchyCandidate:"+term+":"+side] += 1
+                    model_hints = source.bounded_label_hints(node.get("name",""), KNEE_TERMS)
+                    file_hints = source.bounded_label_hints(PurePosixPath(target).stem, KNEE_TERMS)
+                    for hint in model_hints:
+                        counts["modelNameHint:"+hint] += 1
+                    for hint in file_hints:
+                        counts["meshFilenameHint:"+hint] += 1
+                    if bounded_hints is not None:
+                        bounded_hints[target].add((tuple(model_hints), tuple(file_hints)))
+                    if anatomical is not None:
+                        anatomical[target].add(direct or ('UNRECOGNIZED', 'UNSPECIFIED'))
+                        # Hierarchy-only hints remain held, never replace unknown direct evidence.
+                        if direct and candidate_labels and candidate_labels != {direct}:
+                            anatomical[target].update(candidate_labels)
+                    transform_ids = source.mrml_role_ids(node, "transform", ("transformNodeRef", "parentTransformNodeRef"))
+                    if transform_ids is None or transform_ids:
+                        transform_links[target].add(node_hash)
+                        counts["modelNodesWithTransformRef"] += 1
+                    counts["linkedModelNodes"] += 1
                 else:
-                    storage[key] = target if target in mesh_paths else None
-        for node in root.iter():
-            if node.tag.rsplit("}", 1)[-1].lower() != "model":
-                continue
-            target = storage.get(node.get("storageNodeRef", ""))
-            ident = node.get("id", "")
-            if target and ident:
-                node_hash = digest((info.filename + "\0" + ident).encode("utf8"))
-                links[target].add(node_hash)
-                if node.get("transformNodeRef") or node.get("parentTransformNodeRef"):
-                    transform_links[target].add(node_hash)
-                    counts["modelNodesWithTransformRef"] += 1
-                counts["linkedModelNodes"] += 1
-            else:
-                counts["unresolvedModelNodes"] += 1
+                    counts["unresolvedModelNodes"] += 1
     return links, dict(counts), transform_links
 
 def glb_roundtrip(points, indices):
@@ -120,7 +171,36 @@ def glb_roundtrip(points, indices):
             "geometryOnly": True, "sourceArraysCopied": False, "sceneTransformsApplied": False,
             "coordinateUnitsValidated": False, "published": False}
 
-def parse_mesh(raw, scratch):
+def strip_triangles(offsets, connectivity, point_count):
+    """Expand VTK triangle strips using alternating winding; retain native arrays in evidence."""
+    if len(offsets) < 2 or offsets[0] != 0 or offsets[-1] != len(connectivity) or np.any(np.diff(offsets) < 3):
+        raise ValueError("invalid strip offsets")
+    if len(connectivity) > 12_000_000 or connectivity.min() < 0 or connectivity.max() >= point_count:
+        raise ValueError("strip index out of range")
+    count = int(np.sum(np.diff(offsets) - 2))
+    if not 1 <= count <= 4_000_000:
+        raise ValueError("strip triangle cap")
+    tri = np.empty((count, 3), dtype="<i8")
+    k = 0
+    for start, end in zip(offsets[:-1], offsets[1:]):
+        strip = connectivity[start:end]
+        length = len(strip) - 2
+        a, bb, c = strip[:-2], strip[1:-1], strip[2:]
+        block = tri[k:k+length]
+        block[:, 0] = a
+        block[:, 1] = bb
+        block[:, 2] = c
+        block[1::2, 0] = bb[1::2]
+        block[1::2, 1] = a[1::2]
+        k += length
+    distinct = (tri[:,0] != tri[:,1]) & (tri[:,1] != tri[:,2]) & (tri[:,0] != tri[:,2])
+    # Degenerate connector triangles carry no surface. Count them explicitly.
+    skipped = int(np.count_nonzero(~distinct))
+    if not np.any(distinct):
+        raise ValueError("empty strip surface")
+    return tri[distinct].reshape(-1), skipped
+
+def parse_mesh(raw, scratch, diagnostics=None):
     if not raw.startswith(b"# vtk DataFile Version") or len(raw) > 32 * 1024**2:
         raise ValueError("unsupported legacy VTK")
     file = scratch / "source.vtk"
@@ -136,11 +216,19 @@ def parse_mesh(raw, scratch):
     if errors or reader.GetErrorCode() or mesh is None or mesh.GetPoints() is None:
         raise ValueError("VTK reader failure")
     n = mesh.GetNumberOfPoints()
-    cells = mesh.GetPolys()
-    if not 3 <= n <= 2_000_000 or cells is None or not 1 <= cells.GetNumberOfCells() <= 4_000_000:
+    polys = mesh.GetNumberOfPolys()
+    strips = mesh.GetNumberOfStrips()
+    verts = mesh.GetNumberOfVerts()
+    lines = mesh.GetNumberOfLines()
+    if diagnostics is not None:
+        diagnostics.update({"vtkPoints": n, "vtkPolys": polys, "vtkStrips": strips, "vtkVerts": verts, "vtkLines": lines})
+    if not 3 <= n <= 2_000_000 or not 1 <= polys + strips <= 4_000_000:
         raise ValueError("mesh size")
-    if mesh.GetNumberOfCells() != cells.GetNumberOfCells():
+    if verts or lines or (polys and strips) or mesh.GetNumberOfCells() != polys + strips:
         raise ValueError("nonpolygon geometry")
+    cells = mesh.GetStrips() if strips else mesh.GetPolys()
+    if cells is None:
+        raise ValueError("mesh size")
     points = np.asarray(vtk_to_numpy(mesh.GetPoints().GetData()), dtype="<f8")
     offsets = np.asarray(vtk_to_numpy(cells.GetOffsetsArray()), dtype="<i8")
     indices = np.asarray(vtk_to_numpy(cells.GetConnectivityArray()), dtype="<i8")
@@ -148,9 +236,14 @@ def parse_mesh(raw, scratch):
         raise ValueError("invalid positions")
     if len(offsets) != cells.GetNumberOfCells() + 1 or offsets[0] != 0 or offsets[-1] != len(indices):
         raise ValueError("invalid offsets")
-    if np.any(np.diff(offsets) != 3):
+    native_index_sha = digest(indices.tobytes(order="C"))
+    native_offset_sha = digest(offsets.tobytes(order="C"))
+    skipped = 0
+    if strips:
+        indices, skipped = strip_triangles(offsets, indices, n)
+    elif np.any(np.diff(offsets) != 3):
         raise ValueError("nontriangular polygons: no automatic triangulation")
-    if indices.min() < 0 or indices.max() >= n:
+    if len(indices) == 0 or indices.min() < 0 or indices.max() >= n:
         raise ValueError("index out of range")
     tri = indices.reshape(-1, 3)
     distinct = (tri[:, 0] != tri[:, 1]) & (tri[:, 1] != tri[:, 2]) & (tri[:, 0] != tri[:, 2])
@@ -158,7 +251,11 @@ def parse_mesh(raw, scratch):
         raise ValueError("repeated vertex index")
     return {"points": n, "triangles": len(tri),
             "nativePositionsSHA256": digest(points.tobytes(order="C")),
-            "nativeConnectivitySHA256": digest(indices.tobytes(order="C")),
+            "nativeConnectivitySHA256": native_index_sha,
+            "nativeOffsetsSHA256": native_offset_sha,
+            "triangleConnectivitySHA256": digest(indices.tobytes(order="C")),
+            "nativeTopology": "TRIANGLE_STRIPS" if strips else "TRIANGLE_POLYGONS",
+            "degenerateStripConnectorTrianglesSkipped": skipped,
             "glbRoundtrip": glb_roundtrip(points, indices),
             "frame": "VTK native coordinates; scene transforms not applied",
             "pointDataArrays": mesh.GetPointData().GetNumberOfArrays(),
@@ -176,7 +273,9 @@ def audit(archive, receipt, scratch):
         meshes = [i for i in z.infolist() if PurePosixPath(i.filename).suffix.lower() == ".vtk"]
         if len(meshes) != 48:
             raise ValueError("unexpected VTK count")
-        links, scene_counts, transform_links = scene_links(z, {i.filename for i in meshes})
+        anatomical = {i.filename: set() for i in meshes}
+        bounded_hints = {i.filename: set() for i in meshes}
+        links, scene_counts, transform_links = scene_links(z, set(anatomical), anatomical, bounded_hints)
         rows = []
         for i in meshes:
             raw = z.read(i)
@@ -185,8 +284,15 @@ def audit(archive, receipt, scratch):
                    "sceneNodeIdentityHashes": sorted(links[i.filename]),
                    "sceneNodesWithTransformRef": len(transform_links[i.filename]),
                    "sceneTransformsApplied": False}
+            labels = anatomical[i.filename]
+            recognized = sorted(labels - {("UNRECOGNIZED", "UNSPECIFIED")})
+            row["boundedLabelHintPairs"] = [{"modelHints":list(m),"filenameHints":list(f)} for m,f in sorted(bounded_hints[i.filename])]
+            row["boundedLabelHintStatus"] = "UNVERIFIED_NOT_IDENTITY"
+            row["anatomicalCandidates"] = [{"term": term, "side": side} for term, side in recognized]
+            row["anatomicalIdentityStatus"] = ("EXACT_ALLOWLIST_LABEL_CANDIDATE" if len(labels) == 1 and recognized else "HOLD_UNRESOLVED_OR_CONFLICTING_LABEL")
+            row["lateralityValidated"] = False
             try:
-                row.update(parse_mesh(raw, scratch))
+                row.update(parse_mesh(raw, scratch, row))
                 row["status"] = "NATIVE_TRIANGLE_GEOMETRY_PARSED"
             except (ValueError, TypeError, AttributeError, RuntimeError) as exc:
                 row["status"] = "HOLD_GEOMETRY"
@@ -197,7 +303,8 @@ def audit(archive, receipt, scratch):
                                 "mesh size", "nonpolygon geometry", "invalid positions",
                                 "invalid offsets", "nontriangular polygons: no automatic triangulation",
                                 "index out of range", "repeated vertex index", "GLB container mismatch",
-                                "GLB roundtrip mismatch"}
+                                "GLB roundtrip mismatch", "invalid strip offsets", "strip index out of range",
+                                "strip triangle cap", "empty strip surface"}
                 row["reasonCode"] = str(exc) if isinstance(exc, ValueError) and str(exc) in safe_reasons else "UNCLASSIFIED_PARSER_ERROR"
             rows.append(row)
     return {"schema": 1, "sourceArchiveSHA256": receipt["archiveSHA256"],
@@ -206,6 +313,9 @@ def audit(archive, receipt, scratch):
             "linkedMeshes": sum(r["sceneNodeLinks"] > 0 for r in rows),
             "exactGLBRoundtrips": sum(r.get("glbRoundtrip", {}).get("status") == "EXACT_NATIVE_GLTF_ROUNDTRIP" for r in rows),
             "sceneCounts": scene_counts, "rows": rows, "privacyReview": "PENDING",
+            "exactLabelCandidates": sum(r["anatomicalIdentityStatus"] == "EXACT_ALLOWLIST_LABEL_CANDIDATE" for r in rows),
+            "heldIdentity": sum(r["anatomicalIdentityStatus"] != "EXACT_ALLOWLIST_LABEL_CANDIDATE" for r in rows),
+            "lateralityValidated": False,
             "assetRightsReviewed": False, "clinicalValidation": False,
             "registrationValidated": False, "geometryPublished": 0, "publicRelease": "NO_GO"}
 
@@ -226,6 +336,21 @@ def main():
 
 FIXTURE = b"# vtk DataFile Version 3.0\nEngineering fixture\nASCII\nDATASET POLYDATA\nPOINTS 3 float\n0 0 0 1 0 0 0 1 0\nPOLYGONS 1 4\n3 0 1 2\n"
 class Tests(unittest.TestCase):
+    def test_allowlist_preserves_laterality_and_rejects_arbitrary_metadata(self):
+        self.assertEqual(anatomical_label('Left ACL'), ('anterior cruciate ligament', 'LEFT'))
+        self.assertEqual(anatomical_label('medial_meniscus_right'), ('medial meniscus', 'RIGHT'))
+        self.assertEqual(anatomical_label('PCL'), ('posterior cruciate ligament', 'UNSPECIFIED'))
+        for value in ('left right ACL', 'ACL of patient X', 'John Doe', 'ACL 1', 'meniscus'):
+            self.assertIsNone(anatomical_label(value))
+    def test_conflicting_scene_labels_not_collapsed(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / 'test.zip'
+            with zipfile.ZipFile(p, 'w') as z:
+                z.writestr('pack/scene.mrml', '<MRML><ModelStorage id="s" fileName="Data/test.vtk"/><Model id="a" storageNodeRef="s" name="ACL"/><Model id="b" storageNodeRef="s" name="PCL"/></MRML>')
+            labels = {'pack/Data/test.vtk': set()}
+            with zipfile.ZipFile(p) as z:
+                scene_links(z, set(labels), labels)
+            self.assertEqual(len(labels['pack/Data/test.vtk']), 2)
     def test_triangle(self):
         with tempfile.TemporaryDirectory() as d:
             r = parse_mesh(FIXTURE, Path(d))
@@ -233,6 +358,21 @@ class Tests(unittest.TestCase):
             self.assertEqual(r["nativeConnectivitySHA256"], digest(np.array([0,1,2], dtype="<i8").tobytes()))
             self.assertEqual(r["glbRoundtrip"]["status"], "EXACT_NATIVE_GLTF_ROUNDTRIP")
             self.assertFalse(r["glbRoundtrip"]["sourceArraysCopied"])
+    def test_triangle_strip_winding_and_native_evidence(self):
+        with tempfile.TemporaryDirectory() as d:
+            strip = FIXTURE.replace(b"POINTS 3 float\n0 0 0 1 0 0 0 1 0", b"POINTS 4 float\n0 0 0 1 0 0 0 1 0 1 1 0").replace(b"POLYGONS 1 4\n3 0 1 2", b"TRIANGLE_STRIPS 1 5\n4 0 1 2 3")
+            r = parse_mesh(strip, Path(d))
+            self.assertEqual(r["nativeTopology"], "TRIANGLE_STRIPS")
+            self.assertEqual(r["triangles"], 2)
+            self.assertEqual(r["nativeConnectivitySHA256"], digest(np.array([0,1,2,3], dtype="<i8").tobytes()))
+            self.assertEqual(r["triangleConnectivitySHA256"], digest(np.array([0,1,2,2,1,3], dtype="<i8").tobytes()))
+            self.assertEqual(r["glbRoundtrip"]["status"], "EXACT_NATIVE_GLTF_ROUNDTRIP")
+    def test_strip_invalid_and_degenerate_connector(self):
+        with self.assertRaises(ValueError):
+            strip_triangles(np.array([0,3]), np.array([0,1,9]), 4)
+        indices, skipped = strip_triangles(np.array([0,5]), np.array([0,1,2,2,3]), 4)
+        self.assertEqual(indices.tolist(), [0,1,2])
+        self.assertEqual(skipped, 2)
     def test_float64_precision_held(self):
         points = np.array([[0.1,0,0],[1,0,0],[0,1,0]], dtype="<f8")
         result = glb_roundtrip(points, np.array([0,1,2], dtype="<i8"))
@@ -252,6 +392,32 @@ class Tests(unittest.TestCase):
                 self.assertEqual(len(links["pack/Data/test.vtk"]), 1)
                 self.assertEqual(counts["linkedModelNodes"], 1)
                 self.assertEqual(len(transforms["pack/Data/test.vtk"]), 0)
+    def test_modern_mrml_role_link_and_conflict(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "fixture.zip"
+            with zipfile.ZipFile(p, "w") as z:
+                z.writestr("pack/scene.mrml", '<MRML><ModelStorage id="s" fileName="Data/test.vtk"/><ModelStorage id="t" fileName="Data/other.vtk"/><Model id="m" name="Left ACL" references="display:d;storage:s;transform:t1;"/><Model id="conflict" name="PCL" storageNodeRef="s" references="storage:t;"/></MRML>')
+            labels = {"pack/Data/test.vtk": set(), "pack/Data/other.vtk": set()}
+            with zipfile.ZipFile(p) as z:
+                links, counts, transforms = scene_links(z, set(labels), labels)
+            self.assertEqual(labels["pack/Data/test.vtk"], {("anterior cruciate ligament", "LEFT")})
+            self.assertEqual(len(links["pack/Data/test.vtk"]), 1)
+            self.assertEqual(transforms["pack/Data/test.vtk"], links["pack/Data/test.vtk"])
+            self.assertEqual(counts["conflictingStorageReferences"], 1)
+            self.assertFalse(links["pack/Data/other.vtk"])
+    def test_snapshot_id_reuse_does_not_cross_link(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "fixture.zip"
+            with zipfile.ZipFile(p, "w") as z:
+                z.writestr("scene.mrml", '<MRML><ModelStorage id="s" fileName="a.vtk"/><Model id="m" name="Left ACL" storageNodeRef="s"/><SceneView><ModelStorage id="s" fileName="b.vtk"/><Model id="m" name="Right PCL" storageNodeRef="s"/></SceneView><SceneView><Model id="m" name="ACL" storageNodeRef="s"/></SceneView></MRML>')
+            labels = {"a.vtk": set(), "b.vtk": set()}
+            with zipfile.ZipFile(p) as z:
+                links, counts, transforms = scene_links(z, set(labels), labels)
+            self.assertEqual(labels["a.vtk"], {("anterior cruciate ligament", "LEFT")})
+            self.assertEqual(labels["b.vtk"], {("posterior cruciate ligament", "RIGHT")})
+            self.assertEqual(counts["linkedModelNodes"], 2)
+            self.assertEqual(counts["storageIDAbsent"], 1)
+            self.assertEqual(counts.get("duplicateStorageID", 0), 0)
     def test_transform_reference_not_applied(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / "fixture.zip"

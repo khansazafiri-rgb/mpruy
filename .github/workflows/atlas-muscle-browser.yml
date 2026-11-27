@@ -1,0 +1,37 @@
+name: Atlas audited 24 muscle browser replay
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/atlas-muscle-supplement*'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-challenge-muscle-language.js'
+      - 'apps/atlas-independent/src/reference-challenge-language.js'
+      - 'licensing/atlas-publication/bp3d43-muscle-24-dual-source-audit-20261126.json'
+      - '.github/workflows/atlas-muscle-browser.yml'
+permissions:
+  contents: read
+jobs:
+  muscle-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: npm test --prefix apps/atlas-independent
+      - run: node --test scripts/launch-atlas-private-workstation.test.mjs scripts/independent-atlas-learning-coverage.test.mjs scripts/atlas-muscle-supplement.test.mjs scripts/audit-atlas-gap-reconciliation.test.mjs
+      - run: node scripts/replay-audited-bp3d43-suite.mjs --receipt=bp3d43-muscle-24-dual-source-audit-20261126.json
+      - run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install chromium
+      - run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_REAL43=muscle-24 ATLAS_TEST_HRA_COMBINED=1 ATLAS_TEST_HRA_GROUPS=1 node scripts/test-private-atlas-browser.mjs
+      - if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/hra-female-five-* local-data/licensing-quarantine/hra-cardiopulmonary-four-*

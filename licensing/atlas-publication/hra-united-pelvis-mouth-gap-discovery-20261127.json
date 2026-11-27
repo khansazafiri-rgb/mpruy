@@ -1,0 +1,288 @@
+{
+  "schema": 1,
+  "scope": "Eight exact publisher label candidates within prior 95 unresolved discovery targets. No byte acquisition or mesh verification. United is composite; per-component provenance and full source integrity required. DVC MD5 is a publisher pointer, not independently computed SHA-256.",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "sourceCommit": "6a9fc4834e0aeef0ee6ceea5358a975d06db6798",
+  "uniqueCandidateTargets": [
+    "coccyx",
+    "common bile duct",
+    "left anterior cruciate ligament",
+    "left posterior cruciate ligament",
+    "parotid gland",
+    "right anterior cruciate ligament",
+    "right posterior cruciate ligament",
+    "vagina"
+  ],
+  "rows": [
+    {
+      "id": "pelvis-female",
+      "version": "v1.3",
+      "filename": "3d-vh-f-pelvis.glb",
+      "bytes": 1593612,
+      "doi": "https://doi.org/10.48539/HBM853.VCFM.778",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-female/v1.3/assets/3d-vh-f-pelvis.glb",
+      "crosswalkBlob": "8308330ab5bdfb069e18412b80173a3ca9ea91df",
+      "crosswalkURL": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pelvis-female/v1.3/raw/crosswalk.csv",
+      "matches": [
+        {
+          "nodeName": "VH_F_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx"
+        }
+      ],
+      "geometryAudited": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "pelvis-male",
+      "version": "v1.3",
+      "filename": "3d-vh-m-pelvis.glb",
+      "bytes": 1348340,
+      "doi": "https://doi.org/10.48539/HBM384.SBWX.873",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-male/v1.3/assets/3d-vh-m-pelvis.glb",
+      "crosswalkBlob": "ef0cf4abe8d7eed55bfacadfed3eae5d18fb7060",
+      "crosswalkURL": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pelvis-male/v1.3/raw/crosswalk.csv",
+      "matches": [
+        {
+          "nodeName": "VH_M_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx"
+        }
+      ],
+      "geometryAudited": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "united-female",
+      "version": "v1.10",
+      "filename": "3d-vh-f-united.glb",
+      "bytes": 374505632,
+      "doi": "https://doi.org/10.48539/HBM637.DWBM.744",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+      "crosswalkBlob": "006820415925e1b056e75f053d2032fee36a07e0",
+      "crosswalkURL": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/united-female/v1.10/raw/crosswalk.csv",
+      "dvcPointer": {
+        "md5": "5e4aca68ceea6aa9b21aa9c333c54fec",
+        "blobSHA": "092c83e81d6aa97584a1fb496127caeaeff82773"
+      },
+      "matches": [
+        {
+          "nodeName": "VH_F_vagina",
+          "ontologyId": "UBERON:0000996",
+          "label": "vagina"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland"
+        },
+        {
+          "nodeName": "VH_F_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct"
+        },
+        {
+          "nodeName": "VH_F_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx"
+        },
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
+        },
+        {
+          "nodeName": "VH_F_brachiocephalic_artery_b",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_F_brachiocephalic_artery_a",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        }
+      ],
+      "geometryAudited": false,
+      "approvedForDistribution": false,
+      "metadataBlob": "b51d522fc0690faa34f35595f12304d1e3715b04"
+    },
+    {
+      "id": "united-male",
+      "version": "v1.10",
+      "filename": "3d-vh-m-united.glb",
+      "bytes": 241633636,
+      "doi": "https://doi.org/10.48539/HBM833.WZWN.425",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+      "crosswalkBlob": "34e2c5611f9c8be3fb85dc741ab471815259ac40",
+      "crosswalkURL": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/united-male/v1.10/raw/crosswalk.csv",
+      "dvcPointer": {
+        "md5": "69857009518d156a390ebe42b57723f1",
+        "blobSHA": "ee806dbe0e2f1f833396ab66b98fb11f269eccce"
+      },
+      "matches": [
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland"
+        },
+        {
+          "nodeName": "VH_M_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct"
+        },
+        {
+          "nodeName": "VH_M_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx"
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery_b",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery_a",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        }
+      ],
+      "geometryAudited": false,
+      "approvedForDistribution": false,
+      "metadataBlob": "862320d450407960df63daaa3a766b130994ef02"
+    },
+    {
+      "id": "mouth-female",
+      "version": "v1.0",
+      "filename": "3d-vh-f-mouth.glb",
+      "bytes": 103690760,
+      "doi": "https://doi.org/10.48539/HBM856.VZWZ.422",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-female/v1.0/assets/3d-vh-f-mouth.glb",
+      "crosswalkBlob": "7641e365b5e0c0b9db40f2c9e1454c3f221f9d88",
+      "crosswalkURL": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/mouth-female/v1.0/raw/crosswalk.csv",
+      "dvcPointer": {
+        "md5": "fe810cf868cfb818e0cbc1fc657a671c",
+        "blobSHA": "b8018e6f3abe3e4d598bb8c37df10d1219dac854"
+      },
+      "matches": [
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
+        }
+      ],
+      "geometryAudited": false,
+      "approvedForDistribution": false,
+      "metadataBlob": "476983942c53a852f8b03e2e9bb37aec411604fb"
+    },
+    {
+      "id": "mouth-male",
+      "version": "v1.0",
+      "filename": "3d-vh-m-mouth.glb",
+      "bytes": 53487620,
+      "doi": "https://doi.org/10.48539/HBM568.RFGM.978",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+      "crosswalkBlob": "8b004164f733c18711b59f44473e830d26546bcc",
+      "crosswalkURL": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/mouth-male/v1.0/raw/crosswalk.csv",
+      "matches": [
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
+        }
+      ],
+      "geometryAudited": false,
+      "approvedForDistribution": false,
+      "metadataBlob": "34c2af8a949fb02deb2868f1c788cb613f065e1d",
+      "glbBlob": "141812bc3200e7f6a637eda77ce8931f6f5909bf"
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

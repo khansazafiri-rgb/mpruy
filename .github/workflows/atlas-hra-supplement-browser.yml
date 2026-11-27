@@ -1,0 +1,46 @@
+name: Atlas HRA 18-asset supplemental browser regression
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/load-hra-female-five.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/hra-learning-links.js'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'apps/atlas-independent/src/reference-viewer.js'
+      - 'apps/atlas-independent/test/reference-components.test.mjs'
+      - 'scripts/hra-digestive-learning-links.test.mjs'
+      - 'licensing/atlas-publication/hra-*-audit-20261127.json'
+      - 'licensing/atlas-publication/hra-digestive-six-pinned-audit-20261127.json'
+      - '.github/workflows/atlas-hra-supplement-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-hra-supplement-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/audit-hra-female-five.test.mjs scripts/audit-hra-source-groups.test.mjs scripts/hra-digestive-learning-links.test.mjs apps/atlas-independent/test/reference-components.test.mjs
+      - name: Install pinned isolated Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install chromium
+      - name: Replay 18 real GLBs and all 30 retained hierarchy groups
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_HRA_SUPPLEMENT=1 node scripts/test-private-atlas-browser.mjs
+      - name: Remove staged private source bytes
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/hra-digestive-six-* local-data/licensing-quarantine/hra-knee-larynx-six-* local-data/licensing-quarantine/hra-tonsil-four-* local-data/licensing-quarantine/hra-pelvis-two-*

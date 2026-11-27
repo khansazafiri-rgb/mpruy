@@ -1,0 +1,820 @@
+{
+  "schema": 1,
+  "sourceCommit": "2287c18c3e45c079f5c477c8b1c4b1f101488161",
+  "evidenceOrigin": "OWNER_SUPPLIED_LOCAL_TERMINAL_LOG_AND_EXACT_QUEUE",
+  "baselineTargets": 464,
+  "previousUnresolved": 146,
+  "unresolved": 118,
+  "discoverNewSource": 106,
+  "heldExternal": 12,
+  "assetCount": 1679,
+  "httpSmoke": "PASS",
+  "browserRuntime": "PENDING",
+  "wholeConceptCoveragePromoted": 0,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "rows": [
+    {
+      "group": "respiratory",
+      "target": "larynx",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "left lung pleura",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "right lung pleura",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "nasal cavity",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "nasopharynx",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "oropharynx",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "laryngopharynx",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "visceral pleura",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "respiratory",
+      "target": "parietal pleura",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right brachial plexus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "left sciatic nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right sciatic nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "cerebral cortex",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "frontal lobe",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "parietal lobe",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "conus medullaris",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "cervical plexus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "lumbar plexus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "sacral plexus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "sympathetic trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right median nerve",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right ulnar nerve",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right radial nerve",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right musculocutaneous nerve",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right axillary nerve",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "left femoral nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right femoral nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "left obturator nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right obturator nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "left tibial nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right tibial nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "left common fibular nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right common fibular nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "left sural nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "nervous",
+      "target": "right sural nerve",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "thoracic duct",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "right lymphatic duct",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "cisterna chyli",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "palatine tonsil",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lingual tonsil",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "pharyngeal tonsil",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "intestinal trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "jugular trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "subclavian trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "bronchomediastinal trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lumbar trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lymphatic vessel",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lymphatic capillary",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "deep cervical lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "superficial cervical lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "axillary lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "mediastinal lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "tracheobronchial lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "mesenteric lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "inguinal lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "popliteal lymph node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "interatrial septum",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "myocardium",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "endocardium",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "epicardium",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "chordae tendineae",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "sinoatrial node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "heart",
+      "target": "atrioventricular node",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "parotid gland",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "fundus of stomach",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "pylorus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "sigmoid colon",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "anal canal",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "quadrate lobe of liver",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "common bile duct",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "head of pancreas",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "body of pancreas",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "digestive",
+      "target": "tail of pancreas",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "reproductive",
+      "target": "vagina",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "reproductive",
+      "target": "scrotum",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "reproductive",
+      "target": "vas deferens",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "reproductive",
+      "target": "left vas deferens",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "reproductive",
+      "target": "right vas deferens",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "endocrine",
+      "target": "pineal gland",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "endocrine",
+      "target": "parathyroid gland",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "endocrine",
+      "target": "adenohypophysis",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "endocrine",
+      "target": "neurohypophysis",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "coccyx",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "malleus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "incus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "stapes",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "left malleus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "right malleus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "left incus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "right incus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "left stapes",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "skeletal",
+      "target": "right stapes",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left hip joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right hip joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left knee joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right knee joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left shoulder joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right shoulder joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left elbow joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right elbow joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left wrist joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right wrist joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left ankle joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right ankle joint",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left anterior cruciate ligament",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right anterior cruciate ligament",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left posterior cruciate ligament",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right posterior cruciate ligament",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left medial meniscus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right medial meniscus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "left lateral meniscus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "joints",
+      "target": "right lateral meniscus",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "muscular",
+      "target": "rectus abdominis muscle",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "muscular",
+      "target": "transversus abdominis muscle",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "muscular",
+      "target": "internal oblique muscle",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "arterial",
+      "target": "brachiocephalic trunk",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "arterial",
+      "target": "left external carotid artery",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    },
+    {
+      "group": "venous",
+      "target": "left external jugular vein",
+      "action": "DISCOVER_NEW_SOURCE",
+      "autoExport": false
+    }
+  ],
+  "sourceDiscovery": [
+    {
+      "id": "hra-digestive",
+      "url": "https://humanatlas.io/3d-reference-library",
+      "candidateOrgans": [
+        "pancreas",
+        "liver",
+        "large intestine"
+      ],
+      "candidateTargets": [
+        "head of pancreas",
+        "body of pancreas",
+        "tail of pancreas",
+        "quadrate lobe of liver",
+        "sigmoid colon",
+        "anal canal",
+        "common bile duct"
+      ],
+      "scope": "Publisher organ inventory only; each target label and native geometry unverified.",
+      "exactAssetIdentityVerified": false,
+      "approvedForDistribution": false,
+      "autoExport": false
+    },
+    {
+      "id": "hra-lymph-node",
+      "url": "https://humanatlas.io/3d-reference-library",
+      "candidateOrgans": [
+        "mesenteric lymph node"
+      ],
+      "candidateTargets": [
+        "mesenteric lymph node"
+      ],
+      "scope": "No evidence of vessel continuity or other regional lymph node identities.",
+      "exactAssetIdentityVerified": false,
+      "approvedForDistribution": false,
+      "autoExport": false
+    },
+    {
+      "id": "spl-knee",
+      "url": "https://www.openanatomy.org/atlas-pages/atlas-spl-knee.html",
+      "candidateTargets": [
+        "left knee joint",
+        "right knee joint",
+        "left anterior cruciate ligament",
+        "right anterior cruciate ligament",
+        "left posterior cruciate ligament",
+        "right posterior cruciate ligament",
+        "left medial meniscus",
+        "right medial meniscus",
+        "left lateral meniscus",
+        "right lateral meniscus"
+      ],
+      "scope": "MRI-derived atlas, archive previously inventoried; laterality and individual labels pending. Do not assume bilateral.",
+      "exactAssetIdentityVerified": false,
+      "approvedForDistribution": false,
+      "autoExport": false
+    },
+    {
+      "id": "spl-head-neck",
+      "url": "https://www.openanatomy.org/atlas-pages/atlas-spl-head-and-neck.html",
+      "candidateTargets": [
+        "larynx",
+        "nasal cavity",
+        "nasopharynx",
+        "oropharynx",
+        "laryngopharynx",
+        "parotid gland"
+      ],
+      "scope": "Regional atlas discovery only.",
+      "exactAssetIdentityVerified": false,
+      "approvedForDistribution": false,
+      "autoExport": false
+    },
+    {
+      "id": "spl-inner-ear",
+      "url": "https://www.openanatomy.org/atlas-pages/atlas-spl-inner-ear.html",
+      "candidateTargets": [
+        "malleus",
+        "incus",
+        "stapes",
+        "left malleus",
+        "right malleus",
+        "left incus",
+        "right incus",
+        "left stapes",
+        "right stapes"
+      ],
+      "scope": "CT atlas discovery only; no ossicle or laterality guarantee.",
+      "exactAssetIdentityVerified": false,
+      "approvedForDistribution": false,
+      "autoExport": false
+    }
+  ]
+}

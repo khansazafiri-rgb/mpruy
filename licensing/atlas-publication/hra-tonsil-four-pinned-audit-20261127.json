@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 4,
+  "held": 0,
+  "exactNamedMeshNodes": 4,
+  "rows": [
+    {
+      "id": "palatine-tonsil-female-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/assets/3d-vh-f-palatine-tonsil-l.glb",
+      "bytes": 930340,
+      "sha256": "16735909f46d5514de0c0ca08dccb3fc9cc5c8654278fcd711ec07f2ec6f7c87",
+      "metadataSHA256": "c853976cae4cc48070a5967d0b5d41cc26b71b765707d1bf79670f999837eb51",
+      "crosswalkSHA256": "6eb7e5b11ad74d14a0a7dcc7ce549e28d52074b1db38e4798ef1a52b954a136c",
+      "meshCount": 1,
+      "nodeCount": 1,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_palatine_tonsil_L",
+          "ontologyId": "FMA:54974",
+          "label": "left palatine tonsil",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [
+            0
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_MALE_ADAPTED_TO_FEMALE",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_INDEPENDENT_FEMALE_SPECIMEN"
+      ],
+      "exactMeshNodeCount": 1,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM245.VCTP.795",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-female-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/assets/3d-vh-f-palatine-tonsil-r.glb",
+      "bytes": 663256,
+      "sha256": "89efbc8f90a26b6e5e3d55c9105e1fef2c00540daef5ee771740f913f72b1da6",
+      "metadataSHA256": "1d9d78053be1a458c8b37bcaba42c4f360145db56123263cb8431180e260782a",
+      "crosswalkSHA256": "f4a6610ab131daf0611be7b3b6cc72f83b9fb014be0f7afbfee2c9aa28cea780",
+      "meshCount": 1,
+      "nodeCount": 1,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_palatine_tonsil_R",
+          "ontologyId": "FMA:54973",
+          "label": "right palatine tonsil",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [
+            0
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_MALE_ADAPTED_TO_FEMALE",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_INDEPENDENT_FEMALE_SPECIMEN"
+      ],
+      "exactMeshNodeCount": 1,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM549.HTLQ.527",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-male-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/assets/3d-vh-m-palatine-tonsil-l.glb",
+      "bytes": 449008,
+      "sha256": "6bacedee00b821f05f24a06a434f867814ca233d2ec1b898bc8344c56aa7be80",
+      "metadataSHA256": "cdae9aca80b90016f4ae5a78a1746b21c29ee48a69874ed247984297d60ac957",
+      "crosswalkSHA256": "151ac626300d6151dcdfce0005f2efdda892834a216e7315cade7215e316eb38",
+      "meshCount": 1,
+      "nodeCount": 1,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_palatine_tonsil_L",
+          "ontologyId": "FMA:54974",
+          "label": "Left palatine tonsil",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [
+            0
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_MALE_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 1,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM366.GHGT.974",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-male-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb",
+      "bytes": 222132,
+      "sha256": "7164e38f8cdbee2d6f107ce63bb666e52786871e78bd6724e9200a71eea59961",
+      "metadataSHA256": "99b57885c78814fe77939755fc29dacc2ecc91687c96582f4f66ee2c14f6deca",
+      "crosswalkSHA256": "99ddf00a2426b8268f24f8f8105332aff811c2eab13356fa8b4fbfd6fdf6f78a",
+      "meshCount": 1,
+      "nodeCount": 1,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_palatine_tonsil_R",
+          "ontologyId": "FMA:54973",
+          "label": "Right palatine tonsil",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [
+            0
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_MALE_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 1,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM867.FQCX.589",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "15e6a0a12b17ac4296c38253f0c78052651cfcb7",
+  "workflowRun": 45928486689,
+  "workflowJob": 140275382370,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}

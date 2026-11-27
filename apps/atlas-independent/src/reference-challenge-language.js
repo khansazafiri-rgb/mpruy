@@ -1,6 +1,13 @@
+import {COMPONENT_GLOSSARY} from './reference-challenge-component-language.js';
+import {MUSCLE_GLOSSARY} from './reference-challenge-muscle-language.js';
+import {EXPANSION_GLOSSARY} from './reference-challenge-expansion-language.js';
 // Explicitly scoped educational glossary (provisional, not clinically reviewed). Source identities and original
 // labels are unchanged. Translation and synonym candidates need medical review.
 const glossary={
+ ...EXPANSION_GLOSSARY,
+ ...MUSCLE_GLOSSARY,
+ ...COMPONENT_GLOSSARY,
+ FMA52749:{source:'Hyoid bone',id:['tulang hioid','tulang hyoid'],en:['hyoid bone'],latin:['os hyoideum'],side:null},
  FMA52590:{source:'Cauda equina',id:['cauda equina','kauda ekuina'],en:['cauda equina'],latin:['cauda equina'],side:null},
  FMA37068:{source:'Left median nerve',id:['saraf median kiri','nervus medianus kiri'],en:['left median nerve','median nerve left'],latin:['nervus medianus sinister'],side:'left'},
  FMA37321:{source:'Left ulnar nerve',id:['saraf ulnaris kiri','nervus ulnaris kiri'],en:['left ulnar nerve','ulnar nerve left'],latin:['nervus ulnaris sinister'],side:'left'},
@@ -243,6 +250,8 @@ const glossary={
 };
 const normalize=s=>String(s??'').normalize('NFKC').trim().toLowerCase().replace(/\s+/g,' ');
 function row(e){const r=glossary[e?.fmaId];return r&&normalize(r.source)===normalize(e.name)?r:null;}
+const aliasRows=new Map(),aliasOwners=new Map();
+for(const r of Object.values(glossary)){const a=[...new Set([r.source,...r.id,...r.en,...r.latin].map(normalize))];aliasRows.set(r,a);for(const v of a){const owners=aliasOwners.get(v)||new Set();owners.add(r);aliasOwners.set(v,owners);}}
 const left=new Set(['left','kiri','sinister','sinistra','sinistrum','sinistri','sinistrae']),right=new Set(['right','kanan','dexter','dextra','dextrum','dextri','dextrae']);
 function sideOf(s){const tokens=normalize(s).split(' '),l=tokens.some(t=>left.has(t)),r=tokens.some(t=>right.has(t));return l&&r?'conflict':l?'left':r?'right':null;}
 function editDistance(a,b){let p=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const n=[i];for(let j=1;j<=b.length;j++)n[j]=Math.min(n[j-1]+1,p[j]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=n;}return p[b.length];}
@@ -250,14 +259,14 @@ export function challengeLabel(e,lang){const r=row(e);return r?.[lang]?.[0]||e.n
 export function typedReferenceAnswer(e,input){
  const r=row(e),v=normalize(input);if(!r||!v||v.length>120)return {correct:false,kind:'NO_MATCH'};
  const side=sideOf(v);if(side!==r.side)return {correct:false,kind:'LATERALITY'};
- const aliases=[r.source,...r.id,...r.en,...r.latin].map(normalize);
+ const aliases=aliasRows.get(r);
+ const owners=aliasOwners.get(v);
+ if(owners?.size>1)return {correct:false,kind:'AMBIGUOUS_ALIAS'};
  if(aliases.includes(v))return {correct:true,kind:'EXACT'};
- // Only one edit inside a long non-laterality token. No token omission,
- // reordering, approximate side, or acceptance of another concept's synonym.
- const allOthers=Object.values(glossary).filter(x=>x!==r).flatMap(x=>[x.source,...x.id,...x.en,...x.latin]).map(normalize);
- if(allOthers.includes(v))return {correct:false,kind:'OTHER_CONCEPT'};
+ // Only one edit inside a long non-laterality token; never accept another exact concept.
+ if(owners?.size)return {correct:false,kind:'OTHER_CONCEPT'};
  function close(a){const x=a.split(' '),y=v.split(' ');if(x.length!==y.length)return false;let differences=0;for(let i=0;i<x.length;i++){if(x[i]===y[i])continue;if(/\d/.test(x[i])||/\d/.test(y[i])||left.has(x[i])||right.has(x[i])||left.has(y[i])||right.has(y[i])||Math.min(x[i].length,y[i].length)<6||editDistance(x[i],y[i])!==1)return false;differences++;}return differences===1;}
- if(aliases.some(close)&&!allOthers.some(close))return {correct:true,kind:'MINOR_TYPO'};
+ if(aliases.some(close)&&![...aliasOwners].some(([v,owners])=>[...owners].some(owner=>owner!==r)&&close(v)))return {correct:true,kind:'MINOR_TYPO'};
  return {correct:false,kind:'NO_MATCH'};
 }
 

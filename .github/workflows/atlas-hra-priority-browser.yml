@@ -1,0 +1,51 @@
+name: Atlas HRA priority isolated mesh browser regression
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/stage-hra-priority-ci.py'
+      - 'scripts/audit-hra-priority-isolation.py'
+      - 'scripts/audit-hra-united-dvc.py'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-*.js'
+      - 'apps/atlas-independent/src/hra-source-notice.js'
+      - 'apps/atlas-independent/src/hra-learning-links.js'
+      - 'scripts/hra-priority-learning-links.test.mjs'
+      - 'licensing/atlas-publication/hra-priority-isolation-roundtrip-audit-20261127.json'
+      - '.github/workflows/atlas-hra-priority-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-hra-priority-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: 'python -m pip install --only-binary=:all: numpy==1.26.4'
+      - run: python scripts/audit-hra-priority-isolation.py --test
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/hra-priority-learning-links.test.mjs
+      - name: Install pinned Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install chromium
+      - name: Regenerate exact temporary GLBs and replay existing viewer
+        run: |
+          export HRA_PRIORITY_CI_STAGE="$(mktemp -d "$RUNNER_TEMP/hra-priority-XXXXXXXX")"
+          trap 'rm -rf -- "$HRA_PRIORITY_CI_STAGE"' EXIT
+          python scripts/stage-hra-priority-ci.py
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          node scripts/test-private-atlas-browser.mjs

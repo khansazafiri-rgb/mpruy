@@ -1,0 +1,448 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Independent source candidates only. Publisher describes transfer of calyces and papillae from kidney; crosswalk does not establish papilla mesh presence, shared registration or full collecting system completeness. No coverage promotion or distribution.",
+  "rows": [
+    {
+      "id": "ureter-female-left",
+      "version": "v1.2",
+      "filename": "3d-vh-f-ureter-l.glb",
+      "bytes": 682688,
+      "glbBlob": "ca7a051fa638f73ba05144e0c418834c2a612279",
+      "metadataBlob": "898697ffd4eeefe9d1735687bbb4ca7f0c879310",
+      "crosswalkBlob": "fb5eb9d4409481af57d430437ee203ccb3d385db",
+      "doi": "https://doi.org/10.48539/HBM343.JGCD.345",
+      "expectedCrosswalkRows": 19,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-female-left/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_left_ureter",
+          "ontologyId": "UBERON:0001223",
+          "label": "left ureter"
+        },
+        {
+          "nodeName": "VH_F_kidney_calyx_L",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_j",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_c",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_d",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_renal_pelvis_L",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis"
+        }
+      ]
+    },
+    {
+      "id": "ureter-female-right",
+      "version": "v1.2",
+      "filename": "3d-vh-f-ureter-r.glb",
+      "bytes": 611468,
+      "glbBlob": "808221f53797c20a61244f17c9e5852eba5660e4",
+      "metadataBlob": "50423bb8160f5618de72c5b6cae362b111ed3904",
+      "crosswalkBlob": "0a00fd2c28c90e89c12a71065c4465e8f23c9a5e",
+      "doi": "https://doi.org/10.48539/HBM375.FNHZ.563",
+      "expectedCrosswalkRows": 18,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-female-right/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_right_ureter",
+          "ontologyId": "UBERON:0001222",
+          "label": "right ureter"
+        },
+        {
+          "nodeName": "VH_F_renal_calyx_R",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_j",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R_c",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_F_renal_pelvis_R",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis"
+        }
+      ]
+    },
+    {
+      "id": "ureter-male-left",
+      "version": "v1.2",
+      "filename": "3d-vh-m-ureter-l.glb",
+      "bytes": 682892,
+      "glbBlob": "8639c42333ae736563068153356422132a9047bc",
+      "metadataBlob": "c550270b663374121b941911551f1d7b0fe17f08",
+      "crosswalkBlob": "7e51454d5b65e8450a48721d60cfa5586b27ebd5",
+      "doi": "https://doi.org/10.48539/HBM434.VLQJ.299",
+      "expectedCrosswalkRows": 17,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-male-left/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_ureter_L",
+          "ontologyId": "UBERON:0001223",
+          "label": "left ureter"
+        },
+        {
+          "nodeName": "VH_M_renal_pelvis_L",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis"
+        },
+        {
+          "nodeName": "VH_M_kidney_calyx_L",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L_c",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        }
+      ]
+    },
+    {
+      "id": "ureter-male-right",
+      "version": "v1.2",
+      "filename": "3d-vh-m-ureter-r.glb",
+      "bytes": 540788,
+      "glbBlob": "4282a5558a323e11167ad5b20a7a38e3b46871b8",
+      "metadataBlob": "ecdd9861be06fbdbe0fb83e948d360127724f188",
+      "crosswalkBlob": "c42dd80974c31d2e0f94db951fe594e1863c6c44",
+      "doi": "https://doi.org/10.48539/HBM852.SVFJ.388",
+      "expectedCrosswalkRows": 16,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-male-right/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_ureter_R",
+          "ontologyId": "UBERON:0001222",
+          "label": "right ureter"
+        },
+        {
+          "nodeName": "VH_M_calyx_R",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx"
+        },
+        {
+          "nodeName": "VH_M_renal_pelvis_R",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis"
+        }
+      ]
+    }
+  ],
+  "held": [],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

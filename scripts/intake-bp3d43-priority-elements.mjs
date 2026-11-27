@@ -26,7 +26,7 @@ export function parseMembership(text){
  assert(all.size>0);return {rows,all};
 }
 export function validateCandidates(doc,catalog){
- assert(doc.sourceVersion==='4.3'&&doc.geometryVerified===false&&doc.publicRelease==='NO_GO'&&Array.isArray(doc.rows)&&doc.rows.length<=32);
+ assert(doc.sourceVersion==='4.3'&&doc.geometryVerified===false&&doc.publicRelease==='NO_GO'&&Array.isArray(doc.rows)&&doc.rows.length<=(doc.batchId==='checkpoint-components-36'?36:32));
  const seen=new Set();
  for(const r of doc.rows){
   assert(/^FJ\d+[A-Za-z]?$/.test(r.fj)&&/^BP\d+$/.test(r.bp)&&/^FMA\d+$/.test(r.fma)&&!seen.has(r.fj));
@@ -51,9 +51,9 @@ export function validateZipEnvelope(file){
  assert(names.length>0&&names.length<=10000&&names.every(n=>n.length>0),'Publisher archive directory invalid');
  return names;
 }
-// Retry transport/ZIP-envelope failures only. Semantic identity validation remains
-// outside the retry, and no mirror or substituted geometry can pass this gate.
-export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=3}={}){
+// Retry transport/ZIP-envelope failures and explicitly pinned manifest integrity.
+// Candidate membership and model identity remain strict; no mirror or substitute.
+export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=3,verify=null}={}){
  assert(Number.isInteger(attempts)&&attempts>=1&&attempts<=3);
  const part=file+'.partial';
  assert(!fs.existsSync(file),'Refusing to replace existing source archive');
@@ -63,6 +63,7 @@ export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=
    fs.rmSync(part,{force:true});
    fetch(url,part,extra);
    const names=validateZipEnvelope(part);
+   if(verify)verify(part,names);
    fs.renameSync(part,file);
    return names;
   }catch(e){
@@ -75,6 +76,18 @@ export function downloadZipValidated(url,file,extra=[],{fetch=download,attempts=
 
 function safeMember(name){return typeof name==='string'&&name.split('/').every(p=>/^[A-Za-z0-9_ .()-]+$/.test(p)&&p!=='.'&&p!=='..');}
 function member(file,name){assert(safeMember(name));return execFileSync('unzip',['-p',file,name],{maxBuffer:32*1024*1024});}
+// Check pinned source bytes before accepting even a syntactically valid ZIP.
+export function readPublisherManifest(file,names,expectedSHA256){
+ assert.deepEqual(names,['FMA2Obj.txt']);
+ const bytes=member(file,'FMA2Obj.txt');
+ if(expectedSHA256!==undefined)assert(/^[a-f0-9]{64}$/.test(expectedSHA256)&&digest(bytes)===expectedSHA256,'Pinned publisher manifest differs; replay held');
+ return {bytes,catalog:parseMembership(bytes.toString('utf8'))};
+}
+export function downloadPublisherManifest(url,file,extra=[],expectedSHA256,options={}){
+ if(expectedSHA256!==undefined)assert(/^[a-f0-9]{64}$/.test(expectedSHA256),'Invalid expected publisher manifest hash');
+ const names=downloadZipValidated(url,file,extra,{...options,verify:expectedSHA256===undefined?null:(part,entries)=>readPublisherManifest(part,entries,expectedSHA256)});
+ return readPublisherManifest(file,names,expectedSHA256);
+}
 export function selectMember(names,r){
  const prefix=r.fj+'_'+r.bp+'_'+r.fma+'_';
  const matched=names.filter(n=>safeMember(n)&&path.posix.basename(n).startsWith(prefix)&&/\.obj$/i.test(n));
@@ -83,7 +96,13 @@ export function selectMember(names,r){
  assert.equal(normalize(path.posix.basename(matched[0]).slice(prefix.length,-4)),normalize(r.name),'Publisher mesh label changed');
  return matched[0];
 }
-export function run(inputDoc=null,{allowHeld=false}={}){
+// Reuse only byte-identical, version-stamped publisher membership from a verified private replay.
+export function validateRetainedManifest(bytes,expectedSHA256){
+ assert(Buffer.isBuffer(bytes)&&bytes.length>0&&bytes.length<=32*1024*1024);
+ assert(/^[a-f0-9]{64}$/.test(expectedSHA256||'')&&digest(bytes)===expectedSHA256,'Retained publisher manifest checksum differs');
+ return {bytes,catalog:parseMembership(bytes.toString('utf8'))};
+}
+export function run(inputDoc=null,{allowHeld=false,retainedManifest=null}={}){
  const local=path.join(root,'local-data');fs.mkdirSync(local,{recursive:true,mode:0o700});assert(fs.realpathSync(local)===local);
  const q=path.join(local,'licensing-quarantine');fs.mkdirSync(q,{mode:0o700,recursive:true});assert(fs.realpathSync(q)===q);
  const out=fs.mkdtempSync(path.join(q,'bp3d43-element-intake-'));fs.chmodSync(out,0o700);
@@ -94,8 +113,7 @@ export function run(inputDoc=null,{allowHeld=false}={}){
  // a bounded attempt at the version-stamped manifest itself.
  fs.writeFileSync(cookie,'# Netscape HTTP Cookie File\n',{mode:0o600});
  try{download(viewer,path.join(out,'session.html'),session);}catch{console.warn('Viewer bootstrap unavailable; trying direct version-stamped manifest');}
- const manifestZip=path.join(out,'manifest.zip');const manifestNames=downloadZipValidated(manifestURL,manifestZip,session);
- assert.deepEqual(manifestNames,['FMA2Obj.txt']);const bytes=member(manifestZip,'FMA2Obj.txt'),catalog=parseMembership(bytes.toString('utf8'));
+ const manifestZip=path.join(out,'manifest.zip');const {bytes,catalog}=retainedManifest===null?downloadPublisherManifest(manifestURL,manifestZip,session,doc.expectedManifestSHA256):validateRetainedManifest(retainedManifest,doc.expectedManifestSHA256);
  const candidates=validateCandidates(doc,catalog),results=[];
  fs.writeFileSync(path.join(out,'FMA2Obj.txt'),bytes,{flag:'wx',mode:0o600});
  for(const r of candidates){
@@ -112,7 +130,7 @@ export function run(inputDoc=null,{allowHeld=false}={}){
    results.push({...r,status:'EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH',archiveMember:name,rawSHA256,glbSHA256:glb.sha256,archiveSHA256:digest(fs.readFileSync(zip)),rawBytes:raw.length,triangles:parsed.positions.length/9,omitted:parsed.omitted});
   }catch(e){results.push({...r,status:'HOLD',reason:String(e.message)});}
  }
- const report={schema:1,version:'4.3',manifestURL,manifestSHA256:digest(bytes),manifestElements:catalog.all.size,results,parsed:results.filter(r=>r.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH').length,held:results.filter(r=>r.status==='HOLD').length,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO',licenseReview:doc.licenseReview};
+ const report={schema:1,version:'4.3',manifestURL,manifestSHA256:digest(bytes),manifestElements:catalog.all.size,manifestAcquisition:retainedManifest===null?'FRESH_PUBLISHER_ZIP':'EXACT_PINNED_RETAINED_BYTES',results,parsed:results.filter(r=>r.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH').length,held:results.filter(r=>r.status==='HOLD').length,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO',licenseReview:doc.licenseReview};
  fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
  console.log('BP3D43 PRIVATE ELEMENT INTAKE',JSON.stringify(report));
  fs.rmSync(cookie,{force:true});fs.rmSync(path.join(out,'session.html'),{force:true});

@@ -1,0 +1,30 @@
+name: Atlas SPL ear and head-neck source inventory
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/audit-spl-additional-source.py'
+      - '.github/workflows/atlas-spl-additional-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-spl-additional-source-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        source: [ear, head-neck]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/audit-spl-additional-source.py --test
+      - run: python scripts/audit-spl-additional-source.py ${{ matrix.source }}

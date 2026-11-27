@@ -55,3 +55,34 @@ test('persistent bad publisher response never leaves an accepted ZIP',()=>{
  assert.equal(calls,3);assert(!fs.existsSync(out));assert(!fs.existsSync(out+'.partial'));
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+import {createHash} from 'node:crypto';
+import {downloadPublisherManifest} from './intake-bp3d43-priority-elements.mjs';
+test('pinned manifest replay rejects a valid ZIP with changed or malformed membership before retrying',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'bp43-manifest-'));
+ try{
+  const valid='# Data Version 4.3\n# Objects set 4.3\nFMA1 is_a FJ1\n',pin=createHash('sha256').update(valid).digest('hex');
+  const makeZip=(name,content)=>{const f=path.join(dir,name);execFileSync('python3',['-c','import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],"w"); z.writestr("FMA2Obj.txt",sys.argv[2]); z.close()',f,content]);return f;};
+  const malformed=makeZip('malformed.zip','# Data Version 4.3\n# Objects set 4.3\nFMA1 invalid FJ1'),changed=makeZip('changed.zip',valid.replace('FJ1','FJ2')),exact=makeZip('exact.zip',valid),out=path.join(dir,'out.zip');
+  let n=0;const fetch=(_url,dest)=>fs.copyFileSync([malformed,changed,exact][n++],dest);
+  const r=downloadPublisherManifest('https://example.invalid',out,[],pin,{fetch});
+  assert.equal(n,3);assert.equal(r.bytes.toString(),valid);assert(r.catalog.all.has('FJ1'));assert(!fs.existsSync(out+'.partial'));
+  const held=path.join(dir,'held.zip');
+  assert.throws(()=>downloadPublisherManifest('https://example.invalid',held,[],pin,{fetch:(_url,dest)=>fs.copyFileSync(changed,dest)}),/3 bounded attempts/);
+  assert(!fs.existsSync(held));assert(!fs.existsSync(held+'.partial'));
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('only the checkpoint batch accepts up to 36 individually validated elements',()=>{
+ const rows=Array.from({length:37},(_,i)=>({fj:'FJ'+(i+1),bp:'BP'+(i+1),fma:'FMA1',name:'Fixture '+(i+1),conceptMembership:['is_a']}));
+ const catalog={all:new Set(rows.map(r=>r.fj)),rows:new Map([['FMA1:is_a',rows.map(r=>r.fj)]])};
+ const doc={sourceVersion:'4.3',geometryVerified:false,publicRelease:'NO_GO',rows:rows.slice(0,36)};
+ assert.throws(()=>validateCandidates(doc,catalog));
+ assert.equal(validateCandidates({...doc,batchId:'checkpoint-components-36'},catalog).length,36);
+ assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows},catalog));
+ assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows:[...doc.rows.slice(0,35),doc.rows[0]]},catalog));
+ assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows:doc.rows.map((r,i)=>i===35?{...r,fma:'FMA2'}:r)},catalog));
+});
+
+import {validateRetainedManifest} from './intake-bp3d43-priority-elements.mjs';
+test('retained manifest is accepted only with exact pin and valid 4.3 membership',()=>{const b=Buffer.from('# Data Version 4.3\n# Objects set 4.3\nFMA1 is_a FJ1\n'),pin=createHash('sha256').update(b).digest('hex');assert(validateRetainedManifest(b,pin).catalog.all.has('FJ1'));assert.throws(()=>validateRetainedManifest(Buffer.from(b.toString().replace('FJ1','FJ2')),pin));assert.throws(()=>validateRetainedManifest(b,undefined));const changed=Buffer.from(b.toString().replaceAll('4.3','4.0'));assert.throws(()=>validateRetainedManifest(changed,createHash('sha256').update(changed).digest('hex')));});

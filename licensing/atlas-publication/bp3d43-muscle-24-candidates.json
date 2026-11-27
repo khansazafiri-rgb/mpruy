@@ -1,0 +1,351 @@
+{
+  "schema": 1,
+  "batchId": "muscle-24",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "24 source label and exact membership candidates. CSV may carry parent FMA; file identity and exact membership are reverified before dual-source replay. Not proof of missing local 4.0 geometry.",
+  "rows": [
+    {
+      "fj": "FJ1506M",
+      "discoveryBP": "BP20454",
+      "discoveryFMA": "FMA32545",
+      "name": "Left supraspinatus",
+      "faces": 878,
+      "vertices": 842,
+      "bytes": 74704,
+      "group": "muscular",
+      "csvFMA": "FMA32520",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1506",
+      "discoveryBP": "BP20406",
+      "discoveryFMA": "FMA32544",
+      "name": "Right supraspinatus",
+      "faces": 878,
+      "vertices": 843,
+      "bytes": 75808,
+      "group": "muscular",
+      "csvFMA": "FMA32520",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1504M",
+      "discoveryBP": "BP20341",
+      "discoveryFMA": "FMA13415",
+      "name": "Left subscapularis",
+      "faces": 2092,
+      "vertices": 2759,
+      "bytes": 227740,
+      "group": "muscular",
+      "csvFMA": "FMA13413",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1504",
+      "discoveryBP": "BP20479",
+      "discoveryFMA": "FMA13414",
+      "name": "Right subscapularis",
+      "faces": 2092,
+      "vertices": 2775,
+      "bytes": 231369,
+      "group": "muscular",
+      "csvFMA": "FMA13413",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1508M",
+      "discoveryBP": "BP20604",
+      "discoveryFMA": "FMA32554",
+      "name": "Left teres minor",
+      "faces": 506,
+      "vertices": 391,
+      "bytes": 37318,
+      "group": "muscular",
+      "csvFMA": "FMA32520",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1508",
+      "discoveryBP": "BP20345",
+      "discoveryFMA": "FMA32553",
+      "name": "Right teres minor",
+      "faces": 506,
+      "vertices": 392,
+      "bytes": 37648,
+      "group": "muscular",
+      "csvFMA": "FMA32520",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1418M",
+      "discoveryBP": "BP23939",
+      "discoveryFMA": "FMA22329",
+      "name": "Left gluteus maximus",
+      "faces": 2376,
+      "vertices": 2053,
+      "bytes": 195055,
+      "group": "muscular",
+      "csvFMA": "FMA22314",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1418",
+      "discoveryBP": "BP23934",
+      "discoveryFMA": "FMA22328",
+      "name": "Right gluteus maximus",
+      "faces": 2376,
+      "vertices": 2053,
+      "bytes": 197021,
+      "group": "muscular",
+      "csvFMA": "FMA22314",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1419M",
+      "discoveryBP": "BP20696",
+      "discoveryFMA": "FMA22331",
+      "name": "Left gluteus medius",
+      "faces": 3356,
+      "vertices": 2308,
+      "bytes": 244028,
+      "group": "muscular",
+      "csvFMA": "FMA22315",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1419",
+      "discoveryBP": "BP20250",
+      "discoveryFMA": "FMA22330",
+      "name": "Right gluteus medius",
+      "faces": 3356,
+      "vertices": 2312,
+      "bytes": 246287,
+      "group": "muscular",
+      "csvFMA": "FMA22315",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1420M",
+      "discoveryBP": "BP20244",
+      "discoveryFMA": "FMA22333",
+      "name": "Left gluteus minimus",
+      "faces": 4208,
+      "vertices": 3066,
+      "bytes": 318400,
+      "group": "muscular",
+      "csvFMA": "FMA22317",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1420",
+      "discoveryBP": "BP22923",
+      "discoveryFMA": "FMA22332",
+      "name": "Right gluteus minimus",
+      "faces": 4208,
+      "vertices": 3066,
+      "bytes": 321136,
+      "group": "muscular",
+      "csvFMA": "FMA22317",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1433M",
+      "discoveryBP": "BP23766",
+      "discoveryFMA": "FMA38929",
+      "name": "Left rectus femoris",
+      "faces": 5688,
+      "vertices": 3326,
+      "bytes": 386021,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1433",
+      "discoveryBP": "BP23176",
+      "discoveryFMA": "FMA38928",
+      "name": "Right rectus femoris",
+      "faces": 5688,
+      "vertices": 3326,
+      "bytes": 389381,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1442M",
+      "discoveryBP": "BP23367",
+      "discoveryFMA": "FMA38931",
+      "name": "Left vastus lateralis",
+      "faces": 6688,
+      "vertices": 3974,
+      "bytes": 460578,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1442",
+      "discoveryBP": "BP23150",
+      "discoveryFMA": "FMA38930",
+      "name": "Right vastus lateralis",
+      "faces": 6688,
+      "vertices": 3975,
+      "bytes": 464315,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1443M",
+      "discoveryBP": "BP23244",
+      "discoveryFMA": "FMA38933",
+      "name": "Left vastus medialis",
+      "faces": 4552,
+      "vertices": 2772,
+      "bytes": 314706,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1443",
+      "discoveryBP": "BP20583",
+      "discoveryFMA": "FMA38932",
+      "name": "Right vastus medialis",
+      "faces": 4552,
+      "vertices": 2773,
+      "bytes": 317440,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1441M",
+      "discoveryBP": "BP23111",
+      "discoveryFMA": "FMA38935",
+      "name": "Left vastus intermedius",
+      "faces": 4260,
+      "vertices": 2744,
+      "bytes": 301799,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1441",
+      "discoveryBP": "BP23143",
+      "discoveryFMA": "FMA38934",
+      "name": "Right vastus intermedius",
+      "faces": 4260,
+      "vertices": 2748,
+      "bytes": 304715,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1439M",
+      "discoveryBP": "BP22485",
+      "discoveryFMA": "FMA22545",
+      "name": "Left tibialis anterior",
+      "faces": 2510,
+      "vertices": 2206,
+      "bytes": 211295,
+      "group": "muscular",
+      "csvFMA": "FMA22471",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1439",
+      "discoveryBP": "BP20542",
+      "discoveryFMA": "FMA22544",
+      "name": "Right tibialis anterior",
+      "faces": 2510,
+      "vertices": 2204,
+      "bytes": 212990,
+      "group": "muscular",
+      "csvFMA": "FMA22471",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1437M",
+      "discoveryBP": "BP20918",
+      "discoveryFMA": "FMA22559",
+      "name": "Left soleus",
+      "faces": 4418,
+      "vertices": 2674,
+      "bytes": 303298,
+      "group": "muscular",
+      "csvFMA": "FMA22471",
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ1437",
+      "discoveryBP": "BP20851",
+      "discoveryFMA": "FMA22558",
+      "name": "Right soleus",
+      "faces": 4418,
+      "vertices": 2674,
+      "bytes": 306672,
+      "group": "muscular",
+      "csvFMA": "FMA22471",
+      "conceptMembership": [
+        "is_a"
+      ]
+    }
+  ]
+}

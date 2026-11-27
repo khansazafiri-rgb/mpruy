@@ -1,0 +1,1175 @@
+{
+  "schema": 1,
+  "batch": "knee-larynx-six",
+  "sourceCommit": "15e6a0a12b17ac4296c38253f0c78052651cfcb7",
+  "workflowRun": 45928486689,
+  "workflowJob": 140275382547,
+  "conclusion": "success",
+  "sourceObjects": 6,
+  "exactSourceGroups": 16,
+  "remainingHeld": 0,
+  "rows": [
+    {
+      "id": "knee-female-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb",
+      "sha256": "8c65eec0419b5c576e6fb0fb9f149384df4df29c543a171a0173281cb43f7f4c",
+      "groups": [
+        {
+          "nodeName": "VH_F_knee_L",
+          "ontologyId": "FMA:24978",
+          "label": "Left knee",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_meniscus_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_femur_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_intercondylar_fossa_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_anterior_cruciate_enthesis_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_posterior_cruciate_enthesis_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_lateral_perichondular_surface_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_lateral_epicondylar_enthesis_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_medial_epicondylar_enthesis_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_trochlear_groove_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_medial_perichondular_surface_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_articular_cartilage_of_knee_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_medial_condyle_of_left_femur_inf",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_lateral_condyle_of_femur_inf_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_lateral_condyle_of_femur_frontal_L",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_distal_most_point_of_medial_condyle_L",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_lateral_condyle_of_femur_sup_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_medial_condyle_of_left_femur_sup",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_patella_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_tibia_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_fibula_L",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_knee_joint_L",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_femur_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_intercondylar_fossa_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_anterior_cruciate_enthesis_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_posterior_cruciate_enthesis_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_lateral_perichondular_surface_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_lateral_epicondylar_enthesis_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_medial_epicondylar_enthesis_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_trochlear_groove_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_medial_perichondular_surface_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_articular_cartilage_of_knee_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_medial_condyle_of_left_femur_inf",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_lateral_condyle_of_femur_inf_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_lateral_condyle_of_femur_frontal_L",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_distal_most_point_of_medial_condyle_L",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_lateral_condyle_of_femur_sup_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_medial_condyle_of_left_femur_sup",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_patella_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_tibia_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_fibula_L",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "knee-female-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb",
+      "sha256": "529e94d69a5f0212fbe541021539fb060fa59476fbca61e1d71452672984e674",
+      "groups": [
+        {
+          "nodeName": "VH_F_knee_R",
+          "ontologyId": "FMA:24977",
+          "label": "Right knee",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_meniscus_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_femur_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_trochlear_groove_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_medial_perichondular_surface_R",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_articular_cartilage_of_knee_R",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_medial_condyle_of_right_femur_sup",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_lateral_condyle_of_femur_sup_R",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_medial_condyle_of_right_femur_inf",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_lateral_condyle_of_femur_inf_R",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_lateral_condyle_of_femur_frontal_R",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_distal_most_point_of_medial_condyle_R",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_intercondylar_fossa_R",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_posterior_cruciate_enthesis_R",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_anterior_cruciate_enthesis_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_lateral_perichondular_surface_R",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_lateral_epicondylar_enthesis_R",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_medial_epicondylar_enthesis_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_tibia_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_fibula_R",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_patella_R",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_knee_joint_R",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_femur_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_trochlear_groove_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_medial_perichondular_surface_R",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_articular_cartilage_of_knee_R",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_medial_condyle_of_right_femur_sup",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_lateral_condyle_of_femur_sup_R",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_medial_condyle_of_right_femur_inf",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_lateral_condyle_of_femur_inf_R",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_lateral_condyle_of_femur_frontal_R",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_distal_most_point_of_medial_condyle_R",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_intercondylar_fossa_R",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_posterior_cruciate_enthesis_R",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_anterior_cruciate_enthesis_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_lateral_perichondular_surface_R",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_lateral_epicondylar_enthesis_R",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_medial_epicondylar_enthesis_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_tibia_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_fibula_R",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_patella_R",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "knee-male-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb",
+      "sha256": "2f15b825da044aafef760ab62aa2e9111f63d674efaa4c3d96ddb04f9b1ef6aa",
+      "groups": [
+        {
+          "nodeName": "VH_M_knee_L",
+          "ontologyId": "FMA:24978",
+          "label": "Left knee",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_meniscus_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_fibula_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_femur_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_articular_cartilage_of_knee_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_intercondylar_fossa_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_anterior_cruciate_enthesis_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_posterior_cruciate_enthesis_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_lateral_condyle_of_femur_frontal_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_lateral_condyle_of_femur_inf_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_lateral_condyle_of_femur_sup_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_lateral_epicondylar_enthesis_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_lateral_perichondular_surface_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_medial_condyle_of_left_femur_inf",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_medial_condyle_of_left_femur_sup",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_medial_epicondylar_enthesis_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_medial_perichondular_surface_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_patellar_surface_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_tibia_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_patella_L",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_knee_joint_L",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_fibula_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_femur_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_articular_cartilage_of_knee_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_intercondylar_fossa_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_anterior_cruciate_enthesis_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_posterior_cruciate_enthesis_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_lateral_condyle_of_femur_frontal_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_lateral_condyle_of_femur_inf_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_lateral_condyle_of_femur_sup_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_lateral_epicondylar_enthesis_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_lateral_perichondular_surface_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_medial_condyle_of_left_femur_inf",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_medial_condyle_of_left_femur_sup",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_medial_epicondylar_enthesis_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_medial_perichondular_surface_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_patellar_surface_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_tibia_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_patella_L",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "knee-male-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb",
+      "sha256": "668b23ebdd01d8140a5fe32d4092fe53c541ba413f30159c48369653798f5100",
+      "groups": [
+        {
+          "nodeName": "VH_M_knee_R",
+          "ontologyId": "FMA:24977",
+          "label": "Right knee",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "VH_M_tibia_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_fibula_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_patella_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_femur_R",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_articular_cartilage_of_knee_R",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_intercondylar_fossa_R",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_anterior_cruciate_enthesis_R",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_posterior_cruciate_enthesis_R",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_lateral_condyle_of_femur_frontal_R",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_lateral_condyle_of_femur_inf_R",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_lateral_condyle_of_femur_sup_R",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_lateral_epicondylar_enthesis_R",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_lateral_perichondular_surface_R",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_medial_condyle_of_right_femur_inf",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_medial_condyle_of_right_femur_sup",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_medial_epicondylar_enthesis_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_medial_perichondular_surface_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_patellar_surface_R",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_meniscus_R",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_knee_joint_R",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "VH_M_tibia_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_fibula_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_patella_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_femur_R",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_articular_cartilage_of_knee_R",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_intercondylar_fossa_R",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_anterior_cruciate_enthesis_R",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_posterior_cruciate_enthesis_R",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_lateral_condyle_of_femur_frontal_R",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_lateral_condyle_of_femur_inf_R",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_lateral_condyle_of_femur_sup_R",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_lateral_epicondylar_enthesis_R",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_lateral_perichondular_surface_R",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_medial_condyle_of_right_femur_inf",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_medial_condyle_of_right_femur_sup",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_medial_epicondylar_enthesis_R",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_medial_perichondular_surface_R",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_patellar_surface_R",
+              "meshIndex": 18
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "larynx-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb",
+      "sha256": "01c300b96bb4686dc1b68701361bea00088dbe29f3d5268e9fd1382d7fde9efd",
+      "groups": [
+        {
+          "nodeName": "VH_F_larynx",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_arytenoid_cartilage_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_arytenoid_cartilage_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_epiglotic_cartilage",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_cricoid_cartilage",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_thyroid_cartilage",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_corniculate_cartilage_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_corniculate_cartilage_R",
+              "meshIndex": 6
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_laryngeal_cartilage",
+          "ontologyId": "UBERON:0001739",
+          "label": "laryngeal cartilage",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_arytenoid_cartilage_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_arytenoid_cartilage_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_epiglotic_cartilage",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_cricoid_cartilage",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_thyroid_cartilage",
+              "meshIndex": 4
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage",
+          "ontologyId": "UBERON:0001740",
+          "label": "arytenoid cartilage",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_arytenoid_cartilage_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_arytenoid_cartilage_L",
+              "meshIndex": 1
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage",
+          "ontologyId": "UBERON:0001741",
+          "label": "corniculate cartilage",
+          "index": 8,
+          "descendantMeshes": [
+            {
+              "index": 9,
+              "nodeName": "VH_F_corniculate_cartilage_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_corniculate_cartilage_R",
+              "meshIndex": 6
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "larynx-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb",
+      "sha256": "cdb6b3b5b0abd2b06e99913a8f4719e7b0784421b0534ae728e832197d30e287",
+      "groups": [
+        {
+          "nodeName": "VH_M_larynx",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_arytenoid_cartilage_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_arytenoid_cartilage_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_epiglottic_cartilage",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_cricoid_cartilage",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_thyroid_cartilage",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_corniculate_cartilage_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_corniculate_cartilage_R",
+              "meshIndex": 6
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_laryngeal_cartilage",
+          "ontologyId": "UBERON:0001739",
+          "label": "laryngeal cartilage",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_arytenoid_cartilage_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_arytenoid_cartilage_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_epiglottic_cartilage",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_cricoid_cartilage",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_thyroid_cartilage",
+              "meshIndex": 4
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage",
+          "ontologyId": "UBERON:0001740",
+          "label": "arytenoid cartilage",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_arytenoid_cartilage_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_arytenoid_cartilage_L",
+              "meshIndex": 1
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage",
+          "ontologyId": "UBERON:0001741",
+          "label": "corniculate cartilage",
+          "index": 8,
+          "descendantMeshes": [
+            {
+              "index": 9,
+              "nodeName": "VH_M_corniculate_cartilage_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_corniculate_cartilage_R",
+              "meshIndex": 6
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "browserReplayVerified": false
+}

@@ -20,9 +20,9 @@ export function mountOriginalShell(api){
  click('returnContext',()=>act(()=>api.restoreContext()));
  click('resetBtn',()=>api.fit());click('zoomInAtlas',()=>api.zoom(.8));click('zoomOutAtlas',()=>api.zoom(1.25));
  click('panAtlas',()=>{const b=$('panAtlas');const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));api.pan(on);});
- for(const [id,axis,label] of [['frontViewBtn','front','+Z'],['sideViewBtn','side','−X'],['backViewBtn','back','−Z'],['topViewBtn','top','+Y']]){
-  $(id).textContent=label;$(id).title='Sumbu sumber '+label+'; orientasi anatomi belum divalidasi';click(id,()=>api.axis(axis));
- }
+ const axisButtons=[['frontViewBtn','front','+Z'],['sideViewBtn','side','−X'],['backViewBtn','back','−Z'],['topViewBtn','top','+Y']];
+ for(const [id,axis,label] of axisButtons){$(id).textContent=label;$(id).title='Sumbu sumber '+label;click(id,()=>api.axis(axis));}
+ function setAxes(labels){for(const [id,axis] of axisButtons){const [label,name]=labels[axis];$(id).textContent=label;$(id).title=name+' · '+label+' (sumbu publisher)';$(id).setAttribute('aria-label',name+' '+label);}}
  click('infoToggle',()=>api.clear());click('infoOpen',()=>original.classList.add('info-open'));click('infoExpand',()=>{const on=original.classList.toggle('info-expanded');$('infoExpand').setAttribute('aria-expanded',String(on));});
  click('footerIsolateBtn',()=>act(()=>api.isolate()));click('footerHideBtn',()=>act(()=>api.hide()));
  click('footerTransparentBtn',()=>act(()=>api.fadeSelected()));click('footerFadeOthersBtn',()=>act(()=>api.fadeOthers()));
@@ -42,7 +42,7 @@ export function mountOriginalShell(api){
  const head=make('div','atlas-browse-head'),title=make('strong'),close=make('button','','×');close.onclick=()=>{browse.hidden=true;};head.append(title,close);
  const list=make('div');list.id='originalBrowseList';browse.append(head,list);original.append(browse);
  const search=$('searchInput'),results=$('searchResults');let activeGroup=null;
- function result(e){const b=make('button','atlas-result'),thumb=make('span','atlas-result-thumb'),dot=make('i'),txt=make('span','atlas-result-text');dot.style.setProperty('--group-color',api.color(e.group));thumb.append(dot);if(/^(bp|sel)-[a-f0-9]{24}$/.test(e.id)){const img=make('img');img.alt='';img.loading='lazy';img.decoding='async';img.src='./private-thumbnails/'+e.id+'.png';img.style.cssText='width:100%;height:100%;object-fit:contain';img.onload=()=>{dot.hidden=true;};img.onerror=()=>img.remove();thumb.append(img);}txt.append(make('span','',e.name),make('small','',api.groups[e.group]+(e.contextCandidate?' · kandidat konteks':e.priorityOnly?' · representasi terpisah':e.selectionOnly?' · seleksi elemen sumber':'')+' · '+(e.fmaId||'')));b.append(thumb,txt);b.onclick=()=>{act(()=>api.choose(e));results.classList.remove('show');browse.hidden=true;original.querySelector('.atlas-topbar').classList.remove('search-open');};return b;}
+ function result(e){const b=make('button','atlas-result'),thumb=make('span','atlas-result-thumb'),dot=make('i'),txt=make('span','atlas-result-text');dot.style.setProperty('--group-color',api.color(e.group));thumb.append(dot);if(/^(bp|sel)-[a-f0-9]{24}$/.test(e.id)){const img=make('img');img.alt='';img.loading='lazy';img.decoding='async';img.src='./private-thumbnails/'+e.id+'.png';img.style.cssText='width:100%;height:100%;object-fit:contain';img.onload=()=>{dot.hidden=true;};img.onerror=()=>img.remove();thumb.append(img);}txt.append(make('span','',e.name),make('small','',api.groups[e.group]+(e.contextCandidate?' · kandidat konteks':e.priorityOnly?' · representasi terpisah':e.selectionOnly?' · seleksi elemen sumber':'')+' · '+(e.fmaId||'')));b.dataset.atlasEntryId=e.id;b.append(thumb,txt);b.onclick=()=>{act(()=>api.choose(e));results.classList.remove('show');browse.hidden=true;original.querySelector('.atlas-topbar').classList.remove('search-open');};return b;}
  function showResults(){results.replaceChildren();const q=search.value.trim();if(q.length<2){results.classList.remove('show');return;}const hits=api.entries().filter(e=>(e.name+' '+(e.fmaId||'')).toLowerCase().includes(q.toLowerCase())).slice(0,40);for(const e of hits)results.append(result(e));if(!hits.length)results.append(make('p','search-empty','Struktur tidak ditemukan dalam paket ini.'));results.classList.add('show');}
  search.oninput=showResults;search.onkeydown=e=>{if(e.key==='Escape')results.classList.remove('show');if(e.key==='Enter')results.querySelector('button')?.click();};
  function showGroup(g){activeGroup=g;title.textContent=api.groups[g];list.replaceChildren();for(const e of api.entries().filter(e=>e.group===g).sort((a,b)=>a.name.localeCompare(b.name)))list.append(result(e));browse.hidden=false;}
@@ -51,18 +51,18 @@ export function mountOriginalShell(api){
   minus.disabled=true;plus.disabled=true;minus.title=plus.title='Lapisan belum tervalidasi';steps.append(minus,plus);
   const toggle=make('button','sys-toggle'),dot=make('span','sys-dot'),name=make('span','sys-name',label),layers=make('span','sys-layers');layers.append(make('i'));
   toggle.append(dot,name,layers);toggle.onclick=()=>act(()=>api.toggle(g));const more=make('button','sys-more','⋯');more.title='Daftar '+label;more.onclick=()=>showGroup(g);
-  tile.style.setProperty('--group-color',api.color(g));tile.append(steps,toggle,more);tiles.append(tile);tileMap.set(g,{tile,toggle,more,layers});
+  tile.dataset.group=g;tile.style.setProperty('--group-color',api.color(g));tile.append(steps,toggle,more);tiles.append(tile);tileMap.set(g,{tile,toggle,more,layers});
  }
  let scheduled=false,lastSelection=null;
  function renderNow(){
   scheduled=false;const s=api.state();for(const [g,t] of tileMap){const n=api.entries().filter(e=>e.group===g&&!e.priorityOnly&&!e.selectionOnly).length;t.tile.classList.toggle('is-on',s.enabled.has(g));t.toggle.setAttribute('aria-pressed',String(s.enabled.has(g)));t.toggle.disabled=!n;t.more.disabled=!api.entries().some(e=>e.group===g);t.toggle.title=String(n)+' model tubuh';t.layers.firstChild.classList.toggle('on',s.enabled.has(g));}
   const e=s.selected;original.classList.toggle('info-open',!!e);$('returnContext').hidden=!s.isolated&&!s.hidden.size;$('footerBar').style.display=e?'':'none';$('structureInfo').classList.toggle('hidden',!e);original.querySelector('.info-placeholder').hidden=!!e;
   if(e&&lastSelection!==e.id){const h=make('div','structure-title');h.append(make('h3','',e.name));const tags=make('div','structure-tags');tags.append(make('span','structure-system',api.groups[e.group]),make('span','structure-tag warn','Review privat'));h.append(tags,make('p','structure-description',(e.fmaId||'')+' · '+(e.bpId||'')+(e.contextCandidate?' · kandidat konteks':e.priorityOnly?' · representasi terpisah':e.selectionOnly?' · seleksi elemen sumber':'')+' · identitas sumber; belum tervalidasi klinis.'));$('structureInfo').replaceChildren(h);}
-  lastSelection=e?.id||null;$('atlasStatus').textContent=api.status();$('atlasSelection').textContent=e?.name||'';$('atlasStatus').dataset.visibleMeshes=String(s.visibleMeshes);$('atlasStatus').dataset.highlightedMeshes=String(s.highlightedMeshes);
+  lastSelection=e?.id||null;$('atlasStatus').textContent=api.status();$('atlasSelection').textContent=e?.name||'';$('atlasStatus').dataset.selectedId=e?.id||'';$('atlasStatus').dataset.isolatedId=s.isolated||'';$('atlasStatus').dataset.visibleModels=String(s.visibleModels);$('atlasStatus').dataset.failedModels=String(s.failedModels);$('atlasStatus').dataset.loading=String(s.loading);$('atlasStatus').dataset.visibleMeshes=String(s.visibleMeshes);$('atlasStatus').dataset.highlightedMeshes=String(s.highlightedMeshes);
   $('emptyScene').hidden=!s.ready||s.loading||s.visibleMeshes>0||s.error;$('loadingOverlay').classList.toggle('hidden',s.ready);$('undoAtlas').disabled=!history.length;
  }
  function render(){if(!scheduled){scheduled=true;requestAnimationFrame(renderNow);}}
  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!['INPUT','TEXTAREA'].includes(e.target?.tagName)){e.preventDefault();$('undoAtlas').click();}});
  const full=make('button','btn-icon','⛶');full.title='Layar penuh';full.setAttribute('aria-label','Layar penuh');full.onclick=()=>api.fullscreen();original.querySelector('.header-right').append(full);
- return {render};
+ return {render,setAxes};
 }

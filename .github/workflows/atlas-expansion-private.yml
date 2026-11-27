@@ -1,0 +1,45 @@
+name: Atlas 128-element expansion private browser regression
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'apps/atlas-independent/src/reference43-expansion-catalog.js'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - '.github/workflows/atlas-expansion-private.yml'
+permissions:
+  contents: read
+jobs:
+  expansion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: npm test --prefix apps/atlas-independent
+      - run: node --test scripts/build-atlas-review-queue.test.mjs scripts/atlas-expansion-evidence.test.mjs
+      - name: Fresh audited expansion geometry
+        run: |
+          node scripts/audit-bp3d43-gap-batch.mjs cerebral-29
+          node scripts/audit-bp3d43-gap-batch.mjs axial-bone-32
+          node scripts/audit-bp3d43-gap-batch.mjs cranial-32
+          node scripts/audit-bp3d43-gap-batch.mjs limb-facial-bone-25
+          node scripts/audit-bp3d43-gap-batch.mjs cranial-10
+      - name: Install isolated browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Render actual 128 GLBs, exact source and provisional multilingual challenge
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_REAL43=expansion node scripts/test-private-atlas-browser.mjs
+      - name: Remove temporary source anatomy
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*

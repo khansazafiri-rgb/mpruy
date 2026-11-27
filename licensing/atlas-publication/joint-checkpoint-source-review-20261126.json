@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "scope": "Source availability only; no new geometry, identity, laterality, privacy or release approvals.",
+  "bp43Mirror": {
+    "repo": "olivercase/body_parts_3d_api",
+    "commit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+    "query": "cruciate|meniscus|hip joint|knee joint|shoulder joint|elbow joint|wrist joint|ankle joint|talocrural|glenohumeral|acetabular labrum",
+    "matches": 0,
+    "limitation": "Manifest text lookup only; no assertion of absence from all datasets."
+  },
+  "discReferences": {
+    "elements": 23,
+    "checkpoint": "intervertebral disc",
+    "scope": "LEVEL_SPECIFIC_REFERENCE"
+  },
+  "splKnee": {
+    "pinnedArchiveSHA256": "2f61002f42843910eada3877adf4229ef845bf87cc1e422b719c930dfadc5f6a",
+    "vtkMeshes": 48,
+    "identityAndLaterality": "PENDING",
+    "privacyReview": "PENDING",
+    "assetRightsReviewed": false
+  },
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

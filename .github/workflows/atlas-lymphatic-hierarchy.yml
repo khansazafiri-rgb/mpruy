@@ -1,0 +1,48 @@
+name: Atlas pinned HRA lymphatic hierarchy audit
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/audit-hra-lymphatic-hierarchy*'
+      - 'scripts/atlas-lymphatic-hierarchy-page.mjs'
+      - 'apps/atlas-independent/src/reference-viewer.js'
+      - '.github/workflows/atlas-lymphatic-hierarchy.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-lymphatic-hierarchy-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  hierarchy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-hra-lymphatic-hierarchy.test.mjs
+      - name: Acquire pinned CSV and publisher metadata only
+        run: |
+          node scripts/audit-hra-lymphatic-hierarchy.mjs --stage-private
+          folders=(local-data/licensing-quarantine/hra-lymphatic-hierarchy-*)
+          test "${#folders[@]}" -eq 1
+          HRA_LYMPHATIC_FOLDER="$(basename "${folders[0]}")" node --test scripts/audit-hra-lymphatic-hierarchy.test.mjs
+      - name: Install independent viewer and isolated Chromium
+        run: |
+          npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install chromium
+      - name: Real source hierarchy browser and original UI regression
+        run: |
+          folders=(local-data/licensing-quarantine/hra-lymphatic-hierarchy-*)
+          test "${#folders[@]}" -eq 1
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          HRA_LYMPHATIC_FOLDER="$(basename "${folders[0]}")" node scripts/test-private-atlas-browser.mjs
+      - name: Remove temporary source metadata
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/hra-lymphatic-hierarchy-*

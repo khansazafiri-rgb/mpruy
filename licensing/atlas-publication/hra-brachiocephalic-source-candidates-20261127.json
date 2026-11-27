@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "sourceCommit": "1213feabdb1b384fc323a1838bea972ee1608f5f",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "target": "brachiocephalic trunk",
+  "sourceLabel": "brachiocephalic artery",
+  "ontologyId": "UBERON:0001529",
+  "status": "PINNED_SYNONYM_CANDIDATE_PENDING_GEOMETRY_AND_COMPONENT_REVIEW",
+  "rows": [
+    {
+      "id": "united-female",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+      "crosswalkBlob": "006820415925e1b056e75f053d2032fee36a07e0",
+      "matches": [
+        {
+          "nodeName": "VH_F_brachiocephalic_artery_b",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_F_brachiocephalic_artery_a",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        }
+      ]
+    },
+    {
+      "id": "united-male",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+      "crosswalkBlob": "34e2c5611f9c8be3fb85dc741ab471815259ac40",
+      "matches": [
+        {
+          "nodeName": "VH_M_brachiocephalic_artery",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery_b",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery_a",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "MULTIPLE_NODES_NOT_INDEPENDENT_WHOLE_STRUCTURES",
+    "NO_AUTOMATIC_MERGE",
+    "NO_BODY_REGISTRATION"
+  ],
+  "publicRelease": "NO_GO"
+}

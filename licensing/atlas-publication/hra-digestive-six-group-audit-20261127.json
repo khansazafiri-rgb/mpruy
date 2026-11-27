@@ -1,0 +1,768 @@
+{
+  "schema": 1,
+  "batch": "digestive-six",
+  "sourceCommit": "435a28c03c69ae14fbaaef681bb1c2c1d646ea0a",
+  "workflowRun": 45924846168,
+  "workflowJob": 140263662262,
+  "conclusion": "success",
+  "sourceObjects": 6,
+  "exactSourceGroups": 14,
+  "remainingHeld": 0,
+  "rows": [
+    {
+      "id": "pancreas-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+      "sha256": "553411dfc0391d305191a8f204c88e9fd3c05f7a2c7501023914728f294d8b4e",
+      "groups": [
+        {
+          "nodeName": "VH_F_pancreas",
+          "ontologyId": "UBERON:0001264",
+          "label": "Pancreas",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_tail_of_pancreas",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_body_of_pancreas",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_ucinate_process1",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_head_of_pancreas",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_neck_of_pancreas",
+              "meshIndex": 4
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "pancreas-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+      "sha256": "a89d7acbc9448ca1e6c09f7f6d6a18b2bd8a2e94cd4a0b51709915a8b7bea84e",
+      "groups": [
+        {
+          "nodeName": "VH_M_pancreas",
+          "ontologyId": "UBERON:0001264",
+          "label": "Pancreas",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_body_of_pancreas",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_tail_of_pancreas",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_head_of_pancreas",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_neck_of_pancreas",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_uncinate_process_of_the_pancreas",
+              "meshIndex": 4
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "liver-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb",
+      "sha256": "2ab712216dc8af026f87c43b0ad783273fffdf080bb312bcb4c34724f53e5fa6",
+      "groups": [
+        {
+          "nodeName": "VH_F_liver",
+          "ontologyId": "UBERON:0002107",
+          "label": "liver",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_gastric_impression_of_liver",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_suprarenal_impression_of_liver",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_renal_impression_of_liver",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_duodenal_impression_of_liver",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_esophageal_impression_of_liver",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_porta_hepatis",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_colic_impression_of_liver",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_capsule_of_the_liver",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_bare_area_of_liver",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_diaphragmatic_surface_of_liver",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterolateral_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_superomedial_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_left_superomedial_segment1",
+              "meshIndex": 12
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_left_inferomedial_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_quadrate_lobe",
+              "meshIndex": 14
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_right_anterosuperior_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_right_posteroinferior_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_right_posterosuperior_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_right_anteroinferior_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_caudate_lobe",
+              "meshIndex": 19
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_coronary_ligament_of_liver",
+              "meshIndex": 20
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_falciform_ligament",
+              "meshIndex": 21
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_triangular_ligament_of_liver",
+              "meshIndex": 22
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_ligamentum_venosum",
+              "meshIndex": 23
+            },
+            {
+              "index": 31,
+              "nodeName": "VH_F_round_ligament_of_liver",
+              "meshIndex": 24
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_F_hepataduodenal_ligament",
+              "meshIndex": 25
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_left_lobe_of_liver",
+          "ontologyId": "UBERON:0001115",
+          "label": "left lobe of liver",
+          "index": 12,
+          "descendantMeshes": [
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterolateral_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_superomedial_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_left_superomedial_segment1",
+              "meshIndex": 12
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_left_inferomedial_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_quadrate_lobe",
+              "meshIndex": 14
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_liver_left_lateral_lobe",
+          "ontologyId": "UBERON:0006727",
+          "label": "liver left lateral lobe",
+          "index": 13,
+          "descendantMeshes": [
+            {
+              "index": 14,
+              "nodeName": "VH_F_left_anterolateral_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_left_superomedial_segment",
+              "meshIndex": 11
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_liver_left_medial_lobe",
+          "ontologyId": "UBERON:0006728",
+          "label": "liver left medial lobe",
+          "index": 16,
+          "descendantMeshes": [
+            {
+              "index": 17,
+              "nodeName": "VH_F_left_superomedial_segment1",
+              "meshIndex": 12
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_left_inferomedial_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_quadrate_lobe",
+              "meshIndex": 14
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_right_lobe_of_liver",
+          "ontologyId": "UBERON:0001114",
+          "label": "right lobe of liver",
+          "index": 20,
+          "descendantMeshes": [
+            {
+              "index": 21,
+              "nodeName": "VH_F_right_anterosuperior_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_right_posteroinferior_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_right_posterosuperior_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_right_anteroinferior_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_caudate_lobe",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "liver-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-male/v1.2/assets/3d-vh-m-liver.glb",
+      "sha256": "8e4c38293cfdb6b4f47ef2930c7f4af9e37b9144d1cf26d07c8f12c5045eb404",
+      "groups": [
+        {
+          "nodeName": "VH_M_liver",
+          "ontologyId": "UBERON:0002107",
+          "label": "liver",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_bare_area_of_liver",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_liver_capsule",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_diaphragmatic_surface",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_suprarenal_impression_of_liver",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_renal_impression_of_liver",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_gastric_impression_of_liver",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_colic_impression_of_liver",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_esophageal_impression_of_liver",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_duodenal_impression_of_liver",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_porta_hepatis",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_caudate_lobe_of_liver",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_right_posteroinferior_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_right_posterosuperior_segment",
+              "meshIndex": 12
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_right_anterosuperior_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_right_anteroinferior_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_left_anterolateral_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_left_posterolateral_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_left_superiomedial_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_left_inferomedial_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_quadrate_lobe_of_liver",
+              "meshIndex": 19
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_hepataduodenal_ligament",
+              "meshIndex": 20
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_ligamentum_venosum",
+              "meshIndex": 21
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_M_round_ligament_of_liver",
+              "meshIndex": 22
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_M_triangular_ligament_of_liver",
+              "meshIndex": 23
+            },
+            {
+              "index": 31,
+              "nodeName": "VH_M_falciform_ligament",
+              "meshIndex": 24
+            },
+            {
+              "index": 32,
+              "nodeName": "VH_M_coronary_ligament_of_liver",
+              "meshIndex": 25
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_right_lobe_of_liver",
+          "ontologyId": "UBERON:0001114",
+          "label": "right lobe of liver",
+          "index": 13,
+          "descendantMeshes": [
+            {
+              "index": 14,
+              "nodeName": "VH_M_right_posteroinferior_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_right_posterosuperior_segment",
+              "meshIndex": 12
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_right_anterosuperior_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_right_anteroinferior_segment",
+              "meshIndex": 14
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_left_lobe_of_liver",
+          "ontologyId": "UBERON:0001115",
+          "label": "left lobe of liver",
+          "index": 18,
+          "descendantMeshes": [
+            {
+              "index": 20,
+              "nodeName": "VH_M_left_anterolateral_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_left_posterolateral_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_left_superiomedial_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_left_inferomedial_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_quadrate_lobe_of_liver",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_left_lateral_lobe",
+          "ontologyId": "UBERON:0006727",
+          "label": "liver left lateral lobe",
+          "index": 19,
+          "descendantMeshes": [
+            {
+              "index": 20,
+              "nodeName": "VH_M_left_anterolateral_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_left_posterolateral_segment",
+              "meshIndex": 16
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_left_medial_lobe",
+          "ontologyId": "UBERON:0006728",
+          "label": "liver left medial lobe",
+          "index": 22,
+          "descendantMeshes": [
+            {
+              "index": 23,
+              "nodeName": "VH_M_left_superiomedial_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_left_inferomedial_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_quadrate_lobe_of_liver",
+              "meshIndex": 19
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "large-intestine-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-female/v1.3/assets/3d-sbu-f-large-intestine.glb",
+      "sha256": "b3046d2af718e7f031578db4089a9f4bea707aa4a75af98aab78f172c2f53d74",
+      "groups": [
+        {
+          "nodeName": "VH_F_colon",
+          "ontologyId": "UBERON:0000059",
+          "label": "large intestine",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_hepatic_flexure_of_colon",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_transverse_colon",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_ascending_colon",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_vermiform_appendix",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_descending_colon",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_ileocecal_valve",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_caecum",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_rectum",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_sigmoid_colon",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_splenic_flexure_of_colon",
+              "meshIndex": 9
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "large-intestine-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb",
+      "sha256": "908a5c38bf14574a673f2d2619502281f7f9e47c46c4eba837aae2e80e38c489",
+      "groups": [
+        {
+          "nodeName": "VH_M_colon",
+          "ontologyId": "UBERON:0000059",
+          "label": "large intestine",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_ascending_colon",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_descending_colon",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_hepatic_flexure_of_colon",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_rectum",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_sigmoid_colon",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_splenic_flexure_of_colon",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_transverse_colon",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_ileocecal_valve",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_caecum",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_vermiform_appendix",
+              "meshIndex": 9
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "browserReplayVerified": false
+}

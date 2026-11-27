@@ -1,0 +1,677 @@
+{
+  "schema": 1,
+  "batch": "ureter-four",
+  "sourceCommit": "5574e2ba791f8f23608d74138f106f15243ea46b",
+  "workflowRun": 45853361519,
+  "workflowJob": 140025225996,
+  "conclusion": "success",
+  "sourceObjects": 4,
+  "exactSourceGroups": 12,
+  "remainingHeld": 0,
+  "browserReplayVerified": false,
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "rows": [
+    {
+      "id": "ureter-female-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb",
+      "sha256": "a530ed1b4064221db5d3e82774911a9735ebe6c878ec2671be3faff7cf849df9",
+      "groups": [
+        {
+          "nodeName": "VH_F_kidney_calyx_L",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_minor_calyx_L_a",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_minor_calyx_L_b",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_minor_calyx_L_c",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_minor_calyx_L_d",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_minor_calyx_L_e",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_minor_calyx_L_f",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_minor_calyx_L_g",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_minor_calyx_L_h",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_minor_calyx_L_i",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_minor_calyx_L_j",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_major_calyx_L_a",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_major_calyx_L_b",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_major_calyx_L_c",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_major_calyx_L_d",
+              "meshIndex": 13
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_minor_calyx_L_a",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_minor_calyx_L_b",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_minor_calyx_L_c",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_minor_calyx_L_d",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_minor_calyx_L_e",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_minor_calyx_L_f",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_minor_calyx_L_g",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_minor_calyx_L_h",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_minor_calyx_L_i",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_minor_calyx_L_j",
+              "meshIndex": 9
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "index": 13,
+          "descendantMeshes": [
+            {
+              "index": 14,
+              "nodeName": "VH_F_major_calyx_L_a",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_major_calyx_L_b",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_major_calyx_L_c",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_major_calyx_L_d",
+              "meshIndex": 13
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "ureter-female-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb",
+      "sha256": "5f800b7dfd8056054ee030fad32de4e648920fbf1bada134fb989b2cc66f4436",
+      "groups": [
+        {
+          "nodeName": "VH_F_renal_calyx_R",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_minor_calyx_R_a",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_minor_calyx_R_b",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_minor_calyx_R_c",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_minor_calyx_R_d",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_minor_calyx_R_e",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_minor_calyx_R_f",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_minor_calyx_R_g",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_minor_calyx_R_h",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_minor_calyx_R_i",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_minor_calyx_R_j",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_major_calyx_R_a",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_major_calyx_R_b",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_major_calyx_R_c",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_F_minor_calyx_R_a",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_minor_calyx_R_b",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_minor_calyx_R_c",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_minor_calyx_R_d",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_minor_calyx_R_e",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_minor_calyx_R_f",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_minor_calyx_R_g",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_minor_calyx_R_h",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_minor_calyx_R_i",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_minor_calyx_R_j",
+              "meshIndex": 9
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "index": 13,
+          "descendantMeshes": [
+            {
+              "index": 14,
+              "nodeName": "VH_F_major_calyx_R_a",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_major_calyx_R_b",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_major_calyx_R_c",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "ureter-male-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb",
+      "sha256": "ebdd493c2e8095ccb6e795f49bf26c94e8d205c94097a7e1f9a9d7b168a1173c",
+      "groups": [
+        {
+          "nodeName": "VH_M_kidney_calyx_L",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 4,
+              "nodeName": "VH_M_major_calyx_L_a",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_major_calyx_L_b",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_major_calyx_L_c",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_minor_calyx_L_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_minor_calyx_L_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_minor_calyx_L_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_minor_calyx_L_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_minor_calyx_L_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_minor_calyx_L_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_minor_calyx_L_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_minor_calyx_L_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_minor_calyx_L_i",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "index": 3,
+          "descendantMeshes": [
+            {
+              "index": 4,
+              "nodeName": "VH_M_major_calyx_L_a",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_major_calyx_L_b",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_major_calyx_L_c",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "index": 7,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_M_minor_calyx_L_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_minor_calyx_L_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_minor_calyx_L_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_minor_calyx_L_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_minor_calyx_L_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_minor_calyx_L_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_minor_calyx_L_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_minor_calyx_L_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_minor_calyx_L_i",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "ureter-male-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb",
+      "sha256": "215978b67cf4d3876249a8dafb8c83a13471b5e1eb601559dca25a61a7c9d091",
+      "groups": [
+        {
+          "nodeName": "VH_M_calyx_R",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_major_calyx_R_a",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_major_calyx_R_b",
+              "meshIndex": 1
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_minor_calyx_R_a",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_minor_calyx_R_b",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_minor_calyx_R_c",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_minor_calyx_R_d",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_minor_calyx_R_e",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_minor_calyx_R_f",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_minor_calyx_R_g",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_minor_calyx_R_h",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_minor_calyx_R_i",
+              "meshIndex": 10
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_major_calyx_R_a",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_major_calyx_R_b",
+              "meshIndex": 1
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "index": 5,
+          "descendantMeshes": [
+            {
+              "index": 6,
+              "nodeName": "VH_M_minor_calyx_R_a",
+              "meshIndex": 2
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_minor_calyx_R_b",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_minor_calyx_R_c",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_minor_calyx_R_d",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_minor_calyx_R_e",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_minor_calyx_R_f",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_minor_calyx_R_g",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_minor_calyx_R_h",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_minor_calyx_R_i",
+              "meshIndex": 10
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    }
+  ]
+}

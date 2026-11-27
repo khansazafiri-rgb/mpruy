@@ -14,6 +14,10 @@ on:
       - 'scripts/*bp3d*.mjs'
       - '.github/workflows/atlas-private-regression.yml'
 
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-private-regression-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 

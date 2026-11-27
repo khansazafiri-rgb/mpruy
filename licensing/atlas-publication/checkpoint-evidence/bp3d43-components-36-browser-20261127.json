@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "sourceCommit": "13a926d774b6144afe658513d35ef1fa60e6aa53",
+  "workflowRun": 45915364468,
+  "workflowJob": 140233144149,
+  "conclusion": "success",
+  "rendered": 36,
+  "sourceLabelConcepts": 36,
+  "multilingualTypedConcepts": 36,
+  "bodyInventoryUnchanged": true,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}

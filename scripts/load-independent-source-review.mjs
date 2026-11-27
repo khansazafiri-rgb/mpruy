@@ -55,7 +55,7 @@ export function loadIndependentReview(privateRoot,folder){
  }
  const bodyAttributions=new Map(att.body.map(a=>[a.id,a])),referenceAttributions=new Map(att.references.map(a=>[a.id,a]));
  assert(bodyAttributions.size===att.body.length&&bodyAttributions.size===inv.bodyModels.length&&referenceAttributions.size===att.references.length&&referenceAttributions.size===inv.independentReferences.length);
- const entries=[],models=new Map(),hra={assets:new Map(),blocked:[]};
+ const entries=[],models=new Map(),modelReceipts=new Map(),hra={assets:new Map(),blocked:[]};
  for(const m of inv.bodyModels){
   const e=bodyDisplayEntry(m),a=bodyAttributions.get(m.id),b=bytes(dir,m.path);
   assert(a&&a.name===m.name&&a.sha256===m.sha256&&a.license==='CC-BY-4.0'&&a.attribution===m.attribution&&a.historicalNotice===m.historicalNotice&&hash(b)===m.sha256,'Invalid model attribution/hash');
@@ -64,7 +64,7 @@ export function loadIndependentReview(privateRoot,folder){
   const positions=parseNativePositions(b);
   assert(positions.size===m.sourceElements.length&&m.sourceElements.every(x=>positions.has(x.id)),'Element identity differs');
   e.path='models/'+e.id+'.glb';assert(!models.has('/anatomy/viewer/'+e.path));
-  entries.push(e);models.set('/anatomy/viewer/'+e.path,regular(dir,m.path));
+  entries.push(e);const route='/anatomy/viewer/'+e.path,file=regular(dir,m.path);models.set(route,file);modelReceipts.set(route,{file,bytes:b.length,sha256:m.sha256});
  }
  for(const r of inv.independentReferences){
   assert(/^[a-f0-9]{24}$/.test(r.id)&&r.path==='hra/'+r.id+'.glb'&&r.approvedForDistribution===false&&r.registrationValidated===false&&r.status==='PUBLISHER_VERSION_EVIDENCE_MATCHED'&&!hra.assets.has(r.id));
@@ -79,5 +79,5 @@ export function loadIndependentReview(privateRoot,folder){
  }
  const manifest={schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:'native-official-OBJ',sourceKind:'independent-bp3d',entries};
  validateInventory(manifest,'127.0.0.1');
- return {manifest,models,hra,attributions:att,summary,inventory:inv,folder:dir};
+ return {manifest,models,modelReceipts,hra,attributions:att,summary,inventory:inv,folder:dir};
 }

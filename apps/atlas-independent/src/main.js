@@ -10,6 +10,7 @@ import {STATUS,validPing} from './host-protocol.js';
 import {validOpen,RESULT,openKnownStructure} from './library-bridge.js';
 import './style.css';
 import {mountOriginalShell} from './original-shell.js';
+import {viewFrame} from './view-frame.js';
 import {validateElementCatalog,elementKey,elementKeys,meshElementId,hasExactElements} from './element-selection.js';
 const $=id=>document.getElementById(id);
 const base=import.meta.env.BASE_URL;
@@ -21,8 +22,9 @@ const scene=new THREE.Scene(),body=new THREE.Group();scene.add(body);
 scene.background=new THREE.Color(0x092b27);
 const camera=new THREE.PerspectiveCamera(40,1,.001,100);camera.position.set(0,0,3);
 let renderer;try{renderer=new THREE.WebGLRenderer({antialias:true});}catch(error){$('notice').textContent='WebGL tidak tersedia.';notifyHost('error','WebGL tidak tersedia.');throw error;}renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));$('view').prepend(renderer.domElement);
-const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
-scene.add(new THREE.HemisphereLight(0xffffff,0x526c64,2.2));
+let controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
+let frame=viewFrame(false);
+const ambient=new THREE.HemisphereLight(0xffffff,0x526c64,2.2);scene.add(ambient);
 const light=new THREE.DirectionalLight(0xffffff,2);light.position.set(2,3,4);scene.add(light);
 const fill=new THREE.DirectionalLight(0xffffff,1);fill.position.set(-2,2,-3);scene.add(fill);
 const materials=new Map();
@@ -116,7 +118,17 @@ async function refresh(fitAfter=false){
  const work=async()=>{while(queue.length&&tick===revision)await load(queue.shift());};
  await Promise.all(Array.from({length:4},work));if(tick!==revision)return;sync();if(fitAfter)fit();
 }
-function currentAxis(){const dir=camera.position.clone().sub(controls.target);return dir.lengthSq()>0?dir.normalize():new THREE.Vector3(0,0,1);}
+function axisVector(name){return new THREE.Vector3(...frame[name]).normalize();}
+function configureSourceFrame(bp3d){
+ frame=viewFrame(bp3d);
+ // OrbitControls caches the camera-up quaternion at construction.
+ controls.dispose();camera.up.set(...frame.up);camera.position.copy(axisVector('front').multiplyScalar(3));
+ controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
+ ambient.position.set(...frame.up);light.position.set(...frame.key);fill.position.set(...frame.fill);
+ for(const [id,[label,name]] of Object.entries(frame.labels)){$(id).textContent=label;$(id).title=name+' · '+label;}
+ originalUI?.setAxes(frame.labels);
+}
+function currentAxis(){const dir=camera.position.clone().sub(controls.target);return dir.lengthSq()>0?dir.normalize():axisVector('front');}
 function frameBounds(bounds,axis){
  if(bounds.isEmpty())return;
  const center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3());
@@ -128,8 +140,8 @@ function fit(axis=currentAxis()){
  frameBounds(bounds,axis);
 }
 function resize(){const w=$('view').clientWidth,h=$('view').clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}
-new ResizeObserver(resize).observe($('view'));resize();renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
-$('front').onclick=()=>fit(new THREE.Vector3(0,0,1));$('side').onclick=()=>fit(new THREE.Vector3(-1,0,0));$('right').onclick=()=>fit(new THREE.Vector3(1,0,0));$('top').onclick=()=>fit(new THREE.Vector3(0,1,.0001).normalize());$('back').onclick=()=>fit(new THREE.Vector3(0,0,-1));$('fit').onclick=()=>fit();
+new ResizeObserver(resize).observe($('view'));resize();let lastRenderQC='';renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);const axis=currentAxis().toArray().map(v=>Math.round(v*1000)/1000);const visibleGeometryTriangles=[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.reduce((sum,mesh)=>sum+(mesh.visible?(mesh.geometry.index?.count??mesh.geometry.attributes.position.count)/3:0),0):0),0);const qc=JSON.stringify({axis,up:camera.up.toArray(),triangles:renderer.info.render.triangles,visibleGeometryTriangles});if(qc!==lastRenderQC){$('view').dataset.renderQc=qc;lastRenderQC=qc;}});
+for(const id of ['front','side','right','top','back'])$(id).onclick=()=>fit(axisVector(id));$('fit').onclick=()=>fit();
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let down=null;
 renderer.domElement.addEventListener('pointerdown',ev=>{down=ev.button===0?[ev.clientX,ev.clientY,ev.pointerId]:null;});
 renderer.domElement.addEventListener('pointercancel',()=>{down=null;});
@@ -166,7 +178,7 @@ $('hide').onclick=()=>{if(!selected)return;study.hidden.add(selected.id);study.i
 $('restore').onclick=()=>{study.hidden.clear();study.isolated=null;resetSelection();refresh(true);};
 $('retry').onclick=()=>{failed.clear();refresh();};
 $('allSystems').onclick=()=>{resetSelection();study.enabled=new Set(entries.map(e=>e.group));study.isolated=null;syncControls();refresh(true);};
-$('reset').onclick=()=>{resetSelection();study=initialStudy();presentation=initialPresentation();syncPresentationControls();updateAppearance();syncControls();refresh(true);};
+$('reset').onclick=()=>{resetSelection();study=initialStudy();presentation=initialPresentation();syncPresentationControls();updateAppearance();syncControls();camera.position.copy(controls.target).addScaledVector(axisVector('front'),Math.max(camera.position.distanceTo(controls.target),1e-6));controls.update();refresh(true);};
 function syncPresentationControls(){$('contextMode').checked=presentation.context;$('wireframeMode').checked=presentation.wireframe;}
 $('contextMode').onchange=()=>{presentation={...presentation,context:$('contextMode').checked};updateAppearance();};
 $('wireframeMode').onchange=()=>{presentation={...presentation,wireframe:$('wireframeMode').checked};updateAppearance();};
@@ -258,15 +270,15 @@ async function chooseEntry(e){
 async function init(){
  groupControls();
  if(location.hostname!=='127.0.0.1'){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
- try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Sumbu sumber XYZ (bukan orientasi anatomi tervalidasi) · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent){await initElementSelection();await initPriority();}notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
+ try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Tampilan anterior sumber BP3D · Z superior · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;configureSourceFrame(true);}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent){await initElementSelection();await initPriority();}notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
-mountReferences(base);
-const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,ready:()=>initialized});
+const referenceViewer=mountReferences(base);
+const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,openReference:referenceViewer.open43,openHra:referenceViewer.openHra,ready:()=>initialized});
 $('openGuided').onclick=openGuided;
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
- state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0),highlightedMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')).length:0),0)}),
+ state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleModels:[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length,failedModels:failed.size,visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0),highlightedMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')).length:0),0)}),
  status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},

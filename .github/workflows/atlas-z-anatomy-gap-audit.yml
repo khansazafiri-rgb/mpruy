@@ -1,0 +1,41 @@
+name: Atlas pinned native nerve and lymphatic gap audit
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/audit-z-anatomy-nerve-lymphatic-gaps.py'
+      - 'scripts/z_anatomy_neural_identity.py'
+      - 'scripts/z_anatomy_lymphatic_identity.py'
+      - 'scripts/export-original-z-anatomy-private.py'
+      - '.github/workflows/atlas-z-anatomy-gap-audit.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-z-anatomy-gap-audit-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  native-gap-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact identity and source pin unit tests
+        run: python3 scripts/audit-z-anatomy-nerve-lymphatic-gaps.py --test
+      - name: Install isolated Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender
+          blender --version
+      - name: Acquire pinned official source and audit evaluated surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$(mktemp -d "$RUNNER_TEMP/atlas-z-anatomy-gap.XXXXXXXX")"
+          trap 'rm -rf -- "$root"' EXIT
+          base='https://raw.githubusercontent.com/Z-Anatomy/Models-of-human-anatomy/3c1679595d89aa508ddffc72cd5e125c5d609a59'
+          curl --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --max-redirs 3 --max-filesize 90000000 --connect-timeout 20 --max-time 300 --output "$root/Z-Anatomy.zip" "$base/Z-Anatomy.zip"
+          curl --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --max-redirs 3 --max-filesize 5000 --connect-timeout 20 --max-time 60 --output "$root/License.txt" "$base/License.txt"
+          blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python scripts/audit-z-anatomy-nerve-lymphatic-gaps.py -- "$root"

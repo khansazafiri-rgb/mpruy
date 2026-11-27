@@ -1,0 +1,55 @@
+name: Atlas hyoid recovery dual-source audit
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'licensing/atlas-publication/bp3d43-hyoid-2-candidates.json'
+      - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - 'scripts/atlas-hyoid-supplement.test.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - 'licensing/atlas-publication/bp3d43-hyoid-2-dual-source-audit-20261126.json'
+      - '.github/workflows/atlas-bp3d43-hyoid.yml'
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'licensing/atlas-publication/bp3d43-hyoid-2-candidates.json'
+      - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - 'scripts/atlas-hyoid-supplement.test.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - 'licensing/atlas-publication/bp3d43-hyoid-2-dual-source-audit-20261126.json'
+      - '.github/workflows/atlas-bp3d43-hyoid.yml'
+permissions:
+  contents: read
+jobs:
+  hyoid-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs
+      - name: Audit two hyoid elements without publishing geometry
+        run: node scripts/audit-bp3d43-gap-batch.mjs hyoid-2
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - name: Supplemental identity, terminology and evidence tests
+        run: |
+          npm test --prefix apps/atlas-independent
+          node --test scripts/build-atlas-review-queue.test.mjs scripts/audit-atlas-private-checkpoint.test.mjs scripts/atlas-hyoid-supplement.test.mjs
+      - name: Install isolated browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Render two actual source elements in isolated private viewer
+        run: ATLAS_TEST_REAL43=hyoid PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright" node scripts/test-private-atlas-browser.mjs
+      - name: Remove private temporary geometry
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*

@@ -1,0 +1,1585 @@
+{
+  "schema": 1,
+  "scope": "Reconciliation of original 118 unresolved whole-concept checkpoints; reference-only browser evidence and label discovery do not close whole-concept gaps.",
+  "sourceCommit": "929196a67ff1b3213d458d4d2d18bd81a24208ec",
+  "inputs": [
+    {
+      "path": "licensing/atlas-publication/hra-united-pelvis-mouth-gap-discovery-20261127.json",
+      "blobSHA": "1ac2a0f2c02e127c70b20b38cf6a8195d18850d3"
+    },
+    {
+      "path": "licensing/atlas-publication/checkpoint-evidence/hra-118-reconciliation-with-pineal-20261127.json",
+      "blobSHA": "bb58ab7f304edda890a3b28fcbb9890dae56dce3"
+    },
+    {
+      "path": "apps/atlas-independent/src/hra-learning-links.js",
+      "blobSHA": "7b1e5c630c350f415f98a93c6023996dcf5b2ce8"
+    },
+    {
+      "path": "licensing/atlas-publication/hra-supplement-18-guided-browser-audit-20261127.json",
+      "blobSHA": "b6b44681737ac22d3681c701bd1236aeded062d3"
+    }
+  ],
+  "baselineTargets": 118,
+  "counts": {
+    "BROWSER_VERIFIED_SOURCE_GROUP_REFERENCES": 3,
+    "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION": 87,
+    "UNCHANGED_EXTERNAL_HOLD": 12,
+    "BROWSER_VERIFIED_SIDE_COMPONENT_REFERENCES": 1,
+    "REJECTED_NONHUMAN_SOURCE_MATCH": 1,
+    "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY": 7,
+    "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES": 6,
+    "AUDITED_PINNED_SYNONYM_REFERENCE": 1
+  },
+  "rows": [
+    {
+      "group": "respiratory",
+      "target": "larynx",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_SOURCE_GROUP_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "larynx-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx",
+          "index": 0,
+          "kind": "GROUP"
+        },
+        {
+          "id": "larynx-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx",
+          "index": 0,
+          "kind": "GROUP"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "respiratory",
+      "target": "left lung pleura",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "right lung pleura",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "nasal cavity",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "nasopharynx",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "oropharynx",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "laryngopharynx",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "visceral pleura",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "respiratory",
+      "target": "parietal pleura",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right brachial plexus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "left sciatic nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right sciatic nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "cerebral cortex",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "frontal lobe",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "parietal lobe",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "conus medullaris",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "cervical plexus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "lumbar plexus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "sacral plexus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "sympathetic trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right median nerve",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right ulnar nerve",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right radial nerve",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right musculocutaneous nerve",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right axillary nerve",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "left femoral nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right femoral nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "left obturator nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right obturator nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "left tibial nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right tibial nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "left common fibular nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right common fibular nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "left sural nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "nervous",
+      "target": "right sural nerve",
+      "baselineStatus": "UNCHANGED_EXTERNAL_HOLD",
+      "action": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "thoracic duct",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "right lymphatic duct",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "cisterna chyli",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "palatine tonsil",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_SIDE_COMPONENT_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "palatine-tonsil-female-left",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/assets/3d-vh-f-palatine-tonsil-l.glb",
+          "ontologyId": "FMA:54974",
+          "label": "left palatine tonsil",
+          "index": 0,
+          "kind": "NODE"
+        },
+        {
+          "id": "palatine-tonsil-female-right",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/assets/3d-vh-f-palatine-tonsil-r.glb",
+          "ontologyId": "FMA:54973",
+          "label": "right palatine tonsil",
+          "index": 0,
+          "kind": "NODE"
+        },
+        {
+          "id": "palatine-tonsil-male-left",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/assets/3d-vh-m-palatine-tonsil-l.glb",
+          "ontologyId": "FMA:54974",
+          "label": "Left palatine tonsil",
+          "index": 0,
+          "kind": "NODE"
+        },
+        {
+          "id": "palatine-tonsil-male-right",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb",
+          "ontologyId": "FMA:54973",
+          "label": "Right palatine tonsil",
+          "index": 0,
+          "kind": "NODE"
+        }
+      ],
+      "limitations": [
+        "NO_INDEPENDENT_FEMALE_SPECIMEN",
+        "NO_WHOLE_CONCEPT_PROMOTION"
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "lymphatic",
+      "target": "lingual tonsil",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "pharyngeal tonsil",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "intestinal trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "jugular trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "subclavian trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "bronchomediastinal trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "lumbar trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "lymphatic vessel",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "lymphatic capillary",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "deep cervical lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "superficial cervical lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "axillary lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "mediastinal lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "tracheobronchial lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "mesenteric lymph node",
+      "baselineStatus": "REJECTED_NONHUMAN_SOURCE_MATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "REJECTED_NONHUMAN_SOURCE_MATCH",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "inguinal lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "lymphatic",
+      "target": "popliteal lymph node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "interatrial septum",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "myocardium",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "endocardium",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "epicardium",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "chordae tendineae",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "sinoatrial node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "heart",
+      "target": "atrioventricular node",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "digestive",
+      "target": "parotid gland",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "id": "united-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "id": "mouth-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-female/v1.0/assets/3d-vh-f-mouth.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "id": "mouth-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "digestive",
+      "target": "fundus of stomach",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "digestive",
+      "target": "pylorus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "digestive",
+      "target": "sigmoid colon",
+      "baselineStatus": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "large-intestine-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-female/v1.3/assets/3d-sbu-f-large-intestine.glb",
+          "ontologyId": "UBERON:0001159",
+          "label": "sigmoid colon",
+          "index": 9,
+          "kind": "NODE"
+        },
+        {
+          "id": "large-intestine-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb",
+          "ontologyId": "UBERON:0001159",
+          "label": "sigmoid colon",
+          "index": 5,
+          "kind": "NODE"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "digestive",
+      "target": "anal canal",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "digestive",
+      "target": "quadrate lobe of liver",
+      "baselineStatus": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "liver-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb",
+          "ontologyId": "UBERON:0001116",
+          "label": "quadrate lobe of liver",
+          "index": 19,
+          "kind": "NODE"
+        },
+        {
+          "id": "liver-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-male/v1.2/assets/3d-vh-m-liver.glb",
+          "ontologyId": "UBERON:0001116",
+          "label": "quadrate lobe of liver",
+          "index": 25,
+          "kind": "NODE"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "digestive",
+      "target": "common bile duct",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "id": "united-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "digestive",
+      "target": "head of pancreas",
+      "baselineStatus": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "pancreas-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+          "ontologyId": "UBERON:0001069",
+          "label": "head of pancreas",
+          "index": 4,
+          "kind": "NODE"
+        },
+        {
+          "id": "pancreas-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+          "ontologyId": "UBERON:0001069",
+          "label": "head of pancreas",
+          "index": 3,
+          "kind": "NODE"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "digestive",
+      "target": "body of pancreas",
+      "baselineStatus": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "pancreas-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+          "ontologyId": "UBERON:0001150",
+          "label": "body of pancreas",
+          "index": 2,
+          "kind": "NODE"
+        },
+        {
+          "id": "pancreas-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+          "ontologyId": "UBERON:0001150",
+          "label": "body of pancreas",
+          "index": 1,
+          "kind": "NODE"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "digestive",
+      "target": "tail of pancreas",
+      "baselineStatus": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "pancreas-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+          "ontologyId": "UBERON:0001151",
+          "label": "tail of pancreas",
+          "index": 1,
+          "kind": "NODE"
+        },
+        {
+          "id": "pancreas-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+          "ontologyId": "UBERON:0001151",
+          "label": "tail of pancreas",
+          "index": 2,
+          "kind": "NODE"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "reproductive",
+      "target": "vagina",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_vagina",
+          "ontologyId": "UBERON:0000996",
+          "label": "vagina",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "reproductive",
+      "target": "scrotum",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "reproductive",
+      "target": "vas deferens",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "reproductive",
+      "target": "left vas deferens",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "reproductive",
+      "target": "right vas deferens",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "endocrine",
+      "target": "pineal gland",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "AUDITED_PINNED_SYNONYM_REFERENCE",
+      "sourceMatches": [
+        {
+          "id": "brain-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "index": 45
+        },
+        {
+          "id": "brain-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "index": 182
+        },
+        {
+          "id": "brain-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "index": 44
+        },
+        {
+          "id": "brain-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "index": 181
+        }
+      ],
+      "limitations": [
+        "PUBLISHER_MIRRORED_AND_RESCALED_ALLEN_ATLAS",
+        "NO_BILATERAL_OR_SEX_SPECIFIC_CLAIMS"
+      ],
+      "synonymEvidence": [
+        "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncit/C12398",
+        "https://ifaa.unifr.ch/Public/EntryPage/TA98%20Tree/Entity%20TA98%20EN/11.2.00.001%20Entity%20TA98%20EN.htm"
+      ]
+    },
+    {
+      "group": "endocrine",
+      "target": "parathyroid gland",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "endocrine",
+      "target": "adenohypophysis",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "endocrine",
+      "target": "neurohypophysis",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "coccyx",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_DIRECT_MESH_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "pelvis-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-female/v1.3/assets/3d-vh-f-pelvis.glb",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "index": 2,
+          "kind": "NODE"
+        },
+        {
+          "id": "pelvis-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-male/v1.3/assets/3d-vh-m-pelvis.glb",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "index": 2,
+          "kind": "NODE"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "skeletal",
+      "target": "malleus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "incus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "stapes",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "left malleus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "right malleus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "left incus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "right incus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "left stapes",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "skeletal",
+      "target": "right stapes",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left hip joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right hip joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left knee joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_SOURCE_GROUP_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "knee-female-left",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint",
+          "index": 2,
+          "kind": "GROUP"
+        },
+        {
+          "id": "knee-male-left",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint",
+          "index": 2,
+          "kind": "GROUP"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "joints",
+      "target": "right knee joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "PRIVATE_REFERENCE_ONLY_RETAIN_RELEASE_HOLD",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "BROWSER_VERIFIED_SOURCE_GROUP_REFERENCES",
+      "sourceMatches": [
+        {
+          "id": "knee-female-right",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint",
+          "index": 2,
+          "kind": "GROUP"
+        },
+        {
+          "id": "knee-male-right",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint",
+          "index": 1,
+          "kind": "GROUP"
+        }
+      ],
+      "workflowRun": 45937426351
+    },
+    {
+      "group": "joints",
+      "target": "left shoulder joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right shoulder joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left elbow joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right elbow joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left wrist joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right wrist joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left ankle joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right ankle joint",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left anterior cruciate ligament",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "id": "united-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "joints",
+      "target": "right anterior cruciate ligament",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "id": "united-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "joints",
+      "target": "left posterior cruciate ligament",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "id": "united-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "joints",
+      "target": "right posterior cruciate ligament",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "AUDIT_PINNED_SOURCE_BYTES",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "EXACT_PUBLISHER_LABEL_PENDING_GEOMETRY",
+      "sourceMatches": [
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "id": "united-female",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+          "geometryAudited": false
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "id": "united-male",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+          "geometryAudited": false
+        }
+      ]
+    },
+    {
+      "group": "joints",
+      "target": "left medial meniscus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right medial meniscus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "left lateral meniscus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "joints",
+      "target": "right lateral meniscus",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "muscular",
+      "target": "rectus abdominis muscle",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "muscular",
+      "target": "transversus abdominis muscle",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "muscular",
+      "target": "internal oblique muscle",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "arterial",
+      "target": "brachiocephalic trunk",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "arterial",
+      "target": "left external carotid artery",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    },
+    {
+      "group": "venous",
+      "target": "left external jugular vein",
+      "baselineStatus": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "action": "DISCOVER_NEW_SOURCE",
+      "coveragePromoted": false,
+      "approvedForDistribution": false,
+      "status": "NO_NEW_EVIDENCE_IN_THIS_RECONCILIATION",
+      "sourceMatches": []
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryImported": false,
+  "wholeConceptCoveragePromoted": 0,
+  "publicRelease": "NO_GO"
+}

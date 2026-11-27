@@ -1,0 +1,267 @@
+// Exact retained dual-source audit, no clinical or release approval.
+export const MUSCLE43_TOPIC_ROWS=Object.freeze([
+  {
+    "fj": "FJ1506M",
+    "bpId": "BP20454",
+    "fmaId": "FMA32545",
+    "name": "Left supraspinatus",
+    "rawSHA256": "e7f3cd390967267c8a5279f6140f5dabdad8b8d3c7ffc52feabdc2e8be35c645",
+    "glbSHA256": "91859733e8e217309d5a8071bdc96ae4b72bf6047349997f974e4ee512937d6f",
+    "triangles": 878,
+    "region": "upper-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1506",
+    "bpId": "BP20406",
+    "fmaId": "FMA32544",
+    "name": "Right supraspinatus",
+    "rawSHA256": "de9878da3fc40360dfd7e4e510939a77dff99c5290e9efa35c10b705a96192d3",
+    "glbSHA256": "321712df27fa876627d2d93a5032edd87a9a3977d32fafe3082dfee1fb0a6162",
+    "triangles": 878,
+    "region": "upper-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1504M",
+    "bpId": "BP20341",
+    "fmaId": "FMA13415",
+    "name": "Left subscapularis",
+    "rawSHA256": "22825f6bbd55d795edb372b8525919f14e363dc65d4e8c77b396065f8f886e46",
+    "glbSHA256": "e7604803f5cba7621f6217482103ee3d7d5ac2b4805c6d22b20d411ad02b2289",
+    "triangles": 2092,
+    "region": "upper-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1504",
+    "bpId": "BP20479",
+    "fmaId": "FMA13414",
+    "name": "Right subscapularis",
+    "rawSHA256": "efba92fb01a5177002da240974930972141678a7f77ece9d421fea04a73ca29c",
+    "glbSHA256": "f66c07528d2d329a6e7074a38bd5dba2c8847f483b6b1ac4eb19ea14ef07bf77",
+    "triangles": 2092,
+    "region": "upper-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1508M",
+    "bpId": "BP20604",
+    "fmaId": "FMA32554",
+    "name": "Left teres minor",
+    "rawSHA256": "744a5c5d0907ce7ed94c5d40d1225c41f2b448c1346951230bb597e7731aaeff",
+    "glbSHA256": "a2a5c9b7cf992ac7eace7a9dde70e5476ae7fa762a590ee2044b00aa560d3f59",
+    "triangles": 506,
+    "region": "upper-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1508",
+    "bpId": "BP20345",
+    "fmaId": "FMA32553",
+    "name": "Right teres minor",
+    "rawSHA256": "75fd77bb9ca7dbd6c9f2486590b60e32e2d708ce3e24448e18a089296aab0673",
+    "glbSHA256": "50f4eaea1b90b15df6abebf8e263a7beb4f3016ce21858ccf0e7ca2d58d2ca9a",
+    "triangles": 506,
+    "region": "upper-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1418M",
+    "bpId": "BP23939",
+    "fmaId": "FMA22329",
+    "name": "Left gluteus maximus",
+    "rawSHA256": "3a603626e6d2288204bb99527a33d845f129a62ede12bc8cd25f1390271d81b0",
+    "glbSHA256": "84aa6c28550a44b885f090d9a508ac556fee877748b39eb8b492c6aa14c64044",
+    "triangles": 2376,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1418",
+    "bpId": "BP23934",
+    "fmaId": "FMA22328",
+    "name": "Right gluteus maximus",
+    "rawSHA256": "c7ca6a5c9115acf205e63b5e3883703cc8aecec8bbe4265ba9e03515e45fa156",
+    "glbSHA256": "9895d23bad3048de8aa7326500ba7747964a4b95db1b64539185a528ff57fe4a",
+    "triangles": 2376,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1419M",
+    "bpId": "BP20696",
+    "fmaId": "FMA22331",
+    "name": "Left gluteus medius",
+    "rawSHA256": "d31471036775390644f3a8c30b4cbb52ef8367f5e5ca88e4cdce0cb51e561e34",
+    "glbSHA256": "7344a3ede379ca284283f7fb8c7062efac625204784a11f3330049439a22f129",
+    "triangles": 3356,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1419",
+    "bpId": "BP20250",
+    "fmaId": "FMA22330",
+    "name": "Right gluteus medius",
+    "rawSHA256": "cd5665a843552f467054b23f9986e9e942fa816603c3678a12172b6a697e5553",
+    "glbSHA256": "bec9c2deafcb639e2490d56db00a7c535377d3dde0876bb9addafe4e84c0ba7d",
+    "triangles": 3356,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1420M",
+    "bpId": "BP20244",
+    "fmaId": "FMA22333",
+    "name": "Left gluteus minimus",
+    "rawSHA256": "3cac47498be9274e7af7324c8fcb5a9d8ebff25eac045f5b225626caa1ce5a1e",
+    "glbSHA256": "fb3e3fc340b09050a2bfa4fb7c58803d317cb6c3b1ff04d6f6d094fc75148946",
+    "triangles": 4208,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1420",
+    "bpId": "BP22923",
+    "fmaId": "FMA22332",
+    "name": "Right gluteus minimus",
+    "rawSHA256": "20dedf867148f815046cfc362644acc4a56ef3057492b115b6d7259810d4d58d",
+    "glbSHA256": "7e45506ac4bdc2830287963ce3343aeae78b0cfecda0f969d44e8ed51cafcb16",
+    "triangles": 4208,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1433M",
+    "bpId": "BP23766",
+    "fmaId": "FMA38929",
+    "name": "Left rectus femoris",
+    "rawSHA256": "219d9704a843490c7c9d120008458f1255cf83062d3b4442ac1e778260206249",
+    "glbSHA256": "373058bb7b30914fc2b27c69a0514918b20c625c3f0f6b5db2190140b96aa75a",
+    "triangles": 5688,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1433",
+    "bpId": "BP23176",
+    "fmaId": "FMA38928",
+    "name": "Right rectus femoris",
+    "rawSHA256": "7bf5630bd43fac0ebdda64483a18d23210b0209d0a235ed87ae5ab0b8bcaa3f0",
+    "glbSHA256": "55007edd61131f46e54e2f692eed8db210ce77842388357a546e1286d048c822",
+    "triangles": 5688,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1442M",
+    "bpId": "BP23367",
+    "fmaId": "FMA38931",
+    "name": "Left vastus lateralis",
+    "rawSHA256": "d110cbc015ed185e2571a4594ae808c325e04341991e664071a0448ec34856b2",
+    "glbSHA256": "509335a473a1d77fa116c4d3a6ee5f7d59684cdf744f92d435764890050c80bf",
+    "triangles": 6688,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1442",
+    "bpId": "BP23150",
+    "fmaId": "FMA38930",
+    "name": "Right vastus lateralis",
+    "rawSHA256": "edc372c0d364a005050295fabd587ffacb26f3d6019edbc0bffdf31bc4dcb456",
+    "glbSHA256": "1b2f77530038bfdb57583e18cf466624d528cac06a09f09a487a8bc7b9e72af9",
+    "triangles": 6688,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1443M",
+    "bpId": "BP23244",
+    "fmaId": "FMA38933",
+    "name": "Left vastus medialis",
+    "rawSHA256": "d233fe2f8214a8860f79e868616e26701095f841a204f3e371d7d5eb386d1816",
+    "glbSHA256": "f79a770f84b22973cef12474408cd227877f890d779bb7b49c37d7a3dfd9a836",
+    "triangles": 4552,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1443",
+    "bpId": "BP20583",
+    "fmaId": "FMA38932",
+    "name": "Right vastus medialis",
+    "rawSHA256": "e095eb6f0af1051cfbcff18abee57994bc65997097676731eb2ff067c5264d3d",
+    "glbSHA256": "c38be4cb03a42a391e06a8e1e627098c95146d046adf4b2ea982f3d15cb184f2",
+    "triangles": 4552,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1441M",
+    "bpId": "BP23111",
+    "fmaId": "FMA38935",
+    "name": "Left vastus intermedius",
+    "rawSHA256": "9597b33c63aae05b579587b56b7ae9ea76ac20b54d7c009b3787fab7afcae221",
+    "glbSHA256": "39292c8c5c5f7e1f8cd0db0cc2528b613ecee137704a344fce9f82682ae308f5",
+    "triangles": 4260,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1441",
+    "bpId": "BP23143",
+    "fmaId": "FMA38934",
+    "name": "Right vastus intermedius",
+    "rawSHA256": "68b7c5a5a5aa24cd07593ffd2b183d5b8e73aeb93f8c3a898ca2a0893f1d329f",
+    "glbSHA256": "8479d1d3fc06e3f05497980186fb6923a42ed543404414a6fe2cf8cd7e83c049",
+    "triangles": 4260,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1439M",
+    "bpId": "BP22485",
+    "fmaId": "FMA22545",
+    "name": "Left tibialis anterior",
+    "rawSHA256": "6420bc598e4a35e5eb7bd0056afad22b012214fe81d602452942089859fcfb12",
+    "glbSHA256": "f99918f9a605f83c60bd2af197c02f42e81230177f7bbc12410999270d8fc331",
+    "triangles": 2510,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1439",
+    "bpId": "BP20542",
+    "fmaId": "FMA22544",
+    "name": "Right tibialis anterior",
+    "rawSHA256": "43dfb2f95a79be5501f7cc7604fc188172d348f4fb2387ea69e81c7d619a5067",
+    "glbSHA256": "32f329bb80c68289650686df52e617e41d2f1598d99d62131fbcba65694cb3c1",
+    "triangles": 2510,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1437M",
+    "bpId": "BP20918",
+    "fmaId": "FMA22559",
+    "name": "Left soleus",
+    "rawSHA256": "1d3774b03e779ccc07e1aa7bc718e6c3675f9b9a44d80f452cc9550c88585133",
+    "glbSHA256": "e6c7d768a95954b6cc71cfafcfc3973d3deb7c860537678ba08d1e878e96a4f9",
+    "triangles": 4418,
+    "region": "lower-limb",
+    "system": "muscular"
+  },
+  {
+    "fj": "FJ1437",
+    "bpId": "BP20851",
+    "fmaId": "FMA22558",
+    "name": "Right soleus",
+    "rawSHA256": "52586d6404297e4ecbda7a94fdbaafd2b1406132099a347258cd1148ed8b8981",
+    "glbSHA256": "0dc96c187c019054551a63e7cde51600b7a4f75657ef6e7d76a7e3818d36967d",
+    "triangles": 4418,
+    "region": "lower-limb",
+    "system": "muscular"
+  }
+].map(Object.freeze));

@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install pinned VTK audit dependencies
-        run: python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1
+        run: 'python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1'
       - name: Test native geometry and exact GLB roundtrip
         run: python scripts/audit-spl-knee-geometry.py --test
       - name: Parse pinned 48 native VTK meshes and audit geometry-only GLB in memory

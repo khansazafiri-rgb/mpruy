@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Source evidence only, mouse-derived Ce3D reference; not human geometry, never linked to human Guided Learning or regional vessels.",
+  "rows": [
+    {
+      "id": "lymph-node-female",
+      "version": "v1.4",
+      "filename": "3d-nih-f-lymph-node.glb",
+      "bytes": 4542968,
+      "glbBlob": "780f8035c0c07bdd9a8ddaa8f623e2ebdfe4e3bd",
+      "metadataBlob": "9beedced44177d76a6522e7cfb2e58e49233c897",
+      "crosswalkBlob": "9e37e0d25eb73cc80275846703472f4c8aa43dd4",
+      "doi": "https://doi.org/10.48539/HBM425.PTPB.732",
+      "expectedCrosswalkRows": 8,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lymph-node-female/v1.4/assets/3d-nih-f-lymph-node.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lymph-node-female/v1.4/raw/metadata.yaml",
+      "creators": [
+        "Li Yao",
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "CE3D_MOUSE_DERIVED_REFERENCE",
+      "clinicalLimitations": [
+        "NOT_VERIFIED_HUMAN_GEOMETRY",
+        "NO_HUMAN_REGIONAL_LOCATION_OR_VESSEL_CONTINUITY",
+        "NO_SEX_SPECIFIC_CLAIMS"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "Yao_lymph_node",
+          "ontologyId": "UBERON:0002509",
+          "label": "mesenteric lymph node"
+        },
+        {
+          "nodeName": "Yao_afferent_lymphatic_vessel",
+          "ontologyId": "UBERON:0010396",
+          "label": "afferent lymphatic vessel"
+        },
+        {
+          "nodeName": "Yao_capsule_of_lymph_node",
+          "ontologyId": "UBERON:0002194",
+          "label": "capsule of lymph node"
+        },
+        {
+          "nodeName": "Yao_follicles",
+          "ontologyId": "UBERON:0010748",
+          "label": "lymph node follicle"
+        },
+        {
+          "nodeName": "Yao_efferent_lymph_node",
+          "ontologyId": "UBERON:0010397",
+          "label": "efferent lymphatic vessel"
+        },
+        {
+          "nodeName": "Yao_medulla_of_lymph_node",
+          "ontologyId": "UBERON:0002007",
+          "label": "medulla of lymph node"
+        },
+        {
+          "nodeName": "Yao_paracortex",
+          "ontologyId": "UBERON:0010417",
+          "label": "lymph node T cell domain"
+        },
+        {
+          "nodeName": "Yao_blood_vasculature",
+          "ontologyId": "UBERON:0004536",
+          "label": "Lymph vasculature"
+        }
+      ]
+    },
+    {
+      "id": "lymph-node-male",
+      "version": "v1.4",
+      "filename": "3d-nih-m-lymph-node.glb",
+      "bytes": 7414024,
+      "glbBlob": "a4d79c66dd049cbe054856c3dff571b88cf16350",
+      "metadataBlob": "f4c3b858be58533134ca60e959c39815baa3f994",
+      "crosswalkBlob": "9e37e0d25eb73cc80275846703472f4c8aa43dd4",
+      "doi": "https://doi.org/10.48539/HBM532.TNXR.875",
+      "expectedCrosswalkRows": 8,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lymph-node-male/v1.4/assets/3d-nih-m-lymph-node.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lymph-node-male/v1.4/raw/metadata.yaml",
+      "creators": [
+        "Li Yao",
+        "Kristen Browne"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "CE3D_MOUSE_DERIVED_REFERENCE",
+      "clinicalLimitations": [
+        "NOT_VERIFIED_HUMAN_GEOMETRY",
+        "NO_HUMAN_REGIONAL_LOCATION_OR_VESSEL_CONTINUITY",
+        "NO_SEX_SPECIFIC_CLAIMS"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "Yao_lymph_node",
+          "ontologyId": "UBERON:0002509",
+          "label": "mesenteric lymph node"
+        },
+        {
+          "nodeName": "Yao_afferent_lymphatic_vessel",
+          "ontologyId": "UBERON:0010396",
+          "label": "afferent lymphatic vessel"
+        },
+        {
+          "nodeName": "Yao_capsule_of_lymph_node",
+          "ontologyId": "UBERON:0002194",
+          "label": "capsule of lymph node"
+        },
+        {
+          "nodeName": "Yao_follicles",
+          "ontologyId": "UBERON:0010748",
+          "label": "lymph node follicle"
+        },
+        {
+          "nodeName": "Yao_efferent_lymph_node",
+          "ontologyId": "UBERON:0010397",
+          "label": "efferent lymphatic vessel"
+        },
+        {
+          "nodeName": "Yao_medulla_of_lymph_node",
+          "ontologyId": "UBERON:0002007",
+          "label": "medulla of lymph node"
+        },
+        {
+          "nodeName": "Yao_paracortex",
+          "ontologyId": "UBERON:0010417",
+          "label": "lymph node T cell domain"
+        },
+        {
+          "nodeName": "Yao_blood_vasculature",
+          "ontologyId": "UBERON:0004536",
+          "label": "Lymph vasculature"
+        }
+      ]
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0
+}

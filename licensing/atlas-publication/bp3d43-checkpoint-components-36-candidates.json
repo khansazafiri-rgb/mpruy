@@ -1,0 +1,605 @@
+{
+  "schema": 1,
+  "batchId": "checkpoint-components-36",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Pinned individually named source components for unresolved checkpoints; no whole-concept geometry, no coverage promotion or publication. Exact per-element membership confirmed in mirror; dual-source replay required.",
+  "rows": [
+    {
+      "fj": "FJ1394M",
+      "discoveryBP": "BP21841",
+      "discoveryFMA": "FMA45961",
+      "name": "Lateral head of left gastrocnemius",
+      "faces": 3052,
+      "vertices": 1746,
+      "bytes": 199791,
+      "group": "muscular",
+      "csvFMA": "FMA45729",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left gastrocnemius muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1394",
+      "discoveryBP": "BP23402",
+      "discoveryFMA": "FMA45960",
+      "name": "Lateral head of right gastrocnemius",
+      "faces": 3052,
+      "vertices": 1748,
+      "bytes": 201276,
+      "group": "muscular",
+      "csvFMA": "FMA45729",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right gastrocnemius muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1397M",
+      "discoveryBP": "BP23665",
+      "discoveryFMA": "FMA45958",
+      "name": "Medial head of left gastrocnemius",
+      "faces": 3842,
+      "vertices": 2264,
+      "bytes": 258277,
+      "group": "muscular",
+      "csvFMA": "FMA45729",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left gastrocnemius muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1397",
+      "discoveryBP": "BP23593",
+      "discoveryFMA": "FMA45957",
+      "name": "Medial head of right gastrocnemius",
+      "faces": 3842,
+      "vertices": 2263,
+      "bytes": 260611,
+      "group": "muscular",
+      "csvFMA": "FMA45729",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right gastrocnemius muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1452M",
+      "discoveryBP": "BP22276",
+      "discoveryFMA": "FMA13337",
+      "name": "Left external oblique",
+      "faces": 111826,
+      "vertices": 63893,
+      "bytes": 8250238,
+      "group": "muscular",
+      "csvFMA": "FMA13335",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "external oblique muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1452",
+      "discoveryBP": "BP22075",
+      "discoveryFMA": "FMA13336",
+      "name": "Right external oblique",
+      "faces": 111826,
+      "vertices": 63907,
+      "bytes": 8308015,
+      "group": "muscular",
+      "csvFMA": "FMA13335",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "external oblique muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1467M",
+      "discoveryBP": "BP23036",
+      "discoveryFMA": "FMA34683",
+      "name": "Acromial part of left deltoid",
+      "faces": 1300,
+      "vertices": 918,
+      "bytes": 91505,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left deltoid muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1467",
+      "discoveryBP": "BP23172",
+      "discoveryFMA": "FMA34682",
+      "name": "Acromial part of right deltoid",
+      "faces": 1300,
+      "vertices": 916,
+      "bytes": 92227,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right deltoid muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1468M",
+      "discoveryBP": "BP23060",
+      "discoveryFMA": "FMA34681",
+      "name": "Clavicular part of left deltoid",
+      "faces": 2206,
+      "vertices": 2604,
+      "bytes": 221642,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left deltoid muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1468",
+      "discoveryBP": "BP23257",
+      "discoveryFMA": "FMA34680",
+      "name": "Clavicular part of right deltoid",
+      "faces": 2206,
+      "vertices": 2592,
+      "bytes": 223293,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right deltoid muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1477M",
+      "discoveryBP": "BP23168",
+      "discoveryFMA": "FMA37698",
+      "name": "Lateral head of left triceps brachii",
+      "faces": 2606,
+      "vertices": 1676,
+      "bytes": 180087,
+      "group": "muscular",
+      "csvFMA": "FMA37694",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left triceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1477",
+      "discoveryBP": "BP21319",
+      "discoveryFMA": "FMA37697",
+      "name": "Lateral head of right triceps brachii",
+      "faces": 2606,
+      "vertices": 1678,
+      "bytes": 181886,
+      "group": "muscular",
+      "csvFMA": "FMA37694",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right triceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1478M",
+      "discoveryBP": "BP23144",
+      "discoveryFMA": "FMA37687",
+      "name": "Long head of left biceps brachii",
+      "faces": 1426,
+      "vertices": 1039,
+      "bytes": 102896,
+      "group": "muscular",
+      "csvFMA": "FMA37683",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left biceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1478",
+      "discoveryBP": "BP23056",
+      "discoveryFMA": "FMA37686",
+      "name": "Long head of right biceps brachii",
+      "faces": 1426,
+      "vertices": 1053,
+      "bytes": 105022,
+      "group": "muscular",
+      "csvFMA": "FMA37683",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right biceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1479M",
+      "discoveryBP": "BP23325",
+      "discoveryFMA": "FMA37700",
+      "name": "Long head of left triceps brachii",
+      "faces": 1588,
+      "vertices": 1109,
+      "bytes": 112104,
+      "group": "muscular",
+      "csvFMA": "FMA37692",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left triceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1479",
+      "discoveryBP": "BP23146",
+      "discoveryFMA": "FMA37699",
+      "name": "Long head of right triceps brachii",
+      "faces": 1588,
+      "vertices": 1105,
+      "bytes": 112923,
+      "group": "muscular",
+      "csvFMA": "FMA37692",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right triceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1480M",
+      "discoveryBP": "BP23335",
+      "discoveryFMA": "FMA37696",
+      "name": "Medial head of left triceps brachii",
+      "faces": 832,
+      "vertices": 617,
+      "bytes": 60220,
+      "group": "muscular",
+      "csvFMA": "FMA37693",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left triceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1480",
+      "discoveryBP": "BP23121",
+      "discoveryFMA": "FMA37695",
+      "name": "Medial head of right triceps brachii",
+      "faces": 832,
+      "vertices": 620,
+      "bytes": 61244,
+      "group": "muscular",
+      "csvFMA": "FMA37693",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right triceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1512M",
+      "discoveryBP": "BP23332",
+      "discoveryFMA": "FMA37685",
+      "name": "Short head of left biceps brachii",
+      "faces": 1856,
+      "vertices": 1743,
+      "bytes": 159419,
+      "group": "muscular",
+      "csvFMA": "FMA37682",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left biceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1512",
+      "discoveryBP": "BP23133",
+      "discoveryFMA": "FMA37684",
+      "name": "Short head of right biceps brachii",
+      "faces": 1856,
+      "vertices": 1739,
+      "bytes": 161143,
+      "group": "muscular",
+      "csvFMA": "FMA37682",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right biceps brachii muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1513M",
+      "discoveryBP": "BP23094",
+      "discoveryFMA": "FMA34685",
+      "name": "Spinal part of left deltoid",
+      "faces": 1900,
+      "vertices": 1678,
+      "bytes": 156368,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left deltoid muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1513",
+      "discoveryBP": "BP23106",
+      "discoveryFMA": "FMA34684",
+      "name": "Spinal part of right deltoid",
+      "faces": 1900,
+      "vertices": 1665,
+      "bytes": 156772,
+      "group": "muscular",
+      "csvFMA": "FMA10474",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "right deltoid muscle",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1758",
+      "discoveryBP": "BP23298",
+      "discoveryFMA": "FMA261085",
+      "name": "White matter of left temporal lobe",
+      "faces": 25542,
+      "vertices": 15286,
+      "bytes": 1837459,
+      "group": "nervous",
+      "csvFMA": "FMA256174",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "temporal lobe",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ1806",
+      "discoveryBP": "BP23323",
+      "discoveryFMA": "FMA261083",
+      "name": "White matter of right temporal lobe",
+      "faces": 26512,
+      "vertices": 15757,
+      "bytes": 1922609,
+      "group": "nervous",
+      "csvFMA": "FMA256174",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "temporal lobe",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ2313",
+      "discoveryBP": "BP21287",
+      "discoveryFMA": "FMA22936",
+      "name": "Left medial brachial vein",
+      "faces": 2852,
+      "vertices": 1454,
+      "bytes": 174678,
+      "group": "venous",
+      "csvFMA": "FMA22930",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "left brachial vein",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ2341",
+      "discoveryBP": "BP21755",
+      "discoveryFMA": "FMA22935",
+      "name": "Right medial brachial vein",
+      "faces": 2570,
+      "vertices": 1337,
+      "bytes": 158971,
+      "group": "venous",
+      "csvFMA": "FMA22930",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "right brachial vein",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3132",
+      "discoveryBP": "BP21512",
+      "discoveryFMA": "FMA19618",
+      "name": "Corpus cavernosum of penis",
+      "faces": 1272,
+      "vertices": 830,
+      "bytes": 85949,
+      "group": "reproductive",
+      "csvFMA": "FMA19618",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "penis",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3133",
+      "discoveryBP": "BP21164",
+      "discoveryFMA": "FMA19617",
+      "name": "Corpus spongiosum of penis",
+      "faces": 576,
+      "vertices": 296,
+      "bytes": 33800,
+      "group": "reproductive",
+      "csvFMA": "FMA19617",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "penis",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3134",
+      "discoveryBP": "BP23770",
+      "discoveryFMA": "FMA18247",
+      "name": "Glans penis",
+      "faces": 1374,
+      "vertices": 942,
+      "bytes": 95748,
+      "group": "reproductive",
+      "csvFMA": "FMA18247",
+      "conceptMembership": [
+        "is_a"
+      ],
+      "target": "penis",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3671",
+      "discoveryBP": "BP21433",
+      "discoveryFMA": "FMA13369",
+      "name": "Left lobe of thyroid gland",
+      "faces": 4741,
+      "vertices": 14223,
+      "bytes": 1338937,
+      "group": "endocrine",
+      "csvFMA": "FMA13367",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "thyroid gland",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3672",
+      "discoveryBP": "BP19828",
+      "discoveryFMA": "FMA13368",
+      "name": "Right lobe of thyroid gland",
+      "faces": 5061,
+      "vertices": 15183,
+      "bytes": 1453612,
+      "group": "endocrine",
+      "csvFMA": "FMA13367",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "thyroid gland",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3673",
+      "discoveryBP": "BP21598",
+      "discoveryFMA": "FMA55563",
+      "name": "Left inferior parathyroid gland",
+      "faces": 160,
+      "vertices": 82,
+      "bytes": 8821,
+      "group": "endocrine",
+      "csvFMA": "FMA13890",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "left parathyroid gland",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3674",
+      "discoveryBP": "BP23783",
+      "discoveryFMA": "FMA55561",
+      "name": "Left superior parathyroid gland",
+      "faces": 142,
+      "vertices": 75,
+      "bytes": 7984,
+      "group": "endocrine",
+      "csvFMA": "FMA13890",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "left parathyroid gland",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3675",
+      "discoveryBP": "BP23812",
+      "discoveryFMA": "FMA55562",
+      "name": "Right inferior parathyroid gland",
+      "faces": 146,
+      "vertices": 75,
+      "bytes": 8182,
+      "group": "endocrine",
+      "csvFMA": "FMA13890",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "right parathyroid gland",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ3676",
+      "discoveryBP": "BP23811",
+      "discoveryFMA": "FMA55560",
+      "name": "Right superior parathyroid gland",
+      "faces": 136,
+      "vertices": 73,
+      "bytes": 7796,
+      "group": "endocrine",
+      "csvFMA": "FMA13890",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "right parathyroid gland",
+      "relation": "RELATED_COMPONENT_ONLY"
+    },
+    {
+      "fj": "FJ4989",
+      "discoveryBP": "BP29715",
+      "discoveryFMA": "FMA66531",
+      "name": "Trunk of right external carotid artery",
+      "faces": 1282,
+      "vertices": 643,
+      "bytes": 75545,
+      "group": "arterial",
+      "csvFMA": "FMA30313",
+      "conceptMembership": [
+        "is_a",
+        "part_of"
+      ],
+      "target": "right external carotid artery",
+      "relation": "RELATED_COMPONENT_ONLY"
+    }
+  ],
+  "alreadyInCatalog": [],
+  "held": []
+}

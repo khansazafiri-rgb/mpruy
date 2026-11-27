@@ -1,0 +1,39 @@
+name: Atlas source and terminology review queue
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/build-atlas-review-queue*'
+      - 'scripts/export-atlas-human-review*'
+      - 'scripts/audit-atlas-workstation-pack*'
+      - 'scripts/atlas-reference-suite-spec.mjs'
+      - '.github/workflows/atlas-review-queue.yml'
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/build-atlas-review-queue*'
+      - 'scripts/export-atlas-human-review*'
+      - 'scripts/audit-atlas-workstation-pack*'
+      - 'scripts/atlas-reference-suite-spec.mjs'
+      - '.github/workflows/atlas-review-queue.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-review-queue-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/build-atlas-review-queue.test.mjs scripts/audit-atlas-workstation-pack.test.mjs scripts/export-atlas-human-review.test.mjs
+      - name: Generate counts only, no approval
+        run: |
+          node --input-type=module -e "import {buildReviewQueue} from './scripts/build-atlas-review-queue.mjs';const x=buildReviewQueue();console.log('ATLAS REVIEW QUEUE PASS',JSON.stringify({terms:x.nomenclature.length,rights:x.rights.length,approved:0,publicRelease:x.publicRelease}));"

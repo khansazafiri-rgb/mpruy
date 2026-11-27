@@ -1,0 +1,1125 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 6,
+  "held": 0,
+  "exactNamedMeshNodes": 66,
+  "rows": [
+    {
+      "id": "pancreas-female",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+      "bytes": 714832,
+      "sha256": "553411dfc0391d305191a8f204c88e9fd3c05f7a2c7501023914728f294d8b4e",
+      "metadataSHA256": "1bffa936a7416a273e9bfcf4e13952652aa567153553d1ac4bd17208aede2615",
+      "crosswalkSHA256": "21bd89a810244bb69bc9f5b400f1399acda2a2bf7a33b5ebc08d6f6b7425c3c3",
+      "meshCount": 5,
+      "nodeCount": 6,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_pancreas",
+          "ontologyId": "UBERON:0001264",
+          "label": "Pancreas",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_tail_of_pancreas",
+          "ontologyId": "UBERON:0001151",
+          "label": "tail of pancreas",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_body_of_pancreas",
+          "ontologyId": "UBERON:0001150",
+          "label": "body of pancreas",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ucinate_process1",
+          "ontologyId": "UBERON:0010373",
+          "label": "uncinate process of pancreas",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_head_of_pancreas",
+          "ontologyId": "UBERON:0001069",
+          "label": "head of pancreas",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_neck_of_pancreas",
+          "ontologyId": "FMA:14517",
+          "label": "Neck of pancreas",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 5,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM866.PNNZ.328",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "pancreas-male",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+      "bytes": 2110316,
+      "sha256": "a89d7acbc9448ca1e6c09f7f6d6a18b2bd8a2e94cd4a0b51709915a8b7bea84e",
+      "metadataSHA256": "1c093f0c397a6fcfcb5c86cbd8c27d30f1c11413873328bcc480054be938ee11",
+      "crosswalkSHA256": "02751ff545038977af564a40890b0cdd3fac41d8b9c21a28897dc6ef6602b653",
+      "meshCount": 5,
+      "nodeCount": 6,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_pancreas",
+          "ontologyId": "UBERON:0001264",
+          "label": "Pancreas",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_body_of_pancreas",
+          "ontologyId": "UBERON:0001150",
+          "label": "body of pancreas",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_tail_of_pancreas",
+          "ontologyId": "UBERON:0001151",
+          "label": "tail of pancreas",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_head_of_pancreas",
+          "ontologyId": "UBERON:0001069",
+          "label": "head of pancreas",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_neck_of_pancreas",
+          "ontologyId": "FMA:14517",
+          "label": "Neck of pancreas",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_uncinate_process_of_the_pancreas",
+          "ontologyId": "UBERON:0010373",
+          "label": "uncinate process of pancreas",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 5,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM396.QWWJ.639",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "liver-female",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb",
+      "bytes": 1738552,
+      "sha256": "2ab712216dc8af026f87c43b0ad783273fffdf080bb312bcb4c34724f53e5fa6",
+      "metadataSHA256": "551e50faeb92b67d2ba0275027aa15e7ab9678a10b6db9994802052e4b2277e5",
+      "crosswalkSHA256": "bbe0fe05526f6bf24ad039c160164e14533e06850d63348d0d4e87e82f1d5f55",
+      "meshCount": 26,
+      "nodeCount": 33,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_liver",
+          "ontologyId": "UBERON:0002107",
+          "label": "liver",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_gastric_impression_of_liver",
+          "ontologyId": "FMA:14487",
+          "label": "gastric impression of liver",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_suprarenal_impression_of_liver",
+          "ontologyId": "FMA:14489",
+          "label": "Suprarenal impression of liver",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_impression_of_liver",
+          "ontologyId": "FMA:14488",
+          "label": "renal impression of liver",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_duodenal_impression_of_liver",
+          "ontologyId": "FMA:14485",
+          "label": "duodenal impression of liver",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_esophageal_impression_of_liver",
+          "ontologyId": "FMA:14486",
+          "label": "esophageal impression of liver",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_porta_hepatis",
+          "ontologyId": "FMA:15758",
+          "label": "porta hepatis",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_colic_impression_of_liver",
+          "ontologyId": "FMA:14484",
+          "label": "colic impression of liver",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_capsule_of_the_liver",
+          "ontologyId": "UBERON:0016479",
+          "label": "capsule of the liver",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_bare_area_of_liver",
+          "ontologyId": "UBERON:0001149",
+          "label": "bare area of liver",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_diaphragmatic_surface_of_liver",
+          "ontologyId": "FMA:15729",
+          "label": "diaphragmatic surface of liver",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_left_lobe_of_liver",
+          "ontologyId": "UBERON:0001115",
+          "label": "left lobe of liver",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_liver_left_lateral_lobe",
+          "ontologyId": "UBERON:0006727",
+          "label": "liver left lateral lobe",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_liver_left_medial_lobe",
+          "ontologyId": "UBERON:0006728",
+          "label": "liver left medial lobe",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_quadrate_lobe",
+          "ontologyId": "UBERON:0001116",
+          "label": "quadrate lobe of liver",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_right_lobe_of_liver",
+          "ontologyId": "UBERON:0001114",
+          "label": "right lobe of liver",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_caudate_lobe",
+          "ontologyId": "UBERON:0001117",
+          "label": "caudate lobe of liver",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_coronary_ligament_of_liver",
+          "ontologyId": "UBERON:0013138",
+          "label": "coronary ligament of liver",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_falciform_ligament",
+          "ontologyId": "UBERON:0001247",
+          "label": "falciform ligament",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_triangular_ligament_of_liver",
+          "ontologyId": "UBERON:0035444",
+          "label": "triangular ligament of liver",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ligamentum_venosum",
+          "ontologyId": "UBERON:0006587",
+          "label": "ligamentum venosum",
+          "nodeIndices": [
+            30
+          ],
+          "meshNodeIndices": [
+            30
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_round_ligament_of_liver",
+          "ontologyId": "UBERON:0006588",
+          "label": "round ligament of liver",
+          "nodeIndices": [
+            31
+          ],
+          "meshNodeIndices": [
+            31
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hepataduodenal_ligament",
+          "ontologyId": "UBERON:0012472",
+          "label": "hepatoduodenal ligament",
+          "nodeIndices": [
+            32
+          ],
+          "meshNodeIndices": [
+            32
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 18,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM599.GZLD.639",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "liver-male",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-male/v1.2/assets/3d-vh-m-liver.glb",
+      "bytes": 1136412,
+      "sha256": "8e4c38293cfdb6b4f47ef2930c7f4af9e37b9144d1cf26d07c8f12c5045eb404",
+      "metadataSHA256": "2cda567037b880ba716648b162969206b33382f6ef2aebe4464439fc83a89384",
+      "crosswalkSHA256": "fca2a8375741f84bfbfdfba2e1da005bbe4c1fdba5d842738d9417da0d39ce40",
+      "meshCount": 26,
+      "nodeCount": 33,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_liver",
+          "ontologyId": "UBERON:0002107",
+          "label": "liver",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_bare_area_of_liver",
+          "ontologyId": "UBERON:0001149",
+          "label": "bare area of liver",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_liver_capsule",
+          "ontologyId": "UBERON:0016479",
+          "label": "capsule of the liver",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_diaphragmatic_surface",
+          "ontologyId": "FMA:15729",
+          "label": "diaphragmatic surface of liver",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_suprarenal_impression_of_liver",
+          "ontologyId": "FMA:14489",
+          "label": "Suprarenal impression of liver",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_impression_of_liver",
+          "ontologyId": "FMA:14488",
+          "label": "renal impression of liver",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_gastric_impression_of_liver",
+          "ontologyId": "FMA:14487",
+          "label": "gastric impression of liver",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_colic_impression_of_liver",
+          "ontologyId": "FMA:14484",
+          "label": "colic impression of liver",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_esophageal_impression_of_liver",
+          "ontologyId": "FMA:14486",
+          "label": "esophageal impression of liver",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_duodenal_impression_of_liver",
+          "ontologyId": "FMA:14485",
+          "label": "duodenal impression of liver",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_porta_hepatis",
+          "ontologyId": "FMA:15758",
+          "label": "porta hepatis",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_caudate_lobe_of_liver",
+          "ontologyId": "UBERON:0001117",
+          "label": "caudate lobe of liver",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_right_lobe_of_liver",
+          "ontologyId": "UBERON:0001114",
+          "label": "right lobe of liver",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_left_lobe_of_liver",
+          "ontologyId": "UBERON:0001115",
+          "label": "left lobe of liver",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_left_lateral_lobe",
+          "ontologyId": "UBERON:0006727",
+          "label": "liver left lateral lobe",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_left_medial_lobe",
+          "ontologyId": "UBERON:0006728",
+          "label": "liver left medial lobe",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_quadrate_lobe_of_liver",
+          "ontologyId": "UBERON:0001116",
+          "label": "quadrate lobe of liver",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hepataduodenal_ligament",
+          "ontologyId": "UBERON:0012472",
+          "label": "hepatoduodenal ligament",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ligamentum_venosum",
+          "ontologyId": "UBERON:0006587",
+          "label": "ligamentum venosum",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_round_ligament_of_liver",
+          "ontologyId": "UBERON:0006588",
+          "label": "round ligament of liver",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_triangular_ligament_of_liver",
+          "ontologyId": "UBERON:0035444",
+          "label": "triangular ligament of liver",
+          "nodeIndices": [
+            30
+          ],
+          "meshNodeIndices": [
+            30
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_falciform_ligament",
+          "ontologyId": "UBERON:0001247",
+          "label": "falciform ligament",
+          "nodeIndices": [
+            31
+          ],
+          "meshNodeIndices": [
+            31
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_coronary_ligament_of_liver",
+          "ontologyId": "UBERON:0013138",
+          "label": "coronary ligament of liver",
+          "nodeIndices": [
+            32
+          ],
+          "meshNodeIndices": [
+            32
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 18,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM896.WMSL.867",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "large-intestine-female",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-female/v1.3/assets/3d-sbu-f-large-intestine.glb",
+      "bytes": 387376,
+      "sha256": "b3046d2af718e7f031578db4089a9f4bea707aa4a75af98aab78f172c2f53d74",
+      "metadataSHA256": "b193788a068c52839127492c5fee7bb32a2b591d28dfa719b8e38303e2f9e75f",
+      "crosswalkSHA256": "f464953061780cbd32cdf8da465481e8daf6da64c138421f5ead5ef31e5cfc39",
+      "meshCount": 10,
+      "nodeCount": 11,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_colon",
+          "ontologyId": "UBERON:0000059",
+          "label": "large intestine",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_hepatic_flexure_of_colon",
+          "ontologyId": "UBERON:0022277",
+          "label": "hepatic flexure of colon",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_transverse_colon",
+          "ontologyId": "UBERON:0001157",
+          "label": "transverse colon",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ascending_colon",
+          "ontologyId": "UBERON:0001156",
+          "label": "ascending colon",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_vermiform_appendix",
+          "ontologyId": "UBERON:0001154",
+          "label": "vermiform appendix",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_descending_colon",
+          "ontologyId": "UBERON:0001158",
+          "label": "descending colon",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ileocecal_valve",
+          "ontologyId": "UBERON:0000569",
+          "label": "ileocecal valve",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_caecum",
+          "ontologyId": "UBERON:0001153",
+          "label": "caecum",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_rectum",
+          "ontologyId": "UBERON:0001052",
+          "label": "rectum",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_sigmoid_colon",
+          "ontologyId": "UBERON:0001159",
+          "label": "sigmoid colon",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_splenic_flexure_of_colon",
+          "ontologyId": "UBERON:0022276",
+          "label": "splenic flexure of colon",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "PUBLISHER_MODELED_NO_DIRECT_IMAGING",
+      "clinicalLimitations": [
+        "NO_DIRECT_IMAGING",
+        "NO_PATIENT_SPECIFIC_OR_CROSS_SOURCE_REGISTRATION"
+      ],
+      "exactMeshNodeCount": 10,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM682.RSXX.965",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "large-intestine-male",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb",
+      "bytes": 687076,
+      "sha256": "908a5c38bf14574a673f2d2619502281f7f9e47c46c4eba837aae2e80e38c489",
+      "metadataSHA256": "6e0934c6cc7be6f63be8bac814ebab275746832b0c94e4f878cd1d9b82e27a82",
+      "crosswalkSHA256": "284ca9a8d42b453d36037e8b9236a6737d45d1186874a98e6f3c45a1f713c954",
+      "meshCount": 10,
+      "nodeCount": 11,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_colon",
+          "ontologyId": "UBERON:0000059",
+          "label": "large intestine",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ascending_colon",
+          "ontologyId": "UBERON:0001156",
+          "label": "ascending colon",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_descending_colon",
+          "ontologyId": "UBERON:0001158",
+          "label": "descending colon",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hepatic_flexure_of_colon",
+          "ontologyId": "UBERON:0022277",
+          "label": "hepatic flexure of colon",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_rectum",
+          "ontologyId": "UBERON:0001052",
+          "label": "rectum",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_sigmoid_colon",
+          "ontologyId": "UBERON:0001159",
+          "label": "sigmoid colon",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_splenic_flexure_of_colon",
+          "ontologyId": "UBERON:0022276",
+          "label": "splenic flexure of colon",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_transverse_colon",
+          "ontologyId": "UBERON:0001157",
+          "label": "transverse colon",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ileocecal_valve",
+          "ontologyId": "UBERON:0000569",
+          "label": "ileocecal valve",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_caecum",
+          "ontologyId": "UBERON:0001153",
+          "label": "caecum",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_vermiform_appendix",
+          "ontologyId": "UBERON:0001154",
+          "label": "vermiform appendix",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "COLONOSCOPY_DERIVED_GENERALLY_ALIGNED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 10,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM487.ZKSN.693",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "82d9cafe2b02cc986107f8452f6ba8d7bc132a70",
+  "workflowRun": 45923445671,
+  "workflowJob": 140259258472,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}

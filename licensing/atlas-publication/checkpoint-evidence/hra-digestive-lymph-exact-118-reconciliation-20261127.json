@@ -1,0 +1,1355 @@
+{
+  "schema": 1,
+  "scope": "Exact normalized publisher label comparison only; not geometry or clinical validation. No inferred synonyms, parent equivalences, or coverage promotions. Other source batches are not evaluated here.",
+  "sourceCommit": "82d9cafe2b02cc986107f8452f6ba8d7bc132a70",
+  "inputs": [
+    {
+      "path": "licensing/atlas-publication/checkpoint-evidence/atlas-owner-local-118-gap-queue-20261127.json",
+      "blobSha": "41ba0f1da489f70efb33152e65ebafc34a3fdd27"
+    },
+    {
+      "path": "licensing/atlas-publication/hra-digestive-six-pinned-candidates-20261127.json",
+      "blobSha": "4a3ceac93383fecef57957250ceff7a061d1b2fe"
+    },
+    {
+      "path": "licensing/atlas-publication/hra-lymph-model-two-pinned-candidates-20261127.json",
+      "blobSha": "f843376a07097c9187d68e53159af3da735f4a8e"
+    }
+  ],
+  "baselineUnresolved": 118,
+  "counts": {
+    "NO_EXACT_LABEL_IN_THIS_BATCH": 100,
+    "UNCHANGED_EXTERNAL_HOLD": 12,
+    "REJECTED_NONHUMAN_SOURCE_MATCH": 1,
+    "EXACT_PUBLISHER_LABEL_CANDIDATE": 5
+  },
+  "sourceAssets": {
+    "digestive": 6,
+    "lymphNonhuman": 2
+  },
+  "wholeConceptCoveragePromoted": 0,
+  "geometryImported": 0,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "rows": [
+    {
+      "group": "respiratory",
+      "target": "larynx",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "left lung pleura",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "right lung pleura",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "nasal cavity",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "nasopharynx",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "oropharynx",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "laryngopharynx",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "visceral pleura",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "respiratory",
+      "target": "parietal pleura",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right brachial plexus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "left sciatic nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right sciatic nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "cerebral cortex",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "frontal lobe",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "parietal lobe",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "conus medullaris",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "cervical plexus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "lumbar plexus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "sacral plexus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "sympathetic trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right median nerve",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right ulnar nerve",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right radial nerve",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right musculocutaneous nerve",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right axillary nerve",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "left femoral nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right femoral nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "left obturator nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right obturator nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "left tibial nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right tibial nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "left common fibular nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right common fibular nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "left sural nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "nervous",
+      "target": "right sural nerve",
+      "originalAction": "HOLD_EXTERNAL_RIGHTS_AND_CLINICAL_REVIEW",
+      "status": "UNCHANGED_EXTERNAL_HOLD",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "thoracic duct",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "right lymphatic duct",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "cisterna chyli",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "palatine tonsil",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lingual tonsil",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "pharyngeal tonsil",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "intestinal trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "jugular trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "subclavian trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "bronchomediastinal trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lumbar trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lymphatic vessel",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "lymphatic capillary",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "deep cervical lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "superficial cervical lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "axillary lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "mediastinal lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "tracheobronchial lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "mesenteric lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "REJECTED_NONHUMAN_SOURCE_MATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [
+        {
+          "assetId": "lymph-node-female",
+          "version": "v1.4",
+          "sourceMethod": "CE3D_MOUSE_DERIVED_REFERENCE",
+          "doi": "https://doi.org/10.48539/HBM425.PTPB.732",
+          "glbBlob": "780f8035c0c07bdd9a8ddaa8f623e2ebdfe4e3bd",
+          "nodeName": "Yao_lymph_node",
+          "ontologyId": "UBERON:0002509",
+          "sourceLabel": "mesenteric lymph node",
+          "approvedForDistribution": false
+        },
+        {
+          "assetId": "lymph-node-male",
+          "version": "v1.4",
+          "sourceMethod": "CE3D_MOUSE_DERIVED_REFERENCE",
+          "doi": "https://doi.org/10.48539/HBM532.TNXR.875",
+          "glbBlob": "a4d79c66dd049cbe054856c3dff571b88cf16350",
+          "nodeName": "Yao_lymph_node",
+          "ontologyId": "UBERON:0002509",
+          "sourceLabel": "mesenteric lymph node",
+          "approvedForDistribution": false
+        }
+      ],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "inguinal lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "lymphatic",
+      "target": "popliteal lymph node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "interatrial septum",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "myocardium",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "endocardium",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "epicardium",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "chordae tendineae",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "sinoatrial node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "heart",
+      "target": "atrioventricular node",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "parotid gland",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "fundus of stomach",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "pylorus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "sigmoid colon",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "candidateMatches": [
+        {
+          "assetId": "large-intestine-female",
+          "version": "v1.3",
+          "sourceMethod": "PUBLISHER_MODELED_NO_DIRECT_IMAGING",
+          "doi": "https://doi.org/10.48539/HBM682.RSXX.965",
+          "glbBlob": "f12afa921a630e969e7fb1f330128c750ba7b44d",
+          "nodeName": "VH_F_sigmoid_colon",
+          "ontologyId": "UBERON:0001159",
+          "sourceLabel": "sigmoid colon",
+          "approvedForDistribution": false
+        },
+        {
+          "assetId": "large-intestine-male",
+          "version": "v1.3",
+          "sourceMethod": "COLONOSCOPY_DERIVED_GENERALLY_ALIGNED",
+          "doi": "https://doi.org/10.48539/HBM487.ZKSN.693",
+          "glbBlob": "32961c11a2b6aee00ef4ed68721a039b5c98cf8c",
+          "nodeName": "VH_M_sigmoid_colon",
+          "ontologyId": "UBERON:0001159",
+          "sourceLabel": "sigmoid colon",
+          "approvedForDistribution": false
+        }
+      ],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "anal canal",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "quadrate lobe of liver",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "candidateMatches": [
+        {
+          "assetId": "liver-female",
+          "version": "v1.2",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM599.GZLD.639",
+          "glbBlob": "8b44a99e5c7d73048085fc1c27895dff35305ce5",
+          "nodeName": "VH_F_quadrate_lobe",
+          "ontologyId": "UBERON:0001116",
+          "sourceLabel": "quadrate lobe of liver",
+          "approvedForDistribution": false
+        },
+        {
+          "assetId": "liver-male",
+          "version": "v1.2",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM896.WMSL.867",
+          "glbBlob": "9808fbac25ffb21372a49d13b3d9a01a8339e902",
+          "nodeName": "VH_M_quadrate_lobe_of_liver",
+          "ontologyId": "UBERON:0001116",
+          "sourceLabel": "quadrate lobe of liver",
+          "approvedForDistribution": false
+        }
+      ],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "common bile duct",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "head of pancreas",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "candidateMatches": [
+        {
+          "assetId": "pancreas-female",
+          "version": "v1.3",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM866.PNNZ.328",
+          "glbBlob": "d2615f52f74297af1b5d3ded36f3c0f27d547a51",
+          "nodeName": "VH_F_head_of_pancreas",
+          "ontologyId": "UBERON:0001069",
+          "sourceLabel": "head of pancreas",
+          "approvedForDistribution": false
+        },
+        {
+          "assetId": "pancreas-male",
+          "version": "v1.3",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM396.QWWJ.639",
+          "glbBlob": "992376403a68cb18df4683196703a468db43b55c",
+          "nodeName": "VH_M_head_of_pancreas",
+          "ontologyId": "UBERON:0001069",
+          "sourceLabel": "head of pancreas",
+          "approvedForDistribution": false
+        }
+      ],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "body of pancreas",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "candidateMatches": [
+        {
+          "assetId": "pancreas-female",
+          "version": "v1.3",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM866.PNNZ.328",
+          "glbBlob": "d2615f52f74297af1b5d3ded36f3c0f27d547a51",
+          "nodeName": "VH_F_body_of_pancreas",
+          "ontologyId": "UBERON:0001150",
+          "sourceLabel": "body of pancreas",
+          "approvedForDistribution": false
+        },
+        {
+          "assetId": "pancreas-male",
+          "version": "v1.3",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM396.QWWJ.639",
+          "glbBlob": "992376403a68cb18df4683196703a468db43b55c",
+          "nodeName": "VH_M_body_of_pancreas",
+          "ontologyId": "UBERON:0001150",
+          "sourceLabel": "body of pancreas",
+          "approvedForDistribution": false
+        }
+      ],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "digestive",
+      "target": "tail of pancreas",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "EXACT_PUBLISHER_LABEL_CANDIDATE",
+      "candidateMatches": [
+        {
+          "assetId": "pancreas-female",
+          "version": "v1.3",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM866.PNNZ.328",
+          "glbBlob": "d2615f52f74297af1b5d3ded36f3c0f27d547a51",
+          "nodeName": "VH_F_tail_of_pancreas",
+          "ontologyId": "UBERON:0001151",
+          "sourceLabel": "tail of pancreas",
+          "approvedForDistribution": false
+        },
+        {
+          "assetId": "pancreas-male",
+          "version": "v1.3",
+          "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+          "doi": "https://doi.org/10.48539/HBM396.QWWJ.639",
+          "glbBlob": "992376403a68cb18df4683196703a468db43b55c",
+          "nodeName": "VH_M_tail_of_pancreas",
+          "ontologyId": "UBERON:0001151",
+          "sourceLabel": "tail of pancreas",
+          "approvedForDistribution": false
+        }
+      ],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "reproductive",
+      "target": "vagina",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "reproductive",
+      "target": "scrotum",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "reproductive",
+      "target": "vas deferens",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "reproductive",
+      "target": "left vas deferens",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "reproductive",
+      "target": "right vas deferens",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "endocrine",
+      "target": "pineal gland",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "endocrine",
+      "target": "parathyroid gland",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "endocrine",
+      "target": "adenohypophysis",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "endocrine",
+      "target": "neurohypophysis",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "coccyx",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "malleus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "incus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "stapes",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "left malleus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "right malleus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "left incus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "right incus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "left stapes",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "skeletal",
+      "target": "right stapes",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left hip joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right hip joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left knee joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right knee joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left shoulder joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right shoulder joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left elbow joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right elbow joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left wrist joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right wrist joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left ankle joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right ankle joint",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left anterior cruciate ligament",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right anterior cruciate ligament",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left posterior cruciate ligament",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right posterior cruciate ligament",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left medial meniscus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right medial meniscus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "left lateral meniscus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "joints",
+      "target": "right lateral meniscus",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "muscular",
+      "target": "rectus abdominis muscle",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "muscular",
+      "target": "transversus abdominis muscle",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "muscular",
+      "target": "internal oblique muscle",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "arterial",
+      "target": "brachiocephalic trunk",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "arterial",
+      "target": "left external carotid artery",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    },
+    {
+      "group": "venous",
+      "target": "left external jugular vein",
+      "originalAction": "DISCOVER_NEW_SOURCE",
+      "status": "NO_EXACT_LABEL_IN_THIS_BATCH",
+      "candidateMatches": [],
+      "rejectedMatches": [],
+      "autoExport": false,
+      "coveragePromoted": false
+    }
+  ]
+}

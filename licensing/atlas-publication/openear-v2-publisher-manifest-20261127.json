@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "scope": "Publisher record verified; archive bytes not acquired. No geometry or laterality promotion.",
+  "record": "https://zenodo.org/records/1473724",
+  "version": "v2",
+  "doi": "10.5281/zenodo.1473724",
+  "article": "https://doi.org/10.1038/sdata.2018.297",
+  "license": "CC-BY-4.0",
+  "licenseEvidence": "https://zenodo.org/records/1473724#rights",
+  "authors": [
+    "Daniel Manuel Sieber",
+    "Peter Erfurt",
+    "Samuel John",
+    "Gabriel Ribeiro dos Santos",
+    "Daniel Schurzig",
+    "Mads Sølvsten Sørensen",
+    "Thomas Lenarz"
+  ],
+  "source": "Human post-mortem temporal bones, CBCT and micro-slicing; ossicle segmentation from embedded CBCT",
+  "meshFormat": "PLY",
+  "segmentationSpacingMicrometers": 125,
+  "archives": [
+    {
+      "name": "ALPHA.zip",
+      "publisherMD5": "bd02263e5f6da14862a51fa16cff11a5",
+      "approxGB": 7.3,
+      "url": "https://zenodo.org/records/1473724/files/ALPHA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "BETA.zip",
+      "publisherMD5": "657f6a552a4aef7f584597c70358fa2a",
+      "approxGB": 7.5,
+      "url": "https://zenodo.org/records/1473724/files/BETA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "DELTA.zip",
+      "publisherMD5": "40d10195f9c6022fd5ce8594d295fcc0",
+      "approxGB": 14,
+      "url": "https://zenodo.org/records/1473724/files/DELTA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "EPSILON.zip",
+      "publisherMD5": "f588d6edcd27072aef76b3f81e51183e",
+      "approxGB": 4,
+      "url": "https://zenodo.org/records/1473724/files/EPSILON.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "ETA.zip",
+      "publisherMD5": "e71cd366ee5054373a454f5d36b97469",
+      "approxGB": 4.6,
+      "url": "https://zenodo.org/records/1473724/files/ETA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "GAMMA.zip",
+      "publisherMD5": "f0389f55be7520d25ae996b733332359",
+      "approxGB": 13.5,
+      "url": "https://zenodo.org/records/1473724/files/GAMMA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "THETA.zip",
+      "publisherMD5": "c093f7eff8a8777d393eb5791f7309ad",
+      "approxGB": 4.4,
+      "url": "https://zenodo.org/records/1473724/files/THETA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    },
+    {
+      "name": "ZETA.zip",
+      "publisherMD5": "66fc062426086d2757e837593fd548e5",
+      "approxGB": 3.9,
+      "url": "https://zenodo.org/records/1473724/files/ZETA.zip?download=1",
+      "sha256": null,
+      "laterality": "UNVERIFIED"
+    }
+  ],
+  "firstIntake": "ZETA.zip",
+  "targets": [
+    "malleus",
+    "incus",
+    "stapes"
+  ],
+  "lateralityTargets": [
+    "left malleus",
+    "right malleus",
+    "left incus",
+    "right incus",
+    "left stapes",
+    "right stapes"
+  ],
+  "geometryImported": 0,
+  "privacyReview": "PENDING",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO"
+}

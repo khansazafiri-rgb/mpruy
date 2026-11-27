@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "scope": "Private original HRA organ node/group browser replay, not workstation or complete parent coverage.",
+  "runs": [
+    {
+      "sourceCommit": "67daad189253f828aebd90b7e5c1a8c4ae8525f1",
+      "workflowRun": 45921355182,
+      "workflowJob": 140252585207,
+      "checkpoints": 32,
+      "opens": 68,
+      "conclusion": "success",
+      "originalOrgans": 24,
+      "sourceNodes": 606,
+      "sourceGroups": 87,
+      "logEvidence": [
+        "2026-11-27T01:17:48.9733815Z HRA GUIDED BROWSER PASS: 32 checkpoints, 68 exact source node/group opens and isolated descendant sets; no coverage promotion.",
+        "2026-11-27T01:19:04.3235194Z HRA SOURCE GROUP BROWSER PASS: 87 exact native descendant sets isolated and restored; no held label exposed.",
+        "2026-11-27T01:19:04.4797524Z HRA FULL 24 BROWSER PASS: 24 original organs, 606 exact mapped source nodes, 87 source groups, 24 direct isolation/restore checks; body inventory unchanged."
+      ]
+    },
+    {
+      "sourceCommit": "f2048f1b865f9282735d33f9aa58dff08c27cef5",
+      "workflowRun": 45921686389,
+      "workflowJob": 140253640532,
+      "checkpoints": 40,
+      "opens": 88,
+      "conclusion": "success",
+      "originalOrgans": 24,
+      "sourceNodes": 606,
+      "sourceGroups": 87,
+      "logEvidence": [
+        "2026-11-27T01:21:52.3441965Z HRA GUIDED BROWSER PASS: 40 checkpoints, 88 exact source node/group opens and isolated descendant sets; no coverage promotion.",
+        "2026-11-27T01:23:07.0628610Z HRA SOURCE GROUP BROWSER PASS: 87 exact native descendant sets isolated and restored; no held label exposed.",
+        "2026-11-27T01:23:07.2018625Z HRA FULL 24 BROWSER PASS: 24 original organs, 606 exact mapped source nodes, 87 source groups, 24 direct isolation/restore checks; body inventory unchanged."
+      ]
+    }
+  ],
+  "wholeConceptCoveragePromoted": 0,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}

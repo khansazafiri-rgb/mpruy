@@ -1,0 +1,335 @@
+{
+  "schema": 1,
+  "batchId": "cranial-32",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Exact tree and membership discovery only; FMA not in current 248-element reference collection, not proof of absence from body inventory. No clinical, registration or release approval.",
+  "rows": [
+    {
+      "fj": "FJ3908",
+      "discoveryBP": "BP21112",
+      "discoveryFMA": "FMA11195",
+      "name": "Left anterior ethmoidal nerve",
+      "faces": 1016,
+      "vertices": 550,
+      "bytes": 61574,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4006",
+      "discoveryBP": "BP23799",
+      "discoveryFMA": "FMA11195",
+      "name": "Right anterior ethmoidal nerve",
+      "faces": 1004,
+      "vertices": 539,
+      "bytes": 61044,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3935",
+      "discoveryBP": "BP29164",
+      "discoveryFMA": "FMA11195",
+      "name": "Left buccal nerve",
+      "faces": 1992,
+      "vertices": 1051,
+      "bytes": 120245,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3897",
+      "discoveryBP": "BP29111",
+      "discoveryFMA": "FMA11195",
+      "name": "Right buccal nerve",
+      "faces": 1954,
+      "vertices": 1031,
+      "bytes": 118744,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1288",
+      "discoveryBP": "BP21701",
+      "discoveryFMA": "FMA11195",
+      "name": "Left ciliary ganglion",
+      "faces": 180,
+      "vertices": 94,
+      "bytes": 9970,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1339",
+      "discoveryBP": "BP21634",
+      "discoveryFMA": "FMA11195",
+      "name": "Right ciliary ganglion",
+      "faces": 246,
+      "vertices": 125,
+      "bytes": 13784,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3910",
+      "discoveryBP": "BP20367",
+      "discoveryFMA": "FMA11195",
+      "name": "Left frontal nerve",
+      "faces": 2642,
+      "vertices": 1323,
+      "bytes": 159178,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4008",
+      "discoveryBP": "BP20449",
+      "discoveryFMA": "FMA11195",
+      "name": "Right frontal nerve",
+      "faces": 2626,
+      "vertices": 1316,
+      "bytes": 159456,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3940",
+      "discoveryBP": "BP29137",
+      "discoveryFMA": "FMA11195",
+      "name": "Left greater palatine nerve",
+      "faces": 1088,
+      "vertices": 825,
+      "bytes": 79875,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3902",
+      "discoveryBP": "BP29212",
+      "discoveryFMA": "FMA11195",
+      "name": "Right greater palatine nerve",
+      "faces": 1088,
+      "vertices": 812,
+      "bytes": 79995,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3912",
+      "discoveryBP": "BP20380",
+      "discoveryFMA": "FMA11195",
+      "name": "Left lacrimal nerve",
+      "faces": 2008,
+      "vertices": 1044,
+      "bytes": 120211,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4010",
+      "discoveryBP": "BP20357",
+      "discoveryFMA": "FMA11195",
+      "name": "Right lacrimal nerve",
+      "faces": 1994,
+      "vertices": 1047,
+      "bytes": 121068,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3951",
+      "discoveryBP": "BP29377",
+      "discoveryFMA": "FMA11195",
+      "name": "Left mandibular nerve",
+      "faces": 668,
+      "vertices": 372,
+      "bytes": 40739,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3985",
+      "discoveryBP": "BP29281",
+      "discoveryFMA": "FMA11195",
+      "name": "Right mandibular nerve",
+      "faces": 656,
+      "vertices": 371,
+      "bytes": 40716,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3956",
+      "discoveryBP": "BP28937",
+      "discoveryFMA": "FMA11195",
+      "name": "Left mental nerve",
+      "faces": 1364,
+      "vertices": 911,
+      "bytes": 93123,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3990",
+      "discoveryBP": "BP28919",
+      "discoveryFMA": "FMA11195",
+      "name": "Right mental nerve",
+      "faces": 1224,
+      "vertices": 887,
+      "bytes": 88218,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3913",
+      "discoveryBP": "BP20818",
+      "discoveryFMA": "FMA11195",
+      "name": "Left nasociliary nerve",
+      "faces": 458,
+      "vertices": 332,
+      "bytes": 32508,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1361",
+      "discoveryBP": "BP21045",
+      "discoveryFMA": "FMA11195",
+      "name": "Right nasociliary nerve",
+      "faces": 786,
+      "vertices": 507,
+      "bytes": 52850,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3959",
+      "discoveryBP": "BP29143",
+      "discoveryFMA": "FMA11195",
+      "name": "Left nasopalatine nerve",
+      "faces": 1028,
+      "vertices": 552,
+      "bytes": 62441,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3993",
+      "discoveryBP": "BP29147",
+      "discoveryFMA": "FMA11195",
+      "name": "Right nasopalatine nerve",
+      "faces": 1008,
+      "vertices": 560,
+      "bytes": 62555,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3920",
+      "discoveryBP": "BP29573",
+      "discoveryFMA": "FMA11195",
+      "name": "Left olfactory nerve",
+      "faces": 526,
+      "vertices": 349,
+      "bytes": 35449,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4018",
+      "discoveryBP": "BP29597",
+      "discoveryFMA": "FMA11195",
+      "name": "Right olfactory nerve",
+      "faces": 550,
+      "vertices": 358,
+      "bytes": 36825,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3921",
+      "discoveryBP": "BP23833",
+      "discoveryFMA": "FMA11195",
+      "name": "Left ophthalmic nerve",
+      "faces": 1000,
+      "vertices": 502,
+      "bytes": 58220,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4019",
+      "discoveryBP": "BP20226",
+      "discoveryFMA": "FMA11195",
+      "name": "Right ophthalmic nerve",
+      "faces": 994,
+      "vertices": 499,
+      "bytes": 58403,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3922",
+      "discoveryBP": "BP21490",
+      "discoveryFMA": "FMA11195",
+      "name": "Left posterior ethmoidal nerve",
+      "faces": 612,
+      "vertices": 335,
+      "bytes": 36962,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4020",
+      "discoveryBP": "BP21144",
+      "discoveryFMA": "FMA11195",
+      "name": "Right posterior ethmoidal nerve",
+      "faces": 432,
+      "vertices": 267,
+      "bytes": 27936,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3924",
+      "discoveryBP": "BP20828",
+      "discoveryFMA": "FMA11195",
+      "name": "Left supra-orbital nerve",
+      "faces": 1364,
+      "vertices": 738,
+      "bytes": 83094,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4022",
+      "discoveryBP": "BP22693",
+      "discoveryFMA": "FMA11195",
+      "name": "Right supra-orbital nerve",
+      "faces": 1356,
+      "vertices": 726,
+      "bytes": 82680,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3925",
+      "discoveryBP": "BP21030",
+      "discoveryFMA": "FMA11195",
+      "name": "Left supratrochlear nerve",
+      "faces": 2216,
+      "vertices": 1151,
+      "bytes": 134071,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4023",
+      "discoveryBP": "BP22708",
+      "discoveryFMA": "FMA11195",
+      "name": "Right supratrochlear nerve",
+      "faces": 2202,
+      "vertices": 1153,
+      "bytes": 134797,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3981",
+      "discoveryBP": "BP23034",
+      "discoveryFMA": "FMA50865",
+      "name": "Left trochlear nerve",
+      "faces": 4856,
+      "vertices": 2604,
+      "bytes": 313898,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4039",
+      "discoveryBP": "BP23210",
+      "discoveryFMA": "FMA50865",
+      "name": "Right trochlear nerve",
+      "faces": 4826,
+      "vertices": 2553,
+      "bytes": 312751,
+      "group": "nervous"
+    }
+  ]
+}
