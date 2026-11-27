@@ -8,7 +8,7 @@ on:
       - 'licensing/atlas-publication/sio-visible-human-source-candidate.json'
 concurrency:
   group: atlas-sio-label-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 permissions:
   contents: read
 jobs:
@@ -31,3 +31,20 @@ jobs:
       - name: Replay checksummed labels only
         if: ${{ !cancelled() }}
         run: python scripts/audit-sio-label-volume.py
+  private-mesh:
+    if: ${{ github.event.pull_request.base.ref == 'claude/focused-wozniak-1ayrxa' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --only-binary=:all: numpy==1.26.4 pillow==11.3.0 openpyxl==3.1.5 scipy==1.15.3 scikit-image==0.25.2
+      - name: Synthetic geometry and rejection tests
+        run: python scripts/audit-sio-private-mesh.py --test
+      - name: Reacquire pinned segmentation and convert private GLBs
+        run: python scripts/audit-sio-private-mesh.py
+      # No asset uploads. Only numeric audit receipts in job logs.
