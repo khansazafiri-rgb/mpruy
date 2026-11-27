@@ -964,10 +964,54 @@ export const HRA_DIGESTIVE_LEARNING_LINKS=[
     "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb"
   }
 ];
+// NCIt C12398 and Terminologia Anatomica A11.2.00.001 identify pineal body as a synonym of pineal gland.
+// HRA Allen models are mirrored/rescaled, not independent specimens or bilateral pineal glands.
+export const HRA_PINEAL_LEARNING_LINKS=[
+  {
+    "group": "endocrine",
+    "target": "pineal gland",
+    "organ": "brain-female",
+    "label": "pineal body",
+    "ontologyId": "UBERON:0001905",
+    "index": 45,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "endocrine",
+    "target": "pineal gland",
+    "organ": "brain-female",
+    "label": "pineal body",
+    "ontologyId": "UBERON:0001905",
+    "index": 182,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "endocrine",
+    "target": "pineal gland",
+    "organ": "brain-male",
+    "label": "pineal body",
+    "ontologyId": "UBERON:0001905",
+    "index": 44,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "endocrine",
+    "target": "pineal gland",
+    "organ": "brain-male",
+    "label": "pineal body",
+    "ontologyId": "UBERON:0001905",
+    "index": 181,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  }
+];
 const key=s=>String(s).trim().toLowerCase();
 export function hraLearningReferences(group,target,entries){
  const result=[];
- for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS,...HRA_DIGESTIVE_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
+ for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS,...HRA_DIGESTIVE_LEARNING_LINKS,...HRA_PINEAL_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
   for(const e of entries){
    if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.approvedForDistribution!==false||e.registrationValidated!==false||!e.source?.startsWith('https://cdn.humanatlas.io/digital-objects/ref-organ/'+link.organ+'/'))continue;
    if(link.assetURL&&e.source!==link.assetURL)continue;
