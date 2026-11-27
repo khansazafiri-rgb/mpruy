@@ -118,6 +118,7 @@ def audit_mesh(buf,doc,start,limit,i):
     if not isinstance(i,int) or not 0<=i<len(doc["meshes"]):
         raise ValueError("mesh index")
     vertices=triangles=0
+    fingerprints=[]
     for p in doc["meshes"][i]["primitives"]:
         if p.get("mode",4)!=4 or p.get("extensions") or "targets" in p:
             raise ValueError("unsupported primitive")
@@ -127,9 +128,31 @@ def audit_mesh(buf,doc,start,limit,i):
             raise ValueError("invalid triangle geometry")
         vertices+=len(pos)
         triangles+=idx.size//3
+        # Compare exact ordered local position values and index connectivity.
+        # This is not world-space equality, topology equivalence, or specimen identity.
+        fingerprints.append({"vertices":len(pos),"triangles":idx.size//3,
+                             "positionSHA256":hashlib.sha256(np.asarray(pos,dtype="<f4").tobytes(order="C")).hexdigest(),
+                             "indexSHA256":hashlib.sha256(np.asarray(idx,dtype="<u4").tobytes(order="C")).hexdigest()})
     if not vertices or not triangles:
         raise ValueError("empty geometry")
-    return vertices,triangles
+    return vertices,triangles,fingerprints
+def node_transform_chain(doc,index):
+    parents={}
+    for i,n in enumerate(doc["nodes"]):
+        for child in n.get("children",[]):
+            if child in parents:
+                raise ValueError("multiple parents")
+            parents[child]=i
+    chain=[]
+    while True:
+        n=doc["nodes"][index]
+        chain.append({k:n[k] for k in ("matrix","translation","rotation","scale") if k in n})
+        if index not in parents:
+            break
+        index=parents[index]
+        if len(chain)>128:
+            raise ValueError("transform ancestry depth")
+    return hashlib.sha256(json.dumps(chain[::-1],sort_keys=True,separators=(",",":"),allow_nan=False).encode()).hexdigest()
 def audit(row):
     expected=f"https://cdn.humanatlas.io/digital-objects/ref-organ/{row['id']}/{row['version']}/assets/{row['filename']}"
     if row["sourceURL"]!=expected or not 0<row["bytes"]<=CAP or row["approvedForDistribution"] is not False:
@@ -163,8 +186,8 @@ def audit(row):
                 if len(hits)==1 and hits[0] in reachable and "mesh" in doc["nodes"][hits[0]]:
                     i=hits[0]
                     try:
-                        v,t=audit_mesh(buf,doc,start,limit,doc["nodes"][i]["mesh"])
-                        result.update(status="EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",nodeIndex=i,vertices=v,triangles=t)
+                        v,t,fp=audit_mesh(buf,doc,start,limit,doc["nodes"][i]["mesh"])
+                        result.update(status="EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",nodeIndex=i,vertices=v,triangles=t,orderedLocalPrimitiveFingerprints=fp,transformChainSHA256=node_transform_chain(doc,i))
                     except (ValueError,KeyError,IndexError,TypeError,OverflowError):
                         result["status"]="HOLD_UNSUPPORTED_OR_INVALID_GEOMETRY"
                 if len(hits)==1 and hits[0] in reachable and "mesh" not in doc["nodes"][hits[0]]:
@@ -172,8 +195,8 @@ def audit(row):
                     def descend(i):
                         n=doc["nodes"][i]
                         if "mesh" in n:
-                            v,t=audit_mesh(buf,doc,start,limit,n["mesh"])
-                            descendants.append({"nodeIndex":i,"vertices":v,"triangles":t})
+                            v,t,fp=audit_mesh(buf,doc,start,limit,n["mesh"])
+                            descendants.append({"nodeIndex":i,"vertices":v,"triangles":t,"orderedLocalPrimitiveFingerprints":fp,"transformChainSHA256":node_transform_chain(doc,i)})
                         for child in n.get("children",[]):
                             descend(child)
                     try:
@@ -195,6 +218,18 @@ class Tests(unittest.TestCase):
     def test_glb_bounds(self):
         with self.assertRaises(ValueError):
             glb_document(b"invalid")
+    def test_ordered_geometry_fingerprint(self):
+        p=np.array([[0,0,0],[1,0,0],[0,1,0]],dtype="<f4").tobytes()
+        idx=np.array([0,1,2],dtype="<u2").tobytes()
+        doc={"meshes":[{"primitives":[{"attributes":{"POSITION":0},"indices":1}]}],
+             "accessors":[{"bufferView":0,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":1,"componentType":5123,"count":3,"type":"SCALAR"}],
+             "bufferViews":[{"buffer":0,"byteLength":len(p)},{"buffer":0,"byteOffset":len(p),"byteLength":len(idx)}]}
+        v,t,f=audit_mesh(p+idx,doc,0,len(p+idx),0)
+        self.assertEqual((v,t),(3,1))
+        self.assertEqual(f[0]["positionSHA256"],hashlib.sha256(p).hexdigest())
+        self.assertEqual(f[0]["indexSHA256"],hashlib.sha256(np.array([0,1,2],dtype="<u4").tobytes()).hexdigest())
+        doc["nodes"]=[{"children":[1],"translation":[1,0,0]},{}]
+        self.assertNotEqual(node_transform_chain(doc,0),node_transform_chain(doc,1))
     def test_repeated_nodes(self):
         with self.assertRaises(ValueError):
             reachable_nodes({"nodes":[{"children":[0]}],"scenes":[{"nodes":[0]}]})

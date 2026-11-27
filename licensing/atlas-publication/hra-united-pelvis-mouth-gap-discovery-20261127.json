@@ -108,6 +108,16 @@
           "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_L",
           "ontologyId": "FMA:44619",
           "label": "Left posterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
         }
       ],
       "geometryAudited": false,
@@ -163,6 +173,16 @@
           "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_L",
           "ontologyId": "FMA:44616",
           "label": "Left anterior cruciate ligament"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
         }
       ],
       "geometryAudited": false,
@@ -188,6 +208,16 @@
           "nodeName": "VH_F_parotid_gland",
           "ontologyId": "UBERON:0001831",
           "label": "Parotid gland"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
         }
       ],
       "geometryAudited": false,
@@ -209,6 +239,16 @@
           "nodeName": "VH_M_parotid_gland",
           "ontologyId": "UBERON:0001831",
           "label": "Parotid gland"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland"
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland"
         }
       ],
       "geometryAudited": false,

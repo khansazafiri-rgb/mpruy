@@ -1,0 +1,300 @@
+{
+  "schema": 1,
+  "sourceCommit": "2f941a6a37714cc05e47ac300efcd4d91c69f298",
+  "workflowRun": 45938877269,
+  "conclusion": "success",
+  "rows": [
+    {
+      "schema": 1,
+      "id": "mouth-female",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-female/v1.0/assets/3d-vh-f-mouth.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 103690760,
+      "dvcMD5": "fe810cf868cfb818e0cbc1fc657a671c",
+      "gitGLBBlob": null,
+      "metadataBlob": "476983942c53a852f8b03e2e9bb37aec411604fb",
+      "sha256": "bd8e24e9d52b49719c6a1cafa1f54fc40c1d3f811b9d32df78d5c20ebb78c197",
+      "results": [
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 5,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 6,
+              "vertices": 5964,
+              "triangles": 2982
+            },
+            {
+              "nodeIndex": 7,
+              "vertices": 6828,
+              "triangles": 3414
+            }
+          ],
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308318153
+    },
+    {
+      "schema": 1,
+      "id": "mouth-male",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 53487620,
+      "dvcMD5": null,
+      "gitGLBBlob": "141812bc3200e7f6a637eda77ce8931f6f5909bf",
+      "metadataBlob": "34c2af8a949fb02deb2868f1c788cb613f065e1d",
+      "sha256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+      "results": [
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 5,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 6,
+              "vertices": 1575,
+              "triangles": 2982
+            },
+            {
+              "nodeIndex": 7,
+              "vertices": 1832,
+              "triangles": 3414
+            }
+          ],
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308318419
+    },
+    {
+      "schema": 1,
+      "id": "united-male",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 241633636,
+      "dvcMD5": "69857009518d156a390ebe42b57723f1",
+      "gitGLBBlob": null,
+      "metadataBlob": "862320d450407960df63daaa3a766b130994ef02",
+      "sha256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+      "results": [
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 459,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 460,
+              "vertices": 1575,
+              "triangles": 2982
+            },
+            {
+              "nodeIndex": 461,
+              "vertices": 1832,
+              "triangles": 3414
+            }
+          ],
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 528,
+          "vertices": 2768,
+          "triangles": 5428,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 969,
+          "vertices": 422,
+          "triangles": 840,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 994,
+          "vertices": 514,
+          "triangles": 1024,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 997,
+          "vertices": 185,
+          "triangles": 366,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1026,
+          "vertices": 185,
+          "triangles": 366,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1028,
+          "vertices": 514,
+          "triangles": 1024,
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308318437
+    },
+    {
+      "schema": 1,
+      "id": "united-female",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 374505632,
+      "dvcMD5": "5e4aca68ceea6aa9b21aa9c333c54fec",
+      "gitGLBBlob": null,
+      "metadataBlob": "b51d522fc0690faa34f35595f12304d1e3715b04",
+      "sha256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+      "results": [
+        {
+          "nodeName": "VH_F_vagina",
+          "ontologyId": "UBERON:0000996",
+          "label": "vagina",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 437,
+          "vertices": 4461,
+          "triangles": 8780,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 498,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 499,
+              "vertices": 5964,
+              "triangles": 2982
+            },
+            {
+              "nodeIndex": 500,
+              "vertices": 6828,
+              "triangles": 3414
+            }
+          ],
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 572,
+          "vertices": 764,
+          "triangles": 1472,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1008,
+          "vertices": 697,
+          "triangles": 1390,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1103,
+          "vertices": 496,
+          "triangles": 988,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1104,
+          "vertices": 496,
+          "triangles": 988,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1136,
+          "vertices": 496,
+          "triangles": 988,
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1137,
+          "vertices": 496,
+          "triangles": 988,
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308318566
+    }
+  ],
+  "directMeshCandidates": 13,
+  "sourceGroupCandidates": 4,
+  "heldCandidates": 0,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}
