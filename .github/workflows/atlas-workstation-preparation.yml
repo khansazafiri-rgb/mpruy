@@ -13,6 +13,10 @@ on:
       - 'scripts/preview-independent-atlas.mjs'
       - 'scripts/atlas-audited-reference-suite.mjs'
       - '.github/workflows/atlas-workstation-preparation.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-workstation-preparation-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

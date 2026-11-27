@@ -9,6 +9,10 @@ on:
       - 'scripts/test-private-atlas-browser.mjs'
       - 'scripts/atlas-audited-reference-suite.mjs'
       - '.github/workflows/atlas-full-376-private.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-full-376-private-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

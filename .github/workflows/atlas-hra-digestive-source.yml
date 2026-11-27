@@ -9,6 +9,10 @@ on:
       - 'licensing/atlas-publication/hra-tonsil-four-pinned-candidates-20261127.json'
       - 'scripts/audit-hra-female-five.mjs'
       - '.github/workflows/atlas-hra-digestive-source.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-hra-digestive-source-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

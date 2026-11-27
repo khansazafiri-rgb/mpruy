@@ -8,6 +8,10 @@ on:
       - 'scripts/z_anatomy_lymphatic_identity.py'
       - 'scripts/export-original-z-anatomy-private.py'
       - '.github/workflows/atlas-z-anatomy-gap-audit.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-z-anatomy-gap-audit-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

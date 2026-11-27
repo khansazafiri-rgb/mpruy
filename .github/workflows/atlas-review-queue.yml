@@ -16,6 +16,10 @@ on:
       - 'scripts/audit-atlas-workstation-pack*'
       - 'scripts/atlas-reference-suite-spec.mjs'
       - '.github/workflows/atlas-review-queue.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-review-queue-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

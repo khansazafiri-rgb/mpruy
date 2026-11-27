@@ -8,6 +8,10 @@ on:
       - 'scripts/test-private-atlas-browser.mjs'
       - 'apps/atlas-independent/src/reference-state.js'
       - '.github/workflows/atlas-extended-private.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-extended-private-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

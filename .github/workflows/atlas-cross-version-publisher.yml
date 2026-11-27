@@ -5,6 +5,10 @@ on:
     paths:
       - 'scripts/audit-bp3d-cross-version-publisher*'
       - '.github/workflows/atlas-cross-version-publisher.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-cross-version-publisher-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

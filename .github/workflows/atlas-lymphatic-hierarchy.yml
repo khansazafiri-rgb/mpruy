@@ -7,6 +7,10 @@ on:
       - 'scripts/atlas-lymphatic-hierarchy-page.mjs'
       - 'apps/atlas-independent/src/reference-viewer.js'
       - '.github/workflows/atlas-lymphatic-hierarchy.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-lymphatic-hierarchy-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

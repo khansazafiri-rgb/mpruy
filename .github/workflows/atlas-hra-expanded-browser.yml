@@ -6,6 +6,10 @@ on:
       - '.github/workflows/atlas-hra-expanded-browser.yml'
       - 'scripts/load-hra-female-five.mjs'
       - 'scripts/test-private-atlas-browser.mjs'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-hra-expanded-browser-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

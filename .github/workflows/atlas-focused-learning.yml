@@ -4,6 +4,10 @@ on:
     branches: [feat/atlas-focused-challenge-20261126]
   pull_request:
     branches: [feat/atlas-multilingual-coverage-20261126]
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-focused-learning-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

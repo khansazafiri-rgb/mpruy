@@ -7,6 +7,10 @@ on:
       - 'licensing/atlas-publication/hra-digestive-six-pinned-audit-20261127.json'
       - 'scripts/hra-exact-source-groups.mjs'
       - '.github/workflows/atlas-hra-expanded-groups.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-hra-expanded-groups-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
