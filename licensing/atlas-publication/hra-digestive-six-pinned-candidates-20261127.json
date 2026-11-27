@@ -1,0 +1,565 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Source intake only. Six digestive assets; female colon modeled without direct imaging. No coverage promotion or release.",
+  "rows": [
+    {
+      "id": "pancreas-female",
+      "version": "v1.3",
+      "filename": "3d-vh-f-pancreas.glb",
+      "bytes": 714832,
+      "glbBlob": "d2615f52f74297af1b5d3ded36f3c0f27d547a51",
+      "metadataBlob": "372f21d4456d88ad157c8fbc1c760a33eb649424",
+      "crosswalkBlob": "defdc61d48a1a37ad8338d7446c184d201318285",
+      "doi": "https://doi.org/10.48539/HBM866.PNNZ.328",
+      "expectedCrosswalkRows": 6,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pancreas-female/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_pancreas",
+          "ontologyId": "UBERON:0001264",
+          "label": "Pancreas"
+        },
+        {
+          "nodeName": "VH_F_tail_of_pancreas",
+          "ontologyId": "UBERON:0001151",
+          "label": "tail of pancreas"
+        },
+        {
+          "nodeName": "VH_F_body_of_pancreas",
+          "ontologyId": "UBERON:0001150",
+          "label": "body of pancreas"
+        },
+        {
+          "nodeName": "VH_F_ucinate_process1",
+          "ontologyId": "UBERON:0010373",
+          "label": "uncinate process of pancreas"
+        },
+        {
+          "nodeName": "VH_F_head_of_pancreas",
+          "ontologyId": "UBERON:0001069",
+          "label": "head of pancreas"
+        },
+        {
+          "nodeName": "VH_F_neck_of_pancreas",
+          "ontologyId": "FMA:14517",
+          "label": "Neck of pancreas"
+        }
+      ]
+    },
+    {
+      "id": "pancreas-male",
+      "version": "v1.3",
+      "filename": "3d-vh-m-pancreas.glb",
+      "bytes": 2110316,
+      "glbBlob": "992376403a68cb18df4683196703a468db43b55c",
+      "metadataBlob": "9a9e72002637ddeff203e8e96e60111cba7c9d57",
+      "crosswalkBlob": "c87c5c133b98411d9f47a907ee4804be1f3927c0",
+      "doi": "https://doi.org/10.48539/HBM396.QWWJ.639",
+      "expectedCrosswalkRows": 6,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pancreas-male/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_pancreas",
+          "ontologyId": "UBERON:0001264",
+          "label": "Pancreas"
+        },
+        {
+          "nodeName": "VH_M_body_of_pancreas",
+          "ontologyId": "UBERON:0001150",
+          "label": "body of pancreas"
+        },
+        {
+          "nodeName": "VH_M_tail_of_pancreas",
+          "ontologyId": "UBERON:0001151",
+          "label": "tail of pancreas"
+        },
+        {
+          "nodeName": "VH_M_head_of_pancreas",
+          "ontologyId": "UBERON:0001069",
+          "label": "head of pancreas"
+        },
+        {
+          "nodeName": "VH_M_neck_of_pancreas",
+          "ontologyId": "FMA:14517",
+          "label": "Neck of pancreas"
+        },
+        {
+          "nodeName": "VH_M_uncinate_process_of_the_pancreas",
+          "ontologyId": "UBERON:0010373",
+          "label": "uncinate process of pancreas"
+        }
+      ]
+    },
+    {
+      "id": "liver-female",
+      "version": "v1.2",
+      "filename": "3d-vh-f-liver.glb",
+      "bytes": 1738552,
+      "glbBlob": "8b44a99e5c7d73048085fc1c27895dff35305ce5",
+      "metadataBlob": "c4b7d016b625f9156e394d575eae6a1aa30c5323",
+      "crosswalkBlob": "c234ca6e13703b283cec3e6e9bb8d6c486cee004",
+      "doi": "https://doi.org/10.48539/HBM599.GZLD.639",
+      "expectedCrosswalkRows": 23,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/liver-female/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_liver",
+          "ontologyId": "UBERON:0002107",
+          "label": "liver"
+        },
+        {
+          "nodeName": "VH_F_gastric_impression_of_liver",
+          "ontologyId": "FMA:14487",
+          "label": "gastric impression of liver"
+        },
+        {
+          "nodeName": "VH_F_suprarenal_impression_of_liver",
+          "ontologyId": "FMA:14489",
+          "label": "Suprarenal impression of liver"
+        },
+        {
+          "nodeName": "VH_F_renal_impression_of_liver",
+          "ontologyId": "FMA:14488",
+          "label": "renal impression of liver"
+        },
+        {
+          "nodeName": "VH_F_duodenal_impression_of_liver",
+          "ontologyId": "FMA:14485",
+          "label": "duodenal impression of liver"
+        },
+        {
+          "nodeName": "VH_F_esophageal_impression_of_liver",
+          "ontologyId": "FMA:14486",
+          "label": "esophageal impression of liver"
+        },
+        {
+          "nodeName": "VH_F_porta_hepatis",
+          "ontologyId": "FMA:15758",
+          "label": "porta hepatis"
+        },
+        {
+          "nodeName": "VH_F_colic_impression_of_liver",
+          "ontologyId": "FMA:14484",
+          "label": "colic impression of liver"
+        },
+        {
+          "nodeName": "VH_F_capsule_of_the_liver",
+          "ontologyId": "UBERON:0016479",
+          "label": "capsule of the liver"
+        },
+        {
+          "nodeName": "VH_F_bare_area_of_liver",
+          "ontologyId": "UBERON:0001149",
+          "label": "bare area of liver"
+        },
+        {
+          "nodeName": "VH_F_diaphragmatic_surface_of_liver",
+          "ontologyId": "FMA:15729",
+          "label": "diaphragmatic surface of liver"
+        },
+        {
+          "nodeName": "VH_F_left_lobe_of_liver",
+          "ontologyId": "UBERON:0001115",
+          "label": "left lobe of liver"
+        },
+        {
+          "nodeName": "VH_F_liver_left_lateral_lobe",
+          "ontologyId": "UBERON:0006727",
+          "label": "liver left lateral lobe"
+        },
+        {
+          "nodeName": "VH_F_liver_left_medial_lobe",
+          "ontologyId": "UBERON:0006728",
+          "label": "liver left medial lobe"
+        },
+        {
+          "nodeName": "VH_F_quadrate_lobe",
+          "ontologyId": "UBERON:0001116",
+          "label": "quadrate lobe of liver"
+        },
+        {
+          "nodeName": "VH_F_right_lobe_of_liver",
+          "ontologyId": "UBERON:0001114",
+          "label": "right lobe of liver"
+        },
+        {
+          "nodeName": "VH_F_caudate_lobe",
+          "ontologyId": "UBERON:0001117",
+          "label": "caudate lobe of liver"
+        },
+        {
+          "nodeName": "VH_F_coronary_ligament_of_liver",
+          "ontologyId": "UBERON:0013138",
+          "label": "coronary ligament of liver"
+        },
+        {
+          "nodeName": "VH_F_falciform_ligament",
+          "ontologyId": "UBERON:0001247",
+          "label": "falciform ligament"
+        },
+        {
+          "nodeName": "VH_F_triangular_ligament_of_liver",
+          "ontologyId": "UBERON:0035444",
+          "label": "triangular ligament of liver"
+        },
+        {
+          "nodeName": "VH_F_ligamentum_venosum",
+          "ontologyId": "UBERON:0006587",
+          "label": "ligamentum venosum"
+        },
+        {
+          "nodeName": "VH_F_round_ligament_of_liver",
+          "ontologyId": "UBERON:0006588",
+          "label": "round ligament of liver"
+        },
+        {
+          "nodeName": "VH_F_hepataduodenal_ligament",
+          "ontologyId": "UBERON:0012472",
+          "label": "hepatoduodenal ligament"
+        }
+      ]
+    },
+    {
+      "id": "liver-male",
+      "version": "v1.2",
+      "filename": "3d-vh-m-liver.glb",
+      "bytes": 1136412,
+      "glbBlob": "9808fbac25ffb21372a49d13b3d9a01a8339e902",
+      "metadataBlob": "accb0520dfdf66f1cc6333a850af8b375809c7ec",
+      "crosswalkBlob": "76a96abbb52419081a10604901478354358c56a0",
+      "doi": "https://doi.org/10.48539/HBM896.WMSL.867",
+      "expectedCrosswalkRows": 23,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-male/v1.2/assets/3d-vh-m-liver.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/liver-male/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_liver",
+          "ontologyId": "UBERON:0002107",
+          "label": "liver"
+        },
+        {
+          "nodeName": "VH_M_bare_area_of_liver",
+          "ontologyId": "UBERON:0001149",
+          "label": "bare area of liver"
+        },
+        {
+          "nodeName": "VH_M_liver_capsule",
+          "ontologyId": "UBERON:0016479",
+          "label": "capsule of the liver"
+        },
+        {
+          "nodeName": "VH_M_diaphragmatic_surface",
+          "ontologyId": "FMA:15729",
+          "label": "diaphragmatic surface of liver"
+        },
+        {
+          "nodeName": "VH_M_suprarenal_impression_of_liver",
+          "ontologyId": "FMA:14489",
+          "label": "Suprarenal impression of liver"
+        },
+        {
+          "nodeName": "VH_M_renal_impression_of_liver",
+          "ontologyId": "FMA:14488",
+          "label": "renal impression of liver"
+        },
+        {
+          "nodeName": "VH_M_gastric_impression_of_liver",
+          "ontologyId": "FMA:14487",
+          "label": "gastric impression of liver"
+        },
+        {
+          "nodeName": "VH_M_colic_impression_of_liver",
+          "ontologyId": "FMA:14484",
+          "label": "colic impression of liver"
+        },
+        {
+          "nodeName": "VH_M_esophageal_impression_of_liver",
+          "ontologyId": "FMA:14486",
+          "label": "esophageal impression of liver"
+        },
+        {
+          "nodeName": "VH_M_duodenal_impression_of_liver",
+          "ontologyId": "FMA:14485",
+          "label": "duodenal impression of liver"
+        },
+        {
+          "nodeName": "VH_M_porta_hepatis",
+          "ontologyId": "FMA:15758",
+          "label": "porta hepatis"
+        },
+        {
+          "nodeName": "VH_M_caudate_lobe_of_liver",
+          "ontologyId": "UBERON:0001117",
+          "label": "caudate lobe of liver"
+        },
+        {
+          "nodeName": "VH_M_right_lobe_of_liver",
+          "ontologyId": "UBERON:0001114",
+          "label": "right lobe of liver"
+        },
+        {
+          "nodeName": "VH_M_left_lobe_of_liver",
+          "ontologyId": "UBERON:0001115",
+          "label": "left lobe of liver"
+        },
+        {
+          "nodeName": "VH_M_left_lateral_lobe",
+          "ontologyId": "UBERON:0006727",
+          "label": "liver left lateral lobe"
+        },
+        {
+          "nodeName": "VH_M_left_medial_lobe",
+          "ontologyId": "UBERON:0006728",
+          "label": "liver left medial lobe"
+        },
+        {
+          "nodeName": "VH_M_quadrate_lobe_of_liver",
+          "ontologyId": "UBERON:0001116",
+          "label": "quadrate lobe of liver"
+        },
+        {
+          "nodeName": "VH_M_hepataduodenal_ligament",
+          "ontologyId": "UBERON:0012472",
+          "label": "hepatoduodenal ligament"
+        },
+        {
+          "nodeName": "VH_M_ligamentum_venosum",
+          "ontologyId": "UBERON:0006587",
+          "label": "ligamentum venosum"
+        },
+        {
+          "nodeName": "VH_M_round_ligament_of_liver",
+          "ontologyId": "UBERON:0006588",
+          "label": "round ligament of liver"
+        },
+        {
+          "nodeName": "VH_M_triangular_ligament_of_liver",
+          "ontologyId": "UBERON:0035444",
+          "label": "triangular ligament of liver"
+        },
+        {
+          "nodeName": "VH_M_falciform_ligament",
+          "ontologyId": "UBERON:0001247",
+          "label": "falciform ligament"
+        },
+        {
+          "nodeName": "VH_M_coronary_ligament_of_liver",
+          "ontologyId": "UBERON:0013138",
+          "label": "coronary ligament of liver"
+        }
+      ]
+    },
+    {
+      "id": "large-intestine-female",
+      "version": "v1.3",
+      "filename": "3d-sbu-f-large-intestine.glb",
+      "bytes": 387376,
+      "glbBlob": "f12afa921a630e969e7fb1f330128c750ba7b44d",
+      "metadataBlob": "a182a87590a80707f7466c87c90f703a74b792ad",
+      "crosswalkBlob": "b298608fdc928375fc5f91e399ceb7b784f0e065",
+      "doi": "https://doi.org/10.48539/HBM682.RSXX.965",
+      "expectedCrosswalkRows": 11,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-female/v1.3/assets/3d-sbu-f-large-intestine.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/large-intestine-female/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "PUBLISHER_MODELED_NO_DIRECT_IMAGING",
+      "clinicalLimitations": [
+        "NO_DIRECT_IMAGING",
+        "NO_PATIENT_SPECIFIC_OR_CROSS_SOURCE_REGISTRATION"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_colon",
+          "ontologyId": "UBERON:0000059",
+          "label": "large intestine"
+        },
+        {
+          "nodeName": "VH_F_hepatic_flexure_of_colon",
+          "ontologyId": "UBERON:0022277",
+          "label": "hepatic flexure of colon"
+        },
+        {
+          "nodeName": "VH_F_transverse_colon",
+          "ontologyId": "UBERON:0001157",
+          "label": "transverse colon"
+        },
+        {
+          "nodeName": "VH_F_ascending_colon",
+          "ontologyId": "UBERON:0001156",
+          "label": "ascending colon"
+        },
+        {
+          "nodeName": "VH_F_vermiform_appendix",
+          "ontologyId": "UBERON:0001154",
+          "label": "vermiform appendix"
+        },
+        {
+          "nodeName": "VH_F_descending_colon",
+          "ontologyId": "UBERON:0001158",
+          "label": "descending colon"
+        },
+        {
+          "nodeName": "VH_F_ileocecal_valve",
+          "ontologyId": "UBERON:0000569",
+          "label": "ileocecal valve"
+        },
+        {
+          "nodeName": "VH_F_caecum",
+          "ontologyId": "UBERON:0001153",
+          "label": "caecum"
+        },
+        {
+          "nodeName": "VH_F_rectum",
+          "ontologyId": "UBERON:0001052",
+          "label": "rectum"
+        },
+        {
+          "nodeName": "VH_F_sigmoid_colon",
+          "ontologyId": "UBERON:0001159",
+          "label": "sigmoid colon"
+        },
+        {
+          "nodeName": "VH_F_splenic_flexure_of_colon",
+          "ontologyId": "UBERON:0022276",
+          "label": "splenic flexure of colon"
+        }
+      ]
+    },
+    {
+      "id": "large-intestine-male",
+      "version": "v1.3",
+      "filename": "3d-sbu-m-large-intestine.glb",
+      "bytes": 687076,
+      "glbBlob": "32961c11a2b6aee00ef4ed68721a039b5c98cf8c",
+      "metadataBlob": "5f070e2464bfcea80d58e33ee5f261f023544586",
+      "crosswalkBlob": "221d58132de0ae637c939c468223d4e4eb31f25d",
+      "doi": "https://doi.org/10.48539/HBM487.ZKSN.693",
+      "expectedCrosswalkRows": 11,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/large-intestine-male/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "COLONOSCOPY_DERIVED_GENERALLY_ALIGNED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_colon",
+          "ontologyId": "UBERON:0000059",
+          "label": "large intestine"
+        },
+        {
+          "nodeName": "VH_M_ascending_colon",
+          "ontologyId": "UBERON:0001156",
+          "label": "ascending colon"
+        },
+        {
+          "nodeName": "VH_M_descending_colon",
+          "ontologyId": "UBERON:0001158",
+          "label": "descending colon"
+        },
+        {
+          "nodeName": "VH_M_hepatic_flexure_of_colon",
+          "ontologyId": "UBERON:0022277",
+          "label": "hepatic flexure of colon"
+        },
+        {
+          "nodeName": "VH_M_rectum",
+          "ontologyId": "UBERON:0001052",
+          "label": "rectum"
+        },
+        {
+          "nodeName": "VH_M_sigmoid_colon",
+          "ontologyId": "UBERON:0001159",
+          "label": "sigmoid colon"
+        },
+        {
+          "nodeName": "VH_M_splenic_flexure_of_colon",
+          "ontologyId": "UBERON:0022276",
+          "label": "splenic flexure of colon"
+        },
+        {
+          "nodeName": "VH_M_transverse_colon",
+          "ontologyId": "UBERON:0001157",
+          "label": "transverse colon"
+        },
+        {
+          "nodeName": "VH_M_ileocecal_valve",
+          "ontologyId": "UBERON:0000569",
+          "label": "ileocecal valve"
+        },
+        {
+          "nodeName": "VH_M_caecum",
+          "ontologyId": "UBERON:0001153",
+          "label": "caecum"
+        },
+        {
+          "nodeName": "VH_M_vermiform_appendix",
+          "ontologyId": "UBERON:0001154",
+          "label": "vermiform appendix"
+        }
+      ]
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0
+}

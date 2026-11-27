@@ -30,6 +30,8 @@ export async function audit(batch='female-five',{groups=false}={}){
  const configs={'female-five':{file:'licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',count:5,marker:'HRA FEMALE PINNED QUARANTINE REPORT '},'cardiopulmonary-four':{file:'licensing/atlas-publication/hra-cardiopulmonary-four-pinned-candidates-20261126.json',count:4,marker:'HRA CARDIOPULMONARY PINNED QUARANTINE REPORT '},'urogenital-7':{file:'licensing/atlas-publication/hra-urogenital-7-pinned-candidates-20261126.json',count:7,marker:'HRA UROGENITAL PINNED QUARANTINE REPORT '}};
  configs['ureter-four']={file:'licensing/atlas-publication/hra-ureter-four-pinned-candidates-20261126.json',count:4,marker:'HRA URETER PINNED QUARANTINE REPORT '};
  configs['cns-four']={file:'licensing/atlas-publication/hra-cns-four-pinned-candidates-20261126.json',count:4,marker:'HRA CNS PINNED QUARANTINE REPORT '};
+ configs['digestive-six']={file:'licensing/atlas-publication/hra-digestive-six-pinned-candidates-20261127.json',count:6,marker:'HRA DIGESTIVE PINNED QUARANTINE REPORT '};
+ configs['lymph-model-two']={file:'licensing/atlas-publication/hra-lymph-model-two-pinned-candidates-20261127.json',count:2,marker:'HRA LYMPH MODEL QUARANTINE REPORT '};
  assert(Object.hasOwn(configs,batch),'Unknown HRA batch');const config=configs[batch];
  const spec=JSON.parse(fs.readFileSync(new URL(config.file,root),'utf8'));
  assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===config.count);
@@ -48,7 +50,7 @@ export async function audit(batch='female-five',{groups=false}={}){
    assert(raw.equals(cdn),'CDN and pinned Git GLB differ');
    const info=inspectGlb(raw);const gltf=JSON.parse(raw.subarray(20,20+raw.readUInt32LE(12)).toString('utf8'));
    const labels=crosswalkNodes(cross.toString('utf8'),gltf);assert.equal(labels.length,e.expectedCrosswalkRows);
-   if(['urogenital-7','ureter-four','cns-four'].includes(batch))assert.deepEqual(labels.map(({nodeName,ontologyId,label})=>({nodeName,ontologyId,label})),e.sourceLabels,'Pinned crosswalk label mismatch');
+   if(['urogenital-7','ureter-four','cns-four','digestive-six','lymph-model-two'].includes(batch))assert.deepEqual(labels.map(({nodeName,ontologyId,label})=>({nodeName,ontologyId,label})),e.sourceLabels,'Pinned crosswalk label mismatch');
    let sourceGroups;
    if(groups){const prior=retained.rows.find(r=>r.id===e.id);assert(prior&&prior.assetURL===expected&&prior.sha256===sha(raw)&&prior.metadataSHA256===sha(meta)&&prior.crosswalkSHA256===sha(cross),'Retained receipt differs');assert.deepEqual(prior.labels,labels);sourceGroups=resolveSourceGroups(gltf,labels);}
    rows.push({...(groups?{sourceGroups}:{}),id:e.id,version:e.version,assetURL:expected,bytes:raw.length,sha256:sha(raw),metadataSHA256:sha(meta),crosswalkSHA256:sha(cross),...info,labels,sourceMethod:e.sourceMethod||null,clinicalLimitations:e.clinicalLimitations||[],exactMeshNodeCount:labels.filter(x=>x.status==='EXACT_NAMED_MESH_NODE').length,license:proof.license,doi:proof.doi,creators:proof.creators,status:'EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES',clinicalValidation:false,registrationValidated:false,approvedForDistribution:false});
