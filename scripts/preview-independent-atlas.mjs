@@ -1,4 +1,5 @@
 import {auditCrossVersionOverlap} from './audit-atlas-cross-version-overlap.mjs';
+import {privateRequestAllowed} from './atlas-private-request.mjs';
 import {load43Elements,combine43Registries,serve43Reference} from './load-bp3d43-private-elements.mjs';
 // Independent viewer rehearsal. No copy of private model bytes into dist/public.
 import fs from 'node:fs';
@@ -145,7 +146,7 @@ if(independent){
 }
 const server=createServer((request,response)=>{
  const send=(status,body,type='text/plain; charset=utf-8')=>{response.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'SAMEORIGIN'});response.end(request.method==='HEAD'?undefined:body);};
- if(request.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(request.method))return send(403,'Loopback review only');
+ if(!privateRequestAllowed(request,port))return send(403,'Loopback review only');
  const p=rawRequestPath(request.url);if(p===null)return send(404,'Not found');
  const route=classifyIndependentPath(p,independent);
  if(route==='redirect'){response.writeHead(308,{Location:'/anatomy/viewer/','Cache-Control':'no-store'});return response.end();}

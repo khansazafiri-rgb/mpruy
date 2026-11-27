@@ -11,7 +11,7 @@ test('exact 15 retained isolated meshes, no duplicate parotid or coccyx',()=>{
  assert.throws(()=>validatePriorityFile(Buffer.alloc(rows[0].bytes),rows[0]));
 });
 test('reject absent, extra, ambiguous or nonprivate quarantine directories',()=>{
- const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'priority-loader-'));
+ const tmp=fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(),'priority-loader-')));
  try{const q=path.join(tmp,'licensing-quarantine');fs.mkdirSync(q);const folder='hra-priority-isolated-test';fs.mkdirSync(path.join(q,folder),{mode:0o700});
  assert.throws(()=>loadPriorityHra(q,folder),/Exact file set/);
  fs.writeFileSync(path.join(q,folder,'extra.glb'),'bad');assert.throws(()=>loadPriorityHra(q,folder),/Exact file set/);

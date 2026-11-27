@@ -130,12 +130,14 @@ try{
  });
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
  browser=await chromium.launch({headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const browserStarted=performance.now();
  const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:'+server.address().port+'/anatomy/viewer/');
  const waitCounts=async(visible,highlighted)=>page.waitForFunction(([v,h])=>{const s=document.getElementById('atlasStatus');return s?.dataset.visibleMeshes===String(v)&&s?.dataset.highlightedMeshes===String(h);},[visible,highlighted],{timeout:20000});
  await page.locator('#loadingOverlay.hidden').waitFor({state:'attached',timeout:30000});
  await waitCounts(1,0);
+ const initialReadyMs=Math.round(performance.now()-browserStarted);
  assert.equal(await page.locator('#app .atlas-topbar').count(),1);
  assert.equal(await page.locator('#systemsList [data-group]').count(),13);
  await page.waitForFunction(()=>{const d=JSON.parse(document.getElementById('view').dataset.renderQc||'{}');return d.up?.join(',')==='0,0,1'&&d.axis?.[1]<-.99;});
@@ -452,6 +454,22 @@ try{
  const opened=await request(selection);assert.equal(opened.ok,true);
  await embedded.locator('#structureInfo h3').filter({hasText:'Engineering fixture component'}).waitFor();
  const missing=await request('bp-'+'d'.repeat(24));assert.equal(missing.ok,false);
+ // Engineering fixture memory regression: repeated fresh documents, identical
+ // workload and forced collection. Measured JS heap only, not total GPU/process RAM.
+ const cdp=await page.context().newCDPSession(page),heapSamples=[];
+ for(let cycle=0;cycle<6;cycle++){
+  await page.goto('http://127.0.0.1:'+server.address().port+'/anatomy/viewer/');
+  await page.locator('#loadingOverlay.hidden').waitFor({state:'attached',timeout:30000});
+  await waitCounts(1,0);
+  await cdp.send('HeapProfiler.collectGarbage');
+  const {usedSize}=await cdp.send('Runtime.getHeapUsage');heapSamples.push(usedSize);
+  assert.equal(await page.locator('#threeCanvas').count(),1);
+ }
+ // This bounds a regression in a tiny fixture; it is not a whole-body memory SLA.
+ const retainedGrowth=heapSamples.at(-1)-Math.min(...heapSamples.slice(1,4));
+ assert(retainedGrowth<32*1024*1024,'Engineering fixture retained heap grew by 32 MiB');
+ console.log('ATLAS WS6 PERFORMANCE '+JSON.stringify({scope:'ENGINEERING_FIXTURE_ONLY',initialReadyMs,reloadCycles:heapSamples.length,heapSamplesBytes:heapSamples,retainedGrowthBytes:retainedGrowth,fullBodyMemoryMeasured:false,publicRelease:'NO_GO'}));
+ await cdp.detach();
  assert.deepEqual(errors,[],'browser runtime errors');
  console.log('ATLAS PRIVATE BROWSER FIXTURE PASS: original desktop/mobile shell, exact single-element highlight, isolate, hide, undo, fade and source-ID iframe bridge, guided exact checkpoint highlight and unavailable checkpoint blocking. Non-anatomical QA fixtures only.');
 }finally{

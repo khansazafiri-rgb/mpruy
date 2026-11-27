@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "sourceCommit": "d9e77a974f90ba3cb28b59154cda1397faabc152",
+  "publicRelease": "NO_GO",
+  "productionChanged": false,
+  "newWholeAnatomyRecovered": 0,
+  "newRenderingPasses": 0,
+  "historicalRendering": {
+    "bp3d": 436,
+    "hra": 24,
+    "scope": "Prior receipts only; not replayed by this local session"
+  },
+  "localPack": {
+    "bodyModels": 1016,
+    "referenceElements": 436,
+    "hraReferenceFiles": 24,
+    "verifiedBodyPack": true,
+    "verifiedReferenceSuite": true,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "geometryBrowserVerifiedThisSession": false
+  },
+  "tests": {
+    "viewer": {
+      "tests": 61,
+      "pass": 61,
+      "fail": 0,
+      "skipped": 0
+    },
+    "source": {
+      "tests": 118,
+      "pass": 116,
+      "fail": 2,
+      "skipped": 0
+    },
+    "web": {
+      "tests": 171,
+      "pass": 171,
+      "fail": 0,
+      "skipped": 0
+    },
+    "backup": {
+      "tests": 4,
+      "pass": 4,
+      "fail": 0
+    }
+  },
+  "builds": {
+    "independent": "PASS",
+    "privateWebHost": "PASS",
+    "privateWebHostDistributionScan": "PASS"
+  },
+  "runtimeBlockers": [
+    "Local socket listen EPERM prevents HTTP/WebGL browser regression",
+    "Registry DNS unavailable prevents npm vulnerability audit",
+    "Production DB/server access and cutover rehearsal not exercised"
+  ],
+  "sourceTestFailures": [
+    {
+      "test": "audit-hra-lymphatic-hierarchy HTTP",
+      "reason": "ENVIRONMENT_LISTEN_EPERM"
+    },
+    {
+      "test": "bp3d-review-server HTTP",
+      "reason": "ENVIRONMENT_LISTEN_EPERM"
+    }
+  ],
+  "reviewQueue": {
+    "bp3dElements": 436,
+    "hraOriginals": 42,
+    "hraDerived": 15,
+    "rightsRows": 493,
+    "terminologyConcepts": 428,
+    "approved": 0
+  },
+  "workstreams": {
+    "WS6": {
+      "definition": "Seven requested acceptance categories; closed only on current complete runtime evidence",
+      "closed": 1,
+      "total": 7,
+      "closedPercent": 14.29,
+      "passed": [
+        "Exact local checksum/source-pack verification"
+      ],
+      "open": [
+        "Clinical identity/laterality validation",
+        "Viewer interactions on actual body pack",
+        "Guided Learning and Challenge replay",
+        "Desktop/mobile replay",
+        "Full-pack memory/loading/stability",
+        "Live endpoint/private-exposure checks"
+      ]
+    },
+    "WS7": {
+      "definition": "Eight categories: rights, attribution/provenance, privacy, separation, security, live backup, cutover rehearsal, rollback rehearsal",
+      "closed": 1,
+      "total": 8,
+      "closedPercent": 12.5,
+      "passed": [
+        "Private/public build separation scan"
+      ],
+      "open": [
+        "Exact commercial/code-origin rights",
+        "Complete reviewed attribution/provenance",
+        "Applicable privacy review",
+        "Current registry and live security audit",
+        "Verified live backup",
+        "Deployment rehearsal",
+        "Rollback rehearsal"
+      ]
+    }
+  },
+  "note": "Percentages measure closed acceptance categories, not anatomical completeness. Fixture backup and documented rollback do not close production operations."
+}

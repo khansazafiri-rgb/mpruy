@@ -5,7 +5,7 @@ import {serveHraReference} from './atlas-hra-private-reference.mjs';
 import {mergeHraFemaleReferences} from './load-hra-female-five.mjs';
 const id='a'.repeat(24);
 test('private HRA route checks exact current bytes, rejects non-GET/HEAD and unknown assets',()=>{
- const root=fs.mkdtempSync(path.join(os.tmpdir(),'hra-route-test-'));
+ const root=fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(),'hra-route-test-')));
  try{const file=path.join(root,'source.glb'),bytes=Buffer.from('engineering fixture');fs.writeFileSync(file,bytes);
  const sha256=createHash('sha256').update(bytes).digest('hex'),registry={assets:new Map([[id,{file,bytes:bytes.length,sha256,public:{id,name:'fixture'}}]]),blocked:[]};
  const request=(method,url)=>{let status,body;const ok=serveHraReference({method,url},{writeHead(s){status=s;},end(b){body=b;}},registry);assert(ok);return {status,body};};

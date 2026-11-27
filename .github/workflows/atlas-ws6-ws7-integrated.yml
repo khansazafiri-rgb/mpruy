@@ -1,0 +1,86 @@
+name: Atlas WS6 WS7 integrated private regression
+on:
+  push:
+    branches: [feat/atlas-ws6-ws7-20261127]
+  pull_request:
+    paths:
+      - 'apps/atlas-independent/**'
+      - 'scripts/*atlas*'
+      - 'scripts/*hra*'
+      - 'scripts/*bp3d*'
+      - 'scripts/backup-rehearsal.test.py'
+      - 'deploy/backup*'
+      - '.github/workflows/atlas-ws6-ws7-integrated.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-ws6-ws7-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  contracts-security-backup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - name: Original viewer, source identities, endpoint rejection and release boundary
+        run: |
+          npm test --prefix apps/atlas-independent
+          node --test scripts/independent-atlas-*.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/serve-verified-private-model.test.mjs scripts/*hra*.test.mjs scripts/*bp3d*.test.mjs scripts/commercial-release.test.mjs scripts/production-caddy-quarantine.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/export-atlas-human-review.test.mjs scripts/atlas-private-request.test.mjs
+          npm test --prefix apps/web
+      - name: Actual SQLite snapshot, decompression, restore and failure injection
+        run: python3 scripts/backup-rehearsal.test.py
+      - name: Dependency security (registry failure is not a pass)
+        run: |
+          npm audit --audit-level=low
+          npm audit --prefix apps/atlas-independent --audit-level=low
+          npm audit --prefix apps/4d-lab --audit-level=low
+      - name: Private host build and publication quarantine
+        run: |
+          npm run build --prefix apps/atlas-independent
+          npm run build --prefix apps/web -- --config vite.atlas-independent-preview.config.js --outDir "$RUNNER_TEMP/atlas-host"
+          node licensing/tools/check-distribution.mjs "$RUNNER_TEMP/atlas-host"
+          node scripts/audit-atlas-private-checkpoint.mjs
+  actual-reference-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Acquire only pinned public source bytes into private quarantine
+        run: node scripts/replay-audited-bp3d43-suite.mjs --all-expanded-fresh
+      - name: All 436 BP3D and 24 HRA references, Guided, Challenge, desktop and mobile
+        env:
+          ATLAS_TEST_REAL43: full-436
+          ATLAS_TEST_HRA_ALL: '1'
+          ATLAS_TEST_HRA_GROUPS: '1'
+        run: |
+          set -o pipefail
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          node scripts/test-private-atlas-browser.mjs | tee "$RUNNER_TEMP/atlas-ws6-browser.log"
+      - name: Save text evidence only, never geometry or private directories
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-ws6-browser-text-evidence
+          path: ${{ runner.temp }}/atlas-ws6-browser.log
+          if-no-files-found: ignore
+          retention-days: 14
