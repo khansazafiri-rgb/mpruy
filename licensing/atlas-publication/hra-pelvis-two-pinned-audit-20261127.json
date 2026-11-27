@@ -1,0 +1,614 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 2,
+  "held": 0,
+  "exactNamedMeshNodes": 28,
+  "rows": [
+    {
+      "id": "pelvis-female",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-female/v1.3/assets/3d-vh-f-pelvis.glb",
+      "bytes": 1593612,
+      "sha256": "6ef3436e42b7203afcdfa075e57098e97c4e1aaaec08cfdacf6300ba3d5a551d",
+      "metadataSHA256": "480ea0f1bf2422fd5cd96a3f8824b52c1ec12ea68d01960a4e8e1133b30c6bb7",
+      "crosswalkSHA256": "0bfeff126f5707b6ca58160af4cf192143453380be8e528f86d20898df30c48b",
+      "meshCount": 14,
+      "nodeCount": 24,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_pelvis",
+          "ontologyId": "UBERON:0001270",
+          "label": "bony pelvis",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_sacrum",
+          "ontologyId": "UBERON:0003690",
+          "label": "fused sacrum",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_pubis",
+          "ontologyId": "UBERON:0001275",
+          "label": "pubis",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_pubis_spongy_bone",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_pubis_spongy_bone_L",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_pubis_spongy_bone_R",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_pubis_compact_bone",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_pubis_compact_bone_R",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_pubis_compact_bone_L",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ilium",
+          "ontologyId": "UBERON:0001273",
+          "label": "ilium",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ilium_compact_bone",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ilium_compact_bone_R",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ilium_compact_bone_L",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ilium_spongy_bone",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ilium_spongy_bone_L",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ilium_spongy_bone_R",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ischium",
+          "ontologyId": "UBERON:0001274",
+          "label": "ischium",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ischium_compact_bone",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ischium_compact_bone_R",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ischium_compact_bone_L",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ischium_spongy_bone",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ischium_spongy_bone_R",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ischium_spongy_bone_L",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_CROSS_SOURCE_REGISTRATION_CLAIMS",
+        "NO_CLINICAL_VALIDATION"
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM853.VCFM.778",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "pelvis-male",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-male/v1.3/assets/3d-vh-m-pelvis.glb",
+      "bytes": 1348340,
+      "sha256": "5bfd2c34b62a7224796d50002bcdf9ded60ea11485a118351dfd1f19c6853e77",
+      "metadataSHA256": "234d835194f1951f8f483fc8a5f1cbec4dbc054ff208b8b68d871f95b8c2c3a8",
+      "crosswalkSHA256": "05f1523a4c750a2121b37f352bbeeeddbe86ffbd071ec5daedc54fdbcaf0ee2b",
+      "meshCount": 14,
+      "nodeCount": 24,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_pelvis",
+          "ontologyId": "UBERON:0001270",
+          "label": "bony pelvis",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_sacrum",
+          "ontologyId": "UBERON:0003690",
+          "label": "fused sacrum",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_pubis",
+          "ontologyId": "UBERON:0001275",
+          "label": "pubis",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_pubis_compact_bone",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_pubis_compact_bone_L",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_pubis_compact_bone_R",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_pubis_spongy_bone",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_pubis_spongy_bone_L",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_pubis_spongy_bone_R",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ilium",
+          "ontologyId": "UBERON:0001273",
+          "label": "ilium",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ilium_compact_bone",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ilium_compact_bone_L",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ilium_compact_bone_R",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ilium_spongy_bone",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ilium_spongy_bone_R",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ilium_spongy_bone_L",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ischium",
+          "ontologyId": "UBERON:0001274",
+          "label": "ischium",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ischium_compact_bone",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ischium_compact_bone_L",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ischium_compact_bone_R",
+          "ontologyId": "UBERON:0001439",
+          "label": "compact bone tissue",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ischium_spongy_bone",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ischium_spongy_bone_L",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ischium_spongy_bone_R",
+          "ontologyId": "UBERON:0002483",
+          "label": "trabecular bone tissue",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_CROSS_SOURCE_REGISTRATION_CLAIMS",
+        "NO_CLINICAL_VALIDATION"
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM384.SBWX.873",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "15e6a0a12b17ac4296c38253f0c78052651cfcb7",
+  "workflowRun": 45928486689,
+  "workflowJob": 140275382084,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}
