@@ -15,12 +15,12 @@ let real43=null,serve43=null,realHra=null,serveHra=null,hraStages=[];
 const {hierarchyRoute,serveHierarchy}=await import('./atlas-lymphatic-hierarchy-page.mjs');
 let realLymph=null,lymphEnabled=false;
 if(process.env.HRA_LYMPHATIC_FOLDER){const {loadHierarchy}=await import('./audit-hra-lymphatic-hierarchy.mjs');realLymph=loadHierarchy(path.join(root,'local-data/licensing-quarantine'),process.env.HRA_LYMPHATIC_FOLDER);}
-if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended','expansion','full-376','muscle-24','components-36'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended','expansion','full-376','full-436','muscle-24','components-36'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
  const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json","bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json"];
  const size={bronchial:11,cardio:10,pelvic:9,cns:8,visceral:7,'head-neck':6,axial:5,expanded:3,combined:2,'1':1};
- const {BP43_EXPANSION}=await import('./atlas-reference-suite-spec.mjs');
- const selected=mode==='components-36'?['bp3d43-checkpoint-components-36-dual-source-audit-20261126.json']:mode==='muscle-24'?['bp3d43-muscle-24-dual-source-audit-20261126.json']:mode==='full-376'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json',...BP43_EXPANSION.map(x=>x[1])]:mode==='expansion'?["bp3d43-cerebral-29-dual-source-audit-20261126.json","bp3d43-axial-bone-32-dual-source-audit-20261126.json","bp3d43-cranial-32-dual-source-audit-20261126.json","bp3d43-limb-facial-bone-25-dual-source-audit-20261126.json","bp3d43-cranial-10-dual-source-audit-20261126.json"]:mode==='hyoid-extended'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
+ const {BP43_EXPANSION,BP43_MUSCLE,BP43_COMPONENTS}=await import('./atlas-reference-suite-spec.mjs');
+ const selected=mode==='components-36'?['bp3d43-checkpoint-components-36-dual-source-audit-20261126.json']:mode==='muscle-24'?['bp3d43-muscle-24-dual-source-audit-20261126.json']:['full-376','full-436'].includes(mode)?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json',...BP43_EXPANSION.map(x=>x[1]),...(mode==='full-436'?[BP43_MUSCLE[1],BP43_COMPONENTS[1]]:[])]:mode==='expansion'?["bp3d43-cerebral-29-dual-source-audit-20261126.json","bp3d43-axial-bone-32-dual-source-audit-20261126.json","bp3d43-cranial-32-dual-source-audit-20261126.json","bp3d43-limb-facial-bone-25-dual-source-audit-20261126.json","bp3d43-cranial-10-dual-source-audit-20261126.json"]:mode==='hyoid-extended'?[...batches,'bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
  if(mode!=='gap')assert.equal(folders.length,selected.length,'Fresh exact source acquisitions required');
  else assert(folders.length>=1,'Fresh gap acquisition required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
@@ -30,9 +30,10 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
   const folder=m.select43Acquisition(reports,evidence);
   return m.load43Elements(q,folder,evidence,evidence.matches.length);
  });
- real43=mode==='full-376'?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11],m.combine43Registries(registries.slice(12))]):mode==='hyoid'?registries[0]:mode==='hyoid-extended'?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11]]):m.combine43Registries(registries);
+ real43=['full-376','full-436'].includes(mode)?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11],m.combine43Registries(registries.slice(12,17)),...registries.slice(17)]):mode==='hyoid'?registries[0]:mode==='hyoid-extended'?m.combine43Registries([m.combine43Registries(registries.slice(0,11)),registries[11]]):m.combine43Registries(registries);
  if(mode==='components-36'){real43.inventory.expansionProfile='BP43_COMPONENTS_36_20261126';assert.equal(real43.assets.size,36);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),337234);}
  if(mode==='muscle-24'){assert.equal(real43.assets.size,24);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),83064);}
+ if(mode==='full-436'){real43.inventory.expansionProfile='BP43_436_20261127';assert.equal(real43.assets.size,436);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,428);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),1428715);}
  if(mode==='full-376'){real43.inventory.expansionProfile='BP43_128_20261126';assert.equal(real43.assets.size,376);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,368);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),1008417);}
  if(mode==='expansion'){real43.inventory.expansionProfile='BP43_128_20261126';assert.equal(real43.assets.size,128);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,128);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),338220);}
  if(mode==='hyoid-extended'){assert.equal(real43.assets.size,248);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,240);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),670197);}
@@ -49,7 +50,7 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
  }
 }
 const allHra=process.env.ATLAS_TEST_HRA_ALL==='1',expandedHra=process.env.ATLAS_TEST_HRA_EXPANDED==='1'||allHra;
-if(expandedHra)assert(!real43&&(!allHra||process.env.ATLAS_TEST_HRA_GROUPS==='1')&&process.env.ATLAS_TEST_HRA_COMBINED!=='1'&&process.env.ATLAS_TEST_HRA_FEMALE!=='1','Expanded replay must not mix legacy scopes; all-HRA requires groups');
+if(expandedHra)assert((!real43||allHra&&process.env.ATLAS_TEST_REAL43==='full-436')&&(!allHra||process.env.ATLAS_TEST_HRA_GROUPS==='1')&&process.env.ATLAS_TEST_HRA_COMBINED!=='1'&&process.env.ATLAS_TEST_HRA_FEMALE!=='1','Expanded replay must not mix legacy scopes; all-HRA requires groups');
 if(expandedHra||process.env.ATLAS_TEST_HRA_FEMALE==='1'||process.env.ATLAS_TEST_HRA_COMBINED==='1'){
  const q=path.join(root,'local-data/licensing-quarantine'),m=await import('./load-hra-female-five.mjs');
  const batches=allHra?['female-five','cardiopulmonary-four','urogenital-7','ureter-four','cns-four']:expandedHra?['urogenital-7','ureter-four','cns-four']:process.env.ATLAS_TEST_HRA_COMBINED==='1'?['female-five','cardiopulmonary-four']:['female-five'];
@@ -57,15 +58,15 @@ if(expandedHra||process.env.ATLAS_TEST_HRA_FEMALE==='1'||process.env.ATLAS_TEST_
  try{for(const batch of batches){const folder=await m.stageHraBatch(q,batch);hraStages.push(path.join(q,folder));realHra=m.mergeHraFemaleReferences(realHra,m.loadHraBatch(q,folder,batch,process.env.ATLAS_TEST_HRA_GROUPS==='1'));}}catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
  serveHra=(await import('./atlas-hra-private-reference.mjs')).serveHraReference;assert.equal(realHra.assets.size,allHra?24:expandedHra?15:batches.length===2?9:5);
 }
-if(real43&&realHra&&['bronchial','hyoid-extended','full-376'].includes(process.env.ATLAS_TEST_REAL43)&&process.env.ATLAS_TEST_HRA_GROUPS==='1'){
+if(real43&&realHra&&['bronchial','hyoid-extended','full-376','full-436'].includes(process.env.ATLAS_TEST_REAL43)&&process.env.ATLAS_TEST_HRA_GROUPS==='1'){
  const q=path.join(root,'local-data/licensing-quarantine');
  try{
-  const {loadAuditedReferenceSuite}=await import('./atlas-audited-reference-suite.mjs'),suite=loadAuditedReferenceSuite(q,{includeHyoid:['hyoid-extended','full-376'].includes(process.env.ATLAS_TEST_REAL43),includeExpansion:process.env.ATLAS_TEST_REAL43==='full-376'});
-  assert.equal(suite.publicRelease,'NO_GO');assert.equal(suite.plan.bp.length,process.env.ATLAS_TEST_REAL43==='full-376'?17:process.env.ATLAS_TEST_REAL43==='hyoid-extended'?12:11);assert.equal(suite.plan.hra.length,2);
+  const {loadAuditedReferenceSuite}=await import('./atlas-audited-reference-suite.mjs'),suite=loadAuditedReferenceSuite(q,{includeHyoid:['hyoid-extended','full-376','full-436'].includes(process.env.ATLAS_TEST_REAL43),includeExpansion:['full-376','full-436'].includes(process.env.ATLAS_TEST_REAL43),includeAuditedExpansion:process.env.ATLAS_TEST_REAL43==='full-436'});
+  assert.equal(suite.publicRelease,'NO_GO');assert.equal(suite.plan.bp.length,process.env.ATLAS_TEST_REAL43==='full-436'?19:process.env.ATLAS_TEST_REAL43==='full-376'?17:process.env.ATLAS_TEST_REAL43==='hyoid-extended'?12:11);assert.equal(suite.plan.hra.length,allHra?5:2);
   assert.deepEqual([...suite.bp.assets.keys()].sort(),[...real43.assets.keys()].sort());
   assert.deepEqual([...suite.hra.assets.keys()].sort(),[...realHra.assets.keys()].sort());
   real43=suite.bp;realHra=suite.hra;
-  console.log('ATLAS AUDITED SUITE PASS: exact '+suite.plan.bp.length+' BP3D and 2 HRA acquisitions selected without fallback; actual suite registries served in browser.');
+  console.log('ATLAS AUDITED SUITE PASS: exact '+suite.plan.bp.length+' BP3D and '+suite.plan.hra.length+' HRA acquisitions selected without fallback; actual suite registries served in browser.');
  }catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
 }
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
@@ -273,7 +274,7 @@ try{
   const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
   assert.equal(await setup.locator('#referenceChallengeLanguage option[value="latin"]').textContent(),'Latin (provisional)');
   assert((await setup.locator('.hint').filter({hasText:'bukan terminologi FIPAT terverifikasi'}).textContent()).includes('bukan terminologi FIPAT terverifikasi'));
-  if(real43.assets.size===36)assert.equal(glossaryCount,36);if(real43.assets.size===24)assert.equal(glossaryCount,24);if(real43.assets.size===128)assert.equal(glossaryCount,128);if(real43.assets.size>=246)assert.equal(glossaryCount,real43.assets.size===376?368:real43.assets.size>=248?240:239);
+  if(real43.assets.size===36)assert.equal(glossaryCount,36);if(real43.assets.size===24)assert.equal(glossaryCount,24);if(real43.assets.size===128)assert.equal(glossaryCount,128);if(real43.assets.size>=246)assert.equal(glossaryCount,real43.assets.size===436?428:real43.assets.size===376?368:real43.assets.size>=248?240:239);
   if(real43.assets.size>=246||real43.assets.size===12){
    const scope=setup.locator('#referenceChallengeScope'),limit=setup.locator('#referenceChallengeLimit'),region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic');
    const focusRegion=real43.assets.size===12?'upper-limb':'neck-upper-limb',focusCount=real43.assets.size===12?5:6;
@@ -322,7 +323,7 @@ try{
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
    await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
-   const expected=real43.assets.size===36?36:real43.assets.size===24?24:real43.assets.size===128?128:real43.assets.size===376?368:real43.assets.size===248?240:real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
+   const expected=real43.assets.size===36?36:real43.assets.size===24?24:real43.assets.size===128?128:real43.assets.size===436?428:real43.assets.size===376?368:real43.assets.size===248?240:real43.assets.size===246?239:real43.assets.size>=224?217:real43.assets.size===192?185:real43.assets.size===177?170:real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
    for(let i=0;i<expected;i++){
     await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/'+expected}).waitFor();
     await choices.first().waitFor({timeout:20000});assert.equal(await choices.count(),4);
