@@ -86,7 +86,7 @@ assert(!originalUI||independent,'Original shell only in explicit independent pri
 assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
 const elementCatalog=independent&&(originalUI||priorityEnabled)?createElementCatalog(sourcePack):null;
 let priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[],rebuild:process.argv.includes('--rebuild-recovery')}):null;
-if(broadRecovery&&process.argv.includes('--include-muscle-24')&&!contextRecovery){
+if(broadRecovery&&(includeAuditedExpansion||process.argv.includes('--include-muscle-24'))&&!contextRecovery){
  const supplement=buildPriorityRecovery(privateRoot,sourcePack,{broad:true,pinnedMusclesOnly:true,coveredFma:[...(elementCatalog?.items||[]).map(e=>e.fmaId),...priority.items.map(e=>e.fmaId)],rebuild:process.argv.includes('--rebuild-recovery')});
  priority=combineIsolatedRecovery(priority,supplement);
  console.log('PINNED MUSCLE RECOVERY '+JSON.stringify({baseline:priority.baselineCount,added:priority.supplementCount,baselineFolder:priority.folder,supplementFolder:priority.supplementFolder,total:priority.items.length,publicRelease:'NO_GO'}));
