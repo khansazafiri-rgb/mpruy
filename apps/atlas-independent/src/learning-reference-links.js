@@ -1,4 +1,5 @@
 // Related source elements are educational references, never whole-concept matches.
+import {COMPONENT43_TOPIC_ROWS} from './reference43-component-catalog.js';
 import {REFERENCE43_TOPIC_ROWS} from './reference43-topic-catalog.js';
 import {muscleCheckpointAliases} from './learning-links.js';
 const key=n=>String(n).trim().toLowerCase().replace(/\s+/g,' ');
@@ -16,3 +17,12 @@ export function referenceRelation(group,target,name,fmaId){
  return null;
 }
 export function privateReference(e){return /^bp43-[a-f0-9]{24}$/.test(e.id||'')&&/^FMA\d+$/.test(e.fmaId||'')&&/^FJ\d+[A-Za-z]?$/.test(e.fj||'')&&e.scope==='SINGLE_SOURCE_ELEMENT'&&e.approvedForDistribution===false&&e.registrationValidated===false&&e.clinicalValidation===false;}
+
+// Only an exact retained component may bypass the parent FMA identity comparison.
+export function pinnedComponentRelation(group,target,e){
+ const t=key(target);if(!privateReference(e))return null;
+ const rows=COMPONENT43_TOPIC_ROWS.filter(r=>r.relation==='RELATED_COMPONENT_ONLY'&&r.target===t&&r.fj===e.fj&&r.bpId===e.bpId&&r.fmaId===e.fmaId&&r.name===e.name&&r.rawSHA256===e.rawSHA256&&r.glbSHA256===e.glbSHA256&&r.triangles===e.triangles);
+ if(rows.length!==1)return null;
+ const row=rows[0],expected=row.system==='vascular'?(t.endsWith(' vein')?'venous':t.endsWith(' artery')?'arterial':null):row.system;
+ return group===expected?'RELATED_COMPONENT_ONLY':null;
+}
