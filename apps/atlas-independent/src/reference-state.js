@@ -46,13 +46,33 @@ export function sourceNodeComponents(gltf){
  });
  return [...byNode.values()].sort((a,b)=>a.label.localeCompare(b.label)||a.index-b.index);
 }
-export function isolateSourceComponent(meshes,component,originalVisibility){
- const selected=new Set(component?.meshes||[]);
- // A hidden mesh ancestor would also hide a selected child. Reject ambiguous
- // hierarchy instead of claiming that the exact component is isolated.
- for(const m of selected){if(originalVisibility.get(m)!==true)return false;for(let p=m.parent;p;p=p.parent){if(p.isMesh&&(!selected.has(p)||originalVisibility.get(p)!==true))return false;if(!p.isMesh&&p.visible===false)return false;}}
- if(component&&(!selected.size||[...selected].some(m=>!originalVisibility.has(m))))return false;
- for(const m of meshes)m.visible=component?selected.has(m)&&originalVisibility.get(m):originalVisibility.get(m);
+// Camera layers hide a mesh's own draw call without hiding its descendants.
+export function sourceMeshRenderable(mesh,cameraMask=1){
+ if(!mesh?.visible||mesh.layers&&!(mesh.layers.mask&cameraMask))return false;
+ for(let p=mesh.parent;p;p=p.parent)if(p.visible===false)return false;
+ return true;
+}
+export function isolateSourceComponent(meshes,component,originalVisibility,originalLayers=null,cameraMask=1){
+ const selected=new Set(component?.meshes||[]),ancestors=new Set(),available=new Set(meshes);
+ if(component&&(!selected.size||[...selected].some(m=>!available.has(m)||originalVisibility.get(m)!==true)))return false;
+ // Preserve the source hierarchy and transform chain. An unselected mesh
+ // ancestor stays visible for traversal, but its own draw call is masked off.
+ // Without explicit layer snapshots, retain the original fail-closed rule.
+ if(originalLayers&&meshes.some(m=>!m.layers||!Number.isInteger(originalLayers.get(m))))return false;
+ for(const m of selected){
+  if(originalLayers&&!(originalLayers.get(m)&cameraMask))return false;
+  for(let p=m.parent;p;p=p.parent){
+   if(p.isMesh){
+    if(!available.has(p)||originalVisibility.get(p)!==true)return false;
+    if(!selected.has(p)){if(!originalLayers)return false;ancestors.add(p);}
+   }else if(p.visible===false)return false;
+  }
+ }
+ // Validate before mutation, including repeated selections after isolation.
+ for(const m of meshes){
+  m.visible=component?(selected.has(m)||ancestors.has(m))&&originalVisibility.get(m):originalVisibility.get(m);
+  if(originalLayers)m.layers.mask=component&&ancestors.has(m)?0:originalLayers.get(m);
+ }
  return true;
 }
 

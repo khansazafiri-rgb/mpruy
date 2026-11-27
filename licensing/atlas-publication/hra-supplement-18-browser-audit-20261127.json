@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "sourceCommit": "cb30a80bb02f4e5ef63a9d8f1cec600157d681a0",
+  "workflowRun": 45930044196,
+  "workflowJob": 140280325644,
+  "conclusion": "success",
+  "renderedGLBs": 18,
+  "mappedNodes": 168,
+  "isolatedGroups": 30,
+  "directIsolationRestore": 18,
+  "bodyInventoryUnchanged": true,
+  "guidedReplayVerified": false,
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "publicRelease": "NO_GO",
+  "scope": "Actual private browser regression; no production approval. Guided digestive replay separately failed."
+}
