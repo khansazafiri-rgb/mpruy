@@ -50,13 +50,15 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
  }
 }
 const allHra=process.env.ATLAS_TEST_HRA_ALL==='1',expandedHra=process.env.ATLAS_TEST_HRA_EXPANDED==='1'||allHra;
+const digestiveHra=process.env.ATLAS_TEST_HRA_DIGESTIVE==='1';
+if(digestiveHra)assert(!real43&&!expandedHra&&process.env.ATLAS_TEST_HRA_GROUPS!=='1'&&process.env.ATLAS_TEST_HRA_COMBINED!=='1'&&process.env.ATLAS_TEST_HRA_FEMALE!=='1','Digestive replay is direct-node only');
 if(expandedHra)assert((!real43||allHra&&process.env.ATLAS_TEST_REAL43==='full-436')&&(!allHra||process.env.ATLAS_TEST_HRA_GROUPS==='1')&&process.env.ATLAS_TEST_HRA_COMBINED!=='1'&&process.env.ATLAS_TEST_HRA_FEMALE!=='1','Expanded replay must not mix legacy scopes; all-HRA requires groups');
-if(expandedHra||process.env.ATLAS_TEST_HRA_FEMALE==='1'||process.env.ATLAS_TEST_HRA_COMBINED==='1'){
+if(digestiveHra||expandedHra||process.env.ATLAS_TEST_HRA_FEMALE==='1'||process.env.ATLAS_TEST_HRA_COMBINED==='1'){
  const q=path.join(root,'local-data/licensing-quarantine'),m=await import('./load-hra-female-five.mjs');
- const batches=allHra?['female-five','cardiopulmonary-four','urogenital-7','ureter-four','cns-four']:expandedHra?['urogenital-7','ureter-four','cns-four']:process.env.ATLAS_TEST_HRA_COMBINED==='1'?['female-five','cardiopulmonary-four']:['female-five'];
+ const batches=digestiveHra?['digestive-six']:allHra?['female-five','cardiopulmonary-four','urogenital-7','ureter-four','cns-four']:expandedHra?['urogenital-7','ureter-four','cns-four']:process.env.ATLAS_TEST_HRA_COMBINED==='1'?['female-five','cardiopulmonary-four']:['female-five'];
  realHra={assets:new Map(),blocked:[]};
  try{for(const batch of batches){const folder=await m.stageHraBatch(q,batch);hraStages.push(path.join(q,folder));realHra=m.mergeHraFemaleReferences(realHra,m.loadHraBatch(q,folder,batch,process.env.ATLAS_TEST_HRA_GROUPS==='1'));}}catch(e){for(const p of hraStages)fs.rmSync(p,{recursive:true,force:true});throw e;}
- serveHra=(await import('./atlas-hra-private-reference.mjs')).serveHraReference;assert.equal(realHra.assets.size,allHra?24:expandedHra?15:batches.length===2?9:5);
+ serveHra=(await import('./atlas-hra-private-reference.mjs')).serveHraReference;assert.equal(realHra.assets.size,digestiveHra?6:allHra?24:expandedHra?15:batches.length===2?9:5);
 }
 if(real43&&realHra&&['bronchial','hyoid-extended','full-376','full-436'].includes(process.env.ATLAS_TEST_REAL43)&&process.env.ATLAS_TEST_HRA_GROUPS==='1'){
  const q=path.join(root,'local-data/licensing-quarantine');
@@ -248,8 +250,11 @@ try{
    for(const c of a.public.sourceCrosswalk){assert((await component.locator('option[value="'+c.index+'"]').textContent()).includes(c.ontologyId));n++;}
    for(const g of a.public.sourceGroups||[]){const option=component.locator('option[value="'+g.index+'"]');assert((await option.textContent()).includes('[kelompok sumber]'));await component.selectOption(String(g.index));await dialog.locator('#referenceComponentIsolate').click();assert.equal(await viewport.getAttribute('data-isolated-node'),String(g.index));const actual=JSON.parse(await viewport.getAttribute('data-isolated-source-nodes'));assert.deepEqual(actual,g.descendantMeshes.map(x=>x.index).sort((a,b)=>a-b));await dialog.locator('#referenceComponentRestore').click();assert.equal(await viewport.getAttribute('data-isolated-node'),null);assert.equal(await viewport.getAttribute('data-isolated-source-nodes'),null);groupCount++;}
    const target=a.public.name==='uterus female'?'UBERON:0000002':a.public.name.startsWith('heart ')?'UBERON:0002135':a.public.name.startsWith('lung ')?'UBERON:0012065':null;
-   if(target||expandedHra){
-    const c=expandedHra?a.public.sourceCrosswalk[0]:a.public.sourceCrosswalk.find(c=>c.ontologyId===target);assert(c,'Audited isolation target absent');
+   const digestiveTargets=a.public.name.startsWith('pancreas ')?['head of pancreas','body of pancreas','tail of pancreas']:a.public.name.startsWith('liver ')?['quadrate lobe of liver']:a.public.name.startsWith('large intestine ')?['sigmoid colon']:[];
+   const selected=digestiveHra?digestiveTargets.map(label=>{const matches=a.public.sourceCrosswalk.filter(c=>c.label.toLowerCase()===label);assert.equal(matches.length,1,'Exact digestive isolation target absent or ambiguous');return matches[0];}):target||expandedHra?[expandedHra?a.public.sourceCrosswalk[0]:a.public.sourceCrosswalk.find(c=>c.ontologyId===target)]:[];
+   if(digestiveHra)assert(selected.length>0,'Unexpected digestive asset');
+   for(const c of selected){
+    assert(c,'Audited isolation target absent');
     await dialog.locator('#referenceComponentSearch').fill(c.ontologyId);assert(await component.locator('option').count()>=1);
     await component.selectOption(String(c.index));await dialog.locator('#referenceComponentIsolate').click();
     await dialog.locator('#referenceStatus').filter({hasText:c.label+' · node'}).waitFor();
@@ -261,9 +266,9 @@ try{
   }
   assert.equal(groupCount,process.env.ATLAS_TEST_HRA_GROUPS==='1'?(allHra?87:expandedHra?50:37):0);
   if(groupCount)console.log('HRA SOURCE GROUP BROWSER PASS: '+groupCount+' exact native descendant sets isolated and restored; no held label exposed.');
-  assert.equal(n,allHra?606:expandedHra?446:realHra.assets.size===9?160:19);assert.equal(isolated,allHra?24:expandedHra?15:realHra.assets.size===9?5:1);
+  assert.equal(n,digestiveHra?66:allHra?606:expandedHra?446:realHra.assets.size===9?160:19);assert.equal(isolated,digestiveHra?10:allHra?24:expandedHra?15:realHra.assets.size===9?5:1);
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});await waitCounts(3,1);
-  console.log(allHra?'HRA FULL 24 BROWSER PASS: 24 original organs, 606 exact mapped source nodes, 87 source groups, 24 direct isolation/restore checks; body inventory unchanged.':expandedHra&&groupCount?'HRA EXPANDED GROUP BROWSER PASS: 15 original organs, 446 direct nodes, 50 source groups, 15 direct isolation/restore checks; body inventory unchanged.':expandedHra?'HRA EXPANDED DIRECT BROWSER PASS: 15 original organs, 446 exact mapped source nodes, 15 isolation/restore checks; 50 unresolved hierarchy labels not exposed; body inventory unchanged.':realHra.assets.size===9?'HRA COMBINED REAL BROWSER PASS: 9 original organs, 160 exact mapped source nodes, 5 isolation/restore checks; body inventory unchanged.':'HRA FEMALE REAL BROWSER PASS: 5 original organs, 19 exact mapped source nodes, cervix isolation and restore; body inventory unchanged.');
+  console.log(digestiveHra?'HRA DIGESTIVE BROWSER PASS: 6 exact publisher GLBs, 66 mapped nodes, 10 priority isolation/restore checks, no body coverage promotion.':allHra?'HRA FULL 24 BROWSER PASS: 24 original organs, 606 exact mapped source nodes, 87 source groups, 24 direct isolation/restore checks; body inventory unchanged.':expandedHra&&groupCount?'HRA EXPANDED GROUP BROWSER PASS: 15 original organs, 446 direct nodes, 50 source groups, 15 direct isolation/restore checks; body inventory unchanged.':expandedHra?'HRA EXPANDED DIRECT BROWSER PASS: 15 original organs, 446 exact mapped source nodes, 15 isolation/restore checks; 50 unresolved hierarchy labels not exposed; body inventory unchanged.':realHra.assets.size===9?'HRA COMBINED REAL BROWSER PASS: 9 original organs, 160 exact mapped source nodes, 5 isolation/restore checks; body inventory unchanged.':'HRA FEMALE REAL BROWSER PASS: 5 original organs, 19 exact mapped source nodes, cervix isolation and restore; body inventory unchanged.');
  }
  if(real43){
   await page.getByRole('button',{name:'BP3D 4.3',exact:true}).click();

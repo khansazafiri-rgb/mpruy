@@ -16,7 +16,8 @@ const configs={
  'cardiopulmonary-four':{source:'hra-cardiopulmonary-four-pinned-candidates-20261126.json',proof:'hra-cardiopulmonary-four-source-audit-20261126.json',count:4,labels:141},
  'urogenital-7':{source:'hra-urogenital-7-pinned-candidates-20261126.json',proof:'hra-urogenital-7-pinned-audit-20261126.json',count:7,labels:123,expanded:true},
  'ureter-four':{source:'hra-ureter-four-pinned-candidates-20261126.json',proof:'hra-ureter-four-pinned-audit-20261126.json',count:4,labels:58,expanded:true},
- 'cns-four':{source:'hra-cns-four-pinned-candidates-20261126.json',proof:'hra-cns-four-pinned-audit-20261126.json',count:4,labels:265,expanded:true}
+ 'cns-four':{source:'hra-cns-four-pinned-candidates-20261126.json',proof:'hra-cns-four-pinned-audit-20261126.json',count:4,labels:265,expanded:true},
+ 'digestive-six':{source:'hra-digestive-six-pinned-candidates-20261127.json',proof:'hra-digestive-six-pinned-audit-20261127.json',count:6,labels:66,expanded:true}
 };
 function batchRows(batch){
  assert(Object.hasOwn(configs,batch),'Unknown HRA reference batch');
@@ -57,6 +58,7 @@ export function loadHraBatch(q,folder,batch,includeGroups=false){
  const rows=batchRows(batch);checkRoot(q);const prefix='hra-'+batch+'-';assert(typeof folder==='string'&&folder.startsWith(prefix)&&/^[A-Za-z0-9_-]+$/.test(folder.slice(prefix.length)),'Explicit matching reference folder required');
  const base=path.join(q,folder);assert(fs.realpathSync(base)===base);
  const expanded=configs[batch].expanded===true;
+ assert(batch!=='digestive-six'||!includeGroups,'Digestive hierarchy remains held until retained group audit');
  const groupProof=includeGroups?read(new URL(dir+(expanded?'hra-'+batch+'-group-audit-20261127.json':'hra-source-group-hierarchy-audit-20261126.json'),root)):null;
  if(groupProof){assert(groupProof.publicRelease==='NO_GO');if(expanded){const expected={'urogenital-7':26,'ureter-four':12,'cns-four':12}[batch];assert(groupProof.batch===batch&&groupProof.conclusion==='success'&&groupProof.sourceObjects===rows.length&&groupProof.rows.length===rows.length&&groupProof.exactSourceGroups===expected&&groupProof.remainingHeld===0&&groupProof.clinicalValidation===false&&groupProof.registrationValidated===false&&groupProof.rows.reduce((n,r)=>n+r.groups.length,0)===expected);}else assert(groupProof.exactSourceGroups===37&&groupProof.remainingHeld===1&&groupProof.sourceObjects===9);}
  const assets=new Map();

@@ -1,0 +1,40 @@
+name: Atlas HRA digestive private browser regression
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/load-hra-female-five.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'licensing/atlas-publication/hra-digestive-six-pinned-audit-20261127.json'
+      - '.github/workflows/atlas-hra-digestive-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-hra-digestive-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/audit-hra-female-five.test.mjs scripts/audit-hra-source-groups.test.mjs
+      - name: Install pinned isolated Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install chromium
+      - name: Replay real digestive GLBs and all 10 priority isolated meshes
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_HRA_DIGESTIVE=1 node scripts/test-private-atlas-browser.mjs
+      - name: Remove staged private source bytes
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/hra-digestive-six-*
