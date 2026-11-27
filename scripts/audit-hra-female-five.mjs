@@ -26,7 +26,8 @@ export function crosswalkNodes(csv,doc){
   return {nodeName:m[1],ontologyId:m[2],label:m[3],nodeIndices:hits.map(x=>x.i),meshNodeIndices:meshNodes.map(x=>x.i),status:hits.length===1&&meshNodes.length===1?'EXACT_NAMED_MESH_NODE':'HOLD_GROUP_MISSING_OR_AMBIGUOUS'};
  });
 }
-export async function audit(batch='female-five',{groups=false}={}){
+export async function audit(batch='female-five',{groups=false,freshGroups=false}={}){
+ assert(!freshGroups||groups&&batch==='knee-larynx-six','Fresh group audit only for exact knee/larynx batch');
  const configs={'female-five':{file:'licensing/atlas-publication/hra-female-five-pinned-candidates-20261126.json',count:5,marker:'HRA FEMALE PINNED QUARANTINE REPORT '},'cardiopulmonary-four':{file:'licensing/atlas-publication/hra-cardiopulmonary-four-pinned-candidates-20261126.json',count:4,marker:'HRA CARDIOPULMONARY PINNED QUARANTINE REPORT '},'urogenital-7':{file:'licensing/atlas-publication/hra-urogenital-7-pinned-candidates-20261126.json',count:7,marker:'HRA UROGENITAL PINNED QUARANTINE REPORT '}};
  configs['ureter-four']={file:'licensing/atlas-publication/hra-ureter-four-pinned-candidates-20261126.json',count:4,marker:'HRA URETER PINNED QUARANTINE REPORT '};
  configs['cns-four']={file:'licensing/atlas-publication/hra-cns-four-pinned-candidates-20261126.json',count:4,marker:'HRA CNS PINNED QUARANTINE REPORT '};
@@ -37,8 +38,8 @@ export async function audit(batch='female-five',{groups=false}={}){
  assert(Object.hasOwn(configs,batch),'Unknown HRA batch');const config=configs[batch];
  const spec=JSON.parse(fs.readFileSync(new URL(config.file,root),'utf8'));
  assert(spec.publisherRevision===pin&&spec.publicRelease==='NO_GO'&&spec.rows.length===config.count);
- const retained=groups?JSON.parse(fs.readFileSync(new URL(config.file.replace('-pinned-candidates-','-pinned-audit-'),root),'utf8')):null;
- if(groups)assert(retained.publicRelease==='NO_GO'&&retained.conclusion==='success'&&retained.matched===config.count&&retained.held===0&&retained.publisherRevision===pin);
+ const retained=groups&&!freshGroups?JSON.parse(fs.readFileSync(new URL(config.file.replace('-pinned-candidates-','-pinned-audit-'),root),'utf8')):null;
+ if(groups&&!freshGroups)assert(retained.publicRelease==='NO_GO'&&retained.conclusion==='success'&&retained.matched===config.count&&retained.held===0&&retained.publisherRevision===pin);
  const rows=[];
  for(const e of spec.rows){
   try{
@@ -54,14 +55,17 @@ export async function audit(batch='female-five',{groups=false}={}){
    const labels=crosswalkNodes(cross.toString('utf8'),gltf);assert.equal(labels.length,e.expectedCrosswalkRows);
    if(['urogenital-7','ureter-four','cns-four','digestive-six','lymph-model-two','knee-larynx-six','tonsil-four'].includes(batch))assert.deepEqual(labels.map(({nodeName,ontologyId,label})=>({nodeName,ontologyId,label})),e.sourceLabels,'Pinned crosswalk label mismatch');
    let sourceGroups;
-   if(groups){const prior=retained.rows.find(r=>r.id===e.id);assert(prior&&prior.assetURL===expected&&prior.sha256===sha(raw)&&prior.metadataSHA256===sha(meta)&&prior.crosswalkSHA256===sha(cross),'Retained receipt differs');assert.deepEqual(prior.labels,labels);sourceGroups=resolveSourceGroups(gltf,labels);}
+   if(groups&&!freshGroups){const prior=retained.rows.find(r=>r.id===e.id);assert(prior&&prior.assetURL===expected&&prior.sha256===sha(raw)&&prior.metadataSHA256===sha(meta)&&prior.crosswalkSHA256===sha(cross),'Retained receipt differs');assert.deepEqual(prior.labels,labels);}
+   if(groups)sourceGroups=resolveSourceGroups(gltf,labels);
    rows.push({...(groups?{sourceGroups}:{}),id:e.id,version:e.version,assetURL:expected,bytes:raw.length,sha256:sha(raw),metadataSHA256:sha(meta),crosswalkSHA256:sha(cross),...info,labels,sourceMethod:e.sourceMethod||null,clinicalLimitations:e.clinicalLimitations||[],exactMeshNodeCount:labels.filter(x=>x.status==='EXACT_NAMED_MESH_NODE').length,license:proof.license,doi:proof.doi,creators:proof.creators,status:'EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES',clinicalValidation:false,registrationValidated:false,approvedForDistribution:false});
   }catch(error){rows.push({id:e.id,version:e.version,status:'HOLD',reason:String(error.message).slice(0,500),approvedForDistribution:false});}
  }
  const matched=rows.filter(e=>e.status==='EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES');
  const report={schema:1,publisherRevision:pin,matched:matched.length,held:rows.length-matched.length,exactNamedMeshNodes:matched.reduce((n,e)=>n+e.exactMeshNodeCount,0),rows,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false,geometryPublished:0};
  if(groups){const all=matched.flatMap(r=>r.sourceGroups);report.hierarchy={sourceGroupRows:all.length,exactSourceGroups:all.filter(r=>r.status==='EXACT_SOURCE_GROUP_DESCENDANTS').length,remainingHeld:all.filter(r=>r.status!=='EXACT_SOURCE_GROUP_DESCENDANTS').length,browserReplayVerified:false};}
+ if(freshGroups)report.freshGroups=true;
  console.log((groups?'HRA EXPANDED GROUP AUDIT '+batch+' ':config.marker)+JSON.stringify(report));assert.equal(matched.length,spec.rows.length,'Source or metadata on hold');
+ if(freshGroups){assert.equal(report.exactNamedMeshNodes,70);assert.equal(report.hierarchy.exactSourceGroups,16);assert.equal(report.hierarchy.remainingHeld,0);}
  return report;
 }
-if(process.argv[1]===fileURLToPath(import.meta.url))await audit(process.argv[2]||'female-five',{groups:process.argv[3]==='--groups'});
+if(process.argv[1]===fileURLToPath(import.meta.url)){const flag=process.argv[3];assert(process.argv.length<=4&&[undefined,'--groups','--fresh-groups'].includes(flag),'Unknown audit flag');await audit(process.argv[2]||'female-five',{groups:flag==='--groups'||flag==='--fresh-groups',freshGroups:flag==='--fresh-groups'});}

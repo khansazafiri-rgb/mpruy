@@ -31,4 +31,9 @@ jobs:
         with:
           node-version: 22
       - run: node --test scripts/audit-hra-female-five.test.mjs
-      - run: node scripts/audit-hra-female-five.mjs ${{ matrix.batch }}
+      - name: Verify publisher bytes and native hierarchy in the same job
+        if: matrix.batch == 'knee-larynx-six'
+        run: node scripts/audit-hra-female-five.mjs knee-larynx-six --fresh-groups
+      - name: Verify remaining pinned source batches
+        if: matrix.batch != 'knee-larynx-six'
+        run: node scripts/audit-hra-female-five.mjs ${{ matrix.batch }}
