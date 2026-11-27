@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "sourceCommit": "1111bc5fbf2227ff3f9fbd983189fd895bf610d8",
+  "publicRelease": "NO_GO",
+  "productionChanged": false,
+  "status": "UPSTREAM_SOURCE_ARCHIVE_DRIFT_HELD",
+  "workflowRun": 45990342906,
+  "workflowJob": 140476253998,
+  "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+  "expected": {
+    "bytes": 142903898,
+    "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+  },
+  "observed": {
+    "bytes": 142717267,
+    "sha256": "ac7d9ab0b3d75b4c75445f0f39e3782f309bbb321d2191f449773107ae504793"
+  },
+  "sourcePinUpdated": false,
+  "geometryAccepted": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "scope": "Archive byte drift is not proof of a geometry change. Never infer geometry equality from filenames or update a pin solely to pass CI.",
+  "alternativesExamined": [
+    "Previously retained local 4.0 body pack passed receipt verification before workstation disconnect; runtime not replayed",
+    "The separately pinned 4.3 reference acquisition completed and its browser regression is running"
+  ],
+  "requiredActions": [
+    "Recover access to the retained workstation source archive and raw digest index",
+    "Compare archive membership and every affected raw OBJ against retained evidence",
+    "Replay source geometry, identity, laterality and coordinate-frame validation before accepting any revised source",
+    "Complete exact-source commercial and privacy review; no production change"
+  ]
+}

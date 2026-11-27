@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "testedCommit": "1111bc5fbf2227ff3f9fbd983189fd895bf610d8",
+  "publicRelease": "NO_GO",
+  "productionChanged": false,
+  "newWholeAnatomyRecovered": 0,
+  "tests": {
+    "viewer": {
+      "passed": 61,
+      "failed": 0
+    },
+    "sourceEndpointRights": {
+      "passed": 120,
+      "failed": 0
+    },
+    "web": {
+      "passed": 171,
+      "failed": 0
+    },
+    "sqliteBackupRestoreAndFailure": {
+      "passed": 4,
+      "failed": 0
+    },
+    "totalPassed": 356,
+    "totalFailed": 0
+  },
+  "contractWorkflow": {
+    "id": 45990335440,
+    "job": 140476228958,
+    "conclusion": "success"
+  },
+  "dependencyAudits": {
+    "rootWeb": 0,
+    "independentViewer": 0,
+    "lab4d": 0,
+    "scope": "Reported npm advisories at run time, not complete production security clearance"
+  },
+  "privateHostBuild": "PASS",
+  "distributionScan": "PASS",
+  "fixtureBrowser": {
+    "workflowRun": 45990342987,
+    "job": 140476254019,
+    "conclusion": "success",
+    "desktopViewport": [
+      1440,
+      900
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "scope": "Engineering fixture only; original UI interactions, Guided, desktop/mobile and iframe identity bridge"
+  },
+  "performance": {
+    "scope": "ENGINEERING_FIXTURE_ONLY",
+    "initialReadyMs": 865,
+    "reloadCycles": 6,
+    "heapSamplesBytes": [
+      5436368,
+      4617116,
+      4650044,
+      4645632,
+      4709780,
+      4654340
+    ],
+    "retainedGrowthBytes": 37224,
+    "fullBodyMemoryMeasured": false
+  },
+  "rightsReview": {
+    "bp3dElements": 436,
+    "hraOriginalFiles": 42,
+    "hraDerivedFiles": 15,
+    "rows": 493,
+    "approved": 0
+  },
+  "releaseBlockers": [
+    "Upstream BP3D 4.0 archive drift: see bp3d40-upstream-archive-drift-20261127.json",
+    "Exact original-UI commercial/code-origin permission",
+    "Exact source/derivative distribution and applicable privacy review",
+    "Clinical laterality and spatial registration",
+    "Actual 1016-body-model workstation browser/performance replay; local environment disconnected",
+    "Production endpoint, backup and cutover/rollback rehearsal"
+  ],
+  "note": "Passing CI never supplies rights or clinical approval. The local report preserves its original environment restrictions; this evidence supersedes only the tests and registry audits completed in CI.",
+  "referenceBrowser": {
+    "workflowRun": 45990335440,
+    "job": 140476228757,
+    "conclusion": "success",
+    "bp3dElementsRendered": 436,
+    "hraOriginalFilesRendered": 24,
+    "hraDirectMappedSourceNodes": 606,
+    "hraSourceGroupsIsolatedAndRestored": 87,
+    "hraDirectIsolationRestoreChecks": 24,
+    "hraGuidedCheckpoints": 41,
+    "hraGuidedSourceOpens": 92,
+    "bp3dGuidedParentCheckpoints": 17,
+    "bp3dGuidedComponentOpens": 36,
+    "scope": "Real publisher reference files rendered in the original shell; body context is an engineering fixture, not the 1016-model workstation pack",
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "wholeConceptCoveragePromoted": 0
+  },
+  "referenceSuiteFixturePerformance": {
+    "scope": "ENGINEERING_FIXTURE_ONLY",
+    "initialReadyMs": 1260,
+    "reloadCycles": 6,
+    "heapSamplesBytes": [
+      6459344,
+      4783376,
+      4773768,
+      4768868,
+      4784492,
+      4766784
+    ],
+    "retainedGrowthBytes": -2084,
+    "fullBodyMemoryMeasured": false
+  }
+}
