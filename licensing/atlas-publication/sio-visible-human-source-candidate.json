@@ -36,7 +36,17 @@
     "fundus of stomach",
     "body of stomach",
     "left colic flexure",
-    "right colic flexure"
+    "right colic flexure",
+    "scrotum",
+    "left rectus abdominis",
+    "right rectus abdominis",
+    "left transversus abdominis",
+    "right transversus abdominis",
+    "left internal oblique",
+    "right internal oblique",
+    "coccyx",
+    "larynx",
+    "sigmoid colon"
   ],
   "limitations": [
     "Publisher label list does not establish whole-body lymphatic vessel coverage",
@@ -77,5 +87,90 @@
   "referenceSources": [
     "https://zenodo.org/records/15882019",
     "https://www.virtual-body.org/segmented-internal-organs/"
-  ]
+  ],
+  "gapQueueReview": {
+    "date": "2026-11-27",
+    "source": "checkpoint-evidence/atlas-owner-local-118-gap-queue-20261127.json",
+    "reconciliation": "checkpoint-evidence/hra-118-isolated-guided-reconciliation-20261127.json",
+    "publisherLabels": "https://www.virtual-body.org/segmented-internal-organs/",
+    "scope": "Publisher text candidates only; paired muscles require both side-specific labels and review. No new mesh or coverage claim.",
+    "targets": [
+      {
+        "target": "myocardium",
+        "labels": [
+          "myocardium"
+        ],
+        "status": "NO_NEW_EVIDENCE_IN_PREVIOUS_HRA_RECONCILIATION",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "fundus of stomach",
+        "labels": [
+          "fundus of stomach"
+        ],
+        "status": "NO_NEW_EVIDENCE_IN_PREVIOUS_HRA_RECONCILIATION",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "scrotum",
+        "labels": [
+          "scrotum"
+        ],
+        "status": "NO_NEW_EVIDENCE_IN_PREVIOUS_HRA_RECONCILIATION",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "rectus abdominis muscle",
+        "labels": [
+          "left rectus abdominis",
+          "right rectus abdominis"
+        ],
+        "status": "NO_NEW_EVIDENCE_IN_PREVIOUS_HRA_RECONCILIATION",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "transversus abdominis muscle",
+        "labels": [
+          "left transversus abdominis",
+          "right transversus abdominis"
+        ],
+        "status": "NO_NEW_EVIDENCE_IN_PREVIOUS_HRA_RECONCILIATION",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "internal oblique muscle",
+        "labels": [
+          "left internal oblique",
+          "right internal oblique"
+        ],
+        "status": "NO_NEW_EVIDENCE_IN_PREVIOUS_HRA_RECONCILIATION",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "coccyx",
+        "labels": [
+          "coccyx"
+        ],
+        "status": "ALTERNATIVE_TO_EXISTING_PRIVATE_HRA_REFERENCE",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "larynx",
+        "labels": [
+          "larynx"
+        ],
+        "status": "ALTERNATIVE_TO_EXISTING_PRIVATE_HRA_REFERENCE",
+        "approvedForDistribution": false
+      },
+      {
+        "target": "sigmoid colon",
+        "labels": [
+          "sigmoid colon"
+        ],
+        "status": "ALTERNATIVE_TO_EXISTING_PRIVATE_HRA_REFERENCE",
+        "approvedForDistribution": false
+      }
+    ],
+    "geometryPublished": 0
+  }
 }
