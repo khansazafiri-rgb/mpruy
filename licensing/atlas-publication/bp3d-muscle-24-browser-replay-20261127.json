@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "sourceCommit": "1213feabdb1b384fc323a1838bea972ee1608f5f",
+  "scope": "Standalone muscle browser replay; no new geometry or whole concept promotion.",
+  "workflowRun": 45983221289,
+  "workflowJob": 140452134818,
+  "conclusion": "success",
+  "renderedMeshes": 24,
+  "distinctChallengeConcepts": 24,
+  "unitTestsPassed": 85,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

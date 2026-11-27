@@ -118,6 +118,16 @@
           "nodeName": "VH_F_parotid_gland_L",
           "ontologyId": "FMA:59798",
           "label": "Left parotid gland"
+        },
+        {
+          "nodeName": "VH_F_brachiocephalic_artery_b",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_F_brachiocephalic_artery_a",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
         }
       ],
       "geometryAudited": false,
@@ -183,6 +193,21 @@
           "nodeName": "VH_M_parotid_gland_L",
           "ontologyId": "FMA:59798",
           "label": "Left parotid gland"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery_b",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
+        },
+        {
+          "nodeName": "VH_M_brachiocephalic_artery_a",
+          "ontologyId": "UBERON:0001529",
+          "label": "brachiocephalic artery"
         }
       ],
       "geometryAudited": false,

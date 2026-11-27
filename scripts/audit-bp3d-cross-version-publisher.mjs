@@ -73,7 +73,7 @@ async function loadSources(folder){
   const entries=receipt.receipts.filter(r=>r.tree===tree),files={};
   assert(entries.length===3);
   for(const r of entries){const basename={archive:tree+'_BP3D_4.0_obj_99.zip',names:tree+'_parts_list_e.txt',elements:tree+'_element_parts.txt'}[r.kind];assert(basename&&!files[r.kind]&&r.url==='https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/'+basename&&/^[a-f0-9]{64}$/.test(r.sha256)&&r.bytes>0);
-   const f=path.join(folder,basename);await fetchOfficialFile(r.url,f,r.bytes);assert(fs.realpathSync(f)===f&&fs.statSync(f).size===r.bytes&&sha(fs.readFileSync(f))===r.sha256,'Publisher receipt changed');files[r.kind]=f;
+   const f=path.join(folder,basename);await fetchOfficialFile(r.url,f,r.bytes);assert(fs.realpathSync(f)===f,'Publisher path mismatch');const actualBytes=fs.statSync(f).size,actualSHA256=sha(fs.readFileSync(f));if(actualBytes!==r.bytes||actualSHA256!==r.sha256){console.error('BP3D PUBLISHER RECEIPT MISMATCH '+JSON.stringify({tree,kind:r.kind,expectedBytes:r.bytes,actualBytes,expectedSHA256:r.sha256,actualSHA256,status:'HOLD_CHANGED_PUBLISHER_RECEIPT',publicRelease:'NO_GO'}));throw Error('Publisher receipt changed; no source promotion');}files[r.kind]=f;
   }
   const names=parseOfficialNames(fs.readFileSync(files.names,'utf8')),elements=parseOfficialElements(fs.readFileSync(files.elements,'utf8'));
   const list=execFileSync('unzip',['-Z','-1',files.archive],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);checkArchiveEntryNames(list);const archiveIndex=new Map();
