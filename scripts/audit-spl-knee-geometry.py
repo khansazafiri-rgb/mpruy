@@ -73,41 +73,42 @@ def scene_links(z, mesh_paths, anatomical=None):
         except ElementTree.ParseError:
             counts["heldScene"] += 1
             continue
-        storage = {}
-        for node in root.iter():
-            tag = node.tag.rsplit("}", 1)[-1].lower()
-            if tag == "modelstorage":
-                key = node.get("id", "")
-                file = unquote(node.get("fileName", ""))
-                counts["modelStorageNodes"] += 1
-                if not key:
-                    counts["storageMissingID"] += 1
+        for scope_index, scope_nodes in enumerate(source.mrml_scene_scopes(root)):
+            storage = {}
+            for node in scope_nodes:
+                tag = node.tag.rsplit("}", 1)[-1].lower()
+                if tag == "modelstorage":
+                    key = node.get("id", "")
+                    file = unquote(node.get("fileName", ""))
+                    counts["modelStorageNodes"] += 1
+                    if not key:
+                        counts["storageMissingID"] += 1
+                        continue
+                    target = source.storage_path_diagnostics(info.filename, file, mesh_paths, counts)
+                    if key in storage:
+                        counts["duplicateStorageID"] += 1
+                        storage[key] = None
+                    else:
+                        storage[key] = target
+            for node in scope_nodes:
+                if node.tag.rsplit("}", 1)[-1].lower() != "model":
                     continue
-                target = source.storage_path_diagnostics(info.filename, file, mesh_paths, counts)
-                if key in storage:
-                    counts["duplicateStorageID"] += 1
-                    storage[key] = None
+                target = source.model_storage_target(node, storage, counts)
+                if anatomical_label(node.get("name", "")):
+                    counts["allowlistedModelLabelsLinked" if target else "allowlistedModelLabelsUnlinked"] += 1
+                ident = node.get("id", "")
+                if target and ident:
+                    node_hash = digest((info.filename + "\0" + str(scope_index) + "\0" + ident).encode("utf8"))
+                    links[target].add(node_hash)
+                    if anatomical is not None:
+                        anatomical[target].add(anatomical_label(node.get('name', '')) or ('UNRECOGNIZED', 'UNSPECIFIED'))
+                    transform_ids = source.mrml_role_ids(node, "transform", ("transformNodeRef", "parentTransformNodeRef"))
+                    if transform_ids is None or transform_ids:
+                        transform_links[target].add(node_hash)
+                        counts["modelNodesWithTransformRef"] += 1
+                    counts["linkedModelNodes"] += 1
                 else:
-                    storage[key] = target
-        for node in root.iter():
-            if node.tag.rsplit("}", 1)[-1].lower() != "model":
-                continue
-            target = source.model_storage_target(node, storage, counts)
-            if anatomical_label(node.get("name", "")):
-                counts["allowlistedModelLabelsLinked" if target else "allowlistedModelLabelsUnlinked"] += 1
-            ident = node.get("id", "")
-            if target and ident:
-                node_hash = digest((info.filename + "\0" + ident).encode("utf8"))
-                links[target].add(node_hash)
-                if anatomical is not None:
-                    anatomical[target].add(anatomical_label(node.get('name', '')) or ('UNRECOGNIZED', 'UNSPECIFIED'))
-                transform_ids = source.mrml_role_ids(node, "transform", ("transformNodeRef", "parentTransformNodeRef"))
-                if transform_ids is None or transform_ids:
-                    transform_links[target].add(node_hash)
-                    counts["modelNodesWithTransformRef"] += 1
-                counts["linkedModelNodes"] += 1
-            else:
-                counts["unresolvedModelNodes"] += 1
+                    counts["unresolvedModelNodes"] += 1
     return links, dict(counts), transform_links
 
 def glb_roundtrip(points, indices):
@@ -385,6 +386,19 @@ class Tests(unittest.TestCase):
             self.assertEqual(transforms["pack/Data/test.vtk"], links["pack/Data/test.vtk"])
             self.assertEqual(counts["conflictingStorageReferences"], 1)
             self.assertFalse(links["pack/Data/other.vtk"])
+    def test_snapshot_id_reuse_does_not_cross_link(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "fixture.zip"
+            with zipfile.ZipFile(p, "w") as z:
+                z.writestr("scene.mrml", '<MRML><ModelStorage id="s" fileName="a.vtk"/><Model id="m" name="Left ACL" storageNodeRef="s"/><SceneView><ModelStorage id="s" fileName="b.vtk"/><Model id="m" name="Right PCL" storageNodeRef="s"/></SceneView><SceneView><Model id="m" name="ACL" storageNodeRef="s"/></SceneView></MRML>')
+            labels = {"a.vtk": set(), "b.vtk": set()}
+            with zipfile.ZipFile(p) as z:
+                links, counts, transforms = scene_links(z, set(labels), labels)
+            self.assertEqual(labels["a.vtk"], {("anterior cruciate ligament", "LEFT")})
+            self.assertEqual(labels["b.vtk"], {("posterior cruciate ligament", "RIGHT")})
+            self.assertEqual(counts["linkedModelNodes"], 2)
+            self.assertEqual(counts["storageIDAbsent"], 1)
+            self.assertEqual(counts.get("duplicateStorageID", 0), 0)
     def test_transform_reference_not_applied(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / "fixture.zip"

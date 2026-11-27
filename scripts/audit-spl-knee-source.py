@@ -72,6 +72,27 @@ def storage_path_diagnostics(scene, filename, mesh_paths, counts):
         counts["noBasenameCandidate"] += 1
     return None
 
+def mrml_scene_scopes(root):
+    """Separate the active MRML scene from nested SceneView snapshot namespaces.
+    Never resolve an ID across namespaces. Preserve deterministic scope indices.
+    """
+    scopes = []
+    def collect(node, scope, depth):
+        if depth > 128:
+            raise ValueError("MRML nesting limit")
+        tag = node.tag.rsplit("}", 1)[-1].lower()
+        if tag in {"sceneview", "sceneshot", "mrml"}:
+            scope = []
+            scopes.append(scope)
+        scope.append(node)
+        for child in node:
+            collect(child, scope, depth + 1)
+    initial = []
+    if root.tag.rsplit("}", 1)[-1].lower() != "mrml":
+        scopes.append(initial)
+    collect(root, initial, 0)
+    return scopes
+
 def inventory(archive):
     counts, mesh_digests = Counter(), []
     total = 0
@@ -170,6 +191,13 @@ class Tests(unittest.TestCase):
         self.assertEqual(counts["ambiguousBasenameCandidatesHeld"], 1)
         self.assertEqual(counts["caseFoldBasenameCandidateHeld"], 1)
         self.assertEqual(counts["unsafeOrMissingStoragePath"], 2)
+    def test_snapshot_namespaces_separate(self):
+        from xml.etree.ElementTree import fromstring
+        root = fromstring('<MRML><ModelStorage id="s"/><Model id="m"/><SceneView><ModelStorage id="s"/><Model id="m"/></SceneView><SceneView><MRML><ModelStorage id="s"/><Model id="m"/></MRML></SceneView></MRML>')
+        scopes = mrml_scene_scopes(root)
+        models = [[n.get("id") for n in scope if n.tag == "Model"] for scope in scopes]
+        self.assertEqual([m for m in models if m], [["m"], ["m"], ["m"]])
+        self.assertEqual(sum(n.tag == "ModelStorage" for scope in scopes for n in scope), 3)
     def test_traversal_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / "test.zip"

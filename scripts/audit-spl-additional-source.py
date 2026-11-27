@@ -69,33 +69,34 @@ def audit(archive, kind):
             except ElementTree.ParseError:
                 held_scenes += 1
                 continue
-            stores = {}
-            for n in root.iter():
-                if n.tag.rsplit("}",1)[-1].lower() != "modelstorage":
-                    continue
-                diagnostics['storageNodes'] += 1
-                ident, name = n.get("id",""), unquote(n.get("fileName",""))
-                if not ident:
-                    diagnostics['storageMissingID'] += 1
-                    continue
-                target = source.storage_path_diagnostics(info.filename, name, mesh_paths, diagnostics)
-                if ident in stores:
-                    diagnostics['duplicateStorageID'] += 1
-                    stores[ident] = None
-                else:
-                    stores[ident] = target
-                diagnostics['resolvedStorage' if target else 'unresolvedStorage'] += 1
-            for n in root.iter():
-                if n.tag.rsplit("}",1)[-1].lower() != "model":
-                    continue
-                diagnostics['modelNodes'] += 1
-                target = source.model_storage_target(n, stores, diagnostics)
-                diagnostics['linkedModels' if target else 'unlinkedModels'] += 1
-                candidate = label(n.get("name",""),terms)
-                if candidate:
-                    diagnostics['allowlistedModelLabelsLinked' if target else 'allowlistedModelLabelsUnlinked'] += 1
-                if target:
-                    hits.setdefault(target,set()).add(candidate)
+            for scope_index, scope_nodes in enumerate(source.mrml_scene_scopes(root)):
+                stores = {}
+                for n in scope_nodes:
+                    if n.tag.rsplit("}",1)[-1].lower() != "modelstorage":
+                        continue
+                    diagnostics['storageNodes'] += 1
+                    ident, name = n.get("id",""), unquote(n.get("fileName",""))
+                    if not ident:
+                        diagnostics['storageMissingID'] += 1
+                        continue
+                    target = source.storage_path_diagnostics(info.filename, name, mesh_paths, diagnostics)
+                    if ident in stores:
+                        diagnostics['duplicateStorageID'] += 1
+                        stores[ident] = None
+                    else:
+                        stores[ident] = target
+                    diagnostics['resolvedStorage' if target else 'unresolvedStorage'] += 1
+                for n in scope_nodes:
+                    if n.tag.rsplit("}",1)[-1].lower() != "model":
+                        continue
+                    diagnostics['modelNodes'] += 1
+                    target = source.model_storage_target(n, stores, diagnostics)
+                    diagnostics['linkedModels' if target else 'unlinkedModels'] += 1
+                    candidate = label(n.get("name",""),terms)
+                    if candidate:
+                        diagnostics['allowlistedModelLabelsLinked' if target else 'allowlistedModelLabelsUnlinked'] += 1
+                    if target:
+                        hits.setdefault(target,set()).add(candidate)
         rows = []
         for member, labels in hits.items():
             if not any(x is not None for x in labels):
