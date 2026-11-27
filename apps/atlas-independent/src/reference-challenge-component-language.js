@@ -9,7 +9,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "lateral head of left gastrocnemius"
     ],
     "latin": [
-      "caput laterale musculi gastrocnemius sinistri"
+      "caput laterale musculi gastrocnemii sinistri"
     ],
     "side": "left"
   },
@@ -22,7 +22,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "lateral head of right gastrocnemius"
     ],
     "latin": [
-      "caput laterale musculi gastrocnemius dextri"
+      "caput laterale musculi gastrocnemii dextri"
     ],
     "side": "right"
   },
@@ -35,7 +35,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "medial head of left gastrocnemius"
     ],
     "latin": [
-      "caput mediale musculi gastrocnemius sinistri"
+      "caput mediale musculi gastrocnemii sinistri"
     ],
     "side": "left"
   },
@@ -48,7 +48,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "medial head of right gastrocnemius"
     ],
     "latin": [
-      "caput mediale musculi gastrocnemius dextri"
+      "caput mediale musculi gastrocnemii dextri"
     ],
     "side": "right"
   },
@@ -139,7 +139,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "lateral head of left triceps brachii"
     ],
     "latin": [
-      "caput laterale musculi triceps brachii sinistri"
+      "caput laterale musculi tricipitis brachii sinistri"
     ],
     "side": "left"
   },
@@ -152,7 +152,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "lateral head of right triceps brachii"
     ],
     "latin": [
-      "caput laterale musculi triceps brachii dextri"
+      "caput laterale musculi tricipitis brachii dextri"
     ],
     "side": "right"
   },
@@ -165,7 +165,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "long head of left biceps brachii"
     ],
     "latin": [
-      "caput longum musculi biceps brachii sinistri"
+      "caput longum musculi bicipitis brachii sinistri"
     ],
     "side": "left"
   },
@@ -178,7 +178,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "long head of right biceps brachii"
     ],
     "latin": [
-      "caput longum musculi biceps brachii dextri"
+      "caput longum musculi bicipitis brachii dextri"
     ],
     "side": "right"
   },
@@ -191,7 +191,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "long head of left triceps brachii"
     ],
     "latin": [
-      "caput longum musculi triceps brachii sinistri"
+      "caput longum musculi tricipitis brachii sinistri"
     ],
     "side": "left"
   },
@@ -204,7 +204,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "long head of right triceps brachii"
     ],
     "latin": [
-      "caput longum musculi triceps brachii dextri"
+      "caput longum musculi tricipitis brachii dextri"
     ],
     "side": "right"
   },
@@ -217,7 +217,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "medial head of left triceps brachii"
     ],
     "latin": [
-      "caput mediale musculi triceps brachii sinistri"
+      "caput mediale musculi tricipitis brachii sinistri"
     ],
     "side": "left"
   },
@@ -230,7 +230,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "medial head of right triceps brachii"
     ],
     "latin": [
-      "caput mediale musculi triceps brachii dextri"
+      "caput mediale musculi tricipitis brachii dextri"
     ],
     "side": "right"
   },
@@ -243,7 +243,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "short head of left biceps brachii"
     ],
     "latin": [
-      "caput breve musculi biceps brachii sinistri"
+      "caput breve musculi bicipitis brachii sinistri"
     ],
     "side": "left"
   },
@@ -256,7 +256,7 @@ export const COMPONENT_GLOSSARY=Object.freeze({
       "short head of right biceps brachii"
     ],
     "latin": [
-      "caput breve musculi biceps brachii dextri"
+      "caput breve musculi bicipitis brachii dextri"
     ],
     "side": "right"
   },

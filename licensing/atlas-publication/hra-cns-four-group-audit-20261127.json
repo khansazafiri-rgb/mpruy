@@ -1,0 +1,6182 @@
+{
+  "schema": 1,
+  "batch": "cns-four",
+  "sourceCommit": "5574e2ba791f8f23608d74138f106f15243ea46b",
+  "workflowRun": 45853361519,
+  "workflowJob": 140025225382,
+  "conclusion": "success",
+  "sourceObjects": 4,
+  "exactSourceGroups": 12,
+  "remainingHeld": 0,
+  "browserReplayVerified": false,
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "rows": [
+    {
+      "id": "brain-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb",
+      "sha256": "f20d87a347f8d5c6467439cba7db18f19307d29b2c3e0c2b6ddb7e9d49e1c1fc",
+      "groups": [
+        {
+          "nodeName": "Allen_brain",
+          "ontologyId": "UBERON:0000955",
+          "label": "brain",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_optic_chiasm",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "Allen_olfactory_bulb_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "Allen_anterior_olfactory_nucleus_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "Allen_piriform_region_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "Allen_head_of_caudate_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "Allen_body_of_caudate_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "Allen_tail_of_caudate_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "Allen_putamen_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "Allen_nucleus_accumbens_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "Allen_claustrum_L",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "Allen_basal_forebrain_L",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "Allen_septal_nuclei_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "Allen_amygdaloid_complex_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "Allen_anterior_amygdaloid_area_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "Allen_central_nuclear_group_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "Allen_lateral_nucleus_L",
+              "meshIndex": 19
+            },
+            {
+              "index": 22,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_L",
+              "meshIndex": 20
+            },
+            {
+              "index": 23,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_L",
+              "meshIndex": 21
+            },
+            {
+              "index": 24,
+              "nodeName": "Allen_anterior_cortical_nucleus_L",
+              "meshIndex": 22
+            },
+            {
+              "index": 25,
+              "nodeName": "Allen_posterior_cortical_nucleus_L",
+              "meshIndex": 23
+            },
+            {
+              "index": 26,
+              "nodeName": "Allen_medial_nucleus_L",
+              "meshIndex": 24
+            },
+            {
+              "index": 27,
+              "nodeName": "Allen_amygdalohippocampal_area_L",
+              "meshIndex": 25
+            },
+            {
+              "index": 28,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_L",
+              "meshIndex": 26
+            },
+            {
+              "index": 29,
+              "nodeName": "Allen_thalamus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 30,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 31,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_L",
+              "meshIndex": 29
+            },
+            {
+              "index": 32,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_L",
+              "meshIndex": 30
+            },
+            {
+              "index": 33,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_L",
+              "meshIndex": 31
+            },
+            {
+              "index": 34,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_L",
+              "meshIndex": 32
+            },
+            {
+              "index": 35,
+              "nodeName": "Allen_pulvinar_of_thalamus_L",
+              "meshIndex": 33
+            },
+            {
+              "index": 36,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_L",
+              "meshIndex": 34
+            },
+            {
+              "index": 37,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_L",
+              "meshIndex": 35
+            },
+            {
+              "index": 38,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_L",
+              "meshIndex": 36
+            },
+            {
+              "index": 39,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_L",
+              "meshIndex": 37
+            },
+            {
+              "index": 40,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_L",
+              "meshIndex": 38
+            },
+            {
+              "index": 41,
+              "nodeName": "Allen_medial_geniculate_nuclei_L",
+              "meshIndex": 39
+            },
+            {
+              "index": 42,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_L",
+              "meshIndex": 40
+            },
+            {
+              "index": 43,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_L",
+              "meshIndex": 41
+            },
+            {
+              "index": 44,
+              "nodeName": "Allen_habenular_nuclei_L",
+              "meshIndex": 42
+            },
+            {
+              "index": 45,
+              "nodeName": "Allen_pineal_body_L",
+              "meshIndex": 43
+            },
+            {
+              "index": 46,
+              "nodeName": "Allen_zona_incerta_L",
+              "meshIndex": 44
+            },
+            {
+              "index": 47,
+              "nodeName": "Allen_supraoptic_region_of_HTH_L",
+              "meshIndex": 45
+            },
+            {
+              "index": 48,
+              "nodeName": "Allen_preoptic_region_of_HTH_L",
+              "meshIndex": 46
+            },
+            {
+              "index": 49,
+              "nodeName": "Allen_tuberal_region_of_HTH_L",
+              "meshIndex": 47
+            },
+            {
+              "index": 50,
+              "nodeName": "Allen_white_matter_of_forebrain_L",
+              "meshIndex": 48
+            },
+            {
+              "index": 51,
+              "nodeName": "Allen_anterior_commissure_L",
+              "meshIndex": 49
+            },
+            {
+              "index": 52,
+              "nodeName": "Allen_corpus_callosum_L",
+              "meshIndex": 50
+            },
+            {
+              "index": 53,
+              "nodeName": "Allen_fornix_L",
+              "meshIndex": 51
+            },
+            {
+              "index": 54,
+              "nodeName": "Allen_mammillothalamic_tract_L",
+              "meshIndex": 52
+            },
+            {
+              "index": 55,
+              "nodeName": "Allen_optic_tract_L",
+              "meshIndex": 53
+            },
+            {
+              "index": 56,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 54
+            },
+            {
+              "index": 57,
+              "nodeName": "Allen_body_of_lateral_ventricle_L",
+              "meshIndex": 55
+            },
+            {
+              "index": 58,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 56
+            },
+            {
+              "index": 59,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_L",
+              "meshIndex": 57
+            },
+            {
+              "index": 60,
+              "nodeName": "Allen_third_ventricle_L",
+              "meshIndex": 58
+            },
+            {
+              "index": 61,
+              "nodeName": "Allen_cerebellar_vermis_L",
+              "meshIndex": 59
+            },
+            {
+              "index": 62,
+              "nodeName": "Allen_cerebellar_deep_nuclei_L",
+              "meshIndex": 60
+            },
+            {
+              "index": 63,
+              "nodeName": "Allen_white_matter_of_hindbrain_L",
+              "meshIndex": 61
+            },
+            {
+              "index": 64,
+              "nodeName": "Allen_olfactory_tract_L",
+              "meshIndex": 62
+            },
+            {
+              "index": 65,
+              "nodeName": "Allen_primary_motor_cortex_L",
+              "meshIndex": 63
+            },
+            {
+              "index": 66,
+              "nodeName": "Allen_superior_frontal_gyrus_L",
+              "meshIndex": 64
+            },
+            {
+              "index": 67,
+              "nodeName": "Allen_middle_frontal_gyrus_L",
+              "meshIndex": 65
+            },
+            {
+              "index": 68,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+              "meshIndex": 66
+            },
+            {
+              "index": 69,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+              "meshIndex": 67
+            },
+            {
+              "index": 70,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+              "meshIndex": 68
+            },
+            {
+              "index": 71,
+              "nodeName": "Allen_medial_orbital_gyrus_L",
+              "meshIndex": 69
+            },
+            {
+              "index": 72,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 70
+            },
+            {
+              "index": 73,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 71
+            },
+            {
+              "index": 74,
+              "nodeName": "Allen_lateral_orbital_gyrus_L",
+              "meshIndex": 72
+            },
+            {
+              "index": 75,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+              "meshIndex": 73
+            },
+            {
+              "index": 76,
+              "nodeName": "Allen_frontal_operculum_L",
+              "meshIndex": 74
+            },
+            {
+              "index": 77,
+              "nodeName": "Allen_postcentral_gyrus_L",
+              "meshIndex": 75
+            },
+            {
+              "index": 78,
+              "nodeName": "Allen_supraparietal_lobule_L",
+              "meshIndex": 76
+            },
+            {
+              "index": 79,
+              "nodeName": "Allen_supramarginal_gyrus_L",
+              "meshIndex": 77
+            },
+            {
+              "index": 80,
+              "nodeName": "Allen_angular_gyrus_L",
+              "meshIndex": 78
+            },
+            {
+              "index": 81,
+              "nodeName": "Allen_precuneus_L",
+              "meshIndex": 79
+            },
+            {
+              "index": 82,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_L",
+              "meshIndex": 80
+            },
+            {
+              "index": 83,
+              "nodeName": "Allen_superior_temporal_gyrus_L",
+              "meshIndex": 81
+            },
+            {
+              "index": 84,
+              "nodeName": "Allen_middle_temporal_gyrus_L",
+              "meshIndex": 82
+            },
+            {
+              "index": 85,
+              "nodeName": "Allen_inferior_temporal_gyrus_L",
+              "meshIndex": 83
+            },
+            {
+              "index": 86,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_L",
+              "meshIndex": 84
+            },
+            {
+              "index": 87,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_L",
+              "meshIndex": 85
+            },
+            {
+              "index": 88,
+              "nodeName": "Allen_planum_temporale_L",
+              "meshIndex": 86
+            },
+            {
+              "index": 89,
+              "nodeName": "Allen_temporal_pole_L",
+              "meshIndex": 87
+            },
+            {
+              "index": 90,
+              "nodeName": "Allen_planum_polare_L",
+              "meshIndex": 88
+            },
+            {
+              "index": 91,
+              "nodeName": "Allen_occipital_pole_L",
+              "meshIndex": 89
+            },
+            {
+              "index": 92,
+              "nodeName": "Allen_cuneus_L",
+              "meshIndex": 90
+            },
+            {
+              "index": 93,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+              "meshIndex": 91
+            },
+            {
+              "index": 94,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+              "meshIndex": 92
+            },
+            {
+              "index": 95,
+              "nodeName": "Allen_inferior_occipital_gyrus_L",
+              "meshIndex": 93
+            },
+            {
+              "index": 96,
+              "nodeName": "Allen_superior_occipital_gyrus_L",
+              "meshIndex": 94
+            },
+            {
+              "index": 97,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+              "meshIndex": 95
+            },
+            {
+              "index": 98,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+              "meshIndex": 96
+            },
+            {
+              "index": 99,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+              "meshIndex": 97
+            },
+            {
+              "index": 100,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+              "meshIndex": 98
+            },
+            {
+              "index": 101,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+              "meshIndex": 99
+            },
+            {
+              "index": 102,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+              "meshIndex": 100
+            },
+            {
+              "index": 103,
+              "nodeName": "Allen_gyrus_ambiens_L",
+              "meshIndex": 101
+            },
+            {
+              "index": 104,
+              "nodeName": "Allen_long_insular_gyri_L",
+              "meshIndex": 102
+            },
+            {
+              "index": 105,
+              "nodeName": "Allen_short_insular_gyri_L",
+              "meshIndex": 103
+            },
+            {
+              "index": 106,
+              "nodeName": "Allen_limen_insula_L",
+              "meshIndex": 104
+            },
+            {
+              "index": 107,
+              "nodeName": "Allen_pretectal_region_L",
+              "meshIndex": 105
+            },
+            {
+              "index": 108,
+              "nodeName": "Allen_substantia_nigra_L",
+              "meshIndex": 106
+            },
+            {
+              "index": 109,
+              "nodeName": "Allen_superior_colliculus_L",
+              "meshIndex": 107
+            },
+            {
+              "index": 110,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+              "meshIndex": 108
+            },
+            {
+              "index": 111,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_L",
+              "meshIndex": 109
+            },
+            {
+              "index": 112,
+              "nodeName": "Allen_cerebral_aqueduct_L",
+              "meshIndex": 110
+            },
+            {
+              "index": 113,
+              "nodeName": "Allen_paravermis_of_cerebellum_L",
+              "meshIndex": 111
+            },
+            {
+              "index": 114,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_L",
+              "meshIndex": 112
+            },
+            {
+              "index": 115,
+              "nodeName": "Allen_basilar_part_of_pons_L",
+              "meshIndex": 113
+            },
+            {
+              "index": 116,
+              "nodeName": "Allen_pontine_tegmentum_L",
+              "meshIndex": 114
+            },
+            {
+              "index": 117,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_L",
+              "meshIndex": 115
+            },
+            {
+              "index": 118,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_L",
+              "meshIndex": 116
+            },
+            {
+              "index": 119,
+              "nodeName": "Allen_inferior_olive_L",
+              "meshIndex": 117
+            },
+            {
+              "index": 120,
+              "nodeName": "Allen_middle_cerebellar_peduncle_L",
+              "meshIndex": 118
+            },
+            {
+              "index": 121,
+              "nodeName": "Allen_fourth_ventricle_L",
+              "meshIndex": 119
+            },
+            {
+              "index": 122,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_L",
+              "meshIndex": 120
+            },
+            {
+              "index": 123,
+              "nodeName": "Allen_midline_nuclear_complex_L",
+              "meshIndex": 121
+            },
+            {
+              "index": 124,
+              "nodeName": "Allen_lateral_olfactory_gyrus_L",
+              "meshIndex": 122
+            },
+            {
+              "index": 125,
+              "nodeName": "Allen_parietal_operculum_L",
+              "meshIndex": 123
+            },
+            {
+              "index": 126,
+              "nodeName": "Allen_optic_radiation_L",
+              "meshIndex": 124
+            },
+            {
+              "index": 127,
+              "nodeName": "Allen_posteroventral_putamen_L",
+              "meshIndex": 125
+            },
+            {
+              "index": 128,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_L",
+              "meshIndex": 126
+            },
+            {
+              "index": 129,
+              "nodeName": "Allen_paracingulate_gyrus_L",
+              "meshIndex": 127
+            },
+            {
+              "index": 130,
+              "nodeName": "Allen_rostral_gyrus_L",
+              "meshIndex": 128
+            },
+            {
+              "index": 131,
+              "nodeName": "Allen_frontomarginal_gyrus_L",
+              "meshIndex": 129
+            },
+            {
+              "index": 132,
+              "nodeName": "Allen_frontal_pole_L",
+              "meshIndex": 130
+            },
+            {
+              "index": 133,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_L",
+              "meshIndex": 131
+            },
+            {
+              "index": 134,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_L",
+              "meshIndex": 132
+            },
+            {
+              "index": 136,
+              "nodeName": "Allen_head_of_hippocampus_L",
+              "meshIndex": 133
+            },
+            {
+              "index": 137,
+              "nodeName": "Allen_body_of_hippocampus_L",
+              "meshIndex": 134
+            },
+            {
+              "index": 138,
+              "nodeName": "Allen_tail_of_hippocampus_L",
+              "meshIndex": 135
+            },
+            {
+              "index": 140,
+              "nodeName": "Allen_olfactory_bulb_R",
+              "meshIndex": 136
+            },
+            {
+              "index": 141,
+              "nodeName": "Allen_anterior_olfactory_nucleus_R",
+              "meshIndex": 137
+            },
+            {
+              "index": 142,
+              "nodeName": "Allen_piriform_region_R",
+              "meshIndex": 138
+            },
+            {
+              "index": 143,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_R",
+              "meshIndex": 139
+            },
+            {
+              "index": 144,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_R",
+              "meshIndex": 140
+            },
+            {
+              "index": 145,
+              "nodeName": "Allen_head_of_caudate_R",
+              "meshIndex": 141
+            },
+            {
+              "index": 146,
+              "nodeName": "Allen_body_of_caudate_R",
+              "meshIndex": 142
+            },
+            {
+              "index": 147,
+              "nodeName": "Allen_tail_of_caudate_R",
+              "meshIndex": 143
+            },
+            {
+              "index": 148,
+              "nodeName": "Allen_putamen_R",
+              "meshIndex": 144
+            },
+            {
+              "index": 149,
+              "nodeName": "Allen_nucleus_accumbens_R",
+              "meshIndex": 145
+            },
+            {
+              "index": 150,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_R",
+              "meshIndex": 146
+            },
+            {
+              "index": 151,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_R",
+              "meshIndex": 147
+            },
+            {
+              "index": 152,
+              "nodeName": "Allen_claustrum_R",
+              "meshIndex": 148
+            },
+            {
+              "index": 153,
+              "nodeName": "Allen_basal_forebrain_R",
+              "meshIndex": 149
+            },
+            {
+              "index": 154,
+              "nodeName": "Allen_septal_nuclei_R",
+              "meshIndex": 150
+            },
+            {
+              "index": 155,
+              "nodeName": "Allen_amygdaloid_complex_R",
+              "meshIndex": 151
+            },
+            {
+              "index": 156,
+              "nodeName": "Allen_anterior_amygdaloid_area_R",
+              "meshIndex": 152
+            },
+            {
+              "index": 157,
+              "nodeName": "Allen_central_nuclear_group_R",
+              "meshIndex": 153
+            },
+            {
+              "index": 158,
+              "nodeName": "Allen_lateral_nucleus_R",
+              "meshIndex": 154
+            },
+            {
+              "index": 159,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_R",
+              "meshIndex": 155
+            },
+            {
+              "index": 160,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_R",
+              "meshIndex": 156
+            },
+            {
+              "index": 161,
+              "nodeName": "Allen_anterior_cortical_nucleus_R",
+              "meshIndex": 157
+            },
+            {
+              "index": 162,
+              "nodeName": "Allen_posterior_cortical_nucleus_R",
+              "meshIndex": 158
+            },
+            {
+              "index": 163,
+              "nodeName": "Allen_medial_nucleus_R",
+              "meshIndex": 159
+            },
+            {
+              "index": 164,
+              "nodeName": "Allen_amygdalohippocampal_area_R",
+              "meshIndex": 160
+            },
+            {
+              "index": 165,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_R",
+              "meshIndex": 161
+            },
+            {
+              "index": 166,
+              "nodeName": "Allen_thalamus_R",
+              "meshIndex": 162
+            },
+            {
+              "index": 167,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_R",
+              "meshIndex": 163
+            },
+            {
+              "index": 168,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_R",
+              "meshIndex": 164
+            },
+            {
+              "index": 169,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_R",
+              "meshIndex": 165
+            },
+            {
+              "index": 170,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_R",
+              "meshIndex": 166
+            },
+            {
+              "index": 171,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_R",
+              "meshIndex": 167
+            },
+            {
+              "index": 172,
+              "nodeName": "Allen_pulvinar_of_thalamus_R",
+              "meshIndex": 168
+            },
+            {
+              "index": 173,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_R",
+              "meshIndex": 169
+            },
+            {
+              "index": 174,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_R",
+              "meshIndex": 170
+            },
+            {
+              "index": 175,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_R",
+              "meshIndex": 171
+            },
+            {
+              "index": 176,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_R",
+              "meshIndex": 172
+            },
+            {
+              "index": 177,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_R",
+              "meshIndex": 173
+            },
+            {
+              "index": 178,
+              "nodeName": "Allen_medial_geniculate_nuclei_R",
+              "meshIndex": 174
+            },
+            {
+              "index": 179,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_R",
+              "meshIndex": 175
+            },
+            {
+              "index": 180,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_R",
+              "meshIndex": 176
+            },
+            {
+              "index": 181,
+              "nodeName": "Allen_habenular_nuclei_R",
+              "meshIndex": 177
+            },
+            {
+              "index": 182,
+              "nodeName": "Allen_pineal_body_R",
+              "meshIndex": 178
+            },
+            {
+              "index": 183,
+              "nodeName": "Allen_zona_incerta_R",
+              "meshIndex": 179
+            },
+            {
+              "index": 184,
+              "nodeName": "Allen_supraoptic_region_of_HTH_R",
+              "meshIndex": 180
+            },
+            {
+              "index": 185,
+              "nodeName": "Allen_white_matter_of_forebrain_R",
+              "meshIndex": 181
+            },
+            {
+              "index": 186,
+              "nodeName": "Allen_anterior_commissure_R",
+              "meshIndex": 182
+            },
+            {
+              "index": 187,
+              "nodeName": "Allen_corpus_callosum_R",
+              "meshIndex": 183
+            },
+            {
+              "index": 188,
+              "nodeName": "Allen_fornix_R",
+              "meshIndex": 184
+            },
+            {
+              "index": 189,
+              "nodeName": "Allen_mammillothalamic_tract_R",
+              "meshIndex": 185
+            },
+            {
+              "index": 190,
+              "nodeName": "Allen_optic_tract_R",
+              "meshIndex": 186
+            },
+            {
+              "index": 191,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 187
+            },
+            {
+              "index": 192,
+              "nodeName": "Allen_body_of_lateral_ventricle_R",
+              "meshIndex": 188
+            },
+            {
+              "index": 193,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 189
+            },
+            {
+              "index": 194,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_R",
+              "meshIndex": 190
+            },
+            {
+              "index": 195,
+              "nodeName": "Allen_third_ventricle_R",
+              "meshIndex": 191
+            },
+            {
+              "index": 196,
+              "nodeName": "Allen_cerebellar_vermis_R",
+              "meshIndex": 192
+            },
+            {
+              "index": 197,
+              "nodeName": "Allen_cerebellar_deep_nuclei_R",
+              "meshIndex": 193
+            },
+            {
+              "index": 198,
+              "nodeName": "Allen_white_matter_of_hindbrain_R",
+              "meshIndex": 194
+            },
+            {
+              "index": 199,
+              "nodeName": "Allen_olfactory_tract_R",
+              "meshIndex": 195
+            },
+            {
+              "index": 200,
+              "nodeName": "Allen_primary_motor_cortex_R",
+              "meshIndex": 196
+            },
+            {
+              "index": 201,
+              "nodeName": "Allen_superior_frontal_gyrus_R",
+              "meshIndex": 197
+            },
+            {
+              "index": 202,
+              "nodeName": "Allen_middle_frontal_gyrus_R",
+              "meshIndex": 198
+            },
+            {
+              "index": 203,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+              "meshIndex": 199
+            },
+            {
+              "index": 204,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+              "meshIndex": 200
+            },
+            {
+              "index": 205,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+              "meshIndex": 201
+            },
+            {
+              "index": 206,
+              "nodeName": "Allen_medial_orbital_gyrus_R",
+              "meshIndex": 202
+            },
+            {
+              "index": 207,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 203
+            },
+            {
+              "index": 208,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 204
+            },
+            {
+              "index": 209,
+              "nodeName": "Allen_lateral_orbital_gyrus_R",
+              "meshIndex": 205
+            },
+            {
+              "index": 210,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+              "meshIndex": 206
+            },
+            {
+              "index": 211,
+              "nodeName": "Allen_frontal_operculum_R",
+              "meshIndex": 207
+            },
+            {
+              "index": 212,
+              "nodeName": "Allen_postcentral_gyrus_R",
+              "meshIndex": 208
+            },
+            {
+              "index": 213,
+              "nodeName": "Allen_supraparietal_lobule_R",
+              "meshIndex": 209
+            },
+            {
+              "index": 214,
+              "nodeName": "Allen_supramarginal_gyrus_R",
+              "meshIndex": 210
+            },
+            {
+              "index": 215,
+              "nodeName": "Allen_angular_gyrus_R",
+              "meshIndex": 211
+            },
+            {
+              "index": 216,
+              "nodeName": "Allen_precuneus_R",
+              "meshIndex": 212
+            },
+            {
+              "index": 217,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_R",
+              "meshIndex": 213
+            },
+            {
+              "index": 218,
+              "nodeName": "Allen_superior_temporal_gyrus_R",
+              "meshIndex": 214
+            },
+            {
+              "index": 219,
+              "nodeName": "Allen_middle_temporal_gyrus_R",
+              "meshIndex": 215
+            },
+            {
+              "index": 220,
+              "nodeName": "Allen_inferior_temporal_gyrus_R",
+              "meshIndex": 216
+            },
+            {
+              "index": 221,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_R",
+              "meshIndex": 217
+            },
+            {
+              "index": 222,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_R",
+              "meshIndex": 218
+            },
+            {
+              "index": 223,
+              "nodeName": "Allen_planum_temporale_R",
+              "meshIndex": 219
+            },
+            {
+              "index": 224,
+              "nodeName": "Allen_temporal_pole_R",
+              "meshIndex": 220
+            },
+            {
+              "index": 225,
+              "nodeName": "Allen_planum_polare_R",
+              "meshIndex": 221
+            },
+            {
+              "index": 226,
+              "nodeName": "Allen_occipital_pole_R",
+              "meshIndex": 222
+            },
+            {
+              "index": 227,
+              "nodeName": "Allen_cuneus_R",
+              "meshIndex": 223
+            },
+            {
+              "index": 228,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+              "meshIndex": 224
+            },
+            {
+              "index": 229,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+              "meshIndex": 225
+            },
+            {
+              "index": 230,
+              "nodeName": "Allen_inferior_occipital_gyrus_R",
+              "meshIndex": 226
+            },
+            {
+              "index": 231,
+              "nodeName": "Allen_superior_occipital_gyrus_R",
+              "meshIndex": 227
+            },
+            {
+              "index": 232,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+              "meshIndex": 228
+            },
+            {
+              "index": 233,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+              "meshIndex": 229
+            },
+            {
+              "index": 234,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+              "meshIndex": 230
+            },
+            {
+              "index": 235,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+              "meshIndex": 231
+            },
+            {
+              "index": 236,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+              "meshIndex": 232
+            },
+            {
+              "index": 237,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+              "meshIndex": 233
+            },
+            {
+              "index": 238,
+              "nodeName": "Allen_gyrus_ambiens_R",
+              "meshIndex": 234
+            },
+            {
+              "index": 239,
+              "nodeName": "Allen_long_insular_gyri_R",
+              "meshIndex": 235
+            },
+            {
+              "index": 240,
+              "nodeName": "Allen_short_insular_gyri_R",
+              "meshIndex": 236
+            },
+            {
+              "index": 241,
+              "nodeName": "Allen_limen_insula_R",
+              "meshIndex": 237
+            },
+            {
+              "index": 242,
+              "nodeName": "Allen_pretectal_region_R",
+              "meshIndex": 238
+            },
+            {
+              "index": 243,
+              "nodeName": "Allen_red_nucleus_R",
+              "meshIndex": 239
+            },
+            {
+              "index": 244,
+              "nodeName": "Allen_substantia_nigra_R",
+              "meshIndex": 240
+            },
+            {
+              "index": 245,
+              "nodeName": "Allen_superior_colliculus_R",
+              "meshIndex": 241
+            },
+            {
+              "index": 246,
+              "nodeName": "Allen_inferior_colliculus_R",
+              "meshIndex": 242
+            },
+            {
+              "index": 247,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+              "meshIndex": 243
+            },
+            {
+              "index": 248,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_R",
+              "meshIndex": 244
+            },
+            {
+              "index": 249,
+              "nodeName": "Allen_cerebral_aqueduct_R",
+              "meshIndex": 245
+            },
+            {
+              "index": 250,
+              "nodeName": "Allen_paravermis_of_cerebellum_R",
+              "meshIndex": 246
+            },
+            {
+              "index": 251,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_R",
+              "meshIndex": 247
+            },
+            {
+              "index": 252,
+              "nodeName": "Allen_basilar_part_of_pons_R",
+              "meshIndex": 248
+            },
+            {
+              "index": 253,
+              "nodeName": "Allen_pontine_tegmentum_R",
+              "meshIndex": 249
+            },
+            {
+              "index": 254,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_R",
+              "meshIndex": 250
+            },
+            {
+              "index": 255,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_R",
+              "meshIndex": 251
+            },
+            {
+              "index": 256,
+              "nodeName": "Allen_inferior_olive_R",
+              "meshIndex": 252
+            },
+            {
+              "index": 257,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_R",
+              "meshIndex": 253
+            },
+            {
+              "index": 258,
+              "nodeName": "Allen_middle_cerebellar_peduncle_R",
+              "meshIndex": 254
+            },
+            {
+              "index": 259,
+              "nodeName": "Allen_fourth_ventricle_R",
+              "meshIndex": 255
+            },
+            {
+              "index": 260,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_R",
+              "meshIndex": 256
+            },
+            {
+              "index": 261,
+              "nodeName": "Allen_midline_nuclear_complex_R",
+              "meshIndex": 257
+            },
+            {
+              "index": 262,
+              "nodeName": "Allen_lateral_olfactory_gyrus_R",
+              "meshIndex": 258
+            },
+            {
+              "index": 263,
+              "nodeName": "Allen_parietal_operculum_R",
+              "meshIndex": 259
+            },
+            {
+              "index": 264,
+              "nodeName": "Allen_optic_radiation_R",
+              "meshIndex": 260
+            },
+            {
+              "index": 265,
+              "nodeName": "Allen_posteroventral_putamen_R",
+              "meshIndex": 261
+            },
+            {
+              "index": 266,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_R",
+              "meshIndex": 262
+            },
+            {
+              "index": 267,
+              "nodeName": "Allen_paracingulate_gyrus_R",
+              "meshIndex": 263
+            },
+            {
+              "index": 268,
+              "nodeName": "Allen_rostral_gyrus_R",
+              "meshIndex": 264
+            },
+            {
+              "index": 269,
+              "nodeName": "Allen_frontomarginal_gyrus_R",
+              "meshIndex": 265
+            },
+            {
+              "index": 270,
+              "nodeName": "Allen_frontal_pole_R",
+              "meshIndex": 266
+            },
+            {
+              "index": 271,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_R",
+              "meshIndex": 267
+            },
+            {
+              "index": 272,
+              "nodeName": "Allen_hypothalamus_L",
+              "meshIndex": 268
+            },
+            {
+              "index": 273,
+              "nodeName": "Allen_hypothalamus_R",
+              "meshIndex": 269
+            },
+            {
+              "index": 274,
+              "nodeName": "Allen_subthalamic_nucleus_R",
+              "meshIndex": 270
+            },
+            {
+              "index": 275,
+              "nodeName": "Allen_mammillary_region_of_HTH_R",
+              "meshIndex": 271
+            },
+            {
+              "index": 276,
+              "nodeName": "Allen_midbrain_tegmentum_R",
+              "meshIndex": 272
+            },
+            {
+              "index": 277,
+              "nodeName": "Allen_tuberal_region_of_HTH_R",
+              "meshIndex": 273
+            },
+            {
+              "index": 278,
+              "nodeName": "Allen_preoptic_region_of_HTH_R",
+              "meshIndex": 274
+            },
+            {
+              "index": 279,
+              "nodeName": "Allen_midbrain_tegmentum_L",
+              "meshIndex": 275
+            },
+            {
+              "index": 280,
+              "nodeName": "Allen_red_nucleus_L",
+              "meshIndex": 276
+            },
+            {
+              "index": 281,
+              "nodeName": "Allen_inferior_colliculus_L",
+              "meshIndex": 277
+            },
+            {
+              "index": 282,
+              "nodeName": "Allen_mammillary_region_of_HTH_L",
+              "meshIndex": 278
+            },
+            {
+              "index": 283,
+              "nodeName": "Allen_subthalamic_nucleus_L",
+              "meshIndex": 279
+            },
+            {
+              "index": 285,
+              "nodeName": "Allen_head_of_hippocampus_R",
+              "meshIndex": 280
+            },
+            {
+              "index": 286,
+              "nodeName": "Allen_body_of_hippocampus_R",
+              "meshIndex": 281
+            },
+            {
+              "index": 287,
+              "nodeName": "Allen_tail_of_hippocampus_R",
+              "meshIndex": 282
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_brain_hemisphere_L",
+          "ontologyId": "UBERON:0002812",
+          "label": "left cerebral hemisphere",
+          "index": 2,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "Allen_olfactory_bulb_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "Allen_anterior_olfactory_nucleus_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "Allen_piriform_region_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "Allen_head_of_caudate_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "Allen_body_of_caudate_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "Allen_tail_of_caudate_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "Allen_putamen_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "Allen_nucleus_accumbens_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "Allen_claustrum_L",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "Allen_basal_forebrain_L",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "Allen_septal_nuclei_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "Allen_amygdaloid_complex_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "Allen_anterior_amygdaloid_area_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "Allen_central_nuclear_group_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "Allen_lateral_nucleus_L",
+              "meshIndex": 19
+            },
+            {
+              "index": 22,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_L",
+              "meshIndex": 20
+            },
+            {
+              "index": 23,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_L",
+              "meshIndex": 21
+            },
+            {
+              "index": 24,
+              "nodeName": "Allen_anterior_cortical_nucleus_L",
+              "meshIndex": 22
+            },
+            {
+              "index": 25,
+              "nodeName": "Allen_posterior_cortical_nucleus_L",
+              "meshIndex": 23
+            },
+            {
+              "index": 26,
+              "nodeName": "Allen_medial_nucleus_L",
+              "meshIndex": 24
+            },
+            {
+              "index": 27,
+              "nodeName": "Allen_amygdalohippocampal_area_L",
+              "meshIndex": 25
+            },
+            {
+              "index": 28,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_L",
+              "meshIndex": 26
+            },
+            {
+              "index": 29,
+              "nodeName": "Allen_thalamus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 30,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 31,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_L",
+              "meshIndex": 29
+            },
+            {
+              "index": 32,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_L",
+              "meshIndex": 30
+            },
+            {
+              "index": 33,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_L",
+              "meshIndex": 31
+            },
+            {
+              "index": 34,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_L",
+              "meshIndex": 32
+            },
+            {
+              "index": 35,
+              "nodeName": "Allen_pulvinar_of_thalamus_L",
+              "meshIndex": 33
+            },
+            {
+              "index": 36,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_L",
+              "meshIndex": 34
+            },
+            {
+              "index": 37,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_L",
+              "meshIndex": 35
+            },
+            {
+              "index": 38,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_L",
+              "meshIndex": 36
+            },
+            {
+              "index": 39,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_L",
+              "meshIndex": 37
+            },
+            {
+              "index": 40,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_L",
+              "meshIndex": 38
+            },
+            {
+              "index": 41,
+              "nodeName": "Allen_medial_geniculate_nuclei_L",
+              "meshIndex": 39
+            },
+            {
+              "index": 42,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_L",
+              "meshIndex": 40
+            },
+            {
+              "index": 43,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_L",
+              "meshIndex": 41
+            },
+            {
+              "index": 44,
+              "nodeName": "Allen_habenular_nuclei_L",
+              "meshIndex": 42
+            },
+            {
+              "index": 45,
+              "nodeName": "Allen_pineal_body_L",
+              "meshIndex": 43
+            },
+            {
+              "index": 46,
+              "nodeName": "Allen_zona_incerta_L",
+              "meshIndex": 44
+            },
+            {
+              "index": 47,
+              "nodeName": "Allen_supraoptic_region_of_HTH_L",
+              "meshIndex": 45
+            },
+            {
+              "index": 48,
+              "nodeName": "Allen_preoptic_region_of_HTH_L",
+              "meshIndex": 46
+            },
+            {
+              "index": 49,
+              "nodeName": "Allen_tuberal_region_of_HTH_L",
+              "meshIndex": 47
+            },
+            {
+              "index": 50,
+              "nodeName": "Allen_white_matter_of_forebrain_L",
+              "meshIndex": 48
+            },
+            {
+              "index": 51,
+              "nodeName": "Allen_anterior_commissure_L",
+              "meshIndex": 49
+            },
+            {
+              "index": 52,
+              "nodeName": "Allen_corpus_callosum_L",
+              "meshIndex": 50
+            },
+            {
+              "index": 53,
+              "nodeName": "Allen_fornix_L",
+              "meshIndex": 51
+            },
+            {
+              "index": 54,
+              "nodeName": "Allen_mammillothalamic_tract_L",
+              "meshIndex": 52
+            },
+            {
+              "index": 55,
+              "nodeName": "Allen_optic_tract_L",
+              "meshIndex": 53
+            },
+            {
+              "index": 56,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 54
+            },
+            {
+              "index": 57,
+              "nodeName": "Allen_body_of_lateral_ventricle_L",
+              "meshIndex": 55
+            },
+            {
+              "index": 58,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 56
+            },
+            {
+              "index": 59,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_L",
+              "meshIndex": 57
+            },
+            {
+              "index": 60,
+              "nodeName": "Allen_third_ventricle_L",
+              "meshIndex": 58
+            },
+            {
+              "index": 61,
+              "nodeName": "Allen_cerebellar_vermis_L",
+              "meshIndex": 59
+            },
+            {
+              "index": 62,
+              "nodeName": "Allen_cerebellar_deep_nuclei_L",
+              "meshIndex": 60
+            },
+            {
+              "index": 63,
+              "nodeName": "Allen_white_matter_of_hindbrain_L",
+              "meshIndex": 61
+            },
+            {
+              "index": 64,
+              "nodeName": "Allen_olfactory_tract_L",
+              "meshIndex": 62
+            },
+            {
+              "index": 65,
+              "nodeName": "Allen_primary_motor_cortex_L",
+              "meshIndex": 63
+            },
+            {
+              "index": 66,
+              "nodeName": "Allen_superior_frontal_gyrus_L",
+              "meshIndex": 64
+            },
+            {
+              "index": 67,
+              "nodeName": "Allen_middle_frontal_gyrus_L",
+              "meshIndex": 65
+            },
+            {
+              "index": 68,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+              "meshIndex": 66
+            },
+            {
+              "index": 69,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+              "meshIndex": 67
+            },
+            {
+              "index": 70,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+              "meshIndex": 68
+            },
+            {
+              "index": 71,
+              "nodeName": "Allen_medial_orbital_gyrus_L",
+              "meshIndex": 69
+            },
+            {
+              "index": 72,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 70
+            },
+            {
+              "index": 73,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 71
+            },
+            {
+              "index": 74,
+              "nodeName": "Allen_lateral_orbital_gyrus_L",
+              "meshIndex": 72
+            },
+            {
+              "index": 75,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+              "meshIndex": 73
+            },
+            {
+              "index": 76,
+              "nodeName": "Allen_frontal_operculum_L",
+              "meshIndex": 74
+            },
+            {
+              "index": 77,
+              "nodeName": "Allen_postcentral_gyrus_L",
+              "meshIndex": 75
+            },
+            {
+              "index": 78,
+              "nodeName": "Allen_supraparietal_lobule_L",
+              "meshIndex": 76
+            },
+            {
+              "index": 79,
+              "nodeName": "Allen_supramarginal_gyrus_L",
+              "meshIndex": 77
+            },
+            {
+              "index": 80,
+              "nodeName": "Allen_angular_gyrus_L",
+              "meshIndex": 78
+            },
+            {
+              "index": 81,
+              "nodeName": "Allen_precuneus_L",
+              "meshIndex": 79
+            },
+            {
+              "index": 82,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_L",
+              "meshIndex": 80
+            },
+            {
+              "index": 83,
+              "nodeName": "Allen_superior_temporal_gyrus_L",
+              "meshIndex": 81
+            },
+            {
+              "index": 84,
+              "nodeName": "Allen_middle_temporal_gyrus_L",
+              "meshIndex": 82
+            },
+            {
+              "index": 85,
+              "nodeName": "Allen_inferior_temporal_gyrus_L",
+              "meshIndex": 83
+            },
+            {
+              "index": 86,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_L",
+              "meshIndex": 84
+            },
+            {
+              "index": 87,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_L",
+              "meshIndex": 85
+            },
+            {
+              "index": 88,
+              "nodeName": "Allen_planum_temporale_L",
+              "meshIndex": 86
+            },
+            {
+              "index": 89,
+              "nodeName": "Allen_temporal_pole_L",
+              "meshIndex": 87
+            },
+            {
+              "index": 90,
+              "nodeName": "Allen_planum_polare_L",
+              "meshIndex": 88
+            },
+            {
+              "index": 91,
+              "nodeName": "Allen_occipital_pole_L",
+              "meshIndex": 89
+            },
+            {
+              "index": 92,
+              "nodeName": "Allen_cuneus_L",
+              "meshIndex": 90
+            },
+            {
+              "index": 93,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+              "meshIndex": 91
+            },
+            {
+              "index": 94,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+              "meshIndex": 92
+            },
+            {
+              "index": 95,
+              "nodeName": "Allen_inferior_occipital_gyrus_L",
+              "meshIndex": 93
+            },
+            {
+              "index": 96,
+              "nodeName": "Allen_superior_occipital_gyrus_L",
+              "meshIndex": 94
+            },
+            {
+              "index": 97,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+              "meshIndex": 95
+            },
+            {
+              "index": 98,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+              "meshIndex": 96
+            },
+            {
+              "index": 99,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+              "meshIndex": 97
+            },
+            {
+              "index": 100,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+              "meshIndex": 98
+            },
+            {
+              "index": 101,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+              "meshIndex": 99
+            },
+            {
+              "index": 102,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+              "meshIndex": 100
+            },
+            {
+              "index": 103,
+              "nodeName": "Allen_gyrus_ambiens_L",
+              "meshIndex": 101
+            },
+            {
+              "index": 104,
+              "nodeName": "Allen_long_insular_gyri_L",
+              "meshIndex": 102
+            },
+            {
+              "index": 105,
+              "nodeName": "Allen_short_insular_gyri_L",
+              "meshIndex": 103
+            },
+            {
+              "index": 106,
+              "nodeName": "Allen_limen_insula_L",
+              "meshIndex": 104
+            },
+            {
+              "index": 107,
+              "nodeName": "Allen_pretectal_region_L",
+              "meshIndex": 105
+            },
+            {
+              "index": 108,
+              "nodeName": "Allen_substantia_nigra_L",
+              "meshIndex": 106
+            },
+            {
+              "index": 109,
+              "nodeName": "Allen_superior_colliculus_L",
+              "meshIndex": 107
+            },
+            {
+              "index": 110,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+              "meshIndex": 108
+            },
+            {
+              "index": 111,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_L",
+              "meshIndex": 109
+            },
+            {
+              "index": 112,
+              "nodeName": "Allen_cerebral_aqueduct_L",
+              "meshIndex": 110
+            },
+            {
+              "index": 113,
+              "nodeName": "Allen_paravermis_of_cerebellum_L",
+              "meshIndex": 111
+            },
+            {
+              "index": 114,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_L",
+              "meshIndex": 112
+            },
+            {
+              "index": 115,
+              "nodeName": "Allen_basilar_part_of_pons_L",
+              "meshIndex": 113
+            },
+            {
+              "index": 116,
+              "nodeName": "Allen_pontine_tegmentum_L",
+              "meshIndex": 114
+            },
+            {
+              "index": 117,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_L",
+              "meshIndex": 115
+            },
+            {
+              "index": 118,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_L",
+              "meshIndex": 116
+            },
+            {
+              "index": 119,
+              "nodeName": "Allen_inferior_olive_L",
+              "meshIndex": 117
+            },
+            {
+              "index": 120,
+              "nodeName": "Allen_middle_cerebellar_peduncle_L",
+              "meshIndex": 118
+            },
+            {
+              "index": 121,
+              "nodeName": "Allen_fourth_ventricle_L",
+              "meshIndex": 119
+            },
+            {
+              "index": 122,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_L",
+              "meshIndex": 120
+            },
+            {
+              "index": 123,
+              "nodeName": "Allen_midline_nuclear_complex_L",
+              "meshIndex": 121
+            },
+            {
+              "index": 124,
+              "nodeName": "Allen_lateral_olfactory_gyrus_L",
+              "meshIndex": 122
+            },
+            {
+              "index": 125,
+              "nodeName": "Allen_parietal_operculum_L",
+              "meshIndex": 123
+            },
+            {
+              "index": 126,
+              "nodeName": "Allen_optic_radiation_L",
+              "meshIndex": 124
+            },
+            {
+              "index": 127,
+              "nodeName": "Allen_posteroventral_putamen_L",
+              "meshIndex": 125
+            },
+            {
+              "index": 128,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_L",
+              "meshIndex": 126
+            },
+            {
+              "index": 129,
+              "nodeName": "Allen_paracingulate_gyrus_L",
+              "meshIndex": 127
+            },
+            {
+              "index": 130,
+              "nodeName": "Allen_rostral_gyrus_L",
+              "meshIndex": 128
+            },
+            {
+              "index": 131,
+              "nodeName": "Allen_frontomarginal_gyrus_L",
+              "meshIndex": 129
+            },
+            {
+              "index": 132,
+              "nodeName": "Allen_frontal_pole_L",
+              "meshIndex": 130
+            },
+            {
+              "index": 133,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_L",
+              "meshIndex": 131
+            },
+            {
+              "index": 134,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_L",
+              "meshIndex": 132
+            },
+            {
+              "index": 136,
+              "nodeName": "Allen_head_of_hippocampus_L",
+              "meshIndex": 133
+            },
+            {
+              "index": 137,
+              "nodeName": "Allen_body_of_hippocampus_L",
+              "meshIndex": 134
+            },
+            {
+              "index": 138,
+              "nodeName": "Allen_tail_of_hippocampus_L",
+              "meshIndex": 135
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_hippocampus_L",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "index": 135,
+          "descendantMeshes": [
+            {
+              "index": 136,
+              "nodeName": "Allen_head_of_hippocampus_L",
+              "meshIndex": 133
+            },
+            {
+              "index": 137,
+              "nodeName": "Allen_body_of_hippocampus_L",
+              "meshIndex": 134
+            },
+            {
+              "index": 138,
+              "nodeName": "Allen_tail_of_hippocampus_L",
+              "meshIndex": 135
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_brain_hemisphere_R",
+          "ontologyId": "UBERON:0002813",
+          "label": "right cerebral hemisphere",
+          "index": 139,
+          "descendantMeshes": [
+            {
+              "index": 140,
+              "nodeName": "Allen_olfactory_bulb_R",
+              "meshIndex": 136
+            },
+            {
+              "index": 141,
+              "nodeName": "Allen_anterior_olfactory_nucleus_R",
+              "meshIndex": 137
+            },
+            {
+              "index": 142,
+              "nodeName": "Allen_piriform_region_R",
+              "meshIndex": 138
+            },
+            {
+              "index": 143,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_R",
+              "meshIndex": 139
+            },
+            {
+              "index": 144,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_R",
+              "meshIndex": 140
+            },
+            {
+              "index": 145,
+              "nodeName": "Allen_head_of_caudate_R",
+              "meshIndex": 141
+            },
+            {
+              "index": 146,
+              "nodeName": "Allen_body_of_caudate_R",
+              "meshIndex": 142
+            },
+            {
+              "index": 147,
+              "nodeName": "Allen_tail_of_caudate_R",
+              "meshIndex": 143
+            },
+            {
+              "index": 148,
+              "nodeName": "Allen_putamen_R",
+              "meshIndex": 144
+            },
+            {
+              "index": 149,
+              "nodeName": "Allen_nucleus_accumbens_R",
+              "meshIndex": 145
+            },
+            {
+              "index": 150,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_R",
+              "meshIndex": 146
+            },
+            {
+              "index": 151,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_R",
+              "meshIndex": 147
+            },
+            {
+              "index": 152,
+              "nodeName": "Allen_claustrum_R",
+              "meshIndex": 148
+            },
+            {
+              "index": 153,
+              "nodeName": "Allen_basal_forebrain_R",
+              "meshIndex": 149
+            },
+            {
+              "index": 154,
+              "nodeName": "Allen_septal_nuclei_R",
+              "meshIndex": 150
+            },
+            {
+              "index": 155,
+              "nodeName": "Allen_amygdaloid_complex_R",
+              "meshIndex": 151
+            },
+            {
+              "index": 156,
+              "nodeName": "Allen_anterior_amygdaloid_area_R",
+              "meshIndex": 152
+            },
+            {
+              "index": 157,
+              "nodeName": "Allen_central_nuclear_group_R",
+              "meshIndex": 153
+            },
+            {
+              "index": 158,
+              "nodeName": "Allen_lateral_nucleus_R",
+              "meshIndex": 154
+            },
+            {
+              "index": 159,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_R",
+              "meshIndex": 155
+            },
+            {
+              "index": 160,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_R",
+              "meshIndex": 156
+            },
+            {
+              "index": 161,
+              "nodeName": "Allen_anterior_cortical_nucleus_R",
+              "meshIndex": 157
+            },
+            {
+              "index": 162,
+              "nodeName": "Allen_posterior_cortical_nucleus_R",
+              "meshIndex": 158
+            },
+            {
+              "index": 163,
+              "nodeName": "Allen_medial_nucleus_R",
+              "meshIndex": 159
+            },
+            {
+              "index": 164,
+              "nodeName": "Allen_amygdalohippocampal_area_R",
+              "meshIndex": 160
+            },
+            {
+              "index": 165,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_R",
+              "meshIndex": 161
+            },
+            {
+              "index": 166,
+              "nodeName": "Allen_thalamus_R",
+              "meshIndex": 162
+            },
+            {
+              "index": 167,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_R",
+              "meshIndex": 163
+            },
+            {
+              "index": 168,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_R",
+              "meshIndex": 164
+            },
+            {
+              "index": 169,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_R",
+              "meshIndex": 165
+            },
+            {
+              "index": 170,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_R",
+              "meshIndex": 166
+            },
+            {
+              "index": 171,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_R",
+              "meshIndex": 167
+            },
+            {
+              "index": 172,
+              "nodeName": "Allen_pulvinar_of_thalamus_R",
+              "meshIndex": 168
+            },
+            {
+              "index": 173,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_R",
+              "meshIndex": 169
+            },
+            {
+              "index": 174,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_R",
+              "meshIndex": 170
+            },
+            {
+              "index": 175,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_R",
+              "meshIndex": 171
+            },
+            {
+              "index": 176,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_R",
+              "meshIndex": 172
+            },
+            {
+              "index": 177,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_R",
+              "meshIndex": 173
+            },
+            {
+              "index": 178,
+              "nodeName": "Allen_medial_geniculate_nuclei_R",
+              "meshIndex": 174
+            },
+            {
+              "index": 179,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_R",
+              "meshIndex": 175
+            },
+            {
+              "index": 180,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_R",
+              "meshIndex": 176
+            },
+            {
+              "index": 181,
+              "nodeName": "Allen_habenular_nuclei_R",
+              "meshIndex": 177
+            },
+            {
+              "index": 182,
+              "nodeName": "Allen_pineal_body_R",
+              "meshIndex": 178
+            },
+            {
+              "index": 183,
+              "nodeName": "Allen_zona_incerta_R",
+              "meshIndex": 179
+            },
+            {
+              "index": 184,
+              "nodeName": "Allen_supraoptic_region_of_HTH_R",
+              "meshIndex": 180
+            },
+            {
+              "index": 185,
+              "nodeName": "Allen_white_matter_of_forebrain_R",
+              "meshIndex": 181
+            },
+            {
+              "index": 186,
+              "nodeName": "Allen_anterior_commissure_R",
+              "meshIndex": 182
+            },
+            {
+              "index": 187,
+              "nodeName": "Allen_corpus_callosum_R",
+              "meshIndex": 183
+            },
+            {
+              "index": 188,
+              "nodeName": "Allen_fornix_R",
+              "meshIndex": 184
+            },
+            {
+              "index": 189,
+              "nodeName": "Allen_mammillothalamic_tract_R",
+              "meshIndex": 185
+            },
+            {
+              "index": 190,
+              "nodeName": "Allen_optic_tract_R",
+              "meshIndex": 186
+            },
+            {
+              "index": 191,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 187
+            },
+            {
+              "index": 192,
+              "nodeName": "Allen_body_of_lateral_ventricle_R",
+              "meshIndex": 188
+            },
+            {
+              "index": 193,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 189
+            },
+            {
+              "index": 194,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_R",
+              "meshIndex": 190
+            },
+            {
+              "index": 195,
+              "nodeName": "Allen_third_ventricle_R",
+              "meshIndex": 191
+            },
+            {
+              "index": 196,
+              "nodeName": "Allen_cerebellar_vermis_R",
+              "meshIndex": 192
+            },
+            {
+              "index": 197,
+              "nodeName": "Allen_cerebellar_deep_nuclei_R",
+              "meshIndex": 193
+            },
+            {
+              "index": 198,
+              "nodeName": "Allen_white_matter_of_hindbrain_R",
+              "meshIndex": 194
+            },
+            {
+              "index": 199,
+              "nodeName": "Allen_olfactory_tract_R",
+              "meshIndex": 195
+            },
+            {
+              "index": 200,
+              "nodeName": "Allen_primary_motor_cortex_R",
+              "meshIndex": 196
+            },
+            {
+              "index": 201,
+              "nodeName": "Allen_superior_frontal_gyrus_R",
+              "meshIndex": 197
+            },
+            {
+              "index": 202,
+              "nodeName": "Allen_middle_frontal_gyrus_R",
+              "meshIndex": 198
+            },
+            {
+              "index": 203,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+              "meshIndex": 199
+            },
+            {
+              "index": 204,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+              "meshIndex": 200
+            },
+            {
+              "index": 205,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+              "meshIndex": 201
+            },
+            {
+              "index": 206,
+              "nodeName": "Allen_medial_orbital_gyrus_R",
+              "meshIndex": 202
+            },
+            {
+              "index": 207,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 203
+            },
+            {
+              "index": 208,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 204
+            },
+            {
+              "index": 209,
+              "nodeName": "Allen_lateral_orbital_gyrus_R",
+              "meshIndex": 205
+            },
+            {
+              "index": 210,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+              "meshIndex": 206
+            },
+            {
+              "index": 211,
+              "nodeName": "Allen_frontal_operculum_R",
+              "meshIndex": 207
+            },
+            {
+              "index": 212,
+              "nodeName": "Allen_postcentral_gyrus_R",
+              "meshIndex": 208
+            },
+            {
+              "index": 213,
+              "nodeName": "Allen_supraparietal_lobule_R",
+              "meshIndex": 209
+            },
+            {
+              "index": 214,
+              "nodeName": "Allen_supramarginal_gyrus_R",
+              "meshIndex": 210
+            },
+            {
+              "index": 215,
+              "nodeName": "Allen_angular_gyrus_R",
+              "meshIndex": 211
+            },
+            {
+              "index": 216,
+              "nodeName": "Allen_precuneus_R",
+              "meshIndex": 212
+            },
+            {
+              "index": 217,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_R",
+              "meshIndex": 213
+            },
+            {
+              "index": 218,
+              "nodeName": "Allen_superior_temporal_gyrus_R",
+              "meshIndex": 214
+            },
+            {
+              "index": 219,
+              "nodeName": "Allen_middle_temporal_gyrus_R",
+              "meshIndex": 215
+            },
+            {
+              "index": 220,
+              "nodeName": "Allen_inferior_temporal_gyrus_R",
+              "meshIndex": 216
+            },
+            {
+              "index": 221,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_R",
+              "meshIndex": 217
+            },
+            {
+              "index": 222,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_R",
+              "meshIndex": 218
+            },
+            {
+              "index": 223,
+              "nodeName": "Allen_planum_temporale_R",
+              "meshIndex": 219
+            },
+            {
+              "index": 224,
+              "nodeName": "Allen_temporal_pole_R",
+              "meshIndex": 220
+            },
+            {
+              "index": 225,
+              "nodeName": "Allen_planum_polare_R",
+              "meshIndex": 221
+            },
+            {
+              "index": 226,
+              "nodeName": "Allen_occipital_pole_R",
+              "meshIndex": 222
+            },
+            {
+              "index": 227,
+              "nodeName": "Allen_cuneus_R",
+              "meshIndex": 223
+            },
+            {
+              "index": 228,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+              "meshIndex": 224
+            },
+            {
+              "index": 229,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+              "meshIndex": 225
+            },
+            {
+              "index": 230,
+              "nodeName": "Allen_inferior_occipital_gyrus_R",
+              "meshIndex": 226
+            },
+            {
+              "index": 231,
+              "nodeName": "Allen_superior_occipital_gyrus_R",
+              "meshIndex": 227
+            },
+            {
+              "index": 232,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+              "meshIndex": 228
+            },
+            {
+              "index": 233,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+              "meshIndex": 229
+            },
+            {
+              "index": 234,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+              "meshIndex": 230
+            },
+            {
+              "index": 235,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+              "meshIndex": 231
+            },
+            {
+              "index": 236,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+              "meshIndex": 232
+            },
+            {
+              "index": 237,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+              "meshIndex": 233
+            },
+            {
+              "index": 238,
+              "nodeName": "Allen_gyrus_ambiens_R",
+              "meshIndex": 234
+            },
+            {
+              "index": 239,
+              "nodeName": "Allen_long_insular_gyri_R",
+              "meshIndex": 235
+            },
+            {
+              "index": 240,
+              "nodeName": "Allen_short_insular_gyri_R",
+              "meshIndex": 236
+            },
+            {
+              "index": 241,
+              "nodeName": "Allen_limen_insula_R",
+              "meshIndex": 237
+            },
+            {
+              "index": 242,
+              "nodeName": "Allen_pretectal_region_R",
+              "meshIndex": 238
+            },
+            {
+              "index": 243,
+              "nodeName": "Allen_red_nucleus_R",
+              "meshIndex": 239
+            },
+            {
+              "index": 244,
+              "nodeName": "Allen_substantia_nigra_R",
+              "meshIndex": 240
+            },
+            {
+              "index": 245,
+              "nodeName": "Allen_superior_colliculus_R",
+              "meshIndex": 241
+            },
+            {
+              "index": 246,
+              "nodeName": "Allen_inferior_colliculus_R",
+              "meshIndex": 242
+            },
+            {
+              "index": 247,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+              "meshIndex": 243
+            },
+            {
+              "index": 248,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_R",
+              "meshIndex": 244
+            },
+            {
+              "index": 249,
+              "nodeName": "Allen_cerebral_aqueduct_R",
+              "meshIndex": 245
+            },
+            {
+              "index": 250,
+              "nodeName": "Allen_paravermis_of_cerebellum_R",
+              "meshIndex": 246
+            },
+            {
+              "index": 251,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_R",
+              "meshIndex": 247
+            },
+            {
+              "index": 252,
+              "nodeName": "Allen_basilar_part_of_pons_R",
+              "meshIndex": 248
+            },
+            {
+              "index": 253,
+              "nodeName": "Allen_pontine_tegmentum_R",
+              "meshIndex": 249
+            },
+            {
+              "index": 254,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_R",
+              "meshIndex": 250
+            },
+            {
+              "index": 255,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_R",
+              "meshIndex": 251
+            },
+            {
+              "index": 256,
+              "nodeName": "Allen_inferior_olive_R",
+              "meshIndex": 252
+            },
+            {
+              "index": 257,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_R",
+              "meshIndex": 253
+            },
+            {
+              "index": 258,
+              "nodeName": "Allen_middle_cerebellar_peduncle_R",
+              "meshIndex": 254
+            },
+            {
+              "index": 259,
+              "nodeName": "Allen_fourth_ventricle_R",
+              "meshIndex": 255
+            },
+            {
+              "index": 260,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_R",
+              "meshIndex": 256
+            },
+            {
+              "index": 261,
+              "nodeName": "Allen_midline_nuclear_complex_R",
+              "meshIndex": 257
+            },
+            {
+              "index": 262,
+              "nodeName": "Allen_lateral_olfactory_gyrus_R",
+              "meshIndex": 258
+            },
+            {
+              "index": 263,
+              "nodeName": "Allen_parietal_operculum_R",
+              "meshIndex": 259
+            },
+            {
+              "index": 264,
+              "nodeName": "Allen_optic_radiation_R",
+              "meshIndex": 260
+            },
+            {
+              "index": 265,
+              "nodeName": "Allen_posteroventral_putamen_R",
+              "meshIndex": 261
+            },
+            {
+              "index": 266,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_R",
+              "meshIndex": 262
+            },
+            {
+              "index": 267,
+              "nodeName": "Allen_paracingulate_gyrus_R",
+              "meshIndex": 263
+            },
+            {
+              "index": 268,
+              "nodeName": "Allen_rostral_gyrus_R",
+              "meshIndex": 264
+            },
+            {
+              "index": 269,
+              "nodeName": "Allen_frontomarginal_gyrus_R",
+              "meshIndex": 265
+            },
+            {
+              "index": 270,
+              "nodeName": "Allen_frontal_pole_R",
+              "meshIndex": 266
+            },
+            {
+              "index": 271,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_R",
+              "meshIndex": 267
+            },
+            {
+              "index": 272,
+              "nodeName": "Allen_hypothalamus_L",
+              "meshIndex": 268
+            },
+            {
+              "index": 273,
+              "nodeName": "Allen_hypothalamus_R",
+              "meshIndex": 269
+            },
+            {
+              "index": 274,
+              "nodeName": "Allen_subthalamic_nucleus_R",
+              "meshIndex": 270
+            },
+            {
+              "index": 275,
+              "nodeName": "Allen_mammillary_region_of_HTH_R",
+              "meshIndex": 271
+            },
+            {
+              "index": 276,
+              "nodeName": "Allen_midbrain_tegmentum_R",
+              "meshIndex": 272
+            },
+            {
+              "index": 277,
+              "nodeName": "Allen_tuberal_region_of_HTH_R",
+              "meshIndex": 273
+            },
+            {
+              "index": 278,
+              "nodeName": "Allen_preoptic_region_of_HTH_R",
+              "meshIndex": 274
+            },
+            {
+              "index": 279,
+              "nodeName": "Allen_midbrain_tegmentum_L",
+              "meshIndex": 275
+            },
+            {
+              "index": 280,
+              "nodeName": "Allen_red_nucleus_L",
+              "meshIndex": 276
+            },
+            {
+              "index": 281,
+              "nodeName": "Allen_inferior_colliculus_L",
+              "meshIndex": 277
+            },
+            {
+              "index": 282,
+              "nodeName": "Allen_mammillary_region_of_HTH_L",
+              "meshIndex": 278
+            },
+            {
+              "index": 283,
+              "nodeName": "Allen_subthalamic_nucleus_L",
+              "meshIndex": 279
+            },
+            {
+              "index": 285,
+              "nodeName": "Allen_head_of_hippocampus_R",
+              "meshIndex": 280
+            },
+            {
+              "index": 286,
+              "nodeName": "Allen_body_of_hippocampus_R",
+              "meshIndex": 281
+            },
+            {
+              "index": 287,
+              "nodeName": "Allen_tail_of_hippocampus_R",
+              "meshIndex": 282
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_hippocampus_R",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "index": 284,
+          "descendantMeshes": [
+            {
+              "index": 285,
+              "nodeName": "Allen_head_of_hippocampus_R",
+              "meshIndex": 280
+            },
+            {
+              "index": 286,
+              "nodeName": "Allen_body_of_hippocampus_R",
+              "meshIndex": 281
+            },
+            {
+              "index": 287,
+              "nodeName": "Allen_tail_of_hippocampus_R",
+              "meshIndex": 282
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "brain-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb",
+      "sha256": "c97d7d0b9ff0baebbdec5566fa7b08d789195ef965e0bd04cf743a8d683882db",
+      "groups": [
+        {
+          "nodeName": "Allen_brain",
+          "ontologyId": "UBERON:0000955",
+          "label": "brain",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "Allen_olfactory_bulb_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "Allen_anterior_olfactory_nucleus_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "Allen_piriform_region_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "Allen_head_of_caudate_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "Allen_body_of_caudate_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "Allen_tail_of_caudate_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "Allen_putamen_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "Allen_nucleus_accumbens_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "Allen_claustrum_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "Allen_basal_forebrain_L",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "Allen_septal_nuclei_L",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "Allen_amygdaloid_complex_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "Allen_anterior_amygdaloid_area_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "Allen_central_nuclear_group_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "Allen_lateral_nucleus_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_L",
+              "meshIndex": 19
+            },
+            {
+              "index": 22,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_L",
+              "meshIndex": 20
+            },
+            {
+              "index": 23,
+              "nodeName": "Allen_anterior_cortical_nucleus_L",
+              "meshIndex": 21
+            },
+            {
+              "index": 24,
+              "nodeName": "Allen_posterior_cortical_nucleus_L",
+              "meshIndex": 22
+            },
+            {
+              "index": 25,
+              "nodeName": "Allen_medial_nucleus_L",
+              "meshIndex": 23
+            },
+            {
+              "index": 26,
+              "nodeName": "Allen_amygdalohippocampal_area_L",
+              "meshIndex": 24
+            },
+            {
+              "index": 27,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_L",
+              "meshIndex": 25
+            },
+            {
+              "index": 28,
+              "nodeName": "Allen_thalamus_L",
+              "meshIndex": 26
+            },
+            {
+              "index": 29,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 30,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 31,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_L",
+              "meshIndex": 29
+            },
+            {
+              "index": 32,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_L",
+              "meshIndex": 30
+            },
+            {
+              "index": 33,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_L",
+              "meshIndex": 31
+            },
+            {
+              "index": 34,
+              "nodeName": "Allen_pulvinar_of_thalamus_L",
+              "meshIndex": 32
+            },
+            {
+              "index": 35,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_L",
+              "meshIndex": 33
+            },
+            {
+              "index": 36,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_L",
+              "meshIndex": 34
+            },
+            {
+              "index": 37,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_L",
+              "meshIndex": 35
+            },
+            {
+              "index": 38,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_L",
+              "meshIndex": 36
+            },
+            {
+              "index": 39,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_L",
+              "meshIndex": 37
+            },
+            {
+              "index": 40,
+              "nodeName": "Allen_medial_geniculate_nuclei_L",
+              "meshIndex": 38
+            },
+            {
+              "index": 41,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_L",
+              "meshIndex": 39
+            },
+            {
+              "index": 42,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_L",
+              "meshIndex": 40
+            },
+            {
+              "index": 43,
+              "nodeName": "Allen_habenular_nuclei_L",
+              "meshIndex": 41
+            },
+            {
+              "index": 44,
+              "nodeName": "Allen_pineal_body_L",
+              "meshIndex": 42
+            },
+            {
+              "index": 45,
+              "nodeName": "Allen_zona_incerta_L",
+              "meshIndex": 43
+            },
+            {
+              "index": 46,
+              "nodeName": "Allen_supraoptic_region_of_HTH_L",
+              "meshIndex": 44
+            },
+            {
+              "index": 47,
+              "nodeName": "Allen_preoptic_region_of_HTH_L",
+              "meshIndex": 45
+            },
+            {
+              "index": 48,
+              "nodeName": "Allen_tuberal_region_of_HTH_L",
+              "meshIndex": 46
+            },
+            {
+              "index": 49,
+              "nodeName": "Allen_white_matter_of_forebrain_L",
+              "meshIndex": 47
+            },
+            {
+              "index": 50,
+              "nodeName": "Allen_anterior_commissure_L",
+              "meshIndex": 48
+            },
+            {
+              "index": 51,
+              "nodeName": "Allen_corpus_callosum_L",
+              "meshIndex": 49
+            },
+            {
+              "index": 52,
+              "nodeName": "Allen_fornix_L",
+              "meshIndex": 50
+            },
+            {
+              "index": 53,
+              "nodeName": "Allen_mammillothalamic_tract_L",
+              "meshIndex": 51
+            },
+            {
+              "index": 54,
+              "nodeName": "Allen_optic_tract_L",
+              "meshIndex": 52
+            },
+            {
+              "index": 55,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 53
+            },
+            {
+              "index": 56,
+              "nodeName": "Allen_body_of_lateral_ventricle_L",
+              "meshIndex": 54
+            },
+            {
+              "index": 57,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 55
+            },
+            {
+              "index": 58,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_L",
+              "meshIndex": 56
+            },
+            {
+              "index": 59,
+              "nodeName": "Allen_third_ventricle_L",
+              "meshIndex": 57
+            },
+            {
+              "index": 60,
+              "nodeName": "Allen_cerebellar_vermis_L",
+              "meshIndex": 58
+            },
+            {
+              "index": 61,
+              "nodeName": "Allen_cerebellar_deep_nuclei_L",
+              "meshIndex": 59
+            },
+            {
+              "index": 62,
+              "nodeName": "Allen_white_matter_of_hindbrain_L",
+              "meshIndex": 60
+            },
+            {
+              "index": 63,
+              "nodeName": "Allen_olfactory_tract_L",
+              "meshIndex": 61
+            },
+            {
+              "index": 64,
+              "nodeName": "Allen_primary_motor_cortex_L",
+              "meshIndex": 62
+            },
+            {
+              "index": 65,
+              "nodeName": "Allen_superior_frontal_gyrus_L",
+              "meshIndex": 63
+            },
+            {
+              "index": 66,
+              "nodeName": "Allen_middle_frontal_gyrus_L",
+              "meshIndex": 64
+            },
+            {
+              "index": 67,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+              "meshIndex": 65
+            },
+            {
+              "index": 68,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+              "meshIndex": 66
+            },
+            {
+              "index": 69,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+              "meshIndex": 67
+            },
+            {
+              "index": 70,
+              "nodeName": "Allen_medial_orbital_gyrus_L",
+              "meshIndex": 68
+            },
+            {
+              "index": 71,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 69
+            },
+            {
+              "index": 72,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 70
+            },
+            {
+              "index": 73,
+              "nodeName": "Allen_lateral_orbital_gyrus_L",
+              "meshIndex": 71
+            },
+            {
+              "index": 74,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+              "meshIndex": 72
+            },
+            {
+              "index": 75,
+              "nodeName": "Allen_frontal_operculum_L",
+              "meshIndex": 73
+            },
+            {
+              "index": 76,
+              "nodeName": "Allen_postcentral_gyrus_L",
+              "meshIndex": 74
+            },
+            {
+              "index": 77,
+              "nodeName": "Allen_supraparietal_lobule_L",
+              "meshIndex": 75
+            },
+            {
+              "index": 78,
+              "nodeName": "Allen_supramarginal_gyrus_L",
+              "meshIndex": 76
+            },
+            {
+              "index": 79,
+              "nodeName": "Allen_angular_gyrus_L",
+              "meshIndex": 77
+            },
+            {
+              "index": 80,
+              "nodeName": "Allen_precuneus_L",
+              "meshIndex": 78
+            },
+            {
+              "index": 81,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_L",
+              "meshIndex": 79
+            },
+            {
+              "index": 82,
+              "nodeName": "Allen_superior_temporal_gyrus_L",
+              "meshIndex": 80
+            },
+            {
+              "index": 83,
+              "nodeName": "Allen_middle_temporal_gyrus_L",
+              "meshIndex": 81
+            },
+            {
+              "index": 84,
+              "nodeName": "Allen_inferior_temporal_gyrus_L",
+              "meshIndex": 82
+            },
+            {
+              "index": 85,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_L",
+              "meshIndex": 83
+            },
+            {
+              "index": 86,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_L",
+              "meshIndex": 84
+            },
+            {
+              "index": 87,
+              "nodeName": "Allen_planum_temporale_L",
+              "meshIndex": 85
+            },
+            {
+              "index": 88,
+              "nodeName": "Allen_temporal_pole_L",
+              "meshIndex": 86
+            },
+            {
+              "index": 89,
+              "nodeName": "Allen_planum_polare_L",
+              "meshIndex": 87
+            },
+            {
+              "index": 90,
+              "nodeName": "Allen_occipital_pole_L",
+              "meshIndex": 88
+            },
+            {
+              "index": 91,
+              "nodeName": "Allen_cuneus_L",
+              "meshIndex": 89
+            },
+            {
+              "index": 92,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+              "meshIndex": 90
+            },
+            {
+              "index": 93,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+              "meshIndex": 91
+            },
+            {
+              "index": 94,
+              "nodeName": "Allen_inferior_occipital_gyrus_L",
+              "meshIndex": 92
+            },
+            {
+              "index": 95,
+              "nodeName": "Allen_superior_occipital_gyrus_L",
+              "meshIndex": 93
+            },
+            {
+              "index": 96,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+              "meshIndex": 94
+            },
+            {
+              "index": 97,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+              "meshIndex": 95
+            },
+            {
+              "index": 98,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+              "meshIndex": 96
+            },
+            {
+              "index": 99,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+              "meshIndex": 97
+            },
+            {
+              "index": 100,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+              "meshIndex": 98
+            },
+            {
+              "index": 101,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+              "meshIndex": 99
+            },
+            {
+              "index": 102,
+              "nodeName": "Allen_gyrus_ambiens_L",
+              "meshIndex": 100
+            },
+            {
+              "index": 103,
+              "nodeName": "Allen_long_insular_gyri_L",
+              "meshIndex": 101
+            },
+            {
+              "index": 104,
+              "nodeName": "Allen_short_insular_gyri_L",
+              "meshIndex": 102
+            },
+            {
+              "index": 105,
+              "nodeName": "Allen_limen_insula_L",
+              "meshIndex": 103
+            },
+            {
+              "index": 106,
+              "nodeName": "Allen_pretectal_region_L",
+              "meshIndex": 104
+            },
+            {
+              "index": 107,
+              "nodeName": "Allen_substantia_nigra_L",
+              "meshIndex": 105
+            },
+            {
+              "index": 108,
+              "nodeName": "Allen_superior_colliculus_L",
+              "meshIndex": 106
+            },
+            {
+              "index": 109,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+              "meshIndex": 107
+            },
+            {
+              "index": 110,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_L",
+              "meshIndex": 108
+            },
+            {
+              "index": 111,
+              "nodeName": "Allen_cerebral_aqueduct_L",
+              "meshIndex": 109
+            },
+            {
+              "index": 112,
+              "nodeName": "Allen_paravermis_of_cerebellum_L",
+              "meshIndex": 110
+            },
+            {
+              "index": 113,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_L",
+              "meshIndex": 111
+            },
+            {
+              "index": 114,
+              "nodeName": "Allen_basilar_part_of_pons_L",
+              "meshIndex": 112
+            },
+            {
+              "index": 115,
+              "nodeName": "Allen_pontine_tegmentum_L",
+              "meshIndex": 113
+            },
+            {
+              "index": 116,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_L",
+              "meshIndex": 114
+            },
+            {
+              "index": 117,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_L",
+              "meshIndex": 115
+            },
+            {
+              "index": 118,
+              "nodeName": "Allen_inferior_olive_L",
+              "meshIndex": 116
+            },
+            {
+              "index": 119,
+              "nodeName": "Allen_middle_cerebellar_peduncle_L",
+              "meshIndex": 117
+            },
+            {
+              "index": 120,
+              "nodeName": "Allen_fourth_ventricle_L",
+              "meshIndex": 118
+            },
+            {
+              "index": 121,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_L",
+              "meshIndex": 119
+            },
+            {
+              "index": 122,
+              "nodeName": "Allen_midline_nuclear_complex_L",
+              "meshIndex": 120
+            },
+            {
+              "index": 123,
+              "nodeName": "Allen_lateral_olfactory_gyrus_L",
+              "meshIndex": 121
+            },
+            {
+              "index": 124,
+              "nodeName": "Allen_parietal_operculum_L",
+              "meshIndex": 122
+            },
+            {
+              "index": 125,
+              "nodeName": "Allen_optic_radiation_L",
+              "meshIndex": 123
+            },
+            {
+              "index": 126,
+              "nodeName": "Allen_posteroventral_putamen_L",
+              "meshIndex": 124
+            },
+            {
+              "index": 127,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_L",
+              "meshIndex": 125
+            },
+            {
+              "index": 128,
+              "nodeName": "Allen_paracingulate_gyrus_L",
+              "meshIndex": 126
+            },
+            {
+              "index": 129,
+              "nodeName": "Allen_rostral_gyrus_L",
+              "meshIndex": 127
+            },
+            {
+              "index": 130,
+              "nodeName": "Allen_frontomarginal_gyrus_L",
+              "meshIndex": 128
+            },
+            {
+              "index": 131,
+              "nodeName": "Allen_frontal_pole_L",
+              "meshIndex": 129
+            },
+            {
+              "index": 132,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_L",
+              "meshIndex": 130
+            },
+            {
+              "index": 133,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_L",
+              "meshIndex": 131
+            },
+            {
+              "index": 135,
+              "nodeName": "Allen_head_of_hippocampus_L",
+              "meshIndex": 132
+            },
+            {
+              "index": 136,
+              "nodeName": "Allen_body_of_hippocampus_L",
+              "meshIndex": 133
+            },
+            {
+              "index": 137,
+              "nodeName": "Allen_tail_of_hippocampus_L",
+              "meshIndex": 134
+            },
+            {
+              "index": 139,
+              "nodeName": "Allen_olfactory_bulb_R",
+              "meshIndex": 135
+            },
+            {
+              "index": 140,
+              "nodeName": "Allen_anterior_olfactory_nucleus_R",
+              "meshIndex": 136
+            },
+            {
+              "index": 141,
+              "nodeName": "Allen_piriform_region_R",
+              "meshIndex": 137
+            },
+            {
+              "index": 142,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_R",
+              "meshIndex": 138
+            },
+            {
+              "index": 143,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_R",
+              "meshIndex": 139
+            },
+            {
+              "index": 144,
+              "nodeName": "Allen_head_of_caudate_R",
+              "meshIndex": 140
+            },
+            {
+              "index": 145,
+              "nodeName": "Allen_body_of_caudate_R",
+              "meshIndex": 141
+            },
+            {
+              "index": 146,
+              "nodeName": "Allen_tail_of_caudate_R",
+              "meshIndex": 142
+            },
+            {
+              "index": 147,
+              "nodeName": "Allen_putamen_R",
+              "meshIndex": 143
+            },
+            {
+              "index": 148,
+              "nodeName": "Allen_nucleus_accumbens_R",
+              "meshIndex": 144
+            },
+            {
+              "index": 149,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_R",
+              "meshIndex": 145
+            },
+            {
+              "index": 150,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_R",
+              "meshIndex": 146
+            },
+            {
+              "index": 151,
+              "nodeName": "Allen_claustrum_R",
+              "meshIndex": 147
+            },
+            {
+              "index": 152,
+              "nodeName": "Allen_basal_forebrain_R",
+              "meshIndex": 148
+            },
+            {
+              "index": 153,
+              "nodeName": "Allen_septal_nuclei_R",
+              "meshIndex": 149
+            },
+            {
+              "index": 154,
+              "nodeName": "Allen_amygdaloid_complex_R",
+              "meshIndex": 150
+            },
+            {
+              "index": 155,
+              "nodeName": "Allen_anterior_amygdaloid_area_R",
+              "meshIndex": 151
+            },
+            {
+              "index": 156,
+              "nodeName": "Allen_central_nuclear_group_R",
+              "meshIndex": 152
+            },
+            {
+              "index": 157,
+              "nodeName": "Allen_lateral_nucleus_R",
+              "meshIndex": 153
+            },
+            {
+              "index": 158,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_R",
+              "meshIndex": 154
+            },
+            {
+              "index": 159,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_R",
+              "meshIndex": 155
+            },
+            {
+              "index": 160,
+              "nodeName": "Allen_anterior_cortical_nucleus_R",
+              "meshIndex": 156
+            },
+            {
+              "index": 161,
+              "nodeName": "Allen_posterior_cortical_nucleus_R",
+              "meshIndex": 157
+            },
+            {
+              "index": 162,
+              "nodeName": "Allen_medial_nucleus_R",
+              "meshIndex": 158
+            },
+            {
+              "index": 163,
+              "nodeName": "Allen_amygdalohippocampal_area_R",
+              "meshIndex": 159
+            },
+            {
+              "index": 164,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_R",
+              "meshIndex": 160
+            },
+            {
+              "index": 165,
+              "nodeName": "Allen_thalamus_R",
+              "meshIndex": 161
+            },
+            {
+              "index": 166,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_R",
+              "meshIndex": 162
+            },
+            {
+              "index": 167,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_R",
+              "meshIndex": 163
+            },
+            {
+              "index": 168,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_R",
+              "meshIndex": 164
+            },
+            {
+              "index": 169,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_R",
+              "meshIndex": 165
+            },
+            {
+              "index": 170,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_R",
+              "meshIndex": 166
+            },
+            {
+              "index": 171,
+              "nodeName": "Allen_pulvinar_of_thalamus_R",
+              "meshIndex": 167
+            },
+            {
+              "index": 172,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_R",
+              "meshIndex": 168
+            },
+            {
+              "index": 173,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_R",
+              "meshIndex": 169
+            },
+            {
+              "index": 174,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_R",
+              "meshIndex": 170
+            },
+            {
+              "index": 175,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_R",
+              "meshIndex": 171
+            },
+            {
+              "index": 176,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_R",
+              "meshIndex": 172
+            },
+            {
+              "index": 177,
+              "nodeName": "Allen_medial_geniculate_nuclei_R",
+              "meshIndex": 173
+            },
+            {
+              "index": 178,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_R",
+              "meshIndex": 174
+            },
+            {
+              "index": 179,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_R",
+              "meshIndex": 175
+            },
+            {
+              "index": 180,
+              "nodeName": "Allen_habenular_nuclei_R",
+              "meshIndex": 176
+            },
+            {
+              "index": 181,
+              "nodeName": "Allen_pineal_body_R",
+              "meshIndex": 177
+            },
+            {
+              "index": 182,
+              "nodeName": "Allen_zona_incerta_R",
+              "meshIndex": 178
+            },
+            {
+              "index": 183,
+              "nodeName": "Allen_supraoptic_region_of_HTH_R",
+              "meshIndex": 179
+            },
+            {
+              "index": 184,
+              "nodeName": "Allen_white_matter_of_forebrain_R",
+              "meshIndex": 180
+            },
+            {
+              "index": 185,
+              "nodeName": "Allen_anterior_commissure_R",
+              "meshIndex": 181
+            },
+            {
+              "index": 186,
+              "nodeName": "Allen_corpus_callosum_R",
+              "meshIndex": 182
+            },
+            {
+              "index": 187,
+              "nodeName": "Allen_fornix_R",
+              "meshIndex": 183
+            },
+            {
+              "index": 188,
+              "nodeName": "Allen_mammillothalamic_tract_R",
+              "meshIndex": 184
+            },
+            {
+              "index": 189,
+              "nodeName": "Allen_optic_tract_R",
+              "meshIndex": 185
+            },
+            {
+              "index": 190,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 186
+            },
+            {
+              "index": 191,
+              "nodeName": "Allen_body_of_lateral_ventricle_R",
+              "meshIndex": 187
+            },
+            {
+              "index": 192,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 188
+            },
+            {
+              "index": 193,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_R",
+              "meshIndex": 189
+            },
+            {
+              "index": 194,
+              "nodeName": "Allen_third_ventricle_R",
+              "meshIndex": 190
+            },
+            {
+              "index": 195,
+              "nodeName": "Allen_cerebellar_vermis_R",
+              "meshIndex": 191
+            },
+            {
+              "index": 196,
+              "nodeName": "Allen_cerebellar_deep_nuclei_R",
+              "meshIndex": 192
+            },
+            {
+              "index": 197,
+              "nodeName": "Allen_white_matter_of_hindbrain_R",
+              "meshIndex": 193
+            },
+            {
+              "index": 198,
+              "nodeName": "Allen_olfactory_tract_R",
+              "meshIndex": 194
+            },
+            {
+              "index": 199,
+              "nodeName": "Allen_primary_motor_cortex_R",
+              "meshIndex": 195
+            },
+            {
+              "index": 200,
+              "nodeName": "Allen_superior_frontal_gyrus_R",
+              "meshIndex": 196
+            },
+            {
+              "index": 201,
+              "nodeName": "Allen_middle_frontal_gyrus_R",
+              "meshIndex": 197
+            },
+            {
+              "index": 202,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+              "meshIndex": 198
+            },
+            {
+              "index": 203,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+              "meshIndex": 199
+            },
+            {
+              "index": 204,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+              "meshIndex": 200
+            },
+            {
+              "index": 205,
+              "nodeName": "Allen_medial_orbital_gyrus_R",
+              "meshIndex": 201
+            },
+            {
+              "index": 206,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 202
+            },
+            {
+              "index": 207,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 203
+            },
+            {
+              "index": 208,
+              "nodeName": "Allen_lateral_orbital_gyrus_R",
+              "meshIndex": 204
+            },
+            {
+              "index": 209,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+              "meshIndex": 205
+            },
+            {
+              "index": 210,
+              "nodeName": "Allen_frontal_operculum_R",
+              "meshIndex": 206
+            },
+            {
+              "index": 211,
+              "nodeName": "Allen_postcentral_gyrus_R",
+              "meshIndex": 207
+            },
+            {
+              "index": 212,
+              "nodeName": "Allen_supraparietal_lobule_R",
+              "meshIndex": 208
+            },
+            {
+              "index": 213,
+              "nodeName": "Allen_supramarginal_gyrus_R",
+              "meshIndex": 209
+            },
+            {
+              "index": 214,
+              "nodeName": "Allen_angular_gyrus_R",
+              "meshIndex": 210
+            },
+            {
+              "index": 215,
+              "nodeName": "Allen_precuneus_R",
+              "meshIndex": 211
+            },
+            {
+              "index": 216,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_R",
+              "meshIndex": 212
+            },
+            {
+              "index": 217,
+              "nodeName": "Allen_superior_temporal_gyrus_R",
+              "meshIndex": 213
+            },
+            {
+              "index": 218,
+              "nodeName": "Allen_middle_temporal_gyrus_R",
+              "meshIndex": 214
+            },
+            {
+              "index": 219,
+              "nodeName": "Allen_inferior_temporal_gyrus_R",
+              "meshIndex": 215
+            },
+            {
+              "index": 220,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_R",
+              "meshIndex": 216
+            },
+            {
+              "index": 221,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_R",
+              "meshIndex": 217
+            },
+            {
+              "index": 222,
+              "nodeName": "Allen_planum_temporale_R",
+              "meshIndex": 218
+            },
+            {
+              "index": 223,
+              "nodeName": "Allen_temporal_pole_R",
+              "meshIndex": 219
+            },
+            {
+              "index": 224,
+              "nodeName": "Allen_planum_polare_R",
+              "meshIndex": 220
+            },
+            {
+              "index": 225,
+              "nodeName": "Allen_occipital_pole_R",
+              "meshIndex": 221
+            },
+            {
+              "index": 226,
+              "nodeName": "Allen_cuneus_R",
+              "meshIndex": 222
+            },
+            {
+              "index": 227,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+              "meshIndex": 223
+            },
+            {
+              "index": 228,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+              "meshIndex": 224
+            },
+            {
+              "index": 229,
+              "nodeName": "Allen_inferior_occipital_gyrus_R",
+              "meshIndex": 225
+            },
+            {
+              "index": 230,
+              "nodeName": "Allen_superior_occipital_gyrus_R",
+              "meshIndex": 226
+            },
+            {
+              "index": 231,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+              "meshIndex": 227
+            },
+            {
+              "index": 232,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+              "meshIndex": 228
+            },
+            {
+              "index": 233,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+              "meshIndex": 229
+            },
+            {
+              "index": 234,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+              "meshIndex": 230
+            },
+            {
+              "index": 235,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+              "meshIndex": 231
+            },
+            {
+              "index": 236,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+              "meshIndex": 232
+            },
+            {
+              "index": 237,
+              "nodeName": "Allen_gyrus_ambiens_R",
+              "meshIndex": 233
+            },
+            {
+              "index": 238,
+              "nodeName": "Allen_long_insular_gyri_R",
+              "meshIndex": 234
+            },
+            {
+              "index": 239,
+              "nodeName": "Allen_short_insular_gyri_R",
+              "meshIndex": 235
+            },
+            {
+              "index": 240,
+              "nodeName": "Allen_limen_insula_R",
+              "meshIndex": 236
+            },
+            {
+              "index": 241,
+              "nodeName": "Allen_pretectal_region_R",
+              "meshIndex": 237
+            },
+            {
+              "index": 242,
+              "nodeName": "Allen_red_nucleus_R",
+              "meshIndex": 238
+            },
+            {
+              "index": 243,
+              "nodeName": "Allen_substantia_nigra_R",
+              "meshIndex": 239
+            },
+            {
+              "index": 244,
+              "nodeName": "Allen_superior_colliculus_R",
+              "meshIndex": 240
+            },
+            {
+              "index": 245,
+              "nodeName": "Allen_inferior_colliculus_R",
+              "meshIndex": 241
+            },
+            {
+              "index": 246,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+              "meshIndex": 242
+            },
+            {
+              "index": 247,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_R",
+              "meshIndex": 243
+            },
+            {
+              "index": 248,
+              "nodeName": "Allen_cerebral_aqueduct_R",
+              "meshIndex": 244
+            },
+            {
+              "index": 249,
+              "nodeName": "Allen_paravermis_of_cerebellum_R",
+              "meshIndex": 245
+            },
+            {
+              "index": 250,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_R",
+              "meshIndex": 246
+            },
+            {
+              "index": 251,
+              "nodeName": "Allen_basilar_part_of_pons_R",
+              "meshIndex": 247
+            },
+            {
+              "index": 252,
+              "nodeName": "Allen_pontine_tegmentum_R",
+              "meshIndex": 248
+            },
+            {
+              "index": 253,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_R",
+              "meshIndex": 249
+            },
+            {
+              "index": 254,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_R",
+              "meshIndex": 250
+            },
+            {
+              "index": 255,
+              "nodeName": "Allen_inferior_olive_R",
+              "meshIndex": 251
+            },
+            {
+              "index": 256,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_R",
+              "meshIndex": 252
+            },
+            {
+              "index": 257,
+              "nodeName": "Allen_middle_cerebellar_peduncle_R",
+              "meshIndex": 253
+            },
+            {
+              "index": 258,
+              "nodeName": "Allen_fourth_ventricle_R",
+              "meshIndex": 254
+            },
+            {
+              "index": 259,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_R",
+              "meshIndex": 255
+            },
+            {
+              "index": 260,
+              "nodeName": "Allen_midline_nuclear_complex_R",
+              "meshIndex": 256
+            },
+            {
+              "index": 261,
+              "nodeName": "Allen_lateral_olfactory_gyrus_R",
+              "meshIndex": 257
+            },
+            {
+              "index": 262,
+              "nodeName": "Allen_parietal_operculum_R",
+              "meshIndex": 258
+            },
+            {
+              "index": 263,
+              "nodeName": "Allen_optic_radiation_R",
+              "meshIndex": 259
+            },
+            {
+              "index": 264,
+              "nodeName": "Allen_posteroventral_putamen_R",
+              "meshIndex": 260
+            },
+            {
+              "index": 265,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_R",
+              "meshIndex": 261
+            },
+            {
+              "index": 266,
+              "nodeName": "Allen_paracingulate_gyrus_R",
+              "meshIndex": 262
+            },
+            {
+              "index": 267,
+              "nodeName": "Allen_rostral_gyrus_R",
+              "meshIndex": 263
+            },
+            {
+              "index": 268,
+              "nodeName": "Allen_frontomarginal_gyrus_R",
+              "meshIndex": 264
+            },
+            {
+              "index": 269,
+              "nodeName": "Allen_frontal_pole_R",
+              "meshIndex": 265
+            },
+            {
+              "index": 270,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_R",
+              "meshIndex": 266
+            },
+            {
+              "index": 271,
+              "nodeName": "Allen_hypothalamus_L",
+              "meshIndex": 267
+            },
+            {
+              "index": 272,
+              "nodeName": "Allen_hypothalamus_R",
+              "meshIndex": 268
+            },
+            {
+              "index": 273,
+              "nodeName": "Allen_subthalamic_nucleus_R",
+              "meshIndex": 269
+            },
+            {
+              "index": 274,
+              "nodeName": "Allen_mammillary_region_of_HTH_R",
+              "meshIndex": 270
+            },
+            {
+              "index": 275,
+              "nodeName": "Allen_midbrain_tegmentum_R",
+              "meshIndex": 271
+            },
+            {
+              "index": 276,
+              "nodeName": "Allen_tuberal_region_of_HTH_R",
+              "meshIndex": 272
+            },
+            {
+              "index": 277,
+              "nodeName": "Allen_preoptic_region_of_HTH_R",
+              "meshIndex": 273
+            },
+            {
+              "index": 278,
+              "nodeName": "Allen_midbrain_tegmentum_L",
+              "meshIndex": 274
+            },
+            {
+              "index": 279,
+              "nodeName": "Allen_red_nucleus_L",
+              "meshIndex": 275
+            },
+            {
+              "index": 280,
+              "nodeName": "Allen_inferior_colliculus_L",
+              "meshIndex": 276
+            },
+            {
+              "index": 281,
+              "nodeName": "Allen_mammillary_region_of_HTH_L",
+              "meshIndex": 277
+            },
+            {
+              "index": 282,
+              "nodeName": "Allen_subthalamic_nucleus_L",
+              "meshIndex": 278
+            },
+            {
+              "index": 284,
+              "nodeName": "Allen_head_of_hippocampus_R",
+              "meshIndex": 279
+            },
+            {
+              "index": 285,
+              "nodeName": "Allen_body_of_hippocampus_R",
+              "meshIndex": 280
+            },
+            {
+              "index": 286,
+              "nodeName": "Allen_tail_of_hippocampus_R",
+              "meshIndex": 281
+            },
+            {
+              "index": 287,
+              "nodeName": "VH_M_optic_chiasm",
+              "meshIndex": 282
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_brain_Hemisphere_L",
+          "ontologyId": "UBERON:0002812",
+          "label": "left cerebral hemisphere",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 2,
+              "nodeName": "Allen_olfactory_bulb_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 3,
+              "nodeName": "Allen_anterior_olfactory_nucleus_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "Allen_piriform_region_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_L",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "Allen_head_of_caudate_L",
+              "meshIndex": 5
+            },
+            {
+              "index": 8,
+              "nodeName": "Allen_body_of_caudate_L",
+              "meshIndex": 6
+            },
+            {
+              "index": 9,
+              "nodeName": "Allen_tail_of_caudate_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 10,
+              "nodeName": "Allen_putamen_L",
+              "meshIndex": 8
+            },
+            {
+              "index": 11,
+              "nodeName": "Allen_nucleus_accumbens_L",
+              "meshIndex": 9
+            },
+            {
+              "index": 12,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_L",
+              "meshIndex": 10
+            },
+            {
+              "index": 13,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 14,
+              "nodeName": "Allen_claustrum_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 15,
+              "nodeName": "Allen_basal_forebrain_L",
+              "meshIndex": 13
+            },
+            {
+              "index": 16,
+              "nodeName": "Allen_septal_nuclei_L",
+              "meshIndex": 14
+            },
+            {
+              "index": 17,
+              "nodeName": "Allen_amygdaloid_complex_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 18,
+              "nodeName": "Allen_anterior_amygdaloid_area_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 19,
+              "nodeName": "Allen_central_nuclear_group_L",
+              "meshIndex": 17
+            },
+            {
+              "index": 20,
+              "nodeName": "Allen_lateral_nucleus_L",
+              "meshIndex": 18
+            },
+            {
+              "index": 21,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_L",
+              "meshIndex": 19
+            },
+            {
+              "index": 22,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_L",
+              "meshIndex": 20
+            },
+            {
+              "index": 23,
+              "nodeName": "Allen_anterior_cortical_nucleus_L",
+              "meshIndex": 21
+            },
+            {
+              "index": 24,
+              "nodeName": "Allen_posterior_cortical_nucleus_L",
+              "meshIndex": 22
+            },
+            {
+              "index": 25,
+              "nodeName": "Allen_medial_nucleus_L",
+              "meshIndex": 23
+            },
+            {
+              "index": 26,
+              "nodeName": "Allen_amygdalohippocampal_area_L",
+              "meshIndex": 24
+            },
+            {
+              "index": 27,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_L",
+              "meshIndex": 25
+            },
+            {
+              "index": 28,
+              "nodeName": "Allen_thalamus_L",
+              "meshIndex": 26
+            },
+            {
+              "index": 29,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_L",
+              "meshIndex": 27
+            },
+            {
+              "index": 30,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_L",
+              "meshIndex": 28
+            },
+            {
+              "index": 31,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_L",
+              "meshIndex": 29
+            },
+            {
+              "index": 32,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_L",
+              "meshIndex": 30
+            },
+            {
+              "index": 33,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_L",
+              "meshIndex": 31
+            },
+            {
+              "index": 34,
+              "nodeName": "Allen_pulvinar_of_thalamus_L",
+              "meshIndex": 32
+            },
+            {
+              "index": 35,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_L",
+              "meshIndex": 33
+            },
+            {
+              "index": 36,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_L",
+              "meshIndex": 34
+            },
+            {
+              "index": 37,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_L",
+              "meshIndex": 35
+            },
+            {
+              "index": 38,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_L",
+              "meshIndex": 36
+            },
+            {
+              "index": 39,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_L",
+              "meshIndex": 37
+            },
+            {
+              "index": 40,
+              "nodeName": "Allen_medial_geniculate_nuclei_L",
+              "meshIndex": 38
+            },
+            {
+              "index": 41,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_L",
+              "meshIndex": 39
+            },
+            {
+              "index": 42,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_L",
+              "meshIndex": 40
+            },
+            {
+              "index": 43,
+              "nodeName": "Allen_habenular_nuclei_L",
+              "meshIndex": 41
+            },
+            {
+              "index": 44,
+              "nodeName": "Allen_pineal_body_L",
+              "meshIndex": 42
+            },
+            {
+              "index": 45,
+              "nodeName": "Allen_zona_incerta_L",
+              "meshIndex": 43
+            },
+            {
+              "index": 46,
+              "nodeName": "Allen_supraoptic_region_of_HTH_L",
+              "meshIndex": 44
+            },
+            {
+              "index": 47,
+              "nodeName": "Allen_preoptic_region_of_HTH_L",
+              "meshIndex": 45
+            },
+            {
+              "index": 48,
+              "nodeName": "Allen_tuberal_region_of_HTH_L",
+              "meshIndex": 46
+            },
+            {
+              "index": 49,
+              "nodeName": "Allen_white_matter_of_forebrain_L",
+              "meshIndex": 47
+            },
+            {
+              "index": 50,
+              "nodeName": "Allen_anterior_commissure_L",
+              "meshIndex": 48
+            },
+            {
+              "index": 51,
+              "nodeName": "Allen_corpus_callosum_L",
+              "meshIndex": 49
+            },
+            {
+              "index": 52,
+              "nodeName": "Allen_fornix_L",
+              "meshIndex": 50
+            },
+            {
+              "index": 53,
+              "nodeName": "Allen_mammillothalamic_tract_L",
+              "meshIndex": 51
+            },
+            {
+              "index": 54,
+              "nodeName": "Allen_optic_tract_L",
+              "meshIndex": 52
+            },
+            {
+              "index": 55,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 53
+            },
+            {
+              "index": 56,
+              "nodeName": "Allen_body_of_lateral_ventricle_L",
+              "meshIndex": 54
+            },
+            {
+              "index": 57,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_L",
+              "meshIndex": 55
+            },
+            {
+              "index": 58,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_L",
+              "meshIndex": 56
+            },
+            {
+              "index": 59,
+              "nodeName": "Allen_third_ventricle_L",
+              "meshIndex": 57
+            },
+            {
+              "index": 60,
+              "nodeName": "Allen_cerebellar_vermis_L",
+              "meshIndex": 58
+            },
+            {
+              "index": 61,
+              "nodeName": "Allen_cerebellar_deep_nuclei_L",
+              "meshIndex": 59
+            },
+            {
+              "index": 62,
+              "nodeName": "Allen_white_matter_of_hindbrain_L",
+              "meshIndex": 60
+            },
+            {
+              "index": 63,
+              "nodeName": "Allen_olfactory_tract_L",
+              "meshIndex": 61
+            },
+            {
+              "index": 64,
+              "nodeName": "Allen_primary_motor_cortex_L",
+              "meshIndex": 62
+            },
+            {
+              "index": 65,
+              "nodeName": "Allen_superior_frontal_gyrus_L",
+              "meshIndex": 63
+            },
+            {
+              "index": 66,
+              "nodeName": "Allen_middle_frontal_gyrus_L",
+              "meshIndex": 64
+            },
+            {
+              "index": 67,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+              "meshIndex": 65
+            },
+            {
+              "index": 68,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+              "meshIndex": 66
+            },
+            {
+              "index": 69,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+              "meshIndex": 67
+            },
+            {
+              "index": 70,
+              "nodeName": "Allen_medial_orbital_gyrus_L",
+              "meshIndex": 68
+            },
+            {
+              "index": 71,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 69
+            },
+            {
+              "index": 72,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+              "meshIndex": 70
+            },
+            {
+              "index": 73,
+              "nodeName": "Allen_lateral_orbital_gyrus_L",
+              "meshIndex": 71
+            },
+            {
+              "index": 74,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+              "meshIndex": 72
+            },
+            {
+              "index": 75,
+              "nodeName": "Allen_frontal_operculum_L",
+              "meshIndex": 73
+            },
+            {
+              "index": 76,
+              "nodeName": "Allen_postcentral_gyrus_L",
+              "meshIndex": 74
+            },
+            {
+              "index": 77,
+              "nodeName": "Allen_supraparietal_lobule_L",
+              "meshIndex": 75
+            },
+            {
+              "index": 78,
+              "nodeName": "Allen_supramarginal_gyrus_L",
+              "meshIndex": 76
+            },
+            {
+              "index": 79,
+              "nodeName": "Allen_angular_gyrus_L",
+              "meshIndex": 77
+            },
+            {
+              "index": 80,
+              "nodeName": "Allen_precuneus_L",
+              "meshIndex": 78
+            },
+            {
+              "index": 81,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_L",
+              "meshIndex": 79
+            },
+            {
+              "index": 82,
+              "nodeName": "Allen_superior_temporal_gyrus_L",
+              "meshIndex": 80
+            },
+            {
+              "index": 83,
+              "nodeName": "Allen_middle_temporal_gyrus_L",
+              "meshIndex": 81
+            },
+            {
+              "index": 84,
+              "nodeName": "Allen_inferior_temporal_gyrus_L",
+              "meshIndex": 82
+            },
+            {
+              "index": 85,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_L",
+              "meshIndex": 83
+            },
+            {
+              "index": 86,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_L",
+              "meshIndex": 84
+            },
+            {
+              "index": 87,
+              "nodeName": "Allen_planum_temporale_L",
+              "meshIndex": 85
+            },
+            {
+              "index": 88,
+              "nodeName": "Allen_temporal_pole_L",
+              "meshIndex": 86
+            },
+            {
+              "index": 89,
+              "nodeName": "Allen_planum_polare_L",
+              "meshIndex": 87
+            },
+            {
+              "index": 90,
+              "nodeName": "Allen_occipital_pole_L",
+              "meshIndex": 88
+            },
+            {
+              "index": 91,
+              "nodeName": "Allen_cuneus_L",
+              "meshIndex": 89
+            },
+            {
+              "index": 92,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+              "meshIndex": 90
+            },
+            {
+              "index": 93,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+              "meshIndex": 91
+            },
+            {
+              "index": 94,
+              "nodeName": "Allen_inferior_occipital_gyrus_L",
+              "meshIndex": 92
+            },
+            {
+              "index": 95,
+              "nodeName": "Allen_superior_occipital_gyrus_L",
+              "meshIndex": 93
+            },
+            {
+              "index": 96,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+              "meshIndex": 94
+            },
+            {
+              "index": 97,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+              "meshIndex": 95
+            },
+            {
+              "index": 98,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+              "meshIndex": 96
+            },
+            {
+              "index": 99,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+              "meshIndex": 97
+            },
+            {
+              "index": 100,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+              "meshIndex": 98
+            },
+            {
+              "index": 101,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+              "meshIndex": 99
+            },
+            {
+              "index": 102,
+              "nodeName": "Allen_gyrus_ambiens_L",
+              "meshIndex": 100
+            },
+            {
+              "index": 103,
+              "nodeName": "Allen_long_insular_gyri_L",
+              "meshIndex": 101
+            },
+            {
+              "index": 104,
+              "nodeName": "Allen_short_insular_gyri_L",
+              "meshIndex": 102
+            },
+            {
+              "index": 105,
+              "nodeName": "Allen_limen_insula_L",
+              "meshIndex": 103
+            },
+            {
+              "index": 106,
+              "nodeName": "Allen_pretectal_region_L",
+              "meshIndex": 104
+            },
+            {
+              "index": 107,
+              "nodeName": "Allen_substantia_nigra_L",
+              "meshIndex": 105
+            },
+            {
+              "index": 108,
+              "nodeName": "Allen_superior_colliculus_L",
+              "meshIndex": 106
+            },
+            {
+              "index": 109,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+              "meshIndex": 107
+            },
+            {
+              "index": 110,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_L",
+              "meshIndex": 108
+            },
+            {
+              "index": 111,
+              "nodeName": "Allen_cerebral_aqueduct_L",
+              "meshIndex": 109
+            },
+            {
+              "index": 112,
+              "nodeName": "Allen_paravermis_of_cerebellum_L",
+              "meshIndex": 110
+            },
+            {
+              "index": 113,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_L",
+              "meshIndex": 111
+            },
+            {
+              "index": 114,
+              "nodeName": "Allen_basilar_part_of_pons_L",
+              "meshIndex": 112
+            },
+            {
+              "index": 115,
+              "nodeName": "Allen_pontine_tegmentum_L",
+              "meshIndex": 113
+            },
+            {
+              "index": 116,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_L",
+              "meshIndex": 114
+            },
+            {
+              "index": 117,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_L",
+              "meshIndex": 115
+            },
+            {
+              "index": 118,
+              "nodeName": "Allen_inferior_olive_L",
+              "meshIndex": 116
+            },
+            {
+              "index": 119,
+              "nodeName": "Allen_middle_cerebellar_peduncle_L",
+              "meshIndex": 117
+            },
+            {
+              "index": 120,
+              "nodeName": "Allen_fourth_ventricle_L",
+              "meshIndex": 118
+            },
+            {
+              "index": 121,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_L",
+              "meshIndex": 119
+            },
+            {
+              "index": 122,
+              "nodeName": "Allen_midline_nuclear_complex_L",
+              "meshIndex": 120
+            },
+            {
+              "index": 123,
+              "nodeName": "Allen_lateral_olfactory_gyrus_L",
+              "meshIndex": 121
+            },
+            {
+              "index": 124,
+              "nodeName": "Allen_parietal_operculum_L",
+              "meshIndex": 122
+            },
+            {
+              "index": 125,
+              "nodeName": "Allen_optic_radiation_L",
+              "meshIndex": 123
+            },
+            {
+              "index": 126,
+              "nodeName": "Allen_posteroventral_putamen_L",
+              "meshIndex": 124
+            },
+            {
+              "index": 127,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_L",
+              "meshIndex": 125
+            },
+            {
+              "index": 128,
+              "nodeName": "Allen_paracingulate_gyrus_L",
+              "meshIndex": 126
+            },
+            {
+              "index": 129,
+              "nodeName": "Allen_rostral_gyrus_L",
+              "meshIndex": 127
+            },
+            {
+              "index": 130,
+              "nodeName": "Allen_frontomarginal_gyrus_L",
+              "meshIndex": 128
+            },
+            {
+              "index": 131,
+              "nodeName": "Allen_frontal_pole_L",
+              "meshIndex": 129
+            },
+            {
+              "index": 132,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_L",
+              "meshIndex": 130
+            },
+            {
+              "index": 133,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_L",
+              "meshIndex": 131
+            },
+            {
+              "index": 135,
+              "nodeName": "Allen_head_of_hippocampus_L",
+              "meshIndex": 132
+            },
+            {
+              "index": 136,
+              "nodeName": "Allen_body_of_hippocampus_L",
+              "meshIndex": 133
+            },
+            {
+              "index": 137,
+              "nodeName": "Allen_tail_of_hippocampus_L",
+              "meshIndex": 134
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_hippocampus_L",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "index": 134,
+          "descendantMeshes": [
+            {
+              "index": 135,
+              "nodeName": "Allen_head_of_hippocampus_L",
+              "meshIndex": 132
+            },
+            {
+              "index": 136,
+              "nodeName": "Allen_body_of_hippocampus_L",
+              "meshIndex": 133
+            },
+            {
+              "index": 137,
+              "nodeName": "Allen_tail_of_hippocampus_L",
+              "meshIndex": 134
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_brain_Hemisphere_R",
+          "ontologyId": "UBERON:0002813",
+          "label": "right cerebral hemisphere",
+          "index": 138,
+          "descendantMeshes": [
+            {
+              "index": 139,
+              "nodeName": "Allen_olfactory_bulb_R",
+              "meshIndex": 135
+            },
+            {
+              "index": 140,
+              "nodeName": "Allen_anterior_olfactory_nucleus_R",
+              "meshIndex": 136
+            },
+            {
+              "index": 141,
+              "nodeName": "Allen_piriform_region_R",
+              "meshIndex": 137
+            },
+            {
+              "index": 142,
+              "nodeName": "Allen_frontal_agranular_insular_cortex_area_Fl_R",
+              "meshIndex": 138
+            },
+            {
+              "index": 143,
+              "nodeName": "Allen_temporal_agranular_insular_cortex_area_Tl_R",
+              "meshIndex": 139
+            },
+            {
+              "index": 144,
+              "nodeName": "Allen_head_of_caudate_R",
+              "meshIndex": 140
+            },
+            {
+              "index": 145,
+              "nodeName": "Allen_body_of_caudate_R",
+              "meshIndex": 141
+            },
+            {
+              "index": 146,
+              "nodeName": "Allen_tail_of_caudate_R",
+              "meshIndex": 142
+            },
+            {
+              "index": 147,
+              "nodeName": "Allen_putamen_R",
+              "meshIndex": 143
+            },
+            {
+              "index": 148,
+              "nodeName": "Allen_nucleus_accumbens_R",
+              "meshIndex": 144
+            },
+            {
+              "index": 149,
+              "nodeName": "Allen_external_segment_of_globus_pallidus_R",
+              "meshIndex": 145
+            },
+            {
+              "index": 150,
+              "nodeName": "Allen_internal_segment_of_globus_pallidus_R",
+              "meshIndex": 146
+            },
+            {
+              "index": 151,
+              "nodeName": "Allen_claustrum_R",
+              "meshIndex": 147
+            },
+            {
+              "index": 152,
+              "nodeName": "Allen_basal_forebrain_R",
+              "meshIndex": 148
+            },
+            {
+              "index": 153,
+              "nodeName": "Allen_septal_nuclei_R",
+              "meshIndex": 149
+            },
+            {
+              "index": 154,
+              "nodeName": "Allen_amygdaloid_complex_R",
+              "meshIndex": 150
+            },
+            {
+              "index": 155,
+              "nodeName": "Allen_anterior_amygdaloid_area_R",
+              "meshIndex": 151
+            },
+            {
+              "index": 156,
+              "nodeName": "Allen_central_nuclear_group_R",
+              "meshIndex": 152
+            },
+            {
+              "index": 157,
+              "nodeName": "Allen_lateral_nucleus_R",
+              "meshIndex": 153
+            },
+            {
+              "index": 158,
+              "nodeName": "Allen_basolateral_nucleus_basal_nucleus_R",
+              "meshIndex": 154
+            },
+            {
+              "index": 159,
+              "nodeName": "Allen_basomedial_nucleus_accessory_basal_nucleus_R",
+              "meshIndex": 155
+            },
+            {
+              "index": 160,
+              "nodeName": "Allen_anterior_cortical_nucleus_R",
+              "meshIndex": 156
+            },
+            {
+              "index": 161,
+              "nodeName": "Allen_posterior_cortical_nucleus_R",
+              "meshIndex": 157
+            },
+            {
+              "index": 162,
+              "nodeName": "Allen_medial_nucleus_R",
+              "meshIndex": 158
+            },
+            {
+              "index": 163,
+              "nodeName": "Allen_amygdalohippocampal_area_R",
+              "meshIndex": 159
+            },
+            {
+              "index": 164,
+              "nodeName": "Allen_bed_nucleus_of_stria_terminalis_R",
+              "meshIndex": 160
+            },
+            {
+              "index": 165,
+              "nodeName": "Allen_thalamus_R",
+              "meshIndex": 161
+            },
+            {
+              "index": 166,
+              "nodeName": "Allen_anterior_nuclear_complex_of_thalamus_R",
+              "meshIndex": 162
+            },
+            {
+              "index": 167,
+              "nodeName": "Allen_lateral_dorsal_nucleus_of_thalamus_R",
+              "meshIndex": 163
+            },
+            {
+              "index": 168,
+              "nodeName": "Allen_mediodorsal_nucleus_of_thalamus_R",
+              "meshIndex": 164
+            },
+            {
+              "index": 169,
+              "nodeName": "Allen_reuniens_nucleus_medioventral_nucleus_of_thalamus_R",
+              "meshIndex": 165
+            },
+            {
+              "index": 170,
+              "nodeName": "Allen_lateral_posterior_nucleus_of_thalamus_R",
+              "meshIndex": 166
+            },
+            {
+              "index": 171,
+              "nodeName": "Allen_pulvinar_of_thalamus_R",
+              "meshIndex": 167
+            },
+            {
+              "index": 172,
+              "nodeName": "Allen_ventral_anterior_nucleus_of_thalamus_R",
+              "meshIndex": 168
+            },
+            {
+              "index": 173,
+              "nodeName": "Allen_ventral_lateral_nucleus_of_thalamus_R",
+              "meshIndex": 169
+            },
+            {
+              "index": 174,
+              "nodeName": "Allen_ventral_posterior_lateral_nucleus_R",
+              "meshIndex": 170
+            },
+            {
+              "index": 175,
+              "nodeName": "Allen_ventral_posterior_medial_nucleus_R",
+              "meshIndex": 171
+            },
+            {
+              "index": 176,
+              "nodeName": "Allen_dorsal_lateral_geniculate_nucleus_R",
+              "meshIndex": 172
+            },
+            {
+              "index": 177,
+              "nodeName": "Allen_medial_geniculate_nuclei_R",
+              "meshIndex": 173
+            },
+            {
+              "index": 178,
+              "nodeName": "Allen_centromedian_nucleus_of_thalamus_R",
+              "meshIndex": 174
+            },
+            {
+              "index": 179,
+              "nodeName": "Allen_parafascicular_nucleus_of_thalamus_R",
+              "meshIndex": 175
+            },
+            {
+              "index": 180,
+              "nodeName": "Allen_habenular_nuclei_R",
+              "meshIndex": 176
+            },
+            {
+              "index": 181,
+              "nodeName": "Allen_pineal_body_R",
+              "meshIndex": 177
+            },
+            {
+              "index": 182,
+              "nodeName": "Allen_zona_incerta_R",
+              "meshIndex": 178
+            },
+            {
+              "index": 183,
+              "nodeName": "Allen_supraoptic_region_of_HTH_R",
+              "meshIndex": 179
+            },
+            {
+              "index": 184,
+              "nodeName": "Allen_white_matter_of_forebrain_R",
+              "meshIndex": 180
+            },
+            {
+              "index": 185,
+              "nodeName": "Allen_anterior_commissure_R",
+              "meshIndex": 181
+            },
+            {
+              "index": 186,
+              "nodeName": "Allen_corpus_callosum_R",
+              "meshIndex": 182
+            },
+            {
+              "index": 187,
+              "nodeName": "Allen_fornix_R",
+              "meshIndex": 183
+            },
+            {
+              "index": 188,
+              "nodeName": "Allen_mammillothalamic_tract_R",
+              "meshIndex": 184
+            },
+            {
+              "index": 189,
+              "nodeName": "Allen_optic_tract_R",
+              "meshIndex": 185
+            },
+            {
+              "index": 190,
+              "nodeName": "Allen_anterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 186
+            },
+            {
+              "index": 191,
+              "nodeName": "Allen_body_of_lateral_ventricle_R",
+              "meshIndex": 187
+            },
+            {
+              "index": 192,
+              "nodeName": "Allen_posterior_horn_of_lateral_ventricle_R",
+              "meshIndex": 188
+            },
+            {
+              "index": 193,
+              "nodeName": "Allen_inferior_horn_of_lateral_ventricle_R",
+              "meshIndex": 189
+            },
+            {
+              "index": 194,
+              "nodeName": "Allen_third_ventricle_R",
+              "meshIndex": 190
+            },
+            {
+              "index": 195,
+              "nodeName": "Allen_cerebellar_vermis_R",
+              "meshIndex": 191
+            },
+            {
+              "index": 196,
+              "nodeName": "Allen_cerebellar_deep_nuclei_R",
+              "meshIndex": 192
+            },
+            {
+              "index": 197,
+              "nodeName": "Allen_white_matter_of_hindbrain_R",
+              "meshIndex": 193
+            },
+            {
+              "index": 198,
+              "nodeName": "Allen_olfactory_tract_R",
+              "meshIndex": 194
+            },
+            {
+              "index": 199,
+              "nodeName": "Allen_primary_motor_cortex_R",
+              "meshIndex": 195
+            },
+            {
+              "index": 200,
+              "nodeName": "Allen_superior_frontal_gyrus_R",
+              "meshIndex": 196
+            },
+            {
+              "index": 201,
+              "nodeName": "Allen_middle_frontal_gyrus_R",
+              "meshIndex": 197
+            },
+            {
+              "index": 202,
+              "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+              "meshIndex": 198
+            },
+            {
+              "index": 203,
+              "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+              "meshIndex": 199
+            },
+            {
+              "index": 204,
+              "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+              "meshIndex": 200
+            },
+            {
+              "index": 205,
+              "nodeName": "Allen_medial_orbital_gyrus_R",
+              "meshIndex": 201
+            },
+            {
+              "index": 206,
+              "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 202
+            },
+            {
+              "index": 207,
+              "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+              "meshIndex": 203
+            },
+            {
+              "index": 208,
+              "nodeName": "Allen_lateral_orbital_gyrus_R",
+              "meshIndex": 204
+            },
+            {
+              "index": 209,
+              "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+              "meshIndex": 205
+            },
+            {
+              "index": 210,
+              "nodeName": "Allen_frontal_operculum_R",
+              "meshIndex": 206
+            },
+            {
+              "index": 211,
+              "nodeName": "Allen_postcentral_gyrus_R",
+              "meshIndex": 207
+            },
+            {
+              "index": 212,
+              "nodeName": "Allen_supraparietal_lobule_R",
+              "meshIndex": 208
+            },
+            {
+              "index": 213,
+              "nodeName": "Allen_supramarginal_gyrus_R",
+              "meshIndex": 209
+            },
+            {
+              "index": 214,
+              "nodeName": "Allen_angular_gyrus_R",
+              "meshIndex": 210
+            },
+            {
+              "index": 215,
+              "nodeName": "Allen_precuneus_R",
+              "meshIndex": 211
+            },
+            {
+              "index": 216,
+              "nodeName": "Allen_paracentral_lobule_caudal_part_R",
+              "meshIndex": 212
+            },
+            {
+              "index": 217,
+              "nodeName": "Allen_superior_temporal_gyrus_R",
+              "meshIndex": 213
+            },
+            {
+              "index": 218,
+              "nodeName": "Allen_middle_temporal_gyrus_R",
+              "meshIndex": 214
+            },
+            {
+              "index": 219,
+              "nodeName": "Allen_inferior_temporal_gyrus_R",
+              "meshIndex": 215
+            },
+            {
+              "index": 220,
+              "nodeName": "Allen_occipitotemporal_fusiform_gyrus_temporal_part_R",
+              "meshIndex": 216
+            },
+            {
+              "index": 221,
+              "nodeName": "Allen_transverse_temporal_gyrus_Heschls_gyrus_R",
+              "meshIndex": 217
+            },
+            {
+              "index": 222,
+              "nodeName": "Allen_planum_temporale_R",
+              "meshIndex": 218
+            },
+            {
+              "index": 223,
+              "nodeName": "Allen_temporal_pole_R",
+              "meshIndex": 219
+            },
+            {
+              "index": 224,
+              "nodeName": "Allen_planum_polare_R",
+              "meshIndex": 220
+            },
+            {
+              "index": 225,
+              "nodeName": "Allen_occipital_pole_R",
+              "meshIndex": 221
+            },
+            {
+              "index": 226,
+              "nodeName": "Allen_cuneus_R",
+              "meshIndex": 222
+            },
+            {
+              "index": 227,
+              "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+              "meshIndex": 223
+            },
+            {
+              "index": 228,
+              "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+              "meshIndex": 224
+            },
+            {
+              "index": 229,
+              "nodeName": "Allen_inferior_occipital_gyrus_R",
+              "meshIndex": 225
+            },
+            {
+              "index": 230,
+              "nodeName": "Allen_superior_occipital_gyrus_R",
+              "meshIndex": 226
+            },
+            {
+              "index": 231,
+              "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+              "meshIndex": 227
+            },
+            {
+              "index": 232,
+              "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+              "meshIndex": 228
+            },
+            {
+              "index": 233,
+              "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+              "meshIndex": 229
+            },
+            {
+              "index": 234,
+              "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+              "meshIndex": 230
+            },
+            {
+              "index": 235,
+              "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+              "meshIndex": 231
+            },
+            {
+              "index": 236,
+              "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+              "meshIndex": 232
+            },
+            {
+              "index": 237,
+              "nodeName": "Allen_gyrus_ambiens_R",
+              "meshIndex": 233
+            },
+            {
+              "index": 238,
+              "nodeName": "Allen_long_insular_gyri_R",
+              "meshIndex": 234
+            },
+            {
+              "index": 239,
+              "nodeName": "Allen_short_insular_gyri_R",
+              "meshIndex": 235
+            },
+            {
+              "index": 240,
+              "nodeName": "Allen_limen_insula_R",
+              "meshIndex": 236
+            },
+            {
+              "index": 241,
+              "nodeName": "Allen_pretectal_region_R",
+              "meshIndex": 237
+            },
+            {
+              "index": 242,
+              "nodeName": "Allen_red_nucleus_R",
+              "meshIndex": 238
+            },
+            {
+              "index": 243,
+              "nodeName": "Allen_substantia_nigra_R",
+              "meshIndex": 239
+            },
+            {
+              "index": 244,
+              "nodeName": "Allen_superior_colliculus_R",
+              "meshIndex": 240
+            },
+            {
+              "index": 245,
+              "nodeName": "Allen_inferior_colliculus_R",
+              "meshIndex": 241
+            },
+            {
+              "index": 246,
+              "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+              "meshIndex": 242
+            },
+            {
+              "index": 247,
+              "nodeName": "Allen_superior_cerebellar_peduncle_brachium_conjunctivum_R",
+              "meshIndex": 243
+            },
+            {
+              "index": 248,
+              "nodeName": "Allen_cerebral_aqueduct_R",
+              "meshIndex": 244
+            },
+            {
+              "index": 249,
+              "nodeName": "Allen_paravermis_of_cerebellum_R",
+              "meshIndex": 245
+            },
+            {
+              "index": 250,
+              "nodeName": "Allen_lateral_hemisphere_of_cerebellum_R",
+              "meshIndex": 246
+            },
+            {
+              "index": 251,
+              "nodeName": "Allen_basilar_part_of_pons_R",
+              "meshIndex": 247
+            },
+            {
+              "index": 252,
+              "nodeName": "Allen_pontine_tegmentum_R",
+              "meshIndex": 248
+            },
+            {
+              "index": 253,
+              "nodeName": "Allen_pyramidal_part_of_medulla_oblongata_R",
+              "meshIndex": 249
+            },
+            {
+              "index": 254,
+              "nodeName": "Allen_tegmentum_of_medulla_oblongata_R",
+              "meshIndex": 250
+            },
+            {
+              "index": 255,
+              "nodeName": "Allen_inferior_olive_R",
+              "meshIndex": 251
+            },
+            {
+              "index": 256,
+              "nodeName": "Allen_inferior_cerebellar_peduncle_R",
+              "meshIndex": 252
+            },
+            {
+              "index": 257,
+              "nodeName": "Allen_middle_cerebellar_peduncle_R",
+              "meshIndex": 253
+            },
+            {
+              "index": 258,
+              "nodeName": "Allen_fourth_ventricle_R",
+              "meshIndex": 254
+            },
+            {
+              "index": 259,
+              "nodeName": "Allen_central_canal_of_medulla_oblongata_R",
+              "meshIndex": 255
+            },
+            {
+              "index": 260,
+              "nodeName": "Allen_midline_nuclear_complex_R",
+              "meshIndex": 256
+            },
+            {
+              "index": 261,
+              "nodeName": "Allen_lateral_olfactory_gyrus_R",
+              "meshIndex": 257
+            },
+            {
+              "index": 262,
+              "nodeName": "Allen_parietal_operculum_R",
+              "meshIndex": 258
+            },
+            {
+              "index": 263,
+              "nodeName": "Allen_optic_radiation_R",
+              "meshIndex": 259
+            },
+            {
+              "index": 264,
+              "nodeName": "Allen_posteroventral_putamen_R",
+              "meshIndex": 260
+            },
+            {
+              "index": 265,
+              "nodeName": "Allen_atrium_of_lateral_ventricle_R",
+              "meshIndex": 261
+            },
+            {
+              "index": 266,
+              "nodeName": "Allen_paracingulate_gyrus_R",
+              "meshIndex": 262
+            },
+            {
+              "index": 267,
+              "nodeName": "Allen_rostral_gyrus_R",
+              "meshIndex": 263
+            },
+            {
+              "index": 268,
+              "nodeName": "Allen_frontomarginal_gyrus_R",
+              "meshIndex": 264
+            },
+            {
+              "index": 269,
+              "nodeName": "Allen_frontal_pole_R",
+              "meshIndex": 265
+            },
+            {
+              "index": 270,
+              "nodeName": "Allen_perirhinal_gyrus_rostral_part_of_FuGt_R",
+              "meshIndex": 266
+            },
+            {
+              "index": 271,
+              "nodeName": "Allen_hypothalamus_L",
+              "meshIndex": 267
+            },
+            {
+              "index": 272,
+              "nodeName": "Allen_hypothalamus_R",
+              "meshIndex": 268
+            },
+            {
+              "index": 273,
+              "nodeName": "Allen_subthalamic_nucleus_R",
+              "meshIndex": 269
+            },
+            {
+              "index": 274,
+              "nodeName": "Allen_mammillary_region_of_HTH_R",
+              "meshIndex": 270
+            },
+            {
+              "index": 275,
+              "nodeName": "Allen_midbrain_tegmentum_R",
+              "meshIndex": 271
+            },
+            {
+              "index": 276,
+              "nodeName": "Allen_tuberal_region_of_HTH_R",
+              "meshIndex": 272
+            },
+            {
+              "index": 277,
+              "nodeName": "Allen_preoptic_region_of_HTH_R",
+              "meshIndex": 273
+            },
+            {
+              "index": 278,
+              "nodeName": "Allen_midbrain_tegmentum_L",
+              "meshIndex": 274
+            },
+            {
+              "index": 279,
+              "nodeName": "Allen_red_nucleus_L",
+              "meshIndex": 275
+            },
+            {
+              "index": 280,
+              "nodeName": "Allen_inferior_colliculus_L",
+              "meshIndex": 276
+            },
+            {
+              "index": 281,
+              "nodeName": "Allen_mammillary_region_of_HTH_L",
+              "meshIndex": 277
+            },
+            {
+              "index": 282,
+              "nodeName": "Allen_subthalamic_nucleus_L",
+              "meshIndex": 278
+            },
+            {
+              "index": 284,
+              "nodeName": "Allen_head_of_hippocampus_R",
+              "meshIndex": 279
+            },
+            {
+              "index": 285,
+              "nodeName": "Allen_body_of_hippocampus_R",
+              "meshIndex": 280
+            },
+            {
+              "index": 286,
+              "nodeName": "Allen_tail_of_hippocampus_R",
+              "meshIndex": 281
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "Allen_hippocampus_R",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "index": 283,
+          "descendantMeshes": [
+            {
+              "index": 284,
+              "nodeName": "Allen_head_of_hippocampus_R",
+              "meshIndex": 279
+            },
+            {
+              "index": 285,
+              "nodeName": "Allen_body_of_hippocampus_R",
+              "meshIndex": 280
+            },
+            {
+              "index": 286,
+              "nodeName": "Allen_tail_of_hippocampus_R",
+              "meshIndex": 281
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "spinal-cord-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-female/v1.1/assets/3d-vh-f-spinal-cord.glb",
+      "sha256": "ececed633894787f9b0d22f2c68b65831202bc7b5f8b46f7517877a38fbcdb80",
+      "groups": [
+        {
+          "nodeName": "VH_F_spinal_cord",
+          "ontologyId": "UBERON:0002240",
+          "label": "spinal cord",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_C1_segment_of_cervical_spinal_cord",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_C2_segment_of_cervical_spinal_cord",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_C3_segment_of_cervical_spinal_cord",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_C4_segment_of_cervical_spinal_cord",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_C5_segment_of_cervical_spinal_cord",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_C6_segment_of_cervical_spinal_cord",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_C7_segment_of_cervical_spinal_cord",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_C8_segment_of_cervical_spinal_cord",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_first_thoracic_spinal_cord_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_second_thoracic_spinal_cord_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_third_thoracic_spinal_cord_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_fourth_thoracic_spinal_cord_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_fifth_thoracic_spinal_cord_segment",
+              "meshIndex": 12
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_seventh_thoracic_spinal_cord_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_eigth_thoracic_spinal_cord_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_sixth_thoracic_spinal_cord_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_ninth_thoracic_spinal_cord_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_tenth_thoracic_spinal_cord_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_eleventh_thoracic_spinal_cord_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_twelfth_thoracic_spinal_cord_segment",
+              "meshIndex": 19
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_first_lumbar_spinal_cord_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_second_lumbar_spinal_cord_segment",
+              "meshIndex": 21
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_third_lumbar_spinal_cord_segment",
+              "meshIndex": 22
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_fourth_lumbar_spinal_cord_segment",
+              "meshIndex": 23
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_fifth_lumbar_spinal_cord_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_first_sacral_spinal_cord_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_second_sacral_spinal_cord_segment",
+              "meshIndex": 26
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_third_sacral_spinal_cord_segment",
+              "meshIndex": 27
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_fourth_sacral_spinal_cord_segment",
+              "meshIndex": 28
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "spinal-cord-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-male/v1.1/assets/3d-vh-m-spinal-cord.glb",
+      "sha256": "b8a2c2a288a8f7af84d5b93900b3c506a7996aa28518e9fb8a3ab9b6db6e6827",
+      "groups": [
+        {
+          "nodeName": "VH_M_spinal_cord",
+          "ontologyId": "UBERON:0002240",
+          "label": "spinal cord",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_C1_segment_of_cervical_spinal_cord",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_C2_segment_of_cervical_spinal_cord",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_M_C3_segment_of_cervical_spinal_cord",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_C4_segment_of_cervical_spinal_cord",
+              "meshIndex": 3
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_C5_segment_of_cervical_spinal_cord",
+              "meshIndex": 4
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_C6_segment_of_cervical_spinal_cord",
+              "meshIndex": 5
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_C7_segment_of_cervical_spinal_cord",
+              "meshIndex": 6
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_C8_segment_of_cervical_spinal_cord",
+              "meshIndex": 7
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_first_thoracic_spinal_cord_segment",
+              "meshIndex": 8
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_second_thoracic_spinal_cord_segment",
+              "meshIndex": 9
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_third_thoracic_spinal_cord_segment",
+              "meshIndex": 10
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_fourth_thoracic_spinal_cord_segment",
+              "meshIndex": 11
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_fifth_thoracic_spinal_cord_segment",
+              "meshIndex": 12
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_sixth_thoracic_spinal_cord_segment",
+              "meshIndex": 13
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_seventh_thoracic_spinal_cord_segment",
+              "meshIndex": 14
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_eighth_thoracic_spinal_cord_segment",
+              "meshIndex": 15
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_ninth_thoracic_spinal_cord_segment",
+              "meshIndex": 16
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_tenth_thoracic_spinal_cord_segment",
+              "meshIndex": 17
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_eleventh_thoracic_spinal_cord_segment",
+              "meshIndex": 18
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_twelfth_thoracic_spinal_cord_segment",
+              "meshIndex": 19
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_first_lumbar_spinal_cord_segment",
+              "meshIndex": 20
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_second_lumbar_spinal_cord_segment",
+              "meshIndex": 21
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_third_lumbar_spinal_cord_segment",
+              "meshIndex": 22
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_fourth_lumbar_spinal_cord_segment",
+              "meshIndex": 23
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_fifth_lumbar_spinal_cord_segment",
+              "meshIndex": 24
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_first_sacral_spinal_cord_segment",
+              "meshIndex": 25
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_second_sacral_spinal_cord_segment",
+              "meshIndex": 26
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_third_sacral_spinal_cord_segment",
+              "meshIndex": 27
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_M_fourth_sacral_spinal_cord_segment",
+              "meshIndex": 28
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_M_fifth_sacral_spinal_cord_segment",
+              "meshIndex": 29
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    }
+  ]
+}

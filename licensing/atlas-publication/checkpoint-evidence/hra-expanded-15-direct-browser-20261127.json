@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "sourceCommit": "cf27c09b5f4ee55674b350275035065b13621d5e",
+  "workflowRun": 45856038871,
+  "workflowJob": 140034555722,
+  "conclusion": "success",
+  "originalGLBsRendered": 15,
+  "directSourceNodes": 446,
+  "directIsolationRestoreChecks": 15,
+  "heldGroupLabelsExposed": 0,
+  "bodyInventoryUnchanged": true,
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0
+}

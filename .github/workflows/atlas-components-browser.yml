@@ -4,6 +4,8 @@ on:
     branches: [feat/atlas-focused-challenge-20261126]
     paths:
       - '.github/workflows/atlas-components-browser.yml'
+      - 'scripts/atlas-components-36.test.mjs'
+      - 'apps/atlas-independent/src/reference-challenge-component-language.js'
 permissions:
   contents: read
 jobs:

@@ -54,16 +54,16 @@ export async function stageHraBatch(q,batch){
  }catch(e){fs.rmSync(folder,{recursive:true,force:true});throw e;}
 }
 export function loadHraBatch(q,folder,batch,includeGroups=false){
- assert(!includeGroups||!configs[batch]?.expanded,'Expanded HRA groups require separate retained hierarchy evidence');
  const rows=batchRows(batch);checkRoot(q);const prefix='hra-'+batch+'-';assert(typeof folder==='string'&&folder.startsWith(prefix)&&/^[A-Za-z0-9_-]+$/.test(folder.slice(prefix.length)),'Explicit matching reference folder required');
  const base=path.join(q,folder);assert(fs.realpathSync(base)===base);
- const groupProof=includeGroups?read(new URL('licensing/atlas-publication/hra-source-group-hierarchy-audit-20261126.json',root)):null;
- if(groupProof)assert(groupProof.publicRelease==='NO_GO'&&groupProof.exactSourceGroups===37&&groupProof.remainingHeld===1&&groupProof.sourceObjects===9);
+ const expanded=configs[batch].expanded===true;
+ const groupProof=includeGroups?read(new URL(dir+(expanded?'hra-'+batch+'-group-audit-20261127.json':'hra-source-group-hierarchy-audit-20261126.json'),root)):null;
+ if(groupProof){assert(groupProof.publicRelease==='NO_GO');if(expanded){const expected={'urogenital-7':26,'ureter-four':12,'cns-four':12}[batch];assert(groupProof.batch===batch&&groupProof.conclusion==='success'&&groupProof.sourceObjects===rows.length&&groupProof.rows.length===rows.length&&groupProof.exactSourceGroups===expected&&groupProof.remainingHeld===0&&groupProof.clinicalValidation===false&&groupProof.registrationValidated===false&&groupProof.rows.reduce((n,r)=>n+r.groups.length,0)===expected);}else assert(groupProof.exactSourceGroups===37&&groupProof.remainingHeld===1&&groupProof.sourceObjects===9);}
  const assets=new Map();
  for(const {s,a,id} of rows){
   const file=path.join(base,id+'.glb');assert(fs.realpathSync(file)===file&&fs.statSync(file).isFile()&&fs.statSync(file).size===s.bytes);
   const bytes=fs.readFileSync(file),crosswalk=verifyBytes(bytes,s,a);let sourceGroups;
-  if(groupProof){const p=groupProof.rows.find(x=>x.assetURL===s.assetURL&&x.sha256===a.sha256&&x.id===s.id);assert(p,'Group evidence does not bind to exact source');const gltf=JSON.parse(bytes.subarray(20,20+bytes.readUInt32LE(12)).toString('utf8'));sourceGroups=p.groups.filter(x=>x.status==='EXACT_SOURCE_GROUP_DESCENDANTS').map(({index,nodeName,label,ontologyId,descendantMeshes})=>({index,nodeName,label,ontologyId,descendantMeshes}));verifyHraGroupRows(gltf,sourceGroups);}
+  if(groupProof){const p=groupProof.rows.find(x=>x.assetURL===s.assetURL&&x.sha256===a.sha256&&x.id===s.id);assert(p,'Group evidence does not bind to exact source');if(expanded){const held=a.labels.filter(x=>x.status!=='EXACT_NAMED_MESH_NODE');assert(p.groups.length===held.length&&p.groups.every(g=>g.status==='EXACT_SOURCE_GROUP_DESCENDANTS'&&held.some(x=>x.nodeName===g.nodeName&&x.ontologyId===g.ontologyId&&x.label===g.label)));}const gltf=JSON.parse(bytes.subarray(20,20+bytes.readUInt32LE(12)).toString('utf8'));sourceGroups=p.groups.filter(x=>x.status==='EXACT_SOURCE_GROUP_DESCENDANTS').map(({index,nodeName,label,ontologyId,descendantMeshes})=>({index,nodeName,label,ontologyId,descendantMeshes}));verifyHraGroupRows(gltf,sourceGroups);}
   assets.set(id,{file,bytes:a.bytes,sha256:a.sha256,public:{id,name:s.id.replaceAll('-',' '),version:s.version,source:s.assetURL,meshCount:a.meshCount,frame:'HRA '+(s.id.includes('-female')?'female':'male')+' reference source frame (not registered to BP3D)',sourceCrosswalk:crosswalk,...(a.sourceMethod?{sourceMethod:a.sourceMethod,clinicalLimitations:a.clinicalLimitations||[]}:{}),...(includeGroups?{sourceGroups}:{}),sourceLicense:'CC-BY-4.0 (publisher stated; release held)',approvedForDistribution:false,registrationValidated:false}});
  }
  assert.equal(assets.size,rows.length);return {assets,blocked:[]};
