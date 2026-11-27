@@ -1,5 +1,6 @@
 """SPL ear/head-neck candidate inventory only. No extraction, scene execution, volumes or publication."""
 import argparse
+from collections import Counter
 import importlib.util
 import json
 import re
@@ -38,8 +39,19 @@ def audit(archive, kind):
     receipt = source.inventory(archive)
     hits = {}
     held_scenes = 0
+    diagnostics = Counter()
+    filename_candidates = []
     with zipfile.ZipFile(archive) as z:
         members = {i.filename:i for i in z.infolist() if not i.is_dir()}
+        for member, info in members.items():
+            if PurePosixPath(member).suffix.lower() in source.MESH:
+                # Exact allowlisted basename only, never emit unknown filenames or infer identity.
+                match = label(PurePosixPath(member).stem, terms)
+                if match:
+                    import hashlib
+                    with z.open(info) as stream:
+                        digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+                    filename_candidates.append({'meshSHA256':digest,'term':match[0],'side':match[1],'status':'FILENAME_ONLY_UNVERIFIED'})
         for info in members.values():
             if PurePosixPath(info.filename).suffix.lower() != ".mrml":
                 continue
@@ -59,6 +71,7 @@ def audit(archive, kind):
             for n in root.iter():
                 if n.tag.rsplit("}",1)[-1].lower() != "modelstorage":
                     continue
+                diagnostics['storageNodes'] += 1
                 ident, name = n.get("id",""), n.get("fileName","")
                 rel = PurePosixPath(name)
                 if not ident or not name or rel.is_absolute() or ".." in rel.parts or "\\" in name or ":" in name:
@@ -66,10 +79,13 @@ def audit(archive, kind):
                 target = str(PurePosixPath(info.filename).parent / rel)
                 valid = target in members and rel.suffix.lower() in source.MESH
                 stores[ident] = target if valid and ident not in stores else None
+                diagnostics['resolvedStorage' if valid else 'unresolvedStorage'] += 1
             for n in root.iter():
                 if n.tag.rsplit("}",1)[-1].lower() != "model":
                     continue
+                diagnostics['modelNodes'] += 1
                 target = stores.get(n.get("storageNodeRef",""))
+                diagnostics['linkedModels' if target else 'unlinkedModels'] += 1
                 if target:
                     hits.setdefault(target,set()).add(label(n.get("name",""),terms))
         rows = []
@@ -86,7 +102,7 @@ def audit(archive, kind):
                          "status":"EXACT_LABEL_CANDIDATE" if len(labels)==1 else "HOLD_CONFLICTING_LABELS",
                          "lateralityValidated":False})
     return {"schema":1,"source":url,"archiveSHA256":source.sha_file(archive),"archiveBytes":archive.stat().st_size,
-            "inventory":receipt,"labelCandidates":rows,"heldScenes":held_scenes,"geometryParsed":False,
+            "inventory":receipt,"labelCandidates":rows,"filenameOnlyCandidates":filename_candidates,"sceneDiagnostics":dict(diagnostics),"heldScenes":held_scenes,"geometryParsed":False,
             "privacyReview":"PENDING","assetRightsReviewed":False,"clinicalValidation":False,
             "registrationValidated":False,"geometryPublished":0,"publicRelease":"NO_GO"}
 
@@ -95,6 +111,19 @@ class Tests(unittest.TestCase):
         self.assertEqual(label("left stapes",SOURCES["ear"][1]),("stapes","LEFT"))
         self.assertIsNone(label("stapes patient",SOURCES["ear"][1]))
         self.assertIsNone(label("left right stapes",SOURCES["ear"][1]))
+    def test_filename_candidate_is_not_identity(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'fixture.zip'
+            with zipfile.ZipFile(p,'w') as z:
+                z.writestr('Data/Left Malleus.vtk',b'fixture')
+                z.writestr('Data/unknown-private-name.vtk',b'fixture')
+                z.writestr('scene.mrml','<MRML><Model name="Malleus" storageNodeRef="missing"/></MRML>')
+            result=audit(p,'ear')
+            self.assertEqual(result['labelCandidates'],[])
+            self.assertEqual(result['filenameOnlyCandidates'][0]['status'],'FILENAME_ONLY_UNVERIFIED')
+            self.assertEqual(len(result['filenameOnlyCandidates']),1)
+            self.assertEqual(result['sceneDiagnostics']['unlinkedModels'],1)
+            self.assertNotIn('unknown-private-name',json.dumps(result))
     def test_link_conflict(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/"test.zip"
