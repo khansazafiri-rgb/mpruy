@@ -3,6 +3,7 @@ import {challengeLabel,typedReferenceAnswer} from './reference-challenge-languag
 import {focusedReferenceQuestions,scoreReferenceAnswer} from './reference-challenge-state.js';
 import * as THREE from 'three';
 import {viewFrame} from './view-frame.js';
+import {hraSourceNotice} from './hra-source-notice.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {referenceEntries,reference43Entries,filterReferences,requestTracker,sourceNodeComponents,isolateSourceComponent,applyHraGroups} from './reference-state.js';
@@ -47,7 +48,7 @@ export function mountReferences(base){
  }
  async function load(e,conceal=false){
   clearComponents();const token=tracker.begin();selected=e;status(conceal?'Memuat elemen soal…':'Memuat '+e.name+'…');
-  if(conceal){$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';}else if(sourceKind==='bp43'){$('referenceSource').href='https://dbarchive.biosciencedbc.jp/en/bodyparts3d/';$('referenceSource').textContent='BodyParts3D / DBCLS · '+e.fmaId+' · '+e.bpId+' · '+e.fj+' · lisensi per versi belum disetujui';}else{$('referenceSource').href=e.source;$('referenceSource').textContent='Sumber GLB · '+e.version;}
+  if(conceal){$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';}else if(sourceKind==='bp43'){$('referenceSource').href='https://dbarchive.biosciencedbc.jp/en/bodyparts3d/';$('referenceSource').textContent='BodyParts3D / DBCLS · '+e.fmaId+' · '+e.bpId+' · '+e.fj+' · lisensi per versi belum disetujui';}else{$('referenceSource').href=e.source;$('referenceSource').textContent='Sumber GLB · '+e.version+hraSourceNotice(e);}
   if(model){scene.remove(model);dispose(model);model=null;}
   let candidate=null;
   try{
