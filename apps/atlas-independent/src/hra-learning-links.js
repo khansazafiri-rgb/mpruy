@@ -218,12 +218,456 @@ export const HRA_LEARNING_LINKS=[
     "kind": "GROUP"
   }
 ];
+// Expanded exact pinned source labels; groups replace duplicate child links where audited.
+export const HRA_EXPANDED_LEARNING_LINKS=[
+  {
+    "group": "urinary",
+    "target": "left kidney",
+    "organ": "kidney-female-left",
+    "label": "left kidney",
+    "ontologyId": "UBERON:0004538",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal papilla",
+    "organ": "kidney-female-left",
+    "label": "renal papilla",
+    "ontologyId": "UBERON:0001228",
+    "index": 4,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal pyramid",
+    "organ": "kidney-female-left",
+    "label": "renal pyramid",
+    "ontologyId": "UBERON:0004200",
+    "index": 16,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right kidney",
+    "organ": "kidney-female-right",
+    "label": "right kidney",
+    "ontologyId": "UBERON:0004539",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal papilla",
+    "organ": "kidney-female-right",
+    "label": "renal papilla",
+    "ontologyId": "UBERON:0001228",
+    "index": 7,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal pyramid",
+    "organ": "kidney-female-right",
+    "label": "renal pyramid",
+    "ontologyId": "UBERON:0004200",
+    "index": 18,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left kidney",
+    "organ": "kidney-male-left",
+    "label": "left kidney",
+    "ontologyId": "UBERON:0004538",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal papilla",
+    "organ": "kidney-male-left",
+    "label": "renal papilla",
+    "ontologyId": "UBERON:0001228",
+    "index": 7,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal pyramid",
+    "organ": "kidney-male-left",
+    "label": "renal pyramid",
+    "ontologyId": "UBERON:0004200",
+    "index": 17,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right kidney",
+    "organ": "kidney-male-right",
+    "label": "right kidney",
+    "ontologyId": "UBERON:0004539",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal papilla",
+    "organ": "kidney-male-right",
+    "label": "renal papilla",
+    "ontologyId": "UBERON:0001228",
+    "index": 4,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "renal pyramid",
+    "organ": "kidney-male-right",
+    "label": "renal pyramid",
+    "ontologyId": "UBERON:0004200",
+    "index": 15,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb"
+  },
+  {
+    "group": "reproductive",
+    "target": "prostate",
+    "organ": "prostate-male",
+    "label": "prostate gland",
+    "ontologyId": "UBERON:0002367",
+    "index": 7,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/prostate-male/v1.2/assets/3d-vh-m-prostate.glb"
+  },
+  {
+    "group": "reproductive",
+    "target": "seminal vesicle",
+    "organ": "prostate-male",
+    "label": "seminal vesicle",
+    "ontologyId": "UBERON:0000998",
+    "index": 5,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/prostate-male/v1.2/assets/3d-vh-m-prostate.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "urinary bladder",
+    "organ": "urinary-bladder-female",
+    "label": "urinary bladder",
+    "ontologyId": "UBERON:0001255",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-female/v1.2/assets/3d-vh-f-urinary-bladder.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "urinary bladder",
+    "organ": "urinary-bladder-male",
+    "label": "urinary bladder",
+    "ontologyId": "UBERON:0001255",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-male/v1.2/assets/3d-vh-m-urinary-bladder.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left ureter",
+    "organ": "ureter-female-left",
+    "label": "left ureter",
+    "ontologyId": "UBERON:0001223",
+    "index": 19,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right ureter",
+    "organ": "ureter-female-right",
+    "label": "right ureter",
+    "ontologyId": "UBERON:0001222",
+    "index": 18,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left ureter",
+    "organ": "ureter-male-left",
+    "label": "left ureter",
+    "ontologyId": "UBERON:0001223",
+    "index": 17,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right ureter",
+    "organ": "ureter-male-right",
+    "label": "right ureter",
+    "ontologyId": "UBERON:0001222",
+    "index": 16,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "brain",
+    "organ": "brain-female",
+    "label": "brain",
+    "ontologyId": "UBERON:0000955",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "olfactory bulb",
+    "organ": "brain-female",
+    "label": "olfactory bulb",
+    "ontologyId": "UBERON:0002264",
+    "index": 3,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "optic chiasm",
+    "organ": "brain-female",
+    "label": "optic chiasma",
+    "ontologyId": "UBERON:0000959",
+    "index": 1,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "optic tract",
+    "organ": "brain-female",
+    "label": "optic tract",
+    "ontologyId": "UBERON:0001908",
+    "index": 55,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "optic tract",
+    "organ": "brain-female",
+    "label": "optic tract",
+    "ontologyId": "UBERON:0001908",
+    "index": 190,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "corpus callosum",
+    "organ": "brain-female",
+    "label": "corpus callosum",
+    "ontologyId": "UBERON:0002336",
+    "index": 52,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "corpus callosum",
+    "organ": "brain-female",
+    "label": "corpus callosum",
+    "ontologyId": "UBERON:0002336",
+    "index": 187,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "hypothalamus",
+    "organ": "brain-female",
+    "label": "hypothalamus",
+    "ontologyId": "UBERON:0001898",
+    "index": 272,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "hypothalamus",
+    "organ": "brain-female",
+    "label": "hypothalamus",
+    "ontologyId": "UBERON:0001898",
+    "index": 273,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "fourth ventricle",
+    "organ": "brain-female",
+    "label": "fourth ventricle",
+    "ontologyId": "UBERON:0002422",
+    "index": 121,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "fourth ventricle",
+    "organ": "brain-female",
+    "label": "fourth ventricle",
+    "ontologyId": "UBERON:0002422",
+    "index": 259,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "brain",
+    "organ": "brain-male",
+    "label": "brain",
+    "ontologyId": "UBERON:0000955",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "olfactory bulb",
+    "organ": "brain-male",
+    "label": "olfactory bulb",
+    "ontologyId": "UBERON:0002264",
+    "index": 2,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "optic chiasm",
+    "organ": "brain-male",
+    "label": "optic chiasma",
+    "ontologyId": "UBERON:0000959",
+    "index": 287,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "optic tract",
+    "organ": "brain-male",
+    "label": "optic tract",
+    "ontologyId": "UBERON:0001908",
+    "index": 54,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "optic tract",
+    "organ": "brain-male",
+    "label": "optic tract",
+    "ontologyId": "UBERON:0001908",
+    "index": 189,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "corpus callosum",
+    "organ": "brain-male",
+    "label": "corpus callosum",
+    "ontologyId": "UBERON:0002336",
+    "index": 51,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "corpus callosum",
+    "organ": "brain-male",
+    "label": "corpus callosum",
+    "ontologyId": "UBERON:0002336",
+    "index": 186,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "hypothalamus",
+    "organ": "brain-male",
+    "label": "hypothalamus",
+    "ontologyId": "UBERON:0001898",
+    "index": 271,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "hypothalamus",
+    "organ": "brain-male",
+    "label": "hypothalamus",
+    "ontologyId": "UBERON:0001898",
+    "index": 272,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "fourth ventricle",
+    "organ": "brain-male",
+    "label": "fourth ventricle",
+    "ontologyId": "UBERON:0002422",
+    "index": 120,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "fourth ventricle",
+    "organ": "brain-male",
+    "label": "fourth ventricle",
+    "ontologyId": "UBERON:0002422",
+    "index": 258,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "spinal cord",
+    "organ": "spinal-cord-female",
+    "label": "spinal cord",
+    "ontologyId": "UBERON:0002240",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-female/v1.1/assets/3d-vh-f-spinal-cord.glb"
+  },
+  {
+    "group": "nervous",
+    "target": "spinal cord",
+    "organ": "spinal-cord-male",
+    "label": "spinal cord",
+    "ontologyId": "UBERON:0002240",
+    "index": 0,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-male/v1.1/assets/3d-vh-m-spinal-cord.glb"
+  }
+];
 const key=s=>String(s).trim().toLowerCase();
 export function hraLearningReferences(group,target,entries){
  const result=[];
- for(const link of HRA_LEARNING_LINKS.filter(x=>x.group===group&&x.target===key(target))){
+ for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
   for(const e of entries){
    if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.approvedForDistribution!==false||e.registrationValidated!==false||!e.source?.startsWith('https://cdn.humanatlas.io/digital-objects/ref-organ/'+link.organ+'/'))continue;
+   if(link.assetURL&&e.source!==link.assetURL)continue;
    const rows=link.kind==='GROUP'?e.sourceGroups:e.sourceCrosswalk;
    const c=rows?.filter(x=>x.index===link.index&&x.ontologyId===link.ontologyId&&key(x.label)===key(link.label))||[];
    if(c.length!==1)continue;
