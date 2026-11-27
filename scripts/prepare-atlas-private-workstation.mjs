@@ -52,6 +52,6 @@ export async function prepareWorkstation(opts){
  }
  const suite=loadAuditedReferenceSuite(q,{includeHyoid:true,includeExpansion:true,includeAuditedExpansion:expanded});
  assert(suite.publicRelease==='NO_GO'&&suite.bp.assets.size===(expanded?436:376)&&suite.hra.assets.size===(expanded?24:9)&&suite.plan.bp.length===(expanded?19:17)&&suite.plan.hra.length===(expanded?5:2));
- return {...report,prepared:true,bp3dElements:expanded?436:376,hraFiles:expanded?24:9,command:['node','scripts/preview-independent-atlas.mjs',folder,'--audited-reference-suite','--include-expansion','--original-ui',...(expanded?['--include-audited-expansion']:[])],readOnlyQCCommand:['node','scripts/audit-atlas-workstation-pack.mjs',folder,'--include-expansion']};
+ return {...report,prepared:true,bp3dElements:expanded?436:376,hraFiles:expanded?24:9,command:['node','scripts/preview-independent-atlas.mjs',folder,'--audited-reference-suite','--include-expansion','--original-ui',...(expanded?['--include-audited-expansion']:[])],readOnlyQCCommand:['node','scripts/audit-atlas-workstation-pack.mjs',folder,expanded?'--include-audited-expansion':'--include-expansion']};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){const result=await prepareWorkstation(parsePrepareArgs(process.argv.slice(2)));console.log('ATLAS WORKSTATION PREPARE RESULT '+JSON.stringify(result));if(!result.prepared)process.exitCode=2;}

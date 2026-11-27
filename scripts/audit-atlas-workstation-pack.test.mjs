@@ -24,3 +24,5 @@ test('unknown raw coverage stays unresolved rather than net-new',()=>{
 });
 
 test('explicit read-only workstation profiles match the retained evidence inventory',()=>{assert.deepEqual(workstationProfile(),{includeHyoid:false,includeExpansion:false,expectedElements:246,expectedConcepts:239});assert.equal(workstationProfile(['--include-hyoid']).expectedElements,248);assert.deepEqual(workstationProfile(['--include-expansion']),{includeHyoid:true,includeExpansion:true,expectedElements:376,expectedConcepts:368});assert.throws(()=>workstationProfile(['--unknown']));assert.throws(()=>workstationProfile(['--include-expansion','--include-expansion']));});
+
+test('expanded workstation audit uses 436 retained elements and 428 FMA identities, not the legacy profile',()=>{assert.deepEqual(workstationProfile(['--include-audited-expansion']),{includeHyoid:true,includeExpansion:true,includeAuditedExpansion:true,expectedElements:436,expectedConcepts:428});assert.throws(()=>workstationProfile(['--include-audited-expansion','--include-audited-expansion']));});
