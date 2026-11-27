@@ -22,7 +22,7 @@ jobs:
           node-version: 22
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
-      - run: node --test scripts/atlas-audited-reference-suite.test.mjs scripts/atlas-components-36.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs
+      - run: node --test scripts/atlas-audited-reference-suite.test.mjs scripts/atlas-components-36.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/independent-atlas-learning-coverage.test.mjs
       - run: npm test --prefix apps/atlas-independent
       - run: node scripts/replay-audited-bp3d43-suite.mjs --all-expanded-fresh
       - run: |

@@ -188,6 +188,46 @@ try{
   assert.equal(opened,allHra?88:24);await guided.getByRole('button',{name:'Tutup'}).click();await guided.waitFor({state:'hidden'});
   console.log('HRA GUIDED BROWSER PASS: '+guidedHraRows.length+' checkpoints, '+opened+' exact source node/group opens and isolated descendant sets; no coverage promotion.');
  }
+ if(real43&&[36,436].includes(real43.assets.size)){
+  const {COMPONENT43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-component-catalog.js');
+  const {learningCoverage}=await import('./independent-atlas-learning-coverage.mjs');
+  const group=e=>e.system==='vascular'?(e.target.endsWith(' vein')?'venous':'arterial'):e.system;
+  const specs=[...new Map(COMPONENT43_TOPIC_ROWS.map(e=>[group(e)+':'+e.target,[group(e),[e.target]]])).values()];
+  // Empty source index deliberately exercises unresolved checkpoints with real publisher GLBs.
+  const source={tree:'isa',names:[],elements:new Map(),archiveIndex:new Map()};
+  const componentCoverage=learningCoverage({sources:[source],body:[],references43:real43.inventory.items,specs});
+  const componentRows=componentCoverage.rows.map(r=>({...r,referenceCandidates:r.referenceCandidates.filter(a=>COMPONENT43_TOPIC_ROWS.some(e=>e.fj===a.fj&&e.target===r.target))}));
+  assert.equal(componentRows.length,17);assert.equal(componentRows.reduce((n,r)=>n+r.referenceCandidates.length,0),36);assert(componentRows.every(r=>r.referenceCandidates.every(a=>a.relation==='RELATED_COMPONENT_ONLY')));
+  fixtureCoverage.rows.push(...componentRows);fixtureCoverage.targets=fixtureCoverage.rows.length;fixtureCoverage.referenceOnlyTargets=componentRows.length;
+  await page.getByRole('button',{name:'Belajar',exact:true}).click();
+  const system=guided.getByRole('combobox',{name:'Pilih sistem anatomi'}),choice=guided.getByRole('combobox',{name:'Pilih representasi sumber'}),dialog=page.locator('#referenceDialog');
+  await system.locator('option[value="endocrine"]').waitFor({state:'attached'});
+  let opened=0;
+  for(const group of [...new Set(componentRows.map(r=>r.group))]){
+   await system.selectOption(group);
+   const rows=fixtureCoverage.rows.filter(r=>r.group===group);
+   for(const [i,row] of rows.entries()){
+    await guided.getByRole('heading',{name:row.target,exact:true}).waitFor();
+    if(componentRows.includes(row)){
+     assert.equal(await choice.locator('option').count(),row.referenceCandidates.length);
+     const progress=await guided.locator(':scope > p').first().innerText();
+     for(const a of row.referenceCandidates){
+      const e=real43.inventory.items.find(x=>x.id===a.id);assert(e);
+      await choice.selectOption(a.id);assert((await choice.locator('option:checked').innerText()).includes('komponen terkait, bukan struktur utuh'));
+      await guided.getByRole('button',{name:'Tampilkan 3D'}).click();
+      await page.waitForFunction(({id,triangles})=>{const v=document.getElementById('referenceViewport');return v.dataset.renderedId===id&&v.dataset.renderedTriangles===String(triangles);},{id:e.id,triangles:e.triangles},{timeout:60000});
+      assert((await dialog.locator('#referenceSource').innerText()).includes(e.fj));
+      await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
+      await guided.getByRole('status').filter({hasText:'tidak dihitung sebagai struktur utuh'}).waitFor();
+      assert.equal(await guided.locator(':scope > p').first().innerText(),progress);opened++;
+     }
+    }
+    if(i<rows.length-1)await guided.getByRole('button',{name:'Berikutnya'}).click();
+   }
+  }
+  assert.equal(opened,36);await guided.getByRole('button',{name:'Tutup'}).click();await guided.waitFor({state:'hidden'});
+  console.log('BP3D43 GUIDED COMPONENT BROWSER PASS: 17 parent checkpoints, 36 exact publisher component opens; no whole-structure score promotion.');
+ }
  if(realLymph){
   const dialog=page.locator('#referenceDialog'),link=dialog.locator('#lymphaticHierarchyLink');
   let response=page.waitForResponse(r=>r.url().endsWith(hierarchyRoute)&&r.request().method()==='HEAD');await page.getByRole('button',{name:'HRA',exact:true}).click();assert.equal((await response).status(),404);assert(await link.isHidden());await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});

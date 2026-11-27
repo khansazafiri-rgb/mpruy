@@ -1,7 +1,7 @@
 // Guided learning from verified inventory links only. No guessed identity,
 // clinical completeness claim, or score for an unavailable representation.
 import {permittedLearningGroup} from './learning-links.js';
-import {referenceRelation,privateReference} from './learning-reference-links.js';
+import {referenceRelation,privateReference,pinnedComponentRelation} from './learning-reference-links.js';
 import {hraLearningReferences} from './hra-learning-links.js';
 const kinds=new Set(['BODY_MODEL','EXACT_ELEMENT_SELECTION','NATIVE_CONTEXT_CANDIDATE','ISOLATED_REFERENCE']);
 const validId=id=>/^(bp|sel)-[a-f0-9]{24}$/.test(id||'');
@@ -22,7 +22,9 @@ export function guidedTracks(doc,entries,groups,referenceEntries=[],hraEntries=[
   const references=[];
   if(['NOT_FOUND_BY_EXACT_CHECK','SOURCE_AVAILABLE_NOT_EXPORTED'].includes(r.status)&&Array.isArray(r.referenceCandidates))for(const a of r.referenceCandidates){
    const e=referenceById.get(a.id);
-   if(!e||!privateReference(e)||a.type!=='BP43_SINGLE_SOURCE_ELEMENT'||a.name!==e.name||a.fmaId!==e.fmaId||a.fj!==e.fj||(r.fmaId&&r.fmaId!==e.fmaId)||!referenceRelation(r.group,r.target,e.name,e.fmaId)||a.relation!==referenceRelation(r.group,r.target,e.name,e.fmaId)||references.some(x=>x.id===e.id))continue;
+   if(!e||!privateReference(e)||a.type!=='BP43_SINGLE_SOURCE_ELEMENT'||a.name!==e.name||a.fmaId!==e.fmaId||a.fj!==e.fj||references.some(x=>x.id===e.id))continue;
+   const relation=pinnedComponentRelation(r.group,r.target,e)||((!r.fmaId||r.fmaId===e.fmaId)?referenceRelation(r.group,r.target,e.name,e.fmaId):null);
+   if(!relation||a.relation!==relation)continue;
    references.push({id:e.id,type:a.type,name:e.name,fj:e.fj,relation:a.relation});
   }
   if(r.status==='NOT_FOUND_BY_EXACT_CHECK'&&Array.isArray(r.hraCandidates))for(const a of hraLearningReferences(r.group,r.target,hraEntries)){if(r.hraCandidates.some(x=>['id','assetId','nodeIndex','ontologyId','name','organ','type','kind'].every(k=>x[k]===a[k])))references.push(a);}
