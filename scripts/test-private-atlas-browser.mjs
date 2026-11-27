@@ -247,11 +247,12 @@ try{
   }
   if(real43.assets.size===24){const system=dialog.locator('#referenceSystemTopic'),region=dialog.locator('#referenceRegionTopic');await system.selectOption('muscular');assert.equal(await select.locator('option').count(),24);await region.selectOption('upper-limb');assert.equal(await select.locator('option').count(),6);await region.selectOption('lower-limb');assert.equal(await select.locator('option').count(),18);await region.selectOption('all');await system.selectOption('all');}
   if([2,248].includes(real43.assets.size)){const system=dialog.locator('#referenceSystemTopic'),region=dialog.locator('#referenceRegionTopic');await system.selectOption('skeletal');await region.selectOption('neck');assert.equal(await select.locator('option').count(),2);await system.selectOption('all');await region.selectOption('all');}
-  if(real43.assets.size===376){
+  if([376,436].includes(real43.assets.size)){
    const {REFERENCE43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-topic-catalog.js'),{SUPPLEMENTAL43_TOPIC_ROWS,EXPANSION43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-topics.js');
-   const expected=[...REFERENCE43_TOPIC_ROWS,...SUPPLEMENTAL43_TOPIC_ROWS,...EXPANSION43_TOPIC_ROWS],region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic'),search=dialog.locator('#referenceSearch');
+   const {MUSCLE43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-muscle-catalog.js'),{COMPONENT43_TOPIC_ROWS}=await import('../apps/atlas-independent/src/reference43-component-catalog.js');
+   const expected=[...REFERENCE43_TOPIC_ROWS,...SUPPLEMENTAL43_TOPIC_ROWS,...EXPANSION43_TOPIC_ROWS,...(real43.assets.size===436?[...MUSCLE43_TOPIC_ROWS,...COMPONENT43_TOPIC_ROWS]:[])],region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic'),search=dialog.locator('#referenceSearch');
    for(const [r,s] of [['head-neck','nervous'],['head-neck','vascular'],['spine','skeletal'],['lower-limb','skeletal'],['neck','skeletal'],['foot','nervous']]){await region.selectOption(r);await system.selectOption(s);const ids=new Set(expected.filter(x=>x.region===r&&x.system===s).map(x=>x.fj));const actual=await select.locator('option').evaluateAll(nodes=>nodes.map(o=>o.value));assert.deepEqual(actual.sort(),real43.inventory.items.filter(x=>ids.has(x.fj)).map(x=>x.id).sort());if(!ids.size)assert(await dialog.locator('#referenceLoad').isDisabled());}
-   await region.selectOption('all');await system.selectOption('all');await search.fill('FJ3931');assert.equal(await select.locator('option').count(),1);await search.fill('Hyoid bone');assert.equal(await select.locator('option').count(),2);await search.fill('');assert.equal(await select.locator('option').count(),376);
+   await region.selectOption('all');await system.selectOption('all');await search.fill('FJ3931');assert.equal(await select.locator('option').count(),1);await search.fill('Hyoid bone');assert.equal(await select.locator('option').count(),2);await search.fill('');assert.equal(await select.locator('option').count(),real43.assets.size);
    console.log('BP3D43 FULL TOPIC FILTER PASS: six exact regional/system intersections and old/new source ID search.');
   }
   for(const e of real43.inventory.items){
@@ -319,7 +320,7 @@ try{
   }
   await challenge.locator('#referenceChallengeProgress').filter({hasText:glossaryCount+'/'+glossaryCount+' benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
-  if([24,36,115,128,129,147,177,192,224,246,248,376].includes(real43.assets.size)){
+  if([24,36,115,128,129,147,177,192,224,246,248,376,436].includes(real43.assets.size)){
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
    await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
