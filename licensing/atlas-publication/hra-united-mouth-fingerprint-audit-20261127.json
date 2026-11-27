@@ -1,0 +1,678 @@
+{
+  "schema": 1,
+  "sourceCommit": "19ad11441d06f993c3dc2e20d2af15afe6aec8ae",
+  "workflowRun": 45939060822,
+  "conclusion": "success",
+  "rows": [
+    {
+      "schema": 1,
+      "id": "united-female",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 374505632,
+      "dvcMD5": "5e4aca68ceea6aa9b21aa9c333c54fec",
+      "gitGLBBlob": null,
+      "metadataBlob": "b51d522fc0690faa34f35595f12304d1e3715b04",
+      "sha256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+      "results": [
+        {
+          "nodeName": "VH_F_vagina",
+          "ontologyId": "UBERON:0000996",
+          "label": "vagina",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 437,
+          "vertices": 4461,
+          "triangles": 8780,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 4461,
+              "triangles": 8780,
+              "positionSHA256": "d5b595ef0b8652c9b189265b54fe40070481718ade78f680b5f54d5bad550b23",
+              "indexSHA256": "53b5236d510f6ed86ddb91fa77640af089eccd96f1314e1c34e898da63dd4d15"
+            }
+          ],
+          "transformChainSHA256": "82e81eff8fdb5188cbadaa4754e41b0adc3108568125a7f65fece0475d932f94",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 498,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 499,
+              "vertices": 5964,
+              "triangles": 2982,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 5964,
+                  "triangles": 2982,
+                  "positionSHA256": "8a9eeca5ae296ad62a768cf9fe03ab05ba1c0ef81cf5649aa7228f713dea4ab3",
+                  "indexSHA256": "cac6feb0f555e900a686681e967d8fdaeb6d3b48122451b319d28116ae6f7400"
+                }
+              ],
+              "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7"
+            },
+            {
+              "nodeIndex": 500,
+              "vertices": 6828,
+              "triangles": 3414,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 6828,
+                  "triangles": 3414,
+                  "positionSHA256": "bf1e4ba2540bba6cbcf1749939aed87ba7d0cabc40f3a87eeb40f112bd728c1b",
+                  "indexSHA256": "2c1243d89540afb5554189636b77057f6ff67e4b9d2d6aac9f3ea916e70c1338"
+                }
+              ],
+              "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7"
+            }
+          ],
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 572,
+          "vertices": 764,
+          "triangles": 1472,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 764,
+              "triangles": 1472,
+              "positionSHA256": "646fa26d66db1e1c1e2aedd29021f5425bd037cc5702038b6dd3f499a820ceef",
+              "indexSHA256": "7573a7902a100b846a79a99db91ed4b6dae7a7ad2d7f4d1e1173f2f469a912d2"
+            }
+          ],
+          "transformChainSHA256": "41c59fa49883d81ae06e0f85cd424fdd923da420c94d48b79dadc845a96ee61f",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1008,
+          "vertices": 697,
+          "triangles": 1390,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 697,
+              "triangles": 1390,
+              "positionSHA256": "f357fad89b24b4c96c41b172c15a41f010ae4883535db960752b64d3c77080c1",
+              "indexSHA256": "1faac2c36c7c661b187d0f6c8aae426cd8a06c5c01550487ed6af4388ac9d8fa"
+            }
+          ],
+          "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1103,
+          "vertices": 496,
+          "triangles": 988,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 496,
+              "triangles": 988,
+              "positionSHA256": "97d80d8017a0771aec166d1d21d2e75e4e2461879373d9f17e4bc41a0aee7e7a",
+              "indexSHA256": "a662f52bdbafb0f8cc0eb20581abc8eaac85734ee038cc7f553534fa7a9235e2"
+            }
+          ],
+          "transformChainSHA256": "41c59fa49883d81ae06e0f85cd424fdd923da420c94d48b79dadc845a96ee61f",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1104,
+          "vertices": 496,
+          "triangles": 988,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 496,
+              "triangles": 988,
+              "positionSHA256": "1cea831723ad4e9b35e83f1b074788b5f04d298a587416b25d52f4521e12b1f5",
+              "indexSHA256": "4522c8a1f4fefe39cf7078039df06b0dac33c18977a59122f9230d7891b97ac3"
+            }
+          ],
+          "transformChainSHA256": "41c59fa49883d81ae06e0f85cd424fdd923da420c94d48b79dadc845a96ee61f",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1136,
+          "vertices": 496,
+          "triangles": 988,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 496,
+              "triangles": 988,
+              "positionSHA256": "540979f1f27e616c6950a1e668cbc52143841b60bbf1a39fb240833e5a234b56",
+              "indexSHA256": "fc29b7d32b2bb7f809952c8f35dadda434b4f65f1799d17a0b5036d54dd851a8"
+            }
+          ],
+          "transformChainSHA256": "41c59fa49883d81ae06e0f85cd424fdd923da420c94d48b79dadc845a96ee61f",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1137,
+          "vertices": 496,
+          "triangles": 988,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 496,
+              "triangles": 988,
+              "positionSHA256": "bf2343d16a94d7748b7e67d50444276b3bc418558a2c2e5b900e0c1df322a1c4",
+              "indexSHA256": "c7bb8b85929a63ba58246276b3f2c4c768fdabd0a04d1ab6dd461401c52016b1"
+            }
+          ],
+          "transformChainSHA256": "41c59fa49883d81ae06e0f85cd424fdd923da420c94d48b79dadc845a96ee61f",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 499,
+          "vertices": 5964,
+          "triangles": 2982,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 5964,
+              "triangles": 2982,
+              "positionSHA256": "8a9eeca5ae296ad62a768cf9fe03ab05ba1c0ef81cf5649aa7228f713dea4ab3",
+              "indexSHA256": "cac6feb0f555e900a686681e967d8fdaeb6d3b48122451b319d28116ae6f7400"
+            }
+          ],
+          "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 500,
+          "vertices": 6828,
+          "triangles": 3414,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 6828,
+              "triangles": 3414,
+              "positionSHA256": "bf1e4ba2540bba6cbcf1749939aed87ba7d0cabc40f3a87eeb40f112bd728c1b",
+              "indexSHA256": "2c1243d89540afb5554189636b77057f6ff67e4b9d2d6aac9f3ea916e70c1338"
+            }
+          ],
+          "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7",
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308898161
+    },
+    {
+      "schema": 1,
+      "id": "mouth-female",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-female/v1.0/assets/3d-vh-f-mouth.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 103690760,
+      "dvcMD5": "fe810cf868cfb818e0cbc1fc657a671c",
+      "gitGLBBlob": null,
+      "metadataBlob": "476983942c53a852f8b03e2e9bb37aec411604fb",
+      "sha256": "bd8e24e9d52b49719c6a1cafa1f54fc40c1d3f811b9d32df78d5c20ebb78c197",
+      "results": [
+        {
+          "nodeName": "VH_F_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 5,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 6,
+              "vertices": 5964,
+              "triangles": 2982,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 5964,
+                  "triangles": 2982,
+                  "positionSHA256": "8a9eeca5ae296ad62a768cf9fe03ab05ba1c0ef81cf5649aa7228f713dea4ab3",
+                  "indexSHA256": "cac6feb0f555e900a686681e967d8fdaeb6d3b48122451b319d28116ae6f7400"
+                }
+              ],
+              "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c"
+            },
+            {
+              "nodeIndex": 7,
+              "vertices": 6828,
+              "triangles": 3414,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 6828,
+                  "triangles": 3414,
+                  "positionSHA256": "bf1e4ba2540bba6cbcf1749939aed87ba7d0cabc40f3a87eeb40f112bd728c1b",
+                  "indexSHA256": "2c1243d89540afb5554189636b77057f6ff67e4b9d2d6aac9f3ea916e70c1338"
+                }
+              ],
+              "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c"
+            }
+          ],
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 6,
+          "vertices": 5964,
+          "triangles": 2982,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 5964,
+              "triangles": 2982,
+              "positionSHA256": "8a9eeca5ae296ad62a768cf9fe03ab05ba1c0ef81cf5649aa7228f713dea4ab3",
+              "indexSHA256": "cac6feb0f555e900a686681e967d8fdaeb6d3b48122451b319d28116ae6f7400"
+            }
+          ],
+          "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_F_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 7,
+          "vertices": 6828,
+          "triangles": 3414,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 6828,
+              "triangles": 3414,
+              "positionSHA256": "bf1e4ba2540bba6cbcf1749939aed87ba7d0cabc40f3a87eeb40f112bd728c1b",
+              "indexSHA256": "2c1243d89540afb5554189636b77057f6ff67e4b9d2d6aac9f3ea916e70c1338"
+            }
+          ],
+          "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c",
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308898313
+    },
+    {
+      "schema": 1,
+      "id": "mouth-male",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 53487620,
+      "dvcMD5": null,
+      "gitGLBBlob": "141812bc3200e7f6a637eda77ce8931f6f5909bf",
+      "metadataBlob": "34c2af8a949fb02deb2868f1c788cb613f065e1d",
+      "sha256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+      "results": [
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 5,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 6,
+              "vertices": 1575,
+              "triangles": 2982,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 1575,
+                  "triangles": 2982,
+                  "positionSHA256": "0441d07e6453981a0e32069f67f90e95809868ffdd0409424ebe8d8dce497d89",
+                  "indexSHA256": "44330798cf8938ce9fb60f976e981bd8cb34f4a92b8e7355d9a18b5ad27aac44"
+                }
+              ],
+              "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c"
+            },
+            {
+              "nodeIndex": 7,
+              "vertices": 1832,
+              "triangles": 3414,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 1832,
+                  "triangles": 3414,
+                  "positionSHA256": "807bd956e7bbae5b48e079565428b7e8c45050abc250e5f30698eab9e797a9ab",
+                  "indexSHA256": "dc983a69a31ecda0ecf2948b874ccf65ee5a1aa5b6bc3ebc5d4fed57e785fc3b"
+                }
+              ],
+              "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c"
+            }
+          ],
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 6,
+          "vertices": 1575,
+          "triangles": 2982,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 1575,
+              "triangles": 2982,
+              "positionSHA256": "0441d07e6453981a0e32069f67f90e95809868ffdd0409424ebe8d8dce497d89",
+              "indexSHA256": "44330798cf8938ce9fb60f976e981bd8cb34f4a92b8e7355d9a18b5ad27aac44"
+            }
+          ],
+          "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 7,
+          "vertices": 1832,
+          "triangles": 3414,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 1832,
+              "triangles": 3414,
+              "positionSHA256": "807bd956e7bbae5b48e079565428b7e8c45050abc250e5f30698eab9e797a9ab",
+              "indexSHA256": "dc983a69a31ecda0ecf2948b874ccf65ee5a1aa5b6bc3ebc5d4fed57e785fc3b"
+            }
+          ],
+          "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c",
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308898491
+    },
+    {
+      "schema": 1,
+      "id": "united-male",
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "bytes": 241633636,
+      "dvcMD5": "69857009518d156a390ebe42b57723f1",
+      "gitGLBBlob": null,
+      "metadataBlob": "862320d450407960df63daaa3a766b130994ef02",
+      "sha256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+      "results": [
+        {
+          "nodeName": "VH_M_parotid_gland",
+          "ontologyId": "UBERON:0001831",
+          "label": "Parotid gland",
+          "status": "EXACT_SOURCE_GROUP_GEOMETRY_CANDIDATE",
+          "nodeIndex": 459,
+          "descendantMeshes": [
+            {
+              "nodeIndex": 460,
+              "vertices": 1575,
+              "triangles": 2982,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 1575,
+                  "triangles": 2982,
+                  "positionSHA256": "0441d07e6453981a0e32069f67f90e95809868ffdd0409424ebe8d8dce497d89",
+                  "indexSHA256": "44330798cf8938ce9fb60f976e981bd8cb34f4a92b8e7355d9a18b5ad27aac44"
+                }
+              ],
+              "transformChainSHA256": "2988ce449a189e6f6caaf74c1fa57aced64b8ff20c338494f999eda946dbdd15"
+            },
+            {
+              "nodeIndex": 461,
+              "vertices": 1832,
+              "triangles": 3414,
+              "orderedLocalPrimitiveFingerprints": [
+                {
+                  "vertices": 1832,
+                  "triangles": 3414,
+                  "positionSHA256": "807bd956e7bbae5b48e079565428b7e8c45050abc250e5f30698eab9e797a9ab",
+                  "indexSHA256": "dc983a69a31ecda0ecf2948b874ccf65ee5a1aa5b6bc3ebc5d4fed57e785fc3b"
+                }
+              ],
+              "transformChainSHA256": "2988ce449a189e6f6caaf74c1fa57aced64b8ff20c338494f999eda946dbdd15"
+            }
+          ],
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_common_bile_duct",
+          "ontologyId": "UBERON:0001174",
+          "label": "common bile duct",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 528,
+          "vertices": 2768,
+          "triangles": 5428,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 2768,
+              "triangles": 5428,
+              "positionSHA256": "cc876bd92ad680e0ed4026133b58d0a64d5ed3e84e028aca4cd5ff8eeabc0f76",
+              "indexSHA256": "8e4ddb00cbb77475accc9d9a0119ff2d876f3a326e1ed1df4d53fb1d265a9f5f"
+            }
+          ],
+          "transformChainSHA256": "41c59fa49883d81ae06e0f85cd424fdd923da420c94d48b79dadc845a96ee61f",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_coccyx",
+          "ontologyId": "UBERON:0001350",
+          "label": "coccyx",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 969,
+          "vertices": 422,
+          "triangles": 840,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 422,
+              "triangles": 840,
+              "positionSHA256": "db1a8a05806d8c413ebead3a205027777fb692f810d1c33b2de831f69b2c0b27",
+              "indexSHA256": "a57c28affee1bed1d448ffe46262702796b4411855474254de00031c0a4c7c0b"
+            }
+          ],
+          "transformChainSHA256": "063f6c36be70111b1870a1d085c8cc395c4aac2fc09988e75a2d1af0fbdc461c",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44615",
+          "label": "Right anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 994,
+          "vertices": 514,
+          "triangles": 1024,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 514,
+              "triangles": 1024,
+              "positionSHA256": "9787babbd7e058dac1180c9c34647633cca3eaa8e12c99da787e17d760370c68",
+              "indexSHA256": "6dbe209ecb061ffb73169756de52527920a51f357a3a34694ae8f278b6ffb290"
+            }
+          ],
+          "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_R",
+          "ontologyId": "FMA:44618",
+          "label": "Right posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 997,
+          "vertices": 185,
+          "triangles": 366,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 185,
+              "triangles": 366,
+              "positionSHA256": "908f2eb2e3365602da4b32869f2a54cbb994a7f69d621a384ffc1b7d3c95bc50",
+              "indexSHA256": "cd924301a027ab0cfda09444bf17d7316d899fefdd632fb86ca98e12bcc12227"
+            }
+          ],
+          "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44619",
+          "label": "Left posterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1026,
+          "vertices": 185,
+          "triangles": 366,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 185,
+              "triangles": 366,
+              "positionSHA256": "b9dff82a20fa774795089151208fcd544f0e1e5935d9807219dcb35a363c87eb",
+              "indexSHA256": "0131afe15dfb23588f6d5642e3156e55bbebee0cbda8fe1c4f6c88c455374f84"
+            }
+          ],
+          "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_L",
+          "ontologyId": "FMA:44616",
+          "label": "Left anterior cruciate ligament",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 1028,
+          "vertices": 514,
+          "triangles": 1024,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 514,
+              "triangles": 1024,
+              "positionSHA256": "486593604ae0a744e904ffd309813069993ef96a34beb6d0bf015d57af0f80c2",
+              "indexSHA256": "35156d5866f30256e089306c17eeecce789c5673caf524071f45e1c0852db2d2"
+            }
+          ],
+          "transformChainSHA256": "ee736357bbbb900b35fdf3839f2b31042a6c10de7d382a7132f9eb92b763f2a7",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_R",
+          "ontologyId": "FMA:59797",
+          "label": "Right parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 460,
+          "vertices": 1575,
+          "triangles": 2982,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 1575,
+              "triangles": 2982,
+              "positionSHA256": "0441d07e6453981a0e32069f67f90e95809868ffdd0409424ebe8d8dce497d89",
+              "indexSHA256": "44330798cf8938ce9fb60f976e981bd8cb34f4a92b8e7355d9a18b5ad27aac44"
+            }
+          ],
+          "transformChainSHA256": "2988ce449a189e6f6caaf74c1fa57aced64b8ff20c338494f999eda946dbdd15",
+          "exactNameMatches": 1
+        },
+        {
+          "nodeName": "VH_M_parotid_gland_L",
+          "ontologyId": "FMA:59798",
+          "label": "Left parotid gland",
+          "status": "EXACT_NAMED_MESH_GEOMETRY_CANDIDATE",
+          "nodeIndex": 461,
+          "vertices": 1832,
+          "triangles": 3414,
+          "orderedLocalPrimitiveFingerprints": [
+            {
+              "vertices": 1832,
+              "triangles": 3414,
+              "positionSHA256": "807bd956e7bbae5b48e079565428b7e8c45050abc250e5f30698eab9e797a9ab",
+              "indexSHA256": "dc983a69a31ecda0ecf2948b874ccf65ee5a1aa5b6bc3ebc5d4fed57e785fc3b"
+            }
+          ],
+          "transformChainSHA256": "2988ce449a189e6f6caaf74c1fa57aced64b8ff20c338494f999eda946dbdd15",
+          "exactNameMatches": 1
+        }
+      ],
+      "componentLineage": "PENDING_MIXED_COMPOSITE_SOURCE",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false,
+      "publicRelease": "NO_GO",
+      "workflowJob": 140308898518
+    }
+  ],
+  "directMeshCandidates": 21,
+  "sourceGroupCandidates": 4,
+  "duplicateLocalParotidPairs": [
+    {
+      "label": "Right parotid gland",
+      "sex": "female",
+      "unitedNode": 499,
+      "mouthNode": 6,
+      "localOrderedGeometryEqual": true,
+      "transformChainEqual": false,
+      "preferredSource": "mouth-female"
+    },
+    {
+      "label": "Left parotid gland",
+      "sex": "female",
+      "unitedNode": 500,
+      "mouthNode": 7,
+      "localOrderedGeometryEqual": true,
+      "transformChainEqual": false,
+      "preferredSource": "mouth-female"
+    },
+    {
+      "label": "Right parotid gland",
+      "sex": "male",
+      "unitedNode": 460,
+      "mouthNode": 6,
+      "localOrderedGeometryEqual": true,
+      "transformChainEqual": false,
+      "preferredSource": "mouth-male"
+    },
+    {
+      "label": "Left parotid gland",
+      "sex": "male",
+      "unitedNode": 461,
+      "mouthNode": 7,
+      "localOrderedGeometryEqual": true,
+      "transformChainEqual": false,
+      "preferredSource": "mouth-male"
+    }
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}
