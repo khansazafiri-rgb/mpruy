@@ -37,6 +37,8 @@ jobs:
           npm test --prefix apps/atlas-independent
           node --test scripts/independent-atlas-*.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/serve-verified-private-model.test.mjs scripts/*hra*.test.mjs scripts/*bp3d*.test.mjs scripts/commercial-release.test.mjs scripts/production-caddy-quarantine.test.mjs scripts/build-atlas-review-queue.test.mjs scripts/export-atlas-human-review.test.mjs scripts/atlas-private-request.test.mjs
           npm test --prefix apps/web
+      - name: BP3D archive drift comparison fixtures
+        run: python3 scripts/audit-bp3d-archive-drift.py --test
       - name: Actual SQLite snapshot, decompression, restore and failure injection
         run: python3 scripts/backup-rehearsal.test.py
       - name: Dependency security (registry failure is not a pass)
