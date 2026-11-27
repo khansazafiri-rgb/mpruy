@@ -79,18 +79,22 @@ def scene_links(z, mesh_paths, anatomical=None):
             if tag == "modelstorage":
                 key = node.get("id", "")
                 file = unquote(node.get("fileName", ""))
-                rel = PurePosixPath(file)
-                if not key or not file or rel.is_absolute() or ".." in rel.parts or "\\" in file or ":" in file:
+                counts["modelStorageNodes"] += 1
+                if not key:
+                    counts["storageMissingID"] += 1
                     continue
-                target = str(PurePosixPath(info.filename).parent / rel)
+                target = source.storage_path_diagnostics(info.filename, file, mesh_paths, counts)
                 if key in storage:
+                    counts["duplicateStorageID"] += 1
                     storage[key] = None
                 else:
-                    storage[key] = target if target in mesh_paths else None
+                    storage[key] = target
         for node in root.iter():
             if node.tag.rsplit("}", 1)[-1].lower() != "model":
                 continue
             target = source.model_storage_target(node, storage, counts)
+            if anatomical_label(node.get("name", "")):
+                counts["allowlistedModelLabelsLinked" if target else "allowlistedModelLabelsUnlinked"] += 1
             ident = node.get("id", "")
             if target and ident:
                 node_hash = digest((info.filename + "\0" + ident).encode("utf8"))

@@ -44,6 +44,7 @@ def audit(archive, kind):
     filename_candidates = []
     with zipfile.ZipFile(archive) as z:
         members = {i.filename:i for i in z.infolist() if not i.is_dir()}
+        mesh_paths = {member for member in members if PurePosixPath(member).suffix.lower() in source.MESH}
         for member, info in members.items():
             if PurePosixPath(member).suffix.lower() in source.MESH:
                 # Exact allowlisted basename only, never emit unknown filenames or infer identity.
@@ -74,22 +75,27 @@ def audit(archive, kind):
                     continue
                 diagnostics['storageNodes'] += 1
                 ident, name = n.get("id",""), unquote(n.get("fileName",""))
-                rel = PurePosixPath(name)
-                if not ident or not name or rel.is_absolute() or ".." in rel.parts or "\\" in name or ":" in name:
-                    diagnostics['unsafeOrMissingStoragePath'] += 1
+                if not ident:
+                    diagnostics['storageMissingID'] += 1
                     continue
-                target = str(PurePosixPath(info.filename).parent / rel)
-                valid = target in members and rel.suffix.lower() in source.MESH
-                stores[ident] = target if valid and ident not in stores else None
-                diagnostics['resolvedStorage' if valid else 'unresolvedStorage'] += 1
+                target = source.storage_path_diagnostics(info.filename, name, mesh_paths, diagnostics)
+                if ident in stores:
+                    diagnostics['duplicateStorageID'] += 1
+                    stores[ident] = None
+                else:
+                    stores[ident] = target
+                diagnostics['resolvedStorage' if target else 'unresolvedStorage'] += 1
             for n in root.iter():
                 if n.tag.rsplit("}",1)[-1].lower() != "model":
                     continue
                 diagnostics['modelNodes'] += 1
                 target = source.model_storage_target(n, stores, diagnostics)
                 diagnostics['linkedModels' if target else 'unlinkedModels'] += 1
+                candidate = label(n.get("name",""),terms)
+                if candidate:
+                    diagnostics['allowlistedModelLabelsLinked' if target else 'allowlistedModelLabelsUnlinked'] += 1
                 if target:
-                    hits.setdefault(target,set()).add(label(n.get("name",""),terms))
+                    hits.setdefault(target,set()).add(candidate)
         rows = []
         for member, labels in hits.items():
             if not any(x is not None for x in labels):

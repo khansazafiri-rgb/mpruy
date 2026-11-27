@@ -43,10 +43,34 @@ def model_storage_target(node, storage, counts):
         return None
     if node.get("references") and not node.get("storageNodeRef"):
         counts["modernStorageReferences"] += 1
-    target = storage.get(next(iter(ids)))
+    key = next(iter(ids))
+    target = storage.get(key)
     if target is None:
         counts["unresolvedStorageReference"] += 1
+        counts["storageIDPresentButPathHeld" if key in storage else "storageIDAbsent"] += 1
     return target
+
+def storage_path_diagnostics(scene, filename, mesh_paths, counts):
+    """Bounded aggregate evidence only; no fallback selection and no raw paths."""
+    rel = PurePosixPath(filename)
+    if not filename or rel.is_absolute() or ".." in rel.parts or "\\" in filename or ":" in filename:
+        counts["unsafeOrMissingStoragePath"] += 1
+        return None
+    target = str(PurePosixPath(scene).parent / rel)
+    if target in mesh_paths:
+        counts["sceneRelativeExactMeshPath"] += 1
+        return target
+    counts["sceneRelativeMeshPathAbsent"] += 1
+    if str(rel) in mesh_paths:
+        counts["archiveRootExactPathCandidateHeld"] += 1
+    basename_matches = sum(PurePosixPath(x).name == rel.name for x in mesh_paths)
+    if basename_matches:
+        counts["uniqueBasenameCandidateHeld" if basename_matches == 1 else "ambiguousBasenameCandidatesHeld"] += 1
+    elif any(PurePosixPath(x).name.casefold() == rel.name.casefold() for x in mesh_paths):
+        counts["caseFoldBasenameCandidateHeld"] += 1
+    else:
+        counts["noBasenameCandidate"] += 1
+    return None
 
 def inventory(archive):
     counts, mesh_digests = Counter(), []
@@ -135,6 +159,17 @@ class Tests(unittest.TestCase):
                       'references="storage:s;bad"', 'references="storage:unknown;"', 'references="display:s;"'):
             self.assertIsNone(model_storage_target(fromstring("<Model " + attrs + "/>"), stores, counts))
         self.assertEqual(counts["conflictingStorageReferences"], 2)
+    def test_storage_diagnostics_never_promote_fallbacks(self):
+        counts = Counter()
+        paths = {"pack/Data/a.vtk", "Data/b.vtk", "other/c.vtk", "other2/c.vtk"}
+        self.assertEqual(storage_path_diagnostics("pack/scene.mrml", "Data/a.vtk", paths, counts), "pack/Data/a.vtk")
+        for name in ("Data/b.vtk", "c.vtk", "A.vtk", "../a.vtk", "/a.vtk"):
+            self.assertIsNone(storage_path_diagnostics("pack/scene.mrml", name, paths, counts))
+        self.assertEqual(counts["archiveRootExactPathCandidateHeld"], 1)
+        self.assertEqual(counts["uniqueBasenameCandidateHeld"], 1)
+        self.assertEqual(counts["ambiguousBasenameCandidatesHeld"], 1)
+        self.assertEqual(counts["caseFoldBasenameCandidateHeld"], 1)
+        self.assertEqual(counts["unsafeOrMissingStoragePath"], 2)
     def test_traversal_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / "test.zip"

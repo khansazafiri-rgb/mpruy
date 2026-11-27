@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "sourceCommit": "aab31eb0d9e947408a94dfae4cd5a0b16bd9b80a",
+  "workflowRun": 45937426351,
+  "workflowJob": 140303748961,
+  "conclusion": "success",
+  "renderedGLBs": 18,
+  "mappedNodes": 168,
+  "isolatedGroups": 30,
+  "directIsolationRestore": 18,
+  "guidedCheckpoints": 10,
+  "guidedSourceOpens": 22,
+  "guidedReplayVerified": true,
+  "unitTestsPassed": 14,
+  "bodyInventoryUnchanged": true,
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "publicRelease": "NO_GO",
+  "scope": "Private browser regression only; no coverage promotion or release approval."
+}
