@@ -1131,17 +1131,222 @@ export const HRA_SUPPLEMENT_LEARNING_LINKS=[
     "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb"
   }
 ];
+export const HRA_PRIORITY_LEARNING_LINKS=[
+  {
+    "group": "reproductive",
+    "target": "vagina",
+    "organ": "united-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+    "originalNodeIndex": 437,
+    "nodeName": "VH_F_vagina",
+    "label": "vagina",
+    "ontologyId": "UBERON:0000996",
+    "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+    "sha256": "0aa6f24645af9d2d57f914a3bc2f55dc5cce499ecd5883fb8fa9f9b362d8588a",
+    "kind": "NODE"
+  },
+  {
+    "group": "digestive",
+    "target": "common bile duct",
+    "organ": "united-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+    "originalNodeIndex": 572,
+    "nodeName": "VH_F_common_bile_duct",
+    "label": "common bile duct",
+    "ontologyId": "UBERON:0001174",
+    "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+    "sha256": "08526a4542d2e717081c36523f1ea91e57c078f164e0a2bcdf8e349569ba245d",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "right anterior cruciate ligament",
+    "organ": "united-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+    "originalNodeIndex": 1103,
+    "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_R",
+    "label": "Right anterior cruciate ligament",
+    "ontologyId": "FMA:44615",
+    "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+    "sha256": "7d1b4c30819b757907a52e942eb9fc0f7ec04581ea90a22b409988c34e63d0c0",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "right posterior cruciate ligament",
+    "organ": "united-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+    "originalNodeIndex": 1104,
+    "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_R",
+    "label": "Right posterior cruciate ligament",
+    "ontologyId": "FMA:44618",
+    "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+    "sha256": "c5b434923a0f3328205e86ad6f95aaec749ba8135d35052b3b45827156b0d6e5",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "left anterior cruciate ligament",
+    "organ": "united-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+    "originalNodeIndex": 1136,
+    "nodeName": "VH_F_anterior_cruciate_ligament_of_knee_L",
+    "label": "Left anterior cruciate ligament",
+    "ontologyId": "FMA:44616",
+    "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+    "sha256": "79464eacb4bbe3fcc5a3246e25a5f88df054210d90ebb98f347d7e1cc973ddd6",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "left posterior cruciate ligament",
+    "organ": "united-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+    "originalNodeIndex": 1137,
+    "nodeName": "VH_F_posterior_cruciate_ligament_of_knee_L",
+    "label": "Left posterior cruciate ligament",
+    "ontologyId": "FMA:44619",
+    "sourceSHA256": "95f0c3d2f918582608692ca1139e8bdb18c147a16470e9ee9af8b276bd77c422",
+    "sha256": "2796febd7e3cb6bf50370601427a19ec389af07126e5d6eda7ef794a7a250035",
+    "kind": "NODE"
+  },
+  {
+    "group": "digestive",
+    "target": "parotid gland",
+    "organ": "mouth-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-female/v1.0/assets/3d-vh-f-mouth.glb",
+    "originalNodeIndex": 6,
+    "nodeName": "VH_F_parotid_gland_R",
+    "label": "Right parotid gland",
+    "ontologyId": "FMA:59797",
+    "sourceSHA256": "bd8e24e9d52b49719c6a1cafa1f54fc40c1d3f811b9d32df78d5c20ebb78c197",
+    "sha256": "b4216dd8977ddcb0bba20f166ab36e821e2d685cef5f49e2b9e3ab1da226deba",
+    "kind": "NODE"
+  },
+  {
+    "group": "digestive",
+    "target": "parotid gland",
+    "organ": "mouth-female",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-female/v1.0/assets/3d-vh-f-mouth.glb",
+    "originalNodeIndex": 7,
+    "nodeName": "VH_F_parotid_gland_L",
+    "label": "Left parotid gland",
+    "ontologyId": "FMA:59798",
+    "sourceSHA256": "bd8e24e9d52b49719c6a1cafa1f54fc40c1d3f811b9d32df78d5c20ebb78c197",
+    "sha256": "d031d63ee594ed250922a32ca5268a8f074d3f218bac19d743c9ef43bdc9f78a",
+    "kind": "NODE"
+  },
+  {
+    "group": "digestive",
+    "target": "parotid gland",
+    "organ": "mouth-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+    "originalNodeIndex": 6,
+    "nodeName": "VH_M_parotid_gland_R",
+    "label": "Right parotid gland",
+    "ontologyId": "FMA:59797",
+    "sourceSHA256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+    "sha256": "835b1da602e2949e81e327cb231195fe669b5b3a258ada08254a49deeec41da4",
+    "kind": "NODE"
+  },
+  {
+    "group": "digestive",
+    "target": "parotid gland",
+    "organ": "mouth-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+    "originalNodeIndex": 7,
+    "nodeName": "VH_M_parotid_gland_L",
+    "label": "Left parotid gland",
+    "ontologyId": "FMA:59798",
+    "sourceSHA256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+    "sha256": "b5021f2b5d2dbd8adfe76186c85d6827071ab56a9329923e1b078fa770e17aa5",
+    "kind": "NODE"
+  },
+  {
+    "group": "digestive",
+    "target": "common bile duct",
+    "organ": "united-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+    "originalNodeIndex": 528,
+    "nodeName": "VH_M_common_bile_duct",
+    "label": "common bile duct",
+    "ontologyId": "UBERON:0001174",
+    "sourceSHA256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+    "sha256": "13f1f50b5b243c78129163baff43784caf1b1848a725f80d3761fceabaed86c9",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "right anterior cruciate ligament",
+    "organ": "united-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+    "originalNodeIndex": 994,
+    "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_R",
+    "label": "Right anterior cruciate ligament",
+    "ontologyId": "FMA:44615",
+    "sourceSHA256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+    "sha256": "fa49edd4e16eeeda952a1062c7e15b2c389ea62f4daca6b978dfd7616c062b69",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "right posterior cruciate ligament",
+    "organ": "united-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+    "originalNodeIndex": 997,
+    "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_R",
+    "label": "Right posterior cruciate ligament",
+    "ontologyId": "FMA:44618",
+    "sourceSHA256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+    "sha256": "50c02fb2d69fce0a033486bdb53927741d85b935732671dd215490459d3fea09",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "left posterior cruciate ligament",
+    "organ": "united-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+    "originalNodeIndex": 1026,
+    "nodeName": "VH_M_posterior_cruciate_ligament_of_knee_joint_L",
+    "label": "Left posterior cruciate ligament",
+    "ontologyId": "FMA:44619",
+    "sourceSHA256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+    "sha256": "a6a2396c3aec8d6ba6611b5041c12cfe11a7d054475975f0c0658554bd417bf8",
+    "kind": "NODE"
+  },
+  {
+    "group": "joints",
+    "target": "left anterior cruciate ligament",
+    "organ": "united-male",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+    "originalNodeIndex": 1028,
+    "nodeName": "VH_M_anterior_cruciate_ligament_of_knee_joint_L",
+    "label": "Left anterior cruciate ligament",
+    "ontologyId": "FMA:44616",
+    "sourceSHA256": "fae3ac193835e9e24cd13a0d0f11e6788183b290b0691b9b83ec81d907d94581",
+    "sha256": "1ace9b2e24832f8271e4a11133f09cbe58bfd53731d7d2a3b04b4a0a5d9093cd",
+    "kind": "NODE"
+  }
+];
 const key=s=>String(s).trim().toLowerCase();
 export function hraLearningReferences(group,target,entries){
  const result=[];
  for(const link of [...HRA_LEARNING_LINKS,...HRA_EXPANDED_LEARNING_LINKS,...HRA_DIGESTIVE_LEARNING_LINKS,...HRA_PINEAL_LEARNING_LINKS,...HRA_SUPPLEMENT_LEARNING_LINKS].filter(x=>x.group===group&&x.target===key(target))){
   for(const e of entries){
    if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.approvedForDistribution!==false||e.registrationValidated!==false||!e.source?.startsWith('https://cdn.humanatlas.io/digital-objects/ref-organ/'+link.organ+'/'))continue;
+   if(e.geometryOnly===true)continue;
    if(link.assetURL&&e.source!==link.assetURL)continue;
    const rows=link.kind==='GROUP'?e.sourceGroups:e.sourceCrosswalk;
    const c=rows?.filter(x=>x.index===link.index&&x.ontologyId===link.ontologyId&&key(x.label)===key(link.label))||[];
    if(c.length!==1)continue;
    result.push({id:'hra-'+e.id+'-'+link.index,assetId:e.id,nodeIndex:link.index,ontologyId:link.ontologyId,name:c[0].label,organ:link.organ,type:'HRA_SOURCE_COMPONENT',kind:link.kind});
+  }
+ }
+ for(const link of HRA_PRIORITY_LEARNING_LINKS.filter(x=>x.group===group&&x.target===key(target))){
+  for(const e of entries){
+   if(!/^[a-f0-9]{24}$/.test(e.id||'')||e.geometryOnly!==true||e.materialsPreserved!==false||e.clinicalValidation!==false||e.approvedForDistribution!==false||e.registrationValidated!==false||e.meshCount!==1||e.source!==link.assetURL||e.originalNodeIndex!==link.originalNodeIndex||e.sha256!==link.sha256||e.sourceSHA256!==link.sourceSHA256||!Array.isArray(e.sourceCrosswalk)||e.sourceCrosswalk.length!==1)continue;
+   const c=e.sourceCrosswalk[0];if(!Number.isInteger(c.index)||c.index<0||c.nodeName!==link.nodeName||c.ontologyId!==link.ontologyId||key(c.label)!==key(link.label))continue;
+   result.push({id:'hra-'+e.id+'-'+c.index,assetId:e.id,nodeIndex:c.index,ontologyId:link.ontologyId,name:c.label,organ:link.organ,type:'HRA_SOURCE_COMPONENT',kind:'NODE'});
   }
  }
  return result;

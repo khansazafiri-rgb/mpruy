@@ -9,6 +9,8 @@ on:
       - 'scripts/test-private-atlas-browser.mjs'
       - 'apps/atlas-independent/src/reference-*.js'
       - 'apps/atlas-independent/src/hra-source-notice.js'
+      - 'apps/atlas-independent/src/hra-learning-links.js'
+      - 'scripts/hra-priority-learning-links.test.mjs'
       - 'licensing/atlas-publication/hra-priority-isolation-roundtrip-audit-20261127.json'
       - '.github/workflows/atlas-hra-priority-browser.yml'
   workflow_dispatch:
@@ -35,6 +37,7 @@ jobs:
       - run: python scripts/audit-hra-priority-isolation.py --test
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/hra-priority-learning-links.test.mjs
       - name: Install pinned Chromium
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
