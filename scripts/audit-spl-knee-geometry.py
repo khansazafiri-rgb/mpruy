@@ -90,6 +90,7 @@ def scene_links(z, mesh_paths, anatomical=None):
                         storage[key] = None
                     else:
                         storage[key] = target
+            hierarchy = source.hierarchy_label_candidates(scope_nodes, anatomical_label, counts)
             for node in scope_nodes:
                 if node.tag.rsplit("}", 1)[-1].lower() != "model":
                     continue
@@ -100,8 +101,19 @@ def scene_links(z, mesh_paths, anatomical=None):
                 if target and ident:
                     node_hash = digest((info.filename + "\0" + str(scope_index) + "\0" + ident).encode("utf8"))
                     links[target].add(node_hash)
+                    direct = anatomical_label(node.get("name",""))
+                    candidate_labels = hierarchy.get(ident,set())
+                    for term, side in candidate_labels:
+                        counts["hierarchyCandidate:"+term+":"+side] += 1
+                    for hint in source.bounded_label_hints(node.get("name",""), KNEE_TERMS):
+                        counts["modelNameHint:"+hint] += 1
+                    for hint in source.bounded_label_hints(PurePosixPath(target).stem, KNEE_TERMS):
+                        counts["meshFilenameHint:"+hint] += 1
                     if anatomical is not None:
-                        anatomical[target].add(anatomical_label(node.get('name', '')) or ('UNRECOGNIZED', 'UNSPECIFIED'))
+                        anatomical[target].add(direct or ('UNRECOGNIZED', 'UNSPECIFIED'))
+                        # Hierarchy-only hints remain held, never replace unknown direct evidence.
+                        if direct and candidate_labels and candidate_labels != {direct}:
+                            anatomical[target].update(candidate_labels)
                     transform_ids = source.mrml_role_ids(node, "transform", ("transformNodeRef", "parentTransformNodeRef"))
                     if transform_ids is None or transform_ids:
                         transform_links[target].add(node_hash)

@@ -86,6 +86,7 @@ def audit(archive, kind):
                     else:
                         stores[ident] = target
                     diagnostics['resolvedStorage' if target else 'unresolvedStorage'] += 1
+                hierarchy = source.hierarchy_label_candidates(scope_nodes, lambda value: label(value,terms), diagnostics)
                 for n in scope_nodes:
                     if n.tag.rsplit("}",1)[-1].lower() != "model":
                         continue
@@ -96,7 +97,17 @@ def audit(archive, kind):
                     if candidate:
                         diagnostics['allowlistedModelLabelsLinked' if target else 'allowlistedModelLabelsUnlinked'] += 1
                     if target:
+                        hierarchy_candidates = hierarchy.get(n.get("id",""),set())
+                        for term,side in hierarchy_candidates:
+                            diagnostics["hierarchyCandidate:"+term+":"+side] += 1
+                        vocabulary = {term:term for term in terms}
+                        for hint in source.bounded_label_hints(n.get("name",""),vocabulary):
+                            diagnostics["modelNameHint:"+hint] += 1
+                        for hint in source.bounded_label_hints(PurePosixPath(target).stem,vocabulary):
+                            diagnostics["meshFilenameHint:"+hint] += 1
                         hits.setdefault(target,set()).add(candidate)
+                        if candidate and hierarchy_candidates and hierarchy_candidates != {candidate}:
+                            hits[target].update(hierarchy_candidates)
         rows = []
         for member, labels in hits.items():
             if not any(x is not None for x in labels):
