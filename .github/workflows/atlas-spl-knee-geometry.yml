@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1
+      - run: 'python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1'
       - run: python scripts/audit-spl-knee-geometry.py --test
       - name: Parse pinned source geometry without applying transforms or exporting models
         run: python scripts/audit-spl-knee-geometry.py
