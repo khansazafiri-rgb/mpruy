@@ -84,7 +84,7 @@ const fixtureCoverage={schema:1,publicRelease:'NO_GO',clinicalValidation:false,r
 ]};
 const {HRA_LEARNING_LINKS,HRA_EXPANDED_LEARNING_LINKS,hraLearningReferences}=await import('../apps/atlas-independent/src/hra-learning-links.js');
 const guidedHraRows=realHra&&[9,24].includes(realHra.assets.size)&&process.env.ATLAS_TEST_HRA_GROUPS==='1'?[...new Map([...HRA_LEARNING_LINKS,...(allHra?HRA_EXPANDED_LEARNING_LINKS:[])].map(x=>[x.group+':'+x.target,x])).values()].map(({group,target})=>({group,target,status:'NOT_FOUND_BY_EXACT_CHECK',fmaId:null,representations:[],hraCandidates:hraLearningReferences(group,target,[...realHra.assets.values()].map(x=>x.public))})):[];
-if(guidedHraRows.length){assert.equal(guidedHraRows.length,allHra?32:15);assert.equal(guidedHraRows.reduce((n,r)=>n+r.hraCandidates.length,0),allHra?68:24);assert(guidedHraRows.every(r=>r.hraCandidates.length));fixtureCoverage.rows.push(...guidedHraRows);fixtureCoverage.targets=fixtureCoverage.rows.length;fixtureCoverage.hraReferenceTargets=guidedHraRows.length;}
+if(guidedHraRows.length){assert.equal(guidedHraRows.length,allHra?40:15);assert.equal(guidedHraRows.reduce((n,r)=>n+r.hraCandidates.length,0),allHra?88:24);assert(guidedHraRows.every(r=>r.hraCandidates.length));fixtureCoverage.rows.push(...guidedHraRows);fixtureCoverage.targets=fixtureCoverage.rows.length;fixtureCoverage.hraReferenceTargets=guidedHraRows.length;}
 const triangle=(id,x)=>({id,positions:new Float32Array([x,0,0,x+1,0,0,x,.8,0]),normals:new Float32Array([0,0,1,0,0,1,0,0,1]),omitted:0});
 const recoveryId='bp-'+'e'.repeat(24),recoveryFixture={...entry(recoveryId,4,'joints'),name:'Engineering recovery fixture',path:'priority-recovery/'+recoveryId+'.glb',sourceTree:'isa',priorityOnly:true,clinicalValidation:false,contextCandidate:false};
 const recoveryBytes=encodeNativeGlb([triangle('FJ4',0),triangle('FJ5',2)],{}).bytes;
@@ -185,7 +185,7 @@ try{
     if(i<rows.length-1)await guided.getByRole('button',{name:'Berikutnya'}).click();
    }
   }
-  assert.equal(opened,allHra?68:24);await guided.getByRole('button',{name:'Tutup'}).click();await guided.waitFor({state:'hidden'});
+  assert.equal(opened,allHra?88:24);await guided.getByRole('button',{name:'Tutup'}).click();await guided.waitFor({state:'hidden'});
   console.log('HRA GUIDED BROWSER PASS: '+guidedHraRows.length+' checkpoints, '+opened+' exact source node/group opens and isolated descendant sets; no coverage promotion.');
  }
  if(realLymph){

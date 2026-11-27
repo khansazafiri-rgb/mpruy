@@ -659,6 +659,206 @@ export const HRA_EXPANDED_LEARNING_LINKS=[
     "index": 0,
     "kind": "GROUP",
     "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-male/v1.1/assets/3d-vh-m-spinal-cord.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left renal cortex",
+    "organ": "kidney-female-left",
+    "label": "cortex of kidney",
+    "ontologyId": "UBERON:0001225",
+    "index": 28,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left renal medulla",
+    "organ": "kidney-female-left",
+    "label": "renal medulla",
+    "ontologyId": "UBERON:0000362",
+    "index": 3,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right renal cortex",
+    "organ": "kidney-female-right",
+    "label": "cortex of kidney",
+    "ontologyId": "UBERON:0001225",
+    "index": 3,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right renal medulla",
+    "organ": "kidney-female-right",
+    "label": "renal medulla",
+    "ontologyId": "UBERON:0000362",
+    "index": 6,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left renal cortex",
+    "organ": "kidney-male-left",
+    "label": "cortex of kidney",
+    "ontologyId": "UBERON:0001225",
+    "index": 3,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left renal medulla",
+    "organ": "kidney-male-left",
+    "label": "renal medulla",
+    "ontologyId": "UBERON:0000362",
+    "index": 6,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right renal cortex",
+    "organ": "kidney-male-right",
+    "label": "cortex of kidney",
+    "ontologyId": "UBERON:0001225",
+    "index": 26,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right renal medulla",
+    "organ": "kidney-male-right",
+    "label": "renal medulla",
+    "ontologyId": "UBERON:0000362",
+    "index": 3,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left renal pelvis",
+    "organ": "ureter-female-left",
+    "label": "renal pelvis",
+    "ontologyId": "UBERON:0001224",
+    "index": 18,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "major renal calyx",
+    "organ": "ureter-female-left",
+    "label": "major calyx",
+    "ontologyId": "UBERON:0001226",
+    "index": 13,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "minor renal calyx",
+    "organ": "ureter-female-left",
+    "label": "minor calyx",
+    "ontologyId": "UBERON:0001227",
+    "index": 2,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right renal pelvis",
+    "organ": "ureter-female-right",
+    "label": "renal pelvis",
+    "ontologyId": "UBERON:0001224",
+    "index": 17,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "major renal calyx",
+    "organ": "ureter-female-right",
+    "label": "major calyx",
+    "ontologyId": "UBERON:0001226",
+    "index": 13,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "minor renal calyx",
+    "organ": "ureter-female-right",
+    "label": "minor calyx",
+    "ontologyId": "UBERON:0001227",
+    "index": 2,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "left renal pelvis",
+    "organ": "ureter-male-left",
+    "label": "renal pelvis",
+    "ontologyId": "UBERON:0001224",
+    "index": 1,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "major renal calyx",
+    "organ": "ureter-male-left",
+    "label": "major calyx",
+    "ontologyId": "UBERON:0001226",
+    "index": 3,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "minor renal calyx",
+    "organ": "ureter-male-left",
+    "label": "minor calyx",
+    "ontologyId": "UBERON:0001227",
+    "index": 7,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "right renal pelvis",
+    "organ": "ureter-male-right",
+    "label": "renal pelvis",
+    "ontologyId": "UBERON:0001224",
+    "index": 15,
+    "kind": "NODE",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "major renal calyx",
+    "organ": "ureter-male-right",
+    "label": "major calyx",
+    "ontologyId": "UBERON:0001226",
+    "index": 2,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb"
+  },
+  {
+    "group": "urinary",
+    "target": "minor renal calyx",
+    "organ": "ureter-male-right",
+    "label": "minor calyx",
+    "ontologyId": "UBERON:0001227",
+    "index": 5,
+    "kind": "GROUP",
+    "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb"
   }
 ];
 const key=s=>String(s).trim().toLowerCase();
