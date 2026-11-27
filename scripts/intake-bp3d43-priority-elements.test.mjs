@@ -83,3 +83,6 @@ test('only the checkpoint batch accepts up to 36 individually validated elements
  assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows:[...doc.rows.slice(0,35),doc.rows[0]]},catalog));
  assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows:doc.rows.map((r,i)=>i===35?{...r,fma:'FMA2'}:r)},catalog));
 });
+
+import {validateRetainedManifest} from './intake-bp3d43-priority-elements.mjs';
+test('retained manifest is accepted only with exact pin and valid 4.3 membership',()=>{const b=Buffer.from('# Data Version 4.3\n# Objects set 4.3\nFMA1 is_a FJ1\n'),pin=createHash('sha256').update(b).digest('hex');assert(validateRetainedManifest(b,pin).catalog.all.has('FJ1'));assert.throws(()=>validateRetainedManifest(Buffer.from(b.toString().replace('FJ1','FJ2')),pin));assert.throws(()=>validateRetainedManifest(b,undefined));const changed=Buffer.from(b.toString().replaceAll('4.3','4.0'));assert.throws(()=>validateRetainedManifest(changed,createHash('sha256').update(changed).digest('hex')));});

@@ -96,7 +96,13 @@ export function selectMember(names,r){
  assert.equal(normalize(path.posix.basename(matched[0]).slice(prefix.length,-4)),normalize(r.name),'Publisher mesh label changed');
  return matched[0];
 }
-export function run(inputDoc=null,{allowHeld=false}={}){
+// Reuse only byte-identical, version-stamped publisher membership from a verified private replay.
+export function validateRetainedManifest(bytes,expectedSHA256){
+ assert(Buffer.isBuffer(bytes)&&bytes.length>0&&bytes.length<=32*1024*1024);
+ assert(/^[a-f0-9]{64}$/.test(expectedSHA256||'')&&digest(bytes)===expectedSHA256,'Retained publisher manifest checksum differs');
+ return {bytes,catalog:parseMembership(bytes.toString('utf8'))};
+}
+export function run(inputDoc=null,{allowHeld=false,retainedManifest=null}={}){
  const local=path.join(root,'local-data');fs.mkdirSync(local,{recursive:true,mode:0o700});assert(fs.realpathSync(local)===local);
  const q=path.join(local,'licensing-quarantine');fs.mkdirSync(q,{mode:0o700,recursive:true});assert(fs.realpathSync(q)===q);
  const out=fs.mkdtempSync(path.join(q,'bp3d43-element-intake-'));fs.chmodSync(out,0o700);
@@ -107,7 +113,7 @@ export function run(inputDoc=null,{allowHeld=false}={}){
  // a bounded attempt at the version-stamped manifest itself.
  fs.writeFileSync(cookie,'# Netscape HTTP Cookie File\n',{mode:0o600});
  try{download(viewer,path.join(out,'session.html'),session);}catch{console.warn('Viewer bootstrap unavailable; trying direct version-stamped manifest');}
- const manifestZip=path.join(out,'manifest.zip');const {bytes,catalog}=downloadPublisherManifest(manifestURL,manifestZip,session,doc.expectedManifestSHA256);
+ const manifestZip=path.join(out,'manifest.zip');const {bytes,catalog}=retainedManifest===null?downloadPublisherManifest(manifestURL,manifestZip,session,doc.expectedManifestSHA256):validateRetainedManifest(retainedManifest,doc.expectedManifestSHA256);
  const candidates=validateCandidates(doc,catalog),results=[];
  fs.writeFileSync(path.join(out,'FMA2Obj.txt'),bytes,{flag:'wx',mode:0o600});
  for(const r of candidates){
@@ -124,7 +130,7 @@ export function run(inputDoc=null,{allowHeld=false}={}){
    results.push({...r,status:'EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH',archiveMember:name,rawSHA256,glbSHA256:glb.sha256,archiveSHA256:digest(fs.readFileSync(zip)),rawBytes:raw.length,triangles:parsed.positions.length/9,omitted:parsed.omitted});
   }catch(e){results.push({...r,status:'HOLD',reason:String(e.message)});}
  }
- const report={schema:1,version:'4.3',manifestURL,manifestSHA256:digest(bytes),manifestElements:catalog.all.size,results,parsed:results.filter(r=>r.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH').length,held:results.filter(r=>r.status==='HOLD').length,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO',licenseReview:doc.licenseReview};
+ const report={schema:1,version:'4.3',manifestURL,manifestSHA256:digest(bytes),manifestElements:catalog.all.size,manifestAcquisition:retainedManifest===null?'FRESH_PUBLISHER_ZIP':'EXACT_PINNED_RETAINED_BYTES',results,parsed:results.filter(r=>r.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH').length,held:results.filter(r=>r.status==='HOLD').length,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO',licenseReview:doc.licenseReview};
  fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
  console.log('BP3D43 PRIVATE ELEMENT INTAKE',JSON.stringify(report));
  fs.rmSync(cookie,{force:true});fs.rmSync(path.join(out,'session.html'),{force:true});
