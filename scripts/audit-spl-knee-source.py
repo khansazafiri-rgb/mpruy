@@ -15,6 +15,39 @@ MESH = {".vtk", ".vtp", ".stl", ".obj", ".ply", ".gii", ".glb", ".gltf"}
 SCENE = {".mrml", ".json"}
 VOLUME = {".nrrd", ".nhdr", ".nii", ".mha", ".mhd", ".dcm"}
 
+# MRML v4.10.2 supports both legacy role attributes and role:id1 id2; records.
+# Source: Slicer/Slicer Libs/MRML/Core/vtkMRMLNode.cxx (ParseReferencesAttribute)
+# and vtkMRMLStorableNode.cxx (storage role). Never emit node IDs.
+def mrml_role_ids(node, role, legacy_attributes):
+    legacy = {x for a in legacy_attributes for x in node.get(a, "").split()}
+    modern = set()
+    for record in node.get("references", "").split(";"):
+        if not record.strip():
+            continue
+        key, sep, values = record.partition(":")
+        if not sep or ":" in values:
+            return None
+        if key.strip() == role:
+            modern.update(values.split())
+    if legacy and modern and legacy != modern:
+        return None
+    return legacy or modern
+
+def model_storage_target(node, storage, counts):
+    ids = mrml_role_ids(node, "storage", ("storageNodeRef",))
+    if ids is None:
+        counts["conflictingStorageReferences"] += 1
+        return None
+    if len(ids) != 1:
+        counts["missingOrMultipleStorageReferences"] += 1
+        return None
+    if node.get("references") and not node.get("storageNodeRef"):
+        counts["modernStorageReferences"] += 1
+    target = storage.get(next(iter(ids)))
+    if target is None:
+        counts["unresolvedStorageReference"] += 1
+    return target
+
 def inventory(archive):
     counts, mesh_digests = Counter(), []
     total = 0
@@ -91,6 +124,17 @@ class Tests(unittest.TestCase):
             self.assertEqual(r["counts"], {"mesh": 1, "volume": 1})
             self.assertEqual(r["meshMembers"][0]["sha256"], hashlib.sha256(b"engineering fixture").hexdigest())
             self.assertEqual(list(Path(d).iterdir()), [p])
+    def test_mrml_storage_role_and_conflicts(self):
+        from xml.etree.ElementTree import fromstring
+        stores = {"s": "Data/a.vtk", "t": "Data/b.vtk"}
+        counts = Counter()
+        for attrs in ('storageNodeRef="s "', 'references="display:d;storage:s;"',
+                      'storageNodeRef="s" references="storage:s;"'):
+            self.assertEqual(model_storage_target(fromstring("<Model " + attrs + "/>"), stores, counts), "Data/a.vtk")
+        for attrs in ('references="storage:s t;"', 'storageNodeRef="s" references="storage:t;"',
+                      'references="storage:s;bad"', 'references="storage:unknown;"', 'references="display:s;"'):
+            self.assertIsNone(model_storage_target(fromstring("<Model " + attrs + "/>"), stores, counts))
+        self.assertEqual(counts["conflictingStorageReferences"], 2)
     def test_traversal_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / "test.zip"

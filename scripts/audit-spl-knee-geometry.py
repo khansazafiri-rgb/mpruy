@@ -90,14 +90,15 @@ def scene_links(z, mesh_paths, anatomical=None):
         for node in root.iter():
             if node.tag.rsplit("}", 1)[-1].lower() != "model":
                 continue
-            target = storage.get(node.get("storageNodeRef", ""))
+            target = source.model_storage_target(node, storage, counts)
             ident = node.get("id", "")
             if target and ident:
                 node_hash = digest((info.filename + "\0" + ident).encode("utf8"))
                 links[target].add(node_hash)
                 if anatomical is not None:
                     anatomical[target].add(anatomical_label(node.get('name', '')) or ('UNRECOGNIZED', 'UNSPECIFIED'))
-                if node.get("transformNodeRef") or node.get("parentTransformNodeRef"):
+                transform_ids = source.mrml_role_ids(node, "transform", ("transformNodeRef", "parentTransformNodeRef"))
+                if transform_ids is None or transform_ids:
                     transform_links[target].add(node_hash)
                     counts["modelNodesWithTransformRef"] += 1
                 counts["linkedModelNodes"] += 1
@@ -367,6 +368,19 @@ class Tests(unittest.TestCase):
                 self.assertEqual(len(links["pack/Data/test.vtk"]), 1)
                 self.assertEqual(counts["linkedModelNodes"], 1)
                 self.assertEqual(len(transforms["pack/Data/test.vtk"]), 0)
+    def test_modern_mrml_role_link_and_conflict(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "fixture.zip"
+            with zipfile.ZipFile(p, "w") as z:
+                z.writestr("pack/scene.mrml", '<MRML><ModelStorage id="s" fileName="Data/test.vtk"/><ModelStorage id="t" fileName="Data/other.vtk"/><Model id="m" name="Left ACL" references="display:d;storage:s;transform:t1;"/><Model id="conflict" name="PCL" storageNodeRef="s" references="storage:t;"/></MRML>')
+            labels = {"pack/Data/test.vtk": set(), "pack/Data/other.vtk": set()}
+            with zipfile.ZipFile(p) as z:
+                links, counts, transforms = scene_links(z, set(labels), labels)
+            self.assertEqual(labels["pack/Data/test.vtk"], {("anterior cruciate ligament", "LEFT")})
+            self.assertEqual(len(links["pack/Data/test.vtk"]), 1)
+            self.assertEqual(transforms["pack/Data/test.vtk"], links["pack/Data/test.vtk"])
+            self.assertEqual(counts["conflictingStorageReferences"], 1)
+            self.assertFalse(links["pack/Data/other.vtk"])
     def test_transform_reference_not_applied(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / "fixture.zip"

@@ -9,6 +9,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path, PurePosixPath
+from urllib.parse import unquote
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -72,9 +73,10 @@ def audit(archive, kind):
                 if n.tag.rsplit("}",1)[-1].lower() != "modelstorage":
                     continue
                 diagnostics['storageNodes'] += 1
-                ident, name = n.get("id",""), n.get("fileName","")
+                ident, name = n.get("id",""), unquote(n.get("fileName",""))
                 rel = PurePosixPath(name)
                 if not ident or not name or rel.is_absolute() or ".." in rel.parts or "\\" in name or ":" in name:
+                    diagnostics['unsafeOrMissingStoragePath'] += 1
                     continue
                 target = str(PurePosixPath(info.filename).parent / rel)
                 valid = target in members and rel.suffix.lower() in source.MESH
@@ -84,7 +86,7 @@ def audit(archive, kind):
                 if n.tag.rsplit("}",1)[-1].lower() != "model":
                     continue
                 diagnostics['modelNodes'] += 1
-                target = stores.get(n.get("storageNodeRef",""))
+                target = source.model_storage_target(n, stores, diagnostics)
                 diagnostics['linkedModels' if target else 'unlinkedModels'] += 1
                 if target:
                     hits.setdefault(target,set()).add(label(n.get("name",""),terms))
@@ -124,6 +126,17 @@ class Tests(unittest.TestCase):
             self.assertEqual(len(result['filenameOnlyCandidates']),1)
             self.assertEqual(result['sceneDiagnostics']['unlinkedModels'],1)
             self.assertNotIn('unknown-private-name',json.dumps(result))
+    def test_modern_storage_role(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/"test.zip"
+            with zipfile.ZipFile(p,"w") as z:
+                z.writestr("scene.mrml",'<MRML><ModelStorage id="s" fileName="Data/a%20b.vtk"/><Model name="Left Stapes" references="display:d;storage:s;"/></MRML>')
+                z.writestr("Data/a b.vtk",b"fixture")
+            result=audit(p,"ear")
+            self.assertEqual(result["labelCandidates"][0]["labels"],[{"term":"stapes","side":"LEFT"}])
+            self.assertEqual(result["sceneDiagnostics"]["linkedModels"],1)
+            self.assertEqual(result["sceneDiagnostics"]["modernStorageReferences"],1)
+            self.assertFalse(result["labelCandidates"][0]["lateralityValidated"])
     def test_link_conflict(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/"test.zip"
