@@ -149,7 +149,36 @@ def glb_roundtrip(points, indices):
             "geometryOnly": True, "sourceArraysCopied": False, "sceneTransformsApplied": False,
             "coordinateUnitsValidated": False, "published": False}
 
-def parse_mesh(raw, scratch):
+def strip_triangles(offsets, connectivity, point_count):
+    """Expand VTK triangle strips using alternating winding; retain native arrays in evidence."""
+    if len(offsets) < 2 or offsets[0] != 0 or offsets[-1] != len(connectivity) or np.any(np.diff(offsets) < 3):
+        raise ValueError("invalid strip offsets")
+    if len(connectivity) > 12_000_000 or connectivity.min() < 0 or connectivity.max() >= point_count:
+        raise ValueError("strip index out of range")
+    count = int(np.sum(np.diff(offsets) - 2))
+    if not 1 <= count <= 4_000_000:
+        raise ValueError("strip triangle cap")
+    tri = np.empty((count, 3), dtype="<i8")
+    k = 0
+    for start, end in zip(offsets[:-1], offsets[1:]):
+        strip = connectivity[start:end]
+        length = len(strip) - 2
+        a, bb, c = strip[:-2], strip[1:-1], strip[2:]
+        block = tri[k:k+length]
+        block[:, 0] = a
+        block[:, 1] = bb
+        block[:, 2] = c
+        block[1::2, 0] = bb[1::2]
+        block[1::2, 1] = a[1::2]
+        k += length
+    distinct = (tri[:,0] != tri[:,1]) & (tri[:,1] != tri[:,2]) & (tri[:,0] != tri[:,2])
+    # Degenerate connector triangles carry no surface. Count them explicitly.
+    skipped = int(np.count_nonzero(~distinct))
+    if not np.any(distinct):
+        raise ValueError("empty strip surface")
+    return tri[distinct].reshape(-1), skipped
+
+def parse_mesh(raw, scratch, diagnostics=None):
     if not raw.startswith(b"# vtk DataFile Version") or len(raw) > 32 * 1024**2:
         raise ValueError("unsupported legacy VTK")
     file = scratch / "source.vtk"
@@ -165,11 +194,19 @@ def parse_mesh(raw, scratch):
     if errors or reader.GetErrorCode() or mesh is None or mesh.GetPoints() is None:
         raise ValueError("VTK reader failure")
     n = mesh.GetNumberOfPoints()
-    cells = mesh.GetPolys()
-    if not 3 <= n <= 2_000_000 or cells is None or not 1 <= cells.GetNumberOfCells() <= 4_000_000:
+    polys = mesh.GetNumberOfPolys()
+    strips = mesh.GetNumberOfStrips()
+    verts = mesh.GetNumberOfVerts()
+    lines = mesh.GetNumberOfLines()
+    if diagnostics is not None:
+        diagnostics.update({"vtkPoints": n, "vtkPolys": polys, "vtkStrips": strips, "vtkVerts": verts, "vtkLines": lines})
+    if not 3 <= n <= 2_000_000 or not 1 <= polys + strips <= 4_000_000:
         raise ValueError("mesh size")
-    if mesh.GetNumberOfCells() != cells.GetNumberOfCells():
+    if verts or lines or (polys and strips) or mesh.GetNumberOfCells() != polys + strips:
         raise ValueError("nonpolygon geometry")
+    cells = mesh.GetStrips() if strips else mesh.GetPolys()
+    if cells is None:
+        raise ValueError("mesh size")
     points = np.asarray(vtk_to_numpy(mesh.GetPoints().GetData()), dtype="<f8")
     offsets = np.asarray(vtk_to_numpy(cells.GetOffsetsArray()), dtype="<i8")
     indices = np.asarray(vtk_to_numpy(cells.GetConnectivityArray()), dtype="<i8")
@@ -177,9 +214,14 @@ def parse_mesh(raw, scratch):
         raise ValueError("invalid positions")
     if len(offsets) != cells.GetNumberOfCells() + 1 or offsets[0] != 0 or offsets[-1] != len(indices):
         raise ValueError("invalid offsets")
-    if np.any(np.diff(offsets) != 3):
+    native_index_sha = digest(indices.tobytes(order="C"))
+    native_offset_sha = digest(offsets.tobytes(order="C"))
+    skipped = 0
+    if strips:
+        indices, skipped = strip_triangles(offsets, indices, n)
+    elif np.any(np.diff(offsets) != 3):
         raise ValueError("nontriangular polygons: no automatic triangulation")
-    if indices.min() < 0 or indices.max() >= n:
+    if len(indices) == 0 or indices.min() < 0 or indices.max() >= n:
         raise ValueError("index out of range")
     tri = indices.reshape(-1, 3)
     distinct = (tri[:, 0] != tri[:, 1]) & (tri[:, 1] != tri[:, 2]) & (tri[:, 0] != tri[:, 2])
@@ -187,7 +229,11 @@ def parse_mesh(raw, scratch):
         raise ValueError("repeated vertex index")
     return {"points": n, "triangles": len(tri),
             "nativePositionsSHA256": digest(points.tobytes(order="C")),
-            "nativeConnectivitySHA256": digest(indices.tobytes(order="C")),
+            "nativeConnectivitySHA256": native_index_sha,
+            "nativeOffsetsSHA256": native_offset_sha,
+            "triangleConnectivitySHA256": digest(indices.tobytes(order="C")),
+            "nativeTopology": "TRIANGLE_STRIPS" if strips else "TRIANGLE_POLYGONS",
+            "degenerateStripConnectorTrianglesSkipped": skipped,
             "glbRoundtrip": glb_roundtrip(points, indices),
             "frame": "VTK native coordinates; scene transforms not applied",
             "pointDataArrays": mesh.GetPointData().GetNumberOfArrays(),
@@ -221,7 +267,7 @@ def audit(archive, receipt, scratch):
             row["anatomicalIdentityStatus"] = ("EXACT_ALLOWLIST_LABEL_CANDIDATE" if len(labels) == 1 and recognized else "HOLD_UNRESOLVED_OR_CONFLICTING_LABEL")
             row["lateralityValidated"] = False
             try:
-                row.update(parse_mesh(raw, scratch))
+                row.update(parse_mesh(raw, scratch, row))
                 row["status"] = "NATIVE_TRIANGLE_GEOMETRY_PARSED"
             except (ValueError, TypeError, AttributeError, RuntimeError) as exc:
                 row["status"] = "HOLD_GEOMETRY"
@@ -232,7 +278,8 @@ def audit(archive, receipt, scratch):
                                 "mesh size", "nonpolygon geometry", "invalid positions",
                                 "invalid offsets", "nontriangular polygons: no automatic triangulation",
                                 "index out of range", "repeated vertex index", "GLB container mismatch",
-                                "GLB roundtrip mismatch"}
+                                "GLB roundtrip mismatch", "invalid strip offsets", "strip index out of range",
+                                "strip triangle cap", "empty strip surface"}
                 row["reasonCode"] = str(exc) if isinstance(exc, ValueError) and str(exc) in safe_reasons else "UNCLASSIFIED_PARSER_ERROR"
             rows.append(row)
     return {"schema": 1, "sourceArchiveSHA256": receipt["archiveSHA256"],
@@ -286,6 +333,21 @@ class Tests(unittest.TestCase):
             self.assertEqual(r["nativeConnectivitySHA256"], digest(np.array([0,1,2], dtype="<i8").tobytes()))
             self.assertEqual(r["glbRoundtrip"]["status"], "EXACT_NATIVE_GLTF_ROUNDTRIP")
             self.assertFalse(r["glbRoundtrip"]["sourceArraysCopied"])
+    def test_triangle_strip_winding_and_native_evidence(self):
+        with tempfile.TemporaryDirectory() as d:
+            strip = FIXTURE.replace(b"POINTS 3 float\n0 0 0 1 0 0 0 1 0", b"POINTS 4 float\n0 0 0 1 0 0 0 1 0 1 1 0").replace(b"POLYGONS 1 4\n3 0 1 2", b"TRIANGLE_STRIPS 1 5\n4 0 1 2 3")
+            r = parse_mesh(strip, Path(d))
+            self.assertEqual(r["nativeTopology"], "TRIANGLE_STRIPS")
+            self.assertEqual(r["triangles"], 2)
+            self.assertEqual(r["nativeConnectivitySHA256"], digest(np.array([0,1,2,3], dtype="<i8").tobytes()))
+            self.assertEqual(r["triangleConnectivitySHA256"], digest(np.array([0,1,2,2,1,3], dtype="<i8").tobytes()))
+            self.assertEqual(r["glbRoundtrip"]["status"], "EXACT_NATIVE_GLTF_ROUNDTRIP")
+    def test_strip_invalid_and_degenerate_connector(self):
+        with self.assertRaises(ValueError):
+            strip_triangles(np.array([0,3]), np.array([0,1,9]), 4)
+        indices, skipped = strip_triangles(np.array([0,5]), np.array([0,1,2,2,3]), 4)
+        self.assertEqual(indices.tolist(), [0,1,2])
+        self.assertEqual(skipped, 2)
     def test_float64_precision_held(self):
         points = np.array([[0.1,0,0],[1,0,0],[0,1,0]], dtype="<f8")
         result = glb_roundtrip(points, np.array([0,1,2], dtype="<i8"))
