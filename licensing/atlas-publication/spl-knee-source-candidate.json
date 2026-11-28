@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "source": "SPL Knee Atlas",
+  "publisher": "Surgical Planning Laboratory, Brigham and Women's Hospital / Harvard Medical School",
+  "authors": [
+    "Jen Richolt",
+    "Marianna Jakab",
+    "Ron Kikinis"
+  ],
+  "publisherPage": "https://www.openanatomy.org/atlas-pages/atlas-spl-knee.html",
+  "archive": "https://www.openanatomy.org/atlases/nac/knee-2016-09.zip",
+  "licensePage": "https://www.openanatomy.org/atlas-pages/slicer-license.html",
+  "reportedLicense": "3D Slicer License section B",
+  "targets": [
+    "knee menisci",
+    "ligaments",
+    "cartilage",
+    "tendons",
+    "nerves"
+  ],
+  "licenseScope": "Publisher identifies Part B; verify exact asset terms and notices; research disclaimer retained",
+  "privacyReview": "PENDING",
+  "assetRightsReviewed": false,
+  "geometryParsed": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

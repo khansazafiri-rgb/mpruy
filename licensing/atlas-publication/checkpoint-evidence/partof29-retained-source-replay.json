@@ -1,0 +1,310 @@
+{
+  "schema": 1,
+  "scope": "Targeted retained PART-OF source replay for29bodymodels,notfreshPART-OFarchivecomparisonorclinicalapproval",
+  "models": 29,
+  "passed": 29,
+  "held": [],
+  "sourceElementOccurrences": 164,
+  "uniqueElementsParsed": 164,
+  "sourceHashes": {
+    "archive": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97",
+    "names": "9224080557053e6f1322f1e13ab27f0ecde0db19bb3b505f0631afad230eeebd",
+    "elements": "3f5f6df1028eb122b30de77c711597b6bb8e5541658e5985859fd228adbf88ea"
+  },
+  "rows": [
+    {
+      "id": "partof-supplement-fma14775-bp10638",
+      "fmaId": "FMA14775",
+      "bpId": "BP10638",
+      "name": "gastroduodenal artery",
+      "sourceElements": 1,
+      "triangles": 204,
+      "glbSHA256": "cbbeb7718598bc460d92e1e401e71db988b48130c1431be773a881d72b7d4b06",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma7205-bp10234",
+      "fmaId": "FMA7205",
+      "bpId": "BP10234",
+      "name": "left kidney",
+      "sourceElements": 1,
+      "triangles": 2982,
+      "glbSHA256": "d509e5b44b738b764f488d9535da86bd736ea69c9c458ec6399ff7c4e2f37a21",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma7204-bp10046",
+      "fmaId": "FMA7204",
+      "bpId": "BP10046",
+      "name": "right kidney",
+      "sourceElements": 1,
+      "triangles": 2310,
+      "glbSHA256": "32507c1de59e459d4d10544e8f9ae1cb1cebb993a133d38e134de088a481e0b1",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma7395-bp9932",
+      "fmaId": "FMA7395",
+      "bpId": "BP9932",
+      "name": "right main bronchus",
+      "sourceElements": 1,
+      "triangles": 4468,
+      "glbSHA256": "0a4b31c52aea0b68fc2e81c3d344146ecfc60d6a6f85df601dcda41bcb3e7ee4",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma22673-bp6872",
+      "fmaId": "FMA22673",
+      "bpId": "BP6872",
+      "name": "left thoraco-acromial artery",
+      "sourceElements": 4,
+      "triangles": 5606,
+      "glbSHA256": "59148dd0f1829699816da9047d430293277ae5f39707d7275fe2c7cb6894da5c",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma22672-bp6804",
+      "fmaId": "FMA22672",
+      "bpId": "BP6804",
+      "name": "right thoraco-acromial artery",
+      "sourceElements": 4,
+      "triangles": 5680,
+      "glbSHA256": "e49d09637f33acb829c7ccb7ab9462cbe37044608ec453ba7f9d06d633cc53fa",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma7096-bp9831",
+      "fmaId": "FMA7096",
+      "bpId": "BP9831",
+      "name": "right atrium",
+      "sourceElements": 5,
+      "triangles": 37640,
+      "glbSHA256": "e1650f74ee759f062c4b9243503b5328bbbbc92d68e54b863eca6344db571c05",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma55021-bp9724",
+      "fmaId": "FMA55021",
+      "bpId": "BP9724",
+      "name": "soft palate",
+      "sourceElements": 5,
+      "triangles": 54006,
+      "glbSHA256": "a47231a41d45c5f2083ae4b578cae03cac7ad7567a60b24af3dbc3999cfd1711",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma7097-bp9454",
+      "fmaId": "FMA7097",
+      "bpId": "BP9454",
+      "name": "left atrium",
+      "sourceElements": 6,
+      "triangles": 21216,
+      "glbSHA256": "41084017a5c5a64a12640ed8ffb9de020f9c2fb42dfc8ed63f22b831dae7bb64",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma7207-bp9483",
+      "fmaId": "FMA7207",
+      "bpId": "BP9483",
+      "name": "jejunum",
+      "sourceElements": 23,
+      "triangles": 6026,
+      "glbSHA256": "a23c0678ad1f3db4b5ab33763338b8c7c8b7bf3fab8e69d4801610d1f4035811",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma50040-bp9549",
+      "fmaId": "FMA50040",
+      "bpId": "BP9549",
+      "name": "left coronary artery",
+      "sourceElements": 25,
+      "triangles": 12666,
+      "glbSHA256": "3f34c36c1b7813aec6c5b2de29a679be0133926bebe8a304663cfe5bd755dc67",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "partof-supplement-fma50039-bp9299",
+      "fmaId": "FMA50039",
+      "bpId": "BP9299",
+      "name": "right coronary artery",
+      "sourceElements": 29,
+      "triangles": 14682,
+      "glbSHA256": "d17ff10b581de0defe25729cded9a3d8fde882dc17907bd95e1a02efcfe6c6f5",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma14541-bp9992",
+      "fmaId": "FMA14541",
+      "bpId": "BP9992",
+      "name": "cecum",
+      "sourceElements": 1,
+      "triangles": 288,
+      "glbSHA256": "083882aa252058d57c9061e4f6af937c5fc0645b037cc1be24f975938645a8c5",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma50658-bp7715",
+      "fmaId": "FMA50658",
+      "bpId": "BP7715",
+      "name": "right posterior choroidal artery",
+      "sourceElements": 1,
+      "triangles": 880,
+      "glbSHA256": "7e79c8ae44580f5af865b8172cb755331eb8d65e76ced7bdebfc2d5eb6094351",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma50659-bp10164",
+      "fmaId": "FMA50659",
+      "bpId": "BP10164",
+      "name": "left posterior choroidal artery",
+      "sourceElements": 1,
+      "triangles": 880,
+      "glbSHA256": "7b3dee1de3c485715fd4671766dc6d53370dc0ed0e15016a102e0c50b131fa1e",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma61991-bp7707",
+      "fmaId": "FMA61991",
+      "bpId": "BP7707",
+      "name": "trunk of right middle cerebral artery",
+      "sourceElements": 1,
+      "triangles": 800,
+      "glbSHA256": "805d5a467e56c385368cbb878a5296ee12714361864f7f81eafe7b539bc676e3",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma50561-bp7704",
+      "fmaId": "FMA50561",
+      "bpId": "BP7704",
+      "name": "right pontine artery",
+      "sourceElements": 2,
+      "triangles": 852,
+      "glbSHA256": "bce75dffd59ae2a5ef7490ebb704f04949beafa6cfe97660d8dcd0e33ca3aa99",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma50562-bp9707",
+      "fmaId": "FMA50562",
+      "bpId": "BP9707",
+      "name": "left pontine artery",
+      "sourceElements": 2,
+      "triangles": 852,
+      "glbSHA256": "521addb5184883ae7abf448170c0b2ea4547e004c46401ebd50e798beecbca48",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma7246-bp9868",
+      "fmaId": "FMA7246",
+      "bpId": "BP9868",
+      "name": "pulmonary valve",
+      "sourceElements": 3,
+      "triangles": 3638,
+      "glbSHA256": "82539220372c8f979bbdf49f6dc6551eb867ad8c7facbb09094c7ca0e651ed4f",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8630-bp9768",
+      "fmaId": "FMA8630",
+      "bpId": "BP9768",
+      "name": "right anterior basal segmental artery",
+      "sourceElements": 3,
+      "triangles": 874,
+      "glbSHA256": "c6322b7b5af8933996c5c4f0129e85e73d3cdec185ade73b46836774b41f15ef",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8665-bp9356",
+      "fmaId": "FMA8665",
+      "bpId": "BP9356",
+      "name": "medial segmental vein",
+      "sourceElements": 3,
+      "triangles": 1118,
+      "glbSHA256": "4841628af7e200883324ed7f780636441f26f09db414d42b94d6d2155e9ef634",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma68193-bp9542",
+      "fmaId": "FMA68193",
+      "bpId": "BP9542",
+      "name": "medial segmental artery",
+      "sourceElements": 4,
+      "triangles": 964,
+      "glbSHA256": "ce93b22b8eab0e3883533fd5cfb3b25dfac48611aae63198d936e9590340a737",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma68194-bp9442",
+      "fmaId": "FMA68194",
+      "bpId": "BP9442",
+      "name": "lateral segmental artery",
+      "sourceElements": 4,
+      "triangles": 870,
+      "glbSHA256": "d3f69fd60b4d2819a5e345437007df2c4bc9b95dffbc26dacc0b4095173bb12a",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8631-bp9608",
+      "fmaId": "FMA8631",
+      "bpId": "BP9608",
+      "name": "right lateral basal segmental artery",
+      "sourceElements": 4,
+      "triangles": 2372,
+      "glbSHA256": "962f0a619d4572f9531bbcd5f681d2aa752a62b5deaf3f49b096f3311e969c3f",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8679-bp9985",
+      "fmaId": "FMA8679",
+      "bpId": "BP9985",
+      "name": "left inferior basal vein",
+      "sourceElements": 4,
+      "triangles": 870,
+      "glbSHA256": "e82ef434487c0634120a78338e65b173bc2ce79bc739c61c80c386e83dc77419",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8619-bp9422",
+      "fmaId": "FMA8619",
+      "bpId": "BP9422",
+      "name": "right posterior segmental artery",
+      "sourceElements": 6,
+      "triangles": 2218,
+      "glbSHA256": "b70a5b9493cd69b62de745586ae40e5c6380a6be933e4a1be28560a5dbb75ba5",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8632-bp9624",
+      "fmaId": "FMA8632",
+      "bpId": "BP9624",
+      "name": "right posterior basal segmental artery",
+      "sourceElements": 6,
+      "triangles": 3246,
+      "glbSHA256": "cd7d9e8b9c84a865e9b0eb0e1eb9b118933ad9f790d38851518b08562fced9c0",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8664-bp9641",
+      "fmaId": "FMA8664",
+      "bpId": "BP9641",
+      "name": "lateral segmental vein",
+      "sourceElements": 6,
+      "triangles": 1814,
+      "glbSHA256": "8d8de27f8a03e141bca569f04c1c04e1a12014b0e4a2f09b6f38764b5e65fd32",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    },
+    {
+      "id": "source-partof-fma8617-bp9667",
+      "fmaId": "FMA8617",
+      "bpId": "BP9667",
+      "name": "right apical segmental artery",
+      "sourceElements": 8,
+      "triangles": 2786,
+      "glbSHA256": "6d7f5da7ef355f3bc0388d7917f403247b01946463ff9074b7f780a9fea6c6fe",
+      "status": "EXACT_RETAINED_PUBLISHER_SOURCE_AND_GLB_RECEIPT_MATCH"
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "approvedForDistribution": false,
+  "clinicalValidation": false,
+  "registrationValidated": false
+}

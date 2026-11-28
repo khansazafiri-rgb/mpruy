@@ -1,0 +1,155 @@
+{
+  "schema": 1,
+  "batchId": "head-neck-cartilage-14",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Exact source element discovery only. Generic discovery FMA IDs are not anatomical identity; resolve exact archive path and publisher membership before comparing raw mesh bytes. No body alignment.",
+  "rows": [
+    {
+      "fj": "FJ2769",
+      "discoveryBP": "BP22903",
+      "discoveryFMA": "FMA55107",
+      "name": "Cricoid cartilage",
+      "faces": 1702,
+      "vertices": 937,
+      "bytes": 105143,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2773",
+      "discoveryBP": "BP23027",
+      "discoveryFMA": "FMA55107",
+      "name": "Left cuneiform cartilage",
+      "faces": 174,
+      "vertices": 91,
+      "bytes": 9679,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2775",
+      "discoveryBP": "BP23122",
+      "discoveryFMA": "FMA55107",
+      "name": "Left arytenoid cartilage",
+      "faces": 536,
+      "vertices": 284,
+      "bytes": 31671,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2776",
+      "discoveryBP": "BP23329",
+      "discoveryFMA": "FMA55107",
+      "name": "Left corniculate cartilage",
+      "faces": 136,
+      "vertices": 110,
+      "bytes": 9965,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2792",
+      "discoveryBP": "BP22608",
+      "discoveryFMA": "FMA55107",
+      "name": "Right arytenoid cartilage",
+      "faces": 540,
+      "vertices": 282,
+      "bytes": 31967,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2793",
+      "discoveryBP": "BP23108",
+      "discoveryFMA": "FMA55107",
+      "name": "Right corniculate cartilage",
+      "faces": 172,
+      "vertices": 108,
+      "bytes": 10817,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2795",
+      "discoveryBP": "BP23768",
+      "discoveryFMA": "FMA55107",
+      "name": "Right cuneiform cartilage",
+      "faces": 170,
+      "vertices": 88,
+      "bytes": 9491,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ2808",
+      "discoveryBP": "BP22917",
+      "discoveryFMA": "FMA55099",
+      "name": "Thyroid cartilage",
+      "faces": 2610,
+      "vertices": 1360,
+      "bytes": 161287,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ6487",
+      "discoveryBP": "BP22903",
+      "discoveryFMA": "FMA55107",
+      "name": "Cricoid cartilage",
+      "faces": 1702,
+      "vertices": 913,
+      "bytes": 103721,
+      "group": "laryngeal-cartilage"
+    },
+    {
+      "fj": "FJ6613",
+      "discoveryBP": "BP23366",
+      "discoveryFMA": "FMA55107",
+      "name": "Left lateral nasal cartilage",
+      "faces": 9094,
+      "vertices": 4909,
+      "bytes": 599104,
+      "group": "nasal-cartilage"
+    },
+    {
+      "fj": "FJ6614",
+      "discoveryBP": "BP23944",
+      "discoveryFMA": "FMA55107",
+      "name": "Left major alar cartilage",
+      "faces": 430,
+      "vertices": 248,
+      "bytes": 26393,
+      "group": "nasal-cartilage"
+    },
+    {
+      "fj": "FJ6615",
+      "discoveryBP": "BP23348",
+      "discoveryFMA": "FMA55107",
+      "name": "Right lateral nasal cartilage",
+      "faces": 9516,
+      "vertices": 5120,
+      "bytes": 631962,
+      "group": "nasal-cartilage"
+    },
+    {
+      "fj": "FJ6616",
+      "discoveryBP": "BP23263",
+      "discoveryFMA": "FMA55107",
+      "name": "Right major alar cartilage",
+      "faces": 388,
+      "vertices": 239,
+      "bytes": 24845,
+      "group": "nasal-cartilage"
+    },
+    {
+      "fj": "FJ6617",
+      "discoveryBP": "BP23119",
+      "discoveryFMA": "FMA55107",
+      "name": "Septal nasal cartilage",
+      "faces": 3602,
+      "vertices": 2992,
+      "bytes": 298034,
+      "group": "nasal-cartilage"
+    }
+  ]
+}

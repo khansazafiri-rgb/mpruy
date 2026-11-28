@@ -1,0 +1,1545 @@
+{
+  "schema": 1,
+  "sourceCommit": "9f0214648dc59bdaf894b21e837364bf1e245431",
+  "workflowRun": 45598125054,
+  "workflowJob": 139149529189,
+  "evidenceURL": "https://github.com/khansazafiri-rgb/mpruy/actions/runs/45598125054/job/139149529189",
+  "date": "2026-11-25",
+  "totals": {
+    "queries": 535,
+    "resolved": 297,
+    "held": 238
+  },
+  "report": {
+    "schema": 1,
+    "scope": "Fresh publisher source survey and bounded real-geometry sample, not the workstation inventory or a release.",
+    "receipts": [
+      {
+        "tree": "isa",
+        "kind": "archive",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+        "bytes": 142903898,
+        "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+      },
+      {
+        "tree": "isa",
+        "kind": "names",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt",
+        "bytes": 128086,
+        "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513"
+      },
+      {
+        "tree": "isa",
+        "kind": "elements",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt",
+        "bytes": 1142159,
+        "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf"
+      },
+      {
+        "tree": "partof",
+        "kind": "archive",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_BP3D_4.0_obj_99.zip",
+        "bytes": 64888505,
+        "sha256": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97"
+      },
+      {
+        "tree": "partof",
+        "kind": "names",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_parts_list_e.txt",
+        "bytes": 59351,
+        "sha256": "9224080557053e6f1322f1e13ab27f0ecde0db19bb3b505f0631afad230eeebd"
+      },
+      {
+        "tree": "partof",
+        "kind": "elements",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_element_parts.txt",
+        "bytes": 651179,
+        "sha256": "3f5f6df1028eb122b30de77c711597b6bb8e5541658e5985859fd228adbf88ea"
+      }
+    ],
+    "systems": {
+      "respiratory": {
+        "queries": 91,
+        "resolved": 67,
+        "held": 24
+      },
+      "nervous": {
+        "queries": 79,
+        "resolved": 29,
+        "held": 50
+      },
+      "lymphatic": {
+        "queries": 28,
+        "resolved": 4,
+        "held": 24
+      },
+      "heart": {
+        "queries": 41,
+        "resolved": 32,
+        "held": 9
+      },
+      "skeletal": {
+        "queries": 38,
+        "resolved": 28,
+        "held": 10
+      },
+      "muscular": {
+        "queries": 44,
+        "resolved": 4,
+        "held": 40
+      },
+      "joints": {
+        "queries": 25,
+        "resolved": 0,
+        "held": 25
+      },
+      "arterial": {
+        "queries": 49,
+        "resolved": 46,
+        "held": 3
+      },
+      "venous": {
+        "queries": 38,
+        "resolved": 32,
+        "held": 6
+      },
+      "digestive": {
+        "queries": 38,
+        "resolved": 28,
+        "held": 10
+      },
+      "urinary": {
+        "queries": 21,
+        "resolved": 11,
+        "held": 10
+      },
+      "reproductive": {
+        "queries": 27,
+        "resolved": 10,
+        "held": 17
+      },
+      "endocrine": {
+        "queries": 16,
+        "resolved": 6,
+        "held": 10
+      }
+    },
+    "samples": [
+      {
+        "group": "respiratory",
+        "name": "left lung",
+        "fmaId": "FMA7310",
+        "tree": "partof",
+        "triangles": 41438,
+        "glbSHA256": "c8be471cfb10eae3349719fc59ce98c80d682730d53f592d665fcba047360b44",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right lung",
+        "fmaId": "FMA7309",
+        "tree": "partof",
+        "triangles": 73312,
+        "glbSHA256": "0c350dd46ae91fe977dde72017ebfe0b32bc42826a839a008772593485a1ba37",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "brain",
+        "fmaId": "FMA50801",
+        "tree": "partof",
+        "triangles": 322262,
+        "glbSHA256": "b4f7a1a7f4cebf0423a418215a8644062954fb37a28b639343100c26f540206e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "spinal cord",
+        "fmaId": "FMA7647",
+        "tree": "partof",
+        "triangles": 728,
+        "glbSHA256": "024a670cb805aa857c3ed7d8c49b69cf38fc1892a70c1c8683e02ba2243d4c7a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "lymphatic",
+        "name": "thymus",
+        "fmaId": "FMA9607",
+        "tree": "partof",
+        "triangles": 2080,
+        "glbSHA256": "a76be023380bcaa7320b9bb722411f0523b8ec4802f6b908fd91e257a67eebed",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "lymphatic",
+        "name": "spleen",
+        "fmaId": "FMA7196",
+        "tree": "isa",
+        "triangles": 1330,
+        "glbSHA256": "cb39664a142044e0d793f22020c512c5b451900d1e87a0d2f3d07a8e679397de",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "heart",
+        "fmaId": "FMA7088",
+        "tree": "partof",
+        "triangles": 102802,
+        "glbSHA256": "54176a1b7e91611e3d309a992e4f07e0d51193a95819dd1fb396ae442f85b44f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "tricuspid valve",
+        "fmaId": "FMA7234",
+        "tree": "partof",
+        "triangles": 17612,
+        "glbSHA256": "94173ec19ee361a96cdffbcf7fc707a5e78575df54ecda690f46a12b22887c9a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "mandible",
+        "fmaId": "FMA52748",
+        "tree": "isa",
+        "triangles": 5576,
+        "glbSHA256": "0decbf80a3f211aaa1d96b4223618ac2a4bca3730517b8d7a8651aa493c00c43",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "sternum",
+        "fmaId": "FMA7485",
+        "tree": "partof",
+        "triangles": 8114,
+        "glbSHA256": "9f1ce05ad2ca5702cbb0d7ed1b00b89da192f382b41a412f9fe5512fe24f8937",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "muscular",
+        "name": "diaphragm",
+        "fmaId": "FMA13295",
+        "tree": "isa",
+        "triangles": 68522,
+        "glbSHA256": "17c1848140f96d227746c6cf7b9c1de81ea95888763b915d6de9a32346b62a03",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "aorta",
+        "fmaId": "FMA3734",
+        "tree": "partof",
+        "triangles": 10188,
+        "glbSHA256": "f359c253616f4f47d26c1e1b043e30b8ac70edca564da86b8211ab1d5d0e5125",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left common carotid artery",
+        "fmaId": "FMA4058",
+        "tree": "isa",
+        "triangles": 170,
+        "glbSHA256": "2215fc1766cfb44c2402870ee3627c16aa1a0b71eeae1e15bbf198bc6ba0c124",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "superior vena cava",
+        "fmaId": "FMA4720",
+        "tree": "isa",
+        "triangles": 598,
+        "glbSHA256": "f7ef5f4b68bcebeab64d8b2afbfbd9148f3beb26c77a1409ed77f351038b2a06",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "inferior vena cava",
+        "fmaId": "FMA10951",
+        "tree": "isa",
+        "triangles": 3080,
+        "glbSHA256": "c0f35b20b4be5c35c4d1b11932d7505e33ad08977ed2adec0d4563fd3a047af4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "esophagus",
+        "fmaId": "FMA7131",
+        "tree": "isa",
+        "triangles": 578,
+        "glbSHA256": "e1ec02058aaf38acede65190e99e9d3a5af5ba36092246e5ccea81b3c5dad38f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "stomach",
+        "fmaId": "FMA7148",
+        "tree": "isa",
+        "triangles": 1810,
+        "glbSHA256": "c69b0dbf17804064a3a1cc7327944ff1996ce6f5bb08c4019fc27dfcbaca052c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "left kidney",
+        "fmaId": "FMA7205",
+        "tree": "isa",
+        "triangles": 2982,
+        "glbSHA256": "dcf7cf345e7e49afa2ddb2171739a5164d99f54d5ff76bc4fd1a80c526c4c3ae",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "right kidney",
+        "fmaId": "FMA7204",
+        "tree": "isa",
+        "triangles": 2310,
+        "glbSHA256": "f6da589345e2796483359d1a4ef8992cb027b0af4b3876a4dfd0cc7a193c9fce",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "prostate",
+        "fmaId": "FMA9600",
+        "tree": "isa",
+        "triangles": 442,
+        "glbSHA256": "19456dc08e0dd254ed76edd8b966641762ecf075a762efb9f4040cb2600d854e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "left testis",
+        "fmaId": "FMA7212",
+        "tree": "isa",
+        "triangles": 210,
+        "glbSHA256": "dfdbf129d9808965632c58e6bdbe0fb1412aae1c88553e92e038c1e83b15b34a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "endocrine",
+        "name": "pituitary gland",
+        "fmaId": "FMA13889",
+        "tree": "isa",
+        "triangles": 1164,
+        "glbSHA256": "c56b215aade93910517db2ab84b55f1ce90fca0a0317dc02f7b7cef1f238e579",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "endocrine",
+        "name": "left adrenal gland",
+        "fmaId": "FMA15630",
+        "tree": "isa",
+        "triangles": 3996,
+        "glbSHA256": "3cc6aee08865a1986d3558e2c0b99b942886a9fce37a56721e510aeba1eaf6ba",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "muscular",
+        "name": "left infraspinatus muscle",
+        "fmaId": "FMA32548",
+        "tree": "isa",
+        "triangles": 866,
+        "glbSHA256": "403189acf0e6509d0dbb034d406f6f6bf790b9ed2d7c1395eaf9635185197741",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      }
+    ],
+    "unresolved": [
+      {
+        "group": "respiratory",
+        "target": "larynx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "left lung pleura",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "right lung pleura",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left brachial plexus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right brachial plexus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left sciatic nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right sciatic nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "thoracic duct",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "right lymphatic duct",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "cisterna chyli",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left biceps brachii muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right biceps brachii muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left gluteus maximus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right gluteus maximus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left hip joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right hip joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left knee joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right knee joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "intervertebral disc",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "venous",
+        "target": "portal vein",
+        "status": "AMBIGUOUS_SOURCE"
+      },
+      {
+        "group": "nervous",
+        "target": "left sciatic nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right sciatic nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "thoracic duct",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "right lymphatic duct",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "cisterna chyli",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "uterus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "left ovary",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "right ovary",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "thyroid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "pineal gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "palatine tonsil",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "lingual tonsil",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "pharyngeal tonsil",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "intestinal trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "jugular trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "subclavian trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "bronchomediastinal trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "lumbar trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "lymphatic vessel",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "lymphatic capillary",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "deep cervical lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "superficial cervical lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "axillary lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "mediastinal lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "tracheobronchial lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "mesenteric lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "inguinal lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "lymphatic",
+        "target": "popliteal lymph node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "nasal cavity",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "nasopharynx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "oropharynx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "laryngopharynx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "visceral pleura",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "parietal pleura",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "right superior lobar bronchus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "right middle lobar bronchus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "right inferior lobar bronchus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "left superior lobar bronchus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "left inferior lobar bronchus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "apical segment of right lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "posterior segment of right lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "anterior segment of right lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "lateral segment of right lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "medial segment of right lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "superior segment of right lower lobe",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "apical posterior segment of left lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "anterior segment of left lung",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "superior lingular segment",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "respiratory",
+        "target": "inferior lingular segment",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "olfactory bulb",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "olfactory tract",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "cerebral cortex",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "frontal lobe",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "parietal lobe",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "temporal lobe",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "cauda equina",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "conus medullaris",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "cervical plexus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "brachial plexus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "lumbar plexus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "sacral plexus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "sympathetic trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "vagus nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "phrenic nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "olfactory nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "oculomotor nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "trigeminal nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "abducens nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "facial nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "vestibulocochlear nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "glossopharyngeal nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "accessory nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "hypoglossal nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left median nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right median nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left ulnar nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right ulnar nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left radial nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right radial nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left musculocutaneous nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right musculocutaneous nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left axillary nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right axillary nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left femoral nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right femoral nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left obturator nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right obturator nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left tibial nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right tibial nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left common fibular nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right common fibular nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "left sural nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "nervous",
+        "target": "right sural nerve",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "interventricular septum",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "interatrial septum",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "myocardium",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "endocardium",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "epicardium",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "papillary muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "chordae tendineae",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "sinoatrial node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "heart",
+        "target": "atrioventricular node",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "parotid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "fundus of stomach",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "pylorus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "sigmoid colon",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "anal canal",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "quadrate lobe of liver",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "common bile duct",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "head of pancreas",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "body of pancreas",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "digestive",
+        "target": "tail of pancreas",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "left renal pelvis",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "right renal pelvis",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "left renal cortex",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "right renal cortex",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "left renal medulla",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "right renal medulla",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "renal papilla",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "renal pyramid",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "minor renal calyx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "urinary",
+        "target": "major renal calyx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "uterus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "cervix of uterus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "vagina",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "penis",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "scrotum",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "vas deferens",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "ovary",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "uterine tube",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "left ovary",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "right ovary",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "left uterine tube",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "right uterine tube",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "left vas deferens",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "reproductive",
+        "target": "right vas deferens",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "pineal gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "thyroid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "parathyroid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "adenohypophysis",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "neurohypophysis",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "isthmus of thyroid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "left parathyroid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "endocrine",
+        "target": "right parathyroid gland",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "coccyx",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "malleus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "incus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "stapes",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "left malleus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "right malleus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "left incus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "right incus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "left stapes",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "skeletal",
+        "target": "right stapes",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left hip joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right hip joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left knee joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right knee joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left shoulder joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right shoulder joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left elbow joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right elbow joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left wrist joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right wrist joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left ankle joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right ankle joint",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left anterior cruciate ligament",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right anterior cruciate ligament",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left posterior cruciate ligament",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right posterior cruciate ligament",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left medial meniscus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right medial meniscus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "left lateral meniscus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "joints",
+        "target": "right lateral meniscus",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "rectus abdominis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "transversus abdominis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "external oblique muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "internal oblique muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left biceps brachii muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right biceps brachii muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left triceps brachii muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right triceps brachii muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left deltoid muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right deltoid muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left supraspinatus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right supraspinatus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left subscapularis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right subscapularis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left teres minor muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right teres minor muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left gluteus maximus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right gluteus maximus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left gluteus medius muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right gluteus medius muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left gluteus minimus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right gluteus minimus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left rectus femoris muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right rectus femoris muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left vastus lateralis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right vastus lateralis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left vastus medialis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right vastus medialis muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left vastus intermedius muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right vastus intermedius muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left tibialis anterior muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right tibialis anterior muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left gastrocnemius muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right gastrocnemius muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "left soleus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "muscular",
+        "target": "right soleus muscle",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "arterial",
+        "target": "brachiocephalic trunk",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "arterial",
+        "target": "left external carotid artery",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "arterial",
+        "target": "right external carotid artery",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "venous",
+        "target": "portal vein",
+        "status": "AMBIGUOUS_SOURCE"
+      },
+      {
+        "group": "venous",
+        "target": "left external jugular vein",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "venous",
+        "target": "right external jugular vein",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "venous",
+        "target": "left brachial vein",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      },
+      {
+        "group": "venous",
+        "target": "right brachial vein",
+        "status": "NOT_FOUND_BY_EXACT_CHECK"
+      }
+    ],
+    "geometrySamplePass": 24,
+    "geometrySampleHeld": 0,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "publicRelease": "NO_GO",
+    "productionChanged": false,
+    "geometryPublished": 0
+  }
+}

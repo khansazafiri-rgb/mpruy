@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {buildReferenceQuestions,scoreReferenceAnswer} from '../src/reference-challenge-state.js';
+const entry=(n,name,fma=n)=>({id:'bp43-'+String(n).padStart(24,'0'),name,fmaId:'FMA'+fma,scope:'SINGLE_SOURCE_ELEMENT',approvedForDistribution:false,clinicalValidation:false,registrationValidated:false});
+const data=[entry(1,'Left nerve'),entry(2,'Right nerve'),entry(3,'Other nerve'),entry(4,'Fourth structure'),entry(5,'Left nerve',1)];
+test('deduplicate same-label fragments and preserve left/right answer distinctions',()=>{const qs=buildReferenceQuestions(data,()=>.5);assert.equal(qs.length,4);for(const q of qs){assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);assert(scoreReferenceAnswer(q,q.entry.id));assert.equal(scoreReferenceAnswer(q,q.options.find(o=>o.id!==q.entry.id).id),false);assert.throws(()=>scoreReferenceAnswer(q,'fake'));}});
+test('reject public or unvalidated input and insufficient distinct labels',()=>{assert.throws(()=>buildReferenceQuestions([{...data[0],approvedForDistribution:true}]));assert.deepEqual(buildReferenceQuestions(data.slice(0,3)),[]);assert.deepEqual(buildReferenceQuestions([...data,entry(6,'Left nerve',9)],()=>.5),[]);});
+
+import {buildSourceLabelQuestions} from '../src/reference-challenge-state.js';
+import {REFERENCE43_TOPIC_ROWS} from '../src/reference43-topic-catalog.js';
+test('source-label pool covers 239 distinct concepts from 246 catalogue entries',()=>{const xs=REFERENCE43_TOPIC_ROWS.map((r,i)=>({...entry(i+1,r.name),fmaId:r.fmaId}));assert.equal(xs.length,246);const qs=buildSourceLabelQuestions(xs,()=>.5);assert.equal(qs.length,239);assert.equal(new Set(qs.map(q=>q.entry.fmaId)).size,239);for(const q of qs){assert.equal(new Set(q.options.map(o=>o.label.toLowerCase())).size,4);assert(scoreReferenceAnswer(q,q.entry.id));assert(!scoreReferenceAnswer(q,q.options.find(o=>o.id!==q.entry.id).id));}});
+test('conflicting concept aliases and shared labels are held',()=>{const xs=[...data,entry(6,'Alternate name',1),entry(7,'Other nerve',7),entry(8,'Fifth'),entry(9,'Sixth')];const qs=buildSourceLabelQuestions(xs,()=>.5);assert.equal(qs.length,4);assert(!qs.some(q=>['FMA1','FMA3','FMA7'].includes(q.entry.fmaId)));});
+test('source-label mode rejects public entries, duplicate IDs and insufficient concepts',()=>{assert.throws(()=>buildSourceLabelQuestions([{...data[0],approvedForDistribution:true}]));assert.throws(()=>buildSourceLabelQuestions([data[0],data[0]]));assert.deepEqual(buildSourceLabelQuestions(data.slice(0,3)),[]);});

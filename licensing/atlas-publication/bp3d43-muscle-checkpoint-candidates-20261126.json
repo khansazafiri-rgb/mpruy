@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "scope": "Exact file-label candidates from pinned BP3D 4.3 mirror tree; Git LFS pointers only, not geometry. Independently verify publisher membership, mesh bytes, rights and clinical accuracy. No distribution.",
+  "mirrorRepo": "olivercase/body_parts_3d_api",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "mirrorTreeMeshEntries": 3210,
+  "existingAuditedElements": 376,
+  "geometryVerified": false,
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "publicRelease": "NO_GO",
+  "rows": [
+    {
+      "target": "left supraspinatus muscle",
+      "fma": "FMA32545",
+      "sourceLabel": "left supraspinatus",
+      "fj": "FJ1506M"
+    },
+    {
+      "target": "right supraspinatus muscle",
+      "fma": "FMA32544",
+      "sourceLabel": "right supraspinatus",
+      "fj": "FJ1506"
+    },
+    {
+      "target": "left subscapularis muscle",
+      "fma": "FMA13415",
+      "sourceLabel": "left subscapularis",
+      "fj": "FJ1504M"
+    },
+    {
+      "target": "right subscapularis muscle",
+      "fma": "FMA13414",
+      "sourceLabel": "right subscapularis",
+      "fj": "FJ1504"
+    },
+    {
+      "target": "left teres minor muscle",
+      "fma": "FMA32554",
+      "sourceLabel": "left teres minor",
+      "fj": "FJ1508M"
+    },
+    {
+      "target": "right teres minor muscle",
+      "fma": "FMA32553",
+      "sourceLabel": "right teres minor",
+      "fj": "FJ1508"
+    },
+    {
+      "target": "left gluteus maximus muscle",
+      "fma": "FMA22329",
+      "sourceLabel": "left gluteus maximus",
+      "fj": "FJ1418M"
+    },
+    {
+      "target": "right gluteus maximus muscle",
+      "fma": "FMA22328",
+      "sourceLabel": "right gluteus maximus",
+      "fj": "FJ1418"
+    },
+    {
+      "target": "left gluteus medius muscle",
+      "fma": "FMA22331",
+      "sourceLabel": "left gluteus medius",
+      "fj": "FJ1419M"
+    },
+    {
+      "target": "right gluteus medius muscle",
+      "fma": "FMA22330",
+      "sourceLabel": "right gluteus medius",
+      "fj": "FJ1419"
+    },
+    {
+      "target": "left gluteus minimus muscle",
+      "fma": "FMA22333",
+      "sourceLabel": "left gluteus minimus",
+      "fj": "FJ1420M"
+    },
+    {
+      "target": "right gluteus minimus muscle",
+      "fma": "FMA22332",
+      "sourceLabel": "right gluteus minimus",
+      "fj": "FJ1420"
+    },
+    {
+      "target": "left rectus femoris muscle",
+      "fma": "FMA38929",
+      "sourceLabel": "left rectus femoris",
+      "fj": "FJ1433M"
+    },
+    {
+      "target": "right rectus femoris muscle",
+      "fma": "FMA38928",
+      "sourceLabel": "right rectus femoris",
+      "fj": "FJ1433"
+    },
+    {
+      "target": "left vastus lateralis muscle",
+      "fma": "FMA38931",
+      "sourceLabel": "left vastus lateralis",
+      "fj": "FJ1442M"
+    },
+    {
+      "target": "right vastus lateralis muscle",
+      "fma": "FMA38930",
+      "sourceLabel": "right vastus lateralis",
+      "fj": "FJ1442"
+    },
+    {
+      "target": "left vastus medialis muscle",
+      "fma": "FMA38933",
+      "sourceLabel": "left vastus medialis",
+      "fj": "FJ1443M"
+    },
+    {
+      "target": "right vastus medialis muscle",
+      "fma": "FMA38932",
+      "sourceLabel": "right vastus medialis",
+      "fj": "FJ1443"
+    },
+    {
+      "target": "left vastus intermedius muscle",
+      "fma": "FMA38935",
+      "sourceLabel": "left vastus intermedius",
+      "fj": "FJ1441M"
+    },
+    {
+      "target": "right vastus intermedius muscle",
+      "fma": "FMA38934",
+      "sourceLabel": "right vastus intermedius",
+      "fj": "FJ1441"
+    },
+    {
+      "target": "left tibialis anterior muscle",
+      "fma": "FMA22545",
+      "sourceLabel": "left tibialis anterior",
+      "fj": "FJ1439M"
+    },
+    {
+      "target": "right tibialis anterior muscle",
+      "fma": "FMA22544",
+      "sourceLabel": "right tibialis anterior",
+      "fj": "FJ1439"
+    },
+    {
+      "target": "left soleus muscle",
+      "fma": "FMA22559",
+      "sourceLabel": "left soleus",
+      "fj": "FJ1437M"
+    },
+    {
+      "target": "right soleus muscle",
+      "fma": "FMA22558",
+      "sourceLabel": "right soleus",
+      "fj": "FJ1437"
+    }
+  ]
+}

@@ -1,0 +1,1504 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Quarantine only. Brain geometry is publisher-mirrored and resized from the Allen atlas, not independently acquired bilateral or sex-specific anatomy. Spinal segment crosswalk is incomplete and donor variation must be preserved. No source geometry modifications, registration, clinical approval, coverage promotion or release.",
+  "rows": [
+    {
+      "id": "brain-female",
+      "version": "v1.4",
+      "filename": "3d-allen-f-brain.glb",
+      "bytes": 11983380,
+      "glbBlob": "f854b1a4566e3025a1519bc38b78878da882b726",
+      "metadataBlob": "1d8beb30a35a53521a89878edd49f58907b781bc",
+      "crosswalkBlob": "6f16fb198bbf598d0a36ae4f755961bc8a3aea31",
+      "doi": "https://doi.org/10.48539/HBM674.NTLM.353",
+      "expectedCrosswalkRows": 108,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/brain-female/v1.4/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "PUBLISHER_MIRRORED_AND_RESCALED_ALLEN_ATLAS",
+      "clinicalLimitations": [
+        "NOT_INDEPENDENT_BILATERAL_ANATOMY",
+        "NO_LATERALIZATION_OR_ASYMMETRY_CLAIMS",
+        "NO_SEX_SPECIFIC_NEUROANATOMY_CLAIMS"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "Allen_brain",
+          "ontologyId": "UBERON:0000955",
+          "label": "brain"
+        },
+        {
+          "nodeName": "VH_F_optic_chiasm",
+          "ontologyId": "UBERON:0000959",
+          "label": "optic chiasma"
+        },
+        {
+          "nodeName": "Allen_brain_hemisphere_L",
+          "ontologyId": "UBERON:0002812",
+          "label": "left cerebral hemisphere"
+        },
+        {
+          "nodeName": "Allen_olfactory_bulb_L",
+          "ontologyId": "UBERON:0002264",
+          "label": "olfactory bulb"
+        },
+        {
+          "nodeName": "Allen_anterior_olfactory_nucleus_L",
+          "ontologyId": "UBERON:0002266",
+          "label": "anterior olfactory nucleus"
+        },
+        {
+          "nodeName": "Allen_piriform_region_L",
+          "ontologyId": "UBERON:0004725",
+          "label": "piriform cortex"
+        },
+        {
+          "nodeName": "Allen_putamen_L",
+          "ontologyId": "UBERON:0008884",
+          "label": "left putamen"
+        },
+        {
+          "nodeName": "Allen_pineal_body_L",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_L",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_L",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum"
+        },
+        {
+          "nodeName": "Allen_fornix_L",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain"
+        },
+        {
+          "nodeName": "Allen_optic_tract_L",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract"
+        },
+        {
+          "nodeName": "Allen_cerebellar_vermis_L",
+          "ontologyId": "UBERON:0004720",
+          "label": "cerebellar vermis"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_L",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_L",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_L",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus"
+        },
+        {
+          "nodeName": "Allen_precuneus_L",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_L",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_L",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole"
+        },
+        {
+          "nodeName": "Allen_planum_polare_L",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_L",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole"
+        },
+        {
+          "nodeName": "Allen_cuneus_L",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_L",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_L",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_L",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_L",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_L",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_L",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_L",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation"
+        },
+        {
+          "nodeName": "Allen_hippocampus_L",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation"
+        },
+        {
+          "nodeName": "Allen_brain_hemisphere_R",
+          "ontologyId": "UBERON:0002813",
+          "label": "right cerebral hemisphere"
+        },
+        {
+          "nodeName": "Allen_putamen_R",
+          "ontologyId": "UBERON:0008885",
+          "label": "right putamen"
+        },
+        {
+          "nodeName": "Allen_pineal_body_R",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_R",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_R",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum"
+        },
+        {
+          "nodeName": "Allen_fornix_R",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain"
+        },
+        {
+          "nodeName": "Allen_optic_tract_R",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_R",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_R",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_R",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus"
+        },
+        {
+          "nodeName": "Allen_precuneus_R",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_R",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_R",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole"
+        },
+        {
+          "nodeName": "Allen_planum_polare_R",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_R",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole"
+        },
+        {
+          "nodeName": "Allen_cuneus_R",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_R",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_R",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_R",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_R",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_R",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_R",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_R",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_R",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_R",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_L",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_R",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_L",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_L",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus"
+        },
+        {
+          "nodeName": "Allen_hippocampus_R",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation"
+        }
+      ]
+    },
+    {
+      "id": "brain-male",
+      "version": "v1.4",
+      "filename": "3d-allen-m-brain.glb",
+      "bytes": 11982812,
+      "glbBlob": "a5de26ce952e471d96ddcdf189b930de9f2e12a6",
+      "metadataBlob": "be71488d821c2e8af60ca5abc41b467359c9f87b",
+      "crosswalkBlob": "9489946556ab9872ad896ef98eb27b78fe44899c",
+      "doi": "https://doi.org/10.48539/HBM538.NKCT.649",
+      "expectedCrosswalkRows": 108,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/brain-male/v1.4/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "PUBLISHER_MIRRORED_AND_RESCALED_ALLEN_ATLAS",
+      "clinicalLimitations": [
+        "NOT_INDEPENDENT_BILATERAL_ANATOMY",
+        "NO_LATERALIZATION_OR_ASYMMETRY_CLAIMS",
+        "NO_SEX_SPECIFIC_NEUROANATOMY_CLAIMS"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "Allen_brain",
+          "ontologyId": "UBERON:0000955",
+          "label": "brain"
+        },
+        {
+          "nodeName": "Allen_brain_Hemisphere_L",
+          "ontologyId": "UBERON:0002812",
+          "label": "left cerebral hemisphere"
+        },
+        {
+          "nodeName": "Allen_olfactory_bulb_L",
+          "ontologyId": "UBERON:0002264",
+          "label": "olfactory bulb"
+        },
+        {
+          "nodeName": "Allen_anterior_olfactory_nucleus_L",
+          "ontologyId": "UBERON:0002266",
+          "label": "anterior olfactory nucleus"
+        },
+        {
+          "nodeName": "Allen_piriform_region_L",
+          "ontologyId": "UBERON:0004725",
+          "label": "piriform cortex"
+        },
+        {
+          "nodeName": "Allen_putamen_L",
+          "ontologyId": "UBERON:0008884",
+          "label": "left putamen"
+        },
+        {
+          "nodeName": "Allen_pineal_body_L",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_L",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_L",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum"
+        },
+        {
+          "nodeName": "Allen_fornix_L",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain"
+        },
+        {
+          "nodeName": "Allen_optic_tract_L",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract"
+        },
+        {
+          "nodeName": "Allen_cerebellar_vermis_L",
+          "ontologyId": "UBERON:0004720",
+          "label": "cerebellar vermis"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_L",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_L",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_L",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus"
+        },
+        {
+          "nodeName": "Allen_precuneus_L",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_L",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_L",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole"
+        },
+        {
+          "nodeName": "Allen_planum_polare_L",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_L",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole"
+        },
+        {
+          "nodeName": "Allen_cuneus_L",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_L",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_L",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_L",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_L",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_L",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_L",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_L",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation"
+        },
+        {
+          "nodeName": "Allen_hippocampus_L",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation"
+        },
+        {
+          "nodeName": "Allen_brain_Hemisphere_R",
+          "ontologyId": "UBERON:0002813",
+          "label": "right cerebral hemisphere"
+        },
+        {
+          "nodeName": "Allen_putamen_R",
+          "ontologyId": "UBERON:0008885",
+          "label": "right putamen"
+        },
+        {
+          "nodeName": "Allen_pineal_body_R",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_R",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_R",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum"
+        },
+        {
+          "nodeName": "Allen_fornix_R",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain"
+        },
+        {
+          "nodeName": "Allen_optic_tract_R",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_R",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_R",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_R",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus"
+        },
+        {
+          "nodeName": "Allen_precuneus_R",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_R",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_R",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole"
+        },
+        {
+          "nodeName": "Allen_planum_polare_R",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_R",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole"
+        },
+        {
+          "nodeName": "Allen_cuneus_R",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_R",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_R",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_R",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_R",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_R",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_R",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_R",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_R",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_R",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_L",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_R",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_L",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_L",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus"
+        },
+        {
+          "nodeName": "Allen_hippocampus_R",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation"
+        },
+        {
+          "nodeName": "VH_M_optic_chiasm",
+          "ontologyId": "UBERON:0000959",
+          "label": "optic chiasma"
+        }
+      ]
+    },
+    {
+      "id": "spinal-cord-female",
+      "version": "v1.1",
+      "filename": "3d-vh-f-spinal-cord.glb",
+      "bytes": 7657228,
+      "glbBlob": "8f5f22edc05279a5e85679a037f40f775166c1fa",
+      "metadataBlob": "95d63c44f55c93d24d29205d68490c69f062cec0",
+      "crosswalkBlob": "5e17e4a5460c1019f57671442bafea2c69fbd029",
+      "doi": "https://doi.org/10.48539/HBM242.QQQB.777",
+      "expectedCrosswalkRows": 30,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-female/v1.1/assets/3d-vh-f-spinal-cord.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/spinal-cord-female/v1.1/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_SOURCE",
+      "clinicalLimitations": [
+        "SOURCE_DONOR_HAS_SIX_LUMBAR_VERTEBRAE",
+        "SOURCE_CROSSWALK_INCOMPLETE_FOR_STANDARD_SEGMENT_SET"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_spinal_cord",
+          "ontologyId": "UBERON:0002240",
+          "label": "spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C1_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006469",
+          "label": "C1 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C2_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006489",
+          "label": "C2 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C3_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006488",
+          "label": "C3 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C4_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006490",
+          "label": "C4 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C5_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006491",
+          "label": "C5 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C6_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006492",
+          "label": "C6 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C7_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006493",
+          "label": "C7 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_C8_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006470",
+          "label": "C8 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_F_first_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006457",
+          "label": "first thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_second_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006458",
+          "label": "second thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_third_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006459",
+          "label": "third thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_fourth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006452",
+          "label": "fourth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_fifth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006453",
+          "label": "fifth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_seventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006455",
+          "label": "seventh thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_eigth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006456",
+          "label": "eighth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_sixth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006454",
+          "label": "sixth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_ninth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006465",
+          "label": "ninth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_tenth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006466",
+          "label": "tenth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_eleventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006467",
+          "label": "eleventh thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_twelfth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006468",
+          "label": "twelfth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_first_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006448",
+          "label": "first lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_second_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006450",
+          "label": "second lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_third_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006449",
+          "label": "third lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_fourth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006451",
+          "label": "fourth lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_fifth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006447",
+          "label": "fifth lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_first_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006460",
+          "label": "first sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_second_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006461",
+          "label": "second sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_third_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006462",
+          "label": "third sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_F_fourth_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006463",
+          "label": "fourth sacral spinal cord segment"
+        }
+      ]
+    },
+    {
+      "id": "spinal-cord-male",
+      "version": "v1.1",
+      "filename": "3d-vh-m-spinal-cord.glb",
+      "bytes": 490652,
+      "glbBlob": "c1d901c120f1b43ed04974e3a2a7cb2106e11e22",
+      "metadataBlob": "c192bde9c4e7b45b987561866adfaaeb090db377",
+      "crosswalkBlob": "e14ed3c5c43dd07f909810c11fc6828d9b6904f3",
+      "doi": "https://doi.org/10.48539/HBM575.VDJW.494",
+      "expectedCrosswalkRows": 31,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-male/v1.1/assets/3d-vh-m-spinal-cord.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/spinal-cord-male/v1.1/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_SOURCE",
+      "clinicalLimitations": [
+        "SOURCE_CROSSWALK_DOES_NOT_ESTABLISH_FULL_STANDARD_SEGMENT_SET"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_spinal_cord",
+          "ontologyId": "UBERON:0002240",
+          "label": "spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C1_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006469",
+          "label": "C1 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C2_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006489",
+          "label": "C2 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C3_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006488",
+          "label": "C3 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C4_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006490",
+          "label": "C4 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C5_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006491",
+          "label": "C5 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C6_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006492",
+          "label": "C6 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C7_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006493",
+          "label": "C7 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_C8_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006470",
+          "label": "C8 segment of cervical spinal cord"
+        },
+        {
+          "nodeName": "VH_M_first_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006457",
+          "label": "first thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_second_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006458",
+          "label": "second thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_third_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006459",
+          "label": "third thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_fourth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006452",
+          "label": "fourth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_fifth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006453",
+          "label": "fifth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_sixth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006454",
+          "label": "sixth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_seventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006455",
+          "label": "seventh thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_eighth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006456",
+          "label": "eighth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_ninth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006465",
+          "label": "ninth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_tenth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006466",
+          "label": "tenth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_eleventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006467",
+          "label": "eleventh thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_twelfth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006468",
+          "label": "twelfth thoracic spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_first_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006448",
+          "label": "first lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_second_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006450",
+          "label": "second lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_third_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006449",
+          "label": "third lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_fourth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006451",
+          "label": "fourth lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_fifth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006447",
+          "label": "fifth lumbar spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_first_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006460",
+          "label": "first sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_second_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006461",
+          "label": "second sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_third_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006462",
+          "label": "third sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_fourth_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006463",
+          "label": "fourth sacral spinal cord segment"
+        },
+        {
+          "nodeName": "VH_M_fifth_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006464",
+          "label": "fifth sacral spinal cord segment"
+        }
+      ]
+    }
+  ],
+  "held": [],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

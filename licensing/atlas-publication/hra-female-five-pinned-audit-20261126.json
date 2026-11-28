@@ -1,0 +1,410 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 5,
+  "held": 0,
+  "exactNamedMeshNodes": 19,
+  "rows": [
+    {
+      "id": "uterus-female",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/uterus-female/v1.2/assets/3d-vh-f-uterus.glb",
+      "bytes": 980408,
+      "sha256": "41014d2b222c2dbbe8d1cc38206b0099ce76d79659a9fdea9f28b8c7d669b864",
+      "metadataSHA256": "94437dad66baf94a89f67c46af6515fabdc5a5219abf9b774ca9143491b1a297",
+      "crosswalkSHA256": "d30bd7a11810bdc964543dfd675ad859b81f8f36997efeff95f48d48a5050b06",
+      "meshCount": 11,
+      "nodeCount": 12,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_uterus",
+          "ontologyId": "UBERON:0000995",
+          "label": "uterus",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_abdominal_ostium_of_uterine_tube",
+          "ontologyId": "FMA:77049",
+          "label": "Abdominal ostium of uterine tube",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_body_of_uterus",
+          "ontologyId": "UBERON:0009853",
+          "label": "body of uterus",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fundus_of_uterus",
+          "ontologyId": "FMA:17561",
+          "label": "Fundus of uterus",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lower_uterine_segment",
+          "ontologyId": "FMA:17752",
+          "label": "Lower uterine segment",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_posterior_wall_of_uterus",
+          "ontologyId": "FMA:224878",
+          "label": "Posterior wall of uterus",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_anterior_wall_of_uterus",
+          "ontologyId": "FMA:224876",
+          "label": "Anterior wall of uterus",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cervix",
+          "ontologyId": "UBERON:0000002",
+          "label": "uterine cervix",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_internal_cervical_os",
+          "ontologyId": "UBERON:0013759",
+          "label": "internal cervical os",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_external_cervical_os",
+          "ontologyId": "UBERON:0013760",
+          "label": "external cervical os",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 9,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM627.VTKD.892",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ovary-female-left",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-left/v1.3/assets/3d-vh-f-ovary-l.glb",
+      "bytes": 9000,
+      "sha256": "defd5cdc4b053b4e92193c5864bab2abae1807864ffde8bde7a7cb57f4736609",
+      "metadataSHA256": "a1d06507bc691dd51f8638c9226c88bb8a41d933c4959a9b48b3597bc16baa61",
+      "crosswalkSHA256": "a3487f60aa9aad8c8bf4fba037b58bebeb8c84d3ed44ecb37ae19f6c25a9b943",
+      "meshCount": 1,
+      "nodeCount": 1,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_left_ovary",
+          "ontologyId": "UBERON:0002119",
+          "label": "Left ovary",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [
+            0
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 1,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM695.KCXS.294",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ovary-female-right",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-right/v1.3/assets/3d-vh-f-ovary-r.glb",
+      "bytes": 8756,
+      "sha256": "381df741bf3d2511716e68db3ff70d94c0eda770d28a503af2d9fcb7b65113f8",
+      "metadataSHA256": "e461aedbf5cb32833fab1a15b3ee705c48a5d08002ed1126e850ffb5b3ccb30b",
+      "crosswalkSHA256": "40fec47dfddb4b9f91343c191fd4b9c602c971a905b4917282a32b7f34b0b518",
+      "meshCount": 1,
+      "nodeCount": 1,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_right_ovary",
+          "ontologyId": "UBERON:0002118",
+          "label": "Right ovary",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [
+            0
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 1,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM277.TVMB.676",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "fallopian-tube-female-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-left/v1.2/assets/3d-vh-f-fallopian-tube-l.glb",
+      "bytes": 336732,
+      "sha256": "34817c498e038b599b338f8a35e6c1b3cbda576255c4f2ecca6d9efdebac6c15",
+      "metadataSHA256": "02e51ca7350a8f223b7223511d998de1a9993dd001cb647aae0ece9e70a1c66c",
+      "crosswalkSHA256": "f220127b2844cae86ab057abffac6c4f3b2a269ff83ab1f294ab6d2f24eed877",
+      "meshCount": 4,
+      "nodeCount": 5,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_fallopian_tube_L",
+          "ontologyId": "UBERON:0001303",
+          "label": "left uterine tube",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_uterine_tube_infundibulum_L",
+          "ontologyId": "FMA:18490",
+          "label": "Infundibulum of left uterine tube",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fibria_of_uterine_tube_L",
+          "ontologyId": "FMA:18498",
+          "label": "Fimbria of left uterine tube",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_isthmus_of_fallopian_tube_L",
+          "ontologyId": "FMA:18494",
+          "label": "Isthmus of left uterine tube",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ampulla_of_uterine_tube_L",
+          "ontologyId": "FMA:18492",
+          "label": "Ampulla of left uterine tube",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 4,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM529.KBQT.896",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "fallopian-tube-female-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-right/v1.2/assets/3d-vh-f-fallopian-tube-r.glb",
+      "bytes": 327504,
+      "sha256": "eec911de07307d1a27cfe27c939e3f3562590e5c419e27decaf3b1d7b13ab038",
+      "metadataSHA256": "4f4319d096dc52465e5fa0bd74dbb1da2bf1f338e134e5ce72ec4b652e72f2a1",
+      "crosswalkSHA256": "92d42e1cb3623fbcaa25cb1140bd95f1e5abfb31587a87817f9634b770410ce6",
+      "meshCount": 4,
+      "nodeCount": 5,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_fallopian_tube_R",
+          "ontologyId": "UBERON:0001302",
+          "label": "right uterine tube",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_ampulla_of_uterine_tube_R",
+          "ontologyId": "FMA:18491",
+          "label": "Ampulla of right uterine tube",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_isthmus_of_fallopian_tube_R",
+          "ontologyId": "FMA:18493",
+          "label": "Isthmus of right uterine tube",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fibria_of_uterine_tube_R",
+          "ontologyId": "FMA:18497",
+          "label": "Fimbria of right uterine tube",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_uterine_tube_infundibulum_R",
+          "ontologyId": "FMA:18489",
+          "label": "Infundibulum of right uterine tube",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 4,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM952.XJJV.857",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "ff26f366360535e87b57fe5500ffc54e65d30d50",
+  "workflowRun": 45752523433,
+  "workflowJob": 139683417134,
+  "secondSuccessfulRun": 45752521798,
+  "browserReplay": {
+    "commit": "2b0effeeadce4d80db6bc0671b686efaa10257d4",
+    "workflowRun": 45753127844,
+    "workflowJob": 139685375717,
+    "conclusion": "success",
+    "renderedOriginalGLBs": 5,
+    "exactMappedNodes": 19,
+    "cervixIsolationRestore": true,
+    "bodyInventoryUnchanged": true
+  }
+}

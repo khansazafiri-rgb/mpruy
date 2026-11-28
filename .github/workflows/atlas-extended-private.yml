@@ -1,0 +1,68 @@
+name: Atlas extended 248-element private regression
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/atlas-audited-reference-suite.mjs'
+      - 'scripts/atlas-reference-suite-spec.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/src/reference-state.js'
+      - '.github/workflows/atlas-extended-private.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-extended-private-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  combined:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - name: Unit and identity regression
+        run: |
+          npm test --prefix apps/atlas-independent
+          node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs scripts/audit-atlas-cross-version-overlap.test.mjs scripts/select-bp3d43-acquisition.test.mjs scripts/atlas-audited-reference-suite.test.mjs
+      - name: Fresh first batch with exact audited source bytes
+        run: node scripts/intake-bp3d43-priority-elements.mjs
+      - name: Fresh gap batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs
+      - name: Fresh nerve batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs nerves-32
+      - name: Fresh disc and costal cartilage batches with dual-source audit
+        run: |
+          node scripts/audit-bp3d43-gap-batch.mjs discs-23
+          node scripts/audit-bp3d43-gap-batch.mjs costal-20
+      - name: Fresh head and neck cartilage batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs head-neck-cartilage-14
+      - name: Fresh abdominal visceral batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs visceral-18
+      - name: Fresh CNS batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs cns-30
+      - name: Fresh pelvic and digestive batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs pelvic-digestive-15
+      - name: Fresh cardiovascular and airway batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs cardiopulmonary-32
+      - name: Fresh bronchial and thymic batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs bronchial-thymus-22
+      - name: Fresh hyoid supplemental batch
+        run: node scripts/audit-bp3d43-gap-batch.mjs hyoid-2
+      - name: Install isolated browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Combined 248 source elements, 240 multilingual concepts, 9 HRA organs and 37 HRA groups
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_HRA_COMBINED=1 ATLAS_TEST_HRA_GROUPS=1 ATLAS_TEST_REAL43=hyoid-extended node scripts/test-private-atlas-browser.mjs
+      - name: Remove temporary source anatomy
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*

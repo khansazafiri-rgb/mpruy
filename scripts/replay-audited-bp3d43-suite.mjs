@@ -1,0 +1,36 @@
+// Reacquire exact publisher bytes from retained dual-source receipts, not a new mirror audit.
+// No assets leave the runner. Each child uses a fresh private acquisition directory.
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+import {spawn} from 'node:child_process';import {fileURLToPath} from 'node:url';
+import {BP43_SUITE,BP43_HYOID,BP43_EXPANSION,BP43_MUSCLE,BP43_COMPONENTS} from './atlas-reference-suite-spec.mjs';
+import {run,validateRetainedManifest} from './intake-bp3d43-priority-elements.mjs';
+import {load43Elements,select43Acquisition} from './load-bp3d43-private-elements.mjs';
+const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url))),q=path.join(root,'local-data/licensing-quarantine');
+const receipts=[...BP43_SUITE,BP43_HYOID,...BP43_EXPANSION];
+const hex=x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x);
+export function replayPlan(receipt,count){
+ assert(receipt.schema===1&&receipt.publicRelease==='NO_GO'&&receipt.geometryPublished===0&&receipt.clinicalValidation===false&&receipt.registrationValidated===false);
+ const {publisher,mirror,matches}=receipt;assert(publisher.publicRelease==='NO_GO'&&mirror.publicRelease==='NO_GO'&&publisher.held===0&&mirror.held===0&&publisher.parsed===count&&mirror.passed===count&&matches.length===count&&hex(publisher.manifestSHA256));
+ assert.equal(publisher.results.length,count);assert.equal(mirror.results.length,count);assert.equal(new Set(matches.map(x=>x.fj)).size,count);
+ const rows=matches.map(m=>{const p=publisher.results.filter(x=>x.fj===m.fj),r=mirror.results.filter(x=>x.fj===m.fj);assert(p.length===1&&r.length===1);const a=p[0],b=r[0];
+  assert(a.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH'&&b.status==='EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH'&&hex(m.rawSHA256)&&hex(m.publisherGLBSHA256)&&hex(m.mirrorGLBSHA256)&&m.triangles>0);
+  for(const v of [a,b])assert(v.bp===m.bp&&v.fma===m.fma&&v.rawSHA256===m.rawSHA256&&v.triangles===m.triangles);
+  assert(a.glbSHA256===m.publisherGLBSHA256&&b.glbSHA256===m.mirrorGLBSHA256&&a.name===m.name);
+  return {fj:m.fj,bp:m.bp,fma:m.fma,name:m.name,conceptMembership:a.conceptMembership};
+ });
+ return {schema:1,...(receipt.batchId==='checkpoint-components-36'?{batchId:receipt.batchId}:{}),sourceVersion:'4.3',geometryVerified:false,publicRelease:'NO_GO',licenseReview:'VERSION_SPECIFIC_REVIEW_REQUIRED',expectedManifestSHA256:publisher.manifestSHA256,rows};
+}
+export function retainedReceipt(file){const d=[...receipts,BP43_MUSCLE,BP43_COMPONENTS].find(x=>x[1]===file);assert(d,'Unknown receipt');return {evidence:JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count:d[2]};}
+export function readRetainedReports(q){assert(fs.realpathSync(q)===q&&path.basename(q)==='licensing-quarantine');return fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x)).flatMap(folder=>{const base=path.join(q,folder),f=path.join(base,'report.json');if(!fs.existsSync(f))return [];assert(fs.realpathSync(base)===base&&fs.realpathSync(f)===f&&fs.statSync(f).isFile()&&fs.statSync(f).size<1024*1024);return [{folder,report:JSON.parse(fs.readFileSync(f,'utf8'))}];});}
+export function commonManifestPin(files){assert(Array.isArray(files)&&files.length>0);const pins=new Set(files.map(file=>{const {evidence,count}=retainedReceipt(file);return replayPlan(evidence,count).expectedManifestSHA256;}));assert.equal(pins.size,1,'Retained batches use different membership pins');return [...pins][0];}
+function readReplayManifest(folder,pin){
+ assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folder),'Exact private acquisition folder required');
+ const dir=path.join(q,folder),file=path.join(dir,'FMA2Obj.txt');assert(fs.realpathSync(q)===q&&fs.realpathSync(dir)===dir&&fs.realpathSync(file)===file&&fs.statSync(file).isFile()&&fs.statSync(file).size<=32*1024*1024);
+ const b=fs.readFileSync(file);validateRetainedManifest(b,pin);return b;
+}
+function replayOne(file,manifestFolder=null){const {evidence,count}=retainedReceipt(file),doc=replayPlan(evidence,count);run(doc,{retainedManifest:manifestFolder===null?null:readReplayManifest(manifestFolder,doc.expectedManifestSHA256)});const folder=select43Acquisition(readRetainedReports(q),evidence);const registry=load43Elements(q,folder,evidence,count);assert.equal(registry.assets.size,count);console.log('EXACT RETAINED PUBLISHER REPLAY PASS '+file+' '+count);}
+export async function boundedReplay(items,worker,parallel=2){assert(Number.isInteger(parallel)&&parallel>=1&&parallel<=2);let next=0;const failures=[];await Promise.all(Array.from({length:parallel},async()=>{while(next<items.length&&!failures.length){const item=items[next++];try{await worker(item);}catch(e){failures.push({item,reason:String(e.message)});}}}));assert(!failures.length,'Replay failed; no partial suite: '+JSON.stringify(failures));}
+export function replayReceiptChild(file,manifestFolder=null){retainedReceipt(file);assert(manifestFolder===null||/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(manifestFolder));return new Promise((resolve,reject)=>{const p=spawn(process.execPath,[fileURLToPath(import.meta.url),'--receipt='+file,...(manifestFolder===null?[]:['--manifest-folder='+manifestFolder])],{stdio:'inherit'});p.once('error',reject);p.once('exit',(code,signal)=>code===0?resolve():reject(Error('Child failed '+file+' '+(signal||code))));});}
+if(process.argv[1]===fileURLToPath(import.meta.url)){assert([3,4].includes(process.argv.length),'Use --all-fresh, --all-expanded-fresh or one allowlisted --receipt=filename');const arg=process.argv[2];if(arg==='--all-fresh'||arg==='--all-expanded-fresh'){assert.equal(process.argv.length,3);const expanded=arg==='--all-expanded-fresh',selected=expanded?[...receipts,BP43_MUSCLE,BP43_COMPONENTS]:receipts;fs.mkdirSync(q,{recursive:true,mode:0o700});assert(fs.realpathSync(q)===q&&fs.readdirSync(q).every(x=>!x.startsWith('bp3d43-element-intake-')),'Fresh replay root required; do not delete local packs');const files=selected.map(x=>x[1]),pin=commonManifestPin(files);
+ await replayReceiptChild(files[0]);const first=retainedReceipt(files[0]),folder=select43Acquisition(readRetainedReports(q),first.evidence);readReplayManifest(folder,pin);
+ await boundedReplay(files.slice(1),file=>replayReceiptChild(file,folder),2);assert.equal(readRetainedReports(q).length,expanded?19:17);console.log('ATLAS EXACT PUBLISHER REPLAY PASS: '+selected.length+' acquisitions, '+(expanded?436:376)+' elements; no new dual-source or release claim.');}else{assert(arg.startsWith('--receipt='));const extra=process.argv[3];assert(extra===undefined||extra.startsWith('--manifest-folder='),'Unknown replay option');replayOne(arg.slice(10),extra===undefined?null:extra.slice('--manifest-folder='.length));}}

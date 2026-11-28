@@ -1,0 +1,3439 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 4,
+  "held": 0,
+  "exactNamedMeshNodes": 265,
+  "rows": [
+    {
+      "id": "brain-female",
+      "version": "v1.4",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb",
+      "bytes": 11983380,
+      "sha256": "f20d87a347f8d5c6467439cba7db18f19307d29b2c3e0c2b6ddb7e9d49e1c1fc",
+      "metadataSHA256": "a1d6034e607bae90ed0a7c106e2db59630d1764ef1101aadf9c7d43dd3481442",
+      "crosswalkSHA256": "605da1bee8d0a2df6e81081924571fcb175fe022aa96736e919510ad8a761d96",
+      "meshCount": 283,
+      "nodeCount": 288,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "Allen_brain",
+          "ontologyId": "UBERON:0000955",
+          "label": "brain",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_optic_chiasm",
+          "ontologyId": "UBERON:0000959",
+          "label": "optic chiasma",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_brain_hemisphere_L",
+          "ontologyId": "UBERON:0002812",
+          "label": "left cerebral hemisphere",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_olfactory_bulb_L",
+          "ontologyId": "UBERON:0002264",
+          "label": "olfactory bulb",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_olfactory_nucleus_L",
+          "ontologyId": "UBERON:0002266",
+          "label": "anterior olfactory nucleus",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_piriform_region_L",
+          "ontologyId": "UBERON:0004725",
+          "label": "piriform cortex",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_putamen_L",
+          "ontologyId": "UBERON:0008884",
+          "label": "left putamen",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pineal_body_L",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "nodeIndices": [
+            45
+          ],
+          "meshNodeIndices": [
+            45
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_L",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure",
+          "nodeIndices": [
+            51
+          ],
+          "meshNodeIndices": [
+            51
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_L",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum",
+          "nodeIndices": [
+            52
+          ],
+          "meshNodeIndices": [
+            52
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fornix_L",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain",
+          "nodeIndices": [
+            53
+          ],
+          "meshNodeIndices": [
+            53
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_tract_L",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract",
+          "nodeIndices": [
+            55
+          ],
+          "meshNodeIndices": [
+            55
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cerebellar_vermis_L",
+          "ontologyId": "UBERON:0004720",
+          "label": "cerebellar vermis",
+          "nodeIndices": [
+            61
+          ],
+          "meshNodeIndices": [
+            61
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_L",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex",
+          "nodeIndices": [
+            65
+          ],
+          "meshNodeIndices": [
+            65
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus",
+          "nodeIndices": [
+            66
+          ],
+          "meshNodeIndices": [
+            66
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus",
+          "nodeIndices": [
+            67
+          ],
+          "meshNodeIndices": [
+            67
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus",
+          "nodeIndices": [
+            68
+          ],
+          "meshNodeIndices": [
+            68
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus",
+          "nodeIndices": [
+            69
+          ],
+          "meshNodeIndices": [
+            69
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus",
+          "nodeIndices": [
+            70
+          ],
+          "meshNodeIndices": [
+            70
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus",
+          "nodeIndices": [
+            71
+          ],
+          "meshNodeIndices": [
+            71
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            72
+          ],
+          "meshNodeIndices": [
+            72
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            73
+          ],
+          "meshNodeIndices": [
+            73
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus",
+          "nodeIndices": [
+            74
+          ],
+          "meshNodeIndices": [
+            74
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule",
+          "nodeIndices": [
+            75
+          ],
+          "meshNodeIndices": [
+            75
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_L",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum",
+          "nodeIndices": [
+            76
+          ],
+          "meshNodeIndices": [
+            76
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_L",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus",
+          "nodeIndices": [
+            77
+          ],
+          "meshNodeIndices": [
+            77
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_precuneus_L",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex",
+          "nodeIndices": [
+            81
+          ],
+          "meshNodeIndices": [
+            81
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus",
+          "nodeIndices": [
+            83
+          ],
+          "meshNodeIndices": [
+            83
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus",
+          "nodeIndices": [
+            84
+          ],
+          "meshNodeIndices": [
+            84
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus",
+          "nodeIndices": [
+            85
+          ],
+          "meshNodeIndices": [
+            85
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_L",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale",
+          "nodeIndices": [
+            88
+          ],
+          "meshNodeIndices": [
+            88
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_L",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole",
+          "nodeIndices": [
+            89
+          ],
+          "meshNodeIndices": [
+            89
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_polare_L",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare",
+          "nodeIndices": [
+            90
+          ],
+          "meshNodeIndices": [
+            90
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_L",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole",
+          "nodeIndices": [
+            91
+          ],
+          "meshNodeIndices": [
+            91
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cuneus_L",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex",
+          "nodeIndices": [
+            92
+          ],
+          "meshNodeIndices": [
+            92
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus",
+          "nodeIndices": [
+            93
+          ],
+          "meshNodeIndices": [
+            93
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus",
+          "nodeIndices": [
+            94
+          ],
+          "meshNodeIndices": [
+            94
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus",
+          "nodeIndices": [
+            95
+          ],
+          "meshNodeIndices": [
+            95
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus",
+          "nodeIndices": [
+            96
+          ],
+          "meshNodeIndices": [
+            96
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus",
+          "nodeIndices": [
+            97
+          ],
+          "meshNodeIndices": [
+            97
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus",
+          "nodeIndices": [
+            98
+          ],
+          "meshNodeIndices": [
+            98
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus",
+          "nodeIndices": [
+            99
+          ],
+          "meshNodeIndices": [
+            99
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area",
+          "nodeIndices": [
+            100
+          ],
+          "meshNodeIndices": [
+            100
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus",
+          "nodeIndices": [
+            101
+          ],
+          "meshNodeIndices": [
+            101
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus",
+          "nodeIndices": [
+            102
+          ],
+          "meshNodeIndices": [
+            102
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_L",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra",
+          "nodeIndices": [
+            108
+          ],
+          "meshNodeIndices": [
+            108
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_L",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus",
+          "nodeIndices": [
+            109
+          ],
+          "meshNodeIndices": [
+            109
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle",
+          "nodeIndices": [
+            110
+          ],
+          "meshNodeIndices": [
+            110
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_L",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group",
+          "nodeIndices": [
+            115
+          ],
+          "meshNodeIndices": [
+            115
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_L",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum",
+          "nodeIndices": [
+            116
+          ],
+          "meshNodeIndices": [
+            116
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_L",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle",
+          "nodeIndices": [
+            121
+          ],
+          "meshNodeIndices": [
+            121
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_L",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum",
+          "nodeIndices": [
+            125
+          ],
+          "meshNodeIndices": [
+            125
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_L",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation",
+          "nodeIndices": [
+            126
+          ],
+          "meshNodeIndices": [
+            126
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hippocampus_L",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "nodeIndices": [
+            135
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_brain_hemisphere_R",
+          "ontologyId": "UBERON:0002813",
+          "label": "right cerebral hemisphere",
+          "nodeIndices": [
+            139
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_putamen_R",
+          "ontologyId": "UBERON:0008885",
+          "label": "right putamen",
+          "nodeIndices": [
+            148
+          ],
+          "meshNodeIndices": [
+            148
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pineal_body_R",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "nodeIndices": [
+            182
+          ],
+          "meshNodeIndices": [
+            182
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_R",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure",
+          "nodeIndices": [
+            186
+          ],
+          "meshNodeIndices": [
+            186
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_R",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum",
+          "nodeIndices": [
+            187
+          ],
+          "meshNodeIndices": [
+            187
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fornix_R",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain",
+          "nodeIndices": [
+            188
+          ],
+          "meshNodeIndices": [
+            188
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_tract_R",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract",
+          "nodeIndices": [
+            190
+          ],
+          "meshNodeIndices": [
+            190
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_R",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex",
+          "nodeIndices": [
+            200
+          ],
+          "meshNodeIndices": [
+            200
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus",
+          "nodeIndices": [
+            201
+          ],
+          "meshNodeIndices": [
+            201
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus",
+          "nodeIndices": [
+            202
+          ],
+          "meshNodeIndices": [
+            202
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus",
+          "nodeIndices": [
+            203
+          ],
+          "meshNodeIndices": [
+            203
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus",
+          "nodeIndices": [
+            204
+          ],
+          "meshNodeIndices": [
+            204
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus",
+          "nodeIndices": [
+            205
+          ],
+          "meshNodeIndices": [
+            205
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus",
+          "nodeIndices": [
+            206
+          ],
+          "meshNodeIndices": [
+            206
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            207
+          ],
+          "meshNodeIndices": [
+            207
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            208
+          ],
+          "meshNodeIndices": [
+            208
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus",
+          "nodeIndices": [
+            209
+          ],
+          "meshNodeIndices": [
+            209
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule",
+          "nodeIndices": [
+            210
+          ],
+          "meshNodeIndices": [
+            210
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_R",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum",
+          "nodeIndices": [
+            211
+          ],
+          "meshNodeIndices": [
+            211
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_R",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus",
+          "nodeIndices": [
+            212
+          ],
+          "meshNodeIndices": [
+            212
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_precuneus_R",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex",
+          "nodeIndices": [
+            216
+          ],
+          "meshNodeIndices": [
+            216
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus",
+          "nodeIndices": [
+            218
+          ],
+          "meshNodeIndices": [
+            218
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus",
+          "nodeIndices": [
+            219
+          ],
+          "meshNodeIndices": [
+            219
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus",
+          "nodeIndices": [
+            220
+          ],
+          "meshNodeIndices": [
+            220
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_R",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale",
+          "nodeIndices": [
+            223
+          ],
+          "meshNodeIndices": [
+            223
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_R",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole",
+          "nodeIndices": [
+            224
+          ],
+          "meshNodeIndices": [
+            224
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_polare_R",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare",
+          "nodeIndices": [
+            225
+          ],
+          "meshNodeIndices": [
+            225
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_R",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole",
+          "nodeIndices": [
+            226
+          ],
+          "meshNodeIndices": [
+            226
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cuneus_R",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex",
+          "nodeIndices": [
+            227
+          ],
+          "meshNodeIndices": [
+            227
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus",
+          "nodeIndices": [
+            228
+          ],
+          "meshNodeIndices": [
+            228
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus",
+          "nodeIndices": [
+            229
+          ],
+          "meshNodeIndices": [
+            229
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus",
+          "nodeIndices": [
+            230
+          ],
+          "meshNodeIndices": [
+            230
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus",
+          "nodeIndices": [
+            231
+          ],
+          "meshNodeIndices": [
+            231
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus",
+          "nodeIndices": [
+            232
+          ],
+          "meshNodeIndices": [
+            232
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus",
+          "nodeIndices": [
+            233
+          ],
+          "meshNodeIndices": [
+            233
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus",
+          "nodeIndices": [
+            234
+          ],
+          "meshNodeIndices": [
+            234
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area",
+          "nodeIndices": [
+            235
+          ],
+          "meshNodeIndices": [
+            235
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus",
+          "nodeIndices": [
+            236
+          ],
+          "meshNodeIndices": [
+            236
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus",
+          "nodeIndices": [
+            237
+          ],
+          "meshNodeIndices": [
+            237
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_R",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus",
+          "nodeIndices": [
+            243
+          ],
+          "meshNodeIndices": [
+            243
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_R",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra",
+          "nodeIndices": [
+            244
+          ],
+          "meshNodeIndices": [
+            244
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_R",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus",
+          "nodeIndices": [
+            245
+          ],
+          "meshNodeIndices": [
+            245
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_R",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus",
+          "nodeIndices": [
+            246
+          ],
+          "meshNodeIndices": [
+            246
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle",
+          "nodeIndices": [
+            247
+          ],
+          "meshNodeIndices": [
+            247
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_R",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group",
+          "nodeIndices": [
+            252
+          ],
+          "meshNodeIndices": [
+            252
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_R",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum",
+          "nodeIndices": [
+            253
+          ],
+          "meshNodeIndices": [
+            253
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_R",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle",
+          "nodeIndices": [
+            259
+          ],
+          "meshNodeIndices": [
+            259
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_R",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum",
+          "nodeIndices": [
+            263
+          ],
+          "meshNodeIndices": [
+            263
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_R",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation",
+          "nodeIndices": [
+            264
+          ],
+          "meshNodeIndices": [
+            264
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_L",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus",
+          "nodeIndices": [
+            272
+          ],
+          "meshNodeIndices": [
+            272
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_R",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus",
+          "nodeIndices": [
+            273
+          ],
+          "meshNodeIndices": [
+            273
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_L",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus",
+          "nodeIndices": [
+            280
+          ],
+          "meshNodeIndices": [
+            280
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_L",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus",
+          "nodeIndices": [
+            281
+          ],
+          "meshNodeIndices": [
+            281
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hippocampus_R",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "nodeIndices": [
+            284
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        }
+      ],
+      "sourceMethod": "PUBLISHER_MIRRORED_AND_RESCALED_ALLEN_ATLAS",
+      "clinicalLimitations": [
+        "NOT_INDEPENDENT_BILATERAL_ANATOMY",
+        "NO_LATERALIZATION_OR_ASYMMETRY_CLAIMS",
+        "NO_SEX_SPECIFIC_NEUROANATOMY_CLAIMS"
+      ],
+      "exactMeshNodeCount": 103,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM674.NTLM.353",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "brain-male",
+      "version": "v1.4",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb",
+      "bytes": 11982812,
+      "sha256": "c97d7d0b9ff0baebbdec5566fa7b08d789195ef965e0bd04cf743a8d683882db",
+      "metadataSHA256": "742049ba390b65fb6c3ff59df551a37513f56d735cd8f34f7093047a7f0db2b3",
+      "crosswalkSHA256": "55907c4a83180f4af06a41a4b4361cf8afd4520ead71e6bef5f75ffef62febcf",
+      "meshCount": 283,
+      "nodeCount": 288,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "Allen_brain",
+          "ontologyId": "UBERON:0000955",
+          "label": "brain",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_brain_Hemisphere_L",
+          "ontologyId": "UBERON:0002812",
+          "label": "left cerebral hemisphere",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_olfactory_bulb_L",
+          "ontologyId": "UBERON:0002264",
+          "label": "olfactory bulb",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_olfactory_nucleus_L",
+          "ontologyId": "UBERON:0002266",
+          "label": "anterior olfactory nucleus",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_piriform_region_L",
+          "ontologyId": "UBERON:0004725",
+          "label": "piriform cortex",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_putamen_L",
+          "ontologyId": "UBERON:0008884",
+          "label": "left putamen",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pineal_body_L",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "nodeIndices": [
+            44
+          ],
+          "meshNodeIndices": [
+            44
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_L",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure",
+          "nodeIndices": [
+            50
+          ],
+          "meshNodeIndices": [
+            50
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_L",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum",
+          "nodeIndices": [
+            51
+          ],
+          "meshNodeIndices": [
+            51
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fornix_L",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain",
+          "nodeIndices": [
+            52
+          ],
+          "meshNodeIndices": [
+            52
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_tract_L",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract",
+          "nodeIndices": [
+            54
+          ],
+          "meshNodeIndices": [
+            54
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cerebellar_vermis_L",
+          "ontologyId": "UBERON:0004720",
+          "label": "cerebellar vermis",
+          "nodeIndices": [
+            60
+          ],
+          "meshNodeIndices": [
+            60
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_L",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex",
+          "nodeIndices": [
+            64
+          ],
+          "meshNodeIndices": [
+            64
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus",
+          "nodeIndices": [
+            65
+          ],
+          "meshNodeIndices": [
+            65
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_L",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus",
+          "nodeIndices": [
+            66
+          ],
+          "meshNodeIndices": [
+            66
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_L",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus",
+          "nodeIndices": [
+            67
+          ],
+          "meshNodeIndices": [
+            67
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_L",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus",
+          "nodeIndices": [
+            68
+          ],
+          "meshNodeIndices": [
+            68
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_L",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus",
+          "nodeIndices": [
+            69
+          ],
+          "meshNodeIndices": [
+            69
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus",
+          "nodeIndices": [
+            70
+          ],
+          "meshNodeIndices": [
+            70
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            71
+          ],
+          "meshNodeIndices": [
+            71
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            72
+          ],
+          "meshNodeIndices": [
+            72
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_L",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus",
+          "nodeIndices": [
+            73
+          ],
+          "meshNodeIndices": [
+            73
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_L",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule",
+          "nodeIndices": [
+            74
+          ],
+          "meshNodeIndices": [
+            74
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_L",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum",
+          "nodeIndices": [
+            75
+          ],
+          "meshNodeIndices": [
+            75
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_L",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus",
+          "nodeIndices": [
+            76
+          ],
+          "meshNodeIndices": [
+            76
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_precuneus_L",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex",
+          "nodeIndices": [
+            80
+          ],
+          "meshNodeIndices": [
+            80
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus",
+          "nodeIndices": [
+            82
+          ],
+          "meshNodeIndices": [
+            82
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus",
+          "nodeIndices": [
+            83
+          ],
+          "meshNodeIndices": [
+            83
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_L",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus",
+          "nodeIndices": [
+            84
+          ],
+          "meshNodeIndices": [
+            84
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_L",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale",
+          "nodeIndices": [
+            87
+          ],
+          "meshNodeIndices": [
+            87
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_L",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole",
+          "nodeIndices": [
+            88
+          ],
+          "meshNodeIndices": [
+            88
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_polare_L",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare",
+          "nodeIndices": [
+            89
+          ],
+          "meshNodeIndices": [
+            89
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_L",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole",
+          "nodeIndices": [
+            90
+          ],
+          "meshNodeIndices": [
+            90
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cuneus_L",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex",
+          "nodeIndices": [
+            91
+          ],
+          "meshNodeIndices": [
+            91
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_L",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus",
+          "nodeIndices": [
+            92
+          ],
+          "meshNodeIndices": [
+            92
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_L",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus",
+          "nodeIndices": [
+            93
+          ],
+          "meshNodeIndices": [
+            93
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus",
+          "nodeIndices": [
+            94
+          ],
+          "meshNodeIndices": [
+            94
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_L",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus",
+          "nodeIndices": [
+            95
+          ],
+          "meshNodeIndices": [
+            95
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_L",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus",
+          "nodeIndices": [
+            96
+          ],
+          "meshNodeIndices": [
+            96
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_L",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus",
+          "nodeIndices": [
+            97
+          ],
+          "meshNodeIndices": [
+            97
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_L",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus",
+          "nodeIndices": [
+            98
+          ],
+          "meshNodeIndices": [
+            98
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_L",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area",
+          "nodeIndices": [
+            99
+          ],
+          "meshNodeIndices": [
+            99
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus",
+          "nodeIndices": [
+            100
+          ],
+          "meshNodeIndices": [
+            100
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_L",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus",
+          "nodeIndices": [
+            101
+          ],
+          "meshNodeIndices": [
+            101
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_L",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra",
+          "nodeIndices": [
+            107
+          ],
+          "meshNodeIndices": [
+            107
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_L",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus",
+          "nodeIndices": [
+            108
+          ],
+          "meshNodeIndices": [
+            108
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_L",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle",
+          "nodeIndices": [
+            109
+          ],
+          "meshNodeIndices": [
+            109
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_L",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group",
+          "nodeIndices": [
+            114
+          ],
+          "meshNodeIndices": [
+            114
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_L",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum",
+          "nodeIndices": [
+            115
+          ],
+          "meshNodeIndices": [
+            115
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_L",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle",
+          "nodeIndices": [
+            120
+          ],
+          "meshNodeIndices": [
+            120
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_L",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum",
+          "nodeIndices": [
+            124
+          ],
+          "meshNodeIndices": [
+            124
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_L",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation",
+          "nodeIndices": [
+            125
+          ],
+          "meshNodeIndices": [
+            125
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hippocampus_L",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "nodeIndices": [
+            134
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_brain_Hemisphere_R",
+          "ontologyId": "UBERON:0002813",
+          "label": "right cerebral hemisphere",
+          "nodeIndices": [
+            138
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "Allen_putamen_R",
+          "ontologyId": "UBERON:0008885",
+          "label": "right putamen",
+          "nodeIndices": [
+            147
+          ],
+          "meshNodeIndices": [
+            147
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pineal_body_R",
+          "ontologyId": "UBERON:0001905",
+          "label": "pineal body",
+          "nodeIndices": [
+            181
+          ],
+          "meshNodeIndices": [
+            181
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_commissure_R",
+          "ontologyId": "UBERON:0000935",
+          "label": "anterior commissure",
+          "nodeIndices": [
+            185
+          ],
+          "meshNodeIndices": [
+            185
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_corpus_callosum_R",
+          "ontologyId": "UBERON:0002336",
+          "label": "corpus callosum",
+          "nodeIndices": [
+            186
+          ],
+          "meshNodeIndices": [
+            186
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fornix_R",
+          "ontologyId": "UBERON:0000052",
+          "label": "fornix of brain",
+          "nodeIndices": [
+            187
+          ],
+          "meshNodeIndices": [
+            187
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_tract_R",
+          "ontologyId": "UBERON:0001908",
+          "label": "optic tract",
+          "nodeIndices": [
+            189
+          ],
+          "meshNodeIndices": [
+            189
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_primary_motor_cortex_R",
+          "ontologyId": "UBERON:0002703",
+          "label": "primary motor cortex",
+          "nodeIndices": [
+            199
+          ],
+          "meshNodeIndices": [
+            199
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002661",
+          "label": "superior frontal gyrus",
+          "nodeIndices": [
+            200
+          ],
+          "meshNodeIndices": [
+            200
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_frontal_gyrus_R",
+          "ontologyId": "UBERON:0002702",
+          "label": "middle frontal gyrus",
+          "nodeIndices": [
+            201
+          ],
+          "meshNodeIndices": [
+            201
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_triangular_part_R",
+          "ontologyId": "UBERON:0002629",
+          "label": "triangular part of inferior frontal gyrus",
+          "nodeIndices": [
+            202
+          ],
+          "meshNodeIndices": [
+            202
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_frontal_gyrus_opercular_part_R",
+          "ontologyId": "UBERON:0002980",
+          "label": "opercular part of inferior frontal gyrus",
+          "nodeIndices": [
+            203
+          ],
+          "meshNodeIndices": [
+            203
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_gyrus_rectus_straight_gyrus_R",
+          "ontologyId": "UBERON:0004671",
+          "label": "gyrus rectus",
+          "nodeIndices": [
+            204
+          ],
+          "meshNodeIndices": [
+            204
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_medial_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002570",
+          "label": "medial orbital gyrus",
+          "nodeIndices": [
+            205
+          ],
+          "meshNodeIndices": [
+            205
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            206
+          ],
+          "meshNodeIndices": [
+            206
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_intermediate_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002644",
+          "label": "intermediate orbital gyrus",
+          "nodeIndices": [
+            207
+          ],
+          "meshNodeIndices": [
+            207
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_orbital_gyrus_R",
+          "ontologyId": "UBERON:0002564",
+          "label": "lateral orbital gyrus",
+          "nodeIndices": [
+            208
+          ],
+          "meshNodeIndices": [
+            208
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_paracentral_lobule_rostral_part_R",
+          "ontologyId": "UBERON:0035932",
+          "label": "anterior segment of paracentral lobule",
+          "nodeIndices": [
+            209
+          ],
+          "meshNodeIndices": [
+            209
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_frontal_operculum_R",
+          "ontologyId": "UBERON:0002947",
+          "label": "frontal operculum",
+          "nodeIndices": [
+            210
+          ],
+          "meshNodeIndices": [
+            210
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_postcentral_gyrus_R",
+          "ontologyId": "UBERON:0002581",
+          "label": "postcentral gyrus",
+          "nodeIndices": [
+            211
+          ],
+          "meshNodeIndices": [
+            211
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_precuneus_R",
+          "ontologyId": "UBERON:0006093",
+          "label": "precuneus cortex",
+          "nodeIndices": [
+            215
+          ],
+          "meshNodeIndices": [
+            215
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002769",
+          "label": "superior temporal gyrus",
+          "nodeIndices": [
+            217
+          ],
+          "meshNodeIndices": [
+            217
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_middle_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002771",
+          "label": "middle temporal gyrus",
+          "nodeIndices": [
+            218
+          ],
+          "meshNodeIndices": [
+            218
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_temporal_gyrus_R",
+          "ontologyId": "UBERON:0002751",
+          "label": "inferior temporal gyrus",
+          "nodeIndices": [
+            219
+          ],
+          "meshNodeIndices": [
+            219
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_temporale_R",
+          "ontologyId": "UBERON:0022268",
+          "label": "planum temporale",
+          "nodeIndices": [
+            222
+          ],
+          "meshNodeIndices": [
+            222
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_temporal_pole_R",
+          "ontologyId": "UBERON:0002576",
+          "label": "temporal pole",
+          "nodeIndices": [
+            223
+          ],
+          "meshNodeIndices": [
+            223
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_planum_polare_R",
+          "ontologyId": "UBERON:0023861",
+          "label": "planum polare",
+          "nodeIndices": [
+            224
+          ],
+          "meshNodeIndices": [
+            224
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_occipital_pole_R",
+          "ontologyId": "UBERON:0002902",
+          "label": "occipital pole",
+          "nodeIndices": [
+            225
+          ],
+          "meshNodeIndices": [
+            225
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cuneus_R",
+          "ontologyId": "UBERON:0006092",
+          "label": "cuneus cortex",
+          "nodeIndices": [
+            226
+          ],
+          "meshNodeIndices": [
+            226
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lingual_gyrus_medial_occipitotemporal_gyrus_R",
+          "ontologyId": "UBERON:0002943",
+          "label": "lingual gyrus",
+          "nodeIndices": [
+            227
+          ],
+          "meshNodeIndices": [
+            227
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_lateral_occipitotemporal_fusiform_gyrus_occipital_part_R",
+          "ontologyId": "UBERON:0022364",
+          "label": "occipital fusiform gyrus",
+          "nodeIndices": [
+            228
+          ],
+          "meshNodeIndices": [
+            228
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0014608",
+          "label": "inferior occipital gyrus",
+          "nodeIndices": [
+            229
+          ],
+          "meshNodeIndices": [
+            229
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_occipital_gyrus_R",
+          "ontologyId": "UBERON:0002948",
+          "label": "superior occipital gyrus",
+          "nodeIndices": [
+            230
+          ],
+          "meshNodeIndices": [
+            230
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_rostral_anterior_part_R",
+          "ontologyId": "UBERON:0002756",
+          "label": "anterior cingulate gyrus",
+          "nodeIndices": [
+            231
+          ],
+          "meshNodeIndices": [
+            231
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cingulate_gyrus_caudal_posterior_part_R",
+          "ontologyId": "UBERON:0002740",
+          "label": "posterior cingulate gyrus",
+          "nodeIndices": [
+            232
+          ],
+          "meshNodeIndices": [
+            232
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_ingulo_parahippocampal_isthmus_R",
+          "ontologyId": "UBERON:0002738",
+          "label": "isthmus of cingulate gyrus",
+          "nodeIndices": [
+            233
+          ],
+          "meshNodeIndices": [
+            233
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_subcallosal_gyrus_parolfactory_gyrus_R",
+          "ontologyId": "UBERON:0003020",
+          "label": "subcallosal area",
+          "nodeIndices": [
+            234
+          ],
+          "meshNodeIndices": [
+            234
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_anterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0022383",
+          "label": "anterior parahippocampal gyrus",
+          "nodeIndices": [
+            235
+          ],
+          "meshNodeIndices": [
+            235
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_posterior_parahippocampal_gyrus_R",
+          "ontologyId": "UBERON:0002657",
+          "label": "posterior parahippocampal gyrus",
+          "nodeIndices": [
+            236
+          ],
+          "meshNodeIndices": [
+            236
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_R",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus",
+          "nodeIndices": [
+            242
+          ],
+          "meshNodeIndices": [
+            242
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_substantia_nigra_R",
+          "ontologyId": "UBERON:0002038",
+          "label": "substantia nigra",
+          "nodeIndices": [
+            243
+          ],
+          "meshNodeIndices": [
+            243
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_superior_colliculus_R",
+          "ontologyId": "UBERON:0001945",
+          "label": "superior colliculus",
+          "nodeIndices": [
+            244
+          ],
+          "meshNodeIndices": [
+            244
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_R",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus",
+          "nodeIndices": [
+            245
+          ],
+          "meshNodeIndices": [
+            245
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_cerebral_peduncle_crus_cerebri_R",
+          "ontologyId": "UBERON:0002623",
+          "label": "cerebral peduncle",
+          "nodeIndices": [
+            246
+          ],
+          "meshNodeIndices": [
+            246
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_basilar_part_of_pons_R",
+          "ontologyId": "UBERON:0002151",
+          "label": "pontine nuclear group",
+          "nodeIndices": [
+            251
+          ],
+          "meshNodeIndices": [
+            251
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_pontine_tegmentum_R",
+          "ontologyId": "UBERON:0003023",
+          "label": "pontine tegmentum",
+          "nodeIndices": [
+            252
+          ],
+          "meshNodeIndices": [
+            252
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_fourth_ventricle_R",
+          "ontologyId": "UBERON:0002422",
+          "label": "fourth ventricle",
+          "nodeIndices": [
+            258
+          ],
+          "meshNodeIndices": [
+            258
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_parietal_operculum_R",
+          "ontologyId": "UBERON:0002911",
+          "label": "parietal operculum",
+          "nodeIndices": [
+            262
+          ],
+          "meshNodeIndices": [
+            262
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_optic_radiation_R",
+          "ontologyId": "UBERON:0022264",
+          "label": "optic radiation",
+          "nodeIndices": [
+            263
+          ],
+          "meshNodeIndices": [
+            263
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_L",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus",
+          "nodeIndices": [
+            271
+          ],
+          "meshNodeIndices": [
+            271
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hypothalamus_R",
+          "ontologyId": "UBERON:0001898",
+          "label": "hypothalamus",
+          "nodeIndices": [
+            272
+          ],
+          "meshNodeIndices": [
+            272
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_red_nucleus_L",
+          "ontologyId": "UBERON:0001947",
+          "label": "red nucleus",
+          "nodeIndices": [
+            279
+          ],
+          "meshNodeIndices": [
+            279
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_inferior_colliculus_L",
+          "ontologyId": "UBERON:0001946",
+          "label": "inferior colliculus",
+          "nodeIndices": [
+            280
+          ],
+          "meshNodeIndices": [
+            280
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "Allen_hippocampus_R",
+          "ontologyId": "UBERON:0002421",
+          "label": "hippocampal formation",
+          "nodeIndices": [
+            283
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_optic_chiasm",
+          "ontologyId": "UBERON:0000959",
+          "label": "optic chiasma",
+          "nodeIndices": [
+            287
+          ],
+          "meshNodeIndices": [
+            287
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "PUBLISHER_MIRRORED_AND_RESCALED_ALLEN_ATLAS",
+      "clinicalLimitations": [
+        "NOT_INDEPENDENT_BILATERAL_ANATOMY",
+        "NO_LATERALIZATION_OR_ASYMMETRY_CLAIMS",
+        "NO_SEX_SPECIFIC_NEUROANATOMY_CLAIMS"
+      ],
+      "exactMeshNodeCount": 103,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM538.NKCT.649",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "spinal-cord-female",
+      "version": "v1.1",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-female/v1.1/assets/3d-vh-f-spinal-cord.glb",
+      "bytes": 7657228,
+      "sha256": "ececed633894787f9b0d22f2c68b65831202bc7b5f8b46f7517877a38fbcdb80",
+      "metadataSHA256": "d395b9e57d8c4f3e0da377ee8d0ebf96ce090fbc7bb1e15de679a9e4143f5bba",
+      "crosswalkSHA256": "1c3a82ceea6479ff3a1c823539d7a84ba21d896345c2cb9faab2eb1bbb6c9111",
+      "meshCount": 29,
+      "nodeCount": 30,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_spinal_cord",
+          "ontologyId": "UBERON:0002240",
+          "label": "spinal cord",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_C1_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006469",
+          "label": "C1 segment of cervical spinal cord",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C2_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006489",
+          "label": "C2 segment of cervical spinal cord",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C3_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006488",
+          "label": "C3 segment of cervical spinal cord",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C4_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006490",
+          "label": "C4 segment of cervical spinal cord",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C5_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006491",
+          "label": "C5 segment of cervical spinal cord",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C6_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006492",
+          "label": "C6 segment of cervical spinal cord",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C7_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006493",
+          "label": "C7 segment of cervical spinal cord",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_C8_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006470",
+          "label": "C8 segment of cervical spinal cord",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_first_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006457",
+          "label": "first thoracic spinal cord segment",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_second_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006458",
+          "label": "second thoracic spinal cord segment",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_third_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006459",
+          "label": "third thoracic spinal cord segment",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fourth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006452",
+          "label": "fourth thoracic spinal cord segment",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fifth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006453",
+          "label": "fifth thoracic spinal cord segment",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_seventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006455",
+          "label": "seventh thoracic spinal cord segment",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_eigth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006456",
+          "label": "eighth thoracic spinal cord segment",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_sixth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006454",
+          "label": "sixth thoracic spinal cord segment",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ninth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006465",
+          "label": "ninth thoracic spinal cord segment",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_tenth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006466",
+          "label": "tenth thoracic spinal cord segment",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_eleventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006467",
+          "label": "eleventh thoracic spinal cord segment",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_twelfth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006468",
+          "label": "twelfth thoracic spinal cord segment",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_first_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006448",
+          "label": "first lumbar spinal cord segment",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_second_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006450",
+          "label": "second lumbar spinal cord segment",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_third_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006449",
+          "label": "third lumbar spinal cord segment",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fourth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006451",
+          "label": "fourth lumbar spinal cord segment",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fifth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006447",
+          "label": "fifth lumbar spinal cord segment",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_first_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006460",
+          "label": "first sacral spinal cord segment",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_second_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006461",
+          "label": "second sacral spinal cord segment",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_third_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006462",
+          "label": "third sacral spinal cord segment",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fourth_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006463",
+          "label": "fourth sacral spinal cord segment",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_SOURCE",
+      "clinicalLimitations": [
+        "SOURCE_DONOR_HAS_SIX_LUMBAR_VERTEBRAE",
+        "SOURCE_CROSSWALK_INCOMPLETE_FOR_STANDARD_SEGMENT_SET"
+      ],
+      "exactMeshNodeCount": 29,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM242.QQQB.777",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "spinal-cord-male",
+      "version": "v1.1",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-male/v1.1/assets/3d-vh-m-spinal-cord.glb",
+      "bytes": 490652,
+      "sha256": "b8a2c2a288a8f7af84d5b93900b3c506a7996aa28518e9fb8a3ab9b6db6e6827",
+      "metadataSHA256": "56d626a482a974ae640d8b72c7b99709f771fe7126bff9bd758cef948000be89",
+      "crosswalkSHA256": "aae2776684334b299d087f03bb273b824206bf5831fb0481bfddda1db108fd4e",
+      "meshCount": 30,
+      "nodeCount": 31,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_spinal_cord",
+          "ontologyId": "UBERON:0002240",
+          "label": "spinal cord",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_C1_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006469",
+          "label": "C1 segment of cervical spinal cord",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C2_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006489",
+          "label": "C2 segment of cervical spinal cord",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C3_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006488",
+          "label": "C3 segment of cervical spinal cord",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C4_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006490",
+          "label": "C4 segment of cervical spinal cord",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C5_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006491",
+          "label": "C5 segment of cervical spinal cord",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C6_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006492",
+          "label": "C6 segment of cervical spinal cord",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C7_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006493",
+          "label": "C7 segment of cervical spinal cord",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_C8_segment_of_cervical_spinal_cord",
+          "ontologyId": "UBERON:0006470",
+          "label": "C8 segment of cervical spinal cord",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_first_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006457",
+          "label": "first thoracic spinal cord segment",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_second_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006458",
+          "label": "second thoracic spinal cord segment",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_third_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006459",
+          "label": "third thoracic spinal cord segment",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fourth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006452",
+          "label": "fourth thoracic spinal cord segment",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fifth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006453",
+          "label": "fifth thoracic spinal cord segment",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_sixth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006454",
+          "label": "sixth thoracic spinal cord segment",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_seventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006455",
+          "label": "seventh thoracic spinal cord segment",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_eighth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006456",
+          "label": "eighth thoracic spinal cord segment",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ninth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006465",
+          "label": "ninth thoracic spinal cord segment",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_tenth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006466",
+          "label": "tenth thoracic spinal cord segment",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_eleventh_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006467",
+          "label": "eleventh thoracic spinal cord segment",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_twelfth_thoracic_spinal_cord_segment",
+          "ontologyId": "UBERON:0006468",
+          "label": "twelfth thoracic spinal cord segment",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_first_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006448",
+          "label": "first lumbar spinal cord segment",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_second_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006450",
+          "label": "second lumbar spinal cord segment",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_third_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006449",
+          "label": "third lumbar spinal cord segment",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fourth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006451",
+          "label": "fourth lumbar spinal cord segment",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fifth_lumbar_spinal_cord_segment",
+          "ontologyId": "UBERON:0006447",
+          "label": "fifth lumbar spinal cord segment",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_first_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006460",
+          "label": "first sacral spinal cord segment",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_second_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006461",
+          "label": "second sacral spinal cord segment",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_third_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006462",
+          "label": "third sacral spinal cord segment",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fourth_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006463",
+          "label": "fourth sacral spinal cord segment",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fifth_sacral_spinal_cord_segment",
+          "ontologyId": "UBERON:0006464",
+          "label": "fifth sacral spinal cord segment",
+          "nodeIndices": [
+            30
+          ],
+          "meshNodeIndices": [
+            30
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_SOURCE",
+      "clinicalLimitations": [
+        "SOURCE_CROSSWALK_DOES_NOT_ESTABLISH_FULL_STANDARD_SEGMENT_SET"
+      ],
+      "exactMeshNodeCount": 30,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM575.VDJW.494",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "6ef08a490eca4a939da8789080f9647e49d3c350",
+  "workflowRun": 45852488504,
+  "workflowJob": 140022183359,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}

@@ -1,0 +1,1196 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 6,
+  "held": 0,
+  "exactNamedMeshNodes": 70,
+  "rows": [
+    {
+      "id": "knee-female-left",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb",
+      "bytes": 348328,
+      "sha256": "8c65eec0419b5c576e6fb0fb9f149384df4df29c543a171a0173281cb43f7f4c",
+      "metadataSHA256": "0a9524736d24bf2a3ebeb393a18084c0b442b6e431c05374d5bb661d1ca718cc",
+      "crosswalkSHA256": "25d240059a6f912fd75531d328cd1792aef8c97d6294abd95b58fc620e638281",
+      "meshCount": 20,
+      "nodeCount": 22,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_knee_L",
+          "ontologyId": "FMA:24978",
+          "label": "Left knee",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_meniscus_L",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_knee_joint_L",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_femur_L",
+          "ontologyId": "FMA:24475",
+          "label": "Left femur",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_intercondylar_fossa_L",
+          "ontologyId": "FMA:43750",
+          "label": "Intercondylar fossa of left femur",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_trochlear_groove_L",
+          "ontologyId": "FMA:43747",
+          "label": "Patellar surface of left femur",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_articular_cartilage_of_knee_L",
+          "ontologyId": "FMA:33190",
+          "label": "Articular cartilage of distal epiphysis of left femur",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_left_femur_inf",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_inf_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_frontal_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_distal_most_point_of_medial_condyle_L",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_sup_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_left_femur_sup",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_patella_L",
+          "ontologyId": "FMA:24487",
+          "label": "Left patella",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_tibia_L",
+          "ontologyId": "FMA:24478",
+          "label": "Left tibia",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fibula_L",
+          "ontologyId": "FMA:24481",
+          "label": "Left fibula",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM892.RGKB.238",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "knee-female-right",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb",
+      "bytes": 348376,
+      "sha256": "529e94d69a5f0212fbe541021539fb060fa59476fbca61e1d71452672984e674",
+      "metadataSHA256": "f6cb372195f45aebdc3e61cd71191ad23bbb0b89b2d525ecdf9bed79de9c49ed",
+      "crosswalkSHA256": "0f896149478abef3d431a61c01eb82047a087c45b01a30e0e4936f5a5c953b87",
+      "meshCount": 20,
+      "nodeCount": 22,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_knee_R",
+          "ontologyId": "FMA:24977",
+          "label": "Right knee",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_meniscus_R",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_knee_joint_R",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_femur_R",
+          "ontologyId": "FMA:24474",
+          "label": "Right femur",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_trochlear_groove_R",
+          "ontologyId": "FMA:43746",
+          "label": "Patellar surface of right femur",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_articular_cartilage_of_knee_R",
+          "ontologyId": "FMA:33189",
+          "label": "Articular cartilage of distal epiphysis of right femur",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_right_femur_sup",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_sup_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_medial_condyle_of_right_femur_inf",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_inf_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_lateral_condyle_of_femur_frontal_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_distal_most_point_of_medial_condyle_R",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_intercondylar_fossa_R",
+          "ontologyId": "FMA:43749",
+          "label": "Intercondylar fossa of right femur",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_tibia_R",
+          "ontologyId": "FMA:24477",
+          "label": "Right tibia",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fibula_R",
+          "ontologyId": "FMA:24480",
+          "label": "Right fibula",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_patella_R",
+          "ontologyId": "FMA:24486",
+          "label": "Right patella",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM542.WHJW.673",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "knee-male-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb",
+      "bytes": 440020,
+      "sha256": "2f15b825da044aafef760ab62aa2e9111f63d674efaa4c3d96ddb04f9b1ef6aa",
+      "metadataSHA256": "bb819963b655ed211e8e1cb819f05e17d047cf58a295c5969393144dae567c8f",
+      "crosswalkSHA256": "c897d53408127f7922b29dea8839d7d7a2b8fbfea3e8185f0c1c8c2d3946f7ad",
+      "meshCount": 20,
+      "nodeCount": 22,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_knee_L",
+          "ontologyId": "FMA:24978",
+          "label": "Left knee",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_meniscus_L",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_knee_joint_L",
+          "ontologyId": "FMA:35177",
+          "label": "Left knee joint",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_fibula_L",
+          "ontologyId": "FMA:24481",
+          "label": "Left fibula",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_femur_L",
+          "ontologyId": "FMA:24475",
+          "label": "Left femur",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_articular_cartilage_of_knee_L",
+          "ontologyId": "FMA:33190",
+          "label": "Articular cartilage of distal epiphysis of left femur",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_intercondylar_fossa_L",
+          "ontologyId": "FMA:43750",
+          "label": "Intercondylar fossa of left femur",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_frontal_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_inf_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_sup_L",
+          "ontologyId": "FMA:32861",
+          "label": "Lateral condyle of left femur",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_L",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_left_femur_inf",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_left_femur_sup",
+          "ontologyId": "FMA:32863",
+          "label": "Medial condyle of left femur",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_patellar_surface_L",
+          "ontologyId": "FMA:43747",
+          "label": "Patellar surface of left femur",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_tibia_L",
+          "ontologyId": "FMA:24478",
+          "label": "Left tibia",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_patella_L",
+          "ontologyId": "FMA:24487",
+          "label": "Left patella",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM839.JJQF.873",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "knee-male-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb",
+      "bytes": 440080,
+      "sha256": "668b23ebdd01d8140a5fe32d4092fe53c541ba413f30159c48369653798f5100",
+      "metadataSHA256": "ed4c338523bdfa480b6bb49e9354c5ca12677c070020051e9431ca78e4ac05f9",
+      "crosswalkSHA256": "1386537d5b7b9bfa2c22b7c4562db8fd8f3acf118dcf31b39998a5a0f85bbec3",
+      "meshCount": 20,
+      "nodeCount": 22,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_knee_R",
+          "ontologyId": "FMA:24977",
+          "label": "Right knee",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_knee_joint_R",
+          "ontologyId": "FMA:35176",
+          "label": "Right knee joint",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_tibia_R",
+          "ontologyId": "FMA:24477",
+          "label": "Right tibia",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fibula_R",
+          "ontologyId": "FMA:24480",
+          "label": "Right fibula",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_patella_R",
+          "ontologyId": "FMA:24486",
+          "label": "Right patella",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_femur_R",
+          "ontologyId": "FMA:24474",
+          "label": "Right femur",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_articular_cartilage_of_knee_R",
+          "ontologyId": "FMA:33189",
+          "label": "Articular cartilage of distal epiphysis of right femur",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_intercondylar_fossa_R",
+          "ontologyId": "FMA:43749",
+          "label": "Intercondylar fossa of right femur",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_frontal_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_inf_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_lateral_condyle_of_femur_sup_R",
+          "ontologyId": "FMA:32860",
+          "label": "Lateral condyle of right femur",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_distal_most_point_of_medial_condyle_of_femur_R",
+          "ontologyId": "UBERON:7500033",
+          "label": "distal-most point of medial condyle of femur",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_right_femur_inf",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_medial_condyle_of_right_femur_sup",
+          "ontologyId": "FMA:32862",
+          "label": "Medial condyle of right femur",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_patellar_surface_R",
+          "ontologyId": "FMA:43746",
+          "label": "Patellar surface of right femur",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_meniscus_R",
+          "ontologyId": "FMA:64019",
+          "label": "Articular disk of knee joint",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM984.JRHT.838",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "larynx-female",
+      "version": "v1.1",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb",
+      "bytes": 463320,
+      "sha256": "01c300b96bb4686dc1b68701361bea00088dbe29f3d5268e9fd1382d7fde9efd",
+      "metadataSHA256": "b5801a920676f956c3a7cf286dd51755e94459043cb706f6cc61b0a257ec0bc4",
+      "crosswalkSHA256": "d13c2ea92880ecf4753eb89a6d117e7967eef44ed72d45117fb0b9854a1112fb",
+      "meshCount": 7,
+      "nodeCount": 11,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_larynx",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_laryngeal_cartilage",
+          "ontologyId": "UBERON:0001739",
+          "label": "laryngeal cartilage",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage",
+          "ontologyId": "UBERON:0001740",
+          "label": "arytenoid cartilage",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage_R",
+          "ontologyId": "FMA:55113",
+          "label": "Right arytenoid cartilage",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_arytenoid_cartilage_L",
+          "ontologyId": "FMA:55114",
+          "label": "Left arytenoid cartilage",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_epiglotic_cartilage",
+          "ontologyId": "UBERON:0001742",
+          "label": "epiglottic cartilage",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cricoid_cartilage",
+          "ontologyId": "UBERON:0002375",
+          "label": "cricoid cartilage",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_thyroid_cartilage",
+          "ontologyId": "UBERON:0001738",
+          "label": "thyroid cartilage",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage",
+          "ontologyId": "UBERON:0001741",
+          "label": "corniculate cartilage",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage_L",
+          "ontologyId": "FMA:55116",
+          "label": "Left corniculate cartilage",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_corniculate_cartilage_R",
+          "ontologyId": "FMA:55115",
+          "label": "Right corniculate cartilage",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 7,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM525.FJHR.643",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "larynx-male",
+      "version": "v1.1",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb",
+      "bytes": 335576,
+      "sha256": "cdb6b3b5b0abd2b06e99913a8f4719e7b0784421b0534ae728e832197d30e287",
+      "metadataSHA256": "1f6a16f8070574c1a4a4b8341631d6cf2822ad4edb7c006d277afa7c037a5659",
+      "crosswalkSHA256": "c047d77778de90c54a6647394ba9279f6edbc12579c319aea537d696531907f5",
+      "meshCount": 7,
+      "nodeCount": 11,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_larynx",
+          "ontologyId": "UBERON:0001737",
+          "label": "larynx",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_laryngeal_cartilage",
+          "ontologyId": "UBERON:0001739",
+          "label": "laryngeal cartilage",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage",
+          "ontologyId": "UBERON:0001740",
+          "label": "arytenoid cartilage",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage_R",
+          "ontologyId": "FMA:55113",
+          "label": "Right arytenoid cartilage",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_arytenoid_cartilage_L",
+          "ontologyId": "FMA:55114",
+          "label": "Left arytenoid cartilage",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_epiglottic_cartilage",
+          "ontologyId": "UBERON:0001742",
+          "label": "epiglottic cartilage",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_cricoid_cartilage",
+          "ontologyId": "UBERON:0002375",
+          "label": "cricoid cartilage",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_thyroid_cartilage",
+          "ontologyId": "UBERON:0001738",
+          "label": "thyroid cartilage",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage",
+          "ontologyId": "UBERON:0001741",
+          "label": "corniculate cartilage",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage_L",
+          "ontologyId": "FMA:55116",
+          "label": "Left corniculate cartilage",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_corniculate_cartilage_R",
+          "ontologyId": "FMA:55115",
+          "label": "Right corniculate cartilage",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "exactMeshNodeCount": 7,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM362.HNZB.247",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "15e6a0a12b17ac4296c38253f0c78052651cfcb7",
+  "workflowRun": 45928486689,
+  "workflowJob": 140275382547,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}

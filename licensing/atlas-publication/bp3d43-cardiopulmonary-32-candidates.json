@@ -1,0 +1,335 @@
+{
+  "schema": 1,
+  "batchId": "cardiopulmonary-32",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "32 exact source-element candidate identifiers. Includes ventricular cavities, atrial walls, trachea, epiglottis and selected vascular trunks/vein elements. One selected element per label, not complete vessel trees, lung lobes, heart chambers, blood flow or spatial registration. Compare exact source membership and native geometry with pinned mirror. No release clearance.",
+  "rows": [
+    {
+      "fj": "FJ2541",
+      "discoveryBP": "BP21463",
+      "discoveryFMA": "FMA12224",
+      "name": "Trachea",
+      "faces": 4996,
+      "vertices": 2607,
+      "bytes": 320579,
+      "group": "respiratory"
+    },
+    {
+      "fj": "FJ2770",
+      "discoveryBP": "BP21503",
+      "discoveryFMA": "FMA49443",
+      "name": "Epiglottis",
+      "faces": 3602,
+      "vertices": 2992,
+      "bytes": 294458,
+      "group": "cartilage"
+    },
+    {
+      "fj": "FJ2422",
+      "discoveryBP": "BP21502",
+      "discoveryFMA": "FMA13238",
+      "name": "Cavity of left ventricle",
+      "faces": 1722,
+      "vertices": 879,
+      "bytes": 101810,
+      "group": "heart"
+    },
+    {
+      "fj": "FJ2423",
+      "discoveryBP": "BP22929",
+      "discoveryFMA": "FMA13238",
+      "name": "Cavity of right ventricle",
+      "faces": 1918,
+      "vertices": 973,
+      "bytes": 113260,
+      "group": "heart"
+    },
+    {
+      "fj": "FJ2438",
+      "discoveryBP": "BP21455",
+      "discoveryFMA": "FMA13256",
+      "name": "Wall of left atrium",
+      "faces": 7544,
+      "vertices": 4284,
+      "bytes": 509716,
+      "group": "heart"
+    },
+    {
+      "fj": "FJ2439",
+      "discoveryBP": "BP21422",
+      "discoveryFMA": "FMA13256",
+      "name": "Wall of right atrium",
+      "faces": 17784,
+      "vertices": 9887,
+      "bytes": 1211319,
+      "group": "heart"
+    },
+    {
+      "fj": "FJ2966",
+      "discoveryBP": "BP23682",
+      "discoveryFMA": "FMA30313",
+      "name": "Pulmonary trunk",
+      "faces": 1302,
+      "vertices": 871,
+      "bytes": 89276,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ2924",
+      "discoveryBP": "BP22846",
+      "discoveryFMA": "FMA268161",
+      "name": "Trunk of left pulmonary artery",
+      "faces": 5450,
+      "vertices": 2727,
+      "bytes": 341905,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3019",
+      "discoveryBP": "BP22843",
+      "discoveryFMA": "FMA268161",
+      "name": "Trunk of right pulmonary artery",
+      "faces": 678,
+      "vertices": 341,
+      "bytes": 39395,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ2925",
+      "discoveryBP": "BP22893",
+      "discoveryFMA": "FMA30314",
+      "name": "Trunk of left superior pulmonary vein",
+      "faces": 414,
+      "vertices": 209,
+      "bytes": 23624,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ2944",
+      "discoveryBP": "BP22896",
+      "discoveryFMA": "FMA30314",
+      "name": "Trunk of left inferior pulmonary vein",
+      "faces": 310,
+      "vertices": 157,
+      "bytes": 17466,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3020",
+      "discoveryBP": "BP22857",
+      "discoveryFMA": "FMA30314",
+      "name": "Trunk of right superior pulmonary vein",
+      "faces": 324,
+      "vertices": 171,
+      "bytes": 18885,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3040",
+      "discoveryBP": "BP22871",
+      "discoveryFMA": "FMA30314",
+      "name": "Trunk of right inferior pulmonary vein",
+      "faces": 196,
+      "vertices": 113,
+      "bytes": 11692,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3411",
+      "discoveryBP": "BP23913",
+      "discoveryFMA": "FMA13087",
+      "name": "Arch of aorta",
+      "faces": 670,
+      "vertices": 381,
+      "bytes": 41378,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3413",
+      "discoveryBP": "BP20272",
+      "discoveryFMA": "FMA13087",
+      "name": "Ascending aorta",
+      "faces": 396,
+      "vertices": 229,
+      "bytes": 24321,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3427",
+      "discoveryBP": "BP23707",
+      "discoveryFMA": "FMA13087",
+      "name": "Descending aorta",
+      "faces": 4562,
+      "vertices": 2351,
+      "bytes": 288865,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3441",
+      "discoveryBP": "BP23720",
+      "discoveryFMA": "FMA10951",
+      "name": "Inferior vena cava",
+      "faces": 1410,
+      "vertices": 793,
+      "bytes": 88638,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3645",
+      "discoveryBP": "BP23624",
+      "discoveryFMA": "FMA30314",
+      "name": "Superior vena cava",
+      "faces": 598,
+      "vertices": 318,
+      "bytes": 35843,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3421",
+      "discoveryBP": "BP23568",
+      "discoveryFMA": "FMA14812",
+      "name": "Celiac trunk",
+      "faces": 238,
+      "vertices": 133,
+      "bytes": 13962,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3644",
+      "discoveryBP": "BP24097",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of superior mesenteric artery",
+      "faces": 1506,
+      "vertices": 782,
+      "bytes": 90333,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3442",
+      "discoveryBP": "BP22910",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of inferior mesenteric artery",
+      "faces": 546,
+      "vertices": 299,
+      "bytes": 32787,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3082",
+      "discoveryBP": "BP23408",
+      "discoveryFMA": "FMA50722",
+      "name": "Pre-hepatic portal vein",
+      "faces": 3582,
+      "vertices": 1793,
+      "bytes": 222078,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3476",
+      "discoveryBP": "BP22669",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of left renal artery",
+      "faces": 258,
+      "vertices": 132,
+      "bytes": 14449,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3576",
+      "discoveryBP": "BP24071",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of right renal artery",
+      "faces": 282,
+      "vertices": 145,
+      "bytes": 16072,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3477",
+      "discoveryBP": "BP22197",
+      "discoveryFMA": "FMA14334",
+      "name": "Left renal vein",
+      "faces": 652,
+      "vertices": 334,
+      "bytes": 38139,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3577",
+      "discoveryBP": "BP19745",
+      "discoveryFMA": "FMA14334",
+      "name": "Right renal vein",
+      "faces": 332,
+      "vertices": 172,
+      "bytes": 19111,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3464",
+      "discoveryBP": "BP22662",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of left common iliac artery",
+      "faces": 248,
+      "vertices": 128,
+      "bytes": 13920,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3565",
+      "discoveryBP": "BP19546",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of right common iliac artery",
+      "faces": 220,
+      "vertices": 117,
+      "bytes": 12559,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ2074",
+      "discoveryBP": "BP22862",
+      "discoveryFMA": "FMA20730",
+      "name": "Trunk of left femoral artery",
+      "faces": 740,
+      "vertices": 373,
+      "bytes": 42935,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ2143",
+      "discoveryBP": "BP22863",
+      "discoveryFMA": "FMA20730",
+      "name": "Trunk of right femoral artery",
+      "faces": 752,
+      "vertices": 380,
+      "bytes": 44153,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3465",
+      "discoveryBP": "BP21633",
+      "discoveryFMA": "FMA14333",
+      "name": "Left common iliac vein",
+      "faces": 430,
+      "vertices": 244,
+      "bytes": 26238,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3566",
+      "discoveryBP": "BP20592",
+      "discoveryFMA": "FMA14333",
+      "name": "Right common iliac vein",
+      "faces": 358,
+      "vertices": 199,
+      "bytes": 21656,
+      "group": "vascular"
+    }
+  ]
+}

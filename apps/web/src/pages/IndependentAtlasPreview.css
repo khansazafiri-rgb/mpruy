@@ -1,0 +1,12 @@
+/* Preview-only shell, consistent with the independent Atlas palette. */
+.independent-atlas-host,.independent-atlas-landing{background:#092b27;color:#eff8f3;min-height:100dvh;font:15px system-ui,sans-serif}
+.independent-atlas-host{height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr)}
+.independent-atlas-host header,.independent-atlas-landing header{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 20px;background:#123833;border-bottom:1px solid #31534e}
+.independent-atlas-host header span,.independent-atlas-landing header span{margin-left:auto;font-size:12px;color:#b3d2c9}
+.independent-atlas-host a,.independent-atlas-landing a{color:#9ce2cf;text-decoration:underline}
+.independent-atlas-host iframe{display:block;width:100%;height:100%;border:0;background:#092b27}
+.independent-atlas-status{margin:0;padding:6px 20px;font-size:12px;color:#b3d2c9;display:flex;align-items:center;gap:12px}
+.independent-atlas-status button{border:1px solid #4a746a;border-radius:6px;padding:4px 10px;background:#183f39;color:#eff8f3}
+.independent-atlas-landing section{max-width:760px;margin:auto;padding:64px 24px;display:grid;gap:20px}
+.independent-atlas-landing h1{font-size:clamp(28px,5vw,48px);font-weight:700}
+.independent-atlas-landing .independent-atlas-link{justify-self:start;padding:12px 18px;border-radius:8px;background:#9ce2cf;color:#123833;text-decoration:none;font-weight:650}

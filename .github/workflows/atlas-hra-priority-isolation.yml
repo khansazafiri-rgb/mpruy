@@ -1,0 +1,32 @@
+name: Atlas HRA priority isolated geometry roundtrip
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/audit-hra-priority-isolation.py'
+      - 'licensing/atlas-publication/hra-united-mouth-priority-extraction-plan-20261127.json'
+      - '.github/workflows/atlas-hra-priority-isolation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-hra-priority-isolation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  isolated:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        source: [united-female, united-male, mouth-female, mouth-male]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: 'python -m pip install --only-binary=:all: numpy==1.26.4'
+      - run: python scripts/audit-hra-priority-isolation.py --test
+      - run: python scripts/audit-hra-priority-isolation.py ${{ matrix.source }}

@@ -1,0 +1,43 @@
+name: Atlas 128-element parallel anatomy expansion
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'licensing/atlas-publication/bp3d43-cranial-*-candidates.json'
+      - 'licensing/atlas-publication/bp3d43-cerebral-29-candidates.json'
+      - 'licensing/atlas-publication/bp3d43-axial-bone-32-candidates.json'
+      - 'licensing/atlas-publication/bp3d43-limb-facial-bone-25-candidates.json'
+      - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - '.github/workflows/atlas-bp3d43-parallel-expansion.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-bp3d43-parallel-expansion-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        batch: [cranial-32, cranial-10, cerebral-29, axial-bone-32, limb-facial-bone-25]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - name: Test exact source identity and dual-source gates
+        run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs
+      - name: Replay actual publisher and pinned mirror geometry
+        env:
+          BATCH: ${{ matrix.batch }}
+        run: node scripts/audit-bp3d43-gap-batch.mjs "$BATCH"
+      - name: Remove temporary source anatomy
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*

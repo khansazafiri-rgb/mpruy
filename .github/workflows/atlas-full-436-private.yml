@@ -1,0 +1,40 @@
+name: Atlas full 436-element and 24-HRA private regression
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'scripts/atlas-audited-reference-suite.mjs'
+      - 'scripts/replay-audited-bp3d43-suite.mjs'
+      - '.github/workflows/atlas-full-436-private.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-full-436-private-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  full:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/atlas-audited-reference-suite.test.mjs scripts/atlas-components-36.test.mjs scripts/replay-audited-bp3d43-suite.test.mjs scripts/independent-atlas-learning-coverage.test.mjs
+      - run: npm test --prefix apps/atlas-independent
+      - run: node scripts/replay-audited-bp3d43-suite.mjs --all-expanded-fresh
+      - run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Render full expanded audited suite in one original-shell viewer
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_REAL43=full-436 ATLAS_TEST_HRA_ALL=1 ATLAS_TEST_HRA_GROUPS=1 node scripts/test-private-atlas-browser.mjs
+      - if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/hra-female-five-* local-data/licensing-quarantine/hra-cardiopulmonary-four-* local-data/licensing-quarantine/hra-urogenital-7-* local-data/licensing-quarantine/hra-ureter-four-* local-data/licensing-quarantine/hra-cns-four-*

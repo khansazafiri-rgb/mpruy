@@ -1,0 +1,305 @@
+{
+  "schema": 1,
+  "batchId": "cerebral-29",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Exact tree and membership discovery only; FMA not in current 248-element reference collection, not proof of absence from body inventory. No clinical, registration or release approval.",
+  "rows": [
+    {
+      "fj": "FJ1654M",
+      "discoveryBP": "BP21083",
+      "discoveryFMA": "FMA50028",
+      "name": "Left anterior cerebral artery",
+      "faces": 400,
+      "vertices": 213,
+      "bytes": 23462,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ5021",
+      "discoveryBP": "BP21122",
+      "discoveryFMA": "FMA50028",
+      "name": "Right anterior cerebral artery",
+      "faces": 448,
+      "vertices": 250,
+      "bytes": 27300,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ4977",
+      "discoveryBP": "BP28738",
+      "discoveryFMA": "FMA50031",
+      "name": "Anterior communicating artery",
+      "faces": 248,
+      "vertices": 299,
+      "bytes": 24879,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1656",
+      "discoveryBP": "BP22939",
+      "discoveryFMA": "FMA50544",
+      "name": "Anterior inferior cerebellar artery",
+      "faces": 766,
+      "vertices": 524,
+      "bytes": 53443,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1657M",
+      "discoveryBP": "BP21116",
+      "discoveryFMA": "FMA50531",
+      "name": "Left anterior spinal artery",
+      "faces": 304,
+      "vertices": 218,
+      "bytes": 21194,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ4981",
+      "discoveryBP": "BP21096",
+      "discoveryFMA": "FMA50531",
+      "name": "Right anterior spinal artery",
+      "faces": 338,
+      "vertices": 243,
+      "bytes": 23795,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1658M",
+      "discoveryBP": "BP21059",
+      "discoveryFMA": "FMA50087",
+      "name": "Left anterior choroidal artery",
+      "faces": 418,
+      "vertices": 343,
+      "bytes": 31767,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1694M",
+      "discoveryBP": "BP23173",
+      "discoveryFMA": "FMA50080",
+      "name": "Insular part of left middle cerebral artery",
+      "faces": 4706,
+      "vertices": 2362,
+      "bytes": 293304,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ5171",
+      "discoveryBP": "BP23792",
+      "discoveryFMA": "FMA50080",
+      "name": "Insular part of right middle cerebral artery",
+      "faces": 440,
+      "vertices": 249,
+      "bytes": 27114,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1676M",
+      "discoveryBP": "BP21225",
+      "discoveryFMA": "FMA50031",
+      "name": "Left callosomarginal artery",
+      "faces": 578,
+      "vertices": 337,
+      "bytes": 36118,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1676",
+      "discoveryBP": "BP21288",
+      "discoveryFMA": "FMA50031",
+      "name": "Right callosomarginal artery",
+      "faces": 578,
+      "vertices": 334,
+      "bytes": 36273,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1682M",
+      "discoveryBP": "BP22858",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of left common carotid artery",
+      "faces": 1272,
+      "vertices": 650,
+      "bytes": 74952,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ4993",
+      "discoveryBP": "BP22909",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of right internal carotid artery",
+      "faces": 792,
+      "vertices": 417,
+      "bytes": 47474,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1692M",
+      "discoveryBP": "BP23285",
+      "discoveryFMA": "FMA50080",
+      "name": "Sphenoid part of left middle cerebral artery",
+      "faces": 800,
+      "vertices": 402,
+      "bytes": 46386,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ5132",
+      "discoveryBP": "BP23364",
+      "discoveryFMA": "FMA50080",
+      "name": "Sphenoid part of right middle cerebral artery",
+      "faces": 402,
+      "vertices": 207,
+      "bytes": 23380,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1695M",
+      "discoveryBP": "BP21124",
+      "discoveryFMA": "FMA49868",
+      "name": "Left ophthalmic artery",
+      "faces": 2410,
+      "vertices": 1207,
+      "bytes": 143748,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1695",
+      "discoveryBP": "BP21135",
+      "discoveryFMA": "FMA49868",
+      "name": "Right ophthalmic artery",
+      "faces": 2410,
+      "vertices": 1207,
+      "bytes": 144981,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1699M",
+      "discoveryBP": "BP21240",
+      "discoveryFMA": "FMA50031",
+      "name": "Left pericallosal artery",
+      "faces": 1080,
+      "vertices": 972,
+      "bytes": 88308,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1699",
+      "discoveryBP": "BP21267",
+      "discoveryFMA": "FMA50031",
+      "name": "Right pericallosal artery",
+      "faces": 1080,
+      "vertices": 984,
+      "bytes": 90132,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1715M",
+      "discoveryBP": "BP21118",
+      "discoveryFMA": "FMA50518",
+      "name": "Left posterior inferior cerebellar artery",
+      "faces": 796,
+      "vertices": 673,
+      "bytes": 62741,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ5230",
+      "discoveryBP": "BP22195",
+      "discoveryFMA": "FMA50518",
+      "name": "Right posterior inferior cerebellar artery",
+      "faces": 736,
+      "vertices": 821,
+      "bytes": 68020,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1713M",
+      "discoveryBP": "BP21086",
+      "discoveryFMA": "FMA50084",
+      "name": "Left posterior communicating artery",
+      "faces": 204,
+      "vertices": 122,
+      "bytes": 12316,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ5162",
+      "discoveryBP": "BP21058",
+      "discoveryFMA": "FMA50084",
+      "name": "Right posterior communicating artery",
+      "faces": 204,
+      "vertices": 122,
+      "bytes": 12447,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1725M",
+      "discoveryBP": "BP23900",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of left vertebral artery",
+      "faces": 800,
+      "vertices": 489,
+      "bytes": 51659,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ5015",
+      "discoveryBP": "BP23901",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of right vertebral artery",
+      "faces": 1096,
+      "vertices": 640,
+      "bytes": 69907,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1726M",
+      "discoveryBP": "BP20958",
+      "discoveryFMA": "FMA50573",
+      "name": "Left superior cerebellar artery",
+      "faces": 406,
+      "vertices": 226,
+      "bytes": 24468,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ1726",
+      "discoveryBP": "BP20997",
+      "discoveryFMA": "FMA50573",
+      "name": "Right superior cerebellar artery",
+      "faces": 406,
+      "vertices": 226,
+      "bytes": 24663,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ3483",
+      "discoveryBP": "BP22859",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of left internal carotid artery",
+      "faces": 170,
+      "vertices": 126,
+      "bytes": 11774,
+      "group": "vascular"
+    },
+    {
+      "fj": "FJ4986",
+      "discoveryBP": "BP22860",
+      "discoveryFMA": "FMA30313",
+      "name": "Trunk of right common carotid artery",
+      "faces": 3506,
+      "vertices": 1755,
+      "bytes": 217376,
+      "group": "vascular"
+    }
+  ]
+}

@@ -1,0 +1,2600 @@
+{
+  "schema": 1,
+  "sourceCommit": "e55fa9e5af1da3944b533d6dfe7507e121e870a3",
+  "workflowRun": 45606035127,
+  "workflowJob": 139177016192,
+  "report": {
+    "scope": "All distinct exact resolved source representations; not the workstation inventory or a release.",
+    "receipts": [
+      {
+        "tree": "isa",
+        "kind": "archive",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+        "bytes": 142903898,
+        "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+      },
+      {
+        "tree": "isa",
+        "kind": "names",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt",
+        "bytes": 128086,
+        "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513"
+      },
+      {
+        "tree": "isa",
+        "kind": "elements",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt",
+        "bytes": 1142159,
+        "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf"
+      },
+      {
+        "tree": "partof",
+        "kind": "archive",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_BP3D_4.0_obj_99.zip",
+        "bytes": 64888505,
+        "sha256": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97"
+      },
+      {
+        "tree": "partof",
+        "kind": "names",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_parts_list_e.txt",
+        "bytes": 59351,
+        "sha256": "9224080557053e6f1322f1e13ab27f0ecde0db19bb3b505f0631afad230eeebd"
+      },
+      {
+        "tree": "partof",
+        "kind": "elements",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_element_parts.txt",
+        "bytes": 651179,
+        "sha256": "3f5f6df1028eb122b30de77c711597b6bb8e5541658e5985859fd228adbf88ea"
+      }
+    ],
+    "systems": {
+      "venous": {
+        "queries": 42,
+        "resolved": 38,
+        "held": 4
+      },
+      "respiratory": {
+        "queries": 91,
+        "resolved": 67,
+        "held": 24
+      },
+      "nervous": {
+        "queries": 79,
+        "resolved": 29,
+        "held": 50
+      },
+      "lymphatic": {
+        "queries": 28,
+        "resolved": 4,
+        "held": 24
+      },
+      "heart": {
+        "queries": 41,
+        "resolved": 32,
+        "held": 9
+      },
+      "skeletal": {
+        "queries": 38,
+        "resolved": 28,
+        "held": 10
+      },
+      "muscular": {
+        "queries": 44,
+        "resolved": 4,
+        "held": 40
+      },
+      "joints": {
+        "queries": 25,
+        "resolved": 0,
+        "held": 25
+      },
+      "arterial": {
+        "queries": 49,
+        "resolved": 46,
+        "held": 3
+      },
+      "digestive": {
+        "queries": 38,
+        "resolved": 28,
+        "held": 10
+      },
+      "urinary": {
+        "queries": 21,
+        "resolved": 11,
+        "held": 10
+      },
+      "reproductive": {
+        "queries": 27,
+        "resolved": 10,
+        "held": 17
+      },
+      "endocrine": {
+        "queries": 16,
+        "resolved": 6,
+        "held": 10
+      }
+    },
+    "allResolved": true,
+    "geometryPlanned": 247,
+    "geometrySamplePass": 247,
+    "geometrySampleHeld": 0,
+    "samples": [
+      {
+        "group": "venous",
+        "name": "portal vein",
+        "fmaId": "FMA66645",
+        "bpId": "BP7911",
+        "tree": "isa",
+        "triangles": 52266,
+        "glbSHA256": "390a7a64840e8c18b1b941e1b2d63a2f5db6d7b93f77cfc49fc965cb830f0d78",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "hepatic portal vein",
+        "fmaId": "FMA50735",
+        "bpId": "BP9461",
+        "tree": "partof",
+        "triangles": 35982,
+        "glbSHA256": "19e5b171ba5c48938409967422da967cb1017369b21817ea292f47fbb8a32d2e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left lung",
+        "fmaId": "FMA7310",
+        "bpId": "BP9417",
+        "tree": "partof",
+        "triangles": 41438,
+        "glbSHA256": "c8be471cfb10eae3349719fc59ce98c80d682730d53f592d665fcba047360b44",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right lung",
+        "fmaId": "FMA7309",
+        "bpId": "BP9359",
+        "tree": "partof",
+        "triangles": 73312,
+        "glbSHA256": "0c350dd46ae91fe977dde72017ebfe0b32bc42826a839a008772593485a1ba37",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "upper lobe of right lung",
+        "fmaId": "FMA7333",
+        "bpId": "BP9424",
+        "tree": "partof",
+        "triangles": 25500,
+        "glbSHA256": "271edb2bfc247a0436b933720a774f73c49e1ec866113cd721e755b7230c7cd1",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "middle lobe of lung",
+        "fmaId": "FMA7383",
+        "bpId": "BP9358",
+        "tree": "partof",
+        "triangles": 14632,
+        "glbSHA256": "a908d945048f123d7d280bf802566ea7514e3302d47825fc2978f0c31ddec83d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "lower lobe of right lung",
+        "fmaId": "FMA7337",
+        "bpId": "BP9403",
+        "tree": "partof",
+        "triangles": 33180,
+        "glbSHA256": "ef957132d125d6f0158561f9d674bb361e5a91ac1358fe45459bc0757bd575b7",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "upper lobe of left lung",
+        "fmaId": "FMA7370",
+        "bpId": "BP9476",
+        "tree": "partof",
+        "triangles": 20412,
+        "glbSHA256": "8de2ac8c23f4a60c0a5866efebf92014b69f98f12eb495079aec5899d34e72b2",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "lower lobe of left lung",
+        "fmaId": "FMA7371",
+        "bpId": "BP9419",
+        "tree": "partof",
+        "triangles": 21026,
+        "glbSHA256": "06ce7325aab76a64f2a45cc442acc0d64b54fed3ac8c13cae746e50e9c3cb0f8",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "trachea",
+        "fmaId": "FMA7394",
+        "bpId": "BP7849",
+        "tree": "isa",
+        "triangles": 4996,
+        "glbSHA256": "7da5ca8c43579428fdb783b697b5fa54435c3655be71c730b39ca1402c6207a9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left main bronchus",
+        "fmaId": "FMA7396",
+        "bpId": "BP8386",
+        "tree": "isa",
+        "triangles": 4136,
+        "glbSHA256": "886c9a9aa2b6977a470743bd5ff054523f79a5cd6f9591c1da96f139c74e0acd",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right main bronchus",
+        "fmaId": "FMA7395",
+        "bpId": "BP9932",
+        "tree": "partof",
+        "triangles": 4468,
+        "glbSHA256": "6f4d44491e1a39d4627b83f9dcf23c3dc319e38c66a0d867ee326bf6224e047e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right bronchial tree",
+        "fmaId": "FMA26661",
+        "bpId": "BP9472",
+        "tree": "partof",
+        "triangles": 46746,
+        "glbSHA256": "16f3db3d35200c8d38fc6f1695da8da7ce813ef123b98841772e65aaf2ca37bc",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left bronchial tree",
+        "fmaId": "FMA26662",
+        "bpId": "BP9479",
+        "tree": "partof",
+        "triangles": 13498,
+        "glbSHA256": "6f254aa9f45aa31009ee482e765010ab72d956d54cf41516bd3861e650589126",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "upper lobe part of right bronchial tree",
+        "fmaId": "FMA31744",
+        "bpId": "BP9526",
+        "tree": "partof",
+        "triangles": 14448,
+        "glbSHA256": "4109a2f3a2433720a766c2e1ecc205c93f4d9b5b82a8190088c559ebcb7bf44e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "middle lobe part of right bronchial tree",
+        "fmaId": "FMA31741",
+        "bpId": "BP9521",
+        "tree": "partof",
+        "triangles": 9866,
+        "glbSHA256": "08ef52d1733c0ed3b55e289ed8619e3e28fed48e19ca7bc74f6c77213300be2b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "lower lobe part of right bronchial tree",
+        "fmaId": "FMA31747",
+        "bpId": "BP9470",
+        "tree": "partof",
+        "triangles": 17964,
+        "glbSHA256": "2d56cde5f646286bd94dc41ff377ad239576e853c29505086e59bc66255b9be4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "upper lobe part of left bronchial tree",
+        "fmaId": "FMA31746",
+        "bpId": "BP9478",
+        "tree": "partof",
+        "triangles": 4078,
+        "glbSHA256": "ff57c3dd925a9add55e9b0ad34ae79a9f6568c231d03e09ac8bb6b81670669f8",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "lower lobe part of left bronchial tree",
+        "fmaId": "FMA31748",
+        "bpId": "BP9554",
+        "tree": "partof",
+        "triangles": 5284,
+        "glbSHA256": "a142ab1ee837a6b62b4efc6834dcc2a505747d26b7f5cecfcda60bea2318ae11",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right apical bronchopulmonary segment",
+        "fmaId": "FMA7338",
+        "bpId": "BP9593",
+        "tree": "partof",
+        "triangles": 8458,
+        "glbSHA256": "914ed5a70a8805c8546972afc9c52a5f5d6f664fae277976a8cfab7a4c5167f4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right posterior bronchopulmonary segment",
+        "fmaId": "FMA7339",
+        "bpId": "BP9423",
+        "tree": "partof",
+        "triangles": 7998,
+        "glbSHA256": "8bc11f37ef1d306ff0f79e024f932f5a80a977ddee841cf0c3d28a6b42b1d391",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right anterior bronchopulmonary segment",
+        "fmaId": "FMA7359",
+        "bpId": "BP9527",
+        "tree": "partof",
+        "triangles": 8558,
+        "glbSHA256": "eed975d7c0b9439b0822e8e3b14e30522aa9100d52d8fa3ba27fc4f0bd8389dd",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "medial bronchopulmonary segment",
+        "fmaId": "FMA7360",
+        "bpId": "BP9367",
+        "tree": "partof",
+        "triangles": 7428,
+        "glbSHA256": "8db534bc91e1578c1054b5a4e31287a042445a3e9edd7c8c87d785b76a43fae0",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "lateral bronchopulmonary segment",
+        "fmaId": "FMA7361",
+        "bpId": "BP9445",
+        "tree": "partof",
+        "triangles": 7204,
+        "glbSHA256": "1a7d4451de17aeee11a1b84a0ea7aabfee24e577d9b8feed218d320c4de9f3d9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right posterior basal bronchopulmonary segment",
+        "fmaId": "FMA7362",
+        "bpId": "BP9469",
+        "tree": "partof",
+        "triangles": 9446,
+        "glbSHA256": "1cdd0ee8ff0afdfe8073ff8800b90912c95d5f8cad83add9079eca80d7a6ffa5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right lateral basal bronchopulmonary segment",
+        "fmaId": "FMA7363",
+        "bpId": "BP9402",
+        "tree": "partof",
+        "triangles": 6310,
+        "glbSHA256": "bfac53feb212c471ba64bda583f62462cd182a5a4cd49178d69fe81e11dd8fe4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right anterior basal bronchopulmonary segment",
+        "fmaId": "FMA7364",
+        "bpId": "BP9502",
+        "tree": "partof",
+        "triangles": 3720,
+        "glbSHA256": "15ee3f7bd60bcb8b85244dfd382a5fecbc0555516f58bb8a50efdc02e14e4163",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right medial basal bronchopulmonary segment",
+        "fmaId": "FMA7365",
+        "bpId": "BP9490",
+        "tree": "partof",
+        "triangles": 1188,
+        "glbSHA256": "316475b58f89bbf417c83733f30bd11d3f99ff3b16346f0be98df3463fdb4900",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right superior bronchopulmonary segment",
+        "fmaId": "FMA7366",
+        "bpId": "BP9524",
+        "tree": "partof",
+        "triangles": 12516,
+        "glbSHA256": "0317efeaadb7d402f162e20020cf78bc627a0a87b57f22acaeb95f83a12bbf83",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "apicoposterior bronchopulmonary segment",
+        "fmaId": "FMA7372",
+        "bpId": "BP9577",
+        "tree": "partof",
+        "triangles": 3988,
+        "glbSHA256": "e08be43ac5a24a043a3679acb7fa7c6ff2866366ab0065cb55bf776953933f10",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left anterior bronchopulmonary segment",
+        "fmaId": "FMA7373",
+        "bpId": "BP9475",
+        "tree": "partof",
+        "triangles": 5918,
+        "glbSHA256": "e37daaa010be939c18696f96834061ee40361aab05fbc4fd0c21eab3c17d60eb",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "superior lingular bronchopulmonary segment",
+        "fmaId": "FMA7374",
+        "bpId": "BP9566",
+        "tree": "partof",
+        "triangles": 2838,
+        "glbSHA256": "c7c0507e2ab891801dfa080b0c5e4509aff512efa3b5fa52c197b1fc1c9701ec",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "inferior lingular bronchopulmonary segment",
+        "fmaId": "FMA7375",
+        "bpId": "BP9500",
+        "tree": "partof",
+        "triangles": 4360,
+        "glbSHA256": "af846a88bff8a7f68b92096da4b6282ccd19c0e74ece651a5ed56d4d28e3ed01",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left superior bronchopulmonary segment",
+        "fmaId": "FMA7376",
+        "bpId": "BP9420",
+        "tree": "partof",
+        "triangles": 3038,
+        "glbSHA256": "204f15a15ad961ef05f53e586460efd06ebd7ef6d0a7816d30389dc46fb6ad0f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left medial basal bronchopulmonary segment",
+        "fmaId": "FMA7377",
+        "bpId": "BP9630",
+        "tree": "partof",
+        "triangles": 2558,
+        "glbSHA256": "eb90cb248314c42254d7fb1be63aac51e4f67615f01f058a04fdee9bdd566fa6",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left anterior basal bronchopulmonary segment",
+        "fmaId": "FMA7378",
+        "bpId": "BP9553",
+        "tree": "partof",
+        "triangles": 4766,
+        "glbSHA256": "df61dc8ca15a61ee53c20f027c00cb57f8e2646242fae7dd75e99ce9acb1e537",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left lateral basal bronchopulmonary segment",
+        "fmaId": "FMA7379",
+        "bpId": "BP9616",
+        "tree": "partof",
+        "triangles": 4904,
+        "glbSHA256": "539878ad25e52c01fdd288f87e177d61c30a754c3bf8aadb85245da46f1b37e3",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left posterior basal bronchopulmonary segment",
+        "fmaId": "FMA7380",
+        "bpId": "BP9513",
+        "tree": "partof",
+        "triangles": 5760,
+        "glbSHA256": "90c5ec068c1aa6ed33312c9c1e7c67525de71420a95664723ed45b10e576e94f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left apical bronchopulmonary segment",
+        "fmaId": "FMA7385",
+        "bpId": "BP9648",
+        "tree": "partof",
+        "triangles": 3814,
+        "glbSHA256": "9a23bdb35b7271bdd777f656f7e65219dc3630efe291e30f69049f11e2479afe",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left posterior bronchopulmonary segment",
+        "fmaId": "FMA7386",
+        "bpId": "BP9575",
+        "tree": "partof",
+        "triangles": 3042,
+        "glbSHA256": "5170b627f8605610df88ccce6e2092261cf08e2a684b46bd29f271c14035139b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right apical segmental bronchial tree",
+        "fmaId": "FMA68211",
+        "bpId": "BP9592",
+        "tree": "partof",
+        "triangles": 4504,
+        "glbSHA256": "4b4463e574dda5c9d94001df809773d8699c1a2966f2b4caf14e6858b59c2ee9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right anterior segmental bronchial tree",
+        "fmaId": "FMA68212",
+        "bpId": "BP9525",
+        "tree": "partof",
+        "triangles": 5608,
+        "glbSHA256": "fad323757ffa853576062e78d0babfcf04d00008db506ae898acd8f56b44d7cc",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right posterior segmental bronchial tree",
+        "fmaId": "FMA68213",
+        "bpId": "BP9884",
+        "tree": "partof",
+        "triangles": 4336,
+        "glbSHA256": "2b5fa8662c9c6d2b03351483e373fefce77bb4a3c920a8175a63bbece4a19235",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "medial segmental bronchial tree",
+        "fmaId": "FMA68214",
+        "bpId": "BP9722",
+        "tree": "partof",
+        "triangles": 5346,
+        "glbSHA256": "e236f2f2ba3fe37bf3aa8fb1a81e2e12abce642f68a2531a209596eba1e769fb",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "lateral segmental bronchial tree",
+        "fmaId": "FMA68215",
+        "bpId": "BP9520",
+        "tree": "partof",
+        "triangles": 4520,
+        "glbSHA256": "045d3a3728632cc0be55c1bcf9fddf5ec35b16873634ca5f835987d85edf181b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right superior segmental bronchial tree",
+        "fmaId": "FMA68216",
+        "bpId": "BP9539",
+        "tree": "partof",
+        "triangles": 7716,
+        "glbSHA256": "ff92094172fa818c8df05e70a759bb013e98817a76f35c825d47c4271584c110",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right medial basal segmental bronchial tree",
+        "fmaId": "FMA68218",
+        "bpId": "BP9489",
+        "tree": "partof",
+        "triangles": 902,
+        "glbSHA256": "19fa4ebfe589d0b40b1fc36c317dc9e626dc7910a25dd8d26696cac1224418d1",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right lateral basal segmental bronchial tree",
+        "fmaId": "FMA68220",
+        "bpId": "BP9606",
+        "tree": "partof",
+        "triangles": 2928,
+        "glbSHA256": "3b3e65efa20a3aa6f898fa541bff07ca08175cc569dc0007484a6925ef91d849",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right posterior basal segmental bronchial tree",
+        "fmaId": "FMA68221",
+        "bpId": "BP9468",
+        "tree": "partof",
+        "triangles": 4158,
+        "glbSHA256": "402ce9b89db94412e9bc4c514ba073668209b3a8e21158b8b06e9f1c827d7d33",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left anterior segmental bronchial tree",
+        "fmaId": "FMA68222",
+        "bpId": "BP9474",
+        "tree": "partof",
+        "triangles": 1626,
+        "glbSHA256": "a2ef4a03615dc632fd807acb9ae735483e1e563e650efdb414d95de4ba5634df",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left apical segmental bronchial tree",
+        "fmaId": "FMA68223",
+        "bpId": "BP9676",
+        "tree": "partof",
+        "triangles": 1226,
+        "glbSHA256": "c294ecc914881c5ba3be76b10d4b6b90d0276086edcb21bf4a14a1f3753c4cae",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left posterior segmental bronchial tree",
+        "fmaId": "FMA68225",
+        "bpId": "BP9913",
+        "tree": "partof",
+        "triangles": 440,
+        "glbSHA256": "265e628108f6710eccb1c85009c8b858ed57a78027bd22690eff8a03aa8c9d29",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "superior lingular bronchial tree",
+        "fmaId": "FMA68226",
+        "bpId": "BP9981",
+        "tree": "partof",
+        "triangles": 664,
+        "glbSHA256": "d104b36fca2ce87ff6dc21ab2e8f78f1a77189bcaa841f93533a663285e01cbf",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "inferior lingular bronchial tree",
+        "fmaId": "FMA68227",
+        "bpId": "BP10152",
+        "tree": "partof",
+        "triangles": 1348,
+        "glbSHA256": "6031dc5396e4049b356170cee149fe4bfab055aac99377c7634ee6cf4edeab2d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left superior segmental bronchial tree",
+        "fmaId": "FMA68228",
+        "bpId": "BP9761",
+        "tree": "partof",
+        "triangles": 1144,
+        "glbSHA256": "ced7693e40f6d16da3a4cc1257575eed9983410969baf09fc356cf46de632e39",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left medial basal segmental bronchial tree",
+        "fmaId": "FMA68230",
+        "bpId": "BP9943",
+        "tree": "partof",
+        "triangles": 822,
+        "glbSHA256": "077e3e7cba0e3eb67081538a6efc72a5146a595e53efef4300bc5de6a0667248",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left anterior basal segmental bronchial tree",
+        "fmaId": "FMA68231",
+        "bpId": "BP9552",
+        "tree": "partof",
+        "triangles": 732,
+        "glbSHA256": "9a59dbbb293a203469d4a3eb0dcb611c6b947aef8e8c84ceed1f6ef0c50fe62c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left lateral basal segmental bronchial tree",
+        "fmaId": "FMA68232",
+        "bpId": "BP10117",
+        "tree": "partof",
+        "triangles": 1126,
+        "glbSHA256": "848e38b0d7c503a15605e0ed78729fa994466fdd4ea77f54b69353d095b4e82f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "left posterior basal segmental bronchial tree",
+        "fmaId": "FMA68233",
+        "bpId": "BP9860",
+        "tree": "partof",
+        "triangles": 1460,
+        "glbSHA256": "d63607f7731994301d3bb6b19fb3cb6fce5b5ba4fcfae8ba856e991db3718027",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "right anterior basal segmental bronchial tree",
+        "fmaId": "FMA68321",
+        "bpId": "BP9684",
+        "tree": "partof",
+        "triangles": 2260,
+        "glbSHA256": "5a7807357915fb5a8b0a63bf79f8f7bbe14c89302f26eff16452b7d5fde4c97a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "brain",
+        "fmaId": "FMA50801",
+        "bpId": "BP6687",
+        "tree": "partof",
+        "triangles": 322262,
+        "glbSHA256": "b4f7a1a7f4cebf0423a418215a8644062954fb37a28b639343100c26f540206e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "spinal cord",
+        "fmaId": "FMA7647",
+        "bpId": "BP6706",
+        "tree": "partof",
+        "triangles": 728,
+        "glbSHA256": "024a670cb805aa857c3ed7d8c49b69cf38fc1892a70c1c8683e02ba2243d4c7a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "brainstem",
+        "fmaId": "FMA79876",
+        "bpId": "BP7432",
+        "tree": "partof",
+        "triangles": 46888,
+        "glbSHA256": "6bc16d13593ccc0c415f53e8572a07860743e4fd476863b83566ae9337454a28",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "ventricular system of brain",
+        "fmaId": "FMA242787",
+        "bpId": "BP6683",
+        "tree": "partof",
+        "triangles": 47312,
+        "glbSHA256": "26c4f90bfd8348f4992661fe7ad2dd07398e88823f71bf641f212543f832e48a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "cerebellum",
+        "fmaId": "FMA67944",
+        "bpId": "BP5696",
+        "tree": "isa",
+        "triangles": 47700,
+        "glbSHA256": "0f1833fcef5abd5c617590568bdded7ce5c1657c7b13413e619e56aab2909a22",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "pons",
+        "fmaId": "FMA67943",
+        "bpId": "BP6545",
+        "tree": "isa",
+        "triangles": 20650,
+        "glbSHA256": "f6f707ffb8beecdd08f7a60cb9b9fd1f2232d310ed4ba7b0e48554b12d9494c5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "medulla oblongata",
+        "fmaId": "FMA62004",
+        "bpId": "BP5693",
+        "tree": "isa",
+        "triangles": 12096,
+        "glbSHA256": "b5afd070f29ba3b32f26a39a1c0ecf3e5ad751330b94421a7ce127116adff91f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "optic nerve",
+        "fmaId": "FMA50863",
+        "bpId": "BP5707",
+        "tree": "isa",
+        "triangles": 8472,
+        "glbSHA256": "6c8d5ee7864751375bcae039391d0721262014dad58fd2c397138119f3d547e6",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "trochlear nerve",
+        "fmaId": "FMA50865",
+        "bpId": "BP4694",
+        "tree": "isa",
+        "triangles": 5478,
+        "glbSHA256": "67d55cb00deb9bcd6826d39271216a986c76f10d543447abe01523cc6bef4a39",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "ophthalmic nerve",
+        "fmaId": "FMA52621",
+        "bpId": "BP5747",
+        "tree": "isa",
+        "triangles": 3552,
+        "glbSHA256": "9ba50a7c6fb4688a2458a781c283b09f9122fb187d0192755a999894b9f353e1",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "lymphatic",
+        "name": "thymus",
+        "fmaId": "FMA9607",
+        "bpId": "BP9902",
+        "tree": "partof",
+        "triangles": 2080,
+        "glbSHA256": "a76be023380bcaa7320b9bb722411f0523b8ec4802f6b908fd91e257a67eebed",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "lymphatic",
+        "name": "spleen",
+        "fmaId": "FMA7196",
+        "bpId": "BP8804",
+        "tree": "isa",
+        "triangles": 1330,
+        "glbSHA256": "cb39664a142044e0d793f22020c512c5b451900d1e87a0d2f3d07a8e679397de",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "heart",
+        "fmaId": "FMA7088",
+        "bpId": "BP9305",
+        "tree": "partof",
+        "triangles": 102802,
+        "glbSHA256": "54176a1b7e91611e3d309a992e4f07e0d51193a95819dd1fb396ae442f85b44f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "tricuspid valve",
+        "fmaId": "FMA7234",
+        "bpId": "BP9830",
+        "tree": "partof",
+        "triangles": 17612,
+        "glbSHA256": "94173ec19ee361a96cdffbcf7fc707a5e78575df54ecda690f46a12b22887c9a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "mitral valve",
+        "fmaId": "FMA7235",
+        "bpId": "BP9455",
+        "tree": "partof",
+        "triangles": 12608,
+        "glbSHA256": "c27c491d884f9cea32c5c4285a53ab78fb1cc777875927da2873c1b454b13a24",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "aortic valve",
+        "fmaId": "FMA7236",
+        "bpId": "BP9447",
+        "tree": "partof",
+        "triangles": 2150,
+        "glbSHA256": "678d5298224e8c9ad389ca0a19b02269337b194acaeea2a77458f2b0f5230fac",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "pulmonary valve",
+        "fmaId": "FMA7246",
+        "bpId": "BP9868",
+        "tree": "partof",
+        "triangles": 3638,
+        "glbSHA256": "9eb6e6f8d5942ea9d2fceaea9ade785e3834161431ec9730c691ba71bd3eb490",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "anterior leaflet of tricuspid valve",
+        "fmaId": "FMA7238",
+        "bpId": "BP9920",
+        "tree": "partof",
+        "triangles": 8160,
+        "glbSHA256": "9b0637e17394f1e5d62b50c0c9a01b694f9feb048957920ae7722c5b73875548",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "posterior leaflet of tricuspid valve",
+        "fmaId": "FMA7239",
+        "bpId": "BP9829",
+        "tree": "partof",
+        "triangles": 4926,
+        "glbSHA256": "f5e121477a1998a821a7dfdbcc76427fb0996b40e255be73ef70f6577865602d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "septal leaflet of tricuspid valve",
+        "fmaId": "FMA7240",
+        "bpId": "BP9887",
+        "tree": "partof",
+        "triangles": 4526,
+        "glbSHA256": "e9b5ea9f479ac65be291cb0f6a90f6bb2874c0b71d9a9f8d7a727fd4f967352b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "anterior leaflet of mitral valve",
+        "fmaId": "FMA7242",
+        "bpId": "BP9874",
+        "tree": "partof",
+        "triangles": 7558,
+        "glbSHA256": "d2b9afc36a0439ff07af2b94739c1972da50ac72b17a18cf158fffb07497ecdd",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "posterior leaflet of mitral valve",
+        "fmaId": "FMA7243",
+        "bpId": "BP9998",
+        "tree": "partof",
+        "triangles": 3820,
+        "glbSHA256": "844cb48c63eae9b34f09685e48d063e4fd6ec8dd6f4c3ff5a53dc2f0c590f40c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "left anterior cusp of pulmonary valve",
+        "fmaId": "FMA7247",
+        "bpId": "BP10131",
+        "tree": "partof",
+        "triangles": 1272,
+        "glbSHA256": "206dd7d8e0d36d93fb49591e2583ab48368c1ec5fa7732434b567c5e79eccc83",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "right anterior cusp of pulmonary valve",
+        "fmaId": "FMA7249",
+        "bpId": "BP10108",
+        "tree": "partof",
+        "triangles": 1370,
+        "glbSHA256": "ba09a4d513a8a6a62901d71f635a0f56e78e82df09eaa2749ed03db777f6c024",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "posterior cusp of pulmonary valve",
+        "fmaId": "FMA7250",
+        "bpId": "BP9867",
+        "tree": "partof",
+        "triangles": 996,
+        "glbSHA256": "506d8b36eabc544173f9f6c1cd0bdd20fe51bc209410c11aeb05769a0416263f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "right posterior cusp of aortic valve",
+        "fmaId": "FMA7252",
+        "bpId": "BP9446",
+        "tree": "partof",
+        "triangles": 316,
+        "glbSHA256": "af5b830d7bcdfb826cc557433c6ae4274af5ea074120998ef33f293787f57502",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "anterior cusp of aortic valve",
+        "fmaId": "FMA7253",
+        "bpId": "BP9760",
+        "tree": "partof",
+        "triangles": 920,
+        "glbSHA256": "42c14292577e539af8582a4df7492f891bc92f028b4c7d23f4ebd78f0e8abc0e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "left posterior cusp of aortic valve",
+        "fmaId": "FMA7254",
+        "bpId": "BP9993",
+        "tree": "partof",
+        "triangles": 914,
+        "glbSHA256": "14fccdc69faca11597a355a328d14992b787d1258e81afada5f465fd0d3d73d9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "right atrium",
+        "fmaId": "FMA7096",
+        "bpId": "BP9831",
+        "tree": "partof",
+        "triangles": 37640,
+        "glbSHA256": "c69c63f3df47073558b8a0dd103bba327722bd911d6ac422c2192bf0b3a9703e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "left atrium",
+        "fmaId": "FMA7097",
+        "bpId": "BP9454",
+        "tree": "partof",
+        "triangles": 21216,
+        "glbSHA256": "9cdf32311a300b4296f3c59dfb8779093a8b94cac882531af638b8f144a38de7",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "right ventricle",
+        "fmaId": "FMA7098",
+        "bpId": "BP9598",
+        "tree": "partof",
+        "triangles": 25586,
+        "glbSHA256": "3a279cf84971d0fdba0e86b24d6b244dd01cad39c1a1f1cf22bad2eed49b0e62",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "left ventricle",
+        "fmaId": "FMA7101",
+        "bpId": "BP9448",
+        "tree": "partof",
+        "triangles": 16846,
+        "glbSHA256": "84f4e30dcb09530ed10ad73254375905dede83be7d0f5924584245e3544c4bbf",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "mandible",
+        "fmaId": "FMA52748",
+        "bpId": "BP8107",
+        "tree": "isa",
+        "triangles": 5576,
+        "glbSHA256": "0decbf80a3f211aaa1d96b4223618ac2a4bca3730517b8d7a8651aa493c00c43",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "sternum",
+        "fmaId": "FMA7485",
+        "bpId": "BP9392",
+        "tree": "partof",
+        "triangles": 8114,
+        "glbSHA256": "9f1ce05ad2ca5702cbb0d7ed1b00b89da192f382b41a412f9fe5512fe24f8937",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left femur",
+        "fmaId": "FMA24475",
+        "bpId": "BP9042",
+        "tree": "isa",
+        "triangles": 3204,
+        "glbSHA256": "ba10f376437ee5ed4b48032e9a7602782daf58161e07dbdeb127be3ea5cdea1f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right femur",
+        "fmaId": "FMA24474",
+        "bpId": "BP8920",
+        "tree": "isa",
+        "triangles": 3102,
+        "glbSHA256": "cdedc6e397e1aa2928939e8c537ef6c671ae4515014a13bda81b52724353cf61",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "sacrum",
+        "fmaId": "FMA16202",
+        "bpId": "BP9174",
+        "tree": "isa",
+        "triangles": 9922,
+        "glbSHA256": "40bfb7e5001e6fb533183fc8a8d591b9e18173c81224d05b63546e9f7dc9c381",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "muscular",
+        "name": "diaphragm",
+        "fmaId": "FMA13295",
+        "bpId": "BP8798",
+        "tree": "isa",
+        "triangles": 68522,
+        "glbSHA256": "17c1848140f96d227746c6cf7b9c1de81ea95888763b915d6de9a32346b62a03",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "aorta",
+        "fmaId": "FMA3734",
+        "bpId": "BP10374",
+        "tree": "partof",
+        "triangles": 10188,
+        "glbSHA256": "f359c253616f4f47d26c1e1b043e30b8ac70edca564da86b8211ab1d5d0e5125",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left common carotid artery",
+        "fmaId": "FMA4058",
+        "bpId": "BP10326",
+        "tree": "isa",
+        "triangles": 170,
+        "glbSHA256": "2215fc1766cfb44c2402870ee3627c16aa1a0b71eeae1e15bbf198bc6ba0c124",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right common carotid artery",
+        "fmaId": "FMA3941",
+        "bpId": "BP10288",
+        "tree": "isa",
+        "triangles": 884,
+        "glbSHA256": "eec4fc3b727972bade3b6c4ae29c2d7830bda1de1a720bc61d9ff086ad16f5e0",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left femoral artery",
+        "fmaId": "FMA70250",
+        "bpId": "BP6082",
+        "tree": "isa",
+        "triangles": 740,
+        "glbSHA256": "7514ea1fbab2506e79a44030fb05ce28840fde9326850f67e289dae150393797",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right femoral artery",
+        "fmaId": "FMA70249",
+        "bpId": "BP6081",
+        "tree": "isa",
+        "triangles": 752,
+        "glbSHA256": "3880b516855382f8f475070a80698855bc7db38247411f8e88f275fca29c9b87",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "superior vena cava",
+        "fmaId": "FMA4720",
+        "bpId": "BP10292",
+        "tree": "isa",
+        "triangles": 598,
+        "glbSHA256": "f7ef5f4b68bcebeab64d8b2afbfbd9148f3beb26c77a1409ed77f351038b2a06",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "inferior vena cava",
+        "fmaId": "FMA10951",
+        "bpId": "BP10311",
+        "tree": "isa",
+        "triangles": 3080,
+        "glbSHA256": "c0f35b20b4be5c35c4d1b11932d7505e33ad08977ed2adec0d4563fd3a047af4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "hepatic portal vein",
+        "fmaId": "FMA50735",
+        "bpId": "BP5789",
+        "tree": "isa",
+        "triangles": 3582,
+        "glbSHA256": "2dc285ccdd413a8d731501d8d2cb223a33bac448f1fd1ac597546941f16847db",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left femoral vein",
+        "fmaId": "FMA21189",
+        "bpId": "BP5880",
+        "tree": "isa",
+        "triangles": 658,
+        "glbSHA256": "3b52a2ad18ac164b19fbe0664c7bbd910b481be88b310d79bd56507aed14ee49",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right femoral vein",
+        "fmaId": "FMA21188",
+        "bpId": "BP5879",
+        "tree": "isa",
+        "triangles": 658,
+        "glbSHA256": "60fd8c24a90e01ad57f224561309757d7b6bd21cc820e1f17b20c636cd860871",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "esophagus",
+        "fmaId": "FMA7131",
+        "bpId": "BP9222",
+        "tree": "isa",
+        "triangles": 578,
+        "glbSHA256": "e1ec02058aaf38acede65190e99e9d3a5af5ba36092246e5ccea81b3c5dad38f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "stomach",
+        "fmaId": "FMA7148",
+        "bpId": "BP7926",
+        "tree": "isa",
+        "triangles": 1810,
+        "glbSHA256": "c69b0dbf17804064a3a1cc7327944ff1996ce6f5bb08c4019fc27dfcbaca052c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "liver",
+        "fmaId": "FMA7197",
+        "bpId": "BP9334",
+        "tree": "partof",
+        "triangles": 191619,
+        "glbSHA256": "c18197f36e1d424776a6d2b72cdb21cba5743a91ded61acd2d7a85ac2787f43c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "pancreas",
+        "fmaId": "FMA7198",
+        "bpId": "BP4631",
+        "tree": "isa",
+        "triangles": 4890,
+        "glbSHA256": "e2ec163d5a231fc22336acefb9c36af6f0e0ea4d61a3310f5a5a566e8fd47364",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "duodenum",
+        "fmaId": "FMA7206",
+        "bpId": "BP8646",
+        "tree": "isa",
+        "triangles": 1860,
+        "glbSHA256": "54b72cffebd9284976c79646df72848101df4c3f997d2dea49fea23324d8cebb",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "rectum",
+        "fmaId": "FMA14544",
+        "bpId": "BP9212",
+        "tree": "isa",
+        "triangles": 2118,
+        "glbSHA256": "6e2a23ffc6d63108ac81571bbf18df8855f22bc330a51a99229661a698456021",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "left kidney",
+        "fmaId": "FMA7205",
+        "bpId": "BP9289",
+        "tree": "isa",
+        "triangles": 2982,
+        "glbSHA256": "dcf7cf345e7e49afa2ddb2171739a5164d99f54d5ff76bc4fd1a80c526c4c3ae",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "right kidney",
+        "fmaId": "FMA7204",
+        "bpId": "BP8907",
+        "tree": "isa",
+        "triangles": 2310,
+        "glbSHA256": "f6da589345e2796483359d1a4ef8992cb027b0af4b3876a4dfd0cc7a193c9fce",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "left ureter",
+        "fmaId": "FMA15572",
+        "bpId": "BP8750",
+        "tree": "isa",
+        "triangles": 2062,
+        "glbSHA256": "d006f685a445eb981b10e7271f80508abd2f234b9c88382b4b8c0be29cb9fb32",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "right ureter",
+        "fmaId": "FMA15571",
+        "bpId": "BP8912",
+        "tree": "isa",
+        "triangles": 1924,
+        "glbSHA256": "dd2a22e26b9b78e0f0211828f6c9ba31cae861f79f5e3973a929260ff6d0d140",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "urinary bladder",
+        "fmaId": "FMA15900",
+        "bpId": "BP8497",
+        "tree": "isa",
+        "triangles": 226,
+        "glbSHA256": "87fb8e54e7b5881c3adf18af267ae9932e3b2f27ab238e433ca93adb022414df",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "prostate",
+        "fmaId": "FMA9600",
+        "bpId": "BP8469",
+        "tree": "isa",
+        "triangles": 442,
+        "glbSHA256": "19456dc08e0dd254ed76edd8b966641762ecf075a762efb9f4040cb2600d854e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "left testis",
+        "fmaId": "FMA7212",
+        "bpId": "BP8578",
+        "tree": "isa",
+        "triangles": 210,
+        "glbSHA256": "dfdbf129d9808965632c58e6bdbe0fb1412aae1c88553e92e038c1e83b15b34a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "right testis",
+        "fmaId": "FMA7211",
+        "bpId": "BP9204",
+        "tree": "isa",
+        "triangles": 212,
+        "glbSHA256": "26fe8cd8c48284ed63418ef5fa3390ff313bff1a644ae49633778342eac59aa9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "endocrine",
+        "name": "pituitary gland",
+        "fmaId": "FMA13889",
+        "bpId": "BP4630",
+        "tree": "isa",
+        "triangles": 1164,
+        "glbSHA256": "c56b215aade93910517db2ab84b55f1ce90fca0a0317dc02f7b7cef1f238e579",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "endocrine",
+        "name": "left adrenal gland",
+        "fmaId": "FMA15630",
+        "bpId": "BP9014",
+        "tree": "isa",
+        "triangles": 3996,
+        "glbSHA256": "3cc6aee08865a1986d3558e2c0b99b942886a9fce37a56721e510aeba1eaf6ba",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "endocrine",
+        "name": "right adrenal gland",
+        "fmaId": "FMA15629",
+        "bpId": "BP9132",
+        "tree": "isa",
+        "triangles": 2294,
+        "glbSHA256": "4358024b42bb4f94e4c934b972411a35f080ad2e84a6e8cf47bb5f3a5568b00b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "epiglottis",
+        "fmaId": "FMA55130",
+        "bpId": "BP9263",
+        "tree": "isa",
+        "triangles": 3602,
+        "glbSHA256": "09e218cb09d0d1415e7634449c85c68969f21b19c928a93b2ecfe6bfdc2159a6",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "thyroid cartilage",
+        "fmaId": "FMA55099",
+        "bpId": "BP7901",
+        "tree": "isa",
+        "triangles": 2610,
+        "glbSHA256": "4a33eafb6cb692140fcaa5e1de70487e69777a7476da5fa75f5aa0db976613a9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "cricoid cartilage",
+        "fmaId": "FMA9615",
+        "bpId": "BP9117",
+        "tree": "isa",
+        "triangles": 3404,
+        "glbSHA256": "bf544aa2ff31e01770d57b07fb5ff7fd688dd267126cd46136f6e354ea787774",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "respiratory",
+        "name": "arytenoid cartilage",
+        "fmaId": "FMA55109",
+        "bpId": "BP8315",
+        "tree": "isa",
+        "triangles": 1076,
+        "glbSHA256": "9d41e8ddc69ded4c81b7b70b1200b45bd532dd93bff65c391a3d35c16f628289",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "optic chiasm",
+        "fmaId": "FMA62045",
+        "bpId": "BP5710",
+        "tree": "isa",
+        "triangles": 1788,
+        "glbSHA256": "f9629939d5babd8d822a4cfed57db9c5528bea0edc88fd79f4dd4ffd1058ce48",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "optic tract",
+        "fmaId": "FMA62046",
+        "bpId": "BP5706",
+        "tree": "isa",
+        "triangles": 4668,
+        "glbSHA256": "6a6c1bd34faa36fa2e1f3196550e7480795fed88cd47819333ac4f0df72a3b6c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "corpus callosum",
+        "fmaId": "FMA86464",
+        "bpId": "BP6576",
+        "tree": "isa",
+        "triangles": 30232,
+        "glbSHA256": "f0b4044e095c492e161665526750e70ad4beb7a5b14fa10eaa0b242fa89e113a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "thalamus",
+        "fmaId": "FMA62007",
+        "bpId": "BP6495",
+        "tree": "isa",
+        "triangles": 2460,
+        "glbSHA256": "3621ca18591cd4b24a817df1e22d380010ace83f85b719f140af75161a0feecd",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "hypothalamus",
+        "fmaId": "FMA62008",
+        "bpId": "BP6496",
+        "tree": "isa",
+        "triangles": 4078,
+        "glbSHA256": "3c2ae342262463ea5e4f727584202635957cd12731a70022d1fe4dc714e415ae",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "hippocampus",
+        "fmaId": "FMA62493",
+        "bpId": "BP5509",
+        "tree": "isa",
+        "triangles": 2000,
+        "glbSHA256": "449b3d16bf2866c5426d155e9b98372aee12853645c6424a6dec7173fbcfb2dd",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "amygdala",
+        "fmaId": "FMA61841",
+        "bpId": "BP6585",
+        "tree": "isa",
+        "triangles": 766,
+        "glbSHA256": "5b8e09339ce35b199cb7c0f363623e567994f97111286ab01e28d7a6a542c576",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "caudate nucleus",
+        "fmaId": "FMA61833",
+        "bpId": "BP6593",
+        "tree": "isa",
+        "triangles": 5114,
+        "glbSHA256": "5de65e60e0cd79acb93b956d3d657d65a4bf89342090b5b3603eef30bef4977e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "putamen",
+        "fmaId": "FMA61834",
+        "bpId": "BP6591",
+        "tree": "isa",
+        "triangles": 14120,
+        "glbSHA256": "16520c37a45dafcc698fe9b10a8464bfeeb5cef12a3f59fbb90e00aeeef87991",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "globus pallidus",
+        "fmaId": "FMA61835",
+        "bpId": "BP6592",
+        "tree": "isa",
+        "triangles": 12424,
+        "glbSHA256": "3faccf57f07fde5cfb398bf3d0d2ec8998d70ffd82a09e8851fefb5911adf218",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "internal capsule",
+        "fmaId": "FMA61950",
+        "bpId": "BP6575",
+        "tree": "isa",
+        "triangles": 21482,
+        "glbSHA256": "0d3ee694d9c00b04d164ae5dc57ef99d58b4421b9863a4f96b0b3a758c6e7ef6",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "midbrain",
+        "fmaId": "FMA61993",
+        "bpId": "BP5695",
+        "tree": "isa",
+        "triangles": 12908,
+        "glbSHA256": "17683ed7d66c8366e617fb8c610ad563fb88bb83b167399711a3ca709c871eea",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "occipital lobe",
+        "fmaId": "FMA67325",
+        "bpId": "BP5666",
+        "tree": "isa",
+        "triangles": 8954,
+        "glbSHA256": "7cfe1466735660decdcbe896b10ea0ce3fe625fc2e3aca41f869936635b71677",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "lateral ventricle",
+        "fmaId": "FMA78448",
+        "bpId": "BP5513",
+        "tree": "isa",
+        "triangles": 35984,
+        "glbSHA256": "25191e326f5029822fb1167c1e67ae48faaeb3a2ab4dbecc1bd84a1637f755e0",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "third ventricle",
+        "fmaId": "FMA78454",
+        "bpId": "BP5515",
+        "tree": "isa",
+        "triangles": 3870,
+        "glbSHA256": "8c926612e4981ec79052fdcb1d08224c8d8225eb257c9b4e9160cf1626578154",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "nervous",
+        "name": "fourth ventricle",
+        "fmaId": "FMA78469",
+        "bpId": "BP5514",
+        "tree": "isa",
+        "triangles": 6940,
+        "glbSHA256": "0ee44566accc31ef94e3ca212243c3a3cc954a39407071fd39c291393b87885a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "heart",
+        "name": "coronary sinus",
+        "fmaId": "FMA4706",
+        "bpId": "BP9086",
+        "tree": "isa",
+        "triangles": 624,
+        "glbSHA256": "9f1f9265db75a07877c793495824daad9e56e12fb5a2a6abebece294d885d5ba",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "tongue",
+        "fmaId": "FMA54640",
+        "bpId": "BP9090",
+        "tree": "isa",
+        "triangles": 524,
+        "glbSHA256": "bb51fdfcc67f8371361de865160b82edc5553e20de3c47165c637b08213a90b2",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "submandibular gland",
+        "fmaId": "FMA55093",
+        "bpId": "BP9148",
+        "tree": "isa",
+        "triangles": 456,
+        "glbSHA256": "19a2d3993a446e0f07b5e38ba8c32ad4118ed8b296f074e755934aecbeddb1e4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "sublingual gland",
+        "fmaId": "FMA59791",
+        "bpId": "BP8381",
+        "tree": "isa",
+        "triangles": 474,
+        "glbSHA256": "22240abc427294e32c79ce3ebef192d25eeec28e8b2f5377ff19d905ba390237",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "jejunum",
+        "fmaId": "FMA7207",
+        "bpId": "BP9483",
+        "tree": "partof",
+        "triangles": 6026,
+        "glbSHA256": "804e36e6110ae782381a58a113f28078b5f9023317f46c6eb1f6cf8c88c63fe1",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "ileum",
+        "fmaId": "FMA7208",
+        "bpId": "BP9351",
+        "tree": "partof",
+        "triangles": 8172,
+        "glbSHA256": "1912a7a173670f0a354da54470f516339d73ce2dc854a11a8b047aba89320045",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "cecum",
+        "fmaId": "FMA14541",
+        "bpId": "BP9992",
+        "tree": "partof",
+        "triangles": 288,
+        "glbSHA256": "4562d37fe23a2078f0f84341701885f64779e9d3abe89c7d70384cb685533088",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "appendix",
+        "fmaId": "FMA14542",
+        "bpId": "BP8994",
+        "tree": "isa",
+        "triangles": 442,
+        "glbSHA256": "62414a9729fd72e6a069cfdd2c88de57a14960e0609e0dcaca4edc667a5a3523",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "ascending colon",
+        "fmaId": "FMA14545",
+        "bpId": "BP9195",
+        "tree": "isa",
+        "triangles": 3310,
+        "glbSHA256": "c60941db398a7333c742d623fc585b847d9dae926b0861fd9cb29c2eb400b63b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "transverse colon",
+        "fmaId": "FMA14546",
+        "bpId": "BP8403",
+        "tree": "isa",
+        "triangles": 3472,
+        "glbSHA256": "e94e9f4911f99994def701c208279f4829de68d4ea4b23fa82ea59b60158f103",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "descending colon",
+        "fmaId": "FMA14547",
+        "bpId": "BP8743",
+        "tree": "isa",
+        "triangles": 5588,
+        "glbSHA256": "6231ede04d5c3cb1886d3cff31668dd0eb1e42f0b1b5ca163ee862c24d9ede7e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "right lobe of liver",
+        "fmaId": "FMA13362",
+        "bpId": "BP9811",
+        "tree": "partof",
+        "triangles": 19574,
+        "glbSHA256": "d05058c5026268e05229f7e567ea54a3301d7588ee77b0cffa29e0f4256878d5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "left lobe of liver",
+        "fmaId": "FMA13363",
+        "bpId": "BP9333",
+        "tree": "partof",
+        "triangles": 33276,
+        "glbSHA256": "310976bd3f6fcc3a00d052ce996bbf2ea82032a42533a7ad8d0713dc91b85f3e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "caudate lobe of liver",
+        "fmaId": "FMA13365",
+        "bpId": "BP8727",
+        "tree": "isa",
+        "triangles": 5020,
+        "glbSHA256": "f502b4e94a4d7003b292728b16cb3939305a3c6ab378a9bad779a974b9a22aa3",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "gallbladder",
+        "fmaId": "FMA7202",
+        "bpId": "BP9029",
+        "tree": "isa",
+        "triangles": 2396,
+        "glbSHA256": "10a6fa574ba3cc555a8e7e08fe9d308406cd98ebc83b70091b402941b889a6a7",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "cystic duct",
+        "fmaId": "FMA14539",
+        "bpId": "BP9078",
+        "tree": "isa",
+        "triangles": 278,
+        "glbSHA256": "017db783c15bd2ad699317a4509cae18c7d01ea8c9b8f5374acd80fe6f991888",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "digestive",
+        "name": "pancreatic duct",
+        "fmaId": "FMA10419",
+        "bpId": "BP5645",
+        "tree": "isa",
+        "triangles": 3368,
+        "glbSHA256": "b9dffa4ffee4f0662c25e481719c70895ca364b682f6b0aae1d631fc8a617ae9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "urinary",
+        "name": "urethra",
+        "fmaId": "FMA19667",
+        "bpId": "BP9098",
+        "tree": "isa",
+        "triangles": 440,
+        "glbSHA256": "8331f1c3afd03e9c932ee9725af79fd5e6501b9e1912a22b0da6ee2823e58867",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "seminal vesicle",
+        "fmaId": "FMA19386",
+        "bpId": "BP8531",
+        "tree": "isa",
+        "triangles": 730,
+        "glbSHA256": "d18f0595055a5f20484e39d245b8d8f3e97bb96532f88f88f6bd7e92184d797c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "epididymis",
+        "fmaId": "FMA18255",
+        "bpId": "BP8142",
+        "tree": "isa",
+        "triangles": 314,
+        "glbSHA256": "e8661d1e701ade4653108212580d7a92b88afac5924a522191f890593e4ce120",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "left epididymis",
+        "fmaId": "FMA18257",
+        "bpId": "BP8772",
+        "tree": "isa",
+        "triangles": 238,
+        "glbSHA256": "fc96815f85c7c828a56ffb80ea0cb856a5a08ee8bad1b12f8c8d851ff44324ad",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "reproductive",
+        "name": "right epididymis",
+        "fmaId": "FMA18256",
+        "bpId": "BP8141",
+        "tree": "isa",
+        "triangles": 76,
+        "glbSHA256": "c58cc7a076b67e993341c0766d6f0e03127eb9f27481e5b2de87b0738314669a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "maxilla",
+        "fmaId": "FMA9711",
+        "bpId": "BP8310",
+        "tree": "isa",
+        "triangles": 10522,
+        "glbSHA256": "a02386bdb5beb70179bdb9e49bddff2090b793c77a67ce9ea399f58733b45e4d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "hyoid bone",
+        "fmaId": "FMA52749",
+        "bpId": "BP8836",
+        "tree": "isa",
+        "triangles": 2392,
+        "glbSHA256": "351c782fe44233ed0684f966f5ba7c475cc1bdc8dbfa508425153b5122012199",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left tibia",
+        "fmaId": "FMA24478",
+        "bpId": "BP9202",
+        "tree": "isa",
+        "triangles": 1692,
+        "glbSHA256": "3a204ffc0f6248e213be16d8ed8b56cc4a8094496efcb4070fd093e7f4450ba7",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right tibia",
+        "fmaId": "FMA24477",
+        "bpId": "BP8031",
+        "tree": "isa",
+        "triangles": 1664,
+        "glbSHA256": "04b24adc83b35ef84172fedc03e1c4a88ead306674b735a4c6a15513c5aeed2a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left fibula",
+        "fmaId": "FMA24481",
+        "bpId": "BP8251",
+        "tree": "isa",
+        "triangles": 1124,
+        "glbSHA256": "eb22ca57ced60a43863144740dd1db87839c01d2d70f96119e6fc2a6c25b437e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right fibula",
+        "fmaId": "FMA24480",
+        "bpId": "BP8009",
+        "tree": "isa",
+        "triangles": 1142,
+        "glbSHA256": "c329455625288afc989ccf0980c7eb3ae3650019755fe10d9288b57c70b144c1",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left patella",
+        "fmaId": "FMA24487",
+        "bpId": "BP8378",
+        "tree": "isa",
+        "triangles": 310,
+        "glbSHA256": "94a307ce1c74121344717862c8b09e789db02cb19376e8b5580c83ae4653b7f2",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right patella",
+        "fmaId": "FMA24486",
+        "bpId": "BP8390",
+        "tree": "isa",
+        "triangles": 306,
+        "glbSHA256": "1f9ff2451a9f0c77f47c6170d493f755bdb0d59d04d725e60413724483e30014",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left humerus",
+        "fmaId": "FMA23131",
+        "bpId": "BP9191",
+        "tree": "isa",
+        "triangles": 3844,
+        "glbSHA256": "f1fb085da208ce2ea2857dabb8af7bdea409260ed19c291b775d5622c49614fc",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right humerus",
+        "fmaId": "FMA23130",
+        "bpId": "BP9206",
+        "tree": "isa",
+        "triangles": 3784,
+        "glbSHA256": "9df955eb78a1bc8616c813b31a44ab5c8f889c0860d194cd0312dd2ba1885089",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left radius",
+        "fmaId": "FMA23465",
+        "bpId": "BP9059",
+        "tree": "isa",
+        "triangles": 632,
+        "glbSHA256": "b47331a765c7bdffab76f3d9a1d11debb7926d70ff2852713496c21f5f973fd4",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right radius",
+        "fmaId": "FMA23464",
+        "bpId": "BP8464",
+        "tree": "isa",
+        "triangles": 672,
+        "glbSHA256": "2d23a3855d3b4c992cd6186d36f4b500274e8ae09e2f1737f5da011a381f85ab",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left ulna",
+        "fmaId": "FMA23468",
+        "bpId": "BP9070",
+        "tree": "isa",
+        "triangles": 824,
+        "glbSHA256": "3add592887352abc2a3cf50a31a3f0d32ed6ab8e4e693762981039d52ec3c592",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right ulna",
+        "fmaId": "FMA23467",
+        "bpId": "BP8233",
+        "tree": "isa",
+        "triangles": 834,
+        "glbSHA256": "8913bfd4aad7abd657915a465eeeccb330555b9513a3f9e641e403cafbf207d3",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left scapula",
+        "fmaId": "FMA13396",
+        "bpId": "BP9121",
+        "tree": "isa",
+        "triangles": 28106,
+        "glbSHA256": "55959a3c48333dbff26d4db2f3a90fc63e163112d2ce623c60d3af1d7ff8b437",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right scapula",
+        "fmaId": "FMA13395",
+        "bpId": "BP9101",
+        "tree": "isa",
+        "triangles": 26172,
+        "glbSHA256": "dcf355a9479c84ed307a089dfe5d5dd7cfd0738f321765dde2d7ce096e004a03",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "left clavicle",
+        "fmaId": "FMA13323",
+        "bpId": "BP8841",
+        "tree": "isa",
+        "triangles": 1176,
+        "glbSHA256": "fbac6650c793f611f3c892710920206625f91f9a463baf52cb5c6b340a2b92b7",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "skeletal",
+        "name": "right clavicle",
+        "fmaId": "FMA13322",
+        "bpId": "BP9271",
+        "tree": "isa",
+        "triangles": 1146,
+        "glbSHA256": "bbfef19a3fda04bfee88cb2c72e274ecccb2eaee69213a1ef4bfc2b2554f51ff",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "muscular",
+        "name": "left infraspinatus muscle",
+        "fmaId": "FMA32548",
+        "bpId": "BP8965",
+        "tree": "isa",
+        "triangles": 866,
+        "glbSHA256": "403189acf0e6509d0dbb034d406f6f6bf790b9ed2d7c1395eaf9635185197741",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "muscular",
+        "name": "right infraspinatus muscle",
+        "fmaId": "FMA32547",
+        "bpId": "BP4797",
+        "tree": "isa",
+        "triangles": 866,
+        "glbSHA256": "bb5eb5dd3de119bc7284b4c48dd02fc933a659d419e2641fd8ce6f7ecc9cc58e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "ascending aorta",
+        "fmaId": "FMA3736",
+        "bpId": "BP10329",
+        "tree": "isa",
+        "triangles": 396,
+        "glbSHA256": "a8462621eeb016cc416a8bfca610af4fb3f14e6d0834ed1ca91ae6e3e8ed89b5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "arch of aorta",
+        "fmaId": "FMA3768",
+        "bpId": "BP10322",
+        "tree": "isa",
+        "triangles": 670,
+        "glbSHA256": "0d1e869d6f98140d9eeac563ad5c718d08999eacb397c5a98f62d99e18341adb",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "descending aorta",
+        "fmaId": "FMA3784",
+        "bpId": "BP10248",
+        "tree": "isa",
+        "triangles": 4562,
+        "glbSHA256": "e450187f0f009af4df6c5e4c33a575460e98d096254ec6d3e69815ab3427a342",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "abdominal aorta",
+        "fmaId": "FMA3789",
+        "bpId": "BP6008",
+        "tree": "isa",
+        "triangles": 2270,
+        "glbSHA256": "ebfd8f3d0882ac46824b7f891cf928d4b149f2036649258ec2b6fe9954fa81c6",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "celiac trunk",
+        "fmaId": "FMA14812",
+        "bpId": "BP10622",
+        "tree": "isa",
+        "triangles": 238,
+        "glbSHA256": "59e0b6ad0cb478465527e6b165d81dcca2e9b0ecd232fe44f7b4754787d16c57",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "superior mesenteric artery",
+        "fmaId": "FMA14749",
+        "bpId": "BP6193",
+        "tree": "isa",
+        "triangles": 2046,
+        "glbSHA256": "daf12a3cf3977fcab49d77a32d5cb8ca5e82b74e376ad29d187826155c8770c5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "inferior mesenteric artery",
+        "fmaId": "FMA14750",
+        "bpId": "BP10321",
+        "tree": "isa",
+        "triangles": 546,
+        "glbSHA256": "d6d2a260ed7ca65954f86a9e811b1bfd049026075b4c0ca5f469a04dad3128c3",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "pulmonary trunk",
+        "fmaId": "FMA8612",
+        "bpId": "BP8690",
+        "tree": "isa",
+        "triangles": 1302,
+        "glbSHA256": "f2a737c5dcaf3ad6338b13ccd1bef06030866d105320bb5a5c60ae9ba556ec42",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left internal carotid artery",
+        "fmaId": "FMA4062",
+        "bpId": "BP8900",
+        "tree": "isa",
+        "triangles": 1272,
+        "glbSHA256": "c3cb453d65a0789285018c7b5e012018bbfebc0704e866f0b90e72ddc7fc61fc",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right internal carotid artery",
+        "fmaId": "FMA3949",
+        "bpId": "BP7618",
+        "tree": "isa",
+        "triangles": 1272,
+        "glbSHA256": "5c68fdcc83103dd94e2167794f9077d2dc03b8692823e412e1d762c30c08136f",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left vertebral artery",
+        "fmaId": "FMA4066",
+        "bpId": "BP8812",
+        "tree": "isa",
+        "triangles": 800,
+        "glbSHA256": "79050387f6921cf9806eb0373bb1150aeebdbbf0bd6c11230dbcd525c7c44d37",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right vertebral artery",
+        "fmaId": "FMA3958",
+        "bpId": "BP7644",
+        "tree": "isa",
+        "triangles": 800,
+        "glbSHA256": "127da8fba9f13743ff1f02cb554746d84698497b70cd8eaf72bac32f24ea421b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left subclavian artery",
+        "fmaId": "FMA4694",
+        "bpId": "BP10308",
+        "tree": "isa",
+        "triangles": 646,
+        "glbSHA256": "39064cbcb26dbf0db962b2ccc2874fd3282b9e5a63457d367cfe3821275cd80a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right subclavian artery",
+        "fmaId": "FMA3953",
+        "bpId": "BP10281",
+        "tree": "isa",
+        "triangles": 452,
+        "glbSHA256": "76764c17ee56fb1829131c4774449d07a0ffdf47e83a3cea6cc41397f57df1f9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left axillary artery",
+        "fmaId": "FMA22656",
+        "bpId": "BP6024",
+        "tree": "isa",
+        "triangles": 1800,
+        "glbSHA256": "e5df31c5be8752046852b57daad4811a9918053961586bc98844f6abc59bff24",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right axillary artery",
+        "fmaId": "FMA22655",
+        "bpId": "BP6023",
+        "tree": "isa",
+        "triangles": 1826,
+        "glbSHA256": "9a8a55952a3baab944ebf87f2620af5193c9f0fcb859d40d2e5924362da857ee",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left brachial artery",
+        "fmaId": "FMA22692",
+        "bpId": "BP6021",
+        "tree": "isa",
+        "triangles": 3470,
+        "glbSHA256": "e5197bd9b3f52457d3f249eab3e1e73c9f0d6df210a075c406f8f5dbcc01dcdd",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right brachial artery",
+        "fmaId": "FMA22691",
+        "bpId": "BP6020",
+        "tree": "isa",
+        "triangles": 3112,
+        "glbSHA256": "5abb8bd3e0fb9244d3e1ec812cd9159597d7398df0a708f03a908891df87d8ed",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left radial artery",
+        "fmaId": "FMA22734",
+        "bpId": "BP6336",
+        "tree": "isa",
+        "triangles": 7764,
+        "glbSHA256": "dd160cf6844e0bb29e8f1ac99bc31782623646760018bd845957c2da236d549a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right radial artery",
+        "fmaId": "FMA22733",
+        "bpId": "BP6335",
+        "tree": "isa",
+        "triangles": 7472,
+        "glbSHA256": "896050128de915034002b5d7ab377e674e11f9b9b760bbf124bfe48f513e8208",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left ulnar artery",
+        "fmaId": "FMA22798",
+        "bpId": "BP6316",
+        "tree": "isa",
+        "triangles": 7114,
+        "glbSHA256": "4c45592e81fee057c32e2ed3367b5da035d8ee936e11bf219806671ea6372704",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right ulnar artery",
+        "fmaId": "FMA22797",
+        "bpId": "BP6315",
+        "tree": "isa",
+        "triangles": 6876,
+        "glbSHA256": "197066f38b912d620b470cad729c974dd048441b6bcaef5eced58efce8d2d0c9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left renal artery",
+        "fmaId": "FMA14753",
+        "bpId": "BP7672",
+        "tree": "isa",
+        "triangles": 288,
+        "glbSHA256": "8ece8e3a60f5965f3fc9662cea54afd3eff331956bcb380e2ddf0f3584991dc3",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right renal artery",
+        "fmaId": "FMA14752",
+        "bpId": "BP7655",
+        "tree": "isa",
+        "triangles": 206,
+        "glbSHA256": "45371eb24b90149e575ff93b16c61779a73abc6c14a331cb0c8f4456c8d8a77e",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left common iliac artery",
+        "fmaId": "FMA14766",
+        "bpId": "BP10347",
+        "tree": "isa",
+        "triangles": 248,
+        "glbSHA256": "abf157d3aa633ca710073d07fe94417e502ff3f3043b31703c7e8bc3380714fc",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right common iliac artery",
+        "fmaId": "FMA14765",
+        "bpId": "BP10297",
+        "tree": "isa",
+        "triangles": 220,
+        "glbSHA256": "99dd86661b5e085762210e542d503ac4393c6bb47d0dcf1dc748d8c6aa3cc43d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left external iliac artery",
+        "fmaId": "FMA18807",
+        "bpId": "BP10599",
+        "tree": "isa",
+        "triangles": 462,
+        "glbSHA256": "8a4da58c838d06cf173b7e7bcf59c192b1d344e7117b71cb75849174a03f2863",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right external iliac artery",
+        "fmaId": "FMA18806",
+        "bpId": "BP10614",
+        "tree": "isa",
+        "triangles": 396,
+        "glbSHA256": "d322d4d1022d7bd7b15f7add28892e60a3fc17f005fea7ca3ff20f10f0aa821c",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left internal iliac artery",
+        "fmaId": "FMA18810",
+        "bpId": "BP10328",
+        "tree": "isa",
+        "triangles": 270,
+        "glbSHA256": "926fa7e41dcb25414ebad0c7a40d835b6c2819ec5065137e19ad29fdbb93e5f9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right internal iliac artery",
+        "fmaId": "FMA18809",
+        "bpId": "BP10316",
+        "tree": "isa",
+        "triangles": 276,
+        "glbSHA256": "e872fca92d621e4d40eec8bb2b33efe3ceb8bdf415addc252d03806fcdae98b5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left popliteal artery",
+        "fmaId": "FMA77381",
+        "bpId": "BP6079",
+        "tree": "isa",
+        "triangles": 16732,
+        "glbSHA256": "930d9f999c2a33837688fc69c574cdcb5245a0f2402a61cdb38c34448bf7249a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right popliteal artery",
+        "fmaId": "FMA77380",
+        "bpId": "BP6078",
+        "tree": "isa",
+        "triangles": 16778,
+        "glbSHA256": "df488d5d2b5b3ffff656cdee97169c8ebefb0d2608dfd5f4bab08a91bf8ee6cf",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left anterior tibial artery",
+        "fmaId": "FMA43897",
+        "bpId": "BP6073",
+        "tree": "isa",
+        "triangles": 17412,
+        "glbSHA256": "86d52307364fb01e72d487f4ae282aa372fc69f465ba18c19beba35ca0edcfb0",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right anterior tibial artery",
+        "fmaId": "FMA43896",
+        "bpId": "BP6072",
+        "tree": "isa",
+        "triangles": 17334,
+        "glbSHA256": "3cc86e56404fd79113de9079ed9c80b6ec9f779e57704e597a5a7d2cc0b3a439",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "left posterior tibial artery",
+        "fmaId": "FMA43899",
+        "bpId": "BP6076",
+        "tree": "isa",
+        "triangles": 13218,
+        "glbSHA256": "5ca49e21ea25fd161ff447528d1233178ce68481056d8c457d304082e3685059",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "arterial",
+        "name": "right posterior tibial artery",
+        "fmaId": "FMA43898",
+        "bpId": "BP6075",
+        "tree": "isa",
+        "triangles": 13130,
+        "glbSHA256": "5e7fc982aa924edd3a42c499144255b86d629974affc61d6d27ff4e22242532d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "azygos vein",
+        "fmaId": "FMA4838",
+        "bpId": "BP10369",
+        "tree": "isa",
+        "triangles": 18260,
+        "glbSHA256": "5b39a8b65be2cd098991b296fa9a9859f029f46517deaa768052c965ee49378b",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "hemiazygos vein",
+        "fmaId": "FMA4944",
+        "bpId": "BP10360",
+        "tree": "isa",
+        "triangles": 4266,
+        "glbSHA256": "a6318d0a46564f9b13ca70792cf4cfee18dee2f90e1f0aa1fd4a382a74b163b0",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left internal jugular vein",
+        "fmaId": "FMA4762",
+        "bpId": "BP10367",
+        "tree": "isa",
+        "triangles": 280,
+        "glbSHA256": "f018ee39775e585ca8a10fc77423ea5230a8b2b6cbae739cc806836225aee68a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right internal jugular vein",
+        "fmaId": "FMA4754",
+        "bpId": "BP10334",
+        "tree": "isa",
+        "triangles": 226,
+        "glbSHA256": "4f6a906eaa8f904719760f17d4fcd2985339c15ac7541800f2ff866bd013adf3",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left subclavian vein",
+        "fmaId": "FMA4763",
+        "bpId": "BP10345",
+        "tree": "isa",
+        "triangles": 434,
+        "glbSHA256": "8502aa3d3239dfb3c1a6766e96a46f65c5336788c7ad27df3f318a1263f2cf0d",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right subclavian vein",
+        "fmaId": "FMA4755",
+        "bpId": "BP10356",
+        "tree": "isa",
+        "triangles": 368,
+        "glbSHA256": "2a717a0cdb495374ee7981a43e67b5fa571f4f74408395a4edb5c8fd427d8cc2",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left brachiocephalic vein",
+        "fmaId": "FMA4761",
+        "bpId": "BP10267",
+        "tree": "isa",
+        "triangles": 748,
+        "glbSHA256": "76964dfb3520dd0c14ec057b5bdfc740c53c4a6ede7c91dd5f478fdf0b567458",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right brachiocephalic vein",
+        "fmaId": "FMA4751",
+        "bpId": "BP10354",
+        "tree": "isa",
+        "triangles": 546,
+        "glbSHA256": "d8b7988b6a70a78ea7f871ac38426fb5c5041b23b8d4f402d37ed61007e754ba",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left axillary vein",
+        "fmaId": "FMA13331",
+        "bpId": "BP5957",
+        "tree": "isa",
+        "triangles": 2110,
+        "glbSHA256": "740a128c0b48f856e9a6930b4630889dde235c8fa7c77b8b1ef763dc1f4b07f9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right axillary vein",
+        "fmaId": "FMA13330",
+        "bpId": "BP5956",
+        "tree": "isa",
+        "triangles": 2146,
+        "glbSHA256": "17f11e8a1de754b84601ccad75d9868b07b02b9bde0dd16186c9addac50245e5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left cephalic vein",
+        "fmaId": "FMA13326",
+        "bpId": "BP5944",
+        "tree": "isa",
+        "triangles": 22874,
+        "glbSHA256": "ae6629334c3207607db8caeb8c765f56f4c1e3297d37ad2f891327c49eb1bda1",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right cephalic vein",
+        "fmaId": "FMA13325",
+        "bpId": "BP5943",
+        "tree": "isa",
+        "triangles": 22622,
+        "glbSHA256": "a478a355fdd6acfb8c84d1ecd2625f93f11cf14e64a016a771e38fd1feddfe72",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left basilic vein",
+        "fmaId": "FMA22910",
+        "bpId": "BP5951",
+        "tree": "isa",
+        "triangles": 18338,
+        "glbSHA256": "f30c74b067c203907c2ba1a036871e047728acff5473d05e66051d48e552614a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right basilic vein",
+        "fmaId": "FMA22909",
+        "bpId": "BP5950",
+        "tree": "isa",
+        "triangles": 18150,
+        "glbSHA256": "e96f02757bd3779f6ce913e8797817f1ed716079d483e733985ac7943f5ca8e5",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left renal vein",
+        "fmaId": "FMA14336",
+        "bpId": "BP10330",
+        "tree": "isa",
+        "triangles": 4912,
+        "glbSHA256": "8fb3f37e85890faf4596c35e1b00dc38108062b0264331ededba76e6d23f7808",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right renal vein",
+        "fmaId": "FMA14335",
+        "bpId": "BP10256",
+        "tree": "isa",
+        "triangles": 5014,
+        "glbSHA256": "87cf35ba047e60e14a18e5a8365e2bcc3250506995655311064cda9b4df079dc",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left common iliac vein",
+        "fmaId": "FMA21388",
+        "bpId": "BP10352",
+        "tree": "isa",
+        "triangles": 430,
+        "glbSHA256": "47758c50b8e50ec8824fd2e4f7c86007b43a2ebc5ebbc16803697ffdf44ce255",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right common iliac vein",
+        "fmaId": "FMA21387",
+        "bpId": "BP10313",
+        "tree": "isa",
+        "triangles": 358,
+        "glbSHA256": "f60c375408cf646dda65fa0cd008a4663dce9d5ed810970c2c623be18045401a",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left popliteal vein",
+        "fmaId": "FMA44329",
+        "bpId": "BP5862",
+        "tree": "isa",
+        "triangles": 16592,
+        "glbSHA256": "9989d96b58af2515aa1fee6b6f4054d829442da97f48b01db8a73582928ccc32",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right popliteal vein",
+        "fmaId": "FMA44328",
+        "bpId": "BP5861",
+        "tree": "isa",
+        "triangles": 16660,
+        "glbSHA256": "07eb1b32dcd6d38d2ac054c32e9597e556f7ebb62b795ef34a341940915c0c44",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left great saphenous vein",
+        "fmaId": "FMA21380",
+        "bpId": "BP5871",
+        "tree": "isa",
+        "triangles": 30040,
+        "glbSHA256": "e749f37367665f7428404f80ec616ea495675dc657dc5cd35e8bbab4fba88702",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right great saphenous vein",
+        "fmaId": "FMA21379",
+        "bpId": "BP5870",
+        "tree": "isa",
+        "triangles": 30036,
+        "glbSHA256": "e1e16f157fec8644cd625697560c7c5e300d5bc1c015088ab3b1c3d77a7199ae",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "left small saphenous vein",
+        "fmaId": "FMA44335",
+        "bpId": "BP5853",
+        "tree": "isa",
+        "triangles": 16336,
+        "glbSHA256": "4008aa0e69925aa52298bbe939decfe1a81afc344010669645a419468282a5e9",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      },
+      {
+        "group": "venous",
+        "name": "right small saphenous vein",
+        "fmaId": "FMA44334",
+        "bpId": "BP5852",
+        "tree": "isa",
+        "triangles": 16332,
+        "glbSHA256": "a0a76491d9358280faa6f1f195f43630399de91b6867251117323c19899e57c2",
+        "status": "EXACT_SOURCE_GEOMETRY_MATCH"
+      }
+    ],
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "publicRelease": "NO_GO",
+    "geometryPublished": 0
+  }
+}

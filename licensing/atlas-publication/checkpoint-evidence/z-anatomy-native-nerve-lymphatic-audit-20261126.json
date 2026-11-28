@@ -1,0 +1,1215 @@
+{
+  "schema": 1,
+  "revision": "3c1679595d89aa508ddffc72cd5e125c5d609a59",
+  "archiveGitBlob": "f43cabc6f366b2a6058dd2ed4a2b3c7b9b2492cb",
+  "archiveSHA256": "e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+  "sourceBlendSHA256": "9f08a17ea0115fed80b2a73ecdf0a1bc2ab2f6956f37c593ce23d513ea35afcd",
+  "licenseSHA256": "196b66b56551a862e59872f7cdb70e6d9a6ad84e9105962fca8ec28c14e97520",
+  "blenderVersion": "4.0.2",
+  "sourceSceneObjects": 7183,
+  "nativeCoordinateFrame": "source Blender world converted to Y-up metres",
+  "nerveTargets": 28,
+  "nerveSummary": {
+    "EVALUATED_SOURCE_SURFACE": 26,
+    "NO_EXACT_SOURCE_OBJECT": 2
+  },
+  "nerveRows": [
+    {
+      "target": "left femoral nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Femoral nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4032,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "dee97cc46772e55398c60dd7428021a10e5bde216fdb7af0b3e4cb621828088f",
+      "nativeBoundsMetres": [
+        0.011260591447353363,
+        0.6283876895904541,
+        -0.02931385673582554,
+        0.0885077714920044,
+        1.1008652448654175,
+        0.043681979179382324
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Branches of posterior part of lumbar plexus",
+        "Femoral nerve",
+        "Left lower limb",
+        "Lumbar plexus",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Trunk"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left sciatic nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Sciatic nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4896,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "156e4c1d59df0881aec7ab5d05cf52c4c382a1423b6be21b82f6f8ab1fa6d32f",
+      "nativeBoundsMetres": [
+        0.016246501356363297,
+        0.5397514700889587,
+        -0.07181490212678909,
+        0.0797785297036171,
+        0.9781444072723389,
+        -0.016236765310168266
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left tibial nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Tibial nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 2592,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "93c88c880fdc8c0ba8e1bf9ccdf227654c1548fb93b90938cfb4a4c26d02e170",
+      "nativeBoundsMetres": [
+        0.05634124577045441,
+        0.05752897635102272,
+        -0.06589607149362564,
+        0.09613087773323059,
+        0.5404989719390869,
+        -0.03782624751329422
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve",
+        "Tibial nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left common fibular nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Common fibular nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 2016,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "a05aeeb68cde841836a2bdc137447ad4dc7b434df0309bbb59ab3991a9cae764",
+      "nativeBoundsMetres": [
+        0.07604894787073135,
+        0.38501039147377014,
+        -0.06164855137467384,
+        0.12322080880403519,
+        0.5402166247367859,
+        -0.03929935023188591
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Common fibular nerve",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left deep fibular nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Deep fibular nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4320,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "1bb1efe4fbc0fb799ecdba88cfd969d4d47ac11dec428f67897f9477e9cb9701",
+      "nativeBoundsMetres": [
+        0.06869274377822876,
+        0.04343319684267044,
+        -0.04687980189919472,
+        0.12322095781564713,
+        0.3855966031551361,
+        0.05636821314692497
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Deep fibular nerve",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left superficial fibular nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Superficial fibular nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3168,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "c7a263eaa4b7d9b4079ebdcb08bc76c3a7d6ebbe67a4da57c9eb8375911082c7",
+      "nativeBoundsMetres": [
+        0.10289660096168518,
+        0.0947510153055191,
+        -0.046966224908828735,
+        0.12320088595151901,
+        0.3854701519012451,
+        -0.03124115616083145
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve",
+        "Superficial fibular nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left obturator nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Obturator nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3456,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "94533f3595f13fc1660a69cd2fe27ca2c023ed338791466ff249c4adeb5f103e",
+      "nativeBoundsMetres": [
+        0.016349954530596733,
+        0.8611705303192139,
+        -0.023580970242619514,
+        0.06009312719106674,
+        1.0792089700698853,
+        0.015170789323747158
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbar plexus",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Obturator nerve",
+        "Peripheral nervous system",
+        "Trunk"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left sural nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Sural nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4032,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "177680b4e323a61205d736e940bb2192b6ec807dbf3914e1498a9977459e4534",
+      "nativeBoundsMetres": [
+        0.07031670212745667,
+        0.01297944039106369,
+        -0.10274501889944077,
+        0.1448037326335907,
+        0.4103415310382843,
+        0.07936927676200867
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Saphenous nerve",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left saphenous nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Saphenous nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 6624,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "b82a85ab4fde3cc9e516381b4caddf3c7acb6d92ef11d537a9287d7917dfdf5d",
+      "nativeBoundsMetres": [
+        0.030906686559319496,
+        0.10408058017492294,
+        -0.10542258620262146,
+        0.07305166870355606,
+        0.8618180751800537,
+        0.047618068754673004
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbar plexus",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Saphenous nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left medial plantar nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Medial plantar nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 1152,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "b3b85587789db9630c2545d24708523fc77765d2b339737677e18d2d8fd511eb",
+      "nativeBoundsMetres": [
+        0.05743313580751419,
+        0.02571801096200943,
+        -0.05531866475939751,
+        0.07704441994428635,
+        0.05798918381333351,
+        0.02467997558414936
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Medial plantar nerve",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left lateral plantar nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Lateral plantar nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 1152,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "c49d49824d5c20547d0901cd9489525e101ab12a77187518a716193d2ffbb0e4",
+      "nativeBoundsMetres": [
+        0.05743313580751419,
+        0.02201787941157818,
+        -0.05531866475939751,
+        0.09579561650753021,
+        0.05798918381333351,
+        0.0036579894367605448
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lateral plantar nerve",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left superior gluteal nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Superior gluteal nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3456,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "195e94e83d1773d17f87d427634a9550de1dd06147475cddf8e894e01bd88b98",
+      "nativeBoundsMetres": [
+        0.029327021911740303,
+        0.9044725298881531,
+        -0.041373223066329956,
+        0.1176801472902298,
+        0.965248167514801,
+        -0.022212058305740356
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Left lower limb",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "left inferior gluteal nerve",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "left pudendal nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Pudendal nerve.l",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3744,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "985be6b0228abde2952af60663756caa29cb4b08308117e235b65367678dfdcb",
+      "nativeBoundsMetres": [
+        0.008634588681161404,
+        0.8137081861495972,
+        -0.08208105713129044,
+        0.028965990990400314,
+        0.9299229979515076,
+        0.022969655692577362
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Nerves",
+        "Pelvis"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right femoral nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Femoral nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4032,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "fd87b65fa9b647a84e3093248050c6434aa980048e3d0038725a94e539e96020",
+      "nativeBoundsMetres": [
+        -0.08850778639316559,
+        0.6283876895904541,
+        -0.02931390143930912,
+        -0.01126059889793396,
+        1.1008652448654175,
+        0.043682023882865906
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Branches of posterior part of lumbar plexus",
+        "Femoral nerve",
+        "Lumbar plexus",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Trunk"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right sciatic nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Sciatic nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4896,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "e9a54999fdd89b2abfd4fcb707a12707ef0479b3794d67301a9cbd045826a942",
+      "nativeBoundsMetres": [
+        -0.0797785297036171,
+        0.5397514700889587,
+        -0.07181496173143387,
+        -0.016246501356363297,
+        0.9781444668769836,
+        -0.01623684912919998
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right tibial nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Tibial nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 2592,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "ecf6ec09d159cf9d5ff0e9e223b56a146be6abf63b2b33b90bd5da42c5d4d9ab",
+      "nativeBoundsMetres": [
+        -0.09613089263439178,
+        0.05752897262573242,
+        -0.06589599698781967,
+        -0.0563412606716156,
+        0.5404989719390869,
+        -0.03782620280981064
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve",
+        "Tibial nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right common fibular nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Common fibular nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 2016,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "4e546e342f652a31ba5ebad2943d2de02608b98efca1e9360e85ec5621fc943b",
+      "nativeBoundsMetres": [
+        -0.12322082370519638,
+        0.38501039147377014,
+        -0.061648473143577576,
+        -0.07604896277189255,
+        0.5402166247367859,
+        -0.03929930925369263
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Common fibular nerve",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right deep fibular nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Deep fibular nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4320,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "2747a02bc09e7ec051051c31517eacbd0673220b5a0f6b2d887d8824d5c993d3",
+      "nativeBoundsMetres": [
+        -0.12322097271680832,
+        0.043433234095573425,
+        -0.046879708766937256,
+        -0.06869275867938995,
+        0.3855966031551361,
+        0.056368421763181686
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Deep fibular nerve",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right superficial fibular nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Superficial fibular nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3168,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "038cbc7155222d64133b843864d6b898f76321013cbaeb73d22ad686bdc79f3c",
+      "nativeBoundsMetres": [
+        -0.1232009008526802,
+        0.0947510153055191,
+        -0.046966131776571274,
+        -0.10289661586284637,
+        0.3854701519012451,
+        -0.03124096803367138
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve",
+        "Superficial fibular nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right obturator nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Obturator nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3456,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "e2a43481fb7a9adf6932b85aed3a65a58fe84dc46eb7adaa65d36f2492b7cba9",
+      "nativeBoundsMetres": [
+        -0.06009313464164734,
+        0.8611705303192139,
+        -0.023580966517329216,
+        -0.01634996198117733,
+        1.0792089700698853,
+        0.015170825645327568
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbar plexus",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Obturator nerve",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Trunk"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right sural nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Sural nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 4032,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "e352bb419ec11c0263e3af5bc23de485ef4f746720fe9dbe64173f1867563d54",
+      "nativeBoundsMetres": [
+        -0.14480376243591309,
+        0.012979477643966675,
+        -0.10274491459131241,
+        -0.07031671702861786,
+        0.4103415012359619,
+        0.07936949282884598
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Saphenous nerve",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right saphenous nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Saphenous nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 6624,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "b45758855055d4e09ab8c6bc97edc883366f3bc5fb0e8b2676bc69436ca9e411",
+      "nativeBoundsMetres": [
+        -0.07305168360471725,
+        0.10408008098602295,
+        -0.10542243719100952,
+        -0.03090670146048069,
+        0.8618177175521851,
+        0.0476180724799633
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbar plexus",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Saphenous nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right medial plantar nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Medial plantar nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 1152,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "6d3e1c42835c844bbdc60da98673625a966cbbf71630a5b6e5ece36c0d12dc4c",
+      "nativeBoundsMetres": [
+        -0.07704443484544754,
+        0.02571803331375122,
+        -0.05531846359372139,
+        -0.057433150708675385,
+        0.05798918008804321,
+        0.024680186063051224
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbosacral plexus",
+        "Medial plantar nerve",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right lateral plantar nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Lateral plantar nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 1152,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "f0ff94f536654c3bccfee5b7adede789239e00282c0c1ea502b881f1f3332fc0",
+      "nativeBoundsMetres": [
+        -0.0957956314086914,
+        0.02201789617538452,
+        -0.05531846359372139,
+        -0.057433150708675385,
+        0.05798918008804321,
+        0.0036582015454769135
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lateral plantar nerve",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right superior gluteal nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Superior gluteal nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3456,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "e148e846867b7094f7948bc6dce04e33c35b5d7af833c9a823c3e69b10c2eb9f",
+      "nativeBoundsMetres": [
+        -0.1176801472902298,
+        0.9044725298881531,
+        -0.04137320816516876,
+        -0.029327021911740303,
+        0.965248167514801,
+        -0.022212041541934013
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Lumbosacral plexus",
+        "Nerves",
+        "Peripheral nervous system",
+        "Right lower limb",
+        "Sciatic nerve"
+      ],
+      "sourceModifiers": []
+    },
+    {
+      "target": "right inferior gluteal nerve",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "right pudendal nerve",
+      "status": "EVALUATED_SOURCE_SURFACE",
+      "sourceObjects": [
+        {
+          "name": "Pudendal nerve.r",
+          "type": "CURVE"
+        }
+      ],
+      "approvedForDistribution": false,
+      "triangles": 3744,
+      "omittedDegenerateTriangles": 0,
+      "sourcePositionSHA256": "de511ed716d02d5d6f69988f85bfcb16ce29121a111f331846709fba26810ff9",
+      "nativeBoundsMetres": [
+        -0.02896593138575554,
+        0.8137081861495972,
+        -0.08208105713129044,
+        -0.008634529076516628,
+        0.9299229979515076,
+        0.022969655692577362
+      ],
+      "sourceCollections": [
+        "7: Nervous system & Sense organs",
+        "Nerves",
+        "Pelvis"
+      ],
+      "sourceModifiers": []
+    }
+  ],
+  "lymphaticTargets": 57,
+  "lymphaticSummary": {
+    "NO_EXACT_SOURCE_OBJECT": 57
+  },
+  "lymphaticRows": [
+    {
+      "target": "cisterna chyli",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "intestinal lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "left bronchomediastinal lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "left jugular lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "left lumbar lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "left subclavian lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of abdomen",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of arm",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of breast",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of foot",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of forearm",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of hand",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of head",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of head and neck",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left abdomen",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left arm",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left breast",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left foot",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left forearm",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left hand",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left head",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left head and neck",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left leg",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left lower limb",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left neck",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left pelvis",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left thigh",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left thorax",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of left upper limb",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of leg",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of lower limb",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of neck",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of pelvis",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right abdomen",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right arm",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right breast",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right foot",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right forearm",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right hand",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right head",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right head and neck",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right leg",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right lower limb",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right neck",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right pelvis",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right thigh",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right thorax",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of right upper limb",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of thigh",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of thorax",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "lymphatic vessels of upper limb",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "right bronchomediastinal lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "right jugular lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "right lumbar lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "right lymphatic duct",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "right subclavian lymphatic trunk",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    },
+    {
+      "target": "thoracic duct",
+      "status": "NO_EXACT_SOURCE_OBJECT",
+      "sourceObjects": [],
+      "approvedForDistribution": false
+    }
+  ],
+  "additionalLymphaticLabelCandidates": [],
+  "geometryExported": 0,
+  "geometryPublished": 0,
+  "assetRightsReviewed": false,
+  "networkContinuityValidated": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "workflowRun": 45773405692,
+  "workflowJob": 139751187143,
+  "sourceCommit": "f0f8db59a753506fa4c5ac9597a28fcf59978007"
+}

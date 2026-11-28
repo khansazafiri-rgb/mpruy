@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "status": "TECHNICAL_CHECKSUM_DISCREPANCY_EXPLAINED_GEOMETRY_AND_IDENTITY_PRESERVED",
+  "evidenceOrigin": "ACTUAL_WORKSTATION_OLD_AND_FRESH_OFFICIAL_ARCHIVES",
+  "oldArchive": {
+    "bytes": 142903898,
+    "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e",
+    "entries": 2234
+  },
+  "newArchive": {
+    "bytes": 142717267,
+    "sha256": "ac7d9ab0b3d75b4c75445f0f39e3782f309bbb321d2191f449773107ae504793",
+    "entries": 2235
+  },
+  "sourceURL": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+  "passes": [
+    {
+      "pass": 1,
+      "method": "All-member exact byte comparison allowing only the two explicitly pinned license-comment replacements",
+      "passedOBJ": 2234,
+      "failedOBJ": 0,
+      "rawOBJChanged": 2234,
+      "perOBJBytesRemoved": 238,
+      "allOtherOBJBytesUnchanged": true,
+      "sourceIdentityHeadersUnchanged": [
+        "Compatibility version",
+        "File ID",
+        "Representation ID",
+        "Build-up logic",
+        "Concept ID",
+        "English name",
+        "Bounds(mm)",
+        "Volume(cm3)"
+      ]
+    },
+    {
+      "pass": 2,
+      "method": "Independently parse full old/new OBJ geometry and compare float64 vertices, normalized face indexes and ordered float32 triangle positions fingerprints, native bounds and counts",
+      "passedOBJ": 2234,
+      "failedOBJ": 0,
+      "oldTriangles": 6680881,
+      "newTriangles": 6680881,
+      "clinicalLateralityReviewPerformed": false
+    }
+  ],
+  "publisherMemberships": {
+    "scope": "Retained hash-verified publisher ISA names/elements tables, independently source-qualified in previous evidence; fresh table verification is separate",
+    "names": {
+      "bytes": 128086,
+      "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513"
+    },
+    "elements": {
+      "bytes": 1142159,
+      "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf"
+    },
+    "sourceMembershipsIdentical": 2234
+  },
+  "packImplications": {
+    "retainedTotalBodyModels": 1016,
+    "isaBodyModelsChecked": 987,
+    "isaElementOccurrencesChecked": 1406,
+    "isaIdentityHeld": 0,
+    "remainingPartofModelsOutsideThisISAArchiveComparison": 29,
+    "newStructures": 0,
+    "removedStructures": 0,
+    "existingGeometrySafeFromThisArchiveDrift": true,
+    "oldAndNewPinsPreserved": true,
+    "sourcePinUpdated": false
+  },
+  "packagingDifference": {
+    "addedEmptyDirectory": "isa_BP3D_4.0_obj_99/",
+    "memberPathsChanged": 0,
+    "allZIPMetadataChanged": 2234
+  },
+  "parserCrosscheck": {
+    "method": "Actual MEDCOEL native Node exporter vs independent Python parser",
+    "passed": 5,
+    "failed": 0,
+    "largestTriangleSample": 203382
+  },
+  "regressionTests": {
+    "passed": 4,
+    "failed": 0,
+    "covers": [
+      "Exact allowed comment change",
+      "Unexpected vertex change rejected",
+      "Unexpected left/right source-name change rejected",
+      "Absent or duplicate license comments rejected"
+    ]
+  },
+  "receiptFiles": [
+    {
+      "file": "old-isa-member-index.json",
+      "bytes": 7967118,
+      "sha256": "d4f725b457e334771c2e8b942eb0ac548061dba05abc5d8822c38a5092be54de"
+    },
+    {
+      "file": "old-vs-new-isa-full-comparison.json",
+      "bytes": 1134224,
+      "sha256": "90f0f430be88077efe06abebc20a416e249b4d7565710996f2f4a74712ed4efa"
+    },
+    {
+      "file": "old-vs-new-isa-comment-proof-pinned.json",
+      "bytes": 620092,
+      "sha256": "2939dc23c514802c79c302f78cad4324abf9d3e2451dfee00c87ca4d89c947d2"
+    },
+    {
+      "file": "old-vs-new-isa-license-comment-proof.json",
+      "bytes": 2434257,
+      "sha256": "0c6243091d859eddaf1610c9dc792222cf4cf76671bbc31c8abbc84944686242"
+    },
+    {
+      "file": "old-isa-body-identity-reconciliation.json",
+      "bytes": 201770,
+      "sha256": "5aeb6615929e9562af842cb01aa867578e9e94d90f8c68c23856815007a310cd"
+    },
+    {
+      "file": "parser-crosscheck.json",
+      "bytes": 1447,
+      "sha256": "4ffb16956640ce4be80a2903b390fe70c7049f9df4e8543af19321e7b987abe7"
+    },
+    {
+      "file": "comment-proof-tests.log",
+      "bytes": 102,
+      "sha256": "feabb4add9e2ca3374e538560634d1ec97dc4f4ce89aab12f3d726e36ea9b2f6"
+    },
+    {
+      "file": "verify_license_only_change.py",
+      "bytes": 3407,
+      "sha256": "aa4f7bbbc24715a22e1d89b348bae47c1f69f376d1ea30c901bf1fba832a1c01"
+    }
+  ],
+  "scopeLimits": [
+    "No GLBs generated or publicly published by this comparison",
+    "No new anatomical or whole-concept coverage",
+    "No new clinical validation or registration validation",
+    "No legal approval granted; publisher license scope/attribution remains a separate evidence decision",
+    "The strict legacy comparator still marks raw digest drift for review; this receipt explains that raw drift with two complete independent checks"
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO"
+}

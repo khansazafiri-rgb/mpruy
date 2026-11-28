@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "voxelmanRoundtripPass": 33,
+  "openearConversionPass": 3,
+  "sourceArchiveHashReverifiedThisRun": false,
+  "engineeringCalibrationPass": 33,
+  "actualBrowserRendering": "PENDING",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "wholeStructuresRestoredClaim": 0,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO"
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "Local engineering filesystem only; no production authorization or backup",
+  "tests": 5,
+  "passed": 5,
+  "failed": 0,
+  "stageDigest": "6238fa649e1f309307e094a57df356980a663a4e4ef60af7156aca3dbbb93b14",
+  "stagedRelease": "/private/var/folders/nk/z_m09d9d4_l4f1j6441n_1qc0000gn/T/medcoel-subset-rehearsal-R6sOeC/releases/6238fa649e1f309307e094a57df356980a663a4e4ef60af7156aca3dbbb93b14",
+  "unauthorizedActivationRejected": true,
+  "atomicActivationPassed": true,
+  "wrongDigestRollbackRejected": true,
+  "previousTargetRestored": true,
+  "productionDeployed": false
+}

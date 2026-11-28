@@ -1,0 +1,32 @@
+name: Atlas expanded HRA exact source group audit
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'licensing/atlas-publication/hra-*-pinned-audit-20261126.json'
+      - 'licensing/atlas-publication/hra-digestive-six-pinned-audit-20261127.json'
+      - 'scripts/hra-exact-source-groups.mjs'
+      - '.github/workflows/atlas-hra-expanded-groups.yml'
+# Supersede only an older revision of the same workflow on the same ref.
+concurrency:
+  group: atlas-hra-expanded-groups-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  hierarchy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [urogenital-7, ureter-four, cns-four, digestive-six]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-hra-female-five.test.mjs scripts/audit-hra-source-groups.test.mjs
+      - run: node scripts/audit-hra-female-five.mjs ${{ matrix.batch }} --groups

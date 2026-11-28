@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-11-27T15:56:46.485303+00:00",
+  "recordURL": "https://zenodo.org/records/4362584",
+  "doi": "10.5281/zenodo.4362584",
+  "title": "OpenEar color example from Visible Ear Simulator anatomy Delta",
+  "authors": [
+    "Daniel Manuel Sieber",
+    "Steven Arild Wuyts Andersen",
+    "Mads S\u00f8lvsten S\u00f8rensen",
+    "Peter Trier Mikkelsen"
+  ],
+  "published": "2021-09-01",
+  "recordModified": "2024-07-19",
+  "license": "CC-BY-4.0",
+  "licenseURL": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "licenseEvidence": "Official Zenodo record Rights section observed in native Safari 2026-11-27; record file table MD5 checked against downloaded bytes.",
+  "downloadedSourceFiles": 3,
+  "checksumPassed": 3,
+  "convertedGLB": 3,
+  "wholeConceptCoveragePromoted": 0,
+  "browserRenderingVerified": 0,
+  "rows": [
+    {
+      "target": "incus",
+      "publisherLabel": "Incus",
+      "sourceURL": "https://zenodo.org/records/4362584/files/Incus.ply?download=1",
+      "sourceFile": "Incus.ply",
+      "sourceBytes": 138604,
+      "publisherMD5": "5f0430a838001558e891469b6a6d66f4",
+      "actualMD5": "5f0430a838001558e891469b6a6d66f4",
+      "sourceSHA256": "899e454d194870fd9c8b441766cc63d6573229b3cdf0c74f524b01f632886269",
+      "outputFile": "incus.glb",
+      "outputBytes": 74404,
+      "outputSHA256": "c753805671e3456ba74ce788004166d05f3477bd0977a23e42780706fddb50e7",
+      "vertexCount": 2000,
+      "triangleCount": 3996,
+      "bounds": {
+        "min": [
+          23.5268,
+          20.9829,
+          28.918
+        ],
+        "max": [
+          29.8054,
+          24.6812,
+          33.9159
+        ]
+      },
+      "finitePositions": true,
+      "indicesInBounds": true,
+      "degenerateTriangles": 0,
+      "connectedComponents": 1,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "surfaceAreaSourceUnitsSquared": 45.693103399394424,
+      "laterality": "UNSPECIFIED",
+      "transform": {
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "registrationValidated": false,
+      "clinicalValidation": false,
+      "renderVerified": false,
+      "coveragePromoted": false,
+      "status": "ACQUIRED_CHECKSUM_AND_GEOMETRY_PASS_RENDER_AND_IDENTITY_REVIEW_PENDING"
+    },
+    {
+      "target": "malleus",
+      "publisherLabel": "Malleus",
+      "sourceURL": "https://zenodo.org/records/4362584/files/Malleus.ply?download=1",
+      "sourceFile": "Malleus.ply",
+      "sourceBytes": 138631,
+      "publisherMD5": "46619b2950cb568d14d1e381df5cf197",
+      "actualMD5": "46619b2950cb568d14d1e381df5cf197",
+      "sourceSHA256": "3342f8436333da6a94089ff243d997d9dd6c83900513ffe12f154a5255a6601d",
+      "outputFile": "malleus.glb",
+      "outputBytes": 74408,
+      "outputSHA256": "6542ed305c2a172c828312186966cc85c1ad0e3f75dc9904565300f99f3ebf1b",
+      "vertexCount": 2000,
+      "triangleCount": 3996,
+      "bounds": {
+        "min": [
+          22.741,
+          22.6509,
+          32.224
+        ],
+        "max": [
+          30.0557,
+          25.8829,
+          35.9754
+        ]
+      },
+      "finitePositions": true,
+      "indicesInBounds": true,
+      "degenerateTriangles": 0,
+      "connectedComponents": 1,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "surfaceAreaSourceUnitsSquared": 42.28513294219821,
+      "laterality": "UNSPECIFIED",
+      "transform": {
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "registrationValidated": false,
+      "clinicalValidation": false,
+      "renderVerified": false,
+      "coveragePromoted": false,
+      "status": "ACQUIRED_CHECKSUM_AND_GEOMETRY_PASS_RENDER_AND_IDENTITY_REVIEW_PENDING"
+    },
+    {
+      "target": "stapes",
+      "publisherLabel": "Stapes",
+      "sourceURL": "https://zenodo.org/records/4362584/files/Stapes.ply?download=1",
+      "sourceFile": "Stapes.ply",
+      "sourceBytes": 66259,
+      "publisherMD5": "a7f5acd451088b2efa6ab6bc30990bfe",
+      "actualMD5": "a7f5acd451088b2efa6ab6bc30990bfe",
+      "sourceSHA256": "b3dce1b78ab5d4e8f66526acb1ed504623275bd9f0a31c072621419ea2e7036e",
+      "outputFile": "stapes.glb",
+      "outputBytes": 38432,
+      "outputSHA256": "bdf109cf175540c81440e44247ea9d885f73087b0ad73ee07b644d590388c1bf",
+      "vertexCount": 1000,
+      "triangleCount": 2000,
+      "bounds": {
+        "min": [
+          23.6993,
+          18.3689,
+          33.7247
+        ],
+        "max": [
+          26.0722,
+          22.3222,
+          37.2184
+        ]
+      },
+      "finitePositions": true,
+      "indicesInBounds": true,
+      "degenerateTriangles": 0,
+      "connectedComponents": 1,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "surfaceAreaSourceUnitsSquared": 21.479213575075853,
+      "laterality": "UNSPECIFIED",
+      "transform": {
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "registrationValidated": false,
+      "clinicalValidation": false,
+      "renderVerified": false,
+      "coveragePromoted": false,
+      "status": "ACQUIRED_CHECKSUM_AND_GEOMETRY_PASS_RENDER_AND_IDENTITY_REVIEW_PENDING"
+    }
+  ],
+  "limitations": [
+    "Publisher record does not specify laterality; no left/right claims or mirroring.",
+    "Source units, anatomical orientation, and transform into MEDCOEL full-body frame unestablished; use isolated source-frame review only.",
+    "Clinical identity validation, actual browser rendering and viewer integration are pending.",
+    "Dataset rights do not cover Visible Ear Simulator software or UI.",
+    "Source includes surface geometry and vertex color only; record provides no separate donor consent document."
+  ]
+}

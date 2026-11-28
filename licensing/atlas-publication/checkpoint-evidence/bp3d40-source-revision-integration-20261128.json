@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "oldArchive": {
+    "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e",
+    "bytes": 142903898
+  },
+  "newArchive": {
+    "sha256": "ac7d9ab0b3d75b4c75445f0f39e3782f309bbb321d2191f449773107ae504793",
+    "bytes": 142717267
+  },
+  "verifiedPublisherRevision": {
+    "status": "EXACT_PINNED_PUBLISHER_LICENSE_COMMENT_REVISION",
+    "objMembersCompared": 2234,
+    "memberPathsUnchanged": 2234,
+    "perOBJBytesRemoved": 238,
+    "allGeometryCommandsAndIdentityBytesIdentical": true,
+    "allowedPackagingDifference": "One empty isa_BP3D_4.0_obj_99/ directory",
+    "publisherLicenseClarification": "https://dbarchive.biosciencedbc.jp/update_histories/181",
+    "historicalSourcePinPreserved": true
+  },
+  "technicalSourceEquivalent": true,
+  "counts": {
+    "RAW_OBJ_CHANGED": 2234
+  },
+  "allRawObjBytesIdentical": false,
+  "nonObjMembersIdentical": true,
+  "oldNonObjMembers": {},
+  "newNonObjMembers": {},
+  "scope": "Raw member equality, or exact pinned license-comment-only revision. Publisher names/elements tables and derived GLBs require separate replay; no clinical or release approval.",
+  "sourcePinUpdated": false,
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO",
+  "date": "2026-11-28",
+  "execution": "Both retained workstation and fresh official fullZIPs read by updated repository comparator; all2234OBJ reread byte-for-byte and final archive hashes rechecked.",
+  "regressionTests": {
+    "pythonArchiveComparison": {
+      "passed": 7,
+      "failed": 0
+    },
+    "nodePublisherRevision": {
+      "passed": 3,
+      "failed": 0
+    },
+    "pythonRetainedOBJReconstruction": {
+      "passed": 2,
+      "failed": 0
+    }
+  },
+  "historicalDriftReceipt": "bp3d40-upstream-archive-drift-20261127.json",
+  "fullMemberProof": {
+    "file": "bp3d40-isa-license-comment-member-proof-20261127.json",
+    "sha256": "2939dc23c514802c79c302f78cad4324abf9d3e2451dfee00c87ca4d89c947d2",
+    "members": 2234
+  },
+  "independentGeometryReceipt": "bp3d40-archive-drift-resolved-geometry-receipt.json",
+  "freshNetworkAuditRunThisIntegration": false
+}

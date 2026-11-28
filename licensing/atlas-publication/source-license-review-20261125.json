@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "reviewDate": "2026-11-25",
+  "scope": "Official publisher terms and exact source license signals; not legal sign-off, de-identification or release approval.",
+  "sources": [
+    {
+      "id": "spl-knee",
+      "page": "https://www.openanatomy.org/atlas-pages/atlas-spl-knee.html",
+      "archive": "https://www.openanatomy.org/atlases/nac/knee-2016-09.zip",
+      "archiveSHA256": "2f61002f42843910eada3877adf4229ef845bf87cc1e422b719c930dfadc5f6a",
+      "licenseURL": "https://www.openanatomy.org/atlas-pages/slicer-license.html",
+      "instrumentVersion": "1.0 (2005-12-20), Part B and applicable Part C",
+      "observedPermissions": [
+        "B.1 use, reproduce, modify, display, distribute and sublicense within Brigham's rights",
+        "B.2 permits incorporation into proprietary programs"
+      ],
+      "conditions": [
+        "B.1(b) reproduce complete license conditions and required preface in copies, sublicenses and user documentation",
+        "B.1(c) preserve all copyright notices, licenses and attribution",
+        "B.1(d) clearly mark modified versions",
+        "B.3 secure third-party rights and inform downstream users",
+        "B.4 research purpose; no clinical-use recommendation or regulatory approval; commercialization at operator risk",
+        "B.6 no endorsement or promotion with protected names, marks or logos without permission"
+      ],
+      "status": "CONDITIONAL_RIGHTS_SIGNAL",
+      "hold": [
+        "Exact archive-level third-party notices not reconciled",
+        "Patient de-identification and authorization review pending",
+        "Geometry-only output requires independent privacy review",
+        "Clinical educational suitability review pending"
+      ],
+      "commercialApproved": false
+    },
+    {
+      "id": "bp3d-4.0",
+      "licenseURL": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+      "archiveReadme": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/README_e.html",
+      "observedLicense": "CC BY 4.0 International",
+      "updated": "2025-02-27",
+      "status": "OFFICIAL_ARCHIVE_LICENSE_SIGNAL",
+      "commercialApproved": false
+    },
+    {
+      "id": "bp3d-4.3",
+      "publisherLicenseURL": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+      "mirrorDOI": "10.5281/zenodo.22727173",
+      "mirrorRelease": "2026-09-12",
+      "mirrorLicenseURL": "https://github.com/olivercase/body_parts_3d_api/blob/fd527e6f4daf732fd814314d9257df5877b844bc/LICENSE",
+      "observedPublisherLicense": "CC BY 4.0 International",
+      "observedMirrorDataLicense": "CC BY-SA 2.1 Japan",
+      "status": "VERSION_SCOPE_UNRESOLVED",
+      "hold": [
+        "Confirm official terms apply to exact 4.3 viewer mesh endpoint and redistribution of converted meshes",
+        "Do not assume MIT code license applies to geometry",
+        "Until resolved preserve share-alike obligation in planning; no release"
+      ],
+      "commercialApproved": false
+    }
+  ],
+  "gates": {
+    "privacyReviewed": false,
+    "allThirdPartyNoticesReviewed": false,
+    "commercialRightsPerAsset": false,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "publicRelease": "NO_GO"
+  }
+}

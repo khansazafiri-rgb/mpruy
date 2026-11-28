@@ -10,7 +10,7 @@ function Atlas({back}){
  useEffect(()=>{
   document.title='Human Anatomy | MEDCOEL';
   const handler=event=>{if(!acceptsAtlasMessage(event,window.location.origin,iframe.current?.contentWindow))return;
-   setStatus(current=>nextAtlasStatus(current,event.data.type));if(event.data.message)setMessage(event.data.message);
+   setStatus(current=>event.data.type==='medcoel:independent-atlas-status'?(['interactive','partial'].includes(event.data.state)?'interactive':event.data.state==='error'?'error':current):nextAtlasStatus(current,event.data.type));if(event.data.message)setMessage(event.data.message);
   };
   window.addEventListener('message',handler);
   const timer=setTimeout(()=>setStatus(s=>s==='loading'?'slow':s),45000);
@@ -18,6 +18,7 @@ function Atlas({back}){
  },[attempt]);
  const loaded=()=>{
   iframe.current?.contentWindow?.postMessage({type:'medcoel:anatomy-ping',version:1},location.origin);
+  iframe.current?.contentWindow?.postMessage({type:'medcoel:independent-atlas-ping',version:1},location.origin);
   probe.current?.abort();const controller=new AbortController();probe.current=controller;
   checkViewerAsset(fetch,controller.signal).catch(error=>{if(!controller.signal.aborted){setMessage(error.message);setStatus(current=>['interactive','ready'].includes(current)?current:'error');}});
  };

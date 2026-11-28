@@ -1,0 +1,350 @@
+{
+  "schema": 1,
+  "sourceArchive": {
+    "bytes": 395086431,
+    "md5": "dbdfada24e69591bdf9650453918d9ef",
+    "sha256": "b45f2f965b7ed6577b3ab78dd74eb0cab3d44a52c6e8c97dd80981747c56120b"
+  },
+  "sourceLabelFile": {
+    "bytes": 13707,
+    "md5": "3f996d6e1113a24e58304381b8e689e2",
+    "sha256": "964804656a7b4320bf103c96cadd115da05eb187d1ab0f638ca1b81bf73afac8"
+  },
+  "shapeInFileOrder": [
+    774,
+    330,
+    573
+  ],
+  "nonzeroLabelCount": 336,
+  "targets": {
+    "cystic duct": {
+      "candidateLabelNumbers": [
+        1001
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "1001": 117
+      }
+    },
+    "duodenum (retroperitoneal part)": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "left renal medulla": {
+      "candidateLabelNumbers": [
+        1532
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "1532": 14316
+      }
+    },
+    "right renal medulla": {
+      "candidateLabelNumbers": [
+        1536
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "1536": 10518
+      }
+    },
+    "trachea lumen": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "left atrium": {
+      "candidateLabelNumbers": [
+        11016
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11016": 7292
+      }
+    },
+    "right atrium": {
+      "candidateLabelNumbers": [
+        11012
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11012": 102539
+      }
+    },
+    "left ventricle": {
+      "candidateLabelNumbers": [
+        11017
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11017": 7135
+      }
+    },
+    "right ventricle": {
+      "candidateLabelNumbers": [
+        11014
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11014": 57935
+      }
+    },
+    "myocardium": {
+      "candidateLabelNumbers": [
+        11007
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11007": 358030
+      }
+    },
+    "pericardium": {
+      "candidateLabelNumbers": [
+        11009
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11009": 150108
+      }
+    },
+    "pulmonary trunk": {
+      "candidateLabelNumbers": [
+        11015
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "11015": 19185
+      }
+    },
+    "pulmonary arteries": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "pulmonary veins": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "portal vein": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "inferior mesenteric vein": {
+      "candidateLabelNumbers": [
+        4024
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "4024": 1272
+      }
+    },
+    "superior mesenteric vein": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "pancreas": {
+      "candidateLabelNumbers": [
+        1003
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "1003": 68745
+      }
+    },
+    "cardia": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "fundus of stomach": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "body of stomach": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "left colic flexure": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "right colic flexure": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    },
+    "scrotum": {
+      "candidateLabelNumbers": [
+        7509
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "7509": 72127
+      }
+    },
+    "left rectus abdominis": {
+      "candidateLabelNumbers": [
+        10002
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "10002": 270168
+      }
+    },
+    "right rectus abdominis": {
+      "candidateLabelNumbers": [
+        10001
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "10001": 263992
+      }
+    },
+    "left transversus abdominis": {
+      "candidateLabelNumbers": [
+        10510
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "10510": 115588
+      }
+    },
+    "right transversus abdominis": {
+      "candidateLabelNumbers": [
+        10505
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "10505": 114167
+      }
+    },
+    "left internal oblique": {
+      "candidateLabelNumbers": [
+        10511
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "10511": 194274
+      }
+    },
+    "right internal oblique": {
+      "candidateLabelNumbers": [
+        10504
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "10504": 161019
+      }
+    },
+    "coccyx": {
+      "candidateLabelNumbers": [
+        6561
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "6561": 4706
+      }
+    },
+    "larynx": {
+      "candidateLabelNumbers": [
+        5161
+      ],
+      "ambiguousRow": false,
+      "sharedAcrossTargets": false,
+      "status": "EXACT_TEXT_ROW_CANDIDATE",
+      "voxelCounts": {
+        "5161": 6228
+      }
+    },
+    "sigmoid colon": {
+      "candidateLabelNumbers": [],
+      "ambiguousRow": true,
+      "sharedAcrossTargets": false,
+      "status": "HOLD_LABEL_MAPPING",
+      "voxelCounts": {}
+    }
+  },
+  "sourceLabelBytesVerified": true,
+  "labelMappingReviewed": false,
+  "coordinateFrameVerified": false,
+  "privacyReviewed": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryParsed": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO",
+  "evidenceOrigin": {
+    "run": 45997220891,
+    "job": 140499589881,
+    "sourceCommit": "31e3852513e1c3caf8204dbfbf5b128ab01a1fac"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "sourceCommit": "fbf7e67d94de7e7f4f8c91ff522f77d881f4cddf",
+  "priority": {
+    "workflowRun": 45940873679,
+    "workflowJob": 140314623628,
+    "conclusion": "success",
+    "guidedCheckpoints": 7,
+    "guidedSourceOpens": 15,
+    "renderedMeshes": 15,
+    "isolateRestoreChecks": 15,
+    "unitTests": 2
+  },
+  "full": {
+    "workflowRun": 45940873620,
+    "workflowJob": 140314699852,
+    "conclusion": "success",
+    "bp3dRendered": 436,
+    "multilingualChallengeConcepts": 428,
+    "hraRendered": 24,
+    "hraMappedNodes": 606,
+    "hraGroups": 87,
+    "hraGuidedCheckpoints": 41,
+    "hraGuidedSourceOpens": 92,
+    "bp3dGuidedParentCheckpoints": 17,
+    "bp3dGuidedComponentOpens": 36,
+    "unitTests": 78
+  },
+  "bodyInventoryUnchanged": true,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

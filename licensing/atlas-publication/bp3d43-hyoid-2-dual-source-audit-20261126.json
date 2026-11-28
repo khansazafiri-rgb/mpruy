@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "batchId": "hyoid-2",
+  "sourceCommit": "7b36e32926fa5ebc9f77d2b19e804f49d446baad",
+  "workflowRun": 45769872658,
+  "workflowJob": 139739668190,
+  "matched": 2,
+  "held": 0,
+  "matches": [
+    {
+      "fj": "FJ2772",
+      "bp": "BP22977",
+      "fma": "FMA52749",
+      "name": "Hyoid bone",
+      "triangles": 1196,
+      "rawSHA256": "0e29dd64fd4bca2c4c6e2079bf6df138f033f11faf2d3702ab5788b7e3357d49",
+      "status": "DUAL_SOURCE_MATCH",
+      "publisherGLBSHA256": "31382513889abbc6afb5e747f8768d239fc6eaab944a1c5b2bfa5ef5d51180fb",
+      "mirrorGLBSHA256": "335b418d826ae08f2bb8722be62d154fb4d045448611211e4863b37cd3cb7c05"
+    },
+    {
+      "fj": "FJ3201",
+      "bp": "BP22977",
+      "fma": "FMA52749",
+      "name": "Hyoid bone",
+      "triangles": 1196,
+      "rawSHA256": "167054d8b26c55d574fe8ddbfa40850b96311f6a90593cb3402c0df8c5584681",
+      "status": "DUAL_SOURCE_MATCH",
+      "publisherGLBSHA256": "a5f57811995f56550e849579035e83865da34438dcf933773d9a6f58154706f4",
+      "mirrorGLBSHA256": "78d9637661a7ad72497deaf1a10796d3e10b7776b35ed2bce180233a98000bba"
+    }
+  ],
+  "publisher": {
+    "schema": 1,
+    "version": "4.3",
+    "manifestURL": "https://lifesciencedb.jp/bp3d/get-info.cgi?version=4.3&cmd=concept-objfiles-list",
+    "manifestSHA256": "c3d16c891016da13447de2fc3241d05d92e8f9dc460e363233c03f420b935d4f",
+    "manifestElements": 3210,
+    "results": [
+      {
+        "fj": "FJ2772",
+        "discoveryBP": "BP22977",
+        "discoveryFMA": "FMA5018",
+        "name": "Hyoid bone",
+        "faces": 1196,
+        "vertices": 687,
+        "bytes": 75198,
+        "group": "skeletal",
+        "bp": "BP22977",
+        "fma": "FMA52749",
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "observedArchiveBasename": "FJ2772_BP22977_FMA52749_Hyoid bone.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ2772/FJ2772_BP22977_FMA52749_Hyoid bone.obj",
+        "rawSHA256": "0e29dd64fd4bca2c4c6e2079bf6df138f033f11faf2d3702ab5788b7e3357d49",
+        "glbSHA256": "31382513889abbc6afb5e747f8768d239fc6eaab944a1c5b2bfa5ef5d51180fb",
+        "archiveSHA256": "4938b081d930a8ff7de9e52f6065be9d4cdee080b246dd1c24ed2c3032f0b6cf",
+        "rawBytes": 75198,
+        "triangles": 1196,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ3201",
+        "discoveryBP": "BP22977",
+        "discoveryFMA": "FMA5018",
+        "name": "Hyoid bone",
+        "faces": 1196,
+        "vertices": 687,
+        "bytes": 75198,
+        "group": "skeletal",
+        "bp": "BP22977",
+        "fma": "FMA52749",
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "observedArchiveBasename": "FJ3201_BP22977_FMA52749_Hyoid bone.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ3201/FJ3201_BP22977_FMA52749_Hyoid bone.obj",
+        "rawSHA256": "167054d8b26c55d574fe8ddbfa40850b96311f6a90593cb3402c0df8c5584681",
+        "glbSHA256": "a5f57811995f56550e849579035e83865da34438dcf933773d9a6f58154706f4",
+        "archiveSHA256": "b8fedcf06bef006440df5b247c6529dc6ba922a236b7ced7be96350edc2fa6d6",
+        "rawBytes": 75198,
+        "triangles": 1196,
+        "omitted": 0
+      }
+    ],
+    "parsed": 2,
+    "held": 0,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "geometryPublished": 0,
+    "publicRelease": "NO_GO",
+    "licenseReview": "VERSION_SPECIFIC_REVIEW_REQUIRED"
+  },
+  "mirror": {
+    "schema": 1,
+    "mirror": "https://github.com/olivercase/body_parts_3d_api.git",
+    "commit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+    "manifestSHA256": "a199eb9cb258266768b7690f4ac2591f67d4b146c95e14046c46091c35c09385",
+    "results": [
+      {
+        "fj": "FJ2772",
+        "discoveryBP": "BP22977",
+        "discoveryFMA": "FMA5018",
+        "name": "Hyoid bone",
+        "faces": 1196,
+        "vertices": 687,
+        "bytes": 75198,
+        "group": "skeletal",
+        "bp": "BP22977",
+        "fma": "FMA52749",
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "observedArchiveBasename": "FJ2772_BP22977_FMA52749_Hyoid bone.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ2772_BP22977_FMA52749_Hyoid bone.obj",
+        "rawSHA256": "0e29dd64fd4bca2c4c6e2079bf6df138f033f11faf2d3702ab5788b7e3357d49",
+        "glbSHA256": "335b418d826ae08f2bb8722be62d154fb4d045448611211e4863b37cd3cb7c05",
+        "triangles": 1196
+      },
+      {
+        "fj": "FJ3201",
+        "discoveryBP": "BP22977",
+        "discoveryFMA": "FMA5018",
+        "name": "Hyoid bone",
+        "faces": 1196,
+        "vertices": 687,
+        "bytes": 75198,
+        "group": "skeletal",
+        "bp": "BP22977",
+        "fma": "FMA52749",
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "observedArchiveBasename": "FJ3201_BP22977_FMA52749_Hyoid bone.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ3201_BP22977_FMA52749_Hyoid bone.obj",
+        "rawSHA256": "167054d8b26c55d574fe8ddbfa40850b96311f6a90593cb3402c0df8c5584681",
+        "glbSHA256": "78d9637661a7ad72497deaf1a10796d3e10b7776b35ed2bce180233a98000bba",
+        "triangles": 1196
+      }
+    ],
+    "passed": 2,
+    "held": 0,
+    "freshPublisherVerified": false,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "geometryPublished": 0,
+    "publicRelease": "NO_GO"
+  },
+  "geometryPublished": 0,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Supplemental exact source elements; no HRA substitution or combined-body claim."
+}

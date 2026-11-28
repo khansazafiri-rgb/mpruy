@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "evidenceOrigin": "OWNER_SUPPLIED_LOCAL_TERMINAL_LOG",
+  "sourceCommit": "a4627a4dac4e610663a8b12cd04f4a3ecfc972b5",
+  "date": "2026-11-27",
+  "scope": "Local workstation inventory and HTTP route verification reported by owner; not independently replayed in CI, not exhaustive browser rendering or medical validation.",
+  "bodyModels": 1016,
+  "bodyPackVerified": true,
+  "bp3dReferenceElements": 436,
+  "hraReferenceFiles": 24,
+  "recoveryBaseline": 185,
+  "recoverySupplement": 18,
+  "recoveryModels": 203,
+  "assetCount": 1679,
+  "httpModelRoutesVerified": 1016,
+  "http43RoutesVerified": 436,
+  "httpHraRoutesVerified": 24,
+  "httpPriorityRoutesVerified": 203,
+  "bp3dMissingElements": 0,
+  "hraMissing": 0,
+  "elementSelectionConcepts": 906,
+  "hostQC": "PASS",
+  "httpSmoke": "PASS",
+  "thumbnailQC": "PASS_SAMPLE",
+  "browserRuntime": "PENDING",
+  "originalUI": "PRIVATE_ORIGINAL_UI_COMPARISON",
+  "recoveryMode": "ISOLATED_REFERENCE_ONLY",
+  "nativeElementOverlap": {
+    "NO_EXACT_RAW_MATCH": 436
+  },
+  "versionedCandidateOverlap": {
+    "pairs": 358,
+    "elements": 205,
+    "matchedPairs": 116,
+    "matchedElements": 116,
+    "counts": {
+      "EXACT_CANDIDATE_LOCAL_NATIVE_COORDINATES": 116,
+      "HOLD_LOCAL_IDENTITY_MISMATCH": 112,
+      "NO_LOCAL_ELEMENT_ID_MATCH": 130
+    }
+  },
+  "learningReview": {
+    "targets": 464,
+    "unresolved": 146,
+    "discoverNewSource": 134,
+    "holdExternalRightsAndClinicalReview": 12,
+    "referenceOnlyTargets": 23,
+    "exactLabelReferenceTargets": 8,
+    "levelSpecificReferenceTargets": 1,
+    "relatedComponentOnlyTargets": 14,
+    "pinnedMuscleReferenceTargets": 0
+  },
+  "rawDigestOccurrences": 1570,
+  "sourceElementOccurrences": 1570,
+  "contextCandidateModels": 0,
+  "uniqueWholeBodyAnatomyCount": null,
+  "actualWorkstationIndependentlyVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO"
+}

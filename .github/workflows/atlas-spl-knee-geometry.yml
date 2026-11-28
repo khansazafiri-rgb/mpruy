@@ -1,0 +1,31 @@
+name: Atlas SPL knee native geometry audit
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'scripts/audit-spl-knee-*.py'
+      - 'licensing/atlas-publication/spl-knee-source-inventory-20261125.json'
+      - '.github/workflows/atlas-spl-knee-geometry.yml'
+  pull_request:
+    branches: [feat/atlas-axial-cartilage-20261125, feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/audit-spl-knee-*.py'
+      - 'licensing/atlas-publication/spl-knee-source-inventory-20261125.json'
+      - '.github/workflows/atlas-spl-knee-geometry.yml'
+permissions:
+  contents: read
+jobs:
+  native-geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: 'python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1'
+      - run: python scripts/audit-spl-knee-geometry.py --test
+      - name: Parse pinned source geometry without applying transforms or exporting models
+        run: python scripts/audit-spl-knee-geometry.py

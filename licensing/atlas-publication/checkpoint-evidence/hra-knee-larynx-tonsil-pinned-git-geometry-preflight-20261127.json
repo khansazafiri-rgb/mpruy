@@ -1,0 +1,532 @@
+{
+  "schema": 1,
+  "scope": "Retained direct inspection of publisher pinned Git GLB bytes in previous interactive session; SHA-1 Git blob recomputed, GLB container and accessors checked, finite positions and triangle indices checked, hierarchy walked. Not a CI receipt; CDN byte equality and SHA-256 not evaluated; not eligible for loader or coverage promotion.",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "sourceCommit": "435a28c03c69ae14fbaaef681bb1c2c1d646ea0a",
+  "inputs": [
+    {
+      "path": "licensing/atlas-publication/hra-knee-larynx-six-pinned-candidates-20261127.json",
+      "blobSHA": "7a08e0150b2901f58fc2afca9be12921fb4ad9e0"
+    },
+    {
+      "path": "licensing/atlas-publication/hra-tonsil-four-pinned-candidates-20261127.json",
+      "blobSHA": "3ff6e2fcd10b0786f7e6cb016ff28b963834507c"
+    }
+  ],
+  "matchedGitGLB": 10,
+  "directLabels": 74,
+  "exactHierarchyGroups": 16,
+  "remainingHeldHierarchy": 0,
+  "vertices": 131438,
+  "triangles": 171117,
+  "cdnEqualityVerified": false,
+  "browserReplayVerified": false,
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "publicRelease": "NO_GO",
+  "rows": [
+    {
+      "id": "knee-female-left",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb",
+      "bytes": 348328,
+      "computedGitBlob": "c6cbe147f4c2416f4b097288d3a25ea2dff9b152",
+      "nodeCount": 22,
+      "meshCount": 20,
+      "vertices": 9288,
+      "triangles": 17844,
+      "directLabels": 14,
+      "groups": [
+        {
+          "label": "Left knee",
+          "ontologyId": "FMA:24978",
+          "index": 0,
+          "descendantNodeIndices": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "label": "Left knee joint",
+          "ontologyId": "FMA:35177",
+          "index": 2,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "knee-female-right",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb",
+      "bytes": 348376,
+      "computedGitBlob": "591b01eff98bea1f9c96b8084be7971f037bfd82",
+      "nodeCount": 22,
+      "meshCount": 20,
+      "vertices": 9288,
+      "triangles": 17844,
+      "directLabels": 14,
+      "groups": [
+        {
+          "label": "Right knee",
+          "ontologyId": "FMA:24977",
+          "index": 0,
+          "descendantNodeIndices": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "label": "Right knee joint",
+          "ontologyId": "FMA:35176",
+          "index": 2,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "knee-male-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb",
+      "bytes": 440020,
+      "computedGitBlob": "6ef022fce4cf3126066686d84e7d9d25e4d2810a",
+      "nodeCount": 22,
+      "meshCount": 20,
+      "vertices": 11840,
+      "triangles": 22892,
+      "directLabels": 14,
+      "groups": [
+        {
+          "label": "Left knee",
+          "ontologyId": "FMA:24978",
+          "index": 0,
+          "descendantNodeIndices": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "label": "Left knee joint",
+          "ontologyId": "FMA:35177",
+          "index": 2,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "knee-male-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb",
+      "bytes": 440080,
+      "computedGitBlob": "16fdc7c70ce9c1e2a5475ab5471c47cd91540a30",
+      "nodeCount": 22,
+      "meshCount": 20,
+      "vertices": 11840,
+      "triangles": 22892,
+      "directLabels": 14,
+      "groups": [
+        {
+          "label": "Right knee",
+          "ontologyId": "FMA:24977",
+          "index": 0,
+          "descendantNodeIndices": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "label": "Right knee joint",
+          "ontologyId": "FMA:35176",
+          "index": 1,
+          "descendantNodeIndices": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        }
+      ],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_SEPARATE_ACL_PCL_MEDIAL_LATERAL_MENISCUS_IN_CROSSWALK"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "larynx-female",
+      "version": "v1.1",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb",
+      "bytes": 463320,
+      "computedGitBlob": "9e8d2afc32f487677aab252e9a711ee8e63581cd",
+      "nodeCount": 11,
+      "meshCount": 7,
+      "vertices": 8761,
+      "triangles": 17491,
+      "directLabels": 7,
+      "groups": [
+        {
+          "label": "larynx",
+          "ontologyId": "UBERON:0001737",
+          "index": 0,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "label": "laryngeal cartilage",
+          "ontologyId": "UBERON:0001739",
+          "index": 1,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "label": "arytenoid cartilage",
+          "ontologyId": "UBERON:0001740",
+          "index": 2,
+          "descendantNodeIndices": [
+            3,
+            4
+          ]
+        },
+        {
+          "label": "corniculate cartilage",
+          "ontologyId": "UBERON:0001741",
+          "index": 8,
+          "descendantNodeIndices": [
+            9,
+            10
+          ]
+        }
+      ],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "larynx-male",
+      "version": "v1.1",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb",
+      "bytes": 335576,
+      "computedGitBlob": "51ed1e9b4a3a252ce93baafcfe057565cf4c31a5",
+      "nodeCount": 11,
+      "meshCount": 7,
+      "vertices": 6772,
+      "triangles": 13238,
+      "directLabels": 7,
+      "groups": [
+        {
+          "label": "larynx",
+          "ontologyId": "UBERON:0001737",
+          "index": 0,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "label": "laryngeal cartilage",
+          "ontologyId": "UBERON:0001739",
+          "index": 1,
+          "descendantNodeIndices": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "label": "arytenoid cartilage",
+          "ontologyId": "UBERON:0001740",
+          "index": 2,
+          "descendantNodeIndices": [
+            3,
+            4
+          ]
+        },
+        {
+          "label": "corniculate cartilage",
+          "ontologyId": "UBERON:0001741",
+          "index": 8,
+          "descendantNodeIndices": [
+            9,
+            10
+          ]
+        }
+      ],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-female-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/assets/3d-vh-f-palatine-tonsil-l.glb",
+      "bytes": 930340,
+      "computedGitBlob": "d22c8f6e91fb947b47ba9392a4f8a377dcaade39",
+      "nodeCount": 1,
+      "meshCount": 1,
+      "vertices": 34404,
+      "triangles": 17202,
+      "directLabels": 1,
+      "groups": [],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_MALE_ADAPTED_TO_FEMALE",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_INDEPENDENT_FEMALE_SPECIMEN"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-female-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/assets/3d-vh-f-palatine-tonsil-r.glb",
+      "bytes": 663256,
+      "computedGitBlob": "b8756b0173365d1fa12a2dbed5065469340d77e9",
+      "nodeCount": 1,
+      "meshCount": 1,
+      "vertices": 24512,
+      "triangles": 12256,
+      "directLabels": 1,
+      "groups": [],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_MALE_ADAPTED_TO_FEMALE",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_INDEPENDENT_FEMALE_SPECIMEN"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-male-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/assets/3d-vh-m-palatine-tonsil-l.glb",
+      "bytes": 449008,
+      "computedGitBlob": "3c05b40527af8e81a8a9fac30614164b5017aae1",
+      "nodeCount": 1,
+      "meshCount": 1,
+      "vertices": 8603,
+      "triangles": 17202,
+      "directLabels": 1,
+      "groups": [],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_MALE_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "approvedForDistribution": false
+    },
+    {
+      "id": "palatine-tonsil-male-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb",
+      "bytes": 222132,
+      "computedGitBlob": "e8cc5a2a3a4b599eb01721b54c3ebe219e8a15c7",
+      "nodeCount": 1,
+      "meshCount": 1,
+      "vertices": 6130,
+      "triangles": 12256,
+      "directLabels": 1,
+      "groups": [],
+      "geometryCheck": "FINITE_POSITIONS_AND_IN_RANGE_TRIANGLES_PASS",
+      "sourceMethod": "VISIBLE_HUMAN_MALE_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "approvedForDistribution": false
+    }
+  ]
+}

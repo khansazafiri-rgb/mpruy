@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "elements": 147,
+  "distinctFJ": 147,
+  "distinctFMA": 140,
+  "sourceLabelConcepts": 140,
+  "distinctRawSHA256": 147,
+  "triangles": 392576,
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of all 147 passed; not spatial registration.",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "previousBrowserReplay": {
+    "elements": 129,
+    "sourceLabelConcepts": 122,
+    "workflowRun": 45661767112
+  },
+  "browserReplay": {
+    "commit": "00b70dfc56515ad0ad930fe86c78231ad077b400",
+    "workflowRun": 45667335140,
+    "workflowJob": 139392933865,
+    "conclusion": "success",
+    "renderedActualPublisherGLBs": 147,
+    "sourceLabelConceptsCompleted": 140,
+    "multilingualTypedConcepts": 10,
+    "unitAndIdentityTestsPassed": 42,
+    "registrationValidated": false
+  }
+}

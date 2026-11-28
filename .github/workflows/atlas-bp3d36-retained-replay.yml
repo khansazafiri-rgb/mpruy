@@ -1,0 +1,25 @@
+name: Atlas retained 36 component private replay
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'licensing/atlas-publication/bp3d43-checkpoint-components-36-dual-source-audit-20261126.json'
+      - '.github/workflows/atlas-bp3d36-retained-replay.yml'
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/replay-audited-bp3d43-suite.test.mjs scripts/intake-bp3d43-priority-elements.test.mjs
+      - run: node scripts/replay-audited-bp3d43-suite.mjs --receipt=bp3d43-checkpoint-components-36-dual-source-audit-20261126.json
+      - if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-*

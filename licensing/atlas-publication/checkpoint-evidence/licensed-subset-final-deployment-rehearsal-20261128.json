@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "scope": "Disposable local filesystem; authorization and backup hash are engineering fixtures only",
+  "packageContentsSHA256": "2f9b6e92dd3dd49b032ca9b1b33231082a2d3c9a5ba318fc37bbf3ca90730697",
+  "tests": 5,
+  "passed": 5,
+  "failed": 0,
+  "stageVerified": true,
+  "unauthorizedActivationRejected": true,
+  "atomicActivationPassed": true,
+  "wrongDigestRollbackRejected": true,
+  "previousTargetRestored": true,
+  "productionBackupExecuted": false,
+  "productionDeployed": false
+}

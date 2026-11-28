@@ -27,6 +27,18 @@ jobs:
         run: npm run lint
       - name: Tes unit (konten kaya + format impor)
         run: npm test
+      - name: Resolve exact trusted Clinical Studios base
+        env:
+          STUDIOS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+          if [[ "$STUDIOS_BASE_SHA" =~ ^[a-f0-9]{40}$ && ! "$STUDIOS_BASE_SHA" =~ ^0+$ ]]; then
+            if ! git cat-file -e "$STUDIOS_BASE_SHA:shared/studios/frozen-ids.json" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$STUDIOS_BASE_SHA"
+            fi
+            git cat-file -e "$STUDIOS_BASE_SHA:shared/studios/frozen-ids.json"
+            git rev-parse "$STUDIOS_BASE_SHA:shared/studios/frozen-ids.json"
+          fi
       - name: Clinical studio contracts and offline resource clearance
         env:
           STUDIOS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
@@ -90,3 +102,25 @@ jobs:
           node test/studios-secure-api.test.mjs
           node test/studios-challenge-api.test.mjs
 
+  spl-knee-private-audit:
+    # Deliberately scoped to this same-repository draft PR. No deployment or artifacts.
+    if: github.event_name == 'pull_request' && github.head_ref == 'feat/atlas-spl-knee-intake-20261125' && github.base_ref == 'feat/atlas-axial-cartilage-20261125' && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install audit-only VTK dependencies
+        run: 'python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1'
+      - name: Archive safety and native mesh conversion tests
+        run: |
+          python scripts/audit-spl-knee-source.py --test
+          python scripts/audit-spl-knee-geometry.py --test
+      - name: Replay pinned 48-mesh source geometry audit
+        run: python scripts/audit-spl-knee-geometry.py

@@ -1,0 +1,273 @@
+{
+  "schema": 1,
+  "engineeringFixtureOnly": true,
+  "tested": 33,
+  "passedBoundsCountsAndManifold": 33,
+  "outwardWindingPassed": true,
+  "rows": [
+    {
+      "index": 0,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 1,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 2,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 3,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 4,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 5,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 6,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 7,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 8,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 9,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 10,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 11,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 12,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 13,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 14,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 15,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 16,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 17,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 18,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 19,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 20,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 21,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 22,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 23,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 24,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 25,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 26,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 27,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 28,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 29,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 30,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 31,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    },
+    {
+      "index": 32,
+      "vertices": 94,
+      "triangles": 184,
+      "signedVolume": 54.66666667,
+      "closedManifold": true,
+      "EulerCharacteristic": 2
+    }
+  ]
+}

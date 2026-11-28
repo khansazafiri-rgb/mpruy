@@ -1,0 +1,34 @@
+name: Atlas bronchial thymus 22 dual-source audit
+on:
+  push:
+    branches: [feat/atlas-bronchial-thymus-22-20261126]
+    paths:
+      - 'scripts/audit-bp3d43-gap-batch*.mjs'
+      - 'licensing/atlas-publication/bp3d43-bronchial-thymus-22-candidates.json'
+      - '.github/workflows/atlas-bronchial-thymus-22.yml'
+  pull_request:
+    branches: [feat/atlas-cardiopulmonary-32-20261126]
+    paths:
+      - 'scripts/audit-bp3d43-gap-batch*.mjs'
+      - 'licensing/atlas-publication/bp3d43-bronchial-thymus-22-candidates.json'
+      - '.github/workflows/atlas-bronchial-thymus-22.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs
+      - name: Audit exact 22 bronchial and thymic source elements
+        run: node scripts/audit-bp3d43-gap-batch.mjs bronchial-thymus-22
+      - name: Remove temporary source geometry
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*

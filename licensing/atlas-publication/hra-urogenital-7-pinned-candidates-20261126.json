@@ -1,0 +1,906 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Independent source candidates only. Crosswalk labels do not prove mesh presence; kidney v1.3 source description notes calyces/papillae moved to ureter. No spatial registration or publication.",
+  "rows": [
+    {
+      "id": "kidney-female-left",
+      "version": "v1.3",
+      "filename": "3d-vh-f-kidney-l.glb",
+      "bytes": 1356736,
+      "glbBlob": "1bd1bdad58181a1fff05896ab1cc7b5ecdc4af2a",
+      "metadataBlob": "de16af784286d51fecc8b933ed0e0d619e4fd74c",
+      "crosswalkBlob": "14647fb9756643add0786bb19b5738ea55d54fa4",
+      "doi": "https://doi.org/10.48539/HBM449.JPXL.964",
+      "expectedCrosswalkRows": 31,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-female-left/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_left_kidney",
+          "ontologyId": "UBERON:0004538",
+          "label": "left kidney"
+        },
+        {
+          "nodeName": "VH_F_kidney_capsule_L",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule"
+        },
+        {
+          "nodeName": "VH_F_hilum_of_kidney_L",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney"
+        },
+        {
+          "nodeName": "VH_F_renal_medulla_L",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_j",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_k",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_j",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_k",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney"
+        },
+        {
+          "nodeName": "VH_F_renal_column_L",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column"
+        },
+        {
+          "nodeName": "VH_F_outer_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney"
+        }
+      ]
+    },
+    {
+      "id": "kidney-female-right",
+      "version": "v1.3",
+      "filename": "3d-vh-f-kidney-r.glb",
+      "bytes": 1383740,
+      "glbBlob": "8c9e25416a1254def3e5ab5ed91f46bafc688a7b",
+      "metadataBlob": "ffc5d4454dadf33e804f0f96cb3dbc9cac5e8aaf",
+      "crosswalkBlob": "f14940c33c5228a7f8b14fd1da1b19674d27d80f",
+      "doi": "https://doi.org/10.48539/HBM968.HSNL.854",
+      "expectedCrosswalkRows": 29,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-female-right/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_right_kidney",
+          "ontologyId": "UBERON:0004539",
+          "label": "right kidney"
+        },
+        {
+          "nodeName": "VH_F_kidney_capsule_R",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule"
+        },
+        {
+          "nodeName": "VH_F_hilum_of_kidney_R",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney"
+        },
+        {
+          "nodeName": "VH_F_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney"
+        },
+        {
+          "nodeName": "VH_F_outer_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney"
+        },
+        {
+          "nodeName": "VH_F_renal_column_R",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column"
+        },
+        {
+          "nodeName": "VH_F_renal_medulla_R",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_j",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_j",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        }
+      ]
+    },
+    {
+      "id": "kidney-male-left",
+      "version": "v1.3",
+      "filename": "3d-vh-m-kidney-l.glb",
+      "bytes": 1536980,
+      "glbBlob": "5aa1adabe676b4a219d4121a776de40b3bd5fc2f",
+      "metadataBlob": "cacf7f7a9f4900d3f4214b74cb6e10c9f4129c5c",
+      "crosswalkBlob": "24dd01c0d8a76b435ce9b800e75464411c169ac0",
+      "doi": "https://doi.org/10.48539/HBM759.JKKF.434",
+      "expectedCrosswalkRows": 27,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-male-left/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_left_kidney",
+          "ontologyId": "UBERON:0004538",
+          "label": "left kidney"
+        },
+        {
+          "nodeName": "VH_M_kidney_capsule_L",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule"
+        },
+        {
+          "nodeName": "VH_M_hilum_of_kidney_L",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney"
+        },
+        {
+          "nodeName": "VH_M_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney"
+        },
+        {
+          "nodeName": "VH_M_renal_column_L",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column"
+        },
+        {
+          "nodeName": "VH_M_outer_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney"
+        },
+        {
+          "nodeName": "VH_M_renal_medulla_L",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        }
+      ]
+    },
+    {
+      "id": "kidney-male-right",
+      "version": "v1.3",
+      "filename": "3d-vh-m-kidney-r.glb",
+      "bytes": 1547360,
+      "glbBlob": "192f5ccd7a7e69019ea7453ebc3913843d182faa",
+      "metadataBlob": "1f97818c628f3f02293cec8332d7d9a5273e61f0",
+      "crosswalkBlob": "1bda618c1caed6cc18aa88b2c340b1f9da298d39",
+      "doi": "https://doi.org/10.48539/HBM364.QTSC.334",
+      "expectedCrosswalkRows": 29,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-male-right/v1.3/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_right_kidney",
+          "ontologyId": "UBERON:0004539",
+          "label": "right kidney"
+        },
+        {
+          "nodeName": "VH_M_kidney_capsule_R",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule"
+        },
+        {
+          "nodeName": "VH_M_hilum_of_kidney_R",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney"
+        },
+        {
+          "nodeName": "VH_M_renal_medulla_R",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_j",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_R",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_j",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid"
+        },
+        {
+          "nodeName": "VH_M_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney"
+        },
+        {
+          "nodeName": "VH_M_renal_column_R",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column"
+        },
+        {
+          "nodeName": "VH_M_outer_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney"
+        }
+      ]
+    },
+    {
+      "id": "prostate-male",
+      "version": "v1.2",
+      "filename": "3d-vh-m-prostate.glb",
+      "bytes": 4086520,
+      "glbBlob": "14ecc739c5f245c44a0f342ff00eac37b45381bf",
+      "metadataBlob": "bcd6b161746689d428b8592593fda83a84e661cc",
+      "crosswalkBlob": "a2bd39420b48a932a3b67af7c1a935a1399eab2b",
+      "doi": "https://doi.org/10.48539/HBM545.CTNV.442",
+      "expectedCrosswalkRows": 18,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/prostate-male/v1.2/assets/3d-vh-m-prostate.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/prostate-male/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_male_reproductive_system",
+          "ontologyId": "UBERON:0000079",
+          "label": "male reproductive system"
+        },
+        {
+          "nodeName": "VH_M_male_genital_duct",
+          "ontologyId": "UBERON:0010140",
+          "label": "male genital duct"
+        },
+        {
+          "nodeName": "VH_M_seminal_vesicle",
+          "ontologyId": "UBERON:0000998",
+          "label": "seminal vesicle"
+        },
+        {
+          "nodeName": "VH_M_ejaculatory_duct",
+          "ontologyId": "UBERON:0000999",
+          "label": "ejaculatory duct"
+        },
+        {
+          "nodeName": "VH_M_prostate_gland",
+          "ontologyId": "UBERON:0002367",
+          "label": "prostate gland"
+        },
+        {
+          "nodeName": "VH_M_prostatic_utricle",
+          "ontologyId": "UBERON:0011199",
+          "label": "prostatic utricle"
+        },
+        {
+          "nodeName": "VH_M_seminal_colliculus",
+          "ontologyId": "FMA:19719",
+          "label": "Verumontanum"
+        },
+        {
+          "nodeName": "VH_M_prostate_duct_R",
+          "ontologyId": "UBERON:0002485",
+          "label": "prostate duct"
+        },
+        {
+          "nodeName": "VH_M_apex_of_prostate",
+          "ontologyId": "UBERON:0035441",
+          "label": "apex of prostate"
+        },
+        {
+          "nodeName": "VH_M_base_of_prostate",
+          "ontologyId": "UBERON:0035331",
+          "label": "base of prostate"
+        },
+        {
+          "nodeName": "VH_M_peripheral_zone_of_prostate_R",
+          "ontologyId": "UBERON:8410026",
+          "label": "peripheral zone of prostate"
+        },
+        {
+          "nodeName": "VH_M_peripheral_zone_of_prostate_L",
+          "ontologyId": "UBERON:8410026",
+          "label": "peripheral zone of prostate"
+        },
+        {
+          "nodeName": "VH_M_transition_zone__of_prostate_L",
+          "ontologyId": "UBERON:8410025",
+          "label": "transition zone of prostate"
+        },
+        {
+          "nodeName": "VH_M_transition_zone_of_prostate_R",
+          "ontologyId": "UBERON:8410025",
+          "label": "transition zone of prostate"
+        },
+        {
+          "nodeName": "VH_M_central_zone_of_prostate_R",
+          "ontologyId": "UBERON:8410027",
+          "label": "central zone of prostate"
+        },
+        {
+          "nodeName": "VH_M_central_zone_of_prostate_L",
+          "ontologyId": "UBERON:8410027",
+          "label": "central zone of prostate"
+        },
+        {
+          "nodeName": "VH_M_anterior_fibromuscular_stroma_L",
+          "ontologyId": "FMA:74238",
+          "label": "Anterior fibromuscular stroma of prostate"
+        },
+        {
+          "nodeName": "VH_M_anterior_fibromuscular_stroma_R",
+          "ontologyId": "FMA:74238",
+          "label": "Anterior fibromuscular stroma of prostate"
+        }
+      ]
+    },
+    {
+      "id": "urinary-bladder-female",
+      "version": "v1.2",
+      "filename": "3d-vh-f-urinary-bladder.glb",
+      "bytes": 765224,
+      "glbBlob": "e2423439412c3703799d6bc7fff1b884305874fb",
+      "metadataBlob": "5cc5753c35a3358214055394afb78ac35ea99b92",
+      "crosswalkBlob": "b45a43703f6af2d503ba7d5223a236341dd82783",
+      "doi": "https://doi.org/10.48539/HBM595.LMKX.573",
+      "expectedCrosswalkRows": 7,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-female/v1.2/assets/3d-vh-f-urinary-bladder.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/urinary-bladder-female/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_urinary_bladder",
+          "ontologyId": "UBERON:0001255",
+          "label": "urinary bladder"
+        },
+        {
+          "nodeName": "VH_F_fundus_of_urinary_bladder_dome",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder"
+        },
+        {
+          "nodeName": "VH_F_urinary_bladder_neck_smooth_muscle",
+          "ontologyId": "UBERON:0004230",
+          "label": "urinary bladder neck smooth muscle"
+        },
+        {
+          "nodeName": "VH_F_fundus_of_urinary_bladder_base",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder"
+        },
+        {
+          "nodeName": "VH_F_trigone_of_urinary_bladder",
+          "ontologyId": "UBERON:0001257",
+          "label": "trigone of urinary bladder"
+        },
+        {
+          "nodeName": "VH_F_ureteral_orifice_R",
+          "ontologyId": "FMA:15939",
+          "label": "Right ureteral orifice"
+        },
+        {
+          "nodeName": "VH_F_ureteral_orifice_L",
+          "ontologyId": "FMA:15940",
+          "label": "Left ureteral orifice"
+        }
+      ]
+    },
+    {
+      "id": "urinary-bladder-male",
+      "version": "v1.2",
+      "filename": "3d-vh-m-urinary-bladder.glb",
+      "bytes": 199044,
+      "glbBlob": "fefa74e74e87d89ffdca7dc23645dc06b84ddea1",
+      "metadataBlob": "50a2531fa8205760d9fd7dfc73c73f1f0b82b594",
+      "crosswalkBlob": "bfbe31827439ce48b60e9ce7cd88956b6343bdb4",
+      "doi": "https://doi.org/10.48539/HBM722.RMHQ.397",
+      "expectedCrosswalkRows": 8,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-male/v1.2/assets/3d-vh-m-urinary-bladder.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/urinary-bladder-male/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_urinary_bladder",
+          "ontologyId": "UBERON:0001255",
+          "label": "urinary bladder"
+        },
+        {
+          "nodeName": "VH_M_urinary_bladder_neck_smooth_muscle",
+          "ontologyId": "UBERON:0004230",
+          "label": "urinary bladder neck smooth muscle"
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder_dome",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder"
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder"
+        },
+        {
+          "nodeName": "VH_M_ureteral_orifice_R",
+          "ontologyId": "FMA:15939",
+          "label": "Right ureteral orifice"
+        },
+        {
+          "nodeName": "VH_M_ureteral_orifice_L",
+          "ontologyId": "FMA:15940",
+          "label": "Left ureteral orifice"
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder_base1",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder"
+        },
+        {
+          "nodeName": "VH_M_trigone_of_urinary_bladder",
+          "ontologyId": "UBERON:0001257",
+          "label": "trigone of urinary bladder"
+        }
+      ]
+    }
+  ],
+  "held": [],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "workflowRun": 45772842109,
+  "workflowJob": 139749333623,
+  "sourceCommit": "175086cefd25729446ca6044706dc228025ad947",
+  "renderedSourceElements": 2,
+  "sourceConcepts": 1,
+  "triangles": 2392,
+  "insufficientChallengePoolBlocked": true,
+  "bodyInventoryUnchanged": true,
+  "geometryPublished": 0,
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "publicRelease": "NO_GO"
+}

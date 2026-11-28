@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "sourceCommit": "971b965ec3095bf609a598726dd873c625a472d9",
+  "workflowRun": 45939567528,
+  "workflowJob": 140310513879,
+  "conclusion": "success",
+  "renderedMeshes": 15,
+  "exactTriangleCounts": 15,
+  "isolateRestoreChecks": 15,
+  "originalShellFixtureRegression": true,
+  "bodyInventoryUnchanged": true,
+  "loaderContract": {
+    "sourceCommit": "f98ed5f3aaa0335f71923562bbd7cb2d9e480b30",
+    "workflowRun": 45939727714,
+    "workflowJob": 140311015138,
+    "testsPassed": 2
+  },
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "materialsPreserved": false,
+  "publicRelease": "NO_GO"
+}

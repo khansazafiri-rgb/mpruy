@@ -1,0 +1,53 @@
+name: Atlas 4.3 private element intake
+on:
+  pull_request:
+    branches: [feat/atlas-publication-prep-20261124, feat/atlas-bp3d43-intake-20261125]
+    paths:
+      - 'scripts/intake-bp3d43-priority-elements*'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - 'scripts/test-bp3d43-local-intake.mjs'
+      - 'scripts/test-private-atlas-browser.mjs'
+      - 'apps/atlas-independent/**'
+      - 'licensing/atlas-publication/bp3d43-dual-source-audit-20261125.json'
+      - 'scripts/audit-bp3d43-mirror-elements*'
+      - 'scripts/independent-bp3d-export.mjs'
+      - 'scripts/audit-bp3d-publication-geometry.mjs'
+      - 'licensing/atlas-publication/bp3d43-priority-element-candidates.json'
+      - '.github/workflows/atlas-bp3d43-intake.yml'
+permissions:
+  contents: read
+jobs:
+  intake:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - name: Version separation and provenance tests
+        run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/independent-bp3d-export.test.mjs scripts/audit-bp3d-publication-geometry.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs
+      - name: Obtain and replay exact publisher elements in quarantine
+        run: node scripts/intake-bp3d43-priority-elements.mjs
+      - name: Verify actual private loader and reference HTTP routes
+        run: node scripts/test-bp3d43-local-intake.mjs
+      - name: Install independent viewer and isolated Chromium tooling
+        run: |
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Independent viewer unit tests including Challenge language and scoring
+        run: npm test --prefix apps/atlas-independent
+      - name: Render all 12 real audited source elements using original Atlas UI
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          ATLAS_TEST_REAL43=1 node scripts/test-private-atlas-browser.mjs
+      - name: Independent pinned mirror audit (does not waive publisher failure)
+        if: ${{ !cancelled() }}
+        run: node scripts/audit-bp3d43-mirror-elements.mjs
+      - name: Remove temporary geometry and session files
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-*

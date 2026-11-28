@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "publisher": "HuBMAP / Human Reference Atlas",
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "library": "https://humanatlas.io/3d-reference-library",
+  "sourceLicense": "CC-BY-4.0",
+  "scope": "Laterality-specific source evidence only. Generic palatine tonsil checkpoint is a bilateral candidate, not a verified whole structure. Female model adapted from male anatomy.",
+  "rows": [
+    {
+      "id": "palatine-tonsil-female-left",
+      "version": "v1.2",
+      "filename": "3d-vh-f-palatine-tonsil-l.glb",
+      "bytes": 930340,
+      "glbBlob": "d22c8f6e91fb947b47ba9392a4f8a377dcaade39",
+      "metadataBlob": "391b044e3455ffd4574947ece36ccae30bf7707d",
+      "crosswalkBlob": "631a463429a4c3113a1a7ad7b679aade493be0bb",
+      "doi": "https://doi.org/10.48539/HBM245.VCTP.795",
+      "expectedCrosswalkRows": 1,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/assets/3d-vh-f-palatine-tonsil-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_MALE_ADAPTED_TO_FEMALE",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_INDEPENDENT_FEMALE_SPECIMEN"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_palatine_tonsil_L",
+          "ontologyId": "FMA:54974",
+          "label": "left palatine tonsil"
+        }
+      ]
+    },
+    {
+      "id": "palatine-tonsil-female-right",
+      "version": "v1.2",
+      "filename": "3d-vh-f-palatine-tonsil-r.glb",
+      "bytes": 663256,
+      "glbBlob": "b8756b0173365d1fa12a2dbed5065469340d77e9",
+      "metadataBlob": "72b401a3445ac81f95cd3312cfad2ade46b28d37",
+      "crosswalkBlob": "ba108ed0b7f6f0a071ebc45f87e51d5fb0a7aba2",
+      "doi": "https://doi.org/10.48539/HBM549.HTLQ.527",
+      "expectedCrosswalkRows": 1,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/assets/3d-vh-f-palatine-tonsil-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_MALE_ADAPTED_TO_FEMALE",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED",
+        "NO_INDEPENDENT_FEMALE_SPECIMEN"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_F_palatine_tonsil_R",
+          "ontologyId": "FMA:54973",
+          "label": "right palatine tonsil"
+        }
+      ]
+    },
+    {
+      "id": "palatine-tonsil-male-left",
+      "version": "v1.2",
+      "filename": "3d-vh-m-palatine-tonsil-l.glb",
+      "bytes": 449008,
+      "glbBlob": "3c05b40527af8e81a8a9fac30614164b5017aae1",
+      "metadataBlob": "2022ad9c2e4537928b5cc058c34cbd3fb415b587",
+      "crosswalkBlob": "bb46d8aa83d56108d8f5604da44c23f6e690b0e3",
+      "doi": "https://doi.org/10.48539/HBM366.GHGT.974",
+      "expectedCrosswalkRows": 1,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/assets/3d-vh-m-palatine-tonsil-l.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_MALE_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_palatine_tonsil_L",
+          "ontologyId": "FMA:54974",
+          "label": "Left palatine tonsil"
+        }
+      ]
+    },
+    {
+      "id": "palatine-tonsil-male-right",
+      "version": "v1.2",
+      "filename": "3d-vh-m-palatine-tonsil-r.glb",
+      "bytes": 222132,
+      "glbBlob": "e8cc5a2a3a4b599eb01721b54c3ebe219e8a15c7",
+      "metadataBlob": "1ee140ff1319b5c91acf0a0581769c2e9dc004b2",
+      "crosswalkBlob": "dc14a6824c7e8f2383f542aaaba192d2dc4d5c05",
+      "doi": "https://doi.org/10.48539/HBM867.FQCX.589",
+      "expectedCrosswalkRows": 1,
+      "sourceLicense": "CC-BY-4.0",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb",
+      "metadataEvidence": "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/raw/metadata.yaml",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "approvedForDistribution": false,
+      "sourceMethod": "VISIBLE_HUMAN_MALE_DERIVED",
+      "clinicalLimitations": [
+        "NO_MEDCOEL_REGISTRATION_VALIDATED"
+      ],
+      "sourceLabels": [
+        {
+          "nodeName": "VH_M_palatine_tonsil_R",
+          "ontologyId": "FMA:54973",
+          "label": "Right palatine tonsil"
+        }
+      ]
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryPublished": 0
+}

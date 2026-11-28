@@ -1,0 +1,3125 @@
+{
+  "schema": 1,
+  "product": "medcoel-human-anatomy-independent-hra-references",
+  "status": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+  "releaseAuthorized": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "verifiedAt": "2026-11-27T15:57:33.134Z",
+  "scope": "Only listed publisher GLBs bound to exact per-version public CC BY 4.0 metadata. These are independent reference objects, not donor images or validated registrations. Does not assert formal privacy/consent review or clinical approval.",
+  "summary": {
+    "assets": 80,
+    "failed": 0,
+    "bytes": 465864856,
+    "meshes": 1704
+  },
+  "rows": [
+    {
+      "id": "8b257e61b3788ab7b6fb0b14",
+      "path": "hra/8b257e61b3788ab7b6fb0b14.glb",
+      "officialName": "3D reference organ for subcutaneous adipose tissue, Female",
+      "version": "v1.0",
+      "sha256": "07c4af6b6aec22945871ca25b3bf16a7b505126d79c1c1fe27f852e486ef986d",
+      "glbSHA256": "07c4af6b6aec22945871ca25b3bf16a7b505126d79c1c1fe27f852e486ef986d",
+      "bytes": 695648,
+      "meshCount": 3,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/adipose-female/v1.0/assets/3d-vh-f-adipose.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM747.MSDM.942",
+      "attribution": "Heidi Schlehlein — adipose female v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM747.MSDM.942; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "e74a7d277431900f0466d2151bb846e5d58c933b2ff64c270622566af245ab88",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/adipose-female/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "afdc38c0a6836428c4fe6c6e",
+      "path": "hra/afdc38c0a6836428c4fe6c6e.glb",
+      "officialName": "3D reference organ for subcutaneous adipose tissue, Male",
+      "version": "v1.0",
+      "sha256": "b86a157fd3a231da6935acc23978149a393006c1bf5433fa729228e67cf1cb4d",
+      "glbSHA256": "b86a157fd3a231da6935acc23978149a393006c1bf5433fa729228e67cf1cb4d",
+      "bytes": 325428,
+      "meshCount": 3,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/adipose-male/v1.0/assets/3d-vh-m-adipose.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM344.KNDS.959",
+      "attribution": "Heidi Schlehlein — adipose male v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM344.KNDS.959; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "9a0a5e97ef34e85661dfd4f65fd7fed6ee257ce38887d2335a89fe97dff7ab97",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/adipose-male/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "fcef96f1bf375bba133c196d",
+      "path": "hra/fcef96f1bf375bba133c196d.glb",
+      "officialName": "3D Reference Organ for Blood Vasculature, Female",
+      "version": "v1.3",
+      "sha256": "6bf794b4255c254d03afe254f765c93e7394e4397068268d4eaa3cde50ffdf60",
+      "glbSHA256": "6bf794b4255c254d03afe254f765c93e7394e4397068268d4eaa3cde50ffdf60",
+      "bytes": 17875996,
+      "meshCount": 110,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/blood-vasculature-female/v1.3/assets/3d-vh-f-blood-vasculature.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM322.KKFC.394",
+      "attribution": "Kristen Browne, Heidi Schlehlein — blood vasculature female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM322.KKFC.394; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "2879c2990a388d60cf76fa1ffcce7488d5fddb336fb5504469070966ac430f4c",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/blood-vasculature-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "6d0da3e9a851bd2ef005f5bb",
+      "path": "hra/6d0da3e9a851bd2ef005f5bb.glb",
+      "officialName": "3D Reference Organ for Blood Vasculature, Male",
+      "version": "v1.3",
+      "sha256": "3a9fe60549769f3a27c15a0901a055e7c4fd3a9f4a37f39a77f5047f0166d4c3",
+      "glbSHA256": "3a9fe60549769f3a27c15a0901a055e7c4fd3a9f4a37f39a77f5047f0166d4c3",
+      "bytes": 18050040,
+      "meshCount": 106,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/blood-vasculature-male/v1.3/assets/3d-vh-m-blood-vasculature.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM473.XTPP.725",
+      "attribution": "Kristen Browne, Heidi Schlehlein — blood vasculature male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM473.XTPP.725; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "fabf86c94bfffe5eba2279d6f20909ecacdb6e0f8f513aa8f25bc0c39217b316",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/blood-vasculature-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "51bc10605cf25575aade98f9",
+      "path": "hra/51bc10605cf25575aade98f9.glb",
+      "officialName": "3D Reference Organ for Brain, Female",
+      "version": "v1.4",
+      "sha256": "f20d87a347f8d5c6467439cba7db18f19307d29b2c3e0c2b6ddb7e9d49e1c1fc",
+      "glbSHA256": "f20d87a347f8d5c6467439cba7db18f19307d29b2c3e0c2b6ddb7e9d49e1c1fc",
+      "bytes": 11983380,
+      "meshCount": 283,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-female/v1.4/assets/3d-allen-f-brain.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM674.NTLM.353",
+      "attribution": "Kristen Browne, Heidi Schlehlein — brain female v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM674.NTLM.353; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "a1d6034e607bae90ed0a7c106e2db59630d1764ef1101aadf9c7d43dd3481442",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/brain-female/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "81fa9a3c5de2d5ffd20ee9ce",
+      "path": "hra/81fa9a3c5de2d5ffd20ee9ce.glb",
+      "officialName": "3D Reference Organ for Brain, Male",
+      "version": "v1.4",
+      "sha256": "c97d7d0b9ff0baebbdec5566fa7b08d789195ef965e0bd04cf743a8d683882db",
+      "glbSHA256": "c97d7d0b9ff0baebbdec5566fa7b08d789195ef965e0bd04cf743a8d683882db",
+      "bytes": 11982812,
+      "meshCount": 283,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/brain-male/v1.4/assets/3d-allen-m-brain.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM538.NKCT.649",
+      "attribution": "Kristen Browne, Heidi Schlehlein — brain male v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM538.NKCT.649; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "742049ba390b65fb6c3ff59df551a37513f56d735cd8f34f7093047a7f0db2b3",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/brain-male/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "53a13011c2898e8f3b6fc232",
+      "path": "hra/53a13011c2898e8f3b6fc232.glb",
+      "officialName": "3D reference organ for epiploic appendage of transverse colon, Female",
+      "version": "v1.0",
+      "sha256": "410a5fd45b40a7b36294076d5aa9448ca24bf8fa1104245a0f0bf74570184607",
+      "glbSHA256": "410a5fd45b40a7b36294076d5aa9448ca24bf8fa1104245a0f0bf74570184607",
+      "bytes": 535024,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/epiploic-appendage-of-transverse-colon-female/v1.0/assets/3d-vh-f-epiploic-appendage-of-transverse-colon.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM926.ZRGW.252",
+      "attribution": "Heidi Schlehlein — epiploic appendage of transverse colon female v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM926.ZRGW.252; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "16a6c8d142b2c306d6f4b5df00159103783785c96356ad31bffb518a2950b2bd",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/epiploic-appendage-of-transverse-colon-female/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "55d113684742a371615dda39",
+      "path": "hra/55d113684742a371615dda39.glb",
+      "officialName": "3D reference organ for epiploic appendage of transverse colon, Male",
+      "version": "v1.0",
+      "sha256": "3b6e014cf6176bc59ffaca8f6ca22601ab77678247b1b3d6d2ea12e370f89c3c",
+      "glbSHA256": "3b6e014cf6176bc59ffaca8f6ca22601ab77678247b1b3d6d2ea12e370f89c3c",
+      "bytes": 1366476,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/epiploic-appendage-of-transverse-colon-male/v1.0/assets/3d-vh-m-epiploic-appendage-of-transverse-colon.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM829.BSRC.927",
+      "attribution": "Heidi Schlehlein — epiploic appendage of transverse colon male v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM829.BSRC.927; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "297018add6f818a29793a639f704bc5425cdc24d9be53b9293656043c117b231",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/epiploic-appendage-of-transverse-colon-male/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "cbc73ea4470ba2c4a1cb0fca",
+      "path": "hra/cbc73ea4470ba2c4a1cb0fca.glb",
+      "officialName": "3D Reference Organ for Eye, Female, Left",
+      "version": "v1.3",
+      "sha256": "1c92dc616e3dfb30e313cb2807b5eb5ab5b36ae0f94b631f890b19418bb152d1",
+      "glbSHA256": "1c92dc616e3dfb30e313cb2807b5eb5ab5b36ae0f94b631f890b19418bb152d1",
+      "bytes": 27462656,
+      "meshCount": 23,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/eye-female-left/v1.3/assets/3d-vh-f-eye-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM525.TRWD.376",
+      "attribution": "Kristen Browne, Heidi Schlehlein — eye female left v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM525.TRWD.376; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "9a43d576592f36cf9ad7b9ea9299f781740f3a8b945c34db219ff2993c2d6f57",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/eye-female-left/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "7fcc14e5d7bbb3c4d1d7fcf9",
+      "path": "hra/7fcc14e5d7bbb3c4d1d7fcf9.glb",
+      "officialName": "3D Reference Organ for Eye, Female, Right",
+      "version": "v1.3",
+      "sha256": "d7929a4abbda66813af99761c9c328826248188294f69c2e22b29704f9beabfa",
+      "glbSHA256": "d7929a4abbda66813af99761c9c328826248188294f69c2e22b29704f9beabfa",
+      "bytes": 20697640,
+      "meshCount": 23,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/eye-female-right/v1.3/assets/3d-vh-f-eye-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM632.KTDP.379",
+      "attribution": "Kristen Browne, Heidi Schlehlein — eye female right v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM632.KTDP.379; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "551c56c4e8f5e53c1cdd0ea579022d7f241d2e101539241a6f2fc9c640a9bb7c",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/eye-female-right/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "2dbe141cc61a612e804430a9",
+      "path": "hra/2dbe141cc61a612e804430a9.glb",
+      "officialName": "3D Reference Organ for Eye, Male, Left",
+      "version": "v1.3",
+      "sha256": "a918173575ed1b6dbf3d90344a144940b7f055590f40e119de0ad43abee50c64",
+      "glbSHA256": "a918173575ed1b6dbf3d90344a144940b7f055590f40e119de0ad43abee50c64",
+      "bytes": 27462616,
+      "meshCount": 23,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/eye-male-left/v1.3/assets/3d-vh-m-eye-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM769.RWTZ.963",
+      "attribution": "Kristen Browne, Heidi Schlehlein — eye male left v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM769.RWTZ.963; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "2516f9940e02323ebbfdbd5763d1583cb14934676e43f89a5f79002cd72dc0a3",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/eye-male-left/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "c66ccbe4a0bf1b717eccb2cd",
+      "path": "hra/c66ccbe4a0bf1b717eccb2cd.glb",
+      "officialName": "3D Reference Organ for Eye, Male, Right",
+      "version": "v1.3",
+      "sha256": "1a6ecc528e98e0bddb8e2905e4ddb799eb471383f7274dbb9bdd1676b06be73b",
+      "glbSHA256": "1a6ecc528e98e0bddb8e2905e4ddb799eb471383f7274dbb9bdd1676b06be73b",
+      "bytes": 20697584,
+      "meshCount": 23,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/eye-male-right/v1.3/assets/3d-vh-m-eye-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM272.VPJG.573",
+      "attribution": "Kristen Browne, Heidi Schlehlein — eye male right v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM272.VPJG.573; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "9ec8d7c9315dd16c9145c2fe4d133e55751bf09bde8025dc5ae255464319a4ba",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/eye-male-right/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "b08ff364a0ed4d251c58cfcb",
+      "path": "hra/b08ff364a0ed4d251c58cfcb.glb",
+      "officialName": "3D Reference Organ for Fallopian Tube, Female, Left",
+      "version": "v1.2",
+      "sha256": "34817c498e038b599b338f8a35e6c1b3cbda576255c4f2ecca6d9efdebac6c15",
+      "glbSHA256": "34817c498e038b599b338f8a35e6c1b3cbda576255c4f2ecca6d9efdebac6c15",
+      "bytes": 336732,
+      "meshCount": 4,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-left/v1.2/assets/3d-vh-f-fallopian-tube-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM529.KBQT.896",
+      "attribution": "Kristen Browne, Heidi Schlehlein — fallopian tube female left v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM529.KBQT.896; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "02e51ca7350a8f223b7223511d998de1a9993dd001cb647aae0ece9e70a1c66c",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/fallopian-tube-female-left/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "1893b33a53d6f59ca0344b9f",
+      "path": "hra/1893b33a53d6f59ca0344b9f.glb",
+      "officialName": "3D Reference Organ for Fallopian Tube, Female, Right",
+      "version": "v1.2",
+      "sha256": "eec911de07307d1a27cfe27c939e3f3562590e5c419e27decaf3b1d7b13ab038",
+      "glbSHA256": "eec911de07307d1a27cfe27c939e3f3562590e5c419e27decaf3b1d7b13ab038",
+      "bytes": 327504,
+      "meshCount": 4,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/fallopian-tube-female-right/v1.2/assets/3d-vh-f-fallopian-tube-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM952.XJJV.857",
+      "attribution": "Kristen Browne, Heidi Schlehlein — fallopian tube female right v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM952.XJJV.857; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "4f4319d096dc52465e5fa0bd74dbb1da2bf1f338e134e5ce72ec4b652e72f2a1",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/fallopian-tube-female-right/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "2a792de6820319c21c86a3b8",
+      "path": "hra/2a792de6820319c21c86a3b8.glb",
+      "officialName": "3D Reference Organ for Heart, Female",
+      "version": "v1.3",
+      "sha256": "98f66e46b149bfc3836592d9404c50290e21d302ec55c98813435e2d9847b1d9",
+      "glbSHA256": "98f66e46b149bfc3836592d9404c50290e21d302ec55c98813435e2d9847b1d9",
+      "bytes": 1745560,
+      "meshCount": 14,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-female/v1.3/assets/3d-vh-f-heart.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM449.SHRV.225",
+      "attribution": "Kristen Browne, Heidi Schlehlein — heart female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM449.SHRV.225; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f0af7fb376c854d0d90ac7309720fe44cf698605338e5570a63f9d2d01820b8a",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/heart-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "90260dcf6191cbe03ae30b4e",
+      "path": "hra/90260dcf6191cbe03ae30b4e.glb",
+      "officialName": "3D Reference Organ for Heart, Male",
+      "version": "v1.3",
+      "sha256": "689df039c8bc264ea06a44cd926762976f0666c0ff2dc532d046409b185e6b0c",
+      "glbSHA256": "689df039c8bc264ea06a44cd926762976f0666c0ff2dc532d046409b185e6b0c",
+      "bytes": 4071772,
+      "meshCount": 14,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/heart-male/v1.3/assets/3d-vh-m-heart.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne"
+      ],
+      "doi": "https://doi.org/10.48539/HBM564.WKNG.249",
+      "attribution": "Kristen Browne — heart male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM564.WKNG.249; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "1a12280db35c2eb5d615b1d707ecfa9e2aed72e658cd3aaa31ddf54460bcfcba",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/heart-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "128910291d005506f47d03f0",
+      "path": "hra/128910291d005506f47d03f0.glb",
+      "officialName": "3D reference organ for intervertebral discs, Female",
+      "version": "v1.0",
+      "sha256": "31d8c829ef6bc21bd249f8a246f0d69878a1e4884fa394b409a65fab585eb9b8",
+      "glbSHA256": "31d8c829ef6bc21bd249f8a246f0d69878a1e4884fa394b409a65fab585eb9b8",
+      "bytes": 48436136,
+      "meshCount": 48,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/intervertebral-disk-female/v1.0/assets/3d-vh-f-intervertebral-disk.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM824.BNBP.227",
+      "attribution": "Heidi Schlehlein — intervertebral disk female v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM824.BNBP.227; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "7d1c8f94aa3cc6ec902556f112d36fa99fe10cc8cf42914d8475c6a6fc45d5e0",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/intervertebral-disk-female/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "f6a6064ef13c0def4f052cb8",
+      "path": "hra/f6a6064ef13c0def4f052cb8.glb",
+      "officialName": "3D reference organ for intervertebral discs, Male",
+      "version": "v1.0",
+      "sha256": "f63335f49b3d90a97ab97cfb604fed7c524ea035ade350c9b44955d4c1f58de4",
+      "glbSHA256": "f63335f49b3d90a97ab97cfb604fed7c524ea035ade350c9b44955d4c1f58de4",
+      "bytes": 19567220,
+      "meshCount": 43,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/intervertebral-disk-male/v1.0/assets/3d-vh-m-intervertebral-disk.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM747.XJJX.236",
+      "attribution": "Kristen Browne, Heidi Schlehlein — intervertebral disk male v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM747.XJJX.236; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "e765d432a14c38b219e5410c24735908389e55f3e3d8bab06b32680f5ae56d5c",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/intervertebral-disk-male/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "28caa070c1567b0bf95d322a",
+      "path": "hra/28caa070c1567b0bf95d322a.glb",
+      "officialName": "3D Reference Organ for Kidney, Female, Left",
+      "version": "v1.3",
+      "sha256": "58f0227d45b14d7bcfd2ed05a7bcd76000051ea08d52f844feebd70d612f8084",
+      "glbSHA256": "58f0227d45b14d7bcfd2ed05a7bcd76000051ea08d52f844feebd70d612f8084",
+      "bytes": 1356736,
+      "meshCount": 26,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM449.JPXL.964",
+      "attribution": "Kristen Browne, Heidi Schlehlein — kidney female left v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM449.JPXL.964; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "b33633ba10c746c4b11964f364c04dede35ed1110eb4f5383a956b71b6defe44",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-female-left/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "e49c19e589e039db4ff6043a",
+      "path": "hra/e49c19e589e039db4ff6043a.glb",
+      "officialName": "3D Reference Organ for Kidney, Female, Right",
+      "version": "v1.3",
+      "sha256": "d80ee5a109a5cd5c90ca0770d1087e28786e2c545747cbae15a5ea22b4b0af86",
+      "glbSHA256": "d80ee5a109a5cd5c90ca0770d1087e28786e2c545747cbae15a5ea22b4b0af86",
+      "bytes": 1383740,
+      "meshCount": 24,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM968.HSNL.854",
+      "attribution": "Kristen Browne, Heidi Schlehlein — kidney female right v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM968.HSNL.854; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "9c68af2a7e3ee822d12513848383ccdd0911c99474eda0bef87a0451f6747d57",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-female-right/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "f05fc609703a02c9625cbf13",
+      "path": "hra/f05fc609703a02c9625cbf13.glb",
+      "officialName": "3D Reference Organ for Kidney, Male, Left",
+      "version": "v1.3",
+      "sha256": "1e9f54281652d0b05c9ae54a06380a41a8d9c62c1036829180750995b1730fac",
+      "glbSHA256": "1e9f54281652d0b05c9ae54a06380a41a8d9c62c1036829180750995b1730fac",
+      "bytes": 1536980,
+      "meshCount": 22,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM759.JKKF.434",
+      "attribution": "Kristen Browne, Heidi Schlehlein — kidney male left v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM759.JKKF.434; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "98291212bdc7bff32b5b8a79614576acd3e3e856e7cf0c232fe9a81c0119102b",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-male-left/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "298cee0067d31069064308b8",
+      "path": "hra/298cee0067d31069064308b8.glb",
+      "officialName": "3D Reference Organ for Kidney, Male, Right",
+      "version": "v1.3",
+      "sha256": "f23bac3f62fd050b689bdee86bb8a20bff6997e830cb508c847f74c03c6a964b",
+      "glbSHA256": "f23bac3f62fd050b689bdee86bb8a20bff6997e830cb508c847f74c03c6a964b",
+      "bytes": 1547360,
+      "meshCount": 24,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM364.QTSC.334",
+      "attribution": "Kristen Browne, Heidi Schlehlein — kidney male right v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM364.QTSC.334; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "a728c19846302d04ad374cf6e2ead990d7834979d3607c15a2e554d8926e8e7b",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/kidney-male-right/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "dbfa1f5c8eb3ec281f53e40a",
+      "path": "hra/dbfa1f5c8eb3ec281f53e40a.glb",
+      "officialName": "3D Reference Organ for Knee, Female, Left",
+      "version": "v1.3",
+      "sha256": "8c65eec0419b5c576e6fb0fb9f149384df4df29c543a171a0173281cb43f7f4c",
+      "glbSHA256": "8c65eec0419b5c576e6fb0fb9f149384df4df29c543a171a0173281cb43f7f4c",
+      "bytes": 348328,
+      "meshCount": 20,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-left/v1.3/assets/3d-vh-f-knee-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM892.RGKB.238",
+      "attribution": "Kristen Browne, Heidi Schlehlein — knee female left v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM892.RGKB.238; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "0a9524736d24bf2a3ebeb393a18084c0b442b6e431c05374d5bb661d1ca718cc",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-female-left/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "1acf765d6de503dcde6c7836",
+      "path": "hra/1acf765d6de503dcde6c7836.glb",
+      "officialName": "3D Reference Organ for Knee, Female, Right",
+      "version": "v1.3",
+      "sha256": "529e94d69a5f0212fbe541021539fb060fa59476fbca61e1d71452672984e674",
+      "glbSHA256": "529e94d69a5f0212fbe541021539fb060fa59476fbca61e1d71452672984e674",
+      "bytes": 348376,
+      "meshCount": 20,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-female-right/v1.3/assets/3d-vh-f-knee-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM542.WHJW.673",
+      "attribution": "Kristen Browne, Heidi Schlehlein — knee female right v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM542.WHJW.673; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f6cb372195f45aebdc3e61cd71191ad23bbb0b89b2d525ecdf9bed79de9c49ed",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-female-right/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "056137feae588cabb56d633b",
+      "path": "hra/056137feae588cabb56d633b.glb",
+      "officialName": "3D Reference Organ for Knee, Male, Left",
+      "version": "v1.2",
+      "sha256": "2f15b825da044aafef760ab62aa2e9111f63d674efaa4c3d96ddb04f9b1ef6aa",
+      "glbSHA256": "2f15b825da044aafef760ab62aa2e9111f63d674efaa4c3d96ddb04f9b1ef6aa",
+      "bytes": 440020,
+      "meshCount": 20,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-left/v1.2/assets/3d-vh-m-knee-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM839.JJQF.873",
+      "attribution": "Kristen Browne, Heidi Schlehlein — knee male left v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM839.JJQF.873; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "bb819963b655ed211e8e1cb819f05e17d047cf58a295c5969393144dae567c8f",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-male-left/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "9426b3ae669d15e9ab6e1f31",
+      "path": "hra/9426b3ae669d15e9ab6e1f31.glb",
+      "officialName": "3D Reference Organ for Knee, Male, Right",
+      "version": "v1.2",
+      "sha256": "668b23ebdd01d8140a5fe32d4092fe53c541ba413f30159c48369653798f5100",
+      "glbSHA256": "668b23ebdd01d8140a5fe32d4092fe53c541ba413f30159c48369653798f5100",
+      "bytes": 440080,
+      "meshCount": 20,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/knee-male-right/v1.2/assets/3d-vh-m-knee-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM984.JRHT.838",
+      "attribution": "Kristen Browne, Heidi Schlehlein — knee male right v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM984.JRHT.838; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "ed4c338523bdfa480b6bb49e9354c5ca12677c070020051e9431ca78e4ac05f9",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/knee-male-right/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "536f33b26c5752ec19569f04",
+      "path": "hra/536f33b26c5752ec19569f04.glb",
+      "officialName": "3D Reference Organ for Large Intestine, Female",
+      "version": "v1.3",
+      "sha256": "b3046d2af718e7f031578db4089a9f4bea707aa4a75af98aab78f172c2f53d74",
+      "glbSHA256": "b3046d2af718e7f031578db4089a9f4bea707aa4a75af98aab78f172c2f53d74",
+      "bytes": 387376,
+      "meshCount": 10,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-female/v1.3/assets/3d-sbu-f-large-intestine.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM682.RSXX.965",
+      "attribution": "Kristen Browne, Heidi Schlehlein — large intestine female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM682.RSXX.965; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "b193788a068c52839127492c5fee7bb32a2b591d28dfa719b8e38303e2f9e75f",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/large-intestine-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "43c798b921d5f314d5568fb6",
+      "path": "hra/43c798b921d5f314d5568fb6.glb",
+      "officialName": "3D Reference Organ for Large Intestine, Male",
+      "version": "v1.3",
+      "sha256": "908a5c38bf14574a673f2d2619502281f7f9e47c46c4eba837aae2e80e38c489",
+      "glbSHA256": "908a5c38bf14574a673f2d2619502281f7f9e47c46c4eba837aae2e80e38c489",
+      "bytes": 687076,
+      "meshCount": 10,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/large-intestine-male/v1.3/assets/3d-sbu-m-large-intestine.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM487.ZKSN.693",
+      "attribution": "Kristen Browne, Heidi Schlehlein — large intestine male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM487.ZKSN.693; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "6e0934c6cc7be6f63be8bac814ebab275746832b0c94e4f878cd1d9b82e27a82",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/large-intestine-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "a6fa179e25914dc1b74350cb",
+      "path": "hra/a6fa179e25914dc1b74350cb.glb",
+      "officialName": "3D Reference Organ for Larynx, Female",
+      "version": "v1.1",
+      "sha256": "01c300b96bb4686dc1b68701361bea00088dbe29f3d5268e9fd1382d7fde9efd",
+      "glbSHA256": "01c300b96bb4686dc1b68701361bea00088dbe29f3d5268e9fd1382d7fde9efd",
+      "bytes": 463320,
+      "meshCount": 7,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-female/v1.1/assets/3d-vh-f-larynx.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM525.FJHR.643",
+      "attribution": "Kristen Browne, Heidi Schlehlein — larynx female v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM525.FJHR.643; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "b5801a920676f956c3a7cf286dd51755e94459043cb706f6cc61b0a257ec0bc4",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/larynx-female/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "de01afe1fe8b099652622039",
+      "path": "hra/de01afe1fe8b099652622039.glb",
+      "officialName": "3D Reference Organ for Larynx, Male",
+      "version": "v1.1",
+      "sha256": "cdb6b3b5b0abd2b06e99913a8f4719e7b0784421b0534ae728e832197d30e287",
+      "glbSHA256": "cdb6b3b5b0abd2b06e99913a8f4719e7b0784421b0534ae728e832197d30e287",
+      "bytes": 335576,
+      "meshCount": 7,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/larynx-male/v1.1/assets/3d-vh-m-larynx.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM362.HNZB.247",
+      "attribution": "Kristen Browne, Heidi Schlehlein — larynx male v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM362.HNZB.247; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "1f6a16f8070574c1a4a4b8341631d6cf2822ad4edb7c006d277afa7c037a5659",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/larynx-male/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "8ddcfbe30958a6eb461a61f3",
+      "path": "hra/8ddcfbe30958a6eb461a61f3.glb",
+      "officialName": "3D Reference Organ for Liver, Female",
+      "version": "v1.2",
+      "sha256": "2ab712216dc8af026f87c43b0ad783273fffdf080bb312bcb4c34724f53e5fa6",
+      "glbSHA256": "2ab712216dc8af026f87c43b0ad783273fffdf080bb312bcb4c34724f53e5fa6",
+      "bytes": 1738552,
+      "meshCount": 26,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM599.GZLD.639",
+      "attribution": "Kristen Browne, Heidi Schlehlein — liver female v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM599.GZLD.639; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "551e50faeb92b67d2ba0275027aa15e7ab9678a10b6db9994802052e4b2277e5",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/liver-female/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "6cfa24477abf82317dd6eb46",
+      "path": "hra/6cfa24477abf82317dd6eb46.glb",
+      "officialName": "3D Reference Organ for Liver, Male",
+      "version": "v1.2",
+      "sha256": "8e4c38293cfdb6b4f47ef2930c7f4af9e37b9144d1cf26d07c8f12c5045eb404",
+      "glbSHA256": "8e4c38293cfdb6b4f47ef2930c7f4af9e37b9144d1cf26d07c8f12c5045eb404",
+      "bytes": 1136412,
+      "meshCount": 26,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/liver-male/v1.2/assets/3d-vh-m-liver.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM896.WMSL.867",
+      "attribution": "Kristen Browne, Heidi Schlehlein — liver male v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM896.WMSL.867; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "2cda567037b880ba716648b162969206b33382f6ef2aebe4464439fc83a89384",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/liver-male/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "432111f693a314e0d628e735",
+      "path": "hra/432111f693a314e0d628e735.glb",
+      "officialName": "3D Reference Organ for Lung, Female",
+      "version": "v1.4",
+      "sha256": "101f48ec64f2ed762fde03fc1193eaae583a0d35c47b72a9ca007d72eefb5f71",
+      "glbSHA256": "101f48ec64f2ed762fde03fc1193eaae583a0d35c47b72a9ca007d72eefb5f71",
+      "bytes": 23255188,
+      "meshCount": 56,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-female/v1.4/assets/3d-vh-f-lung.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM994.HXJP.575",
+      "attribution": "Kristen Browne, Heidi Schlehlein — lung female v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM994.HXJP.575; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "6f005d5d122eefa4b3b6079e25c1babf87cd8bdd706e9e3b1451f254698fecfa",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lung-female/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "9932eab44eded38cf929370f",
+      "path": "hra/9932eab44eded38cf929370f.glb",
+      "officialName": "3D Reference Organ for Lung, Male",
+      "version": "v1.4",
+      "sha256": "bba95516fa993ac45c3b1c53f32b58d97232ffd78ae56397e5a2589c6ce4903d",
+      "glbSHA256": "bba95516fa993ac45c3b1c53f32b58d97232ffd78ae56397e5a2589c6ce4903d",
+      "bytes": 10942332,
+      "meshCount": 58,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lung-male/v1.4/assets/3d-vh-m-lung.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM532.KLZD.394",
+      "attribution": "Kristen Browne, Heidi Schlehlein — lung male v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM532.KLZD.394; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "1ba505e21496b1fdfaa12b2289ff197e33b28e52697b4b59e35469fa00d97089",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lung-male/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "6a55cb4da10298f62cc35021",
+      "path": "hra/6a55cb4da10298f62cc35021.glb",
+      "officialName": "3D Reference Organ for Lymph Node, Female",
+      "version": "v1.4",
+      "sha256": "d22091fb80b722a5fe35d817244e8dd2f92c604f66af652f42952e16312ebc31",
+      "glbSHA256": "d22091fb80b722a5fe35d817244e8dd2f92c604f66af652f42952e16312ebc31",
+      "bytes": 4542968,
+      "meshCount": 7,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lymph-node-female/v1.4/assets/3d-nih-f-lymph-node.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Li Yao",
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM425.PTPB.732",
+      "attribution": "Li Yao, Kristen Browne, Heidi Schlehlein — lymph node female v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM425.PTPB.732; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "690ad2d4a2a67827c2b4d4a8f4ad0b85a11c3179fe2404bfb1bb3ed53dd89803",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lymph-node-female/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "cc1bd2c1fb09cb64d2ed7977",
+      "path": "hra/cc1bd2c1fb09cb64d2ed7977.glb",
+      "officialName": "3D Reference Organ for Lymph Node, Male",
+      "version": "v1.4",
+      "sha256": "b3b21442de6efc5f6db7d905e80af333df4d07f10d121c16c4475313730ca6f8",
+      "glbSHA256": "b3b21442de6efc5f6db7d905e80af333df4d07f10d121c16c4475313730ca6f8",
+      "bytes": 7414024,
+      "meshCount": 7,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/lymph-node-male/v1.4/assets/3d-nih-m-lymph-node.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Li Yao",
+        "Kristen Browne"
+      ],
+      "doi": "https://doi.org/10.48539/HBM532.TNXR.875",
+      "attribution": "Li Yao, Kristen Browne — lymph node male v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM532.TNXR.875; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "950fad4c524af1600320b2b57fb85aee6cbf6310bf2168cd1ef7eaa38653d11e",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/lymph-node-male/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "45999fd387bdb6bfa21248fe",
+      "path": "hra/45999fd387bdb6bfa21248fe.glb",
+      "officialName": "3D Reference Organ for Main Bronchus, Female",
+      "version": "v1.1",
+      "sha256": "68cd9d5de66be827ef0a92b424c0a853de5c6f040676308fb969493a2c83addb",
+      "glbSHA256": "68cd9d5de66be827ef0a92b424c0a853de5c6f040676308fb969493a2c83addb",
+      "bytes": 2858852,
+      "meshCount": 4,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/main-bronchus-female/v1.1/assets/3d-vh-f-main-bronchus.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM266.CXBT.375",
+      "attribution": "Kristen Browne, Heidi Schlehlein — main bronchus female v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM266.CXBT.375; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "16e244e7854ce1673b1d2cfc90d834b3a138c563f64707b2b5590fc40613123f",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/main-bronchus-female/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "1a0e5098d2b1196182cec643",
+      "path": "hra/1a0e5098d2b1196182cec643.glb",
+      "officialName": "3D Reference Organ for Main Bronchus, Male",
+      "version": "v1.1",
+      "sha256": "1f1f50659daba678a5738af67d4fc8add5a113a744c93427280a19ce9e0c5755",
+      "glbSHA256": "1f1f50659daba678a5738af67d4fc8add5a113a744c93427280a19ce9e0c5755",
+      "bytes": 422324,
+      "meshCount": 4,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/main-bronchus-male/v1.1/assets/3d-vh-m-main-bronchus.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM373.XHXV.928",
+      "attribution": "Kristen Browne, Heidi Schlehlein — main bronchus male v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM373.XHXV.928; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f40ad7e48cc0c32f7a4aca9bf24027ee0de3eb3fb2df320fce3b8173ba6560e9",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/main-bronchus-male/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "ac6192a33388874e60d7b144",
+      "path": "hra/ac6192a33388874e60d7b144.glb",
+      "officialName": "3D Reference organ for Breast (mammary gland), Female left",
+      "version": "v1.1",
+      "sha256": "e279f2dacb93d44b59dade4f52ed209ddffc1600f228bd544d464dc50663d7d5",
+      "glbSHA256": "e279f2dacb93d44b59dade4f52ed209ddffc1600f228bd544d464dc50663d7d5",
+      "bytes": 13727256,
+      "meshCount": 8,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mammary-gland-female-left/v1.1/assets/3d-vh-f-mammary-gland-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM533.BNJL.834",
+      "attribution": "Heidi Schlehlein — mammary gland female left v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM533.BNJL.834; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "5c2c31810e05dc49ac6211ab186d5e4a10ba40ab5f502154452263a55d89ae52",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/mammary-gland-female-left/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "eb9cb63e5939ea200bf628cc",
+      "path": "hra/eb9cb63e5939ea200bf628cc.glb",
+      "officialName": "3D Reference organ for Breast (mammary gland), Female right",
+      "version": "v1.1",
+      "sha256": "07d176a3a93761e63de47f86628617e763973cb983ce77d92ec62e8f00a1e1db",
+      "glbSHA256": "07d176a3a93761e63de47f86628617e763973cb983ce77d92ec62e8f00a1e1db",
+      "bytes": 24388580,
+      "meshCount": 8,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mammary-gland-female-right/v1.1/assets/3d-vh-f-mammary-gland-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM235.CHRK.259",
+      "attribution": "Heidi Schlehlein — mammary gland female right v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM235.CHRK.259; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "2bf19f144c9a52ee174d55148451ac73e84699d36537b7d4a422b27e162d2a75",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/mammary-gland-female-right/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "eed7e3835376e0838c3734fa",
+      "path": "hra/eed7e3835376e0838c3734fa.glb",
+      "officialName": "3D Reference Organ for Manubrium, Female",
+      "version": "v1.0",
+      "sha256": "65d757efc43367e5245f76c11689e9b50ba07115e575f9ce90c5c47bfb17c70e",
+      "glbSHA256": "65d757efc43367e5245f76c11689e9b50ba07115e575f9ce90c5c47bfb17c70e",
+      "bytes": 132652,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/manubrium-female/v1.0/assets/3d-vh-f-manubrium.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM668.VJNV.946",
+      "attribution": "Heidi Schlehlein — manubrium female v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM668.VJNV.946; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "bda4a4fd7745b187941a2960c0fa4dab05a63f4f72967c6be59681da3a310e08",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/manubrium-female/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "5683a2382e89966a0331cabf",
+      "path": "hra/5683a2382e89966a0331cabf.glb",
+      "officialName": "3D Reference Organ for Mouth, Male",
+      "version": "v1.0",
+      "sha256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+      "glbSHA256": "aa5bf5f40c45c4679f05d31e7708df3e89b9897c2ff95aa89dbfaf3c501578be",
+      "bytes": 53487620,
+      "meshCount": 22,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/mouth-male/v1.0/assets/3d-vh-m-mouth.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM568.RFGM.978",
+      "attribution": "Heidi Schlehlein — mouth male v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM568.RFGM.978; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "29f96141337b90d268dff6ffde6870e5b1d10881eadd1cb14ec1fba1ea030abb",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/mouth-male/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "0584a8d7815ebdd077274e84",
+      "path": "hra/0584a8d7815ebdd077274e84.glb",
+      "officialName": "3D reference organ for omentum, Female",
+      "version": "v1.0",
+      "sha256": "692622d5ab89014630ea6952dcb9849bb5c4ad6243d1792e2cb3efe94ef42d98",
+      "glbSHA256": "692622d5ab89014630ea6952dcb9849bb5c4ad6243d1792e2cb3efe94ef42d98",
+      "bytes": 5931032,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/omentum-female/v1.0/assets/3d-vh-f-omentum.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM636.GWRW.698",
+      "attribution": "Heidi Schlehlein — omentum female v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM636.GWRW.698; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "a2e28c0014de7dcd9918b93cfeabbb6509b4bfb152cc780227d10b5c06b6c782",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/omentum-female/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "c34fa456ae8b0a07c3c75fe0",
+      "path": "hra/c34fa456ae8b0a07c3c75fe0.glb",
+      "officialName": "3D reference organ for omentum, Male",
+      "version": "v1.0",
+      "sha256": "f77dd32911b9ef15bf831831914074b520e6fd1bf879f1eb6ca931e4049706b7",
+      "glbSHA256": "f77dd32911b9ef15bf831831914074b520e6fd1bf879f1eb6ca931e4049706b7",
+      "bytes": 2603108,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/omentum-male/v1.0/assets/3d-vh-m-omentum.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM428.TMNG.749",
+      "attribution": "Heidi Schlehlein — omentum male v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM428.TMNG.749; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "84150e58525a6cc9e817402879f6a605d58e208ace496c0188b81844ac431dd1",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/omentum-male/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "fa3bbc93080be139d6db7b63",
+      "path": "hra/fa3bbc93080be139d6db7b63.glb",
+      "officialName": "3D Reference Organ for Ovary, Female, Left",
+      "version": "v1.3",
+      "sha256": "defd5cdc4b053b4e92193c5864bab2abae1807864ffde8bde7a7cb57f4736609",
+      "glbSHA256": "defd5cdc4b053b4e92193c5864bab2abae1807864ffde8bde7a7cb57f4736609",
+      "bytes": 9000,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-left/v1.3/assets/3d-vh-f-ovary-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM695.KCXS.294",
+      "attribution": "Kristen Browne, Heidi Schlehlein — ovary female left v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM695.KCXS.294; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "a1d06507bc691dd51f8638c9226c88bb8a41d933c4959a9b48b3597bc16baa61",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ovary-female-left/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "9ba523ea920b52bf0845edad",
+      "path": "hra/9ba523ea920b52bf0845edad.glb",
+      "officialName": "3D Reference Organ for Ovary, Female, Right",
+      "version": "v1.3",
+      "sha256": "381df741bf3d2511716e68db3ff70d94c0eda770d28a503af2d9fcb7b65113f8",
+      "glbSHA256": "381df741bf3d2511716e68db3ff70d94c0eda770d28a503af2d9fcb7b65113f8",
+      "bytes": 8756,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ovary-female-right/v1.3/assets/3d-vh-f-ovary-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM277.TVMB.676",
+      "attribution": "Kristen Browne, Heidi Schlehlein — ovary female right v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM277.TVMB.676; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "e461aedbf5cb32833fab1a15b3ee705c48a5d08002ed1126e850ffb5b3ccb30b",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ovary-female-right/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "c102dfb5b7361a665bd8369f",
+      "path": "hra/c102dfb5b7361a665bd8369f.glb",
+      "officialName": "3D Reference Organ for Palatine Tonsil, Female, Left",
+      "version": "v1.2",
+      "sha256": "16735909f46d5514de0c0ca08dccb3fc9cc5c8654278fcd711ec07f2ec6f7c87",
+      "glbSHA256": "16735909f46d5514de0c0ca08dccb3fc9cc5c8654278fcd711ec07f2ec6f7c87",
+      "bytes": 930340,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/assets/3d-vh-f-palatine-tonsil-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM245.VCTP.795",
+      "attribution": "Kristen Browne, Heidi Schlehlein — palatine tonsil female left v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM245.VCTP.795; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "c853976cae4cc48070a5967d0b5d41cc26b71b765707d1bf79670f999837eb51",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-female-left/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "352262acc6e8a103c8169d5a",
+      "path": "hra/352262acc6e8a103c8169d5a.glb",
+      "officialName": "3D Reference Organ for Palatine Tonsil, Female, Right",
+      "version": "v1.2",
+      "sha256": "89efbc8f90a26b6e5e3d55c9105e1fef2c00540daef5ee771740f913f72b1da6",
+      "glbSHA256": "89efbc8f90a26b6e5e3d55c9105e1fef2c00540daef5ee771740f913f72b1da6",
+      "bytes": 663256,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/assets/3d-vh-f-palatine-tonsil-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM549.HTLQ.527",
+      "attribution": "Kristen Browne, Heidi Schlehlein — palatine tonsil female right v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM549.HTLQ.527; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "1d9d78053be1a458c8b37bcaba42c4f360145db56123263cb8431180e260782a",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-female-right/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "443aef329ad979f04329412c",
+      "path": "hra/443aef329ad979f04329412c.glb",
+      "officialName": "3D Reference Organ for Palatine Tonsil, Male, Left",
+      "version": "v1.2",
+      "sha256": "6bacedee00b821f05f24a06a434f867814ca233d2ec1b898bc8344c56aa7be80",
+      "glbSHA256": "6bacedee00b821f05f24a06a434f867814ca233d2ec1b898bc8344c56aa7be80",
+      "bytes": 449008,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/assets/3d-vh-m-palatine-tonsil-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM366.GHGT.974",
+      "attribution": "Kristen Browne, Heidi Schlehlein — palatine tonsil male left v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM366.GHGT.974; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "cdae9aca80b90016f4ae5a78a1746b21c29ee48a69874ed247984297d60ac957",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-male-left/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "0ee6d1ac980af2e48a7bebb9",
+      "path": "hra/0ee6d1ac980af2e48a7bebb9.glb",
+      "officialName": "3D Reference Organ for Palatine Tonsil, Male, Right",
+      "version": "v1.2",
+      "sha256": "7164e38f8cdbee2d6f107ce63bb666e52786871e78bd6724e9200a71eea59961",
+      "glbSHA256": "7164e38f8cdbee2d6f107ce63bb666e52786871e78bd6724e9200a71eea59961",
+      "bytes": 222132,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/assets/3d-vh-m-palatine-tonsil-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM867.FQCX.589",
+      "attribution": "Kristen Browne, Heidi Schlehlein — palatine tonsil male right v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM867.FQCX.589; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "99b57885c78814fe77939755fc29dacc2ecc91687c96582f4f66ee2c14f6deca",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/palatine-tonsil-male-right/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "2eba6bb7d2c915f1f1c8ac03",
+      "path": "hra/2eba6bb7d2c915f1f1c8ac03.glb",
+      "officialName": "3D Reference Organ for Pancreas, Female",
+      "version": "v1.3",
+      "sha256": "553411dfc0391d305191a8f204c88e9fd3c05f7a2c7501023914728f294d8b4e",
+      "glbSHA256": "553411dfc0391d305191a8f204c88e9fd3c05f7a2c7501023914728f294d8b4e",
+      "bytes": 714832,
+      "meshCount": 5,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-female/v1.3/assets/3d-vh-f-pancreas.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM866.PNNZ.328",
+      "attribution": "Kristen Browne, Heidi Schlehlein — pancreas female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM866.PNNZ.328; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "1bffa936a7416a273e9bfcf4e13952652aa567153553d1ac4bd17208aede2615",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pancreas-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "5fc19123f85db566047d27d1",
+      "path": "hra/5fc19123f85db566047d27d1.glb",
+      "officialName": "3D Reference Organ for Pancreas, Male",
+      "version": "v1.3",
+      "sha256": "a89d7acbc9448ca1e6c09f7f6d6a18b2bd8a2e94cd4a0b51709915a8b7bea84e",
+      "glbSHA256": "a89d7acbc9448ca1e6c09f7f6d6a18b2bd8a2e94cd4a0b51709915a8b7bea84e",
+      "bytes": 2110316,
+      "meshCount": 5,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pancreas-male/v1.3/assets/3d-vh-m-pancreas.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM396.QWWJ.639",
+      "attribution": "Kristen Browne, Heidi Schlehlein — pancreas male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM396.QWWJ.639; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "1c093f0c397a6fcfcb5c86cbd8c27d30f1c11413873328bcc480054be938ee11",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pancreas-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "7224df9c012eae905aac963b",
+      "path": "hra/7224df9c012eae905aac963b.glb",
+      "officialName": "3D Reference Organ for Pelvis, Female",
+      "version": "v1.3",
+      "sha256": "6ef3436e42b7203afcdfa075e57098e97c4e1aaaec08cfdacf6300ba3d5a551d",
+      "glbSHA256": "6ef3436e42b7203afcdfa075e57098e97c4e1aaaec08cfdacf6300ba3d5a551d",
+      "bytes": 1593612,
+      "meshCount": 14,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-female/v1.3/assets/3d-vh-f-pelvis.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM853.VCFM.778",
+      "attribution": "Kristen Browne, Heidi Schlehlein — pelvis female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM853.VCFM.778; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "480ea0f1bf2422fd5cd96a3f8824b52c1ec12ea68d01960a4e8e1133b30c6bb7",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pelvis-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "ded76f6c6c00fba81f0c0e35",
+      "path": "hra/ded76f6c6c00fba81f0c0e35.glb",
+      "officialName": "3D Reference Organ for Pelvis, Male",
+      "version": "v1.3",
+      "sha256": "5bfd2c34b62a7224796d50002bcdf9ded60ea11485a118351dfd1f19c6853e77",
+      "glbSHA256": "5bfd2c34b62a7224796d50002bcdf9ded60ea11485a118351dfd1f19c6853e77",
+      "bytes": 1348340,
+      "meshCount": 14,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/pelvis-male/v1.3/assets/3d-vh-m-pelvis.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM384.SBWX.873",
+      "attribution": "Kristen Browne, Heidi Schlehlein — pelvis male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM384.SBWX.873; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "234d835194f1951f8f483fc8a5f1cbec4dbc054ff208b8b68d871f95b8c2c3a8",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/pelvis-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "0887fd08daa8da3ae145deba",
+      "path": "hra/0887fd08daa8da3ae145deba.glb",
+      "officialName": "3D Reference Organ for Placenta, Full Term, Female",
+      "version": "v1.1",
+      "sha256": "32381ebb2b2369e8e83c2b1e5f94cb1cafccf1e1e23439f80bada482ab9e57ef",
+      "glbSHA256": "32381ebb2b2369e8e83c2b1e5f94cb1cafccf1e1e23439f80bada482ab9e57ef",
+      "bytes": 4917432,
+      "meshCount": 8,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/placenta-full-term-female/v1.1/assets/3d-vh-f-placenta-full-term.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM593.ZRJH.644",
+      "attribution": "Heidi Schlehlein — placenta full term female v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM593.ZRJH.644; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f7bd64017a7700d3146d179ed39270bad8a334d367b9ff2ddce20346e3990b23",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/placenta-full-term-female/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "e611aef408c6ca3a7ec2fdfc",
+      "path": "hra/e611aef408c6ca3a7ec2fdfc.glb",
+      "officialName": "3D Reference Organ for Prostate, Male",
+      "version": "v1.2",
+      "sha256": "b456bf89571b8ad46f7c01941cdc45d6c2176c1554849755b009819231142321",
+      "glbSHA256": "b456bf89571b8ad46f7c01941cdc45d6c2176c1554849755b009819231142321",
+      "bytes": 4086520,
+      "meshCount": 18,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/prostate-male/v1.2/assets/3d-vh-m-prostate.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM545.CTNV.442",
+      "attribution": "Kristen Browne, Heidi Schlehlein — prostate male v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM545.CTNV.442; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "05654109ccc4c285b6bfb3a6f129db635088fd545bd19f4f738a4132d1b6d7cf",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/prostate-male/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "f18070a291c2d7051eec60a6",
+      "path": "hra/f18070a291c2d7051eec60a6.glb",
+      "officialName": "3D Reference Organ for Renal Pelvis, Female, left",
+      "version": "v1.0",
+      "sha256": "d0cb443c9ad254d9c472fd74a753bb7dae3cf4421a54a5969af0e5aa4bb75ce2",
+      "glbSHA256": "d0cb443c9ad254d9c472fd74a753bb7dae3cf4421a54a5969af0e5aa4bb75ce2",
+      "bytes": 61080,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/renal-pelvis-female-left/v1.0/assets/3d-vh-f-renal-pelvis-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM425.ZSXF.722",
+      "attribution": "Kristen Browne, Heidi Schlehlein — renal pelvis female left v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM425.ZSXF.722; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "45165e38b03f04e15470a314df926cd69b76177972195c43063806ad39c9fed4",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/renal-pelvis-female-left/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "5c0ff1f6fe4a3a0df70b1416",
+      "path": "hra/5c0ff1f6fe4a3a0df70b1416.glb",
+      "officialName": "3D Reference Organ for Renal Pelvis, Female, right",
+      "version": "v1.0",
+      "sha256": "7ade8b72c57f52778621f4609b29c4730957a217736dc3aaf57971ab8acc4855",
+      "glbSHA256": "7ade8b72c57f52778621f4609b29c4730957a217736dc3aaf57971ab8acc4855",
+      "bytes": 57612,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/renal-pelvis-female-right/v1.0/assets/3d-vh-f-renal-pelvis-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM445.MNJL.333",
+      "attribution": "Kristen Browne, Heidi Schlehlein — renal pelvis female right v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM445.MNJL.333; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f85c0164456b2df272f0e553620bcb5382822b8b52310af18892faf6bc8c32bc",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/renal-pelvis-female-right/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "0d5cd688f1c6b2f70409fd21",
+      "path": "hra/0d5cd688f1c6b2f70409fd21.glb",
+      "officialName": "3D Reference Organ for Renal Pelvis, male, left",
+      "version": "v1.0",
+      "sha256": "ee8af190d7104f9f326e749e5757897800e974ac76360faecc5cac9104379863",
+      "glbSHA256": "ee8af190d7104f9f326e749e5757897800e974ac76360faecc5cac9104379863",
+      "bytes": 68824,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/renal-pelvis-male-left/v1.0/assets/3d-vh-m-renal-pelvis-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM636.ZFCT.453",
+      "attribution": "Kristen Browne, Heidi Schlehlein — renal pelvis male left v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM636.ZFCT.453; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "62c5d99a8c0aac0e3ab6c8f70e82f5c7d7ac1083a6e5b24e7cec55aee6429864",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/renal-pelvis-male-left/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "b149ea3537ba517018c217a9",
+      "path": "hra/b149ea3537ba517018c217a9.glb",
+      "officialName": "3D Reference Organ for Renal Pelvis, male, right",
+      "version": "v1.0",
+      "sha256": "cee883e21ca4777caf0ca513f26a700699086556561598693d5f85383f36cbe7",
+      "glbSHA256": "cee883e21ca4777caf0ca513f26a700699086556561598693d5f85383f36cbe7",
+      "bytes": 55052,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/renal-pelvis-male-right/v1.0/assets/3d-vh-m-renal-pelvis-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM349.XLHR.437",
+      "attribution": "Kristen Browne, Heidi Schlehlein — renal pelvis male right v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM349.XLHR.437; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "332df70fb6ac0f51022ed7cc1409be4eb024b7c5048b217c9d07003bc9698fd9",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/renal-pelvis-male-right/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "0da6564ffebaa345a98a9ee2",
+      "path": "hra/0da6564ffebaa345a98a9ee2.glb",
+      "officialName": "3D Reference Organ for Skin, Female",
+      "version": "v1.5",
+      "sha256": "b7dc8b3e5bae070f22f2619b10194b012a6f3cf930836d251828d5893e69594c",
+      "glbSHA256": "b7dc8b3e5bae070f22f2619b10194b012a6f3cf930836d251828d5893e69594c",
+      "bytes": 16003176,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/skin-female/v1.5/assets/3d-vh-f-skin.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM453.MVPL.398",
+      "attribution": "Kristen Browne, Heidi Schlehlein — skin female v1.5; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM453.MVPL.398; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f649170a785c498a40c2c66d980bd0517f205c338165d5bdf67893ac08a012d8",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/skin-female/v1.5/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "59be989a721ad258a91df5ba",
+      "path": "hra/59be989a721ad258a91df5ba.glb",
+      "officialName": "3D Reference Organ for Skin, Male",
+      "version": "v1.4",
+      "sha256": "4764602f0866fbdad19382e7f12ba148ee33141677153b556f7238116bc33c2a",
+      "glbSHA256": "4764602f0866fbdad19382e7f12ba148ee33141677153b556f7238116bc33c2a",
+      "bytes": 19901928,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/skin-male/v1.4/assets/3d-vh-m-skin.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM953.DCMN.563",
+      "attribution": "Kristen Browne, Heidi Schlehlein — skin male v1.4; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM953.DCMN.563; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "c9b895a1e02c49e0c6470af3b71a9ea0579c557a251cf5da112a6e1d5de570ba",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/skin-male/v1.4/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "511e6223d4a7cf9c0f5ca00a",
+      "path": "hra/511e6223d4a7cf9c0f5ca00a.glb",
+      "officialName": "3D Reference Organ for Small Intestine, Female",
+      "version": "v1.2",
+      "sha256": "850052a437ac12a57e05bdd97d314ade6f8e1cc4801d13cfbcdffe8d83fa3842",
+      "glbSHA256": "850052a437ac12a57e05bdd97d314ade6f8e1cc4801d13cfbcdffe8d83fa3842",
+      "bytes": 856536,
+      "meshCount": 9,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/small-intestine-female/v1.2/assets/3d-vh-f-small-intestine.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM784.FBXB.245",
+      "attribution": "Kristen Browne, Heidi Schlehlein — small intestine female v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM784.FBXB.245; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "25da55bd00ea36e0e082018b50d9f6a28c66ff829061c0532ae82bf55c1e4597",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/small-intestine-female/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "f8a5efd40e99a9a7dc8c9662",
+      "path": "hra/f8a5efd40e99a9a7dc8c9662.glb",
+      "officialName": "3D Reference Organ for Small Intestine, Male",
+      "version": "v1.2",
+      "sha256": "5d51b9b102e762f9b64fd1e7d9fbd1f1a23ed9cfdb536a9e756cca3206fbc5bb",
+      "glbSHA256": "5d51b9b102e762f9b64fd1e7d9fbd1f1a23ed9cfdb536a9e756cca3206fbc5bb",
+      "bytes": 618728,
+      "meshCount": 10,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/small-intestine-male/v1.2/assets/3d-vh-m-small-intestine.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM789.XTDK.794",
+      "attribution": "Kristen Browne, Heidi Schlehlein — small intestine male v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM789.XTDK.794; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "eba40a325fc737c3b3dff4cfe6f2a11264d36d1e332c26a49ea3109d291dd8f1",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/small-intestine-male/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "9d88cc48f4d786db07504628",
+      "path": "hra/9d88cc48f4d786db07504628.glb",
+      "officialName": "3D Reference Organ for Spinal Cord, Female",
+      "version": "v1.1",
+      "sha256": "ececed633894787f9b0d22f2c68b65831202bc7b5f8b46f7517877a38fbcdb80",
+      "glbSHA256": "ececed633894787f9b0d22f2c68b65831202bc7b5f8b46f7517877a38fbcdb80",
+      "bytes": 7657228,
+      "meshCount": 29,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-female/v1.1/assets/3d-vh-f-spinal-cord.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM242.QQQB.777",
+      "attribution": "Kristen Browne, Heidi Schlehlein — spinal cord female v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM242.QQQB.777; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "d395b9e57d8c4f3e0da377ee8d0ebf96ce090fbc7bb1e15de679a9e4143f5bba",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/spinal-cord-female/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "bc797ffed3171f922bb686b1",
+      "path": "hra/bc797ffed3171f922bb686b1.glb",
+      "officialName": "3D Reference Organ for Spinal Cord, Male",
+      "version": "v1.1",
+      "sha256": "b8a2c2a288a8f7af84d5b93900b3c506a7996aa28518e9fb8a3ab9b6db6e6827",
+      "glbSHA256": "b8a2c2a288a8f7af84d5b93900b3c506a7996aa28518e9fb8a3ab9b6db6e6827",
+      "bytes": 490652,
+      "meshCount": 30,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spinal-cord-male/v1.1/assets/3d-vh-m-spinal-cord.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM575.VDJW.494",
+      "attribution": "Kristen Browne, Heidi Schlehlein — spinal cord male v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM575.VDJW.494; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "56d626a482a974ae640d8b72c7b99709f771fe7126bff9bd758cef948000be89",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/spinal-cord-male/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "d827a0312f09cdb48a71961b",
+      "path": "hra/d827a0312f09cdb48a71961b.glb",
+      "officialName": "3D Reference Organ for Spleen, Female",
+      "version": "v1.3",
+      "sha256": "09231afe99908ac8c08be0945c76431ac247faed2e7f10e80ae4374f8c1f0251",
+      "glbSHA256": "09231afe99908ac8c08be0945c76431ac247faed2e7f10e80ae4374f8c1f0251",
+      "bytes": 276824,
+      "meshCount": 5,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spleen-female/v1.3/assets/3d-vh-f-spleen.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM883.DZCZ.658",
+      "attribution": "Kristen Browne, Heidi Schlehlein — spleen female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM883.DZCZ.658; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "c6aa6704701b5b63c80a48c81cd623ab91626b86ec18e791de1a577adec53ac5",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/spleen-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "450c51ba3bdb3b5a1b4851cc",
+      "path": "hra/450c51ba3bdb3b5a1b4851cc.glb",
+      "officialName": "3D Reference Organ for Spleen, Male",
+      "version": "v1.3",
+      "sha256": "826012b9dc6b69064b76c3aabbce32a2baa32d1f97fde3e88a015f399c9040b8",
+      "glbSHA256": "826012b9dc6b69064b76c3aabbce32a2baa32d1f97fde3e88a015f399c9040b8",
+      "bytes": 540348,
+      "meshCount": 5,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/spleen-male/v1.3/assets/3d-vh-m-spleen.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM437.LMTZ.752",
+      "attribution": "Kristen Browne, Heidi Schlehlein — spleen male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM437.LMTZ.752; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "43d6306b51ce6f886043ab2c36da58cf68d64828c117a86adad193832d3413ca",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/spleen-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "9a3bafa2ef53676e17ef3905",
+      "path": "hra/9a3bafa2ef53676e17ef3905.glb",
+      "officialName": "3D Reference Organ for Sternum, Female",
+      "version": "v1.0",
+      "sha256": "530d45a6f7919b29fead3e66e8fa95dd18380e3069d5fbdcd0fd18a8cc230535",
+      "glbSHA256": "530d45a6f7919b29fead3e66e8fa95dd18380e3069d5fbdcd0fd18a8cc230535",
+      "bytes": 223388,
+      "meshCount": 1,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/sternum-female/v1.0/assets/3d-vh-f-sternum.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM669.VLNS.645",
+      "attribution": "Heidi Schlehlein — sternum female v1.0; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM669.VLNS.645; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "400ea8e5d5d9c84e6c5526709044e64df4fad2f3545e7ec475074f05ffeb17c2",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/sternum-female/v1.0/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "bda4afb0d58c059263df0125",
+      "path": "hra/bda4afb0d58c059263df0125.glb",
+      "officialName": "3D Reference Organ for Thymus, Female",
+      "version": "v1.3",
+      "sha256": "532d05c9f572c11c7bc6a92b12a66cd9ab6be5cd13dd04dd4b0d08b605f11930",
+      "glbSHA256": "532d05c9f572c11c7bc6a92b12a66cd9ab6be5cd13dd04dd4b0d08b605f11930",
+      "bytes": 71968,
+      "meshCount": 2,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/thymus-female/v1.3/assets/3d-vh-f-thymus.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM962.VFVM.626",
+      "attribution": "Kristen Browne, Heidi Schlehlein — thymus female v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM962.VFVM.626; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "35e26cf4855181c6d0c593c3fc9fdd70e03ac83ea2260b8c0810695f12595456",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/thymus-female/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "4c6f33822b738cbe5db4c409",
+      "path": "hra/4c6f33822b738cbe5db4c409.glb",
+      "officialName": "3D Reference Organ for Thymus, Male",
+      "version": "v1.3",
+      "sha256": "33119356ac2a1108bf8aeec7d27ab908213464e0dd4a8e0bd390f40a8848c933",
+      "glbSHA256": "33119356ac2a1108bf8aeec7d27ab908213464e0dd4a8e0bd390f40a8848c933",
+      "bytes": 74912,
+      "meshCount": 2,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/thymus-male/v1.3/assets/3d-vh-m-thymus.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM923.RZCC.934",
+      "attribution": "Kristen Browne, Heidi Schlehlein — thymus male v1.3; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM923.RZCC.934; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "39c6b7ace5a0f36e9e72fbeb5b2efc9126c0ccf3aaa18b153a6c98f7d6112da7",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/thymus-male/v1.3/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "981c1a1e27bbd1fbedfefceb",
+      "path": "hra/981c1a1e27bbd1fbedfefceb.glb",
+      "officialName": "3D Reference Organ for Trachea, Female",
+      "version": "v1.1",
+      "sha256": "3896867da7e9d9c6614deaba723ab180b479da85d81af9b0e6a4af4d104535fe",
+      "glbSHA256": "3896867da7e9d9c6614deaba723ab180b479da85d81af9b0e6a4af4d104535fe",
+      "bytes": 729604,
+      "meshCount": 3,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/trachea-female/v1.1/assets/3d-vh-f-trachea.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM795.KFPV.358",
+      "attribution": "Kristen Browne, Heidi Schlehlein — trachea female v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM795.KFPV.358; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "92ecf79fb5e80bb1f816abbef8516bd5908a000ba4e75f425a21069f3fa0cdba",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/trachea-female/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "4fe5e210c5aa8773f4c55cff",
+      "path": "hra/4fe5e210c5aa8773f4c55cff.glb",
+      "officialName": "3D Reference Organ for Trachea, Male",
+      "version": "v1.1",
+      "sha256": "bca5616e505baff61dce1bbc31d6602eb72c112bcbe4531931e37e0c254ddd8d",
+      "glbSHA256": "bca5616e505baff61dce1bbc31d6602eb72c112bcbe4531931e37e0c254ddd8d",
+      "bytes": 1184848,
+      "meshCount": 3,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/trachea-male/v1.1/assets/3d-vh-m-trachea.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM357.VGJC.676",
+      "attribution": "Kristen Browne, Heidi Schlehlein — trachea male v1.1; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM357.VGJC.676; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "4eda8d75687d2628f2e0ddb754cb85a6ad0affe7380ce144277764a89882af95",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/trachea-male/v1.1/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "9ede3c8955a4a80f716021b6",
+      "path": "hra/9ede3c8955a4a80f716021b6.glb",
+      "officialName": "3D Reference Organ for Ureter, Female, Left",
+      "version": "v1.2",
+      "sha256": "a530ed1b4064221db5d3e82774911a9735ebe6c878ec2671be3faff7cf849df9",
+      "glbSHA256": "a530ed1b4064221db5d3e82774911a9735ebe6c878ec2671be3faff7cf849df9",
+      "bytes": 682688,
+      "meshCount": 16,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM343.JGCD.345",
+      "attribution": "Kristen Browne, Heidi Schlehlein — ureter female left v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM343.JGCD.345; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "690919f8369c78e6ce35ede52caa2dfa2dc08ec43986bd993aafefab7a7cb2af",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-female-left/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "6e538a81a0f80c686c252780",
+      "path": "hra/6e538a81a0f80c686c252780.glb",
+      "officialName": "3D Reference Organ for Ureter, Female, Right",
+      "version": "v1.2",
+      "sha256": "5f800b7dfd8056054ee030fad32de4e648920fbf1bada134fb989b2cc66f4436",
+      "glbSHA256": "5f800b7dfd8056054ee030fad32de4e648920fbf1bada134fb989b2cc66f4436",
+      "bytes": 611468,
+      "meshCount": 15,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM375.FNHZ.563",
+      "attribution": "Kristen Browne, Heidi Schlehlein — ureter female right v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM375.FNHZ.563; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "e63d55e3ba4618a6c7f788842c35d99c9bac66a877e54a0c0827d8b7b13e0451",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-female-right/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "1714912ac21673f7518ab275",
+      "path": "hra/1714912ac21673f7518ab275.glb",
+      "officialName": "3D Reference Organ for Ureter, Male, Left",
+      "version": "v1.2",
+      "sha256": "ebdd493c2e8095ccb6e795f49bf26c94e8d205c94097a7e1f9a9d7b168a1173c",
+      "glbSHA256": "ebdd493c2e8095ccb6e795f49bf26c94e8d205c94097a7e1f9a9d7b168a1173c",
+      "bytes": 682892,
+      "meshCount": 14,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM434.VLQJ.299",
+      "attribution": "Kristen Browne, Heidi Schlehlein — ureter male left v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM434.VLQJ.299; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "f80c92f616d7a58081d20c31a776c6ff44a3bdd5e5cf76e3a28b1f1e68dbd5e7",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-male-left/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "b121a9f3bbc7cb4b7e6b3254",
+      "path": "hra/b121a9f3bbc7cb4b7e6b3254.glb",
+      "officialName": "3D Reference Organ for Ureter, Male, Right",
+      "version": "v1.2",
+      "sha256": "215978b67cf4d3876249a8dafb8c83a13471b5e1eb601559dca25a61a7c9d091",
+      "glbSHA256": "215978b67cf4d3876249a8dafb8c83a13471b5e1eb601559dca25a61a7c9d091",
+      "bytes": 540788,
+      "meshCount": 13,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM852.SVFJ.388",
+      "attribution": "Kristen Browne, Heidi Schlehlein — ureter male right v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM852.SVFJ.388; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "a0b59286cdcf1658f528ef8b33862f0e24146f99830e33d38a3b712427db8927",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/ureter-male-right/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "ff80413651eb4cb90a639d4e",
+      "path": "hra/ff80413651eb4cb90a639d4e.glb",
+      "officialName": "3D Reference Organ for Urinary Bladder, Female",
+      "version": "v1.2",
+      "sha256": "4bec5fdc117cbc4247a7d16f22f320717264f0fe7cae75fcb2e06432e1ab1a3c",
+      "glbSHA256": "4bec5fdc117cbc4247a7d16f22f320717264f0fe7cae75fcb2e06432e1ab1a3c",
+      "bytes": 765224,
+      "meshCount": 6,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-female/v1.2/assets/3d-vh-f-urinary-bladder.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM595.LMKX.573",
+      "attribution": "Kristen Browne, Heidi Schlehlein — urinary bladder female v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM595.LMKX.573; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "224bb393756b14ba97630ccf23b9baab9b21b5e6f63ce0c17af1b1bed3677b2c",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/urinary-bladder-female/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "432f1f7324d201f386e13736",
+      "path": "hra/432f1f7324d201f386e13736.glb",
+      "officialName": "3D Reference Organ for Urinary Bladder, Male",
+      "version": "v1.2",
+      "sha256": "070893aea9139d9a2c4f8da3aa66ca309a3c683a599d93a37dd7031c7d71021d",
+      "glbSHA256": "070893aea9139d9a2c4f8da3aa66ca309a3c683a599d93a37dd7031c7d71021d",
+      "bytes": 199044,
+      "meshCount": 6,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-male/v1.2/assets/3d-vh-m-urinary-bladder.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM722.RMHQ.397",
+      "attribution": "Kristen Browne, Heidi Schlehlein — urinary bladder male v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM722.RMHQ.397; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "76d4d22b93af3ed7ea95313d88b17247b097763b9d864cc166d6420848b86fc5",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/urinary-bladder-male/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    },
+    {
+      "id": "4318d617b59dca74e61a7ac4",
+      "path": "hra/4318d617b59dca74e61a7ac4.glb",
+      "officialName": "3D Reference Organ for Uterus, Female",
+      "version": "v1.2",
+      "sha256": "41014d2b222c2dbbe8d1cc38206b0099ce76d79659a9fdea9f28b8c7d669b864",
+      "glbSHA256": "41014d2b222c2dbbe8d1cc38206b0099ce76d79659a9fdea9f28b8c7d669b864",
+      "bytes": 980408,
+      "meshCount": 11,
+      "sourceURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/uterus-female/v1.2/assets/3d-vh-f-uterus.glb",
+      "license": "CC-BY-4.0",
+      "licenseStatus": "PUBLIC_LICENSE_PERMISSION_VERIFIED",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "doi": "https://doi.org/10.48539/HBM627.VTKD.892",
+      "attribution": "Kristen Browne, Heidi Schlehlein — uterus female v1.2; HuBMAP / Human Reference Atlas; https://doi.org/10.48539/HBM627.VTKD.892; CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Original publisher GLB bytes preserved; independently framed reference, not registered to BP3D.",
+      "metadataSHA256": "94437dad66baf94a89f67c46af6515fabdc5a5219abf9b774ca9143491b1a297",
+      "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+      "evidenceURLs": [
+        "https://github.com/hubmapconsortium/hra-kg/blob/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/ref-organ/uterus-female/v1.2/raw/metadata.yaml",
+        "https://humanatlas.io/3d-reference-library",
+        "https://docs.hubmapconsortium.org/faq.html"
+      ],
+      "checks": {
+        "exactGLBHash": true,
+        "exactMetadataHash": true,
+        "publisherLicense": true,
+        "exactCreatorsDOI": true,
+        "versionAndFilename": true,
+        "meshCount": true,
+        "noExternalAssetURI": true
+      },
+      "clinicalValidation": false,
+      "registrationValidated": false
+    }
+  ]
+}

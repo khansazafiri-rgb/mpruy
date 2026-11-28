@@ -1,0 +1,1932 @@
+{
+  "schema": 1,
+  "batch": "urogenital-7",
+  "sourceCommit": "5574e2ba791f8f23608d74138f106f15243ea46b",
+  "workflowRun": 45853361519,
+  "workflowJob": 140025226071,
+  "conclusion": "success",
+  "sourceObjects": 7,
+  "exactSourceGroups": 26,
+  "remainingHeld": 0,
+  "browserReplayVerified": false,
+  "publicRelease": "NO_GO",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "rows": [
+    {
+      "id": "kidney-female-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb",
+      "sha256": "58f0227d45b14d7bcfd2ed05a7bcd76000051ea08d52f844feebd70d612f8084",
+      "groups": [
+        {
+          "nodeName": "VH_F_left_kidney",
+          "ontologyId": "UBERON:0004538",
+          "label": "left kidney",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_kidney_capsule_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_hilum_of_kidney_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_renal_papilla_L_a",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_renal_papilla_L_b",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_renal_papilla_L_c",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_renal_papilla_L_d",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_renal_papilla_L_e",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_renal_papilla_L_f",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_renal_papilla_L_g",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_renal_papilla_L_h",
+              "meshIndex": 9
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_renal_papilla_L_i",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_renal_papilla_L_j",
+              "meshIndex": 11
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_renal_papilla_L_k",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_renal_pyramid_L_a",
+              "meshIndex": 13
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_renal_pyramid_L_b",
+              "meshIndex": 14
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_renal_pyramid_L_c",
+              "meshIndex": 15
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_renal_pyramid_L_d",
+              "meshIndex": 16
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_renal_pyramid_L_e",
+              "meshIndex": 17
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_renal_pyramid_L_f",
+              "meshIndex": 18
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_renal_pyramid_L_g",
+              "meshIndex": 19
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_renal_pyramid_L_h",
+              "meshIndex": 20
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_renal_pyramid_L_i",
+              "meshIndex": 21
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_renal_pyramid_L_j",
+              "meshIndex": 22
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_renal_pyramid_L_k",
+              "meshIndex": 23
+            },
+            {
+              "index": 29,
+              "nodeName": "VH_F_renal_column_L",
+              "meshIndex": 24
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_outer_cortex_of_kidney_L",
+              "meshIndex": 25
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_renal_medulla_L",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "index": 3,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_F_renal_papilla_L_a",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_renal_papilla_L_b",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_renal_papilla_L_c",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_renal_papilla_L_d",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_renal_papilla_L_e",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_renal_papilla_L_f",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_renal_papilla_L_g",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_renal_papilla_L_h",
+              "meshIndex": 9
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_renal_papilla_L_i",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_renal_papilla_L_j",
+              "meshIndex": 11
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_renal_papilla_L_k",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_renal_pyramid_L_a",
+              "meshIndex": 13
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_renal_pyramid_L_b",
+              "meshIndex": 14
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_renal_pyramid_L_c",
+              "meshIndex": 15
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_renal_pyramid_L_d",
+              "meshIndex": 16
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_renal_pyramid_L_e",
+              "meshIndex": 17
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_renal_pyramid_L_f",
+              "meshIndex": 18
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_renal_pyramid_L_g",
+              "meshIndex": 19
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_renal_pyramid_L_h",
+              "meshIndex": 20
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_renal_pyramid_L_i",
+              "meshIndex": 21
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_renal_pyramid_L_j",
+              "meshIndex": 22
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_renal_pyramid_L_k",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "index": 4,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_F_renal_papilla_L_a",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_renal_papilla_L_b",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_renal_papilla_L_c",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_renal_papilla_L_d",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_renal_papilla_L_e",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_renal_papilla_L_f",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_renal_papilla_L_g",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_renal_papilla_L_h",
+              "meshIndex": 9
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_renal_papilla_L_i",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_renal_papilla_L_j",
+              "meshIndex": 11
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_renal_papilla_L_k",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "index": 16,
+          "descendantMeshes": [
+            {
+              "index": 17,
+              "nodeName": "VH_F_renal_pyramid_L_a",
+              "meshIndex": 13
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_F_renal_pyramid_L_b",
+              "meshIndex": 14
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_renal_pyramid_L_c",
+              "meshIndex": 15
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_renal_pyramid_L_d",
+              "meshIndex": 16
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_renal_pyramid_L_e",
+              "meshIndex": 17
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_renal_pyramid_L_f",
+              "meshIndex": 18
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_renal_pyramid_L_g",
+              "meshIndex": 19
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_renal_pyramid_L_h",
+              "meshIndex": 20
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_renal_pyramid_L_i",
+              "meshIndex": 21
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_renal_pyramid_L_j",
+              "meshIndex": 22
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_renal_pyramid_L_k",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "index": 28,
+          "descendantMeshes": [
+            {
+              "index": 29,
+              "nodeName": "VH_F_renal_column_L",
+              "meshIndex": 24
+            },
+            {
+              "index": 30,
+              "nodeName": "VH_F_outer_cortex_of_kidney_L",
+              "meshIndex": 25
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "kidney-female-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb",
+      "sha256": "d80ee5a109a5cd5c90ca0770d1087e28786e2c545747cbae15a5ea22b4b0af86",
+      "groups": [
+        {
+          "nodeName": "VH_F_right_kidney",
+          "ontologyId": "UBERON:0004539",
+          "label": "right kidney",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_kidney_capsule_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_hilum_of_kidney_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_outer_cortex_of_kidney_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_renal_column_R",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_F_renal_papilla_R_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_renal_papilla_R_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_renal_papilla_R_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_renal_papilla_R_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_renal_papilla_R_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_renal_papilla_R_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_renal_papilla_R_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_renal_papilla_R_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_renal_papilla_R_i",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_renal_papilla_R_j",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_renal_pyramid_R_a",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_renal_pyramid_R_b",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_renal_pyramid_R_c",
+              "meshIndex": 16
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_renal_pyramid_R_d",
+              "meshIndex": 17
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_renal_pyramid_R_e",
+              "meshIndex": 18
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_renal_pyramid_R_f",
+              "meshIndex": 19
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_renal_pyramid_R_g",
+              "meshIndex": 20
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_renal_pyramid_R_h",
+              "meshIndex": 21
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_renal_pyramid_R_i",
+              "meshIndex": 22
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_renal_pyramid_R_j",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "index": 3,
+          "descendantMeshes": [
+            {
+              "index": 4,
+              "nodeName": "VH_F_outer_cortex_of_kidney_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_F_renal_column_R",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_renal_medulla_R",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "index": 6,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_F_renal_papilla_R_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_renal_papilla_R_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_renal_papilla_R_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_renal_papilla_R_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_renal_papilla_R_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_renal_papilla_R_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_renal_papilla_R_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_renal_papilla_R_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_renal_papilla_R_i",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_renal_papilla_R_j",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_F_renal_pyramid_R_a",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_renal_pyramid_R_b",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_renal_pyramid_R_c",
+              "meshIndex": 16
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_renal_pyramid_R_d",
+              "meshIndex": 17
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_renal_pyramid_R_e",
+              "meshIndex": 18
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_renal_pyramid_R_f",
+              "meshIndex": 19
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_renal_pyramid_R_g",
+              "meshIndex": 20
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_renal_pyramid_R_h",
+              "meshIndex": 21
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_renal_pyramid_R_i",
+              "meshIndex": 22
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_renal_pyramid_R_j",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "index": 7,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_F_renal_papilla_R_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_F_renal_papilla_R_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_F_renal_papilla_R_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_F_renal_papilla_R_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_F_renal_papilla_R_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_F_renal_papilla_R_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_F_renal_papilla_R_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_F_renal_papilla_R_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_F_renal_papilla_R_i",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_F_renal_papilla_R_j",
+              "meshIndex": 13
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "index": 18,
+          "descendantMeshes": [
+            {
+              "index": 19,
+              "nodeName": "VH_F_renal_pyramid_R_a",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_F_renal_pyramid_R_b",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_F_renal_pyramid_R_c",
+              "meshIndex": 16
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_F_renal_pyramid_R_d",
+              "meshIndex": 17
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_F_renal_pyramid_R_e",
+              "meshIndex": 18
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_F_renal_pyramid_R_f",
+              "meshIndex": 19
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_F_renal_pyramid_R_g",
+              "meshIndex": 20
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_F_renal_pyramid_R_h",
+              "meshIndex": 21
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_F_renal_pyramid_R_i",
+              "meshIndex": 22
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_F_renal_pyramid_R_j",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "kidney-male-left",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb",
+      "sha256": "1e9f54281652d0b05c9ae54a06380a41a8d9c62c1036829180750995b1730fac",
+      "groups": [
+        {
+          "nodeName": "VH_M_left_kidney",
+          "ontologyId": "UBERON:0004538",
+          "label": "left kidney",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_kidney_capsule_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_hilum_of_kidney_L",
+              "meshIndex": 1
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_renal_column_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_outer_cortex_of_kidney_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_renal_papilla_L_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_renal_papilla_L_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_renal_papilla_L_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_renal_papilla_L_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_renal_papilla_L_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_renal_papilla_L_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_renal_papilla_L_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_renal_papilla_L_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_renal_papilla_L_i",
+              "meshIndex": 12
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_renal_pyramid_L_a",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_renal_pyramid_L_b",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_renal_pyramid_L_c",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_renal_pyramid_L_d",
+              "meshIndex": 16
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_renal_pyramid_L_e",
+              "meshIndex": 17
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_renal_pyramid_L_f",
+              "meshIndex": 18
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_renal_pyramid_L_g",
+              "meshIndex": 19
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_renal_pyramid_L_h",
+              "meshIndex": 20
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_renal_pyramid_L_i",
+              "meshIndex": 21
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "index": 3,
+          "descendantMeshes": [
+            {
+              "index": 4,
+              "nodeName": "VH_M_renal_column_L",
+              "meshIndex": 2
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_outer_cortex_of_kidney_L",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_renal_medulla_L",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "index": 6,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_M_renal_papilla_L_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_renal_papilla_L_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_renal_papilla_L_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_renal_papilla_L_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_renal_papilla_L_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_renal_papilla_L_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_renal_papilla_L_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_renal_papilla_L_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_renal_papilla_L_i",
+              "meshIndex": 12
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_renal_pyramid_L_a",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_renal_pyramid_L_b",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_renal_pyramid_L_c",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_renal_pyramid_L_d",
+              "meshIndex": 16
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_renal_pyramid_L_e",
+              "meshIndex": 17
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_renal_pyramid_L_f",
+              "meshIndex": 18
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_renal_pyramid_L_g",
+              "meshIndex": 19
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_renal_pyramid_L_h",
+              "meshIndex": 20
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_renal_pyramid_L_i",
+              "meshIndex": 21
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "index": 7,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_M_renal_papilla_L_a",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_renal_papilla_L_b",
+              "meshIndex": 5
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_renal_papilla_L_c",
+              "meshIndex": 6
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_renal_papilla_L_d",
+              "meshIndex": 7
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_renal_papilla_L_e",
+              "meshIndex": 8
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_renal_papilla_L_f",
+              "meshIndex": 9
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_renal_papilla_L_g",
+              "meshIndex": 10
+            },
+            {
+              "index": 15,
+              "nodeName": "VH_M_renal_papilla_L_h",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_renal_papilla_L_i",
+              "meshIndex": 12
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "index": 17,
+          "descendantMeshes": [
+            {
+              "index": 18,
+              "nodeName": "VH_M_renal_pyramid_L_a",
+              "meshIndex": 13
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_renal_pyramid_L_b",
+              "meshIndex": 14
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_renal_pyramid_L_c",
+              "meshIndex": 15
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_renal_pyramid_L_d",
+              "meshIndex": 16
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_renal_pyramid_L_e",
+              "meshIndex": 17
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_renal_pyramid_L_f",
+              "meshIndex": 18
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_renal_pyramid_L_g",
+              "meshIndex": 19
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_renal_pyramid_L_h",
+              "meshIndex": 20
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_renal_pyramid_L_i",
+              "meshIndex": 21
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "kidney-male-right",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb",
+      "sha256": "f23bac3f62fd050b689bdee86bb8a20bff6997e830cb508c847f74c03c6a964b",
+      "groups": [
+        {
+          "nodeName": "VH_M_right_kidney",
+          "ontologyId": "UBERON:0004539",
+          "label": "right kidney",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_kidney_capsule_R",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_hilum_of_kidney_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_renal_papilla_R_j",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_renal_papilla_R_i",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_renal_papilla_R_h",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_renal_papilla_R_g",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_renal_papilla_R_f",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_renal_papilla_R_e",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_renal_papilla_R_d",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_renal_papilla_R_c",
+              "meshIndex": 9
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_renal_papilla_R_b",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_renal_papilla_R_a",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_renal_pyramid_a",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_renal_pyramid_b",
+              "meshIndex": 13
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_renal_pyramid_c",
+              "meshIndex": 14
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_renal_pyramid_d",
+              "meshIndex": 15
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_renal_pyramid_e",
+              "meshIndex": 16
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_renal_pyramid_f",
+              "meshIndex": 17
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_renal_pyramid_g",
+              "meshIndex": 18
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_renal_pyramid_h",
+              "meshIndex": 19
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_renal_pyramid_i",
+              "meshIndex": 20
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_renal_pyramid_j",
+              "meshIndex": 21
+            },
+            {
+              "index": 27,
+              "nodeName": "VH_M_renal_column_R",
+              "meshIndex": 22
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_outer_cortex_of_kidney_R",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_renal_medulla_R",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "index": 3,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_M_renal_papilla_R_j",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_renal_papilla_R_i",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_renal_papilla_R_h",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_renal_papilla_R_g",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_renal_papilla_R_f",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_renal_papilla_R_e",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_renal_papilla_R_d",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_renal_papilla_R_c",
+              "meshIndex": 9
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_renal_papilla_R_b",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_renal_papilla_R_a",
+              "meshIndex": 11
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_renal_pyramid_a",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_renal_pyramid_b",
+              "meshIndex": 13
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_renal_pyramid_c",
+              "meshIndex": 14
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_renal_pyramid_d",
+              "meshIndex": 15
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_renal_pyramid_e",
+              "meshIndex": 16
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_renal_pyramid_f",
+              "meshIndex": 17
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_renal_pyramid_g",
+              "meshIndex": 18
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_renal_pyramid_h",
+              "meshIndex": 19
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_renal_pyramid_i",
+              "meshIndex": 20
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_renal_pyramid_j",
+              "meshIndex": 21
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "index": 4,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_M_renal_papilla_R_j",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_renal_papilla_R_i",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_renal_papilla_R_h",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_renal_papilla_R_g",
+              "meshIndex": 5
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_renal_papilla_R_f",
+              "meshIndex": 6
+            },
+            {
+              "index": 10,
+              "nodeName": "VH_M_renal_papilla_R_e",
+              "meshIndex": 7
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_renal_papilla_R_d",
+              "meshIndex": 8
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_renal_papilla_R_c",
+              "meshIndex": 9
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_renal_papilla_R_b",
+              "meshIndex": 10
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_renal_papilla_R_a",
+              "meshIndex": 11
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_R",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "index": 15,
+          "descendantMeshes": [
+            {
+              "index": 16,
+              "nodeName": "VH_M_renal_pyramid_a",
+              "meshIndex": 12
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_renal_pyramid_b",
+              "meshIndex": 13
+            },
+            {
+              "index": 18,
+              "nodeName": "VH_M_renal_pyramid_c",
+              "meshIndex": 14
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_renal_pyramid_d",
+              "meshIndex": 15
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_renal_pyramid_e",
+              "meshIndex": 16
+            },
+            {
+              "index": 21,
+              "nodeName": "VH_M_renal_pyramid_f",
+              "meshIndex": 17
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_renal_pyramid_g",
+              "meshIndex": 18
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_renal_pyramid_h",
+              "meshIndex": 19
+            },
+            {
+              "index": 24,
+              "nodeName": "VH_M_renal_pyramid_i",
+              "meshIndex": 20
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_renal_pyramid_j",
+              "meshIndex": 21
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "index": 26,
+          "descendantMeshes": [
+            {
+              "index": 27,
+              "nodeName": "VH_M_renal_column_R",
+              "meshIndex": 22
+            },
+            {
+              "index": 28,
+              "nodeName": "VH_M_outer_cortex_of_kidney_R",
+              "meshIndex": 23
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "prostate-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/prostate-male/v1.2/assets/3d-vh-m-prostate.glb",
+      "sha256": "b456bf89571b8ad46f7c01941cdc45d6c2176c1554849755b009819231142321",
+      "groups": [
+        {
+          "nodeName": "VH_M_male_reproductive_system",
+          "ontologyId": "UBERON:0000079",
+          "label": "male reproductive system",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_vas_deferens_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_vas_deferens_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_seminal_vesicle",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_ejaculatory_duct",
+              "meshIndex": 3
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_prostatic_utricle",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_seminal_colliculus",
+              "meshIndex": 5
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_prostate_duct_R",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_prostate_duct_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_apex_of_prostate",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_base_of_prostate",
+              "meshIndex": 9
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_peripheral_zone_of_prostate_R",
+              "meshIndex": 10
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_peripheral_zone_of_prostate_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_transition_zone__of_prostate_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_transition_zone_of_prostate_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_central_zone_of_prostate_R",
+              "meshIndex": 14
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_central_zone_of_prostate_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_anterior_fibromuscular_stroma_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_anterior_fibromuscular_stroma_R",
+              "meshIndex": 17
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_male_genital_duct",
+          "ontologyId": "UBERON:0010140",
+          "label": "male genital duct",
+          "index": 1,
+          "descendantMeshes": [
+            {
+              "index": 3,
+              "nodeName": "VH_M_vas_deferens_L",
+              "meshIndex": 0
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_M_vas_deferens_R",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_seminal_vesicle",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_ejaculatory_duct",
+              "meshIndex": 3
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_prostate_gland",
+          "ontologyId": "UBERON:0002367",
+          "label": "prostate gland",
+          "index": 7,
+          "descendantMeshes": [
+            {
+              "index": 8,
+              "nodeName": "VH_M_prostatic_utricle",
+              "meshIndex": 4
+            },
+            {
+              "index": 9,
+              "nodeName": "VH_M_seminal_colliculus",
+              "meshIndex": 5
+            },
+            {
+              "index": 11,
+              "nodeName": "VH_M_prostate_duct_R",
+              "meshIndex": 6
+            },
+            {
+              "index": 12,
+              "nodeName": "VH_M_prostate_duct_L",
+              "meshIndex": 7
+            },
+            {
+              "index": 13,
+              "nodeName": "VH_M_apex_of_prostate",
+              "meshIndex": 8
+            },
+            {
+              "index": 14,
+              "nodeName": "VH_M_base_of_prostate",
+              "meshIndex": 9
+            },
+            {
+              "index": 16,
+              "nodeName": "VH_M_peripheral_zone_of_prostate_R",
+              "meshIndex": 10
+            },
+            {
+              "index": 17,
+              "nodeName": "VH_M_peripheral_zone_of_prostate_L",
+              "meshIndex": 11
+            },
+            {
+              "index": 19,
+              "nodeName": "VH_M_transition_zone__of_prostate_L",
+              "meshIndex": 12
+            },
+            {
+              "index": 20,
+              "nodeName": "VH_M_transition_zone_of_prostate_R",
+              "meshIndex": 13
+            },
+            {
+              "index": 22,
+              "nodeName": "VH_M_central_zone_of_prostate_R",
+              "meshIndex": 14
+            },
+            {
+              "index": 23,
+              "nodeName": "VH_M_central_zone_of_prostate_L",
+              "meshIndex": 15
+            },
+            {
+              "index": 25,
+              "nodeName": "VH_M_anterior_fibromuscular_stroma_L",
+              "meshIndex": 16
+            },
+            {
+              "index": 26,
+              "nodeName": "VH_M_anterior_fibromuscular_stroma_R",
+              "meshIndex": 17
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "urinary-bladder-female",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-female/v1.2/assets/3d-vh-f-urinary-bladder.glb",
+      "sha256": "4bec5fdc117cbc4247a7d16f22f320717264f0fe7cae75fcb2e06432e1ab1a3c",
+      "groups": [
+        {
+          "nodeName": "VH_F_urinary_bladder",
+          "ontologyId": "UBERON:0001255",
+          "label": "urinary bladder",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_F_fundus_of_urinary_bladder_dome",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_F_urinary_bladder_neck_smooth_muscle",
+              "meshIndex": 1
+            },
+            {
+              "index": 3,
+              "nodeName": "VH_F_fundus_of_urinary_bladder_base",
+              "meshIndex": 2
+            },
+            {
+              "index": 4,
+              "nodeName": "VH_F_trigone_of_urinary_bladder",
+              "meshIndex": 3
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_F_ureteral_orifice_R",
+              "meshIndex": 4
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_F_ureteral_orifice_L",
+              "meshIndex": 5
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    },
+    {
+      "id": "urinary-bladder-male",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-male/v1.2/assets/3d-vh-m-urinary-bladder.glb",
+      "sha256": "070893aea9139d9a2c4f8da3aa66ca309a3c683a599d93a37dd7031c7d71021d",
+      "groups": [
+        {
+          "nodeName": "VH_M_urinary_bladder",
+          "ontologyId": "UBERON:0001255",
+          "label": "urinary bladder",
+          "index": 0,
+          "descendantMeshes": [
+            {
+              "index": 1,
+              "nodeName": "VH_M_urinary_bladder_neck_smooth_muscle",
+              "meshIndex": 0
+            },
+            {
+              "index": 2,
+              "nodeName": "VH_M_fundus_of_urinary_bladder_dome",
+              "meshIndex": 1
+            },
+            {
+              "index": 5,
+              "nodeName": "VH_M_ureteral_orifice_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_ureteral_orifice_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_fundus_of_urinary_bladder_base1",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_trigone_of_urinary_bladder",
+              "meshIndex": 5
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder",
+          "index": 3,
+          "descendantMeshes": [
+            {
+              "index": 5,
+              "nodeName": "VH_M_ureteral_orifice_R",
+              "meshIndex": 2
+            },
+            {
+              "index": 6,
+              "nodeName": "VH_M_ureteral_orifice_L",
+              "meshIndex": 3
+            },
+            {
+              "index": 7,
+              "nodeName": "VH_M_fundus_of_urinary_bladder_base1",
+              "meshIndex": 4
+            },
+            {
+              "index": 8,
+              "nodeName": "VH_M_trigone_of_urinary_bladder",
+              "meshIndex": 5
+            }
+          ],
+          "status": "EXACT_SOURCE_GROUP_DESCENDANTS",
+          "clinicalValidation": false,
+          "registrationValidated": false
+        }
+      ]
+    }
+  ]
+}

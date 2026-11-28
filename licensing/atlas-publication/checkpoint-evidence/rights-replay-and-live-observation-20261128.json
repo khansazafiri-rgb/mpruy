@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "scope": "Executed same-source byte and identity replay. Original immutable ledgers retained. Not clinical/operator release approval.",
+  "body": {
+    "passed": 1016,
+    "failed": 0,
+    "ledgerSHA256": "6a077ac1bc67d586cbe24cc9bd22c8cda0eca961f91752324ef6c0a51c751f8a",
+    "triangles": 4377502,
+    "bytes": 317127224
+  },
+  "hra": {
+    "passed": 80,
+    "failed": 0,
+    "ledgerSHA256": "6f9152bf7f99c69d1072972a7e2e9d1f581584bab7be9b705f16cf081a191939",
+    "meshesNotStructures": 1704,
+    "bytes": 465864856
+  },
+  "replayRowsEqual": true,
+  "productionBrowser": {
+    "url": "https://medcoel.com/anatomy/viewer/",
+    "observed": "Unable to load skeletal. Try again.",
+    "existingUI": true,
+    "recoveryDeployed": false
+  },
+  "productionDBBackupExecuted": false,
+  "productionDeploymentExecuted": false
+}

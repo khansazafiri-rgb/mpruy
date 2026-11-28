@@ -1,0 +1,1875 @@
+{
+  "schema": 1,
+  "sourceDOI": "10.5281/zenodo.15882019",
+  "sourceLabelFileSHA256": "964804656a7b4320bf103c96cadd115da05eb187d1ab0f638ca1b81bf73afac8",
+  "sourceDecodedLabelVolumeSHA256": "eb9751c32b37ac71c4409a31c11a32f7bc246219e587cce90ea0942bb61208b4",
+  "sourceZipSHA256ReverifiedThisRun": false,
+  "sourceZipExpectedSHA256": "b45f2f965b7ed6577b3ab78dd74eb0cab3d44a52c6e8c97dd80981747c56120b",
+  "sourceExtraction": "Safari auto-extracted original download; original zip absent from Downloads",
+  "sourceLabelTIFFs": 774,
+  "shape": [
+    774,
+    330,
+    573
+  ],
+  "nonzeroSourceLabels": 336,
+  "workbookRowsVerified": 202,
+  "singleSourceLabelRepresentations": 21,
+  "publisherExplicitLabelUnions": 12,
+  "meshRoundtripPass": 33,
+  "renderingPass": 0,
+  "triangles": 3280836,
+  "vertices": 1643069,
+  "glbBytes": 59135260,
+  "boundaryTruncated": 1,
+  "wholeStructuresRestoredClaim": 0,
+  "readsCTorRGB": false,
+  "coordinateFrameVerified": false,
+  "clinicalValidation": false,
+  "privacyReviewed": false,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO",
+  "rows": [
+    {
+      "index": 0,
+      "name": "cystic duct",
+      "row": 20,
+      "labels": [
+        1001
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 117,
+      "vertices": 376,
+      "triangles": 736,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          291,
+          162,
+          234
+        ],
+        [
+          301,
+          171,
+          255
+        ]
+      ],
+      "id": "sio-5554c38ffe8fd6b69e26f7d4",
+      "path": "glb/sio-5554c38ffe8fd6b69e26f7d4.glb",
+      "bytes": 14780,
+      "sha256": "94ceda8ec1277a643bf0e0b36f9a7628170c3d625d54e70d3d60a05945eef7f5",
+      "positionBufferSHA256": "b68b275a4b54ebcb76cece280ea00941027eab4bdd40e962be57c13b40c8d582",
+      "indexBufferSHA256": "c8ade7b2f978f554d631f479d4ee581fa7fd0b2fa8f718bf647c8d387b8adb05",
+      "voxelCount": 117,
+      "labelIds": [
+        1001
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          290.5,
+          161.5,
+          233.5
+        ],
+        "max": [
+          301.5,
+          171.5,
+          255.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 1,
+      "name": "duodenum (retroperitoneal part)",
+      "row": 24,
+      "labels": [
+        1591,
+        1592,
+        1593,
+        1594,
+        1595,
+        1596,
+        1597
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 101526,
+      "vertices": 48286,
+      "triangles": 95476,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          291,
+          139,
+          241
+        ],
+        [
+          410,
+          195,
+          340
+        ]
+      ],
+      "id": "sio-4f8309ff1a40fe5cbb017e55",
+      "path": "glb/sio-4f8309ff1a40fe5cbb017e55.glb",
+      "bytes": 1726656,
+      "sha256": "7f27dfd399186c32e7ab2b167e49aaf98ccb3737c521b03adee7979f11a6c8ed",
+      "positionBufferSHA256": "65559c956c54fd0cc68e8e29a448cc92f17cb0c079ced7a3e4933f77d3c15e40",
+      "indexBufferSHA256": "aa29804ec5fc1173ee7657138f2bab025cff2e81c8a47e00f94cc1ecadad0fb2",
+      "voxelCount": 101526,
+      "labelIds": [
+        1591,
+        1592,
+        1593,
+        1594,
+        1595,
+        1596,
+        1597
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          290.5,
+          138.5,
+          240.5
+        ],
+        "max": [
+          410.5,
+          195.5,
+          340.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 2,
+      "name": "left renal medulla",
+      "row": 77,
+      "labels": [
+        1532
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 14316,
+      "vertices": 26542,
+      "triangles": 52812,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          314,
+          79,
+          334
+        ],
+        [
+          401,
+          148,
+          393
+        ]
+      ],
+      "id": "sio-b5d7b5d5538307a26695f1e0",
+      "path": "glb/sio-b5d7b5d5538307a26695f1e0.glb",
+      "bytes": 953704,
+      "sha256": "d198ed809bdca940808b054b7b50b777bc147b5cc8b8a2d75a703d1966e06232",
+      "positionBufferSHA256": "f8a5a3bbfbbdd9c95b7e067b84affd38dfb71cc0ed358fb2f9419fa6343352c3",
+      "indexBufferSHA256": "fb771674563c7f51873e1e49b72d895f161db6ac8ab24b0ac0358a366461fa2a",
+      "voxelCount": 14316,
+      "labelIds": [
+        1532
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          313.5,
+          78.5,
+          333.5
+        ],
+        "max": [
+          401.5,
+          148.5,
+          393.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 3,
+      "name": "right renal medulla",
+      "row": 143,
+      "labels": [
+        1536
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 10518,
+      "vertices": 19684,
+      "triangles": 39188,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          328,
+          98,
+          206
+        ],
+        [
+          423,
+          160,
+          252
+        ]
+      ],
+      "id": "sio-c35bb3c9aaac7ce729299966",
+      "path": "glb/sio-c35bb3c9aaac7ce729299966.glb",
+      "bytes": 707924,
+      "sha256": "c26322dc2d2e893ebea191926d84ca407466678974bd33e852e9d8489fca20ce",
+      "positionBufferSHA256": "2814741074a771976af66f6bcaf2b642216d69363ca2554fece18700961ed685",
+      "indexBufferSHA256": "914e7ac45427d463f9b35c4925eab2fbd774e6b2995aaf46265df78c180a6493",
+      "voxelCount": 10518,
+      "labelIds": [
+        1536
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          327.5,
+          97.5,
+          205.5
+        ],
+        "max": [
+          423.5,
+          160.5,
+          252.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 4,
+      "name": "trachea lumen",
+      "row": 189,
+      "labels": [
+        2003,
+        5699
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 28703,
+      "vertices": 11328,
+      "triangles": 22652,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          6,
+          133,
+          268
+        ],
+        [
+          134,
+          193,
+          301
+        ]
+      ],
+      "id": "sio-2d50b924526b4ed8352d7ec3",
+      "path": "glb/sio-2d50b924526b4ed8352d7ec3.glb",
+      "bytes": 409228,
+      "sha256": "3157ac17d2ce7a6849961b376c65120e344dd79201a7a97d7ee0aaeb50e1191d",
+      "positionBufferSHA256": "41ea0d40807fea2f8ecf3e86ae2ee5c3871058a6417d88b5a8cc1d710d2caedc",
+      "indexBufferSHA256": "9745753078f021378c7bc0657c2c9fe536fc1a0daba27b49683280d62af01c88",
+      "voxelCount": 28703,
+      "labelIds": [
+        2003,
+        5699
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          5.5,
+          132.5,
+          267.5
+        ],
+        "max": [
+          134.5,
+          193.5,
+          301.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 5,
+      "name": "left atrium",
+      "row": 54,
+      "labels": [
+        11016
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 7292,
+      "vertices": 4632,
+      "triangles": 9104,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          150,
+          126,
+          268
+        ],
+        [
+          197,
+          165,
+          333
+        ]
+      ],
+      "id": "sio-b32aa1e2c6ff19f7ab23af9b",
+      "path": "glb/sio-b32aa1e2c6ff19f7ab23af9b.glb",
+      "bytes": 166280,
+      "sha256": "deb76c19dac4ba283150755e89615ebbae78e284e30a67eb68a671aa0b3bcaf0",
+      "positionBufferSHA256": "578852192332f8cd1ada35a41ec74a07ae484af73107a63500898c22e88a64ae",
+      "indexBufferSHA256": "6eb70f46e673060958e1acab8b3702a7d23a0bed532a842d87566c336bd02d52",
+      "voxelCount": 7292,
+      "labelIds": [
+        11016
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          149.5,
+          125.5,
+          267.5
+        ],
+        "max": [
+          197.5,
+          165.5,
+          333.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 6,
+      "name": "right atrium",
+      "row": 120,
+      "labels": [
+        11012
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 102539,
+      "vertices": 29002,
+      "triangles": 58300,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          137,
+          142,
+          251
+        ],
+        [
+          226,
+          208,
+          310
+        ]
+      ],
+      "id": "sio-d5349a4246028f1625054c90",
+      "path": "glb/sio-d5349a4246028f1625054c90.glb",
+      "bytes": 1049080,
+      "sha256": "13593838c91b14c9d8871e5385972a522915669cd8fb4c40ea6cd0316ac31191",
+      "positionBufferSHA256": "34f3a2ea1d87769a966bcafd0d372e05f7c8541a1c52e7469e3d023b407395e5",
+      "indexBufferSHA256": "dad258c62d1c16cea96df379a1e2c92f3a8ce10830bc85e107e9882686ebf92c",
+      "voxelCount": 102539,
+      "labelIds": [
+        11012
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          136.5,
+          141.5,
+          250.5
+        ],
+        "max": [
+          226.5,
+          208.5,
+          310.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 7,
+      "name": "left ventricle",
+      "row": 95,
+      "labels": [
+        11017
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 7135,
+      "vertices": 6888,
+      "triangles": 13808,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          169,
+          153,
+          303
+        ],
+        [
+          214,
+          210,
+          356
+        ]
+      ],
+      "id": "sio-8dceb0091bb83a481a499d0e",
+      "path": "glb/sio-8dceb0091bb83a481a499d0e.glb",
+      "bytes": 249800,
+      "sha256": "8ba20c605eb13ca3832fce203fddd816b892c676e740ab9d85f4dc263d42c1ec",
+      "positionBufferSHA256": "4f35d51e04492e9e3cf7ba4c5b55057b123cad93c3d27bcd6a022f57fa96c617",
+      "indexBufferSHA256": "cc2c8e24147f4b2bcceb4fc33bd12e54272c0983e04ae3ac14cbd3d15199606b",
+      "voxelCount": 7135,
+      "labelIds": [
+        11017
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          168.5,
+          152.5,
+          302.5
+        ],
+        "max": [
+          214.5,
+          210.5,
+          356.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 8,
+      "name": "right ventricle",
+      "row": 161,
+      "labels": [
+        11014
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 57935,
+      "vertices": 33312,
+      "triangles": 67092,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          172,
+          172,
+          274
+        ],
+        [
+          240,
+          230,
+          350
+        ]
+      ],
+      "id": "sio-5b6fc9ce7d7736a3bc4843e1",
+      "path": "glb/sio-5b6fc9ce7d7736a3bc4843e1.glb",
+      "bytes": 1206304,
+      "sha256": "f4ffc0085c566ca5b53c823af5f452a88093190309227f0cb268b02feabe433c",
+      "positionBufferSHA256": "3aca6e553b46b7fdb8759ad28a85bddc19cb301a50c076559ce4876f7641eeb7",
+      "indexBufferSHA256": "28a7cbb9793e67f143495ebda4c01a554161e8291fa1335b828e99b58e3f4954",
+      "voxelCount": 57935,
+      "labelIds": [
+        11014
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          171.5,
+          171.5,
+          273.5
+        ],
+        "max": [
+          240.5,
+          230.5,
+          350.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 9,
+      "name": "myocardium",
+      "row": 108,
+      "labels": [
+        11007
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 358030,
+      "vertices": 194544,
+      "triangles": 389956,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          112,
+          117,
+          249
+        ],
+        [
+          242,
+          237,
+          376
+        ]
+      ],
+      "id": "sio-25ffaa1665884094532228a1",
+      "path": "glb/sio-25ffaa1665884094532228a1.glb",
+      "bytes": 7015460,
+      "sha256": "1da3e076a12f1340050b87da71ffa278e3208ba710751fbff701114126836130",
+      "positionBufferSHA256": "01da80bf2be79c27639baaab0706b4564cf465aec4fb0b6b731351b52033ca76",
+      "indexBufferSHA256": "265072fe1d4011a61a2d44e4f6d1765471b13ee0a403adb44831f3dec1d842b4",
+      "voxelCount": 358030,
+      "labelIds": [
+        11007
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          111.5,
+          116.5,
+          248.5
+        ],
+        "max": [
+          242.5,
+          237.5,
+          376.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 10,
+      "name": "pericardium",
+      "row": 112,
+      "labels": [
+        11009
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 150108,
+      "vertices": 162402,
+      "triangles": 325784,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          80,
+          123,
+          237
+        ],
+        [
+          248,
+          247,
+          383
+        ]
+      ],
+      "id": "sio-eed075cfad0ab2acfaa2e5fa",
+      "path": "glb/sio-eed075cfad0ab2acfaa2e5fa.glb",
+      "bytes": 5859688,
+      "sha256": "9fcbb3b31ac49bf5678459921b39c0d473e5e7c7352ce16cafbcb23dd2d3209a",
+      "positionBufferSHA256": "f54644bbaaf004d710d7c8641612a9b31f9e4963899a91e058ffbf20432f6ad3",
+      "indexBufferSHA256": "154f43272bdc01c3e54b16ae836e9d40dcc503ae508f4624cec30c4b8a7c9a81",
+      "voxelCount": 150108,
+      "labelIds": [
+        11009
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          79.5,
+          122.5,
+          236.5
+        ],
+        "max": [
+          248.5,
+          247.5,
+          383.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 11,
+      "name": "pulmonary trunk",
+      "row": 116,
+      "labels": [
+        11015
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 19185,
+      "vertices": 10896,
+      "triangles": 21608,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          129,
+          158,
+          297
+        ],
+        [
+          201,
+          221,
+          333
+        ]
+      ],
+      "id": "sio-4d4eb151fa6f5cad1e262bd1",
+      "path": "glb/sio-4d4eb151fa6f5cad1e262bd1.glb",
+      "bytes": 391504,
+      "sha256": "5f35b35b3293bfd5087b1af04f3eb97b4b5d42cf269f1ce5e7938cb61795064b",
+      "positionBufferSHA256": "cda34d2910f3f34dcaefd6efb54ab1d9b6ffae2f42aa5fb0297c2762e009401b",
+      "indexBufferSHA256": "cb4236a6407f32a791689ddbd54eab2f33ef0f27c726a05c7339a52163747800",
+      "voxelCount": 19185,
+      "labelIds": [
+        11015
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          128.5,
+          157.5,
+          296.5
+        ],
+        "max": [
+          201.5,
+          221.5,
+          333.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 12,
+      "name": "pulmonary arteries",
+      "row": 115,
+      "labels": [
+        2007,
+        2017,
+        2032
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 60285,
+      "vertices": 76726,
+      "triangles": 153224,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          58,
+          64,
+          183
+        ],
+        [
+          240,
+          215,
+          401
+        ]
+      ],
+      "id": "sio-a6242c9cee6ac365741994c9",
+      "path": "glb/sio-a6242c9cee6ac365741994c9.glb",
+      "bytes": 2760880,
+      "sha256": "ef213d3698250f20067b04046d55e389377c674301cb9a93324f2a704bc4e307",
+      "positionBufferSHA256": "d1411b9a11244c43fbd8f7de6efc9969fec2936bae25d24857ddd5a30ca40840",
+      "indexBufferSHA256": "b461bb9f600b47f934629baaa1974ee0e6ff377d19fc67705f129fb49858129f",
+      "voxelCount": 60285,
+      "labelIds": [
+        2007,
+        2017,
+        2032
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          57.5,
+          63.5,
+          182.5
+        ],
+        "max": [
+          240.5,
+          215.5,
+          401.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 13,
+      "name": "pulmonary veins",
+      "row": 117,
+      "labels": [
+        2021,
+        2030
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 67427,
+      "vertices": 87696,
+      "triangles": 175676,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          68,
+          61,
+          172
+        ],
+        [
+          248,
+          166,
+          398
+        ]
+      ],
+      "id": "sio-7afa29fba24a4e22feadc270",
+      "path": "glb/sio-7afa29fba24a4e22feadc270.glb",
+      "bytes": 3161936,
+      "sha256": "7b12a64495606458c2693d25b931d75595faa74685e4db332c184ed609824704",
+      "positionBufferSHA256": "b28d463d43922f139514b2a9f63d56b2f958792b38e47a4a65a780b7dbbdb44a",
+      "indexBufferSHA256": "e9b68f7cfdfcf6cfeb3ea3b0a0b3ae4c03be1a85190f5ddac106925a9bcaec7c",
+      "voxelCount": 67427,
+      "labelIds": [
+        2021,
+        2030
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          67.5,
+          60.5,
+          171.5
+        ],
+        "max": [
+          248.5,
+          166.5,
+          398.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 14,
+      "name": "portal vein",
+      "row": 113,
+      "labels": [
+        4014,
+        4027
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 21684,
+      "vertices": 28120,
+      "triangles": 56212,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          250,
+          66,
+          170
+        ],
+        [
+          356,
+          212,
+          319
+        ]
+      ],
+      "id": "sio-a07834fc9a64d6f7144a4567",
+      "path": "glb/sio-a07834fc9a64d6f7144a4567.glb",
+      "bytes": 1013452,
+      "sha256": "c683a880e9b991511d7f0c8c3427dc9cd827448741cfdb91d0dd1d8fea257842",
+      "positionBufferSHA256": "a64c3355f9dee9023161729beffbb77b199ed9897368798d75b18be6567406f2",
+      "indexBufferSHA256": "ed9e3bda7c9ca5660bd593d474bedd1e9d6d51c3ef9ef9c3b8f64453223ddf79",
+      "voxelCount": 21684,
+      "labelIds": [
+        4014,
+        4027
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          249.5,
+          65.5,
+          169.5
+        ],
+        "max": [
+          356.5,
+          212.5,
+          319.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 15,
+      "name": "inferior mesenteric vein",
+      "row": 30,
+      "labels": [
+        4024
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 1272,
+      "vertices": 2914,
+      "triangles": 5840,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          329,
+          151,
+          318
+        ],
+        [
+          450,
+          171,
+          361
+        ]
+      ],
+      "id": "sio-f16ebe828ed03b4b55853d31",
+      "path": "glb/sio-f16ebe828ed03b4b55853d31.glb",
+      "bytes": 106504,
+      "sha256": "a7a6178f09bc36bf334e7d1ed21299473b2bad46f2e0ebfb9b00480a7e518749",
+      "positionBufferSHA256": "a32029e9d9be249273f8a12a9bd72d6f519bad3c31228a3a1785b36580a0e2d8",
+      "indexBufferSHA256": "1dacd4604f0b6899f4a3ea8d2dc6202c5d8745f0a9c1a35d712c188de4936e6a",
+      "voxelCount": 1272,
+      "labelIds": [
+        4024
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          328.5,
+          150.5,
+          317.5
+        ],
+        "max": [
+          450.5,
+          171.5,
+          361.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 16,
+      "name": "superior mesenteric vein",
+      "row": 173,
+      "labels": [
+        4021,
+        4023
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 11903,
+      "vertices": 12926,
+      "triangles": 25740,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          318,
+          168,
+          265
+        ],
+        [
+          500,
+          233,
+          371
+        ]
+      ],
+      "id": "sio-37e62d93e9f95ea9bd455b15",
+      "path": "glb/sio-37e62d93e9f95ea9bd455b15.glb",
+      "bytes": 465472,
+      "sha256": "7fcb3daa353e7be9bb231091b56c15b1537371d5bda524a68e0282c24eba24a0",
+      "positionBufferSHA256": "f0ba9390dd5699b7444f4a70980885df5464304360eaee038dcf40bbc2d39e6a",
+      "indexBufferSHA256": "35bee6e75f07d4a0e058eeea19793dc219860e542610d4dd016314e496cd93ab",
+      "voxelCount": 11903,
+      "labelIds": [
+        4021,
+        4023
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          317.5,
+          167.5,
+          264.5
+        ],
+        "max": [
+          500.5,
+          233.5,
+          371.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 17,
+      "name": "pancreas",
+      "row": 109,
+      "labels": [
+        1003
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 68745,
+      "vertices": 41110,
+      "triangles": 81424,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          281,
+          110,
+          260
+        ],
+        [
+          371,
+          198,
+          373
+        ]
+      ],
+      "id": "sio-4e964eb91c349c113f64fefb",
+      "path": "glb/sio-4e964eb91c349c113f64fefb.glb",
+      "bytes": 1471856,
+      "sha256": "4ffc24f9a6c05ef9debdaa19b7acc70a056b99b64f981496c50bc8613f7412f2",
+      "positionBufferSHA256": "8925b0d26064a5389f37b09c3c74c1a533b1ae4ae0016e01b2e2cf3c2c329c22",
+      "indexBufferSHA256": "14b2825cf916b8ef065fdcc51233cccd2a2a2aeca19bd835470bf1ffd0a26882",
+      "voxelCount": 68745,
+      "labelIds": [
+        1003
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          280.5,
+          109.5,
+          259.5
+        ],
+        "max": [
+          371.5,
+          198.5,
+          373.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 18,
+      "name": "cardia",
+      "row": 13,
+      "labels": [
+        2528,
+        2529,
+        2530,
+        2535,
+        2538,
+        2555
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 8158,
+      "vertices": 4770,
+      "triangles": 9532,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          244,
+          122,
+          312
+        ],
+        [
+          278,
+          160,
+          337
+        ]
+      ],
+      "id": "sio-fc41372aceffe511ab23d15f",
+      "path": "glb/sio-fc41372aceffe511ab23d15f.glb",
+      "bytes": 173100,
+      "sha256": "07ac6674a16cfb30a2b73ac81f17bd27597f9e41884c844b49e4bad5640daa02",
+      "positionBufferSHA256": "a195fbbfb297cb70a1367c558e243241dfd1de02935564c9672e89332ee3c0d3",
+      "indexBufferSHA256": "1eb7f41546299c804ae7025071ea35660ed0997a61e13fb2668882ad8853609b",
+      "voxelCount": 8158,
+      "labelIds": [
+        2528,
+        2529,
+        2530,
+        2535,
+        2538,
+        2555
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          243.5,
+          121.5,
+          311.5
+        ],
+        "max": [
+          278.5,
+          160.5,
+          337.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 19,
+      "name": "fundus of stomach",
+      "row": 25,
+      "labels": [
+        2503,
+        2505,
+        2506,
+        2507,
+        2509,
+        2537,
+        2554
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 216770,
+      "vertices": 31046,
+      "triangles": 62080,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          221,
+          82,
+          318
+        ],
+        [
+          288,
+          176,
+          393
+        ]
+      ],
+      "id": "sio-67b7b02557f0dd797bded020",
+      "path": "glb/sio-67b7b02557f0dd797bded020.glb",
+      "bytes": 1119008,
+      "sha256": "79ff7a648cd2ddedaddcdfcc7a3dd1717cc87073914f93119b280044d50772b2",
+      "positionBufferSHA256": "ffb3f11cef2445ed013c8db52f2fe2da261ae08164146cd83d93218af316be31",
+      "indexBufferSHA256": "41b4b0a09d08640862ee989db5acb4cecc5ebc8f663029986fd3555191bb72e0",
+      "voxelCount": 216770,
+      "labelIds": [
+        2503,
+        2505,
+        2506,
+        2507,
+        2509,
+        2537,
+        2554
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          220.5,
+          81.5,
+          317.5
+        ],
+        "max": [
+          288.5,
+          176.5,
+          393.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 20,
+      "name": "body of stomach",
+      "row": 7,
+      "labels": [
+        2512,
+        2513,
+        2514,
+        2519,
+        2524,
+        2526,
+        2559,
+        2571,
+        2573
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 169632,
+      "vertices": 38542,
+      "triangles": 77004,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          233,
+          114,
+          291
+        ],
+        [
+          328,
+          259,
+          381
+        ]
+      ],
+      "id": "sio-42c6b9b5961568a0174046f2",
+      "path": "glb/sio-42c6b9b5961568a0174046f2.glb",
+      "bytes": 1388056,
+      "sha256": "e52f132e2eb417aefa6d295790891966b908fee0ed799a409d4bf293d778a348",
+      "positionBufferSHA256": "b7940a099b20ad87f48f9ff7d22b0808c75b020cd1f069013e05a3836da09734",
+      "indexBufferSHA256": "f640b81ced305eff0c2ec84ddfa8a83be1c3b99fa5e4bc22663f1122cee52f03",
+      "voxelCount": 169632,
+      "labelIds": [
+        2512,
+        2513,
+        2514,
+        2519,
+        2524,
+        2526,
+        2559,
+        2571,
+        2573
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          232.5,
+          113.5,
+          290.5
+        ],
+        "max": [
+          328.5,
+          259.5,
+          381.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 21,
+      "name": "left colic flexure",
+      "row": 57,
+      "labels": [
+        1503,
+        1505,
+        1507,
+        1509,
+        1511
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 161840,
+      "vertices": 44406,
+      "triangles": 88536,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          256,
+          110,
+          358
+        ],
+        [
+          358,
+          226,
+          436
+        ]
+      ],
+      "id": "sio-585f258f94fa66627ecfc49f",
+      "path": "glb/sio-585f258f94fa66627ecfc49f.glb",
+      "bytes": 1596796,
+      "sha256": "feffeb7e25e8fbb60706571eb94852d3c78ffe6dc6afe60b633fe19c600fa52d",
+      "positionBufferSHA256": "ea8b1cd22ab9ca5b77df10ad48a16d2d77bbf9e18fb1e58def3489ec0f85aac6",
+      "indexBufferSHA256": "8b637b9c9529beb10e4a43e69feda0c70601201aa5253f15a30bb3c0c18dc36e",
+      "voxelCount": 161840,
+      "labelIds": [
+        1503,
+        1505,
+        1507,
+        1509,
+        1511
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          255.5,
+          109.5,
+          357.5
+        ],
+        "max": [
+          358.5,
+          226.5,
+          436.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 22,
+      "name": "right colic flexure",
+      "row": 123,
+      "labels": [
+        1518,
+        1519,
+        1521,
+        1522,
+        1523
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 371739,
+      "vertices": 65598,
+      "triangles": 130188,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          289,
+          142,
+          175
+        ],
+        [
+          399,
+          257,
+          272
+        ]
+      ],
+      "id": "sio-e662fb97631b19c33566adaf",
+      "path": "glb/sio-e662fb97631b19c33566adaf.glb",
+      "bytes": 2350924,
+      "sha256": "0ac20bb84aa7180eb92ab49cf4f86e2069ffb00a5e1c0f2e45c8546c8ff65de7",
+      "positionBufferSHA256": "444938d804d922cfbaba98f7c9b4eceadf0f893b5a24035e139a4b98db5076e3",
+      "indexBufferSHA256": "9fd918d66d93338505e8f11a453641cf936afdae8dde2e3513a72950e6b181b9",
+      "voxelCount": 371739,
+      "labelIds": [
+        1518,
+        1519,
+        1521,
+        1522,
+        1523
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          288.5,
+          141.5,
+          174.5
+        ],
+        "max": [
+          399.5,
+          257.5,
+          272.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 23,
+      "name": "scrotum",
+      "row": 163,
+      "labels": [
+        7509
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 72127,
+      "vertices": 47716,
+      "triangles": 95608,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          675,
+          130,
+          262
+        ],
+        [
+          772,
+          232,
+          331
+        ]
+      ],
+      "id": "sio-77f3be794a0ff6c1f46624b9",
+      "path": "glb/sio-77f3be794a0ff6c1f46624b9.glb",
+      "bytes": 1721336,
+      "sha256": "f184753e9e352c72d207a28a08cc9ce47fe98113f4fe36f172404e5ee18e1d98",
+      "positionBufferSHA256": "28695c22312f8d5c7d00c8a61a333826b64b48ed368914681202018ccb98e02e",
+      "indexBufferSHA256": "43bfc26b53666cf608c90bd65b56a34e75e662c44932efa31237a86de321d176",
+      "voxelCount": 72127,
+      "labelIds": [
+        7509
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          674.5,
+          129.5,
+          261.5
+        ],
+        "max": [
+          772.5,
+          232.5,
+          331.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 24,
+      "name": "left rectus abdominis",
+      "row": 76,
+      "labels": [
+        10002
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 270168,
+      "vertices": 93496,
+      "triangles": 186372,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          280,
+          195,
+          292
+        ],
+        [
+          647,
+          284,
+          396
+        ]
+      ],
+      "id": "sio-589c5173e7136080dc8816e3",
+      "path": "glb/sio-589c5173e7136080dc8816e3.glb",
+      "bytes": 3359880,
+      "sha256": "989669de3b9e819fc3e68da54c07bb0656cbbfd0a0b0e81f79122be805ab76f2",
+      "positionBufferSHA256": "68ccea2fd81bee110192e15e39516c698b13381eaa9b06e99528e2712abf61e7",
+      "indexBufferSHA256": "8538979c3e894664c5a26b8a155117dc506b711ef4035d54743dc1727c3b22fb",
+      "voxelCount": 270168,
+      "labelIds": [
+        10002
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          279.5,
+          194.5,
+          291.5
+        ],
+        "max": [
+          647.5,
+          284.5,
+          396.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 25,
+      "name": "right rectus abdominis",
+      "row": 142,
+      "labels": [
+        10001
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 263992,
+      "vertices": 87810,
+      "triangles": 175152,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          283,
+          199,
+          209
+        ],
+        [
+          644,
+          285,
+          302
+        ]
+      ],
+      "id": "sio-62f984200c1bd5dc417caa79",
+      "path": "glb/sio-62f984200c1bd5dc417caa79.glb",
+      "bytes": 3157012,
+      "sha256": "12c835aba6bbc2feffb68460ee7257d22831565c320c15ea99f025a9d2986bd3",
+      "positionBufferSHA256": "7ce69c64e0a8c8b32fc14748010067a1ead0228e031bea84a339bd2a1c321661",
+      "indexBufferSHA256": "6790f7d47fbee7e397dcbf7119ea610ebf3a4f048371bcfcad3157921bc4ce1f",
+      "voxelCount": 263992,
+      "labelIds": [
+        10001
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          282.5,
+          198.5,
+          208.5
+        ],
+        "max": [
+          644.5,
+          285.5,
+          302.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 26,
+      "name": "left transversus abdominis",
+      "row": 93,
+      "labels": [
+        10510
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 115588,
+      "vertices": 80370,
+      "triangles": 160700,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          293,
+          94,
+          330
+        ],
+        [
+          574,
+          271,
+          432
+        ]
+      ],
+      "id": "sio-a9dd21a99af4eb21922edd8f",
+      "path": "glb/sio-a9dd21a99af4eb21922edd8f.glb",
+      "bytes": 2894308,
+      "sha256": "1ebbe2d8e9e4c27c3157ad7c5db680655c2002d7ec08019e322a81928479884d",
+      "positionBufferSHA256": "ceec4ac0f1a97c8bb4c9c506caaa72bef56d981eefc1764dadd45e2bbbafa4a8",
+      "indexBufferSHA256": "1c1b4a7c95616df486984042c4ac4b5e740fb8710303b0b7aae8dd3d65ea53b4",
+      "voxelCount": 115588,
+      "labelIds": [
+        10510
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          292.5,
+          93.5,
+          329.5
+        ],
+        "max": [
+          574.5,
+          271.5,
+          432.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 27,
+      "name": "right transversus abdominis",
+      "row": 159,
+      "labels": [
+        10505
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 114167,
+      "vertices": 76532,
+      "triangles": 152992,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          282,
+          100,
+          164
+        ],
+        [
+          582,
+          269,
+          286
+        ]
+      ],
+      "id": "sio-46ada91c3bfd10b181768154",
+      "path": "glb/sio-46ada91c3bfd10b181768154.glb",
+      "bytes": 2755756,
+      "sha256": "2ed1f70397b611e9f3630ee9ca80bc2f5194335e88c63854b8f460651755cc9f",
+      "positionBufferSHA256": "3cc0a48477c1a4e14ef4a78afaa71163599692ef3165a0e8278bd886f80f08ae",
+      "indexBufferSHA256": "9f793424f6ea4cf238196299cec047ad3170cc770a83024485f363a96940f28c",
+      "voxelCount": 114167,
+      "labelIds": [
+        10505
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          281.5,
+          99.5,
+          163.5
+        ],
+        "max": [
+          582.5,
+          269.5,
+          286.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 28,
+      "name": "left internal oblique",
+      "row": 69,
+      "labels": [
+        10511
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 194274,
+      "vertices": 98498,
+      "triangles": 195680,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          379,
+          77,
+          350
+        ],
+        [
+          605,
+          239,
+          438
+        ]
+      ],
+      "id": "sio-8bbc8b7a33a9c1a17201a78f",
+      "path": "glb/sio-8bbc8b7a33a9c1a17201a78f.glb",
+      "bytes": 3531600,
+      "sha256": "9e73ce51d14f128a173ce80d69637da33a68c0b7c767966991a3e188775084f6",
+      "positionBufferSHA256": "e6ce0ab677e282e29cc4d83d25bd4e590c40c32af1f355fcb5bec411d069c645",
+      "indexBufferSHA256": "58e57bc31406328b85adf62410956212423a38ef661dc3826621ab131f004e94",
+      "voxelCount": 194274,
+      "labelIds": [
+        10511
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          378.5,
+          76.5,
+          349.5
+        ],
+        "max": [
+          605.5,
+          239.5,
+          438.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 29,
+      "name": "right internal oblique",
+      "row": 135,
+      "labels": [
+        10504
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 161019,
+      "vertices": 86994,
+      "triangles": 173092,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          388,
+          81,
+          160
+        ],
+        [
+          606,
+          233,
+          246
+        ]
+      ],
+      "id": "sio-49e612aed17a33dbe8af6675",
+      "path": "glb/sio-49e612aed17a33dbe8af6675.glb",
+      "bytes": 3122500,
+      "sha256": "a8d6aa7daa024c6561b1664cc6d0bc5573a40f6ba47c5a297a895bbc178146c2",
+      "positionBufferSHA256": "103abb4a78730f01e5a62a70cf6cfe1ef269631c78d8774e3853571c5bb731a1",
+      "indexBufferSHA256": "9903f29c2d403380915fe46944ad5c50ba5fd3f62db0a913a617843452adaff3",
+      "voxelCount": 161019,
+      "labelIds": [
+        10504
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          387.5,
+          80.5,
+          159.5
+        ],
+        "max": [
+          606.5,
+          233.5,
+          246.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 30,
+      "name": "coccyx",
+      "row": 17,
+      "labels": [
+        6561
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 4706,
+      "vertices": 5512,
+      "triangles": 11084,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          602,
+          29,
+          276
+        ],
+        [
+          648,
+          56,
+          311
+        ]
+      ],
+      "id": "sio-6686de40f2bb3fc849db44a8",
+      "path": "glb/sio-6686de40f2bb3fc849db44a8.glb",
+      "bytes": 200592,
+      "sha256": "924c3a9f98e74f69f2ba70e266ebf2fca9bfddd28ee217901cea6551cda9c06a",
+      "positionBufferSHA256": "aafdd72b986e7230b3f3af675895924233e4a2d0fe8dfdef8c7ebada99bfccb4",
+      "indexBufferSHA256": "9706191648260eb56270d5ded1914c35f2426cbbdd91a705f1db7792c1d60cd2",
+      "voxelCount": 4706,
+      "labelIds": [
+        6561
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          601.5,
+          28.5,
+          275.5
+        ],
+        "max": [
+          648.5,
+          56.5,
+          311.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 31,
+      "name": "larynx",
+      "row": 53,
+      "labels": [
+        5161
+      ],
+      "kind": "SINGLE_SOURCE_LABEL",
+      "voxels": 6228,
+      "vertices": 8235,
+      "triangles": 16204,
+      "touchesSourceVolumeBoundary": true,
+      "voxelBoundsZYX": [
+        [
+          0,
+          166,
+          263
+        ],
+        [
+          27,
+          202,
+          314
+        ]
+      ],
+      "id": "sio-788f1310f5da8429bd667f03",
+      "path": "glb/sio-788f1310f5da8429bd667f03.glb",
+      "bytes": 294704,
+      "sha256": "3d335f919f7ab836b92f9c65c3f92e2c0be22789368b5b2489459ff150053251",
+      "positionBufferSHA256": "e87befb55bc65730c76cc9f7f22174168bf4847ca383bd140c03270731ff604a",
+      "indexBufferSHA256": "e526ace5c7b88769e70e02ffa6ea749e4b84912b29e09a207fbae9accb876575",
+      "voxelCount": 6228,
+      "labelIds": [
+        5161
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          0.0,
+          165.5,
+          262.5
+        ],
+        "max": [
+          27.5,
+          202.5,
+          314.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "index": 32,
+      "name": "sigmoid colon",
+      "row": 165,
+      "labels": [
+        1566,
+        1567,
+        1568,
+        1569,
+        1570,
+        1572,
+        1584,
+        1587
+      ],
+      "kind": "EXPLICIT_PUBLISHER_LABEL_UNION",
+      "voxels": 176094,
+      "vertices": 76160,
+      "triangles": 151980,
+      "touchesSourceVolumeBoundary": false,
+      "voxelBoundsZYX": [
+        [
+          549,
+          70,
+          256
+        ],
+        [
+          623,
+          225,
+          366
+        ]
+      ],
+      "id": "sio-881035e555b59603c183aeb9",
+      "path": "glb/sio-881035e555b59603c183aeb9.glb",
+      "bytes": 2739180,
+      "sha256": "f64ee4d48893ac093f5a6128230ed82886fafb20e84d7dcaf3bb75fcfd05c1c7",
+      "positionBufferSHA256": "2011b664e51dad8780fb07f3b73f97bd027add7ed47db4ccf0fe57b3dc8a114a",
+      "indexBufferSHA256": "d21595dae526e9d81f970cc3d2ba4f8fcb905e9761a6d53a8795ebc1e24bc8da",
+      "voxelCount": 176094,
+      "labelIds": [
+        1566,
+        1567,
+        1568,
+        1569,
+        1570,
+        1572,
+        1584,
+        1587
+      ],
+      "sourceFrame": "voxel-index-ZYX",
+      "bounds": {
+        "min": [
+          548.5,
+          69.5,
+          255.5
+        ],
+        "max": [
+          623.5,
+          225.5,
+          366.5
+        ]
+      },
+      "geometryRoundtrip": "PASS",
+      "currentBrowserRender": "PENDING",
+      "clinicalValidation": false,
+      "wholeStructureValidated": false,
+      "approvedForDistribution": false
+    }
+  ]
+}

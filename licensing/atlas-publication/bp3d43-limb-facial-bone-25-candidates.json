@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "batchId": "limb-facial-bone-25",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Exact tree and membership discovery only; FMA not in current 248-element reference collection, not proof of absence from body inventory. No clinical, registration or release approval.",
+  "rows": [
+    {
+      "fj": "FJ3152",
+      "discoveryBP": "BP23294",
+      "discoveryFMA": "FMA16585",
+      "name": "Right hip bone",
+      "faces": 2374,
+      "vertices": 1282,
+      "bytes": 149023,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6347",
+      "discoveryBP": "BP23283",
+      "discoveryFMA": "FMA13321",
+      "name": "Left clavicle",
+      "faces": 1166,
+      "vertices": 595,
+      "bytes": 68634,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6370",
+      "discoveryBP": "BP23028",
+      "discoveryFMA": "FMA24475",
+      "name": "Left femur",
+      "faces": 3116,
+      "vertices": 1577,
+      "bytes": 190909,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6371",
+      "discoveryBP": "BP24067",
+      "discoveryFMA": "FMA24479",
+      "name": "Left fibula",
+      "faces": 1148,
+      "vertices": 599,
+      "bytes": 68767,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6373",
+      "discoveryBP": "BP24066",
+      "discoveryFMA": "FMA13303",
+      "name": "Left humerus",
+      "faces": 3734,
+      "vertices": 2163,
+      "bytes": 248532,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6386",
+      "discoveryBP": "BP23711",
+      "discoveryFMA": "FMA24485",
+      "name": "Left patella",
+      "faces": 308,
+      "vertices": 178,
+      "bytes": 18693,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6349",
+      "discoveryBP": "BP23197",
+      "discoveryFMA": "FMA23463",
+      "name": "Left radius",
+      "faces": 642,
+      "vertices": 382,
+      "bytes": 40665,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3279",
+      "discoveryBP": "BP23279",
+      "discoveryFMA": "FMA13394",
+      "name": "Left scapula",
+      "faces": 28106,
+      "vertices": 14068,
+      "bytes": 1865374,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6392",
+      "discoveryBP": "BP23290",
+      "discoveryFMA": "FMA24476",
+      "name": "Left tibia",
+      "faces": 1688,
+      "vertices": 873,
+      "bytes": 100549,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6396",
+      "discoveryBP": "BP23154",
+      "discoveryFMA": "FMA23466",
+      "name": "Left ulna",
+      "faces": 824,
+      "vertices": 515,
+      "bytes": 53897,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6397",
+      "discoveryBP": "BP23337",
+      "discoveryFMA": "FMA5018",
+      "name": "Left zygomatic bone",
+      "faces": 1610,
+      "vertices": 972,
+      "bytes": 104087,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3288",
+      "discoveryBP": "BP23152",
+      "discoveryFMA": "FMA16585",
+      "name": "Left hip bone",
+      "faces": 2332,
+      "vertices": 1257,
+      "bytes": 144601,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6399",
+      "discoveryBP": "BP22817",
+      "discoveryFMA": "FMA5018",
+      "name": "Mandible",
+      "faces": 5544,
+      "vertices": 2824,
+      "bytes": 352501,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6443",
+      "discoveryBP": "BP23239",
+      "discoveryFMA": "FMA23463",
+      "name": "Right radius",
+      "faces": 656,
+      "vertices": 385,
+      "bytes": 41669,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3362",
+      "discoveryBP": "BP23174",
+      "discoveryFMA": "FMA13321",
+      "name": "Right clavicle",
+      "faces": 1146,
+      "vertices": 583,
+      "bytes": 67957,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6459",
+      "discoveryBP": "BP23346",
+      "discoveryFMA": "FMA24474",
+      "name": "Right femur",
+      "faces": 3106,
+      "vertices": 1568,
+      "bytes": 191588,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6460",
+      "discoveryBP": "BP23268",
+      "discoveryFMA": "FMA24479",
+      "name": "Right fibula",
+      "faces": 1144,
+      "vertices": 585,
+      "bytes": 68361,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6462",
+      "discoveryBP": "BP23164",
+      "discoveryFMA": "FMA13303",
+      "name": "Right humerus",
+      "faces": 3710,
+      "vertices": 2181,
+      "bytes": 250464,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6473",
+      "discoveryBP": "BP23756",
+      "discoveryFMA": "FMA24485",
+      "name": "Right patella",
+      "faces": 306,
+      "vertices": 178,
+      "bytes": 18851,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ3384",
+      "discoveryBP": "BP23090",
+      "discoveryFMA": "FMA13394",
+      "name": "Right scapula",
+      "faces": 26172,
+      "vertices": 13118,
+      "bytes": 1743404,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6479",
+      "discoveryBP": "BP23255",
+      "discoveryFMA": "FMA24476",
+      "name": "Right tibia",
+      "faces": 1680,
+      "vertices": 859,
+      "bytes": 100353,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6482",
+      "discoveryBP": "BP23195",
+      "discoveryFMA": "FMA23466",
+      "name": "Right ulna",
+      "faces": 818,
+      "vertices": 500,
+      "bytes": 53314,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6483",
+      "discoveryBP": "BP23110",
+      "discoveryFMA": "FMA5018",
+      "name": "Right zygomatic bone",
+      "faces": 1508,
+      "vertices": 910,
+      "bytes": 97847,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6383",
+      "discoveryBP": "BP23333",
+      "discoveryFMA": "FMA5018",
+      "name": "Left nasal bone",
+      "faces": 500,
+      "vertices": 295,
+      "bytes": 31471,
+      "group": "skeletal"
+    },
+    {
+      "fj": "FJ6470",
+      "discoveryBP": "BP23260",
+      "discoveryFMA": "FMA5018",
+      "name": "Right nasal bone",
+      "faces": 468,
+      "vertices": 275,
+      "bytes": 29437,
+      "group": "skeletal"
+    }
+  ]
+}

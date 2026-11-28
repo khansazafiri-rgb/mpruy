@@ -178,7 +178,7 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   const phaseStatus = 'apps/4d-lab/PHASE_STATUS.md';
   // Master-execution additions (reviewed, studio-only): the studio page/host in apps/web, the migration-level bump the
   // web app enforces, and ONE additive migration. Existing migrations may never be modified or deleted.
-  const studioOnly = new Set(['apps/web/src/features/studios/StudioHost.jsx', 'apps/web/src/features/studios/studioProgress.mjs',
+  const studioOnly = new Set(['deploy/ATLAS_LICENSED_SUBSET_RELEASE.md', 'deploy/atlas-subset-release.mjs', 'apps/web/src/lib/api.js', 'apps/web/src/lib/api-abort.test.mjs','apps/web/src/features/studios/StudioHost.jsx', 'apps/web/src/features/studios/studioProgress.mjs',
     'apps/web/src/features/studios/studioProgress.test.mjs', 'apps/web/src/pages/StudioEntry.jsx', 'apps/web/src/lib/serverVersion.js',
     'apps/web/src/lib/serverVersion.test.mjs', 'apps/pocketbase/pb_migrations/1800003300_studio_progress.js']);
   const legacyDelta = git('diff', '--name-only', base, 'HEAD', '--', ...unchanged).split('\n').filter(Boolean);
@@ -205,26 +205,28 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
     ].join('\n');
     const actual=read(file);
     assert.equal(actual.split(inserted).length,2,'Exactly one reviewed private BP3D deny required: '+file);
-    assert.ok(actual.indexOf(inserted)<actual.indexOf('handle_path /anatomy/viewer/*'),
+    assert.ok(actual.indexOf(inserted)<actual.search(/^[\t ]*handle_path \/anatomy\/viewer\/\*\s*\{/m),
       'Private BP3D deny must precede public file-server: '+file);
     assert.equal(actual.replace(inserted,''),original,
       'Reviewed security Caddy config drift outside explicit private BP3D containment: '+file);
   }
-  // Reviewed emergency recovery is limited to these exact two application
+  // Original emergency recovery is pinned here; subsequent 4D dataset recovery
+  // is sealed to the tested Atlas checkpoint below. These application
   // files. Keep all other legacy application and 4D code protected.
   const recoveryReviewCommit='aaec5d1bd30fc6679ea84642f9ee547b5fe91516';
   git('merge-base','--is-ancestor',recoveryReviewCommit,'HEAD');
   const reviewedRecoveryPaths=new Set([
-    'apps/anatomy/src/viewer/loadModel.js','apps/4d-lab/src/app/main.js'
+    'apps/anatomy/src/viewer/loadModel.js'
   ]);
   for(const file of reviewedRecoveryPaths)
-    assert.equal(read(file),git('show',recoveryReviewCommit+':'+file),
+    assert.equal(read(file),execFileSync('git',['show',recoveryReviewCommit+':'+file],{cwd:root,encoding:'utf8'}),
       'Emergency recovery file drift since reviewed code commit: '+file);
   // Scoped original Human Anatomy host correction (PR #290): the
   // application engine and production Caddyfile remain byte-for-byte intact.
   // New host protocols, tests and separate Caddy review snippet are vetted
   // by anatomy-4d-host-integration and the web unit suite.
   const reviewedHumanAnatomyPaths=new Set([
+    'apps/web/src/pages/HumanAnatomy.jsx',
     'apps/web/src/features/anatomy/hostProtocol.mjs',
     'apps/web/src/features/anatomy/hostProtocol.test.mjs',
     'apps/web/src/features/anatomy/liveLab.mjs',
@@ -234,10 +236,76 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   for(const file of reviewedHumanAnatomyPaths)
     if(legacyDelta.includes(file))assert.ok(fs.existsSync(path.join(root,file)),
       'Missing reviewed Human Anatomy integration file: '+file);
+  // The consolidated Atlas PR intentionally contains later Atlas recovery,
+  // source-audit, private-host and backup work. Seal those explicit paths to
+  // the tested WS6/WS7 checkpoint instead of demanding the pre-Studio bytes.
+  // This is technical scope evidence, never commercial or release approval.
+  const atlasCheckpoint='1111bc5fbf2227ff3f9fbd983189fd895bf610d8';
+  git('merge-base','--is-ancestor',atlasCheckpoint,'HEAD');
+  const atlasCheckpointPaths=new Map([
+    ["apps/4d-lab/src/app/datasetRecovery.js","8640a8e7658ef66cac3f63527de2cb012a85f465"],
+    ["apps/4d-lab/src/app/main.js","30fae45c35fb9d9bba30e6acf88d664f01385f81"],
+    ["apps/4d-lab/test/bp3d-all-systems-exact-sources.test.mjs","00f56826af7f641d9d21668144395ed922185b3a"],
+    ["apps/4d-lab/test/bp3d-all-systems-triage.test.mjs","a10a7c4ba4aaf1e493714d14dd932345e745f345"],
+    ["apps/4d-lab/test/bp3d-batch.test.mjs","c10afb5f77ee9fd65089428d8c064ef8d08acc2f"],
+    ["apps/4d-lab/test/bp3d-completeness.test.mjs","0973fd38067afe3aaac954778a72b8bf3a2f2d2e"],
+    ["apps/4d-lab/test/bp3d-exact-vertebra-sources.test.mjs","a54c51858cad2053346c2f216cb0b93857cb7832"],
+    ["apps/4d-lab/test/bp3d-focus-official-source-leads.test.mjs","a3d0c8adfe599123b6708fb42be1c9e0242c6bba"],
+    ["apps/4d-lab/test/bp3d-focus-source-cache.test.mjs","ddba13e28514117e60ff6a16b8684e99c1c1184f"],
+    ["apps/4d-lab/test/bp3d-focus-source-shortlist.test.mjs","e12fd4a0cfc43c308d6641826a68c17a1c8ced4f"],
+    ["apps/4d-lab/test/bp3d-provisional.test.mjs","d10750d803f1dc1ff77f2feeb8a75560d23a2b55"],
+    ["apps/4d-lab/test/bp3d-reviewed-mappings.test.mjs","d83978162c301c8951d6a56bf2f3965addc30c2b"],
+    ["apps/4d-lab/test/bp3d-visible-gap-review.test.mjs","38b51e8707c5aad65f480814a37a6def9d75c296"],
+    ["apps/4d-lab/test/datasetRecovery.test.mjs","14d68af65b86493e70804b6adbf4c846074247a2"],
+    ["apps/4d-lab/test/workstationParse.test.mjs","4f286ad366b9ec51d445f34e30d11f42111d9390"],
+    ["apps/4d-lab/tools/audit-bp3d-completeness.mjs","3bd807075ad400da2898cbff73f21d21cde14130"],
+    ["apps/4d-lab/tools/batch-bp3d-candidates.mjs","aa1655b4f782a1d3ebf3202558a6a3a6f3a4ed64"],
+    ["apps/4d-lab/tools/bp3d-all-systems-exact-sources.mjs","e29818d26ffd5a0754c2d591fcf5637839d85332"],
+    ["apps/4d-lab/tools/bp3d-all-systems-triage.mjs","af2cb52347345a335019a52957042c1fbad988cf"],
+    ["apps/4d-lab/tools/bp3d-exact-vertebra-sources.mjs","c68abbcea7eb3defd1586de98c03ad472c475bc9"],
+    ["apps/4d-lab/tools/bp3d-focus-official-source-leads.mjs","153b25d9a266b8ebd6f82634a06e0d191555453e"],
+    ["apps/4d-lab/tools/bp3d-focus-source-shortlist.mjs","4db7786d171d5ddc59f0c03255e1840ef54b2295"],
+    ["apps/4d-lab/tools/bp3d-provisional-mappings.mjs","87c357f8c64ffadcd0e07a1da91bc5fc266be830"],
+    ["apps/4d-lab/tools/bp3d-review-materials.mjs","af6ed4142b247010d26dba1813e75aabfb9c8605"],
+    ["apps/4d-lab/tools/bp3d-reviewed-mappings.mjs","178c5f241c835afc184220a0e273469eeaad6538"],
+    ["apps/4d-lab/tools/bp3d-source-name-priority.mjs","8595010cd19c541d39254a74e3be04987e3b427a"],
+    ["apps/4d-lab/tools/bp3d-visible-gap-review.mjs","4d856282a40a909a826a1592800d30693e22d9d7"],
+    ["apps/4d-lab/tools/prepare-bp3d-focus-leads.mjs","5bac3ecdb2788a75e268eec87182706605ea9b0c"],
+    ["apps/anatomy/src/atlas/bp3dPanel.js","c3f48b3cc53a41bc0b79048a6ee29ebe46da2eeb"],
+    ["apps/anatomy/src/atlas/catalog.js","6edda44efe4f394cef4804769e53a0dd47b679b1"],
+    ["apps/anatomy/src/atlas/engine.js","62769d295f2badeb4e785da9995952edbd917ab7"],
+    ["apps/anatomy/src/atlas/privateOrganRepresentations.js","ce83c3a024aa2fbee21e5097a48ccdfb0025c8ac"],
+    ["apps/anatomy/src/atlas/publicContainment.js","99884a820d29eb29f5c2f7ce8fbf5f7fbe42d757"],
+    ["apps/anatomy/src/atlas/ui.js","49fc62b676ee3ccc1374471de8aee4dbc36646a0"],
+    ["apps/anatomy/src/main.js","37c0622a77199d5868d69f9bf1dd6be1818c7a2c"],
+    ["apps/anatomy/src/viewer/bp3dMaterials.js","a3d073e917b64931839b20042d52aba4703f776a"],
+    ["apps/anatomy/src/viewer/bp3dSource.js","1fd2e9bb6b8c8c72d4016280c6f94d22f876e156"],
+    ["apps/anatomy/src/viewer/hraPrivateReference.js","e02edf483466e2be79c6af4657dc96e3795ebca0"],
+    ["apps/anatomy/tests/bp3d.test.js","372c09d97afe96bda0a9a9d3f599726604b14bb7"],
+    ["apps/anatomy/tests/publicContainment.test.js","ac54d1fa591ba5a3d8def6ac5ff29f6ed4372335"],
+    ["apps/web/package.json","2f88eef2b989207ed1e08e794066a550c5a325a7"],
+    ["apps/web/public/medcoel-research-preview.html","a19c7b3dbc892a32f7e860603d24c5cbc6e13d81"],
+    ["apps/web/src/features/anatomy/independentRegistry.mjs","5777b6b8b0d3c673dfcd5ce735ef07b83c26b148"],
+    ["apps/web/src/features/anatomy/independentRegistry.test.mjs","89280d9636df93b375e7e96289d4fe7cd34830b1"],
+    ["apps/web/src/features/anatomy/LibraryData.jsx","c614620ed74326acf7e9d2ed9a938c7c9a4e39d5"],
+    ["apps/web/src/features/anatomy/StructureThumbnail.jsx","13a3d13cac395bb599cbca5e83a1fe349cda8085"],
+    ["apps/web/src/pages/AnatomyLibrary.jsx","d8c382ff628095834cdcdbaf68fd2fc0c3e3ae04"],
+    ["apps/web/src/pages/IndependentAtlasPreview.css","a6b4406097226b553c0a78998c7752688c8b7c22"],
+    ["apps/web/src/pages/IndependentAtlasPreview.jsx","0020bd698271e114faefaa56cc834a2ba11fcf7b"],
+    ["apps/web/vite.atlas-independent-preview.config.js","839884c034b0d9daea1a010a0371e53c6dfd108c"],
+    ["deploy/ATLAS_WS6_WS7_REHEARSAL.md","4ad65a13745af0bc24377d478ce0a0806d411fe4"],
+    ["deploy/backup.py","af994d0cbc2fd4f575f41384dd98c029751f1a98"],
+    ["deploy/backup.sh","4a53d16695536e19e61f2bea13f0bc84d7b69009"],
+    ["deploy/research-showcase-web-only.sh","900f4dd8bc9343bb78f9310e8b2144cfb9f2c8fe"]
+  ]);
+  for(const [file,blob] of atlasCheckpointPaths){
+    assert.equal(git('rev-parse',atlasCheckpoint+':'+file),blob,'Atlas scope pin changed: '+file);
+    assert.equal(read(file),execFileSync('git',['show',atlasCheckpoint+':'+file],{cwd:root,encoding:'utf8'}),'Atlas checkpoint drift: '+file);
+  }
   assert.deepEqual(legacyDelta.filter(p =>
     p !== harness && p !== phaseStatus && !studioOnly.has(p) &&
     !reviewedSecurityPaths.has(p) && !reviewedRecoveryPaths.has(p) &&
-    !reviewedHumanAnatomyPaths.has(p)), []);
+    !reviewedHumanAnatomyPaths.has(p) && !atlasCheckpointPaths.has(p)), []);
   assert.equal(git('diff', '--name-only', '--diff-filter=MDR', base, 'HEAD', '--', 'apps/pocketbase/pb_migrations'), '', 'existing migrations unchanged');
   assert.deepEqual(git('diff', '--name-only', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js') ? git('diff', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js').split('\n').filter(l => /^[+-][^+-]/.test(l)) : [],
     ['-export const REQUIRED_MIGRATION = 1800003200;', '+export const REQUIRED_MIGRATION = 1800003300;'], 'only the required migration level changes');

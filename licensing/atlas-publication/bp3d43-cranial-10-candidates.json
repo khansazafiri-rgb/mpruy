@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "batchId": "cranial-10",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Exact tree and membership discovery only; FMA not in current 248-element reference collection, not proof of absence from body inventory. No clinical, registration or release approval.",
+  "rows": [
+    {
+      "fj": "FJ3931",
+      "discoveryBP": "BP29210",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left auriculotemporal nerve",
+      "faces": 3970,
+      "vertices": 1987,
+      "bytes": 245820,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3893",
+      "discoveryBP": "BP29166",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right auriculotemporal nerve",
+      "faces": 3886,
+      "vertices": 1945,
+      "bytes": 242145,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3942",
+      "discoveryBP": "BP29102",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left inferior alveolar nerve",
+      "faces": 2562,
+      "vertices": 1283,
+      "bytes": 153857,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3903",
+      "discoveryBP": "BP29069",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right inferior alveolar nerve",
+      "faces": 2510,
+      "vertices": 1258,
+      "bytes": 151847,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3949",
+      "discoveryBP": "BP29199",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left lingual nerve",
+      "faces": 2426,
+      "vertices": 1262,
+      "bytes": 147877,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3984",
+      "discoveryBP": "BP29156",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right lingual nerve",
+      "faces": 2378,
+      "vertices": 1259,
+      "bytes": 147211,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3954",
+      "discoveryBP": "BP29330",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left maxillary nerve",
+      "faces": 1360,
+      "vertices": 690,
+      "bytes": 79976,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3988",
+      "discoveryBP": "BP29403",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right maxillary nerve",
+      "faces": 1336,
+      "vertices": 675,
+      "bytes": 79086,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3932",
+      "discoveryBP": "BP29535",
+      "discoveryFMA": "FMA50869",
+      "name": "Left vestibulocochlear nerve",
+      "faces": 1714,
+      "vertices": 859,
+      "bytes": 100417,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3894",
+      "discoveryBP": "BP29543",
+      "discoveryFMA": "FMA50869",
+      "name": "Right vestibulocochlear nerve",
+      "faces": 1672,
+      "vertices": 838,
+      "bytes": 98735,
+      "group": "nervous"
+    }
+  ]
+}

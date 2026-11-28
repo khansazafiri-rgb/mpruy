@@ -1,0 +1,30 @@
+# Cross-version official source identity audit
+
+Compare 376 retained exact 4.3 publisher/mirror receipts against the two official 4.0 publisher ZIP archives and four exact tables pinned in dbcls-full-geometry-audit-20261125.json. Every archive and table is checked by size and SHA-256. A FJ filename match alone is not geometry or anatomical identity. Exact raw OBJ digest, unique FMA/BP/name and concept membership are distinct gates; exact matches also reproduce the retained triangle count. Different raw bytes remain unresolved, without rescaling or estimating a coordinate transform. No claim of completeness of a source concept or the local workstation inventory. No release approval. Publisher audit result recorded below; per-ID classification replay completed.
+
+This is independent of audit-atlas-native-overlap.mjs, which compares actual GLB position arrays on the local verified body pack. No geometry is copied into Git, and the CI runner removes its temporary copies.
+## Completed publisher audit (2026-11-26)
+
+GitHub Actions [45783767619](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45783767619), job 139785306358, commit 474add2fa30a207d1eddc1c182339cb67d79366f: 376 references compared; ISA archive 2234 elements, PARTOF archive 1258 elements. 153 FJ IDs absent from both pinned archives, 223 shared FJ IDs with different raw bytes, zero exact raw-byte matches. These classifications concern the pinned OBJ 99 archives only, not all possible 4.0 geometry sources. A byte difference does not establish geometric inequality. No coordinate transform inferred; native local body overlap remains outstanding. No medical or commercial clearance.
+
+## Native coordinate extension (executed)
+
+`node scripts/audit-bp3d-cross-version-publisher.mjs --compare-native-private` requires all 17 verified local 4.3 acquisitions. Compares each pinned 4.0 archive separately only with exact FMA/BP/name and FJ membership, using actual native float32 triangle arrays, with no transforms or tolerance. Exact unordered equality ignores winding and ordering, and is not a registration claim. Different tessellation does not prove misalignment. The full regression workflow reuses its private acquisition and removes the temporary comparison archive/report. Logs include only aggregate classification counts. No clinical or license approval.
+
+## Successful private regression and identity gate result
+
+Commit 7b2c997d7e438b7d9e7bd3bbb1135c7853dd914b, [full CI run 45786318448](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45786318448), job 139793854620: 17 exact reacquisitions, 376 GLBs rendered, 9 HRA organs and 37 groups, 16 contract and 47 application unit tests passed. Native audit enumerated 752 archive/reference pairs: 357 absent from the respective archive, 395 held for identity review. Zero pairs reached triangle-array comparison. This is a successful fail-closed execution, not evidence of alignment or coordinate equality. Per-ID raw classifications are retained in checkpoint-evidence/bp3d-cross-version-publisher-20261126.json. An existing audited 4.0 sample reports hyoid bone FMA52749/BP8836, while the verified 4.3 hyoid receipt uses FMA52749/BP22977. This demonstrates that BP representation IDs can differ; it is not an approved element crosswalk. The new diagnostic classification identifies proposed BP changes only where FMA, unique name and FJ membership agree; the actual geometry eligibility gate remains unchanged. Diagnostic CI completed.
+
+## Versioned BP candidate diagnostics (executed)
+
+Commit aa3aa039559f8b68dc9893799e674714ba1b7814, [CI run 45791956124](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45791956124), job 139812926825: six unit tests passed. Among 752 pairs, 358 candidates (205 distinct FJ elements), 357 absent archive entries, 30 absent FMA, 4 name mismatches and 3 membership mismatches. Candidate list retained at checkpoint-evidence/bp3d-versioned-identity-diagnostics-20261126.json. Candidate coordinates will be compared privately as a separate exploratory classification; exact identity holds, clinical approval and registration gates remain unchanged. No native coordinate arrays are logged; only source IDs and comparison classifications. Execution completed; see result below.
+
+## Exact exploratory candidate geometry — completed
+
+Commit d007491a0a92dfdd4ad6857c6870bf62584a2f06, [CI 45793847310](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45793847310), job 139819331163: all 358 archive pairs (205 distinct FJ) returned EXACT_ORDERED_NATIVE_TRIANGLES, no transforms. Retained per-pair source IDs and classifications in checkpoint-evidence/bp3d-versioned-native-candidates-20261126.json; no mesh bytes committed. All 13 private workflow runs succeeded at this commit. This does not change the exact-identity gate, does not verify a whole-body crosswalk, and grants no rights or clinical clearance.
+
+The workstation audit now separately checks retained versioned candidates against actual local body GLBs using exact tree, FMA, BP, FJ, normalized name and pinned archive/name/membership receipt hashes. Reports per-pair and distinct-element matches, held and missing entries, composite model distinctions. No inference of raw byte equality or body registration. Local execution requires an existing verified body pack; not yet executed on the user's laptop. New contract tests pending CI.
+
+## Publisher concept GLB bridge (CI pending)
+
+The workstation contracts passed 20/20 on c8975e28b9c42f9e80406d67bc0aac8915622b37, [run 45811056649](https://github.com/khansazafiri-rgb/mpruy/actions/runs/45811056649). The next full regression reconstructs complete publisher FMA/BP concepts with all their archive members in memory, encodes native 4.0 GLBs and invokes the same workstation overlap implementation with actual verified 4.3 reference bytes. Missing members and resource limits (64 elements or 500000 triangles per concept) are explicit holds. This is an independent technical bridge, not the user's workstation inventory; no geometry is persisted or published. No change to release policy.

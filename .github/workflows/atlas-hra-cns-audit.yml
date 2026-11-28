@@ -1,0 +1,22 @@
+name: Atlas HRA CNS pinned source audit
+on:
+  push:
+    branches: [feat/atlas-focused-challenge-20261126]
+    paths:
+      - 'licensing/atlas-publication/hra-cns-four-pinned-candidates-20261126.json'
+      - '.github/workflows/atlas-hra-cns-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-hra-female-five.test.mjs
+      - run: node scripts/audit-hra-female-five.mjs cns-four
