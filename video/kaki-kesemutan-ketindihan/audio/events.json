@@ -1,0 +1,115 @@
+{
+ "durasi_edu": 49.2,
+ "potong_narasi": 47.74,
+ "skalar_normalisasi": 1.2092,
+ "sfx": [
+  {
+   "t": 4.62,
+   "sfx": "kesemutan-muncul-kilau"
+  },
+  {
+   "t": 6.2,
+   "sfx": "lensa-ke-penampang"
+  },
+  {
+   "t": 6.95,
+   "sfx": "lensa-jernih"
+  },
+  {
+   "t": 7.05,
+   "sfx": "judul"
+  },
+  {
+   "t": 11.25,
+   "sfx": "judul"
+  },
+  {
+   "t": 15.2,
+   "sfx": "judul"
+  },
+  {
+   "t": 15.9,
+   "sfx": "tekan-lembut"
+  },
+  {
+   "t": 17.25,
+   "sfx": "judul"
+  },
+  {
+   "t": 19.5,
+   "sfx": "judul"
+  },
+  {
+   "t": 21.05,
+   "sfx": "judul"
+  },
+  {
+   "t": 24.2,
+   "sfx": "lensa-keluar"
+  },
+  {
+   "t": 28.3,
+   "sfx": "lensa-masuk"
+  },
+  {
+   "t": 29.0,
+   "sfx": "judul"
+  },
+  {
+   "t": 32.3,
+   "sfx": "judul"
+  },
+  {
+   "t": 32.749,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 32.797,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 34.072,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 34.609,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 34.747,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 35.334,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 35.8,
+   "sfx": "judul"
+  },
+  {
+   "t": 36.928,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 36.944,
+   "sfx": "kesemutan-kilau-kecil"
+  },
+  {
+   "t": 38.25,
+   "sfx": "judul"
+  },
+  {
+   "t": 38.45,
+   "sfx": "mereda-lega"
+  },
+  {
+   "t": 40.2,
+   "sfx": "lensa-keluar-akhir"
+  },
+  {
+   "t": 42.15,
+   "sfx": "judul"
+  }
+ ]
+}
