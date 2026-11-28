@@ -1,0 +1,687 @@
+[
+ {
+  "start": 0.0,
+  "end": 1.86,
+  "text": "Duduk dengan kaki tertindih terlalu lama,",
+  "words": [
+   {
+    "w": "Duduk",
+    "s": 0.0,
+    "e": 0.3
+   },
+   {
+    "w": "dengan",
+    "s": 0.3,
+    "e": 0.56
+   },
+   {
+    "w": "kaki",
+    "s": 0.56,
+    "e": 0.88
+   },
+   {
+    "w": "tertindih",
+    "s": 0.88,
+    "e": 1.32
+   },
+   {
+    "w": "terlalu",
+    "s": 1.32,
+    "e": 1.64
+   },
+   {
+    "w": "lama,",
+    "s": 1.64,
+    "e": 1.86
+   }
+  ]
+ },
+ {
+  "start": 2.3,
+  "end": 5.04,
+  "text": "begitu berdiri, kaki terasa kebas lalu kesemutan.",
+  "words": [
+   {
+    "w": "begitu",
+    "s": 2.3,
+    "e": 2.58
+   },
+   {
+    "w": "berdiri,",
+    "s": 2.58,
+    "e": 2.98
+   },
+   {
+    "w": "kaki",
+    "s": 3.34,
+    "e": 3.58
+   },
+   {
+    "w": "terasa",
+    "s": 3.58,
+    "e": 3.84
+   },
+   {
+    "w": "kebas",
+    "s": 3.84,
+    "e": 4.3
+   },
+   {
+    "w": "lalu",
+    "s": 4.3,
+    "e": 4.62
+   },
+   {
+    "w": "kesemutan.",
+    "s": 4.62,
+    "e": 5.04
+   }
+  ]
+ },
+ {
+  "start": 5.68,
+  "end": 6.32,
+  "text": "Apa yang terjadi?",
+  "words": [
+   {
+    "w": "Apa",
+    "s": 5.68,
+    "e": 5.88
+   },
+   {
+    "w": "yang",
+    "s": 5.88,
+    "e": 6.0
+   },
+   {
+    "w": "terjadi?",
+    "s": 6.0,
+    "e": 6.32
+   }
+  ]
+ },
+ {
+  "start": 7.12,
+  "end": 10.74,
+  "text": "Normalnya, saraf membawa informasi sentuhan dari kaki menuju otak.",
+  "words": [
+   {
+    "w": "Normalnya,",
+    "s": 7.12,
+    "e": 7.74
+   },
+   {
+    "w": "saraf",
+    "s": 8.14,
+    "e": 8.38
+   },
+   {
+    "w": "membawa",
+    "s": 8.38,
+    "e": 8.64
+   },
+   {
+    "w": "informasi",
+    "s": 8.64,
+    "e": 9.1
+   },
+   {
+    "w": "sentuhan",
+    "s": 9.1,
+    "e": 9.5
+   },
+   {
+    "w": "dari",
+    "s": 9.5,
+    "e": 9.76
+   },
+   {
+    "w": "kaki",
+    "s": 9.76,
+    "e": 10.08
+   },
+   {
+    "w": "menuju",
+    "s": 10.08,
+    "e": 10.36
+   },
+   {
+    "w": "otak.",
+    "s": 10.36,
+    "e": 10.74
+   }
+  ]
+ },
+ {
+  "start": 11.2,
+  "end": 14.5,
+  "text": "Saraf juga membutuhkan suplai darah agar dapat bekerja dengan baik.",
+  "words": [
+   {
+    "w": "Saraf",
+    "s": 11.2,
+    "e": 11.64
+   },
+   {
+    "w": "juga",
+    "s": 11.64,
+    "e": 11.8
+   },
+   {
+    "w": "membutuhkan",
+    "s": 11.8,
+    "e": 12.34
+   },
+   {
+    "w": "suplai",
+    "s": 12.34,
+    "e": 12.66
+   },
+   {
+    "w": "darah",
+    "s": 12.66,
+    "e": 13.06
+   },
+   {
+    "w": "agar",
+    "s": 13.06,
+    "e": 13.48
+   },
+   {
+    "w": "dapat",
+    "s": 13.48,
+    "e": 13.7
+   },
+   {
+    "w": "bekerja",
+    "s": 13.7,
+    "e": 14.08
+   },
+   {
+    "w": "dengan",
+    "s": 14.08,
+    "e": 14.24
+   },
+   {
+    "w": "baik.",
+    "s": 14.24,
+    "e": 14.5
+   }
+  ]
+ },
+ {
+  "start": 15.16,
+  "end": 17.0,
+  "text": "Saat kaki tertekan oleh posisi tubuh,",
+  "words": [
+   {
+    "w": "Saat",
+    "s": 15.16,
+    "e": 15.46
+   },
+   {
+    "w": "kaki",
+    "s": 15.46,
+    "e": 15.66
+   },
+   {
+    "w": "tertekan",
+    "s": 15.66,
+    "e": 16.08
+   },
+   {
+    "w": "oleh",
+    "s": 16.08,
+    "e": 16.2
+   },
+   {
+    "w": "posisi",
+    "s": 16.2,
+    "e": 16.56
+   },
+   {
+    "w": "tubuh,",
+    "s": 16.56,
+    "e": 17.0
+   }
+  ]
+ },
+ {
+  "start": 17.22,
+  "end": 20.44,
+  "text": "saraf dan aliran darah di sekitarnya dapat ikut terganggu sementara.",
+  "words": [
+   {
+    "w": "saraf",
+    "s": 17.22,
+    "e": 17.58
+   },
+   {
+    "w": "dan",
+    "s": 17.58,
+    "e": 17.7
+   },
+   {
+    "w": "aliran",
+    "s": 17.7,
+    "e": 17.94
+   },
+   {
+    "w": "darah",
+    "s": 17.94,
+    "e": 18.24
+   },
+   {
+    "w": "di",
+    "s": 18.24,
+    "e": 18.34
+   },
+   {
+    "w": "sekitarnya",
+    "s": 18.34,
+    "e": 18.82
+   },
+   {
+    "w": "dapat",
+    "s": 18.82,
+    "e": 19.24
+   },
+   {
+    "w": "ikut",
+    "s": 19.24,
+    "e": 19.5
+   },
+   {
+    "w": "terganggu",
+    "s": 19.5,
+    "e": 19.98
+   },
+   {
+    "w": "sementara.",
+    "s": 19.98,
+    "e": 20.44
+   }
+  ]
+ },
+ {
+  "start": 21.02,
+  "end": 23.28,
+  "text": "Pesan dari kaki tidak terkirim seperti biasa.",
+  "words": [
+   {
+    "w": "Pesan",
+    "s": 21.02,
+    "e": 21.28
+   },
+   {
+    "w": "dari",
+    "s": 21.28,
+    "e": 21.42
+   },
+   {
+    "w": "kaki",
+    "s": 21.42,
+    "e": 21.82
+   },
+   {
+    "w": "tidak",
+    "s": 21.82,
+    "e": 22.18
+   },
+   {
+    "w": "terkirim",
+    "s": 22.18,
+    "e": 22.6
+   },
+   {
+    "w": "seperti",
+    "s": 22.6,
+    "e": 22.8
+   },
+   {
+    "w": "biasa.",
+    "s": 22.8,
+    "e": 23.28
+   }
+  ]
+ },
+ {
+  "start": 23.78,
+  "end": 26.36,
+  "text": "Itu sebabnya, bagian kaki bisa terasa kebas.",
+  "words": [
+   {
+    "w": "Itu",
+    "s": 23.78,
+    "e": 23.98
+   },
+   {
+    "w": "sebabnya,",
+    "s": 23.98,
+    "e": 24.48
+   },
+   {
+    "w": "bagian",
+    "s": 24.7,
+    "e": 24.98
+   },
+   {
+    "w": "kaki",
+    "s": 24.98,
+    "e": 25.32
+   },
+   {
+    "w": "bisa",
+    "s": 25.32,
+    "e": 25.7
+   },
+   {
+    "w": "terasa",
+    "s": 25.7,
+    "e": 26.0
+   },
+   {
+    "w": "kebas.",
+    "s": 26.0,
+    "e": 26.36
+   }
+  ]
+ },
+ {
+  "start": 27.02,
+  "end": 28.98,
+  "text": "Ketika posisi diubah dan tekanan hilang,",
+  "words": [
+   {
+    "w": "Ketika",
+    "s": 27.02,
+    "e": 27.38
+   },
+   {
+    "w": "posisi",
+    "s": 27.38,
+    "e": 27.68
+   },
+   {
+    "w": "diubah",
+    "s": 27.68,
+    "e": 28.12
+   },
+   {
+    "w": "dan",
+    "s": 28.12,
+    "e": 28.3
+   },
+   {
+    "w": "tekanan",
+    "s": 28.3,
+    "e": 28.62
+   },
+   {
+    "w": "hilang,",
+    "s": 28.62,
+    "e": 28.98
+   }
+  ]
+ },
+ {
+  "start": 28.98,
+  "end": 31.86,
+  "text": "supaya darah serta fungsi saraf mulai pulih.",
+  "words": [
+   {
+    "w": "supaya",
+    "s": 28.98,
+    "e": 29.68
+   },
+   {
+    "w": "darah",
+    "s": 29.68,
+    "e": 30.12
+   },
+   {
+    "w": "serta",
+    "s": 30.12,
+    "e": 30.42
+   },
+   {
+    "w": "fungsi",
+    "s": 30.42,
+    "e": 30.72
+   },
+   {
+    "w": "saraf",
+    "s": 30.72,
+    "e": 31.08
+   },
+   {
+    "w": "mulai",
+    "s": 31.08,
+    "e": 31.48
+   },
+   {
+    "w": "pulih.",
+    "s": 31.48,
+    "e": 31.86
+   }
+  ]
+ },
+ {
+  "start": 32.26,
+  "end": 37.68,
+  "text": "Selama proses itu, sinyal sensasi dapat rasa tidak biasa, seperti ditusuk-tusuk atau kesemutan.",
+  "words": [
+   {
+    "w": "Selama",
+    "s": 32.26,
+    "e": 32.54
+   },
+   {
+    "w": "proses",
+    "s": 32.54,
+    "e": 32.8
+   },
+   {
+    "w": "itu,",
+    "s": 32.8,
+    "e": 33.12
+   },
+   {
+    "w": "sinyal",
+    "s": 33.38,
+    "e": 33.72
+   },
+   {
+    "w": "sensasi",
+    "s": 33.72,
+    "e": 34.22
+   },
+   {
+    "w": "dapat",
+    "s": 34.22,
+    "e": 34.46
+   },
+   {
+    "w": "rasa",
+    "s": 34.46,
+    "e": 34.76
+   },
+   {
+    "w": "tidak",
+    "s": 34.76,
+    "e": 34.96
+   },
+   {
+    "w": "biasa,",
+    "s": 34.96,
+    "e": 35.4
+   },
+   {
+    "w": "seperti",
+    "s": 35.78,
+    "e": 36.02
+   },
+   {
+    "w": "ditusuk",
+    "s": 36.02,
+    "e": 36.5
+   },
+   {
+    "w": "-tusuk",
+    "s": 36.5,
+    "e": 36.94
+   },
+   {
+    "w": "atau",
+    "s": 36.94,
+    "e": 37.2
+   },
+   {
+    "w": "kesemutan.",
+    "s": 37.2,
+    "e": 37.68
+   }
+  ]
+ },
+ {
+  "start": 38.2,
+  "end": 40.6,
+  "text": "Biasanya, sensasi ini meredah setelah beberapa menit.",
+  "words": [
+   {
+    "w": "Biasanya,",
+    "s": 38.2,
+    "e": 38.66
+   },
+   {
+    "w": "sensasi",
+    "s": 38.8,
+    "e": 39.12
+   },
+   {
+    "w": "ini",
+    "s": 39.12,
+    "e": 39.28
+   },
+   {
+    "w": "meredah",
+    "s": 39.28,
+    "e": 39.7
+   },
+   {
+    "w": "setelah",
+    "s": 39.7,
+    "e": 40.0
+   },
+   {
+    "w": "beberapa",
+    "s": 40.0,
+    "e": 40.28
+   },
+   {
+    "w": "menit.",
+    "s": 40.28,
+    "e": 40.6
+   }
+  ]
+ },
+ {
+  "start": 41.14,
+  "end": 45.32,
+  "text": "Namun, kesemutan yang menetap atau sering berulang tidak selalu disebabkan posisi duduk.",
+  "words": [
+   {
+    "w": "Namun,",
+    "s": 41.14,
+    "e": 41.6
+   },
+   {
+    "w": "kesemutan",
+    "s": 41.66,
+    "e": 42.04
+   },
+   {
+    "w": "yang",
+    "s": 42.04,
+    "e": 42.18
+   },
+   {
+    "w": "menetap",
+    "s": 42.18,
+    "e": 42.62
+   },
+   {
+    "w": "atau",
+    "s": 42.62,
+    "e": 42.8
+   },
+   {
+    "w": "sering",
+    "s": 42.8,
+    "e": 43.1
+   },
+   {
+    "w": "berulang",
+    "s": 43.1,
+    "e": 43.58
+   },
+   {
+    "w": "tidak",
+    "s": 43.58,
+    "e": 43.86
+   },
+   {
+    "w": "selalu",
+    "s": 43.86,
+    "e": 44.22
+   },
+   {
+    "w": "disebabkan",
+    "s": 44.22,
+    "e": 44.68
+   },
+   {
+    "w": "posisi",
+    "s": 44.68,
+    "e": 45.0
+   },
+   {
+    "w": "duduk.",
+    "s": 45.0,
+    "e": 45.32
+   }
+  ]
+ },
+ {
+  "start": 45.6,
+  "end": 47.36,
+  "text": "Penyebabnya perlu dinilai lebih lanjut.",
+  "words": [
+   {
+    "w": "Penyebabnya",
+    "s": 45.6,
+    "e": 46.16
+   },
+   {
+    "w": "perlu",
+    "s": 46.16,
+    "e": 46.54
+   },
+   {
+    "w": "dinilai",
+    "s": 46.54,
+    "e": 46.92
+   },
+   {
+    "w": "lebih",
+    "s": 46.92,
+    "e": 47.06
+   },
+   {
+    "w": "lanjut.",
+    "s": 47.06,
+    "e": 47.36
+   }
+  ]
+ }
+]

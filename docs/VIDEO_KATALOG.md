@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **39 video**.
+Total: **40 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -26,6 +26,7 @@ Total: **39 video**.
 | Edukasi | [Kenapa ada jeda setelah gelombang P?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ekg-jeda-pr) | `video/ekg-jeda-pr` |
 | Edukasi | [Kenapa angka termometer air raksa tidak langsung turun?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/termometer-raksa-tertahan) | `video/termometer-raksa-tertahan` |
 | Edukasi | [Kenapa bawang bikin mata berair?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/bawang-mata-berair) | `video/bawang-mata-berair` |
+| Edukasi | [Kenapa kaki kesemutan setelah ketindihan?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kaki-kesemutan-ketindihan) | `video/kaki-kesemutan-ketindihan` |
 | Edukasi | [Kenapa Kalau Dingin Jadi Lebih Sering Ingin Pipis?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dingin-pengen-pipis) | `video/dingin-pengen-pipis` |
 | Edukasi | [Kenapa Kopi Bikin Kita Nggak Ngantuk?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kopi-kafein-adenosin) | `video/kopi-kafein-adenosin` |
 | Edukasi | [Kenapa lutut diketuk, kaki bergerak?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/refleks-lutut) | `video/refleks-lutut` |
