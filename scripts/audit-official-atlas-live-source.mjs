@@ -51,6 +51,7 @@ export async function auditLive({allResolved=false}={}){
     const b=fs.readFileSync(file);paths[kind]=file;hashes[kind]=sha(b);
     const receipt={tree,kind,url:base+name,bytes:b.length,sha256:hashes[kind]};
     const expected=pinned.find(x=>x.tree===tree&&x.kind===kind);
+    console.log('OBSERVED PUBLISHER RECEIPT',JSON.stringify({observed:receipt,historical:expected}));
     publisherRevisions.push(verifyPublisherReceipt(receipt,expected));receipts.push(receipt);
    }
    const listing=execFileSync('unzip',['-Z','-1',paths.archive],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);

@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/audit-official-atlas-live-source.mjs'
       - 'scripts/audit-bp3d-archive-drift.py'
+      - 'scripts/audit-bp3d-release-members.py'
       - 'scripts/bp3d-publisher-revisions*'
       - 'scripts/reconstruct-bp3d-retained-obj*'
       - 'licensing/atlas-publication/checkpoint-evidence/bp3d40-*'
@@ -31,5 +32,7 @@ jobs:
           python3 scripts/audit-bp3d-archive-drift.py --test
           python3 scripts/reconstruct-bp3d-retained-obj.test.py
           node --test scripts/bp3d-publisher-revisions.test.mjs
-      - name: Fresh publisher bytes and actual geometry replay
-        run: node scripts/audit-official-atlas-live-source.mjs --all-resolved
+      - name: Fresh publisher source bytes for all ISA and retained release PART-OF members
+        run: |
+          python3 scripts/audit-bp3d-release-members.py --test
+          python3 scripts/audit-bp3d-release-members.py

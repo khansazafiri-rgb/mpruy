@@ -95,3 +95,19 @@ not server staging or production backup evidence. SSH to the existing server
 was rejected with `Operation not permitted` before authentication in this
 execution environment. A permitted server/operator connection is needed to
 complete the real backup, protected staging and release approval.
+
+## Current publisher revisions and rollback scope
+
+The release-source audit compares all2,234 ISA members and the164 PART-OF
+members used by this retained1,016-model release against cryptographically pinned
+old raw hashes. It accepts exact bytes or the one known license-comment change;
+other identity/geometry edits fail. It also verifies unchanged name and element
+tables. Extra PART-OF members remain unapproved; this does not claim a complete
+old/new PART-OF archive comparison. The separate whole-source survey remains
+strict and may HOLD an unreviewed publisher archive container revision. The
+initial release keeps its retained exact model bytes and historical source pins.
+
+Do not use an unreviewed legacy NC viewer or geometry as the public rollback
+target. Preserve it privately for provenance. Use a prior cleared subset or an
+independently authored holding page with no geometry, and verify private route
+denials after rollback. The operator must establish this on the real server.

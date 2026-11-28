@@ -26,7 +26,8 @@ def fetch(spec, dest, limit):
     url = BASE + quote(spec["key"], safe="") + "?download=1"
     subprocess.run(["curl", "--fail", "--silent", "--show-error", "--location",
                     "--proto", "=https", "--proto-redir", "=https",
-                    "--max-redirs", "3", "--max-time", "360",
+                    "--max-redirs", "3", "--max-time", "900",
+                    "--retry", "2", "--retry-delay", "2", "--retry-max-time", "1200",
                     "--max-filesize", str(limit), "--output", str(dest), url], check=True)
     if not 0 < dest.stat().st_size <= limit:
         raise ValueError("source byte limit")
