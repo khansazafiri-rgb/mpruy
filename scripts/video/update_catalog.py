@@ -22,6 +22,7 @@ EDUCATION = {
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
     "termometer-raksa-tertahan", "usg-gema-gambar", "inhaler-waktu-tarikan",
     "test-pack-dua-garis", "mekanisme-keringat", "autoinjektor-anafilaksis", "ekg-jeda-pr", "crt-kuku-pucat", "kenapa-memar-berubah-warna", "refleks-lutut", "bawang-mata-berair", "cegukan-hik",
+    "kenapa-kulit-merinding",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",

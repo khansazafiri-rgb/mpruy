@@ -1,0 +1,94 @@
+{
+ "durasi_edu": 52.94,
+ "skalar_normalisasi": 1.5136,
+ "sfx": [
+  {
+   "t": 0.05,
+   "sfx": "angin-kecil"
+  },
+  {
+   "t": 4.7,
+   "sfx": "potong-kulit"
+  },
+  {
+   "t": 5.4,
+   "sfx": "reseptor-dingin"
+  },
+  {
+   "t": 7.0,
+   "sfx": "sinyal-ke-otak"
+  },
+  {
+   "t": 9.6,
+   "sfx": "pusat-kontrol"
+  },
+  {
+   "t": 12.42,
+   "sfx": "simpatik-turun"
+  },
+  {
+   "t": 15.0,
+   "sfx": "potong-folikel"
+  },
+  {
+   "t": 20.9,
+   "sfx": "sinyal-tiba"
+  },
+  {
+   "t": 21.6,
+   "sfx": "otot-memendek"
+  },
+  {
+   "t": 23.6,
+   "sfx": "rambut-tertarik"
+  },
+  {
+   "t": 27.1,
+   "sfx": "kulit-terangkat"
+  },
+  {
+   "t": 28.5,
+   "sfx": "potong-lengan"
+  },
+  {
+   "t": 29.3,
+   "sfx": "tonjolan-kecil"
+  },
+  {
+   "t": 32.7,
+   "sfx": "potong-hewan"
+  },
+  {
+   "t": 33.6,
+   "sfx": "bulu-tegak"
+  },
+  {
+   "t": 36.0,
+   "sfx": "lapisan-udara"
+  },
+  {
+   "t": 37.95,
+   "sfx": "potong-manusia"
+  },
+  {
+   "t": 42.5,
+   "sfx": "rambut-sedikit"
+  },
+  {
+   "t": 44.2,
+   "sfx": "bukan-utama"
+  },
+  {
+   "t": 46.85,
+   "sfx": "potong-respons"
+  },
+  {
+   "t": 50.64,
+   "sfx": "aliran-darah"
+  },
+  {
+   "t": 52.11,
+   "sfx": "menggigil"
+  }
+ ]
+}

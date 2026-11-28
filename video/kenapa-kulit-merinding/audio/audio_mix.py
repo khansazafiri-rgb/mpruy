@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Audio bagian EDUKASI video "Bagaimana obat bius lokal bekerja". TIGA JALUR TERPISAH (stem stereo 48 kHz) lalu dicampur:
-  1) suara  = narasi-edukasi.wav (Google AI Studio, 24 kHz mono, 59,52 dtk) mulai detik 0. Tempo dan nada TIDAK diubah; hanya resample 24 -> 48 kHz dan penguatan statis.
-  2) musik  = stem-musik.wav: pad hangat + arpeggio pluck "medical tech" 100 BPM, disintesis dari kode (numpy/scipy), jauh di bawah suara dan ditekan saat bicara.
-  3) sfx    = stem-sfx.wav: desis semprotan pendek (derau berfilter) tepat pada saat semprot di tiap adegan, klik tekan, label, pop reseptor, napas halus; tanpa alarm.
+"""Audio bagian EDUKASI video "Kenapa kulit merinding saat dingin?". TIGA JALUR TERPISAH (stem stereo 48 kHz) lalu dicampur:
+  1) suara  = narasi-edukasi.wav (Google AI Studio, 24 kHz mono, 52,94 dtk) mulai detik 0. Tempo dan nada TIDAK diubah; hanya resample 24 -> 48 kHz dan penguatan statis.
+  2) musik  = stem-musik.wav: pad hangat + arpeggio pluck lembut "medical tech" 100 BPM, disintesis dari kode (numpy/scipy), jauh di bawah suara dan ditekan saat bicara.
+  3) sfx    = stem-sfx.wav: embusan angin kecil di awal, denting halus saat sinyal dingin/simpatik, isyarat lembut tepat saat kata "berkontraksi", peralihan; tanpa efek dingin berlebihan.
 Bagian edukasi dinormalkan ke -14,4 LUFS terintegrasi (sama dengan master outro) SEBELUM ditempel; file gabungan tidak dinormalkan ulang (lihat encode.sh).
 Lisensi musik + SFX: CC0 1.0 (dibuat dari kode, tanpa sampel/musik pihak ketiga), aman untuk promosi Instagram/TikTok.
-Pemakaian: python3 audio/audio_mix.py -> stem-*.wav, mix.wav (52,2 dtk), events.json (butuh numpy, scipy, ffmpeg)."""
+Pemakaian: python3 audio/audio_mix.py -> stem-*.wav, mix.wav (52,94 dtk), events.json (butuh numpy, scipy, ffmpeg)."""
 import json, os, re, subprocess, tempfile, wave
 import numpy as np
 from scipy import signal
@@ -66,26 +66,33 @@ def fx(name, x, t0, g=1.0, pan=0.0): EV.append({'t': round(t0, 3), 'sfx': name})
 # --- efek halus (bukan bunyi tiap detik): kanal membuka, Na+ masuk, sinyal berjalan, otak, obat, membran, kanal terhambat, sinyal berhenti, peralihan jenis
 def clunk(): n = T(0.18); tt = np.arange(n) / SR; return np.sin(2 * np.pi * 150 * tt) * np.exp(-tt * 18) * env(n, 0.002, 0.04) + bp(rng.standard_normal(n), 400, 1800) * np.exp(-tt * 40) * 0.3
 def swish(d): n = T(d); x = bp(rng.standard_normal(n), 900, 3800, 2); return x * np.sin(np.pi * np.linspace(0, 1, n)) ** 1.5
-fx('ketuk-kulit', bloop(520, 0.1), 0.12, 0.10)
-fx('potong-saraf', whoosh(0.4, True, 300, 3500), 3.95, 0.10)
-fx('kanal-membuka', chime([79, 83], 0.7), W['membuka'], 0.12)
-fx('na-masuk', swish(1.6), W['natrium2'], 0.06)
-fx('sinyal-berjalan', glide(300, 760, 1.9), 9.1, 0.045)
-fx('sumsum', bloop(500, 0.12), 10.9, 0.12)
-fx('otak', chime([84, 88], 0.8), 12.14, 0.10)
-fx('nyeri-disadari', bloop(420, 0.16), 13.1, 0.13)
-fx('potong-tanya', whoosh(0.3, False, 400, 3000), 14.9, 0.08)
-fx('obat-tiba', chime([72, 76, 79], 0.9), 19.4, 0.09)
-fx('molekul-obat', bloop(480, 0.12), 22.8, 0.12)
-fx('menembus-membran', glide(700, 380, 1.2), 24.1, 0.045)
-fx('kanal-terhambat', clunk(), 25.9, 0.20)
-fx('na-tidak-masuk', glide(380, 240, 1.0), 27.5, 0.05)
-fx('sinyal-berhenti', glide(620, 140, 1.6), 30.0, 0.06)
-fx('sinyal-berhenti-2', clunk(), 31.0, 0.13)
-fx('potong-bukti', whoosh(0.3, True, 400, 3000), 33.2, 0.08); fx('bukti', chime([79, 84], 0.9), 33.5, 0.09)
-fx('lokal', bloop(500, 0.14), 38.1, 0.12); fx('potong-regional', whoosh(0.3, False, 400, 3000), 41.9, 0.08); fx('regional', chime([76, 80], 0.8), 45.76, 0.09)
-fx('potong-total', whoosh(0.3, True, 400, 3500), 48.4, 0.09); fx('total', bloop(380, 0.16), 48.55, 0.12); fx('sistem-saraf-pusat', chime([67, 71], 1.0), 50.3, 0.08)
-fx('potong-ringkas', whoosh(0.3, False, 400, 3000), 53.9, 0.08); fx('area-kerja', bloop(480), 56.4, 0.12); fx('kesadaran', bloop(560), 57.7, 0.12)
+def wind(d, g=1.0):
+    n = T(d); x = bp(rng.standard_normal(n), 300, 2600, 2); sw = 0.6 + 0.4 * np.sin(2 * np.pi * np.arange(n) / SR * 1.3 + 1.0)
+    return lp(x, 2400) * sw * np.sin(np.pi * np.linspace(0, 1, n)) ** 1.2 * g
+def squeeze(d=0.5):
+    n = T(d); tt = np.arange(n) / SR; return (np.sin(2 * np.pi * 180 * (1 - 0.3 * tt / d) * tt) * 0.8 + bp(rng.standard_normal(n), 300, 1400) * 0.25) * np.exp(-tt * 5) * env(n, 0.01, 0.08)
+fx('angin-kecil', wind(2.6), 0.05, 0.30)
+fx('potong-kulit', whoosh(0.35, True, 300, 3200), 4.7, 0.09)
+fx('reseptor-dingin', bloop(760, 0.14), W['mendeteksi'] + 0.1, 0.11)
+fx('sinyal-ke-otak', glide(320, 800, 1.7), 7.0, 0.04)
+fx('pusat-kontrol', chime([84, 88], 0.8), 9.6, 0.09)
+fx('simpatik-turun', glide(700, 380, 1.8), W['simpatik'] + 0.1, 0.04)
+fx('potong-folikel', whoosh(0.35, True, 300, 3200), 15.0, 0.08)
+fx('sinyal-tiba', bloop(560, 0.14), 20.9, 0.11)
+fx('otot-memendek', squeeze(0.5), W['berkontraksi'] - 0.02, 0.12)
+fx('rambut-tertarik', glide(260, 420, 1.3), W['tertarik'] + 0.1, 0.035)
+fx('kulit-terangkat', bloop(440, 0.12), 27.1, 0.09)
+fx('potong-lengan', whoosh(0.35, False, 300, 3200), 28.5, 0.08)
+fx('tonjolan-kecil', chime([79, 83], 0.8), 29.3, 0.08)
+fx('potong-hewan', whoosh(0.35, True, 300, 3200), 32.7, 0.08)
+fx('bulu-tegak', breath(1.4), 33.6, 0.07)
+fx('lapisan-udara', chime([76, 81], 0.9), 36.0, 0.09)
+fx('potong-manusia', whoosh(0.3, False, 300, 3000), 37.95, 0.08)
+fx('rambut-sedikit', bloop(500, 0.12), 42.5, 0.10)
+fx('bukan-utama', chime([72, 67], 0.9), 44.2, 0.08)
+fx('potong-respons', whoosh(0.35, True, 300, 3200), 46.85, 0.08)
+fx('aliran-darah', glide(420, 260, 1.4), W['aliran'], 0.04)
+fx('menggigil', bp(rng.standard_normal(T(0.8)), 80, 700) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 14 * np.arange(T(0.8)) / SR))) * env(T(0.8), 0.05, 0.3), W['menggigil'] + 0.05, 0.10)
 # --- campur: ducking musik/efek di bawah suara, lalu normalisasi bagian edukasi ke -14,4 LUFS (puncak <= -1,4 dBFS)
 v_env = np.convolve(np.abs(VOICE), np.ones(T(0.3)) / T(0.3), 'same'); gate = np.clip(v_env / 0.03, 0, 1); gate = np.convolve(gate, np.ones(T(0.25)) / T(0.25), 'same')
 tt = np.arange(N) / SR; fade = np.minimum(1, tt / 0.8) * np.minimum(1, (DUR - tt) / 0.8)
