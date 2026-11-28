@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **39 video**.
+Total: **40 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -13,6 +13,7 @@ Total: **39 video**.
 | Cerita anak FK | [Tab Dua Puluh](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/tab-dua-puluh) | `video/tab-dua-puluh` |
 | Edukasi | [Apa bedanya introvert & ekstrovert?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/introvert-ekstrovert) | `video/introvert-ekstrovert` |
 | Edukasi | [Bagaimana EKG menghasilkan garis di layar?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ekg-garis-layar) | `video/ekg-garis-layar` |
+| Edukasi | [Bagaimana obat bius lokal bekerja?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/bius-lokal-mekanisme) | `video/bius-lokal-mekanisme` |
 | Edukasi | [Bagaimana penjepit jari bisa membaca SpO₂?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/spo2-pulse-oximeter) | `video/spo2-pulse-oximeter` |
 | Edukasi | [Bagaimana satu tetes darah bisa menghasilkan angka Hb?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/hb-satu-tetes) | `video/hb-satu-tetes` |
 | Edukasi | [Bagaimana USG membentuk gambar dari pantulan suara?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/usg-gema-gambar) | `video/usg-gema-gambar` |
