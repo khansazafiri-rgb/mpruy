@@ -1,0 +1,822 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.68,
+  "text": " Saat kulit terluka, ujung saraf pendeteksi nyeri menerima rangsangan.",
+  "words": [
+   {
+    "w": " Saat",
+    "s": 0.0,
+    "e": 0.32
+   },
+   {
+    "w": " kulit",
+    "s": 0.32,
+    "e": 0.56
+   },
+   {
+    "w": " terluka,",
+    "s": 0.56,
+    "e": 0.92
+   },
+   {
+    "w": " ujung",
+    "s": 1.42,
+    "e": 1.74
+   },
+   {
+    "w": " saraf",
+    "s": 1.74,
+    "e": 2.04
+   },
+   {
+    "w": " pendeteksi",
+    "s": 2.04,
+    "e": 2.54
+   },
+   {
+    "w": " nyeri",
+    "s": 2.54,
+    "e": 2.76
+   },
+   {
+    "w": " menerima",
+    "s": 2.76,
+    "e": 3.2
+   },
+   {
+    "w": " rangsangan.",
+    "s": 3.2,
+    "e": 3.68
+   }
+  ]
+ },
+ {
+  "start": 4.26,
+  "end": 6.54,
+  "text": " Dispanjang saraf, kanal natrium membuka.",
+  "words": [
+   {
+    "w": " Dispanjang",
+    "s": 4.26,
+    "e": 4.76
+   },
+   {
+    "w": " saraf,",
+    "s": 4.76,
+    "e": 5.28
+   },
+   {
+    "w": " kanal",
+    "s": 5.64,
+    "e": 5.86
+   },
+   {
+    "w": " natrium",
+    "s": 5.86,
+    "e": 6.16
+   },
+   {
+    "w": " membuka.",
+    "s": 6.16,
+    "e": 6.54
+   }
+  ]
+ },
+ {
+  "start": 7.34,
+  "end": 12.48,
+  "text": " Natrium masuk ke sel saraf, membentuk sinyalistrik yang merambat menuju sum-sum tulang belakang dan otak.",
+  "words": [
+   {
+    "w": " Natrium",
+    "s": 7.34,
+    "e": 7.78
+   },
+   {
+    "w": " masuk",
+    "s": 7.78,
+    "e": 7.98
+   },
+   {
+    "w": " ke",
+    "s": 7.98,
+    "e": 8.14
+   },
+   {
+    "w": " sel",
+    "s": 8.14,
+    "e": 8.26
+   },
+   {
+    "w": " saraf,",
+    "s": 8.26,
+    "e": 8.8
+   },
+   {
+    "w": " membentuk",
+    "s": 9.14,
+    "e": 9.5
+   },
+   {
+    "w": " sinyalistrik",
+    "s": 9.5,
+    "e": 10.1
+   },
+   {
+    "w": " yang",
+    "s": 10.1,
+    "e": 10.3
+   },
+   {
+    "w": " merambat",
+    "s": 10.3,
+    "e": 10.86
+   },
+   {
+    "w": " menuju",
+    "s": 10.86,
+    "e": 11.16
+   },
+   {
+    "w": " sum",
+    "s": 11.16,
+    "e": 11.36
+   },
+   {
+    "w": "-sum",
+    "s": 11.36,
+    "e": 11.48
+   },
+   {
+    "w": " tulang",
+    "s": 11.48,
+    "e": 11.68
+   },
+   {
+    "w": " belakang",
+    "s": 11.68,
+    "e": 12.02
+   },
+   {
+    "w": " dan",
+    "s": 12.02,
+    "e": 12.14
+   },
+   {
+    "w": " otak.",
+    "s": 12.14,
+    "e": 12.48
+   }
+  ]
+ },
+ {
+  "start": 13.1,
+  "end": 14.76,
+  "text": " Disanalah nyeri disadari.",
+  "words": [
+   {
+    "w": " Disanalah",
+    "s": 13.1,
+    "e": 13.76
+   },
+   {
+    "w": " nyeri",
+    "s": 13.76,
+    "e": 14.26
+   },
+   {
+    "w": " disadari.",
+    "s": 14.26,
+    "e": 14.76
+   }
+  ]
+ },
+ {
+  "start": 15.98,
+  "end": 18.32,
+  "text": " Lalu bagaimana obat bislokal menghentikannya?",
+  "words": [
+   {
+    "w": " Lalu",
+    "s": 15.98,
+    "e": 16.48
+   },
+   {
+    "w": " bagaimana",
+    "s": 16.48,
+    "e": 17.14
+   },
+   {
+    "w": " obat",
+    "s": 17.14,
+    "e": 17.38
+   },
+   {
+    "w": " bislokal",
+    "s": 17.38,
+    "e": 17.8
+   },
+   {
+    "w": " menghentikannya?",
+    "s": 17.8,
+    "e": 18.32
+   }
+  ]
+ },
+ {
+  "start": 19.22,
+  "end": 22.26,
+  "text": " Obat diberikan di sekitar area atau saraf yang akan dibuat ke bas.",
+  "words": [
+   {
+    "w": " Obat",
+    "s": 19.22,
+    "e": 19.62
+   },
+   {
+    "w": " diberikan",
+    "s": 19.62,
+    "e": 20.02
+   },
+   {
+    "w": " di",
+    "s": 20.02,
+    "e": 20.14
+   },
+   {
+    "w": " sekitar",
+    "s": 20.14,
+    "e": 20.48
+   },
+   {
+    "w": " area",
+    "s": 20.48,
+    "e": 20.8
+   },
+   {
+    "w": " atau",
+    "s": 20.8,
+    "e": 21.0
+   },
+   {
+    "w": " saraf",
+    "s": 21.0,
+    "e": 21.32
+   },
+   {
+    "w": " yang",
+    "s": 21.32,
+    "e": 21.44
+   },
+   {
+    "w": " akan",
+    "s": 21.44,
+    "e": 21.66
+   },
+   {
+    "w": " dibuat",
+    "s": 21.66,
+    "e": 21.9
+   },
+   {
+    "w": " ke",
+    "s": 21.9,
+    "e": 22.04
+   },
+   {
+    "w": " bas.",
+    "s": 22.04,
+    "e": 22.26
+   }
+  ]
+ },
+ {
+  "start": 22.8,
+  "end": 27.5,
+  "text": " Sebagian molekul obat, masuk menembus memberan saraf, lalu menghabat kanal natrium dari sisi dalam.",
+  "words": [
+   {
+    "w": " Sebagian",
+    "s": 22.8,
+    "e": 23.14
+   },
+   {
+    "w": " molekul",
+    "s": 23.14,
+    "e": 23.46
+   },
+   {
+    "w": " obat,",
+    "s": 23.46,
+    "e": 23.86
+   },
+   {
+    "w": " masuk",
+    "s": 24.1,
+    "e": 24.34
+   },
+   {
+    "w": " menembus",
+    "s": 24.34,
+    "e": 24.64
+   },
+   {
+    "w": " memberan",
+    "s": 24.64,
+    "e": 24.96
+   },
+   {
+    "w": " saraf,",
+    "s": 24.96,
+    "e": 25.42
+   },
+   {
+    "w": " lalu",
+    "s": 25.7,
+    "e": 25.9
+   },
+   {
+    "w": " menghabat",
+    "s": 25.9,
+    "e": 26.3
+   },
+   {
+    "w": " kanal",
+    "s": 26.3,
+    "e": 26.54
+   },
+   {
+    "w": " natrium",
+    "s": 26.54,
+    "e": 26.84
+   },
+   {
+    "w": " dari",
+    "s": 26.84,
+    "e": 27.06
+   },
+   {
+    "w": " sisi",
+    "s": 27.06,
+    "e": 27.26
+   },
+   {
+    "w": " dalam.",
+    "s": 27.26,
+    "e": 27.5
+   }
+  ]
+ },
+ {
+  "start": 27.5,
+  "end": 32.56,
+  "text": " Tanpa aliran natrium yang cukup, sinyal nyeri tidak dapat terus merambat melewati bagian saraf itu.",
+  "words": [
+   {
+    "w": " Tanpa",
+    "s": 27.5,
+    "e": 28.64
+   },
+   {
+    "w": " aliran",
+    "s": 28.64,
+    "e": 28.88
+   },
+   {
+    "w": " natrium",
+    "s": 28.88,
+    "e": 29.14
+   },
+   {
+    "w": " yang",
+    "s": 29.14,
+    "e": 29.28
+   },
+   {
+    "w": " cukup,",
+    "s": 29.28,
+    "e": 29.72
+   },
+   {
+    "w": " sinyal",
+    "s": 30.04,
+    "e": 30.28
+   },
+   {
+    "w": " nyeri",
+    "s": 30.28,
+    "e": 30.46
+   },
+   {
+    "w": " tidak",
+    "s": 30.46,
+    "e": 30.66
+   },
+   {
+    "w": " dapat",
+    "s": 30.66,
+    "e": 30.88
+   },
+   {
+    "w": " terus",
+    "s": 30.88,
+    "e": 31.06
+   },
+   {
+    "w": " merambat",
+    "s": 31.06,
+    "e": 31.46
+   },
+   {
+    "w": " melewati",
+    "s": 31.46,
+    "e": 31.86
+   },
+   {
+    "w": " bagian",
+    "s": 31.86,
+    "e": 32.16
+   },
+   {
+    "w": " saraf",
+    "s": 32.16,
+    "e": 32.34
+   },
+   {
+    "w": " itu.",
+    "s": 32.34,
+    "e": 32.56
+   }
+  ]
+ },
+ {
+  "start": 33.34,
+  "end": 37.34,
+  "text": " Karena kerjanya terbatas pada area tertentu, orangnya biasanya tetap sadar.",
+  "words": [
+   {
+    "w": " Karena",
+    "s": 33.34,
+    "e": 33.88
+   },
+   {
+    "w": " kerjanya",
+    "s": 33.88,
+    "e": 34.22
+   },
+   {
+    "w": " terbatas",
+    "s": 34.22,
+    "e": 34.76
+   },
+   {
+    "w": " pada",
+    "s": 34.76,
+    "e": 34.96
+   },
+   {
+    "w": " area",
+    "s": 34.96,
+    "e": 35.18
+   },
+   {
+    "w": " tertentu,",
+    "s": 35.18,
+    "e": 35.76
+   },
+   {
+    "w": " orangnya",
+    "s": 36.06,
+    "e": 36.42
+   },
+   {
+    "w": " biasanya",
+    "s": 36.42,
+    "e": 36.76
+   },
+   {
+    "w": " tetap",
+    "s": 36.76,
+    "e": 37.0
+   },
+   {
+    "w": " sadar.",
+    "s": 37.0,
+    "e": 37.34
+   }
+  ]
+ },
+ {
+  "start": 38.1,
+  "end": 41.64,
+  "text": " Obat bisa diberikan pada permukaan kulit, disuntikan di sekitar area tindakan,",
+  "words": [
+   {
+    "w": " Obat",
+    "s": 38.1,
+    "e": 38.34
+   },
+   {
+    "w": " bisa",
+    "s": 38.34,
+    "e": 38.48
+   },
+   {
+    "w": " diberikan",
+    "s": 38.48,
+    "e": 38.86
+   },
+   {
+    "w": " pada",
+    "s": 38.86,
+    "e": 39.04
+   },
+   {
+    "w": " permukaan",
+    "s": 39.04,
+    "e": 39.48
+   },
+   {
+    "w": " kulit,",
+    "s": 39.48,
+    "e": 39.8
+   },
+   {
+    "w": " disuntikan",
+    "s": 40.14,
+    "e": 40.58
+   },
+   {
+    "w": " di",
+    "s": 40.58,
+    "e": 40.72
+   },
+   {
+    "w": " sekitar",
+    "s": 40.72,
+    "e": 40.98
+   },
+   {
+    "w": " area",
+    "s": 40.98,
+    "e": 41.18
+   },
+   {
+    "w": " tindakan,",
+    "s": 41.18,
+    "e": 41.64
+   }
+  ]
+ },
+ {
+  "start": 42.0,
+  "end": 45.28,
+  "text": " atau dipakai untuk memblock saraf yang melayani area lebih luas.",
+  "words": [
+   {
+    "w": " atau",
+    "s": 42.0,
+    "e": 42.28
+   },
+   {
+    "w": " dipakai",
+    "s": 42.28,
+    "e": 42.8
+   },
+   {
+    "w": " untuk",
+    "s": 42.8,
+    "e": 43.1
+   },
+   {
+    "w": " memblock",
+    "s": 43.1,
+    "e": 43.52
+   },
+   {
+    "w": " saraf",
+    "s": 43.52,
+    "e": 43.88
+   },
+   {
+    "w": " yang",
+    "s": 43.88,
+    "e": 44.06
+   },
+   {
+    "w": " melayani",
+    "s": 44.06,
+    "e": 44.44
+   },
+   {
+    "w": " area",
+    "s": 44.44,
+    "e": 44.68
+   },
+   {
+    "w": " lebih",
+    "s": 44.68,
+    "e": 44.92
+   },
+   {
+    "w": " luas.",
+    "s": 44.92,
+    "e": 45.28
+   }
+  ]
+ },
+ {
+  "start": 45.76,
+  "end": 47.76,
+  "text": " Yang terakhir, sering disebut biosregional.",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 45.76,
+    "e": 45.92
+   },
+   {
+    "w": " terakhir,",
+    "s": 45.92,
+    "e": 46.44
+   },
+   {
+    "w": " sering",
+    "s": 46.6,
+    "e": 46.82
+   },
+   {
+    "w": " disebut",
+    "s": 46.82,
+    "e": 47.12
+   },
+   {
+    "w": " biosregional.",
+    "s": 47.12,
+    "e": 47.76
+   }
+  ]
+ },
+ {
+  "start": 48.52,
+  "end": 49.62,
+  "text": " Bis total berbeda.",
+  "words": [
+   {
+    "w": " Bis",
+    "s": 48.52,
+    "e": 48.94
+   },
+   {
+    "w": " total",
+    "s": 48.94,
+    "e": 49.12
+   },
+   {
+    "w": " berbeda.",
+    "s": 49.12,
+    "e": 49.62
+   }
+  ]
+ },
+ {
+  "start": 50.04,
+  "end": 53.86,
+  "text": " Obat bekerja pada sistem saraf pusat sehingga pasian tidak sadar selama prosedur.",
+  "words": [
+   {
+    "w": " Obat",
+    "s": 50.04,
+    "e": 50.38
+   },
+   {
+    "w": " bekerja",
+    "s": 50.38,
+    "e": 50.72
+   },
+   {
+    "w": " pada",
+    "s": 50.72,
+    "e": 50.92
+   },
+   {
+    "w": " sistem",
+    "s": 50.92,
+    "e": 51.16
+   },
+   {
+    "w": " saraf",
+    "s": 51.16,
+    "e": 51.48
+   },
+   {
+    "w": " pusat",
+    "s": 51.48,
+    "e": 51.88
+   },
+   {
+    "w": " sehingga",
+    "s": 51.88,
+    "e": 52.32
+   },
+   {
+    "w": " pasian",
+    "s": 52.32,
+    "e": 52.62
+   },
+   {
+    "w": " tidak",
+    "s": 52.62,
+    "e": 52.82
+   },
+   {
+    "w": " sadar",
+    "s": 52.82,
+    "e": 53.12
+   },
+   {
+    "w": " selama",
+    "s": 53.12,
+    "e": 53.36
+   },
+   {
+    "w": " prosedur.",
+    "s": 53.36,
+    "e": 53.86
+   }
+  ]
+ },
+ {
+  "start": 53.86,
+  "end": 59.08,
+  "text": " Jadi perbedaannya bukan sekedar jumlah obat, tetapi area kerja dan keadaan sadar pasian.",
+  "words": [
+   {
+    "w": " Jadi",
+    "s": 53.86,
+    "e": 54.54
+   },
+   {
+    "w": " perbedaannya",
+    "s": 54.54,
+    "e": 55.06
+   },
+   {
+    "w": " bukan",
+    "s": 55.06,
+    "e": 55.24
+   },
+   {
+    "w": " sekedar",
+    "s": 55.24,
+    "e": 55.6
+   },
+   {
+    "w": " jumlah",
+    "s": 55.6,
+    "e": 55.84
+   },
+   {
+    "w": " obat,",
+    "s": 55.84,
+    "e": 56.16
+   },
+   {
+    "w": " tetapi",
+    "s": 56.42,
+    "e": 56.74
+   },
+   {
+    "w": " area",
+    "s": 56.74,
+    "e": 57.1
+   },
+   {
+    "w": " kerja",
+    "s": 57.1,
+    "e": 57.68
+   },
+   {
+    "w": " dan",
+    "s": 57.68,
+    "e": 57.98
+   },
+   {
+    "w": " keadaan",
+    "s": 57.98,
+    "e": 58.46
+   },
+   {
+    "w": " sadar",
+    "s": 58.46,
+    "e": 58.72
+   },
+   {
+    "w": " pasian.",
+    "s": 58.72,
+    "e": 59.08
+   }
+  ]
+ }
+]

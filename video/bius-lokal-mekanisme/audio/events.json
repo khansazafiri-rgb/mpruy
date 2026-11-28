@@ -1,0 +1,114 @@
+{
+ "durasi_edu": 59.52,
+ "skalar_normalisasi": 1.2445,
+ "sfx": [
+  {
+   "t": 0.12,
+   "sfx": "ketuk-kulit"
+  },
+  {
+   "t": 3.95,
+   "sfx": "potong-saraf"
+  },
+  {
+   "t": 6.16,
+   "sfx": "kanal-membuka"
+  },
+  {
+   "t": 7.34,
+   "sfx": "na-masuk"
+  },
+  {
+   "t": 9.1,
+   "sfx": "sinyal-berjalan"
+  },
+  {
+   "t": 10.9,
+   "sfx": "sumsum"
+  },
+  {
+   "t": 12.14,
+   "sfx": "otak"
+  },
+  {
+   "t": 13.1,
+   "sfx": "nyeri-disadari"
+  },
+  {
+   "t": 14.9,
+   "sfx": "potong-tanya"
+  },
+  {
+   "t": 19.4,
+   "sfx": "obat-tiba"
+  },
+  {
+   "t": 22.8,
+   "sfx": "molekul-obat"
+  },
+  {
+   "t": 24.1,
+   "sfx": "menembus-membran"
+  },
+  {
+   "t": 25.9,
+   "sfx": "kanal-terhambat"
+  },
+  {
+   "t": 27.5,
+   "sfx": "na-tidak-masuk"
+  },
+  {
+   "t": 30.0,
+   "sfx": "sinyal-berhenti"
+  },
+  {
+   "t": 31.0,
+   "sfx": "sinyal-berhenti-2"
+  },
+  {
+   "t": 33.2,
+   "sfx": "potong-bukti"
+  },
+  {
+   "t": 33.5,
+   "sfx": "bukti"
+  },
+  {
+   "t": 38.1,
+   "sfx": "lokal"
+  },
+  {
+   "t": 41.9,
+   "sfx": "potong-regional"
+  },
+  {
+   "t": 45.76,
+   "sfx": "regional"
+  },
+  {
+   "t": 48.4,
+   "sfx": "potong-total"
+  },
+  {
+   "t": 48.55,
+   "sfx": "total"
+  },
+  {
+   "t": 50.3,
+   "sfx": "sistem-saraf-pusat"
+  },
+  {
+   "t": 53.9,
+   "sfx": "potong-ringkas"
+  },
+  {
+   "t": 56.4,
+   "sfx": "area-kerja"
+  },
+  {
+   "t": 57.7,
+   "sfx": "kesadaran"
+  }
+ ]
+}
