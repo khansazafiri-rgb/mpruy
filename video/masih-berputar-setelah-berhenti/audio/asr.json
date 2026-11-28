@@ -1,0 +1,620 @@
+[
+ {
+  "start": 0.0,
+  "end": 5.84,
+  "text": "Kamu berputar beberapa kali, lalu berhenti, tetapi rasanya ruangan masih berputar. Kenapa?",
+  "words": [
+   {
+    "w": "Kamu",
+    "s": 0.0,
+    "e": 0.4
+   },
+   {
+    "w": "berputar",
+    "s": 0.4,
+    "e": 1.04
+   },
+   {
+    "w": "beberapa",
+    "s": 1.04,
+    "e": 1.36
+   },
+   {
+    "w": "kali,",
+    "s": 1.36,
+    "e": 1.64
+   },
+   {
+    "w": "lalu",
+    "s": 1.94,
+    "e": 2.44
+   },
+   {
+    "w": "berhenti,",
+    "s": 2.44,
+    "e": 2.82
+   },
+   {
+    "w": "tetapi",
+    "s": 3.4,
+    "e": 3.74
+   },
+   {
+    "w": "rasanya",
+    "s": 3.74,
+    "e": 4.1
+   },
+   {
+    "w": "ruangan",
+    "s": 4.1,
+    "e": 4.54
+   },
+   {
+    "w": "masih",
+    "s": 4.54,
+    "e": 4.8
+   },
+   {
+    "w": "berputar.",
+    "s": 4.8,
+    "e": 5.3
+   },
+   {
+    "w": "Kenapa?",
+    "s": 5.56,
+    "e": 5.84
+   }
+  ]
+ },
+ {
+  "start": 6.84,
+  "end": 16.38,
+  "text": "Di telinga dalam, ada saluran setengah lingkaran berisi cairan. Saat kepala mulai berputar, salurannya ikut bergerak, sementara cairannya sempat tertinggal karena inersia.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 6.84,
+    "e": 7.06
+   },
+   {
+    "w": "telinga",
+    "s": 7.06,
+    "e": 7.42
+   },
+   {
+    "w": "dalam,",
+    "s": 7.42,
+    "e": 7.7
+   },
+   {
+    "w": "ada",
+    "s": 8.2,
+    "e": 8.34
+   },
+   {
+    "w": "saluran",
+    "s": 8.34,
+    "e": 8.66
+   },
+   {
+    "w": "setengah",
+    "s": 8.66,
+    "e": 9.04
+   },
+   {
+    "w": "lingkaran",
+    "s": 9.04,
+    "e": 9.46
+   },
+   {
+    "w": "berisi",
+    "s": 9.46,
+    "e": 9.8
+   },
+   {
+    "w": "cairan.",
+    "s": 9.8,
+    "e": 10.14
+   },
+   {
+    "w": "Saat",
+    "s": 10.7,
+    "e": 11.02
+   },
+   {
+    "w": "kepala",
+    "s": 11.02,
+    "e": 11.3
+   },
+   {
+    "w": "mulai",
+    "s": 11.3,
+    "e": 11.5
+   },
+   {
+    "w": "berputar,",
+    "s": 11.5,
+    "e": 12.04
+   },
+   {
+    "w": "salurannya",
+    "s": 12.5,
+    "e": 12.86
+   },
+   {
+    "w": "ikut",
+    "s": 12.86,
+    "e": 13.0
+   },
+   {
+    "w": "bergerak,",
+    "s": 13.0,
+    "e": 13.46
+   },
+   {
+    "w": "sementara",
+    "s": 13.78,
+    "e": 14.12
+   },
+   {
+    "w": "cairannya",
+    "s": 14.12,
+    "e": 14.74
+   },
+   {
+    "w": "sempat",
+    "s": 14.74,
+    "e": 15.12
+   },
+   {
+    "w": "tertinggal",
+    "s": 15.12,
+    "e": 15.62
+   },
+   {
+    "w": "karena",
+    "s": 15.62,
+    "e": 15.86
+   },
+   {
+    "w": "inersia.",
+    "s": 15.86,
+    "e": 16.38
+   }
+  ]
+ },
+ {
+  "start": 17.14,
+  "end": 21.0,
+  "text": "Gerakan relatif ini memengkokkan struktur sensorik dan sel rambut di dalamnya.",
+  "words": [
+   {
+    "w": "Gerakan",
+    "s": 17.14,
+    "e": 17.52
+   },
+   {
+    "w": "relatif",
+    "s": 17.52,
+    "e": 17.94
+   },
+   {
+    "w": "ini",
+    "s": 17.94,
+    "e": 18.18
+   },
+   {
+    "w": "memengkokkan",
+    "s": 18.18,
+    "e": 18.86
+   },
+   {
+    "w": "struktur",
+    "s": 18.86,
+    "e": 19.16
+   },
+   {
+    "w": "sensorik",
+    "s": 19.16,
+    "e": 19.78
+   },
+   {
+    "w": "dan",
+    "s": 19.78,
+    "e": 20.0
+   },
+   {
+    "w": "sel",
+    "s": 20.0,
+    "e": 20.2
+   },
+   {
+    "w": "rambut",
+    "s": 20.2,
+    "e": 20.5
+   },
+   {
+    "w": "di",
+    "s": 20.5,
+    "e": 20.62
+   },
+   {
+    "w": "dalamnya.",
+    "s": 20.62,
+    "e": 21.0
+   }
+  ]
+ },
+ {
+  "start": 21.5,
+  "end": 24.9,
+  "text": "Saraf lalu mengirim pesan kautak bahwa kepala sedang berputar.",
+  "words": [
+   {
+    "w": "Saraf",
+    "s": 21.5,
+    "e": 22.08
+   },
+   {
+    "w": "lalu",
+    "s": 22.08,
+    "e": 22.34
+   },
+   {
+    "w": "mengirim",
+    "s": 22.34,
+    "e": 22.58
+   },
+   {
+    "w": "pesan",
+    "s": 22.58,
+    "e": 22.86
+   },
+   {
+    "w": "kautak",
+    "s": 22.86,
+    "e": 23.26
+   },
+   {
+    "w": "bahwa",
+    "s": 23.26,
+    "e": 23.62
+   },
+   {
+    "w": "kepala",
+    "s": 23.62,
+    "e": 24.1
+   },
+   {
+    "w": "sedang",
+    "s": 24.1,
+    "e": 24.5
+   },
+   {
+    "w": "berputar.",
+    "s": 24.5,
+    "e": 24.9
+   }
+  ]
+ },
+ {
+  "start": 24.9,
+  "end": 30.84,
+  "text": "Kalau putaran berlangsung terus, sinyal putaranya pun bisa melemah, meskipun tubuh masih berputar.",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 24.9,
+    "e": 25.9
+   },
+   {
+    "w": "putaran",
+    "s": 25.9,
+    "e": 26.24
+   },
+   {
+    "w": "berlangsung",
+    "s": 26.24,
+    "e": 26.66
+   },
+   {
+    "w": "terus,",
+    "s": 26.66,
+    "e": 26.84
+   },
+   {
+    "w": "sinyal",
+    "s": 27.42,
+    "e": 27.7
+   },
+   {
+    "w": "putaranya",
+    "s": 27.7,
+    "e": 28.12
+   },
+   {
+    "w": "pun",
+    "s": 28.12,
+    "e": 28.34
+   },
+   {
+    "w": "bisa",
+    "s": 28.34,
+    "e": 28.72
+   },
+   {
+    "w": "melemah,",
+    "s": 28.72,
+    "e": 29.22
+   },
+   {
+    "w": "meskipun",
+    "s": 29.46,
+    "e": 29.96
+   },
+   {
+    "w": "tubuh",
+    "s": 29.96,
+    "e": 30.22
+   },
+   {
+    "w": "masih",
+    "s": 30.22,
+    "e": 30.36
+   },
+   {
+    "w": "berputar.",
+    "s": 30.36,
+    "e": 30.84
+   }
+  ]
+ },
+ {
+  "start": 31.44,
+  "end": 34.32,
+  "text": "Bagi itu kamu mendadak berhenti, salurannya ikut berhenti.",
+  "words": [
+   {
+    "w": "Bagi",
+    "s": 31.44,
+    "e": 31.7
+   },
+   {
+    "w": "itu",
+    "s": 31.7,
+    "e": 31.88
+   },
+   {
+    "w": "kamu",
+    "s": 31.88,
+    "e": 32.04
+   },
+   {
+    "w": "mendadak",
+    "s": 32.04,
+    "e": 32.4
+   },
+   {
+    "w": "berhenti,",
+    "s": 32.4,
+    "e": 32.8
+   },
+   {
+    "w": "salurannya",
+    "s": 33.3,
+    "e": 33.78
+   },
+   {
+    "w": "ikut",
+    "s": 33.78,
+    "e": 33.94
+   },
+   {
+    "w": "berhenti.",
+    "s": 33.94,
+    "e": 34.32
+   }
+  ]
+ },
+ {
+  "start": 34.94,
+  "end": 39.26,
+  "text": "Cairan di dalamnya masih bergerak sesaat dan mempengkokkan sensor ke arah sebaliknya.",
+  "words": [
+   {
+    "w": "Cairan",
+    "s": 34.94,
+    "e": 35.3
+   },
+   {
+    "w": "di",
+    "s": 35.3,
+    "e": 35.38
+   },
+   {
+    "w": "dalamnya",
+    "s": 35.38,
+    "e": 35.82
+   },
+   {
+    "w": "masih",
+    "s": 35.82,
+    "e": 36.16
+   },
+   {
+    "w": "bergerak",
+    "s": 36.16,
+    "e": 36.56
+   },
+   {
+    "w": "sesaat",
+    "s": 36.56,
+    "e": 36.98
+   },
+   {
+    "w": "dan",
+    "s": 36.98,
+    "e": 37.44
+   },
+   {
+    "w": "mempengkokkan",
+    "s": 37.44,
+    "e": 37.96
+   },
+   {
+    "w": "sensor",
+    "s": 37.96,
+    "e": 38.26
+   },
+   {
+    "w": "ke",
+    "s": 38.26,
+    "e": 38.54
+   },
+   {
+    "w": "arah",
+    "s": 38.54,
+    "e": 38.84
+   },
+   {
+    "w": "sebaliknya.",
+    "s": 38.84,
+    "e": 39.26
+   }
+  ]
+ },
+ {
+  "start": 39.94,
+  "end": 44.66,
+  "text": "Otak menerima sinyal seolah kepala masih berputar, bahkan bisa terasa ke arah berlawanan.",
+  "words": [
+   {
+    "w": "Otak",
+    "s": 39.94,
+    "e": 40.32
+   },
+   {
+    "w": "menerima",
+    "s": 40.32,
+    "e": 40.74
+   },
+   {
+    "w": "sinyal",
+    "s": 40.74,
+    "e": 41.16
+   },
+   {
+    "w": "seolah",
+    "s": 41.16,
+    "e": 41.46
+   },
+   {
+    "w": "kepala",
+    "s": 41.46,
+    "e": 41.74
+   },
+   {
+    "w": "masih",
+    "s": 41.74,
+    "e": 41.92
+   },
+   {
+    "w": "berputar,",
+    "s": 41.92,
+    "e": 42.42
+   },
+   {
+    "w": "bahkan",
+    "s": 42.8,
+    "e": 43.36
+   },
+   {
+    "w": "bisa",
+    "s": 43.36,
+    "e": 43.64
+   },
+   {
+    "w": "terasa",
+    "s": 43.64,
+    "e": 43.98
+   },
+   {
+    "w": "ke",
+    "s": 43.98,
+    "e": 44.14
+   },
+   {
+    "w": "arah",
+    "s": 44.14,
+    "e": 44.32
+   },
+   {
+    "w": "berlawanan.",
+    "s": 44.32,
+    "e": 44.66
+   }
+  ]
+ },
+ {
+  "start": 45.4,
+  "end": 49.96,
+  "text": "Setelah cairannya tenang dan sinyalnya kembali seimbang, sensasi berputar itu meredah.",
+  "words": [
+   {
+    "w": "Setelah",
+    "s": 45.4,
+    "e": 45.86
+   },
+   {
+    "w": "cairannya",
+    "s": 45.86,
+    "e": 46.2
+   },
+   {
+    "w": "tenang",
+    "s": 46.2,
+    "e": 46.72
+   },
+   {
+    "w": "dan",
+    "s": 46.72,
+    "e": 46.92
+   },
+   {
+    "w": "sinyalnya",
+    "s": 46.92,
+    "e": 47.34
+   },
+   {
+    "w": "kembali",
+    "s": 47.34,
+    "e": 47.6
+   },
+   {
+    "w": "seimbang,",
+    "s": 47.6,
+    "e": 48.04
+   },
+   {
+    "w": "sensasi",
+    "s": 48.4,
+    "e": 48.7
+   },
+   {
+    "w": "berputar",
+    "s": 48.7,
+    "e": 49.12
+   },
+   {
+    "w": "itu",
+    "s": 49.12,
+    "e": 49.34
+   },
+   {
+    "w": "meredah.",
+    "s": 49.34,
+    "e": 49.96
+   }
+  ]
+ }
+]

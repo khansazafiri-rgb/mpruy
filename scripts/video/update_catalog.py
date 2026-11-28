@@ -21,7 +21,7 @@ EDUCATION = {
     "pasien-tidak-sadar-di-igd", "ekg-garis-layar", "hb-satu-tetes",
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
     "termometer-raksa-tertahan", "usg-gema-gambar", "inhaler-waktu-tarikan",
-    "test-pack-dua-garis", "mekanisme-keringat", "autoinjektor-anafilaksis", "ekg-jeda-pr", "crt-kuku-pucat", "kenapa-memar-berubah-warna", "refleks-lutut", "bawang-mata-berair", "cegukan-hik",
+    "test-pack-dua-garis", "mekanisme-keringat", "autoinjektor-anafilaksis", "ekg-jeda-pr", "crt-kuku-pucat", "kenapa-memar-berubah-warna", "masih-berputar-setelah-berhenti", "refleks-lutut", "bawang-mata-berair", "cegukan-hik",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",
