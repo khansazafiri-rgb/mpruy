@@ -1,0 +1,266 @@
+{
+ "dur": 67.8,
+ "edu_dur": 51.6,
+ "outro_dur": 16.2,
+ "cut": 50.21,
+ "w": {
+  "kamu": 0.0,
+  "berputar1": 0.4,
+  "beberapa": 1.04,
+  "kali": 1.36,
+  "lalu": 1.94,
+  "berhenti1": 2.44,
+  "tetapi": 3.4,
+  "rasanya": 3.74,
+  "ruangan": 4.1,
+  "masih1": 4.54,
+  "berputar2": 4.8,
+  "kenapa": 5.56,
+  "ditelinga": 6.84,
+  "dalam": 7.42,
+  "ada": 8.2,
+  "saluran": 8.34,
+  "setengah": 8.66,
+  "lingkaran": 9.04,
+  "berisi": 9.46,
+  "cairan1": 9.8,
+  "saat": 10.7,
+  "kepala1": 11.02,
+  "mulai": 11.3,
+  "berputar3": 11.5,
+  "salurannya": 12.5,
+  "ikut": 12.86,
+  "bergerak1": 13.0,
+  "sementara": 13.78,
+  "cairannya": 14.12,
+  "sempat": 14.74,
+  "tertinggal": 15.12,
+  "karena": 15.62,
+  "inersia": 15.86,
+  "gerakan": 17.14,
+  "relatif": 17.52,
+  "ini": 17.94,
+  "membengkokkan": 18.18,
+  "struktur": 18.86,
+  "sensorik": 19.16,
+  "dan": 19.78,
+  "sel": 20.0,
+  "rambut": 20.2,
+  "didalamnya": 20.62,
+  "saraf": 21.5,
+  "lalu2": 22.08,
+  "mengirim": 22.34,
+  "pesan": 22.58,
+  "keotak": 22.86,
+  "bahwa": 23.26,
+  "kepala2": 23.62,
+  "sedang": 24.1,
+  "berputar4": 24.5,
+  "kalau": 24.9,
+  "putaran": 25.9,
+  "berlangsung": 26.24,
+  "terus": 26.66,
+  "sinyal1": 27.42,
+  "putarannya": 27.7,
+  "pun": 28.12,
+  "bisa": 28.34,
+  "melemah": 28.72,
+  "meskipun": 29.46,
+  "tubuh": 29.96,
+  "masih2": 30.22,
+  "berputar5": 30.36,
+  "begitu": 31.44,
+  "kamu2": 31.88,
+  "mendadak": 32.04,
+  "berhenti2": 32.4,
+  "salurannya2": 33.3,
+  "ikut2": 33.78,
+  "berhenti3": 33.94,
+  "cairan2": 34.94,
+  "didalamnya2": 35.38,
+  "masih3": 35.82,
+  "bergerak2": 36.16,
+  "sesaat": 36.56,
+  "membengkokkan2": 37.44,
+  "sensor": 37.96,
+  "kearah": 38.26,
+  "sebaliknya": 38.84,
+  "otak": 39.94,
+  "menerima": 40.32,
+  "sinyal2": 40.74,
+  "seolah": 41.16,
+  "kepala3": 41.46,
+  "masih4": 41.74,
+  "berputar6": 41.92,
+  "bahkan": 42.8,
+  "bisa2": 43.36,
+  "terasa": 43.64,
+  "berlawanan": 44.32,
+  "setelah": 45.4,
+  "cairannya2": 45.86,
+  "tenang": 46.2,
+  "sinyalnya": 46.92,
+  "kembali": 47.34,
+  "seimbang": 47.6,
+  "sensasi": 48.4,
+  "berputar7": 48.7,
+  "mereda": 49.34
+ },
+ "cap": [
+  [
+   0.0,
+   1.9,
+   "Kamu berputar beberapa kali,"
+  ],
+  [
+   1.92,
+   3.3,
+   "lalu berhenti,"
+  ],
+  [
+   3.36,
+   5.5,
+   "tetapi rasanya ruangan masih berputar."
+  ],
+  [
+   5.52,
+   6.4,
+   "Kenapa?"
+  ],
+  [
+   6.82,
+   8.15,
+   "Di telinga dalam,"
+  ],
+  [
+   8.18,
+   9.78,
+   "ada saluran setengah lingkaran"
+  ],
+  [
+   9.8,
+   10.62,
+   "berisi cairan."
+  ],
+  [
+   10.68,
+   12.42,
+   "Saat kepala mulai berputar,"
+  ],
+  [
+   12.46,
+   13.72,
+   "salurannya ikut bergerak,"
+  ],
+  [
+   13.76,
+   15.58,
+   "sementara cairannya sempat tertinggal"
+  ],
+  [
+   15.6,
+   16.55,
+   "karena inersia."
+  ],
+  [
+   17.1,
+   18.78,
+   "Gerakan relatif ini membengkokkan"
+  ],
+  [
+   18.8,
+   19.96,
+   "struktur sensorik"
+  ],
+  [
+   19.98,
+   21.08,
+   "dan sel rambut di dalamnya."
+  ],
+  [
+   21.46,
+   23.2,
+   "Saraf lalu mengirim pesan"
+  ],
+  [
+   23.22,
+   24.95,
+   "ke otak bahwa kepala sedang berputar."
+  ],
+  [
+   24.86,
+   26.88,
+   "Kalau putaran berlangsung terus,"
+  ],
+  [
+   26.9,
+   28.92,
+   "sinyal putarannya pun bisa melemah,"
+  ],
+  [
+   28.95,
+   30.92,
+   "meskipun tubuh masih berputar."
+  ],
+  [
+   31.4,
+   32.92,
+   "Begitu kamu mendadak berhenti,"
+  ],
+  [
+   32.95,
+   34.35,
+   "salurannya ikut berhenti."
+  ],
+  [
+   34.9,
+   36.12,
+   "Cairan di dalamnya"
+  ],
+  [
+   36.14,
+   37.34,
+   "masih bergerak sesaat"
+  ],
+  [
+   37.36,
+   38.3,
+   "dan membengkokkan sensor"
+  ],
+  [
+   38.32,
+   39.32,
+   "ke arah sebaliknya."
+  ],
+  [
+   39.9,
+   41.4,
+   "Otak menerima sinyal seolah"
+  ],
+  [
+   41.42,
+   42.76,
+   "kepala masih berputar,"
+  ],
+  [
+   42.78,
+   44.72,
+   "bahkan bisa terasa ke arah berlawanan."
+  ],
+  [
+   45.36,
+   46.9,
+   "Setelah cairannya tenang"
+  ],
+  [
+   46.92,
+   48.36,
+   "dan sinyalnya kembali seimbang,"
+  ],
+  [
+   48.38,
+   50.25,
+   "sensasi berputar itu mereda."
+  ]
+ ]
+}

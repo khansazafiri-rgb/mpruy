@@ -1,0 +1,136 @@
+1
+00:00:00,000 --> 00:00:01,900
+Kamu berputar beberapa kali,
+
+2
+00:00:01,920 --> 00:00:03,300
+lalu berhenti,
+
+3
+00:00:03,360 --> 00:00:05,500
+tetapi rasanya ruangan masih berputar.
+
+4
+00:00:05,520 --> 00:00:06,400
+Kenapa?
+
+5
+00:00:06,820 --> 00:00:08,150
+Di telinga dalam,
+
+6
+00:00:08,180 --> 00:00:09,780
+ada saluran setengah lingkaran
+
+7
+00:00:09,800 --> 00:00:10,620
+berisi cairan.
+
+8
+00:00:10,680 --> 00:00:12,420
+Saat kepala mulai berputar,
+
+9
+00:00:12,460 --> 00:00:13,720
+salurannya ikut bergerak,
+
+10
+00:00:13,760 --> 00:00:15,580
+sementara cairannya sempat tertinggal
+
+11
+00:00:15,600 --> 00:00:16,550
+karena inersia.
+
+12
+00:00:17,100 --> 00:00:18,780
+Gerakan relatif ini membengkokkan
+
+13
+00:00:18,800 --> 00:00:19,960
+struktur sensorik
+
+14
+00:00:19,980 --> 00:00:21,080
+dan sel rambut di dalamnya.
+
+15
+00:00:21,460 --> 00:00:23,200
+Saraf lalu mengirim pesan
+
+16
+00:00:23,220 --> 00:00:24,950
+ke otak bahwa kepala sedang berputar.
+
+17
+00:00:24,860 --> 00:00:26,880
+Kalau putaran berlangsung terus,
+
+18
+00:00:26,900 --> 00:00:28,920
+sinyal putarannya pun bisa melemah,
+
+19
+00:00:28,950 --> 00:00:30,920
+meskipun tubuh masih berputar.
+
+20
+00:00:31,400 --> 00:00:32,920
+Begitu kamu mendadak berhenti,
+
+21
+00:00:32,950 --> 00:00:34,350
+salurannya ikut berhenti.
+
+22
+00:00:34,900 --> 00:00:36,120
+Cairan di dalamnya
+
+23
+00:00:36,140 --> 00:00:37,340
+masih bergerak sesaat
+
+24
+00:00:37,360 --> 00:00:38,300
+dan membengkokkan sensor
+
+25
+00:00:38,320 --> 00:00:39,320
+ke arah sebaliknya.
+
+26
+00:00:39,900 --> 00:00:41,400
+Otak menerima sinyal seolah
+
+27
+00:00:41,420 --> 00:00:42,760
+kepala masih berputar,
+
+28
+00:00:42,780 --> 00:00:44,720
+bahkan bisa terasa ke arah berlawanan.
+
+29
+00:00:45,360 --> 00:00:46,900
+Setelah cairannya tenang
+
+30
+00:00:46,920 --> 00:00:48,360
+dan sinyalnya kembali seimbang,
+
+31
+00:00:48,380 --> 00:00:50,250
+sensasi berputar itu mereda.
+
+32
+00:00:52,300 --> 00:00:56,200
+Di MEDCOEL, jelajahi Atlas 3D dan Live 4D Lab.
+
+33
+00:00:56,420 --> 00:01:00,220
+Lanjut belajar lewat materi, latihan soal, dan Simulasi Dokter.
+
+34
+00:01:00,520 --> 00:01:02,660
+Gratis di medcoel.com.
+

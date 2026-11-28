@@ -1,0 +1,91 @@
+{
+ "durasi_edu": 51.6,
+ "potong_narasi": 50.21,
+ "skalar_normalisasi": 1.2809,
+ "sfx": [
+  {
+   "t": 6.2,
+   "sfx": "lensa-ke-telinga-dalam"
+  },
+  {
+   "t": 6.95,
+   "sfx": "lensa-jernih"
+  },
+  {
+   "t": 7.15,
+   "sfx": "judul"
+  },
+  {
+   "t": 8.4,
+   "sfx": "label"
+  },
+  {
+   "t": 10.85,
+   "sfx": "judul"
+  },
+  {
+   "t": 11.5,
+   "sfx": "desir-cairan (amplitudo mengikuti kecepatan cairan)"
+  },
+  {
+   "t": 14.15,
+   "sfx": "judul"
+  },
+  {
+   "t": 15.9,
+   "sfx": "judul"
+  },
+  {
+   "t": 16.95,
+   "sfx": "panel-pembesaran"
+  },
+  {
+   "t": 17.15,
+   "sfx": "judul"
+  },
+  {
+   "t": 18.8,
+   "sfx": "judul"
+  },
+  {
+   "t": 19.0,
+   "sfx": "label"
+  },
+  {
+   "t": 20.1,
+   "sfx": "label"
+  },
+  {
+   "t": 21.5,
+   "sfx": "judul"
+  },
+  {
+   "t": 25.0,
+   "sfx": "judul"
+  },
+  {
+   "t": 31.45,
+   "sfx": "judul"
+  },
+  {
+   "t": 32.38,
+   "sfx": "dinding-berhenti-tok"
+  },
+  {
+   "t": 34.95,
+   "sfx": "judul"
+  },
+  {
+   "t": 40.0,
+   "sfx": "judul"
+  },
+  {
+   "t": 45.45,
+   "sfx": "judul"
+  },
+  {
+   "t": 48.1,
+   "sfx": "sensasi-mereda-kilau"
+  }
+ ]
+}
