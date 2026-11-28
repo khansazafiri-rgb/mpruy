@@ -1,0 +1,259 @@
+{
+ "dur": 74.1,
+ "edu_dur": 57.9,
+ "outro_dur": 16.2,
+ "mode": "perkiraan",
+ "sent": {
+  "s1": [
+   0.0,
+   3.99
+  ],
+  "s2": [
+   4.53,
+   6.0
+  ],
+  "s3": [
+   6.94,
+   11.35
+  ],
+  "s4": [
+   11.89,
+   16.3
+  ],
+  "s5": [
+   17.04,
+   21.45
+  ],
+  "s6": [
+   21.99,
+   24.72
+  ],
+  "s7": [
+   25.26,
+   30.93
+  ],
+  "s8": [
+   31.47,
+   35.04
+  ],
+  "s9": [
+   35.78,
+   41.87
+  ],
+  "s10": [
+   42.61,
+   50.8
+  ],
+  "s11": [
+   51.04,
+   57.55
+  ]
+ },
+ "w": {
+  "angin": 0.72,
+  "berdiri": 3.41,
+  "menariknya": 5.2,
+  "mendeteksi": 7.27,
+  "suhu": 8.4,
+  "respons1": 10.03,
+  "dingin1": 10.96,
+  "simpatik": 14.06,
+  "folikel1": 15.41,
+  "samping": 17.27,
+  "folikel2": 18.3,
+  "otot": 19.14,
+  "arrector": 20.46,
+  "sinyal": 22.86,
+  "berkontraksi": 23.92,
+  "pangkal": 25.26,
+  "tertarik": 26.13,
+  "batang": 26.69,
+  "tegak": 28.32,
+  "permukaan": 28.97,
+  "terangkat": 30.35,
+  "tonjolan": 31.47,
+  "merinding1": 34.49,
+  "hewan": 36.11,
+  "udara": 40.69,
+  "menahan": 39.68,
+  "manusia": 42.61,
+  "sedikit": 46.85,
+  "bukan": 48.43,
+  "kehangatan": 50.17,
+  "lain": 52.7,
+  "aliran": 55.13,
+  "menggigil": 56.88
+ },
+ "cap": [
+  [
+   0.0,
+   2.25,
+   "Baru kena angin dingin, bulu di"
+  ],
+  [
+   2.29,
+   4.11,
+   "lengan langsung berdiri."
+  ],
+  [
+   4.53,
+   6.12,
+   "Apa yang menariknya?"
+  ],
+  [
+   6.94,
+   8.36,
+   "Kulit mendeteksi perubahan"
+  ],
+  [
+   8.4,
+   9.99,
+   "suhu, lalu tubuh mengaktifkan"
+  ],
+  [
+   10.03,
+   11.47,
+   "respons terhadap dingin."
+  ],
+  [
+   11.89,
+   13.66,
+   "Salah satu jalurnya melibatkan"
+  ],
+  [
+   13.7,
+   15.37,
+   "saraf simpatik yang mencapai"
+  ],
+  [
+   15.41,
+   16.42,
+   "folikel rambut."
+  ],
+  [
+   17.04,
+   19.1,
+   "Di samping setiap folikel ada"
+  ],
+  [
+   19.14,
+   21.03,
+   "otot kecil bernama arrector"
+  ],
+  [
+   21.07,
+   21.57,
+   "pili."
+  ],
+  [
+   21.99,
+   23.88,
+   "Saat mendapat sinyal, otot ini"
+  ],
+  [
+   23.92,
+   24.84,
+   "berkontraksi."
+  ],
+  [
+   25.26,
+   27.06,
+   "Pangkal rambut tertarik, batang"
+  ],
+  [
+   27.1,
+   28.93,
+   "rambut menjadi lebih tegak, dan"
+  ],
+  [
+   28.97,
+   30.31,
+   "permukaan kulit sedikit"
+  ],
+  [
+   30.35,
+   31.05,
+   "terangkat."
+  ],
+  [
+   31.47,
+   33.11,
+   "Tonjolan-tonjolan kecil itulah"
+  ],
+  [
+   33.15,
+   34.45,
+   "yang kita lihat sebagai"
+  ],
+  [
+   34.49,
+   35.16,
+   "merinding."
+  ],
+  [
+   35.78,
+   37.41,
+   "Pada hewan berbulu tebal,"
+  ],
+  [
+   37.45,
+   39.07,
+   "rambut yang berdiri dapat"
+  ],
+  [
+   39.11,
+   41.04,
+   "membantu menahan lapisan udara"
+  ],
+  [
+   41.08,
+   41.99,
+   "dekat kulit."
+  ],
+  [
+   42.61,
+   44.34,
+   "Manusia masih memiliki respons"
+  ],
+  [
+   44.38,
+   46.06,
+   "tersebut, tetapi rambut tubuh"
+  ],
+  [
+   46.1,
+   47.82,
+   "kita relatif sedikit, sehingga"
+  ],
+  [
+   47.86,
+   49.67,
+   "merinding bukan cara utama kita"
+  ],
+  [
+   49.71,
+   50.92,
+   "menjaga kehangatan."
+  ],
+  [
+   51.04,
+   53.0,
+   "Tubuh juga punya respons lain"
+  ],
+  [
+   53.04,
+   55.09,
+   "saat dingin, seperti mengurangi"
+  ],
+  [
+   55.13,
+   56.84,
+   "aliran darah ke kulit dan"
+  ],
+  [
+   56.88,
+   57.67,
+   "menggigil."
+  ]
+ ]
+}
