@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "evidenceOrigin": "Executed workstation scripts plus CUA DOM and screenshots before workstation disconnect",
+  "sourceBaseCommit": "e0215ef6dc8e3a722a324ee68c6af5d2e4137dd0",
+  "codeChangesIncludedInThisCheckpoint": false,
+  "productionDeployed": false,
+  "productionDatabaseBackupExecuted": false,
+  "releaseOperatorApproval": false,
+  "body": {
+    "modelsHashVerified": 1016,
+    "rightsLedgerSHA256": "6a077ac1bc67d586cbe24cc9bd22c8cda0eca961f91752324ef6c0a51c751f8a",
+    "rightsLedgerGitBlob": "88184033736c1c0dbc3b3cecefe6fcfca3a736da",
+    "bytes": 317127224,
+    "triangles": 4377502,
+    "renderedVisible": 1016,
+    "failedModels": 0,
+    "queuedModels": 0,
+    "visibleSourceMeshesNotWholeStructures": 1570,
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "mobileHorizontalOverflow": false,
+    "mobilePresetClippingFixed": true
+  },
+  "finalLocalPackage": {
+    "path": "/tmp/medcoel-licensed-release-20261128-integrated",
+    "assetSetSHA256": "6e6de134b9ae06c01df65e746f7f671802faf2a851ed221b569b776141038fa3",
+    "packageContentsSHA256": "2f9b6e92dd3dd49b032ca9b1b33231082a2d3c9a5ba318fc37bbf3ca90730697",
+    "bytes": 321680470,
+    "viewerTestsPassed": 65,
+    "webTestsPassed": 174,
+    "mainWebBuild": "PASS",
+    "mainWebDistributionScan": "PASS",
+    "rootWebDependencyVulnerabilities": 0,
+    "viewerDependencyVulnerabilities": 0,
+    "finalBodyRenderingAndMobile": "PASS",
+    "sameOriginHostBrowserReplay": "INTERRUPTED_BY_WORKSTATION_DISCONNECT"
+  },
+  "interactions": {
+    "testedPackageContentsSHA256": "6238fa649e1f309307e094a57df356980a663a4e4ef60af7156aca3dbbb93b14",
+    "searchIdentity": "left ulna, FMA23468, BP9070",
+    "goldHighlight": true,
+    "isolatedVisibleMeshes": 1,
+    "hideUndoFadeRestore": true,
+    "guidedSourceCheckpointsOpened": 1,
+    "guidedCheckpoint": "abdominal aorta, FMA3789",
+    "challengeMCQCorrect": true,
+    "challengeTypedCorrect": true,
+    "scope": "These interactions were observed on first concrete build. Final build adds async cancellation, mobile controls and scoped host handshake; complete final interaction and host replay remains open."
+  },
+  "hra": {
+    "assetsHashAndProvenanceVerified": 80,
+    "failed": 0,
+    "bytes": 465864856,
+    "meshesNotStructures": 1704,
+    "rightsLedgerSHA256": "6f9152bf7f99c69d1072972a7e2e9d1f581584bab7be9b705f16cf081a191939"
+  },
+  "bp40": {
+    "oldArchiveSHA256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e",
+    "newArchiveSHA256": "ac7d9ab0b3d75b4c75445f0f39e3782f309bbb321d2191f449773107ae504793",
+    "oldBytes": 142903898,
+    "newBytes": 142717267,
+    "comparedOBJ": 2234,
+    "exactTwoCommentOnlyChanges": 2234,
+    "geometryCommandChanges": 0,
+    "trianglesPerArchive": 6680881,
+    "reconstructedOldRawMemberHashes": 2234,
+    "oldZIPReconstructed": false,
+    "regressionTestsPassed": 12,
+    "historicalGLBProvenanceChanged": false
+  },
+  "additionalSources": {
+    "voxelman": {
+      "singleLabelCandidates": 21,
+      "publisherExplicitLabelUnions": 12,
+      "sourceGLBs": 33,
+      "roundtripPass": 33,
+      "triangles": 3280836,
+      "bytes": 59135260,
+      "sourceTIFFs": 774,
+      "sourceVolumeShape": [
+        774,
+        330,
+        573
+      ],
+      "decodedUint16LESHA256": "eb9751c32b37ac71c4409a31c11a32f7bc246219e587cce90ea0942bb61208b4",
+      "downloadedZIPHashReverifiedThisRun": false,
+      "frame": "voxel-index-ZYX; physical spacing and anatomical orientation not independently verified",
+      "larynxCropped": true
+    },
+    "openEar": {
+      "sourceGLBs": 3,
+      "sourceNames": [
+        "Incus",
+        "Malleus",
+        "Stapes"
+      ],
+      "publisherMD5Verified": 3,
+      "laterality": "unspecified; does not close six sided gaps"
+    },
+    "actualBrowser": {
+      "renderedPass": 36,
+      "renderedFail": 0,
+      "viewPass": 108,
+      "resourceDisposalPass": 36,
+      "pageErrors": 0,
+      "engineBaseline": {
+        "geometries": 0,
+        "textures": 1,
+        "reason": "Three.js 0.185 DFG LUT retained after discarded engineering box warm-up; not a medical asset"
+      },
+      "receiptPath": "/tmp/medcoel-source-qc-20261128/actual-browser-receipt-final.json"
+    },
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "approvedForDistribution": false,
+    "wholeStructuresNewlyValidated": 0
+  },
+  "gaps": {
+    "baselineUnresolved": 118,
+    "exactLabelCandidateTargets": 19,
+    "withoutExactCandidatesInBoundedSet": 99,
+    "actualGLBsVerified": 116,
+    "wholeGapsClosed": 0,
+    "externalHoldsPreserved": 12,
+    "sidedOssicleGapsStillOpen": 6,
+    "receiptSHA256": "59e50be8cb5d3a1aaf0ebece117a5d080f0f5fd14eef08099ed384fd75634090"
+  },
+  "release": {
+    "localEngineeringStageActivationRollbackTestsPassed": 5,
+    "productionBackupAndRestore": "NOT_EXECUTED",
+    "protectedStaging": "PENDING",
+    "clinicalAndReleaseAcceptance": "PENDING",
+    "workstationSourceCodeIntegration": "LOCAL_ONLY_PENDING_PUSH",
+    "note": "Restoring a technically rendered subset does not mean 100% anatomical coverage or release authorization."
+  },
+  "resume": {
+    "workingCopy": "/tmp/medcoel-recovery-20261127",
+    "expectedWorkingBranch": "feat/atlas-ws6-ws7-20261127",
+    "retainedOriginalRepository": "/Users/kons/mpruy",
+    "copyOriginalRepoChanges": false,
+    "sourcePatchDirectories": [
+      "/tmp/medcoel-public-subset-finished-20261128",
+      "/tmp/medcoel-bp40-integration",
+      "/tmp/medcoel-source-qc-20261128",
+      "/tmp/medcoel-gap118-integration"
+    ],
+    "next": [
+      "Reconnect workstation and inspect git diff/status, preserving original ~/mpruy changes",
+      "Reverify final package digest and receipt before copying or activation",
+      "Finish same-origin HumanAnatomy host browser replay and final interaction replay",
+      "Run source repro/actual browser CI and integrated regression on one grouped source commit",
+      "Push complete source changes to the existing PR #327 without reverting this evidence checkpoint",
+      "Complete real production backup, protected staging and operator release authorization before cutover"
+    ]
+  }
+}
