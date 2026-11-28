@@ -64,7 +64,7 @@ export async function checkLicensedSubset(fetcher,signal,subtle=globalThis.crypt
  const d=JSON.parse(text);if(d.product!==LICENSED_SUBSET_PRODUCT||d.mode!=='licensed-educational-subset'||d.assetSetSHA256!==LICENSED_SUBSET_PIN||d.entries?.length!==1016||d.clinicalValidation!==false||d.registrationValidated!==false)throw Error('Unknown subset');
  const rows=d.entries.map(e=>[e.id,e.name,e.group,e.fmaId,e.bpId,e.path,e.sha256,e.bytes,e.license]).sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
  if(!subtle)throw Error('Checksum unavailable');
- const hash=[...new Uint8Array(await subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(rows))))].map(x=>x.toString(16).padStart(2,'0')).join('');
+ const hash=[...new Uint8Array(await subtle.digest('SHA-256',new globalThis.TextEncoder().encode(JSON.stringify(rows))))].map(x=>x.toString(16).padStart(2,'0')).join('');
  if(hash!==LICENSED_SUBSET_PIN)throw Error('Subset inventory checksum differs');
  return {viewerMounted:true,catalogMounted:false,licensedSubsetMounted:true,assetSetSHA256:hash};
 }
