@@ -1,0 +1,15 @@
+{
+  "ledgerSHA256": "6a077ac1bc67d586cbe24cc9bd22c8cda0eca961f91752324ef6c0a51c751f8a",
+  "assets": 1016,
+  "sourceElementOccurrences": 1570,
+  "distinctSourceMembersByTree": {
+    "isa": 1406,
+    "partof": 164
+  },
+  "triangles": 4377502,
+  "bytes": 317127224,
+  "passed": 1016,
+  "failed": 0,
+  "releaseAuthorized": false,
+  "noPrivateInventoryFlagsChanged": true
+}

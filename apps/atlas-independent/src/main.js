@@ -1,3 +1,5 @@
+import {subsetBuildPin,subsetHostAllowed,verifySubsetInventory,verifiedSubsetModel} from './public-subset.js';
+import {mountSubsetLearning} from './public-learning.js';
 import {mountGuided} from './guided-panel.js';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
@@ -14,8 +16,10 @@ import {viewFrame} from './view-frame.js';
 import {validateElementCatalog,elementKey,elementKeys,meshElementId,hasExactElements} from './element-selection.js';
 const $=id=>document.getElementById(id);
 const base=import.meta.env.BASE_URL;
+const publicPin=subsetBuildPin(),publicSubset=!!publicPin;
+const permittedHost=()=>location.hostname==='127.0.0.1'||publicSubset&&subsetHostAllowed(location.hostname,publicPin);
 let hostState={state:'loading',message:'Menyiapkan inventaris dan model awal…'};
-function notifyHost(state=hostState.state,message=hostState.message){hostState={state,message:String(message).slice(0,240)};if(window.parent!==window&&location.hostname==='127.0.0.1')window.parent.postMessage({type:STATUS,version:1,...hostState},location.origin);}
+function notifyHost(state=hostState.state,message=hostState.message){hostState={state,message:String(message).slice(0,240)};if(window.parent!==window&&permittedHost())window.parent.postMessage({type:STATUS,version:1,...hostState,...(publicSubset?{product:'medcoel-human-anatomy-independent-subset',assetSetSHA256:publicPin}:{})},location.origin);}
 window.addEventListener('message',event=>{if(window.parent!==window&&validPing(event,location.origin,window.parent))notifyHost();});
 const colors={skeletal:0xe9dcc3,muscular:0xad4e50,joints:0x96bbc6,arterial:0xd43e48,venous:0x3e6cbb,heart:0xa93949,nervous:0xe7bd50,lymphatic:0x4b9c72,respiratory:0xd991a0,digestive:0xd39c87,urinary:0x9e4553,reproductive:0xcaa7a0,endocrine:0x9d82bf,brain:0xcaa7a0,spinalCord:0xe1c6b0,lymphNode:0x4b9c72,lymphTrunk:0x278b78,lymphVessel:0x83c9a3,spleen:0x875279,pleura:0xb3a0a7,airway:0x94c3bf};
 const scene=new THREE.Scene(),body=new THREE.Group();scene.add(body);
@@ -85,7 +89,7 @@ function sync(){refreshElementSets();for(const obj of cache.values()){obj.visibl
 function select(e){
  selected=e;updateAppearance();
  $('selectionActions').hidden=!e;
- $('info').textContent=e?e.name+' · '+groups[e.group]+(e.fmaId?' · '+e.fmaId+' / '+e.bpId:'')+' · kandidat belum disetujui':'';originalUI?.render();
+ $('info').textContent=e?e.name+' · '+groups[e.group]+(e.fmaId?' · '+e.fmaId+' / '+e.bpId:'')+(publicSubset?' · label sumber penerbit':' · kandidat belum disetujui'):'';originalUI?.render();
 }
 // Bound concurrent network/decoder work across overlapping study changes.
 let activeLoads=0;const waitingLoads=[];
@@ -101,7 +105,7 @@ async function load(e){
   await acquireLoad();
   try{
    if(!baseVisible(e,study))return;
-   const g=await loader.loadAsync(base+e.path);
+   let g;if(publicSubset){const response=await fetch(base+e.path,{cache:'no-store'});if(!response.ok)throw Error('Model subset tidak tersedia');const bytes=await verifiedSubsetModel(await response.arrayBuffer(),e);g=await loader.parseAsync(bytes,new URL(base,location.href).href);}else g=await loader.loadAsync(base+e.path);
    const importedMaterials=new Set(),textures=new Set(),meshes=[],elementIds=new Set();
    g.scene.traverse(m=>{if(m.isMesh){for(const mat of [].concat(m.material||[])){if(!mat)continue;importedMaterials.add(mat);for(const value of Object.values(mat))if(value?.isTexture)textures.add(value);}m.userData.entry=e;const el=meshElementId(m);if(el){m.userData.elementKey=elementKey(e.id,el);elementIds.add(el);}meshes.push(m);}});
    g.scene.userData.entry=e;g.scene.userData.meshes=meshes;g.scene.userData.elementIds=elementIds;g.scene.userData.geometryBytes=geometryBytes(g.scene);g.scene.userData.lastUsed=++cacheClock;
@@ -269,17 +273,20 @@ async function chooseEntry(e){
 }
 async function init(){
  groupControls();
- if(location.hostname!=='127.0.0.1'){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
- try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Tampilan anterior sumber BP3D · Z superior · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;configureSourceFrame(true);}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent){await initElementSelection();await initPriority();}notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
+ if(!permittedHost()){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
+ try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=publicSubset?await verifySubsetInventory(doc,location.hostname,publicPin):validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Tampilan anterior sumber BP3D · Z superior · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;configureSourceFrame(true);}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=publicSubset?'Subset BodyParts3D berlisensi CC BY 4.0 untuk pembelajaran. Koordinat sumber dipertahankan; klasifikasi sistem sementara. Bukan validasi klinis.':independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent&&!publicSubset){await initElementSelection();await initPriority();}notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':publicSubset?'Viewer subset berlisensi siap.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
-const referenceViewer=mountReferences(base);
-const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,openReference:referenceViewer.open43,openHra:referenceViewer.openHra,ready:()=>initialized});
+const referenceViewer=publicSubset?{open43:()=>{},openHra:()=>{}}:mountReferences(base);
+const privateGuided=publicSubset?null:mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,openReference:referenceViewer.open43,openHra:referenceViewer.openHra,ready:()=>initialized});
+const learning=publicSubset?mountSubsetLearning({groups,entries:()=>entries,choose:chooseEntry,quizChoose:async e=>{const ok=await chooseEntry(e);if(ok){study.isolated=e.id;sync();focus(e);}return ok;},snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},ready:()=>initialized}):null;
+const openGuided=publicSubset?learning.guided:privateGuided;
 $('openGuided').onclick=openGuided;
 originalUI=mountOriginalShell({
+ publicSubset,challenge:()=>learning?.challenge(),
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
  state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleModels:[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length,failedModels:failed.size,visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0),highlightedMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')).length:0),0)}),
- status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
+ status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · '+(publicSubset?'subset berlisensi':'review privat')+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},
  reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),references43:()=>$('open43References').click(),guided:openGuided,
@@ -296,7 +303,7 @@ originalUI=mountOriginalShell({
 const initialized=init().finally(()=>{originalReady=true;originalUI?.render();});
 let libraryRevision=0;
 window.addEventListener('message',async event=>{
- if(location.hostname!=='127.0.0.1'||!validOpen(event,location.origin,window.parent,window))return;
+ if(!permittedHost()||!validOpen(event,location.origin,window.parent,window))return;
  const command=event.data,tick=++libraryRevision;
  await initialized;if(tick!==libraryRevision)return;
  let result;

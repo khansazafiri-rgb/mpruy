@@ -1,0 +1,1755 @@
+{
+  "schema": 1,
+  "harness": "MEDCOEL actual source WebGL QC v1",
+  "startedAt": "2026-11-28T05:50:46.183Z",
+  "rows": [
+    {
+      "id": "sio-5554c38ffe8fd6b69e26f7d4",
+      "name": "cystic duct",
+      "source": "VOXEL-MAN",
+      "sha256": "94ceda8ec1277a643bf0e0b36f9a7628170c3d625d54e70d3d60a05945eef7f5",
+      "expectedTriangles": 736,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 14381,
+          "renderedTriangles": 736,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 12809,
+          "renderedTriangles": 736,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 17092,
+          "renderedTriangles": 736,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 736,
+      "decodedGeometryBufferBytes": 17856,
+      "loadMilliseconds": 116.6,
+      "sourceBounds": {
+        "min": [
+          290.5,
+          161.5,
+          233.5
+        ],
+        "max": [
+          301.5,
+          171.5,
+          255.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 999
+    },
+    {
+      "id": "sio-4f8309ff1a40fe5cbb017e55",
+      "name": "duodenum (retroperitoneal part)",
+      "source": "VOXEL-MAN",
+      "sha256": "7f27dfd399186c32e7ab2b167e49aaf98ccb3737c521b03adee7979f11a6c8ed",
+      "expectedTriangles": 95476,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 27676,
+          "renderedTriangles": 95476,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 34740,
+          "renderedTriangles": 95476,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 22927,
+          "renderedTriangles": 95476,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 95476,
+      "decodedGeometryBufferBytes": 2304576,
+      "loadMilliseconds": 117,
+      "sourceBounds": {
+        "min": [
+          290.5,
+          138.5,
+          240.5
+        ],
+        "max": [
+          410.5,
+          195.5,
+          340.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 894.1
+    },
+    {
+      "id": "sio-b5d7b5d5538307a26695f1e0",
+      "name": "left renal medulla",
+      "source": "VOXEL-MAN",
+      "sha256": "d198ed809bdca940808b054b7b50b777bc147b5cc8b8a2d75a703d1966e06232",
+      "expectedTriangles": 52812,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 21009,
+          "renderedTriangles": 52812,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 27146,
+          "renderedTriangles": 52812,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 34404,
+          "renderedTriangles": 52812,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 52812,
+      "decodedGeometryBufferBytes": 1270752,
+      "loadMilliseconds": 107,
+      "sourceBounds": {
+        "min": [
+          313.5,
+          78.5,
+          333.5
+        ],
+        "max": [
+          401.5,
+          148.5,
+          393.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 716.9
+    },
+    {
+      "id": "sio-c35bb3c9aaac7ce729299966",
+      "name": "right renal medulla",
+      "source": "VOXEL-MAN",
+      "sha256": "c26322dc2d2e893ebea191926d84ca407466678974bd33e852e9d8489fca20ce",
+      "expectedTriangles": 39188,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 22456,
+          "renderedTriangles": 39188,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 24875,
+          "renderedTriangles": 39188,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 29747,
+          "renderedTriangles": 39188,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 39188,
+      "decodedGeometryBufferBytes": 942672,
+      "loadMilliseconds": 57.1,
+      "sourceBounds": {
+        "min": [
+          327.5,
+          97.5,
+          205.5
+        ],
+        "max": [
+          423.5,
+          160.5,
+          252.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 845.8
+    },
+    {
+      "id": "sio-2d50b924526b4ed8352d7ec3",
+      "name": "trachea lumen",
+      "source": "VOXEL-MAN",
+      "sha256": "3157ac17d2ce7a6849961b376c65120e344dd79201a7a97d7ee0aaeb50e1191d",
+      "expectedTriangles": 22652,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 20435,
+          "renderedTriangles": 22652,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 18489,
+          "renderedTriangles": 22652,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 6298,
+          "renderedTriangles": 22652,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 22652,
+      "decodedGeometryBufferBytes": 543696,
+      "loadMilliseconds": 124.4,
+      "sourceBounds": {
+        "min": [
+          5.5,
+          132.5,
+          267.5
+        ],
+        "max": [
+          134.5,
+          193.5,
+          301.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 818.5
+    },
+    {
+      "id": "sio-b32aa1e2c6ff19f7ab23af9b",
+      "name": "left atrium",
+      "source": "VOXEL-MAN",
+      "sha256": "deb76c19dac4ba283150755e89615ebbae78e284e30a67eb68a671aa0b3bcaf0",
+      "expectedTriangles": 9104,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 13759,
+          "renderedTriangles": 9104,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 9021,
+          "renderedTriangles": 9104,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 20424,
+          "renderedTriangles": 9104,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 9104,
+      "decodedGeometryBufferBytes": 220416,
+      "loadMilliseconds": 39.4,
+      "sourceBounds": {
+        "min": [
+          149.5,
+          125.5,
+          267.5
+        ],
+        "max": [
+          197.5,
+          165.5,
+          333.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 974.4
+    },
+    {
+      "id": "sio-d5349a4246028f1625054c90",
+      "name": "right atrium",
+      "source": "VOXEL-MAN",
+      "sha256": "13593838c91b14c9d8871e5385972a522915669cd8fb4c40ea6cd0316ac31191",
+      "expectedTriangles": 58300,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 40490,
+          "renderedTriangles": 58300,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 46701,
+          "renderedTriangles": 58300,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 33866,
+          "renderedTriangles": 58300,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 58300,
+      "decodedGeometryBufferBytes": 1395648,
+      "loadMilliseconds": 102.8,
+      "sourceBounds": {
+        "min": [
+          136.5,
+          141.5,
+          250.5
+        ],
+        "max": [
+          226.5,
+          208.5,
+          310.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1033.3
+    },
+    {
+      "id": "sio-8dceb0091bb83a481a499d0e",
+      "name": "left ventricle",
+      "source": "VOXEL-MAN",
+      "sha256": "8ba20c605eb13ca3832fce203fddd816b892c676e740ab9d85f4dc263d42c1ec",
+      "expectedTriangles": 13808,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 13954,
+          "renderedTriangles": 13808,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 20977,
+          "renderedTriangles": 13808,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 19898,
+          "renderedTriangles": 13808,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 13808,
+      "decodedGeometryBufferBytes": 331008,
+      "loadMilliseconds": 76.1,
+      "sourceBounds": {
+        "min": [
+          168.5,
+          152.5,
+          302.5
+        ],
+        "max": [
+          214.5,
+          210.5,
+          356.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 749.7
+    },
+    {
+      "id": "sio-5b6fc9ce7d7736a3bc4843e1",
+      "name": "right ventricle",
+      "source": "VOXEL-MAN",
+      "sha256": "f4ffc0085c566ca5b53c823af5f452a88093190309227f0cb268b02feabe433c",
+      "expectedTriangles": 67092,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 31106,
+          "renderedTriangles": 67092,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 39798,
+          "renderedTriangles": 67092,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 37209,
+          "renderedTriangles": 67092,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 67092,
+      "decodedGeometryBufferBytes": 1604592,
+      "loadMilliseconds": 175.8,
+      "sourceBounds": {
+        "min": [
+          171.5,
+          171.5,
+          273.5
+        ],
+        "max": [
+          240.5,
+          230.5,
+          350.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1043.4
+    },
+    {
+      "id": "sio-25ffaa1665884094532228a1",
+      "name": "myocardium",
+      "source": "VOXEL-MAN",
+      "sha256": "1da3e076a12f1340050b87da71ffa278e3208ba710751fbff701114126836130",
+      "expectedTriangles": 389956,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 35639,
+          "renderedTriangles": 389956,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 41431,
+          "renderedTriangles": 389956,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 46872,
+          "renderedTriangles": 389956,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 389956,
+      "decodedGeometryBufferBytes": 9348528,
+      "loadMilliseconds": 158.8,
+      "sourceBounds": {
+        "min": [
+          111.5,
+          116.5,
+          248.5
+        ],
+        "max": [
+          242.5,
+          237.5,
+          376.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 843.7
+    },
+    {
+      "id": "sio-eed075cfad0ab2acfaa2e5fa",
+      "name": "pericardium",
+      "source": "VOXEL-MAN",
+      "sha256": "9fcbb3b31ac49bf5678459921b39c0d473e5e7c7352ce16cafbcb23dd2d3209a",
+      "expectedTriangles": 325784,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 27238,
+          "renderedTriangles": 325784,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 31872,
+          "renderedTriangles": 325784,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 34820,
+          "renderedTriangles": 325784,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 325784,
+      "decodedGeometryBufferBytes": 7807056,
+      "loadMilliseconds": 183.8,
+      "sourceBounds": {
+        "min": [
+          79.5,
+          122.5,
+          236.5
+        ],
+        "max": [
+          248.5,
+          247.5,
+          383.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 888.8
+    },
+    {
+      "id": "sio-4d4eb151fa6f5cad1e262bd1",
+      "name": "pulmonary trunk",
+      "source": "VOXEL-MAN",
+      "sha256": "5f35b35b3293bfd5087b1af04f3eb97b4b5d42cf269f1ce5e7938cb61795064b",
+      "expectedTriangles": 21608,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 17212,
+          "renderedTriangles": 21608,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 26538,
+          "renderedTriangles": 21608,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 29599,
+          "renderedTriangles": 21608,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 21608,
+      "decodedGeometryBufferBytes": 520800,
+      "loadMilliseconds": 39.7,
+      "sourceBounds": {
+        "min": [
+          128.5,
+          157.5,
+          296.5
+        ],
+        "max": [
+          201.5,
+          221.5,
+          333.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 754.5
+    },
+    {
+      "id": "sio-a6242c9cee6ac365741994c9",
+      "name": "pulmonary arteries",
+      "source": "VOXEL-MAN",
+      "sha256": "ef213d3698250f20067b04046d55e389377c674301cb9a93324f2a704bc4e307",
+      "expectedTriangles": 153224,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 21040,
+          "renderedTriangles": 153224,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 15594,
+          "renderedTriangles": 153224,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 18717,
+          "renderedTriangles": 153224,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 153224,
+      "decodedGeometryBufferBytes": 3680112,
+      "loadMilliseconds": 253.9,
+      "sourceBounds": {
+        "min": [
+          57.5,
+          63.5,
+          182.5
+        ],
+        "max": [
+          240.5,
+          215.5,
+          401.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1096.5
+    },
+    {
+      "id": "sio-7afa29fba24a4e22feadc270",
+      "name": "pulmonary veins",
+      "source": "VOXEL-MAN",
+      "sha256": "7b12a64495606458c2693d25b931d75595faa74685e4db332c184ed609824704",
+      "expectedTriangles": 175676,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 22734,
+          "renderedTriangles": 175676,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 15572,
+          "renderedTriangles": 175676,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 19224,
+          "renderedTriangles": 175676,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 175676,
+      "decodedGeometryBufferBytes": 4212816,
+      "loadMilliseconds": 307,
+      "sourceBounds": {
+        "min": [
+          67.5,
+          60.5,
+          171.5
+        ],
+        "max": [
+          248.5,
+          166.5,
+          398.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1286.1
+    },
+    {
+      "id": "sio-a07834fc9a64d6f7144a4567",
+      "name": "portal vein",
+      "source": "VOXEL-MAN",
+      "sha256": "c683a880e9b991511d7f0c8c3427dc9cd827448741cfdb91d0dd1d8fea257842",
+      "expectedTriangles": 56212,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 13547,
+          "renderedTriangles": 56212,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 14605,
+          "renderedTriangles": 56212,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 15638,
+          "renderedTriangles": 56212,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 56212,
+      "decodedGeometryBufferBytes": 1349424,
+      "loadMilliseconds": 346.9,
+      "sourceBounds": {
+        "min": [
+          249.5,
+          65.5,
+          169.5
+        ],
+        "max": [
+          356.5,
+          212.5,
+          319.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 992.5
+    },
+    {
+      "id": "sio-f16ebe828ed03b4b55853d31",
+      "name": "inferior mesenteric vein",
+      "source": "VOXEL-MAN",
+      "sha256": "a7a6178f09bc36bf334e7d1ed21299473b2bad46f2e0ebfb9b00480a7e518749",
+      "expectedTriangles": 5840,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 5116,
+          "renderedTriangles": 5840,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 6642,
+          "renderedTriangles": 5840,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 4221,
+          "renderedTriangles": 5840,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 5840,
+      "decodedGeometryBufferBytes": 140016,
+      "loadMilliseconds": 72,
+      "sourceBounds": {
+        "min": [
+          328.5,
+          150.5,
+          317.5
+        ],
+        "max": [
+          450.5,
+          171.5,
+          361.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 862.4
+    },
+    {
+      "id": "sio-37e62d93e9f95ea9bd455b15",
+      "name": "superior mesenteric vein",
+      "source": "VOXEL-MAN",
+      "sha256": "7fcb3daa353e7be9bb231091b56c15b1537371d5bda524a68e0282c24eba24a0",
+      "expectedTriangles": 25740,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 6390,
+          "renderedTriangles": 25740,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 9531,
+          "renderedTriangles": 25740,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 8568,
+          "renderedTriangles": 25740,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 25740,
+      "decodedGeometryBufferBytes": 619104,
+      "loadMilliseconds": 27.6,
+      "sourceBounds": {
+        "min": [
+          317.5,
+          167.5,
+          264.5
+        ],
+        "max": [
+          500.5,
+          233.5,
+          371.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 868.8
+    },
+    {
+      "id": "sio-4e964eb91c349c113f64fefb",
+      "name": "pancreas",
+      "source": "VOXEL-MAN",
+      "sha256": "4ffc24f9a6c05ef9debdaa19b7acc70a056b99b64f981496c50bc8613f7412f2",
+      "expectedTriangles": 81424,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 29711,
+          "renderedTriangles": 81424,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 28608,
+          "renderedTriangles": 81424,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 26656,
+          "renderedTriangles": 81424,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 81424,
+      "decodedGeometryBufferBytes": 1963728,
+      "loadMilliseconds": 90.6,
+      "sourceBounds": {
+        "min": [
+          280.5,
+          109.5,
+          259.5
+        ],
+        "max": [
+          371.5,
+          198.5,
+          373.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 946.1
+    },
+    {
+      "id": "sio-fc41372aceffe511ab23d15f",
+      "name": "cardia",
+      "source": "VOXEL-MAN",
+      "sha256": "07ac6674a16cfb30a2b73ac81f17bd27597f9e41884c844b49e4bad5640daa02",
+      "expectedTriangles": 9532,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 59833,
+          "renderedTriangles": 9532,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 60064,
+          "renderedTriangles": 9532,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 40835,
+          "renderedTriangles": 9532,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 9532,
+      "decodedGeometryBufferBytes": 228864,
+      "loadMilliseconds": 42.3,
+      "sourceBounds": {
+        "min": [
+          243.5,
+          121.5,
+          311.5
+        ],
+        "max": [
+          278.5,
+          160.5,
+          337.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 811.2
+    },
+    {
+      "id": "sio-67b7b02557f0dd797bded020",
+      "name": "fundus of stomach",
+      "source": "VOXEL-MAN",
+      "sha256": "79ff7a648cd2ddedaddcdfcc7a3dd1717cc87073914f93119b280044d50772b2",
+      "expectedTriangles": 62080,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 59712,
+          "renderedTriangles": 62080,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 50583,
+          "renderedTriangles": 62080,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 56312,
+          "renderedTriangles": 62080,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 62080,
+      "decodedGeometryBufferBytes": 1490064,
+      "loadMilliseconds": 64.2,
+      "sourceBounds": {
+        "min": [
+          220.5,
+          81.5,
+          317.5
+        ],
+        "max": [
+          288.5,
+          176.5,
+          393.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 928.5
+    },
+    {
+      "id": "sio-42c6b9b5961568a0174046f2",
+      "name": "body of stomach",
+      "source": "VOXEL-MAN",
+      "sha256": "e52f132e2eb417aefa6d295790891966b908fee0ed799a409d4bf293d778a348",
+      "expectedTriangles": 77004,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 32074,
+          "renderedTriangles": 77004,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 25631,
+          "renderedTriangles": 77004,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 29745,
+          "renderedTriangles": 77004,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 77004,
+      "decodedGeometryBufferBytes": 1849056,
+      "loadMilliseconds": 43.7,
+      "sourceBounds": {
+        "min": [
+          232.5,
+          113.5,
+          290.5
+        ],
+        "max": [
+          328.5,
+          259.5,
+          381.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 791.2
+    },
+    {
+      "id": "sio-585f258f94fa66627ecfc49f",
+      "name": "left colic flexure",
+      "source": "VOXEL-MAN",
+      "sha256": "feffeb7e25e8fbb60706571eb94852d3c78ffe6dc6afe60b633fe19c600fa52d",
+      "expectedTriangles": 88536,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 28544,
+          "renderedTriangles": 88536,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 40767,
+          "renderedTriangles": 88536,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 28228,
+          "renderedTriangles": 88536,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 88536,
+      "decodedGeometryBufferBytes": 2128176,
+      "loadMilliseconds": 35.8,
+      "sourceBounds": {
+        "min": [
+          255.5,
+          109.5,
+          357.5
+        ],
+        "max": [
+          358.5,
+          226.5,
+          436.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 878.1
+    },
+    {
+      "id": "sio-e662fb97631b19c33566adaf",
+      "name": "right colic flexure",
+      "source": "VOXEL-MAN",
+      "sha256": "0ac20bb84aa7180eb92ab49cf4f86e2069ffb00a5e1c0f2e45c8546c8ff65de7",
+      "expectedTriangles": 130188,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 54848,
+          "renderedTriangles": 130188,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 49211,
+          "renderedTriangles": 130188,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 43066,
+          "renderedTriangles": 130188,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 130188,
+      "decodedGeometryBufferBytes": 3136608,
+      "loadMilliseconds": 81.3,
+      "sourceBounds": {
+        "min": [
+          288.5,
+          141.5,
+          174.5
+        ],
+        "max": [
+          399.5,
+          257.5,
+          272.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1522.7
+    },
+    {
+      "id": "sio-77f3be794a0ff6c1f46624b9",
+      "name": "scrotum",
+      "source": "VOXEL-MAN",
+      "sha256": "f184753e9e352c72d207a28a08cc9ce47fe98113f4fe36f172404e5ee18e1d98",
+      "expectedTriangles": 95608,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 35927,
+          "renderedTriangles": 95608,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 37768,
+          "renderedTriangles": 95608,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 28291,
+          "renderedTriangles": 95608,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 95608,
+      "decodedGeometryBufferBytes": 2292480,
+      "loadMilliseconds": 60.4,
+      "sourceBounds": {
+        "min": [
+          674.5,
+          129.5,
+          261.5
+        ],
+        "max": [
+          772.5,
+          232.5,
+          331.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1123.7
+    },
+    {
+      "id": "sio-589c5173e7136080dc8816e3",
+      "name": "left rectus abdominis",
+      "source": "VOXEL-MAN",
+      "sha256": "989669de3b9e819fc3e68da54c07bb0656cbbfd0a0b0e81f79122be805ab76f2",
+      "expectedTriangles": 186372,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 21010,
+          "renderedTriangles": 186372,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 13514,
+          "renderedTriangles": 186372,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 6079,
+          "renderedTriangles": 186372,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 186372,
+      "decodedGeometryBufferBytes": 4480368,
+      "loadMilliseconds": 87.2,
+      "sourceBounds": {
+        "min": [
+          279.5,
+          194.5,
+          291.5
+        ],
+        "max": [
+          647.5,
+          284.5,
+          396.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 860.2
+    },
+    {
+      "id": "sio-62f984200c1bd5dc417caa79",
+      "name": "right rectus abdominis",
+      "source": "VOXEL-MAN",
+      "sha256": "12c835aba6bbc2feffb68460ee7257d22831565c320c15ea99f025a9d2986bd3",
+      "expectedTriangles": 175152,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 9789,
+          "renderedTriangles": 175152,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 12179,
+          "renderedTriangles": 175152,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 6622,
+          "renderedTriangles": 175152,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 175152,
+      "decodedGeometryBufferBytes": 4209264,
+      "loadMilliseconds": 91.5,
+      "sourceBounds": {
+        "min": [
+          282.5,
+          198.5,
+          208.5
+        ],
+        "max": [
+          644.5,
+          285.5,
+          302.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 995.7
+    },
+    {
+      "id": "sio-a9dd21a99af4eb21922edd8f",
+      "name": "left transversus abdominis",
+      "source": "VOXEL-MAN",
+      "sha256": "1ebbe2d8e9e4c27c3157ad7c5db680655c2002d7ec08019e322a81928479884d",
+      "expectedTriangles": 160700,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 26420,
+          "renderedTriangles": 160700,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 28390,
+          "renderedTriangles": 160700,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 7193,
+          "renderedTriangles": 160700,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 160700,
+      "decodedGeometryBufferBytes": 3857280,
+      "loadMilliseconds": 125.6,
+      "sourceBounds": {
+        "min": [
+          292.5,
+          93.5,
+          329.5
+        ],
+        "max": [
+          574.5,
+          271.5,
+          432.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 938.4
+    },
+    {
+      "id": "sio-46ada91c3bfd10b181768154",
+      "name": "right transversus abdominis",
+      "source": "VOXEL-MAN",
+      "sha256": "2ed1f70397b611e9f3630ee9ca80bc2f5194335e88c63854b8f460651755cc9f",
+      "expectedTriangles": 152992,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 12284,
+          "renderedTriangles": 152992,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 24524,
+          "renderedTriangles": 152992,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 7171,
+          "renderedTriangles": 152992,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 152992,
+      "decodedGeometryBufferBytes": 3672672,
+      "loadMilliseconds": 58.1,
+      "sourceBounds": {
+        "min": [
+          281.5,
+          99.5,
+          163.5
+        ],
+        "max": [
+          582.5,
+          269.5,
+          286.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 835.5
+    },
+    {
+      "id": "sio-8bbc8b7a33a9c1a17201a78f",
+      "name": "left internal oblique",
+      "source": "VOXEL-MAN",
+      "sha256": "9e73ce51d14f128a173ce80d69637da33a68c0b7c767966991a3e188775084f6",
+      "expectedTriangles": 195680,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 33259,
+          "renderedTriangles": 195680,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 39138,
+          "renderedTriangles": 195680,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 12164,
+          "renderedTriangles": 195680,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 195680,
+      "decodedGeometryBufferBytes": 4712112,
+      "loadMilliseconds": 235.4,
+      "sourceBounds": {
+        "min": [
+          378.5,
+          76.5,
+          349.5
+        ],
+        "max": [
+          605.5,
+          239.5,
+          438.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 1104.3
+    },
+    {
+      "id": "sio-49e612aed17a33dbe8af6675",
+      "name": "right internal oblique",
+      "source": "VOXEL-MAN",
+      "sha256": "a8d6aa7daa024c6561b1664cc6d0bc5573a40f6ba47c5a297a895bbc178146c2",
+      "expectedTriangles": 173092,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 16923,
+          "renderedTriangles": 173092,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 33545,
+          "renderedTriangles": 173092,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 12473,
+          "renderedTriangles": 173092,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 173092,
+      "decodedGeometryBufferBytes": 4164960,
+      "loadMilliseconds": 76.8,
+      "sourceBounds": {
+        "min": [
+          387.5,
+          80.5,
+          159.5
+        ],
+        "max": [
+          606.5,
+          233.5,
+          246.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 944.6
+    },
+    {
+      "id": "sio-6686de40f2bb3fc849db44a8",
+      "name": "coccyx",
+      "source": "VOXEL-MAN",
+      "sha256": "924c3a9f98e74f69f2ba70e266ebf2fca9bfddd28ee217901cea6551cda9c06a",
+      "expectedTriangles": 11084,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 21646,
+          "renderedTriangles": 11084,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 21111,
+          "renderedTriangles": 11084,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 29507,
+          "renderedTriangles": 11084,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 11084,
+      "decodedGeometryBufferBytes": 265296,
+      "loadMilliseconds": 37.5,
+      "sourceBounds": {
+        "min": [
+          601.5,
+          28.5,
+          275.5
+        ],
+        "max": [
+          648.5,
+          56.5,
+          311.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 787.4
+    },
+    {
+      "id": "sio-788f1310f5da8429bd667f03",
+      "name": "larynx",
+      "source": "VOXEL-MAN",
+      "sha256": "3d335f919f7ab836b92f9c65c3f92e2c0be22789368b5b2489459ff150053251",
+      "expectedTriangles": 16204,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 43950,
+          "renderedTriangles": 16204,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 30247,
+          "renderedTriangles": 16204,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 36811,
+          "renderedTriangles": 16204,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 16204,
+      "decodedGeometryBufferBytes": 392088,
+      "loadMilliseconds": 119.5,
+      "sourceBounds": {
+        "min": [
+          0,
+          165.5,
+          262.5
+        ],
+        "max": [
+          27.5,
+          202.5,
+          314.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 993.6
+    },
+    {
+      "id": "sio-881035e555b59603c183aeb9",
+      "name": "sigmoid colon",
+      "source": "VOXEL-MAN",
+      "sha256": "f64ee4d48893ac093f5a6128230ed82886fafb20e84d7dcaf3bb75fcfd05c1c7",
+      "expectedTriangles": 151980,
+      "sourceFrame": "voxel-index-ZYX",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 32437,
+          "renderedTriangles": 151980,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 32581,
+          "renderedTriangles": 151980,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 36981,
+          "renderedTriangles": 151980,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 151980,
+      "decodedGeometryBufferBytes": 3651600,
+      "loadMilliseconds": 87.5,
+      "sourceBounds": {
+        "min": [
+          548.5,
+          69.5,
+          255.5
+        ],
+        "max": [
+          623.5,
+          225.5,
+          366.5
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 941.5
+    },
+    {
+      "id": "openear-incus",
+      "name": "Incus",
+      "source": "OpenEar",
+      "sha256": "c753805671e3456ba74ce788004166d05f3477bd0977a23e42780706fddb50e7",
+      "expectedTriangles": 3996,
+      "sourceFrame": "preserved source coordinates",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 26077,
+          "renderedTriangles": 3996,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 26712,
+          "renderedTriangles": 3996,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 26413,
+          "renderedTriangles": 3996,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 3996,
+      "decodedGeometryBufferBytes": 95976,
+      "loadMilliseconds": 34.7,
+      "sourceBounds": {
+        "min": [
+          23.5268,
+          20.9829,
+          28.918
+        ],
+        "max": [
+          29.8054,
+          24.6812,
+          33.9159
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 946.4
+    },
+    {
+      "id": "openear-malleus",
+      "name": "Malleus",
+      "source": "OpenEar",
+      "sha256": "6542ed305c2a172c828312186966cc85c1ad0e3f75dc9904565300f99f3ebf1b",
+      "expectedTriangles": 3996,
+      "sourceFrame": "preserved source coordinates",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 31046,
+          "renderedTriangles": 3996,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 32420,
+          "renderedTriangles": 3996,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 16733,
+          "renderedTriangles": 3996,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 3996,
+      "decodedGeometryBufferBytes": 95976,
+      "loadMilliseconds": 94.4,
+      "sourceBounds": {
+        "min": [
+          22.741,
+          22.6509,
+          32.224
+        ],
+        "max": [
+          30.0557,
+          25.8829,
+          35.9754
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 935.6
+    },
+    {
+      "id": "openear-stapes",
+      "name": "Stapes",
+      "source": "OpenEar",
+      "sha256": "bdf109cf175540c81440e44247ea9d885f73087b0ad73ee07b644d590388c1bf",
+      "expectedTriangles": 2000,
+      "sourceFrame": "preserved source coordinates",
+      "views": [
+        {
+          "view": 1,
+          "foregroundPixels": 28746,
+          "renderedTriangles": 2000,
+          "webglErrors": 0
+        },
+        {
+          "view": 2,
+          "foregroundPixels": 30014,
+          "renderedTriangles": 2000,
+          "webglErrors": 0
+        },
+        {
+          "view": 3,
+          "foregroundPixels": 31684,
+          "renderedTriangles": 2000,
+          "webglErrors": 0
+        }
+      ],
+      "renderVerified": true,
+      "meshes": 1,
+      "decodedTriangles": 2000,
+      "decodedGeometryBufferBytes": 48000,
+      "loadMilliseconds": 18.5,
+      "sourceBounds": {
+        "min": [
+          23.6993,
+          18.3689,
+          33.7247
+        ],
+        "max": [
+          26.0722,
+          22.3222,
+          37.2184
+        ]
+      },
+      "retainedGeometriesAfterDispose": 0,
+      "retainedTexturesAfterDispose": 1,
+      "totalMilliseconds": 722.5
+    }
+  ],
+  "pageErrors": [],
+  "clinicalValidation": false,
+  "anatomicalOrientationVerified": false,
+  "registrationValidated": false,
+  "wholeStructuresRestoredClaim": 0,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO",
+  "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "renderer": "WebKit WebGL",
+  "engineCacheCalibration": "One retained Three.js DFG LUT after discarded engineering box; not a medical model",
+  "rendererBaseline": {
+    "geometries": 0,
+    "textures": 1
+  },
+  "finishedAt": "2026-11-28T05:51:22.816Z",
+  "renderedPass": 36,
+  "renderedFail": 0,
+  "resourceDisposalPass": 36,
+  "complete": true,
+  "passed": true
+}

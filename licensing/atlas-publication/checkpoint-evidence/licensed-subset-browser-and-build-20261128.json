@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "evidenceOrigin": "EXECUTED_BUILD_AND_CUA_BROWSER_DOM_SCREENSHOTS",
+  "packageContentsSHA256": "2f9b6e92dd3dd49b032ca9b1b33231082a2d3c9a5ba318fc37bbf3ca90730697",
+  "assetSetSHA256": "6e6de134b9ae06c01df65e746f7f671802faf2a851ed221b569b776141038fa3",
+  "modelsVerifiedByHash": 1016,
+  "renderedVisible": 1016,
+  "visibleSourceMeshesNotWholeStructures": 1570,
+  "failedModels": 0,
+  "queuedModels": 0,
+  "desktopViewport": [
+    1280,
+    720
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "mobileOverflow": false,
+  "mobilePresetsFullyVisible": true,
+  "sourceFrame": "native-official-OBJ",
+  "bodyGeometryNativeBuffersMiBPreviouslyObserved": 301,
+  "mainHostExactInventoryProbe": "PASS",
+  "mainHostBrowserReplay": "PASS actual HumanAnatomy.jsx with BrowserRouter and same-origin iframe",
+  "interactionReplay": {
+    "previousPackageDigest": "6238fa649e1f309307e094a57df356980a663a4e4ef60af7156aca3dbbb93b14",
+    "search": "left ulna/FMA23468",
+    "highlightGold": true,
+    "isolateVisibleMeshes": 1,
+    "hideUndoFadeRestore": true,
+    "guidedSourceCheckpointOpened": 1,
+    "guidedLabel": "abdominal aorta/FMA3789",
+    "challengeMCQCorrect": true,
+    "challengeTypedCorrect": true,
+    "finalPackageInteractionReplay": "PASS on final digest through same-origin host: search left ulna/FMA23468, golden selection, isolate1mesh, hide/undo, fade/restore, Guided abdominal aorta opened, Challenge MCQ and typed correct, close restores all1016models",
+    "finalPackageContentsSHA256": "2f9b6e92dd3dd49b032ca9b1b33231082a2d3c9a5ba318fc37bbf3ca90730697"
+  },
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "productionDeployed": false,
+  "productionBackupExecuted": false,
+  "wholeStructuresNewlyValidated": 0,
+  "releaseOperatorApproval": false,
+  "limitations": [
+    "No actual mobile hardware or process/GPU memory measurement",
+    "118 whole-extent review items remain unresolved;19 exact-label candidates are not closure",
+    "Production backup, protected server staging and operator release acceptance remain required"
+  ],
+  "mainHostBrowserURL": "http://127.0.0.1:4197/",
+  "hostStatusOverlaysAfterInteractive": 0,
+  "hostConsoleErrors": [],
+  "hostMobileViewport": [
+    390,
+    844
+  ],
+  "hostAndFrameMobileCSSWidths": [
+    390,
+    390
+  ],
+  "hostMobileOverflow": false
+}

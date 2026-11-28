@@ -1,0 +1,40 @@
+name: Actual source-label geometry and browser QC
+on:
+  push:
+    branches: [feat/atlas-ws6-ws7-20261127]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  convert-and-render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm install --prefix "$RUNNER_TEMP/browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Source rejection and calibrated converter tests
+        run: |
+          python3 scripts/atlas-source-qc/test_prepare_source.py
+          node --test scripts/atlas-source-qc/source-server.test.mjs
+      - name: Reacquire exact publisher sources and extract 33 plus 3 private GLBs
+        run: python3 scripts/atlas-source-qc/run-source-qc.py --out "$RUNNER_TEMP/source-qc"
+      - name: Actual 36 GLBs and 108 views with resource disposal
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/browser/node_modules/playwright
+        run: node scripts/atlas-source-qc/test-source-rendering.mjs "$RUNNER_TEMP/source-qc"
+      - name: Numeric receipts only; no source or geometry uploads
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-source-browser-numeric-receipt
+          path: ${{ runner.temp }}/source-qc/actual-browser-render-receipt.json
+          if-no-files-found: ignore
+          retention-days: 14

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "status": "EXACT_RETAINED_RAW_OBJ_BYTES_RECONSTRUCTED",
+  "currentArchive": {
+    "sha256": "ac7d9ab0b3d75b4c75445f0f39e3782f309bbb321d2191f449773107ae504793",
+    "bytes": 142717267
+  },
+  "memberProofSHA256": "2939dc23c514802c79c302f78cad4324abf9d3e2451dfee00c87ca4d89c947d2",
+  "passed": 2234,
+  "failed": 0,
+  "originalArchiveReconstructed": false,
+  "originalArchiveAcquisitionClaimed": false,
+  "retainedArchiveHistoricalSHA256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e",
+  "privateOBJFilesWritten": 0,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "approvedForDistribution": false,
+  "date": "2026-11-28",
+  "scope": "Actual reconstruction in memory of all2234 retained raw OBJ members from pinned current publisher ZIP. Every old raw SHA256 matched retained full-member proof. No old ZIP reconstructed or claimed reacquired; no models exported, published or clinically approved."
+}

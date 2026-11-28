@@ -1,0 +1,37 @@
+<div id="app" data-shell-origin="medcoel-independent-20261127">
+  <header class="atlas-topbar">
+    <a class="atlas-back" href="/anatomy" aria-label="Kembali ke Anatomi">‹ <span>Anatomi</span></a>
+    <a class="atlas-brand" href="/anatomy">▣ <span>Atlas 3D</span></a>
+    <button id="searchOpen" class="btn-icon search-trigger" aria-label="Buka pencarian" aria-expanded="false">⌕</button>
+    <div class="atlas-search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="Cari struktur: ulna, jantung, platysma…" aria-label="Cari struktur anatomi"><div id="searchResults" role="list" aria-label="Hasil pencarian"></div></div>
+    <div class="header-right">
+      <button id="undoAtlas" class="btn-icon" aria-label="Urungkan aksi" title="Urungkan">↶</button>
+      <button id="restoreAtlas" class="btn-icon" aria-label="Pulihkan tampilan" title="Pulihkan">⟲</button>
+      <button id="shareAtlas" class="btn-icon" aria-label="Bagikan tampilan" title="Bagikan">⌯</button>
+      <button id="helpBtn" class="btn-icon" aria-label="Bantuan" title="Bantuan">?</button>
+    </div>
+  </header>
+  <section class="atlas-stage" aria-label="Penjelajah anatomi">
+    <div id="viewerContainer"><canvas id="threeCanvas" aria-label="Model anatomi 3D"></canvas></div>
+    <button id="regionButton" class="atlas-region-button" type="button"><span class="atlas-region-mark" aria-hidden="true">◎</span><span><small>REGIO</small><strong id="sceneTitle">Seluruh tubuh</strong><span id="sceneSubtitle">Semua regio</span></span><span aria-hidden="true">⌄</span></button>
+    <button id="infoOpen" class="btn-icon atlas-info-open" aria-label="Informasi struktur">ⓘ</button>
+    <aside id="infoSidebar" class="atlas-infobox" aria-label="Informasi struktur terpilih">
+      <div class="atlas-info-heading"><span>STRUKTUR TERPILIH</span><button id="infoExpand" class="btn-icon" aria-label="Perluas informasi" aria-expanded="false">⤢</button><button id="infoToggle" class="btn-icon" aria-label="Lepaskan pilihan">×</button></div>
+      <p class="info-placeholder">Pilih struktur untuk melihat identitas sumbernya.</p>
+      <div id="structureInfo" class="hidden"></div>
+      <div id="footerBar" class="atlas-selection-actions">
+        <button id="footerIsolateBtn" class="action-btn">Isolasi</button><button id="footerHideBtn" class="action-btn">Sembunyikan</button><button id="footerTransparentBtn" class="action-btn">Pudarkan</button><button id="footerFadeOthersBtn" class="action-btn secondary">Pudarkan lainnya</button><button id="footerFocusBtn" class="action-btn secondary">Fokus</button><button id="footerShowAllBtn" class="action-btn secondary">Pulihkan</button>
+      </div>
+    </aside>
+    <nav class="atlas-navigation" aria-label="Kamera dan orientasi">
+      <div class="atlas-navigation-group"><button id="zoomInAtlas" class="control-btn" aria-label="Perbesar">+</button><button id="zoomOutAtlas" class="control-btn" aria-label="Perkecil">−</button><button id="panAtlas" class="control-btn" aria-label="Geser model" aria-pressed="false">✥</button></div>
+      <div class="atlas-navigation-group"><button id="frontViewBtn" class="control-btn">Dpn</button><button id="sideViewBtn" class="control-btn">Smp</button><button id="backViewBtn" class="control-btn">Blk</button><button id="topViewBtn" class="control-btn">Ats</button><button id="resetBtn" class="control-btn" aria-label="Sesuaikan model ke layar">⟲</button></div>
+    </nav>
+    <div id="loadingOverlay" class="atlas-loading" role="status"><span class="atlas-loader" aria-hidden="true"></span><span>Menyiapkan model…</span></div>
+    <div id="emptyScene" class="atlas-empty" hidden><strong>Belum ada struktur terlihat</strong><button id="emptyRestore" class="action-btn">Pulihkan tampilan</button></div>
+    <button id="returnContext" class="action-btn atlas-return" hidden>Kembali ke konteks tubuh</button>
+    <div class="atlas-scene-bottom"><span id="atlasStatus" role="status">Menyiapkan viewer…</span><span id="atlasSelection" aria-live="polite"></span><span class="atlas-gesture-hint">Seret untuk memutar · Shift + seret untuk menggeser · Gulir untuk zoom</span></div>
+  </section>
+  <footer class="atlas-systembar" aria-label="Pilihan sistem anatomi"><div class="sidebar-content"><div id="systemsList"></div></div></footer>
+</div>
+<div id="helpModal" class="atlas-modal hidden" role="dialog" aria-modal="true" aria-labelledby="atlasHelpTitle"><div class="modal-overlay"></div><section class="atlas-modal-card"><header><h2 id="atlasHelpTitle">Panduan Atlas 3D</h2><button id="helpClose" class="btn-icon" aria-label="Tutup bantuan">×</button></header><div class="modal-body"></div></section></div>

@@ -55,3 +55,15 @@ test('back link for the atlas survives structure ids with brackets and keeps the
  assert.equal(new URL(withHash,'https://medcoel.example').hash,'#atlas=x');
  assert.equal(withBackLink('/anatomy/viewer/',null),'/anatomy/viewer/');
 });
+
+test('licensed subset lifecycle is bound to exact product, asset-set, source and bounded fields',async()=>{
+ const {acceptsLicensedSubsetMessage,LICENSED_SUBSET_PIN,LICENSED_SUBSET_PRODUCT}=await import('./hostProtocol.mjs');
+ const frame={},origin='https://medcoel.com',data={type:'medcoel:independent-atlas-status',version:1,state:'interactive',message:'Ready',product:LICENSED_SUBSET_PRODUCT,assetSetSHA256:LICENSED_SUBSET_PIN};
+ const event={origin,source:frame,data};assert(acceptsLicensedSubsetMessage(event,origin,frame));assert(acceptsAtlasMessage(event,origin,frame));
+ for(const bad of [{...event,source:{}},{...event,origin:'https://foreign.example'},...['product','assetSetSHA256','state'].map(k=>({...event,data:{...data,[k]:'wrong'}})),{...event,data:{...data,privateToken:'no'}},{...event,data:{...data,message:'x'.repeat(241)}}])assert.equal(acceptsLicensedSubsetMessage(bad,origin,frame),false);
+});
+test('an arbitrary inventory or SPA fallback never qualifies as a licensed subset',async()=>{
+ const {checkLicensedSubset}=await import('./hostProtocol.mjs');
+ await assert.rejects(checkLicensedSubset(async()=>new globalThis.Response('<html>',{headers:{'content-type':'text/html'}})),/unavailable/);
+ await assert.rejects(checkLicensedSubset(async()=>new globalThis.Response(JSON.stringify({entries:[],assetSetSHA256:'a'.repeat(64)}),{headers:{'content-type':'application/json'}})),/Unknown subset/);
+});
