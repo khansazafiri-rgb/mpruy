@@ -88,7 +88,19 @@ def verify_glb(data, v, f):
     if payload != v.tobytes(order="C")+f.tobytes(order="C"):
         raise ValueError("GLB geometry roundtrip mismatch")
 
-def main():
+def audit_scope_passes(rows, allow_known_source_boundary_hold=False):
+    # Exact acquired source geometry audit; this does not complete the larynx.
+    if len(rows) != len(TARGETS) or {r.get("name") for r in rows} != set(TARGETS):
+        return False
+    holds = [r for r in rows if r.get("status") != "PRIVATE_MESH_ROUNDTRIP_PASS"]
+    if not holds:
+        return True
+    return allow_known_source_boundary_hold and holds == [{
+        "name": "larynx", "status": "HOLD",
+        "reason": "Mask touches source volume boundary; no artificial closure"
+    }]
+
+def main(allow_known_source_boundary_hold=False):
     source = json.loads(labels.CANDIDATE.read_text())
     receipt = json.loads(RECEIPT.read_text())
     if receipt["publicRelease"] != "NO_GO" or not receipt["sourceLabelBytesVerified"]:
@@ -125,11 +137,33 @@ def main():
                 "rows":rows,"passed":sum(r["status"]=="PRIVATE_MESH_ROUNDTRIP_PASS" for r in rows),
                 "clinicalValidation":False,"registrationValidated":False,"coordinateFrameVerified":False,
                 "privacyReviewed":False,"approvedForDistribution":False,"geometryPublished":0,"publicRelease":"NO_GO"}
+        report["wholeAnatomyComplete"] = False
+        report["knownSourceBoundaryHoldAcceptedForAuditOnly"] = bool(
+            allow_known_source_boundary_hold and report["passed"] == len(TARGETS)-1
+            and audit_scope_passes(rows, True))
+        report["auditScopePassed"] = audit_scope_passes(rows, allow_known_source_boundary_hold)
         print("SIO PRIVATE MESH AUDIT "+json.dumps(report,separators=(",",":")))
-        if report["passed"] != len(TARGETS):
+        if not report["auditScopePassed"]:
             raise SystemExit(2)
 
 class Tests(unittest.TestCase):
+    def test_known_crop_is_documented_hold_only_in_explicit_audit_scope(self):
+        rows=[{"name":n,"status":"PRIVATE_MESH_ROUNDTRIP_PASS"} for n in TARGETS[:-1]]
+        rows.append({"name":"larynx","status":"HOLD","reason":"Mask touches source volume boundary; no artificial closure"})
+        self.assertFalse(audit_scope_passes(rows))
+        self.assertTrue(audit_scope_passes(rows, True))
+        self.assertEqual(rows[-1]["status"], "HOLD")
+        self.assertFalse(audit_scope_passes(rows[:-1], True))
+    def test_unexpected_hold_or_changed_scope_is_never_accepted(self):
+        rows=[{"name":n,"status":"PRIVATE_MESH_ROUNDTRIP_PASS"} for n in TARGETS]
+        self.assertTrue(audit_scope_passes(rows))
+        rows[0]={"name":"myocardium","status":"HOLD","reason":"unknown source error"}
+        self.assertFalse(audit_scope_passes(rows, True))
+        rows[-1]={"name":"larynx","status":"HOLD","reason":"different checksum"}
+        self.assertFalse(audit_scope_passes(rows, True))
+        rows[0]={"name":"larynx","status":"PRIVATE_MESH_ROUNDTRIP_PASS"}
+        self.assertFalse(audit_scope_passes(rows, True))
+
     def test_cube_roundtrip(self):
         a=np.zeros((8,9,10),dtype=np.uint16)
         a[2:5,3:6,4:7]=7
@@ -152,6 +186,8 @@ if __name__ == "__main__":
     import sys
     if sys.argv[1:] == ["--test"]:
         unittest.main(argv=[sys.argv[0]])
+    elif sys.argv[1:] == ["--allow-known-source-boundary-hold"]:
+        main(allow_known_source_boundary_hold=True)
     elif not sys.argv[1:]:
         main()
     else:

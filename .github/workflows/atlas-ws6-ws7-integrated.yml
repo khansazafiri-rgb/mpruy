@@ -102,5 +102,5 @@ jobs:
       - name: Synthetic geometry and rejection tests
         run: python scripts/audit-sio-private-mesh.py --test
       - name: Reacquire pinned segmentation and convert private GLBs
-        run: python scripts/audit-sio-private-mesh.py
+        run: python scripts/audit-sio-private-mesh.py --allow-known-source-boundary-hold
       # Never upload source or derived geometry. Retain numeric logs only.
